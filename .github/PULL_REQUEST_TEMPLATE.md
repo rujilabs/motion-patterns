@@ -6,7 +6,9 @@
 
 - [ ] `npm run catalogue && npm run check` passes
 - [ ] Looks right with reduced motion on, showing the finished state
-- [ ] Works at 375 px wide
+- [ ] Works at 375 px wide and fits its gallery card
+- [ ] Has a `README.md` (use, variants, do, do not, reduced motion)
+- [ ] Anything that moves for more than 5 seconds can be paused
 - [ ] `relation` is honest:
   - [ ] `original`: I made it
   - [ ] `port`: copied from a source under MIT, CC0, Apache 2.0, BSD, ISC or Unlicense, notice kept in the file

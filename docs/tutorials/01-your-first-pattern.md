@@ -81,7 +81,25 @@ It uses tokens from `tokens.css` and has a reduced-motion rule. The gate checks 
 }
 ```
 
-## 6. Pass the gate
+## 6. Write its README
+
+`patterns/nudge/README.md`:
+
+```markdown
+# Nudge
+
+A small sideways hint, played twice, that a row can be swiped.
+
+## Use
+
+    <p class="nudge">Swipe for more</p>
+
+## Reduced motion
+
+The element stays still.
+```
+
+## 7. Pass the gate
 
 ```bash
 npm run check

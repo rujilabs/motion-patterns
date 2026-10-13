@@ -39,4 +39,12 @@ For video or JS animation that should match the web motion. These are close matc
 | `--ease-spring` | `back.out(1.7)` | `Easing.bezier(.3, 1.6, .5, 1)` |
 | `--ease-inout` | `power2.inOut` | `Easing.bezier(.4, 0, .2, 1)` |
 
-Loop lengths (`marquee` 38s, `drift` 7s and 11s, `crossfade` 12s, `pulse` 1.6s, `squeeze` 1.3s) are part of each pattern, not tokens.
+Loop and run lengths belong to each pattern, not to the tokens:
+
+| Pattern | Length | Change it with |
+|---|---|---|
+| `marquee` | 38s per loop | `--marquee-dur` |
+| `drift` | 7s, 11s, 13s (x, y, tilt); `.drift-slow` 11s, 17s, 19s | `.drift-slow` |
+| `crossfade` | 4s per frame: 8s, 12s, 16s for 2, 3, 4 frames | `.crossfade-2`, `.crossfade-4` |
+| `pulse` | 2s beat, the halo gone by 60% | `--pulse-count` for how many beats |
+| `squeeze` | 1.3s per line | |

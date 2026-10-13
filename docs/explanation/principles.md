@@ -14,6 +14,14 @@ The heading and the main image are what people came for and what speed tools mea
 
 Some people get dizzy or sick from motion, and set `prefers-reduced-motion`. The respectful answer is the page as it looks when the animation ends, not a blank space where hidden content waits for a trigger that never fires.
 
+## Anything that keeps moving can be paused
+
+Motion that starts on its own and runs longer than 5 seconds needs a way to stop it ([WCAG 2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)). Hover is not enough: it does nothing on a phone or for a keyboard user. Marquees and crossfades ship a CSS-only pause toggle built on `:has()`, and also pause on focus.
+
+## Motion adds to what is there
+
+Where an entry moves an element, it uses the individual `translate`, `rotate` and `scale` properties when it can, so it sits on top of the element's own `transform` (a stamp's tilt, a card's rotation) instead of replacing it.
+
 ## No JavaScript, no hidden content
 
 A start state like `opacity: 0` is only applied under `.js`, which `play.js` sets before first paint. If the script fails or is blocked, nothing is stuck invisible.

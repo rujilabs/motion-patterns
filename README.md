@@ -47,7 +47,8 @@ Or copy one entry: [`tokens.css`](tokens.css) plus that entry's `style.css`. No 
 | **Pattern** | One move: a class and a keyframe built on shared tokens | [`patterns/`](patterns/) |
 | **Template** | A finished scene composed from patterns, ready to copy | [`templates/`](templates/) |
 | **Tokens** | The shared easing curves, durations and stagger steps | [`tokens.css`](tokens.css) |
-| **play.js** | Adds `.go` when an element scrolls into view (under 1 KB) | [`play.js`](play.js) |
+| **play.js** | Adds `.go` when an element scrolls into view (under 1 KB); also the fallback for `.reveal` where scroll timelines are missing | [`play.js`](play.js) |
+| **Entry READMEs** | Every entry folder has its own README: use, variants, do and do not, reduced motion | e.g. [`patterns/rise/`](patterns/rise/) |
 
 Every entry follows the same rules:
 
@@ -56,6 +57,7 @@ Every entry follows the same rules:
 - **Content stays visible without JavaScript.** Hidden start states only apply once `play.js` has run.
 - **CSP-safe.** No `style=""`, no inline scripts, no external requests.
 - **Tokens only.** No raw `cubic-bezier()` outside [`tokens.css`](tokens.css).
+- **Pausable.** Anything that moves on its own for more than 5 seconds has a pause control.
 
 ## Catalogue
 

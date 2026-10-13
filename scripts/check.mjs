@@ -24,7 +24,7 @@ export function check() {
 
   for (const e of entries) {
     const at = e.rel;
-    for (const f of ["index.html", "style.css", "meta.json"]) {
+    for (const f of ["index.html", "style.css", "meta.json", "README.md"]) {
       if (!existsSync(join(e.path, f))) fail(at, `missing ${f}`);
     }
     if (e.error) { fail(at, `meta.json is not valid JSON (${e.error})`); continue; }

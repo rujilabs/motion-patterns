@@ -16,8 +16,9 @@ Thanks for adding to the collection. This page covers the ways to help and the r
 1. Fork, then `npm run dev` to see the gallery locally.
 2. Follow [add an entry](docs/how-to/add-an-entry.md). New to this? Do the [tutorial](docs/tutorials/01-your-first-pattern.md) first.
 3. Decide `relation` with [credit a source](docs/how-to/credit-a-source.md).
-4. `npm run catalogue && npm run check` must pass.
-5. Open the pull request and fill in the template.
+4. Write the entry's `README.md` (the gate requires one; copy the shape from [`rise`](patterns/rise/README.md)).
+5. `npm run catalogue && npm run check` must pass.
+6. Open the pull request and fill in the template.
 
 > [!IMPORTANT]
 > No code, image, font or text from a source without a licence that allows it. Rebuild the movement from scratch and credit the source.

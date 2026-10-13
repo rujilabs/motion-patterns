@@ -30,7 +30,7 @@ Every entry folder has one. [`scripts/check.mjs`](../../scripts/check.mjs) valid
 
 ## Other checks on an entry
 
-- `index.html`, `style.css` and `meta.json` exist.
+- `index.html`, `style.css`, `meta.json` and `README.md` exist.
 - `style.css` has a `prefers-reduced-motion` rule.
 - No HTML file has a `style=""` attribute, an inline `<style>` or `<script>`, an inline event handler or an external `src`/`href`.
 - No text file has an en or em dash.
