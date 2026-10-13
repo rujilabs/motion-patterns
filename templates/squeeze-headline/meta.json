@@ -2,19 +2,19 @@
   "name": "Squeeze headline",
   "slug": "squeeze-headline",
   "kind": "template",
-  "summary": "A kinetic shop hero: the headline squeezes in, an underline draws as it settles, copy and button follow, and a category band loops with a pause toggle.",
+  "summary": "A track-race poster in Anybody: three justified lines squeeze in letter by letter on a spring, lane lines run out, then letters near the pointer swell while each line keeps its length.",
   "category": "type",
   "tech": [
     "css",
     "svg",
+    "js",
     "variable-font"
   ],
   "uses": [
     "stretch-squeeze",
     "draw",
     "rise",
-    "marquee",
-    "pop"
+    "marquee"
   ],
   "tokens": [
     "--dur-base",

@@ -1,54 +1,222 @@
 /*
- * Stamp collage: paper scraps pressed onto a board, a price sticker popping on after each scrap,
- * then a "Sold out" ink seal on the weekend item. Cards lift on hover with the individual translate
- * property, so the lift adds to the stamp's tilt instead of replacing it.
+ * Stamp collage: a stamp dealer's felt board. Six scraps (an airmail cover, a postcard, four
+ * perforated stamps) are pressed onto the felt one after another: each falls, squashes on contact
+ * and settles at its own tilt while its shadow pulls in tight. Then the postmark and a Sold seal
+ * are inked on and the price stickers pop. Every scrap can be picked up and moved (collage.js).
+ *
+ * Order (one --stagger step is 80ms):
+ *   0 to 1.5s    scraps land, 160ms apart, cover first
+ *   1.3s         the postmark is struck across the cover's stamp
+ *   1.6s         Sold is stamped on the hibiscus
+ *   1.8 to 2.8s  price stickers pop on, one by one
+ *
+ * Moving a scrap uses the individual translate, rotate and scale properties, so it adds to the
+ * tilt in transform instead of replacing it. Positions are in cqw of the board, so a moved scrap
+ * keeps its place when the board resizes.
  */
+@font-face { font-family: "Courier Prime"; src: url("../../fonts/courier-prime.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Courier Prime"; src: url("../../fonts/courier-prime-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Host Grotesk"; src: url("../../fonts/host-grotesk-vf.woff2") format("woff2"); font-weight: 300 800; font-display: swap; }
+@font-face { font-family: "Anybody"; src: url("../../fonts/anybody-vf.woff2") format("woff2"); font-weight: 100 900; font-stretch: 50% 150%; font-display: swap; }
+
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: #efe9dd; color: #1d1a16; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-
-.board { position: relative; min-height: 100vh; padding: clamp(24px, 6vw, 72px); overflow: clip; }
-.intro { max-width: 560px; }
-.open { display: inline-flex; align-items: center; gap: 12px; margin: 0; font-weight: 600; color: #1f7a4d; }
-h1 { margin: 8px 0; font-size: clamp(40px, 8vw, 80px); line-height: 1; letter-spacing: -.03em; }
-.lede { margin: 0; max-width: 42ch; color: #5a5247; }
-
-.scraps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 22px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); max-width: 960px; }
-.scrap { position: relative; z-index: 1; display: grid; gap: 4px; padding: 22px 20px 28px; background: #fffdf8;
-  box-shadow: 0 6px 6px rgb(70 50 30 / .18), 0 1px 0 rgb(70 50 30 / .2);
-  transition: translate var(--dur-quick) var(--ease-spring), box-shadow var(--dur-quick) var(--ease-out); }
-.scrap:hover { translate: 0 -4px; box-shadow: 0 12px 14px rgb(70 50 30 / .2), 0 1px 0 rgb(70 50 30 / .2); }
-.scrap-warm { background: #ffe1cf; }
-.scrap-mint { background: #d7f0e2; }
-.scrap-blue { background: #dbe6ff; }
-.tilt-s { --tilt: -1.5deg; }
-.name { font-weight: 800; font-size: 20px; }
-.note { color: #6b6255; font-size: 14px; }
-.price { position: absolute; top: -12px; right: -10px; display: grid; place-items: center; width: 58px; height: 58px;
-  border-radius: 50%; background: #1d1a16; color: #fffdf8; font-weight: 800; font-size: 15px; }
-
-/* scraps land one after another; each price pops just after its scrap */
-.s2 { animation-delay: calc(var(--stagger) * 3); }
-.s3 { animation-delay: calc(var(--stagger) * 6); }
-.s4 { animation-delay: calc(var(--stagger) * 9); }
-.p1 { animation-delay: var(--dur-base); }
-.p2 { animation-delay: calc(var(--stagger) * 3 + var(--dur-base)); }
-.p3 { animation-delay: calc(var(--stagger) * 6 + var(--dur-base)); }
-.p4 { animation-delay: calc(var(--stagger) * 9 + var(--dur-base)); }
-
-/* decoration sits behind the cards, bottom right, and only where there is room for it */
-.crumbs { position: absolute; inset: auto 4% 6% auto; width: 200px; height: 160px; pointer-events: none; }
-.crumb { position: absolute; width: 120px; right: 0; bottom: 0; opacity: .5; }
-.crumb-2 { width: 54px; right: 140px; bottom: 96px; opacity: .6; }
-@media (max-width: 700px) { .crumbs { display: none; } }
-
-.sold { position: absolute; right: 14px; bottom: 10px; margin: 0; padding: 2px 10px; border: 3px double #c2362c; border-radius: 6px;
-  color: #c2362c; font-size: 15px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
-  animation-delay: calc(var(--stagger) * 6 + var(--dur-base) * 2); }
+body {
+  min-height: 100vh;
+  background: radial-gradient(120% 90% at 65% 40%, #1f4a3f 0%, #163a31 55%, #0e2720 100%) fixed;
+  color: #23242a;
+  font: 400 16px/28px "Courier Prime", ui-monospace, monospace;
+}
+a { color: inherit; }
+.defs { position: absolute; width: 0; height: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* felt fibres: light noise laid over the green */
+.felt { position: fixed; inset: 0; width: 100%; height: 100%; opacity: .3; mix-blend-mode: soft-light; pointer-events: none; }
+
+.stall {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(270px, 370px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(16px, 3vw, 40px);
+}
+
+/* ---------- the index card ---------- */
+.card {
+  --top: 112px;
+  position: relative;
+  z-index: 2;
+  padding: 20px 26px 22px 28px;
+  background:
+    linear-gradient(#d8584a, #d8584a) 0 calc(var(--top) - 2px) / 100% 2px no-repeat,
+    repeating-linear-gradient(transparent 0 27px, #aac2df 27px 28px) 0 var(--top) / 100% calc(100% - var(--top)) no-repeat,
+    #fbf7ec;
+  rotate: -1.4deg;
+  box-shadow: 0 1px 1px rgb(4 18 12 / .4), 0 20px 30px -12px rgb(4 18 12 / .6);
+}
+.card h1 { margin: 0 0 4px; font: 700 44px/44px "Courier Prime", ui-monospace, monospace; letter-spacing: -.03em; color: #17181d; }
+.card p { margin: 0; }
+.typed { max-width: 34ch; }
+.where { margin-top: 28px; color: #4a4b55; }
+.actions { margin-top: 28px; }
+.cta {
+  display: inline-block; padding: 0 16px; line-height: 40px; background: #1d2d5c; color: #fbf7ec; font-weight: 700;
+  text-decoration: none; box-shadow: 3px 3px 0 #0b1533;
+  transition: translate var(--dur-quick) var(--ease-out), box-shadow var(--dur-quick) var(--ease-out);
+}
+.cta:hover { translate: -1px -1px; box-shadow: 4px 4px 0 #0b1533; }
+.cta:active { translate: 2px 2px; box-shadow: 1px 1px 0 #0b1533; }
+.cta:focus-visible { outline: 2px dashed #d8584a; outline-offset: 4px; }
+
+/* ---------- the board ---------- */
+.board {
+  position: relative;
+  justify-self: center;
+  width: min(100%, calc((100vh - 72px) * 1.3));
+  aspect-ratio: 1.3;
+  container-type: inline-size;
+}
+.scraps { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+.hint { position: absolute; right: 0; bottom: 0; max-width: 30ch; margin: 0; color: #a9cbbb; font-size: 13px; line-height: 1.45; text-align: right; }
+.tidy {
+  position: absolute; left: 0; bottom: 0; z-index: 400; padding: 6px 12px; border: 1px solid #a9cbbb; border-radius: 0;
+  background: #163a31; color: #e9f3ec; font: 700 13px/1.2 "Courier Prime", ui-monospace, monospace; cursor: pointer;
+}
+.tidy:focus-visible { outline: 2px dashed #ffd23f; outline-offset: 3px; }
+
+.scrap {
+  position: absolute;
+  left: var(--l);
+  top: var(--t);
+  z-index: var(--z, 1);
+  width: calc(var(--w) * 1cqw);
+  translate: var(--x, 0px) var(--y, 0px);
+  rotate: var(--spin, 0deg);
+  transform: rotate(var(--tilt, 0deg));
+  filter: drop-shadow(0 1px 1px rgb(4 18 12 / .5)) drop-shadow(0 8px 9px rgb(4 18 12 / .38));
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: rotate var(--dur-base) var(--ease-spring), scale var(--dur-quick) var(--ease-out), filter var(--dur-quick) var(--ease-out);
+}
+.scrap:hover { filter: drop-shadow(0 2px 2px rgb(4 18 12 / .45)) drop-shadow(0 12px 13px rgb(4 18 12 / .38)); }
+.scrap:focus-visible { outline: 2px dashed #ffd23f; outline-offset: 6px; }
+.face, .face .art { display: block; width: 100%; height: auto; }
+
+.s-env    { --l: 2%;  --t: 40%; --w: 54; --tilt: -4deg; }
+.s-card   { --l: 41%; --t: 3%;  --w: 46; --tilt: 4deg; }
+.s-wau    { --l: 9%;  --t: 2%;  --w: 18; --tilt: -7deg; }
+.s-light  { --l: 82%; --t: 36%; --w: 15; --tilt: 9deg; }
+.s-boat   { --l: 60%; --t: 50%; --w: 20; --tilt: 5deg; }
+.s-flower { --l: 43%; --t: 67%; --w: 15; --tilt: -3deg; }
+
+/* lifted: bigger, a long soft shadow; scene.js tilts it with the drag (--spin) */
+.scrap.lifted {
+  z-index: 300;
+  cursor: grabbing;
+  scale: 1.06;
+  filter: drop-shadow(0 3px 3px rgb(4 18 12 / .3)) drop-shadow(0 24px 22px rgb(4 18 12 / .42));
+  transition: scale var(--dur-quick) var(--ease-out), filter var(--dur-quick) var(--ease-out);
+}
+/* sent back by the keyboard or by Tidy the board */
+.scrap.homing { transition: translate var(--dur-slow) var(--ease-spring), rotate var(--dur-base) var(--ease-spring); }
+.scrap.nudge { transition: translate var(--dur-quick) var(--ease-out); }
+
+/* ---------- inks and stickers ---------- */
+.seal { position: absolute; pointer-events: none; mix-blend-mode: multiply; opacity: .86; transform: rotate(var(--tilt)); }
+.postmark { left: 47%; top: -5%; width: 54%; --tilt: -10deg; color: #1d2d5c; }
+.seal-art { display: block; width: 100%; height: auto; }
+.sold {
+  left: 50%; top: 46%; translate: -50% -50%; --tilt: -16deg;
+  padding: .2cqw 1cqw; border: .45cqw double #c2362c; color: #c2362c;
+  font: 700 calc(3.2 * 1cqw)/1.15 "Courier Prime", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase;
+}
+.sticker {
+  position: absolute; top: -2.4cqw; right: -2.4cqw;
+  display: grid; place-content: center; width: 8.6cqw; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, rgb(255 255 255 / .55) 0 12%, rgb(255 255 255 / 0) 38%), #ff7a1a;
+  color: #2a1606; text-align: center; rotate: 10deg;
+  box-shadow: inset 0 -.3cqw 0 rgb(0 0 0 / .12);
+  font: 700 calc(2.15 * 1cqw)/1 "Courier Prime", ui-monospace, monospace;
+}
+.sticker b { font-weight: 700; letter-spacing: -.04em; }
+.sticker small { margin-top: .3cqw; font-size: calc(1.35 * 1cqw); font-weight: 400; }
+.st-y { background: radial-gradient(circle at 34% 28%, rgb(255 255 255 / .6) 0 12%, rgb(255 255 255 / 0) 38%), #ffd23f; rotate: -8deg; }
+.s-env .sticker { top: auto; bottom: -2.6cqw; right: 8%; }
+
+/* SVG type */
+.st-country { font: 800 7.2px "Host Grotesk", sans-serif; letter-spacing: .14em; fill: #f6ecd2; }
+.st-value { font: 800 16px "Host Grotesk", sans-serif; fill: #f6ecd2; }
+.st-label { font: 700 6.4px "Host Grotesk", sans-serif; letter-spacing: .12em; fill: #f6ecd2; }
+.type-ink text { font: 400 9.5px "Courier Prime", monospace; fill: #2a2b33; }
+.par-avion { font: 800 6.4px "Host Grotesk", sans-serif; letter-spacing: .08em; fill: #24418f; }
+.mini { font: 800 7px "Host Grotesk", sans-serif; fill: #f6ecd2; }
+.pm-ring { font: 700 6.4px "Courier Prime", monospace; letter-spacing: .04em; fill: currentColor; }
+.pm-date { font: 700 8.5px "Courier Prime", monospace; fill: currentColor; }
+.pc-hello { font: 700 10px "Courier Prime", monospace; fill: #7a2d1f; }
+.pc-name { font: 900 20px "Anybody", sans-serif; font-stretch: 118%; fill: #fff4dc; stroke: #b2412c; stroke-width: 2.4px; paint-order: stroke; }
+
+/* ---------- phones ---------- */
+@media (max-width: 760px) {
+  .stall { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 28px; }
+  .card { rotate: -.8deg; }
+  .card h1 { font-size: 40px; }
+  .board { width: 100%; aspect-ratio: .86; margin-bottom: 64px; }
+  .hint { bottom: -56px; left: 0; right: auto; text-align: left; }
+  .tidy { bottom: -56px; left: auto; right: 0; }
+  .s-env    { --l: 1%;  --t: 47%; --w: 72; }
+  .s-card   { --l: 30%; --t: 2%;  --w: 66; }
+  .s-wau    { --l: 3%;  --t: 5%;  --w: 27; }
+  .s-light  { --l: 74%; --t: 40%; --w: 22; }
+  .s-boat   { --l: 60%; --t: 66%; --w: 30; }
+  .s-flower { --l: 30%; --t: 76%; --w: 22; }
+  .sticker { width: 12cqw; font-size: calc(3 * 1cqw); }
+  .sticker small { font-size: calc(1.9 * 1cqw); }
+  .sold { font-size: calc(4.6 * 1cqw); }
+}
+/* short frames: a gallery card, a laptop with toolbars */
+@media (max-height: 560px) and (min-width: 761px) {
+  .stall { grid-template-columns: minmax(250px, 300px) minmax(0, 1fr); }
+  .card { --top: 84px; padding: 14px 20px 16px 22px; }
+  .card h1 { font-size: 34px; line-height: 34px; margin-bottom: 2px; }
+  .card { font-size: 14px; }
+  .where { display: none; }
+  .actions { margin-top: 0; }
+  .hint { display: none; }
+}
+
+/* ---------- choreography ---------- */
+@keyframes sc-shadow {
+  0%   { filter: drop-shadow(0 6px 4px rgb(4 18 12 / .1)) drop-shadow(0 34px 28px rgb(4 18 12 / .16)); }
+  55%  { filter: drop-shadow(0 1px 1px rgb(4 18 12 / .6)) drop-shadow(0 3px 3px rgb(4 18 12 / .4)); }
+  100% { filter: drop-shadow(0 1px 1px rgb(4 18 12 / .5)) drop-shadow(0 8px 9px rgb(4 18 12 / .38)); }
+}
+
+/* the shadow fills backwards only, so hover and lift can change it once a scrap has landed */
+.js .scrap { animation: stamp calc(var(--dur-base) * 1.15) linear both, sc-shadow calc(var(--dur-base) * 1.15) linear backwards; }
+.js .s-card   { animation-delay: calc(var(--stagger) * 2); }
+.js .s-wau    { animation-delay: calc(var(--stagger) * 4); }
+.js .s-light  { animation-delay: calc(var(--stagger) * 6); }
+.js .s-boat   { animation-delay: calc(var(--stagger) * 8); }
+.js .s-flower { animation-delay: calc(var(--stagger) * 10); }
+
+.js .seal { animation: stamp-ink var(--dur-base) linear both; }
+.js .postmark { animation-delay: calc(var(--stagger) * 16); }
+.js .sold { animation-delay: calc(var(--stagger) * 20); }
+
+.js .sticker { animation: pop-scale var(--dur-base) var(--ease-spring) both, pop-fade var(--dur-quick) linear both; }
+.js .s-wau .sticker    { animation-delay: calc(var(--stagger) * 22); }
+.js .s-card .sticker   { animation-delay: calc(var(--stagger) * 23.5); }
+.js .s-env .sticker    { animation-delay: calc(var(--stagger) * 25); }
+.js .s-light .sticker  { animation-delay: calc(var(--stagger) * 26.5); }
+.js .s-boat .sticker   { animation-delay: calc(var(--stagger) * 28); }
 
 @media (prefers-reduced-motion: reduce) {
-  .scrap { transition: none; }
-  .scrap:hover { translate: none; }
+  .js .scrap, .js .seal, .js .sticker { animation: none; }
+  .scrap, .scrap.lifted, .scrap.homing, .scrap.nudge, .cta { transition: none; }
+  .scrap.lifted { scale: 1; }
+  .cta:hover, .cta:active { translate: none; }
 }

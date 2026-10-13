@@ -2,25 +2,29 @@
   "name": "Paper diorama hero",
   "slug": "paper-diorama-hero",
   "kind": "template",
-  "summary": "A hero where a cut-paper landscape builds behind a headline readable from the first frame: hills land, the house pops up, birds and a tag arrive after. Stacks on phones.",
+  "summary": "A tea estate at first light in cut paper: hills land back to front, the sun climbs, clouds slide in, the bungalow folds up and its windows flicker on. Layers follow the pointer by depth.",
   "category": "scene",
   "tech": [
     "css",
-    "svg"
+    "svg",
+    "js"
   ],
   "uses": [
     "paper",
-    "drift"
+    "pop"
   ],
   "tokens": [
-    "--ease-paper",
-    "--ease-out",
-    "--dur-slow",
     "--dur-base",
+    "--dur-draw",
     "--dur-quick",
-    "--stagger-paper"
+    "--dur-slow",
+    "--ease-inout",
+    "--ease-out",
+    "--ease-paper",
+    "--ease-spring",
+    "--stagger"
   ],
-  "trigger": "in-view",
+  "trigger": "load",
   "reduced_motion": "final-state",
   "relation": "recreation",
   "source": {

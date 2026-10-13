@@ -1,47 +1,216 @@
 /*
- * Paper diorama hero. The headline is readable from the first paint; the scene builds behind it
- * on wide screens and below it on phones. Birds and the "rooms left" tag arrive once the last
- * layer has landed (--paper-layers is the highest data-layer in the scene).
+ * Paper diorama hero: a tea estate at first light, cut from paper. The headline is readable from
+ * the first paint; the diorama builds behind it. Every hill is its own layer with a deckled edge
+ * and a cast shadow on the layer behind, so the depth is real: scene.js moves each layer by its
+ * depth (--d) when the pointer moves. All motion below is written under .js (set by play.js), so
+ * without JavaScript, and under reduced motion, the scene is simply there at sunrise.
+ *
+ * Order (one --stagger step is 80ms):
+ *   0 to 0.7s    the far ridge is already there; the nearer hills rise back to front, each
+ *                with a small hand-placed tilt
+ *   0.2 to 2.9s  the sun climbs from behind the far ridge; the sky warms; the stars go out
+ *   0.8 to 2.4s  clouds slide in from both sides, then the mist band
+ *   1.3 to 1.7s  the bungalow, its silver oaks and the lamp fold up on a hinge
+ *   2.0 to 2.6s  windows flicker on, the lamp glows, a curl of steam leaves the chimney
+ *   2.7s         the sunrise time pops on
  */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("../../fonts/host-grotesk-vf.woff2") format("woff2");
+  font-weight: 300 800;
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: #fff1dc; color: #2b2118; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+body { background: #15173f; color: #fff1e2; font: 400 17px/1.5 "Host Grotesk", system-ui, sans-serif; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid #ffcf6b; outline-offset: 4px; }
 
+/* ---------- frame ---------- */
 .hero {
-  --paper-layers: 8;
+  position: relative;
   display: grid;
-  background: #fff1dc;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: clip;
+  isolation: isolate;
+  /* before dawn; .sky::after lays the sunrise over it */
+  background: linear-gradient(180deg, #121436 0%, #1f2258 38%, #3b3478 66%, #5b4a8c 100%);
 }
-.copy { order: -1; padding: 32px 20px 28px; }
-/* on phones the copy fades into the scene's sky (its top colour after the grain) */
-@media (max-width: 899px) and (max-aspect-ratio: 5 / 4) { .copy { background: linear-gradient(#fff1dc, #f3c99b); } }
-.scene { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; }
-
-/* Wide or landscape screens: the scene fills the hero and the copy sits on its sky. */
-@media (min-width: 900px), (min-aspect-ratio: 5 / 4) {
-  .hero { position: relative; min-height: 100vh; align-items: start; background: #fff1dc; }
-  .scene { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
-  .copy { position: relative; z-index: 1; max-width: 560px; padding: clamp(40px, 6vw, 80px); }
+.defs { position: absolute; width: 0; height: 0; }
+.sky { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.sky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #1b1e55 0%, #2f2d6c 30%, #6a4785 50%, #c46d86 66%, #f39a86 78%, #ffc48f 90%, #ffdca2 100%);
 }
+.stars { position: absolute; inset: 0 0 auto; width: 100%; height: 62%; opacity: .25; }
 
-.eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8a4b2a; }
-h1 { margin: 0; font-size: clamp(34px, 6vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
-.lede { margin: 14px 0 22px; max-width: 40ch; color: #4a3a2c; }
+.scene { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.ply {
+  --d: 0;
+  position: absolute;
+  inset: -48px -64px;
+  translate: calc(var(--mx, 0) * var(--d) * -30px) calc(var(--my, 0) * var(--d) * -14px);
+  /* the layer's shadow falls on the layer behind it, away from the sun (up and right) */
+  filter: drop-shadow(-3px 3px 0 rgb(16 12 48 / .22)) drop-shadow(-14px 12px 18px rgb(16 12 48 / .34));
+  will-change: transform;
+}
+.ply > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ply-sun   { --d: .05; filter: none; }
+.ply-a     { --d: .12; }
+.ply-b     { --d: .22; }
+.ply-cr, .ply-cl { --d: .32; filter: drop-shadow(-8px 8px 12px rgb(60 30 80 / .25)); }
+.ply-d     { --d: .45; }
+.ply-mist  { --d: .58; filter: drop-shadow(-8px 8px 12px rgb(30 40 60 / .28)); }
+.ply-f, .ply-house { --d: .72; }
+.ply-house { filter: drop-shadow(-6px 6px 6px rgb(10 20 16 / .35)); }
+.ply-g     { --d: 1; }
+.ply-leaf-l, .ply-leaf-r { --d: 1.5; filter: drop-shadow(-10px 6px 14px rgb(4 16 10 / .45)); }
+.hero > .grain { position: absolute; inset: 0; z-index: -1; opacity: .22; }
+
+/* hinge points for pieces that fold up from the hill */
+.fold { transform-box: fill-box; transform-origin: 50% 100%; }
+.steam { opacity: .5; }
+.lamp-glow, .glows .lit { mix-blend-mode: screen; }
+
+/* ---------- copy ---------- */
+.bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px clamp(20px, 5vw, 72px);
+}
+.brand { font: italic 400 26px/1 "Instrument Serif", Georgia, serif; text-decoration: none; letter-spacing: .005em; }
+.bar ul { display: flex; gap: clamp(14px, 2.6vw, 34px); margin: 0; padding: 0; list-style: none; font-size: 15px; }
+.bar ul a { text-decoration: none; opacity: .82; transition: opacity var(--dur-quick) var(--ease-out); }
+.bar ul a:hover { opacity: 1; }
+
+.copy {
+  align-self: center;
+  max-width: 780px;
+  padding: 0 clamp(20px, 5vw, 72px) clamp(56px, 12vh, 140px);
+}
+h1 {
+  margin: 0;
+  font: 400 clamp(46px, min(7vw, 12.5vh), 108px)/.9 "Instrument Serif", Georgia, serif;
+  letter-spacing: -.012em;
+  text-wrap: balance;
+}
+h1 em { display: block; color: #ffd9a8; }
+.lede { max-width: 38ch; margin: clamp(14px, 2.6vh, 24px) 0 clamp(18px, 3.4vh, 30px); color: #e6dbf3; font-size: clamp(15px, 1.25vw, 18px); text-wrap: pretty; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
 .cta {
-  display: inline-flex; align-items: center; gap: 12px; padding: 12px 14px 12px 20px; border-radius: 999px;
-  background: #2b2118; color: #fff7ec; font-weight: 700; text-decoration: none;
-  transition: background-color var(--dur-quick) var(--ease-out);
+  display: inline-block;
+  padding: 14px 22px 13px;
+  background: #ffcf6b;
+  color: #191a47;
+  font-weight: 650;
+  text-decoration: none;
+  border-radius: 3px;
+  /* a card edge under the button, like the scene's paper */
+  box-shadow: 0 3px 0 #c98f37, 0 14px 24px -8px rgb(10 8 40 / .55);
+  transition: translate var(--dur-quick) var(--ease-out), box-shadow var(--dur-quick) var(--ease-out);
 }
-.cta:hover { background: #46362a; }
-.cta:focus-visible { outline: 3px solid #f2874a; outline-offset: 3px; }
-.tag { padding: 4px 10px; border-radius: 999px; background: #f2874a; color: #2b2118; font-size: 13px; }
+.cta:hover { translate: 0 -2px; box-shadow: 0 5px 0 #c98f37, 0 18px 28px -8px rgb(10 8 40 / .6); }
+.cta:active { translate: 0 2px; box-shadow: 0 1px 0 #c98f37, 0 8px 16px -8px rgb(10 8 40 / .5); }
+.sunrise { --tilt: -3deg; display: inline-flex; align-items: center; gap: 7px; margin: 0; padding: 7px 12px 6px 10px;
+  background: #fff1e2; color: #2b2559; font: italic 400 20px/1 "Instrument Serif", Georgia, serif;
+  rotate: var(--tilt); box-shadow: -3px 4px 0 rgb(16 12 48 / .25), -8px 12px 18px rgb(16 12 48 / .3); }
+.sunrise svg { color: #d0663f; }
 
-/* The tag sits outside the scene, so it needs its own trigger: it follows the scene's .go. */
-.js .hero:has(.scene:not(.go)) .tag { opacity: 0; }
-.js .hero:has(.scene.go) .tag { animation: paper-card var(--dur-base) var(--ease-out) both;
-  animation-delay: calc(var(--paper-layers) * var(--stagger-paper) + var(--dur-slow)); }
+/* ---------- phones: copy on the night sky, then the diorama as a band below it ---------- */
+@media (max-width: 899px) and (max-aspect-ratio: 5 / 4) {
+  .hero { grid-template-rows: auto auto 1fr; }
+  .bar ul { display: none; }
+  .copy { padding-bottom: 8px; align-self: start; }
+  .scene { grid-row: 3; position: relative; inset: auto; height: auto; min-height: 112vw; overflow: clip; }
+  /* taller than the band and wider to the left: the empty top of the sky is cropped and the bungalow sits in the middle */
+  .ply { inset: -18% -32px -24px -50%; }
+}
+/* short landscape frames (a gallery card, a laptop with the bookmarks bar open) */
+@media (min-aspect-ratio: 5 / 4) and (max-height: 560px) {
+  .bar { padding-block: 16px; }
+  .bar ul { font-size: 14px; }
+  .lede { font-size: 15px; max-width: 34ch; }
+  .copy { padding-bottom: 40px; }
+}
+
+/* ---------- choreography ---------- */
+.js .sky::after { animation: paper-card calc(var(--dur-draw) * 1.7) var(--ease-inout) both; animation-delay: calc(var(--stagger) * 2); }
+.js .stars { animation: pd-stars-out calc(var(--dur-draw) * 1.5) var(--ease-inout) both; animation-delay: calc(var(--stagger) * 4); }
+.js .ply-sun { animation: pd-sun calc(var(--dur-draw) * 1.6) var(--ease-out) both; animation-delay: calc(var(--stagger) * 2); }
+
+.js .ply-b, .js .ply-d, .js .ply-f, .js .ply-house, .js .ply-g {
+  animation: pd-land calc(var(--dur-slow) * 1.3) var(--ease-paper) both;
+}
+.js .ply-b     { --tilt: 1deg; animation-delay: calc(var(--stagger) * 2); }
+.js .ply-d     { --tilt: -.8deg; animation-delay: calc(var(--stagger) * 4); }
+.js .ply-f, .js .ply-house { --tilt: .9deg; animation-delay: calc(var(--stagger) * 6); }
+.js .ply-g     { --tilt: -.6deg; animation-delay: calc(var(--stagger) * 8); }
+
+.js .ply-cl   { animation: pd-slide-l var(--dur-draw) var(--ease-out) both; animation-delay: calc(var(--stagger) * 10); }
+.js .ply-cr   { animation: pd-slide-r var(--dur-draw) var(--ease-out) both; animation-delay: calc(var(--stagger) * 11); }
+.js .ply-mist { animation: pd-slide-l calc(var(--dur-draw) * 1.1) var(--ease-out) both; animation-delay: calc(var(--stagger) * 12); }
+
+.js .ply-leaf-l, .js .ply-leaf-r { animation: pd-leaf calc(var(--dur-base) * 1.6) var(--ease-spring) both; animation-delay: calc(var(--stagger) * 13); }
+.js .ply-leaf-l { transform-origin: 0 100%; --swing: -7deg; }
+.js .ply-leaf-r { transform-origin: 100% 100%; --swing: 7deg; animation-delay: calc(var(--stagger) * 14); }
+
+.js .fold { animation: paper-fold calc(var(--dur-base) * 1.2) var(--ease-spring) both; }
+.js .house { animation-delay: calc(var(--stagger) * 16); }
+.js .t3    { animation-delay: calc(var(--stagger) * 18); }
+.js .t1    { animation-delay: calc(var(--stagger) * 19); }
+.js .t2    { animation-delay: calc(var(--stagger) * 20); }
+.js .lamp  { animation-delay: calc(var(--stagger) * 21); }
+
+.js .lit { animation: pd-flicker calc(var(--dur-base) * .9) linear both; }
+.js .l1 { animation-delay: calc(var(--stagger) * 25); }
+.js .l2 { animation-delay: calc(var(--stagger) * 27); }
+.js .l3 { animation-delay: calc(var(--stagger) * 29); }
+.js .lamp-glow { animation: pd-flicker var(--dur-base) linear both; animation-delay: calc(var(--stagger) * 30); }
+.js .steam { animation: pd-steam var(--dur-draw) var(--ease-out) both; animation-delay: calc(var(--stagger) * 30); }
+.js .sunrise { animation: pop-scale var(--dur-base) var(--ease-spring) both, pop-fade var(--dur-quick) linear both;
+  animation-delay: calc(var(--stagger) * 34); transform-origin: 0 50%; }
+
+@keyframes pd-land {
+  from { opacity: 0; transform: translateY(26%) rotate(var(--tilt, 0deg)); }
+  35%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes pd-sun {
+  from { transform: translateY(24%) scale(.9); }
+  to   { transform: none; }
+}
+@keyframes pd-stars-out { from { opacity: 1; } to { opacity: .25; } }
+@keyframes pd-slide-l { from { opacity: 0; transform: translateX(-26%); } 30% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes pd-slide-r { from { opacity: 0; transform: translateX(22%); } 30% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes pd-leaf { from { opacity: 0; transform: rotate(calc(var(--swing) * 4)) translateY(12%); } 30% { opacity: 1; } to { opacity: 1; transform: none; } }
+/* a bulb catching: on, a dip, on */
+@keyframes pd-flicker { 0% { opacity: 0; } 20% { opacity: 1; } 34% { opacity: .25; } 52% { opacity: 1; } 64% { opacity: .7; } 100% { opacity: 1; } }
+@keyframes pd-steam { from { opacity: 0; transform: translateY(18px) scaleY(.6); } 50% { opacity: .75; } to { opacity: .5; transform: none; } }
+
 @media (prefers-reduced-motion: reduce) {
-  .js .hero .tag, .js .hero:has(.scene.go) .tag, .js .hero:has(.scene:not(.go)) .tag { opacity: 1; animation: none; }
-  .cta { transition: none; }
+  .ply { translate: none; }
+  .js .sky::after, .js .stars, .js .ply, .js .fold, .js .lit, .js .lamp-glow, .js .steam, .js .sunrise { animation: none; }
+  .cta, .bar ul a { transition: none; }
+  .cta:hover, .cta:active { translate: none; }
 }

@@ -2,21 +2,21 @@
   "name": "Stamp collage",
   "slug": "stamp-collage",
   "kind": "template",
-  "summary": "A menu board: scraps stamp on, prices pop after each, a Sold out ink seal lands, cards lift on hover, a live dot beats and shapes drift behind.",
+  "summary": "A stamp dealer's felt board: perforated stamps, a cover and a postcard press on with squash and settle, a postmark and Sold are inked, stickers pop. Pick any scrap up and move it.",
   "category": "entry",
   "tech": [
     "css",
-    "svg"
+    "svg",
+    "js"
   ],
   "uses": [
     "stamp",
-    "pop",
-    "pulse",
-    "drift"
+    "pop"
   ],
   "tokens": [
     "--dur-base",
     "--dur-quick",
+    "--dur-slow",
     "--ease-in",
     "--ease-out",
     "--ease-spring",
