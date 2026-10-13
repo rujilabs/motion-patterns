@@ -31,6 +31,7 @@ Same as a pattern, under `templates/<slug>/`, with two differences:
 
 - [ ] `npm run check` passes
 - [ ] The demo looks right with reduced motion on (DevTools > Rendering > Emulate CSS `prefers-reduced-motion`)
-- [ ] The demo works at 375 px wide, and fits inside its gallery card (a short frame: use a `max-height` query in `page.css` if it does not)
+- [ ] The demo works at 375 px wide, and fits inside its gallery stage: 4:3 for patterns, while templates render at 1280 x 720 and scale down (a short frame: use a `max-height` query in `page.css` if it does not)
+- [ ] The motion shows on the timeline under the stage: it uses CSS animations or the Web Animations API (the timeline reads `document.getAnimations()` in the demo), and an entrance finishes within about 3 seconds
 - [ ] Anything that moves on its own for more than 5 seconds can be paused
 - [ ] `relation` and `source` are honest ([credit a source](credit-a-source.md))

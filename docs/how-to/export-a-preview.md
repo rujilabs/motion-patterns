@@ -1,6 +1,6 @@
 # Export a preview video
 
-Record an entry's demo to `preview.mp4` in its folder. The gallery shows a Video link when the file exists.
+Record an entry's demo to `preview.mp4` in its folder. The entry page shows a Video link when the file exists.
 
 Playwright and ffmpeg are not dependencies of the collection, so install them for this task only:
 
