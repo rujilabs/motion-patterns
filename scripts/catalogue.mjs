@@ -11,7 +11,7 @@ const README = join(ROOT, "README.md");
 const REF = join(ROOT, "docs/reference/catalogue.md");
 
 function credit(m) {
-  if (m.relation === "original") return "Original";
+  if (m.relation === "original") return "";
   const s = m.source;
   const label = { port: "Port of", recreation: "Recreation of", "inspired-by": "Inspired by" }[m.relation];
   return `${label} [${s.author}](${s.url})`;

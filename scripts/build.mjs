@@ -53,7 +53,7 @@ for (const t of templates) {
 }
 
 function credit(m) {
-  if (m.relation === "original") return "Original";
+  if (m.relation === "original") return "";
   const label = { port: "Port of", recreation: "Recreation of", "inspired-by": "Inspired by" }[m.relation];
   return `${label} <a href="${esc(m.source.url)}" rel="noopener">${esc(m.source.author)}</a>`;
 }
@@ -66,7 +66,7 @@ function card(e) {
     <h3><a href="${e.rel}/">${esc(m.name)}</a></h3>
     <p>${esc(m.summary)}</p>
     <p class="tags">${m.tech.map((t) => `<span>${esc(t)}</span>`).join("")}<span>${esc(m.trigger)}</span></p>
-    <p class="credit">${credit(m)}</p>
+    ${m.relation === "original" ? "" : `<p class="credit">${credit(m)}</p>`}
     <div class="actions">
       <button type="button" data-replay aria-label="Replay ${esc(m.name)}">Replay</button>
       <button type="button" data-copy="${e.rel}/${e.kind === "template" ? "bundle" : "style"}.css" data-name="${esc(m.name)}" aria-label="Copy ${esc(m.name)} CSS">Copy CSS</button>
