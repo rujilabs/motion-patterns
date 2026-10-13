@@ -10,6 +10,7 @@ Defined in [`tokens.css`](../../tokens.css). Entries use these names; the gate f
 | `--ease-spring` | A damped spring as CSS `linear()` (damping ratio .45, about 20% overshoot); `cubic-bezier(.3, 1.6, .5, 1)` where `linear()` is unsupported | Overshoot for small elements: pop, stamp, button press |
 | `--ease-inout` | `cubic-bezier(.4, 0, .2, 1)` | Moves that start and stop on screen: draw, crossfade |
 | `--ease-paper` | `cubic-bezier(.2, .9, .25, 1.15)` | Paper layers landing with a slight overshoot |
+| `--ease-in` | `cubic-bezier(.55, 0, 1, .45)` | Accelerating: the fall before an impact (stamp), and exits |
 
 ## Durations
 

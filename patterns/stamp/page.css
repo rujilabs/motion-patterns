@@ -1,5 +1,17 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.sticker { display: inline-block; padding: 12px 20px; border: 2px dashed currentColor; border-radius: 6px;
-  font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--demo-accent); }
-.sticker-warm { color: var(--demo-warm); }
-.row .stamp:nth-child(2) { animation-delay: calc(var(--stagger) * 4); }
+.stamp-demo { width: min(360px, 100%); }
+.invoice { position: relative; background: #fffdf8; color: #1d1a16; border-radius: 12px; padding: 18px 20px 70px;
+  box-shadow: 0 1px 0 rgb(0 0 0 / .06), 0 8px 24px rgb(0 0 0 / .08); }
+.invoice header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.invoice h1 { font-size: 18px; }
+.invoice dl { margin: 0; display: grid; gap: 6px; font-size: 14px; }
+.invoice dl div { display: flex; justify-content: space-between; }
+.invoice dt { color: #6b6255; }
+.invoice dd { margin: 0; font-variant-numeric: tabular-nums; }
+.invoice .total { border-top: 1px solid #e8e2d6; padding-top: 6px; font-weight: 700; }
+.invoice .total dt { color: inherit; }
+.sticker { display: inline-block; padding: 4px 10px; border: 2px dashed currentColor; border-radius: 6px;
+  font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: #3d5afe; }
+.seal { position: absolute; right: 22px; bottom: 16px; margin: 0; padding: 4px 14px; border: 3px double #d0342c; border-radius: 8px;
+  color: #d0342c; font-size: 26px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+  animation-delay: calc(var(--stagger) * 6); }

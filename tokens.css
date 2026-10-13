@@ -5,6 +5,7 @@
   --ease-spring: cubic-bezier(.3, 1.6, .5, 1);  /* overshoot, small elements only; a real spring below */
   --ease-inout: cubic-bezier(.4, 0, .2, 1);     /* draw-on, crossfades, start-and-stop moves */
   --ease-paper: cubic-bezier(.2, .9, .25, 1.15); /* paper layers: a slight landing overshoot */
+  --ease-in: cubic-bezier(.55, 0, 1, .45);      /* accelerating: impacts and exits */
 
   /* durations */
   --dur-quick: 200ms;   /* hover, press, toggles */

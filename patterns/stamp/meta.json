@@ -2,13 +2,14 @@
   "name": "Stamp",
   "slug": "stamp",
   "kind": "pattern",
-  "summary": "A label pressed onto the surface from above, landing at a slight tilt set by a class.",
+  "summary": "Pressed onto the surface: accelerates in, squashes on contact, settles at a tilt. An ink variant for Paid or Approved seals, and in-view.",
   "category": "entry",
   "tech": [
     "css"
   ],
   "tokens": [
-    "--ease-spring",
+    "--ease-in",
+    "--ease-out",
     "--dur-base",
     "--stagger"
   ],

@@ -1,12 +1,41 @@
-/* stamp: pressed onto the surface from above. Tilt comes from a class, never inline style. */
+/*
+ * stamp: pressed onto the surface from above. It accelerates into the surface (ease-in), squashes
+ * to 96% on contact, then settles (ease-out). Opacity is done by 20%, so nothing ghosts in late.
+ * Tilt comes from a class or --tilt, never inline style.
+ */
 @keyframes stamp {
-  from { opacity: 0; transform: translateY(-14px) rotate(var(--tilt, 0deg)) scale(1.12); }
-  to   { opacity: 1; transform: rotate(var(--tilt, 0deg)); }
+  0%   { opacity: 0; transform: translateY(-18px) rotate(calc(var(--tilt, 0deg) + 6deg)) scale(1.3); animation-timing-function: var(--ease-in); }
+  20%  { opacity: 1; }
+  55%  { opacity: 1; transform: rotate(var(--tilt, 0deg)) scale(.96); animation-timing-function: var(--ease-out); }
+  100% { opacity: 1; transform: rotate(var(--tilt, 0deg)); }
 }
-.stamp { transform: rotate(var(--tilt, 0deg)); animation: stamp var(--dur-base) var(--ease-spring) both; }
+.stamp { transform: rotate(var(--tilt, 0deg)); animation: stamp var(--dur-base) linear both; }
+
+/*
+ * stamp-ink: a rubber-stamp seal ("Paid", "Approved"). Lands from 1.6x with a slight blur and
+ * settles at 88% opacity with multiply blending, so the paper shows through like ink.
+ * Use it on light surfaces; multiply disappears on dark ones.
+ */
+@keyframes stamp-ink {
+  0%   { opacity: 0; transform: rotate(var(--tilt, -8deg)) scale(1.6); filter: blur(2px); animation-timing-function: var(--ease-in); }
+  50%  { opacity: .92; transform: rotate(var(--tilt, -8deg)) scale(.98); filter: none; animation-timing-function: var(--ease-out); }
+  100% { opacity: .88; transform: rotate(var(--tilt, -8deg)); }
+}
+.stamp-ink {
+  opacity: .88;
+  transform: rotate(var(--tilt, -8deg));
+  mix-blend-mode: multiply;
+  animation: stamp-ink var(--dur-base) linear both;
+}
+
+/* stamp-in: add next to .stamp or .stamp-ink to hold it until play.js marks it with .go */
+.js .stamp-in { animation-play-state: paused; }
+.js .go .stamp-in,
+.js .stamp-in.go { animation-play-state: running; }
+
 .tilt-l { --tilt: -3deg; }
 .tilt-r { --tilt: 4deg; }
 
 @media (prefers-reduced-motion: reduce) {
-  .stamp { animation: none; }
+  .stamp, .stamp-ink { animation: none; }
 }
