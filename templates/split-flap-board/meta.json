@@ -1,0 +1,30 @@
+{
+  "name": "Split-flap board",
+  "slug": "split-flap-board",
+  "kind": "template",
+  "summary": "A ferry pier departures board: every character is a CSS 3D split flap that rattles through the drum to its letter, rows staggered, the last flip bouncing. A flap clock ticks; Pause stops it.",
+  "category": "type",
+  "tech": [
+    "css",
+    "svg",
+    "js",
+    "variable-font"
+  ],
+  "uses": [
+    "pulse",
+    "fade"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-draw",
+    "--dur-slow",
+    "--ease-in",
+    "--ease-inout",
+    "--ease-out",
+    "--stagger"
+  ],
+  "trigger": "load",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-13"
+}

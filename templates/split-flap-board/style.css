@@ -1,0 +1,178 @@
+/*
+ * Split-flap board: the departures board on a ferry pier. Every character is a .c cell. Without
+ * JavaScript (and under reduced motion) a cell is a two-tone tile with the character on it and
+ * a split line across the middle, so the board reads as finished. board.js turns each cell into
+ * four halves: two fixed (the next character on top, the current one below) and two flaps. The
+ * top flap falls on a hinge at the split, darkening as it turns away from the light; the bottom
+ * flap carries on down, lands, bounces a little and settles.
+ *
+ * CSS does the scene around the flaps (one --stagger step is 80ms):
+ *   0 to 0.7s    the ferry pictogram sails in on the sign
+ *   0 to 0.6s    the column labels fade up
+ *   2.8 to 4.4s  once the flaps have settled, a band of light runs across the board's glass
+ *   always       the colon in the clock blinks and the boarding lamp beats; Pause stops both
+ */
+@font-face { font-family: "Anybody"; src: url("../../fonts/anybody-vf.woff2") format("woff2"); font-weight: 100 900; font-stretch: 50% 150%; font-display: swap; }
+@font-face { font-family: "Host Grotesk"; src: url("../../fonts/host-grotesk-vf.woff2") format("woff2"); font-weight: 300 800; font-display: swap; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  min-height: 100vh;
+  /* the pier wall: mint paint over block courses */
+  background:
+    repeating-linear-gradient(0deg, rgb(20 70 60 / .07) 0 1px, transparent 1px 44px),
+    linear-gradient(180deg, #b4e0d3, #9ccfc0);
+  color: #0e1a17;
+  font: 500 15px/1.45 "Host Grotesk", system-ui, sans-serif;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.pier {
+  --pad: clamp(16px, 3vw, 44px);
+  /* one cell: 41 cells wide fit a row with its column gaps */
+  --cw: clamp(11px, min(calc((100vw - var(--pad) * 2 - 40px) / 41 - 3px), calc((100vh - 250px) / 10.4)), 30px);
+  --chh: calc(var(--cw) * 1.42);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(12px, 2.4vh, 24px);
+  padding: 0 var(--pad) clamp(12px, 2.4vh, 22px);
+}
+
+/* ---------- the sign ---------- */
+.sign {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  column-gap: clamp(12px, 2vw, 22px);
+  margin: 0 calc(var(--pad) * -1);
+  padding: clamp(12px, 2.2vh, 20px) var(--pad);
+  background: #ffd21f;
+  border-bottom: 4px solid #0e1a17;
+}
+.ferry { width: clamp(38px, 4.4vw, 56px); height: auto; color: #0e1a17; }
+.sign h1 { margin: 0; font-size: clamp(26px, 3.8vw, 50px); line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.sign .ms { font-weight: 800; }
+.sign .en { font-weight: 350; }
+.where { margin: 0; align-self: end; padding-bottom: .3em; font-weight: 600; }
+.clock { display: flex; align-items: center; justify-self: end; margin: 0; --cw-clock: calc(var(--cw) * 1.15); }
+.clock .c { --cw: var(--cw-clock); --chh: calc(var(--cw-clock) * 1.42); }
+.colon { display: inline-block; width: calc(var(--cw) * .55); text-align: center; font: 800 calc(var(--cw) * 1.2) / 1 "Anybody", sans-serif; }
+
+/* ---------- the board ---------- */
+.board {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  max-width: 100%;
+  padding: clamp(14px, 2.4vh, 26px) clamp(14px, 2vw, 26px) clamp(10px, 1.8vh, 20px);
+  background: linear-gradient(180deg, #19191c, #0f0f11);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 2px #2c2c31, inset 0 2px 0 3px #0a0a0b, 0 2px 0 #0e1a17, 0 34px 50px -24px rgb(14 60 50 / .65);
+  overflow: hidden;
+}
+table { border-collapse: collapse; }
+th {
+  padding: 0 0 clamp(6px, 1.2vh, 12px); text-align: left; color: #ffd21f;
+  font-size: clamp(11px, 1.05vw, 14px); font-weight: 600;
+}
+td { padding: 0 0 calc(var(--cw) * .28); }
+th:not(:last-child), td:not(:last-child) { padding-right: calc(var(--cw) * .85); }
+.flaps { display: inline-flex; gap: 2px; vertical-align: top; }
+
+.c {
+  --flap-top: #2a2a2e;
+  --flap-bot: #222226;
+  --flap-ink: #f4efe2;
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--cw);
+  height: var(--chh);
+  border-radius: calc(var(--cw) * .12);
+  background: linear-gradient(var(--flap-top) 0 50%, var(--flap-bot) 50% 100%);
+  color: var(--flap-ink);
+  font: 700 calc(var(--cw) * 1.12) / var(--chh) "Anybody", sans-serif;
+  font-stretch: 68%;
+  text-align: center;
+  perspective: calc(var(--cw) * 9);
+  box-shadow: 0 1px 0 rgb(0 0 0 / .6);
+}
+/* the split: a dark gap with a faint lit lip under it */
+.c::after { content: ""; position: absolute; z-index: 3; left: 0; right: 0; top: calc(50% - .5px); height: 1px; background: #050506; box-shadow: 0 1px 0 rgb(255 255 255 / .07); }
+.amber .c { --flap-top: #ffb41f; --flap-bot: #f2a30c; --flap-ink: #1a1305; }
+.red .c   { --flap-ink: #ff5b47; }
+.grey .c  { --flap-ink: #8d8b86; }
+.clock .c { --flap-top: #1c1c20; --flap-bot: #141417; }
+
+/* halves, built by board.js */
+.h { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; backface-visibility: hidden; }
+.h > i { position: absolute; left: 0; right: 0; height: 200%; font-style: normal; }
+.h.u { top: 0; border-radius: calc(var(--cw) * .12) calc(var(--cw) * .12) 0 0; background: linear-gradient(var(--flap-top), color-mix(in srgb, var(--flap-top), #000 8%)); }
+.h.d { bottom: 0; border-radius: 0 0 calc(var(--cw) * .12) calc(var(--cw) * .12); background: linear-gradient(color-mix(in srgb, var(--flap-bot), #fff 3%), var(--flap-bot)); }
+.h.u > i { top: 0; }
+.h.d > i { top: -100%; }
+.h.fu { z-index: 2; transform-origin: 50% 100%; }
+.h.fd { z-index: 2; transform-origin: 50% 0; transform: rotateX(90deg); }
+
+/* a band of light across the glass, once */
+.board::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(100deg, rgb(255 255 255 / 0) 35%, rgb(255 255 255 / .07) 47%, rgb(255 255 255 / .02) 53%, rgb(255 255 255 / 0) 60%);
+  translate: -110% 0;
+}
+
+/* ---------- foot ---------- */
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; }
+.note { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 600; }
+.note .pulse { color: #e08a00; }
+.pause { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; cursor: pointer; }
+.pause input { accent-color: #0e1a17; }
+
+/* ---------- phones: each departure on two lines, the vessel kept for screen readers ---------- */
+@media (max-width: 640px) {
+  .pier { --cw: clamp(11px, calc((100vw - var(--pad) * 2 - 28px) / 18.6 - 3px), 22px); }
+  .sign { grid-template-columns: auto 1fr; row-gap: 10px; }
+  .where { grid-column: 1 / -1; grid-row: 3; padding: 0; }
+  .clock { grid-column: 1 / -1; }
+  .board { justify-self: stretch; padding-inline: 12px; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  table, tbody { display: block; }
+  /* destination large on its own line; time, remarks and pier under it */
+  tr { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "dest dest dest" "time status pier";
+    column-gap: calc(var(--cw) * .6); row-gap: 5px; padding: 10px 0; border-bottom: 1px solid #2c2c31; }
+  tr:last-child { border-bottom: 0; }
+  .board td { padding: 0; }
+  .f-dest { grid-area: dest; }
+  .f-dest .c { --cw: clamp(14px, calc((100vw - var(--pad) * 2 - 28px) / 12.2 - 2px), 34px); --chh: calc(var(--cw) * 1.42); }
+  .f-time { grid-area: time; }
+  .f-status { grid-area: status; }
+  .f-pier { grid-area: pier; }
+  td.f-vessel { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  /* a short frame shows the next five departures */
+  tbody tr:nth-child(n + 6) { display: none; }
+  .foot { font-size: 13px; }
+  .where { display: none; }
+  .sign { grid-template-columns: auto auto 1fr; }
+}
+
+/* ---------- choreography ---------- */
+@keyframes sf-sail { from { opacity: 0; translate: -36px 0; } 40% { opacity: 1; } to { opacity: 1; translate: 0 0; } }
+@keyframes sf-glare { from { translate: -110% 0; } to { translate: 110% 0; } }
+@keyframes sf-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: .15; } }
+
+.js .ferry { animation: sf-sail calc(var(--dur-slow) * .8) var(--ease-out) both; }
+.js thead th { animation: fade var(--dur-base) var(--ease-out) both; }
+.js .board::after { animation: sf-glare var(--dur-draw) var(--ease-inout) both; animation-delay: calc(var(--stagger) * 35); }
+.js .colon { animation: sf-blink 1s steps(1) infinite; }
+.pier:has(.pause :checked) .colon,
+.pier:has(.pause :checked) .pulse::before,
+.pier:has(.pause :checked) .pulse::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .ferry, .js thead th, .js .board::after, .js .colon { animation: none; }
+  .pause { display: none; }
+}

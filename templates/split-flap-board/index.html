@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split-flap board · motion-patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../patterns/pulse/style.css">
+<link rel="stylesheet" href="../../patterns/fade/style.css">
+<link rel="stylesheet" href="style.css">
+<script src="../../play.js"></script>
+<script src="board.js" defer></script>
+</head>
+<body>
+<main class="pier">
+  <header class="sign">
+    <svg class="ferry" viewBox="0 0 48 32" aria-hidden="true"><path d="M4 20h40l-5 8H9z" fill="currentColor"/><path d="M12 19V11h18l6 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M16 15h3m4 0h3" stroke="currentColor" stroke-width="3"/><path d="M2 31q4-3 8 0t8 0 8 0 8 0 8 0 8 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <h1><span class="ms" lang="ms">Berlepas</span> <span class="en">Departures</span></h1>
+    <p class="where">Jeti Tanjung Api, pier side</p>
+    <p class="clock" aria-label="Pier clock">
+      <span class="flaps" aria-hidden="true"><span class="c">0</span><span class="c">8</span><span class="colon">:</span><span class="c">1</span><span class="c">4</span><span class="colon">:</span><span class="c">5</span><span class="c">2</span></span>
+      <span class="sr-only">8:14 am</span>
+    </p>
+  </header>
+
+  <section class="board" aria-labelledby="board-title">
+    <h2 class="sr-only" id="board-title">Ferry departures</h2>
+    <table>
+      <thead>
+        <tr><th scope="col" class="f-time">Time</th><th scope="col" class="f-dest">To</th><th scope="col" class="f-vessel">Vessel</th><th scope="col" class="f-pier">Pier</th><th scope="col" class="f-status">Remarks</th></tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">0</span><span class="c">8</span><span class="c">:</span><span class="c">2</span><span class="c">0</span></span><span class="sr-only">08:20</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">P</span><span class="c">U</span><span class="c">L</span><span class="c">A</span><span class="c">U</span><span class="c">&nbsp;</span><span class="c">K</span><span class="c">E</span><span class="c">R</span><span class="c">E</span><span class="c">N</span><span class="c">G</span></span><span class="sr-only">Pulau Kereng</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">S</span><span class="c">R</span><span class="c">I</span><span class="c">&nbsp;</span><span class="c">B</span><span class="c">A</span><span class="c">Y</span><span class="c">U</span></span><span class="sr-only">Sri Bayu</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">3</span></span><span class="sr-only">3</span></td>
+        <td class="f-status amber"><span class="flaps" aria-hidden="true"><span class="c">B</span><span class="c">O</span><span class="c">A</span><span class="c">R</span><span class="c">D</span><span class="c">I</span><span class="c">N</span><span class="c">G</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">Boarding</span></td>
+      </tr>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">0</span><span class="c">8</span><span class="c">:</span><span class="c">4</span><span class="c">5</span></span><span class="sr-only">08:45</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">T</span><span class="c">E</span><span class="c">L</span><span class="c">U</span><span class="c">K</span><span class="c">&nbsp;</span><span class="c">B</span><span class="c">A</span><span class="c">Y</span><span class="c">U</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">Teluk Bayu</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">K</span><span class="c">E</span><span class="c">N</span><span class="c">A</span><span class="c">R</span><span class="c">I</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">Kenari</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">1</span></span><span class="sr-only">1</span></td>
+        <td class="f-status"><span class="flaps" aria-hidden="true"><span class="c">O</span><span class="c">N</span><span class="c">&nbsp;</span><span class="c">T</span><span class="c">I</span><span class="c">M</span><span class="c">E</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">On time</span></td>
+      </tr>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">0</span><span class="c">9</span><span class="c">:</span><span class="c">1</span><span class="c">0</span></span><span class="sr-only">09:10</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">B</span><span class="c">A</span><span class="c">T</span><span class="c">U</span><span class="c">&nbsp;</span><span class="c">M</span><span class="c">A</span><span class="c">N</span><span class="c">D</span><span class="c">I</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">Batu Mandi</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">L</span><span class="c">A</span><span class="c">Y</span><span class="c">A</span><span class="c">N</span><span class="c">G</span><span class="c">&nbsp;</span><span class="c">2</span></span><span class="sr-only">Layang 2</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">4</span></span><span class="sr-only">4</span></td>
+        <td class="f-status red"><span class="flaps" aria-hidden="true"><span class="c">D</span><span class="c">E</span><span class="c">L</span><span class="c">A</span><span class="c">Y</span><span class="c">E</span><span class="c">D</span><span class="c">&nbsp;</span><span class="c">1</span><span class="c">5</span></span><span class="sr-only">Delayed 15 minutes</span></td>
+      </tr>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">0</span><span class="c">9</span><span class="c">:</span><span class="c">3</span><span class="c">0</span></span><span class="sr-only">09:30</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">P</span><span class="c">U</span><span class="c">L</span><span class="c">A</span><span class="c">U</span><span class="c">&nbsp;</span><span class="c">S</span><span class="c">E</span><span class="c">P</span><span class="c">A</span><span class="c">T</span><span class="c">&nbsp;</span></span><span class="sr-only">Pulau Sepat</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">S</span><span class="c">R</span><span class="c">I</span><span class="c">&nbsp;</span><span class="c">B</span><span class="c">A</span><span class="c">Y</span><span class="c">U</span></span><span class="sr-only">Sri Bayu</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">3</span></span><span class="sr-only">3</span></td>
+        <td class="f-status"><span class="flaps" aria-hidden="true"><span class="c">O</span><span class="c">N</span><span class="c">&nbsp;</span><span class="c">T</span><span class="c">I</span><span class="c">M</span><span class="c">E</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">On time</span></td>
+      </tr>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">1</span><span class="c">0</span><span class="c">:</span><span class="c">0</span><span class="c">5</span></span><span class="sr-only">10:05</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">K</span><span class="c">U</span><span class="c">A</span><span class="c">L</span><span class="c">A</span><span class="c">&nbsp;</span><span class="c">L</span><span class="c">I</span><span class="c">M</span><span class="c">A</span><span class="c">U</span><span class="c">&nbsp;</span></span><span class="sr-only">Kuala Limau</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">T</span><span class="c">E</span><span class="c">R</span><span class="c">U</span><span class="c">B</span><span class="c">U</span><span class="c">K</span><span class="c">&nbsp;</span></span><span class="sr-only">Terubuk</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">2</span></span><span class="sr-only">2</span></td>
+        <td class="f-status red"><span class="flaps" aria-hidden="true"><span class="c">C</span><span class="c">A</span><span class="c">N</span><span class="c">C</span><span class="c">E</span><span class="c">L</span><span class="c">L</span><span class="c">E</span><span class="c">D</span><span class="c">&nbsp;</span></span><span class="sr-only">Cancelled</span></td>
+      </tr>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">1</span><span class="c">0</span><span class="c">:</span><span class="c">4</span><span class="c">0</span></span><span class="sr-only">10:40</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">P</span><span class="c">U</span><span class="c">L</span><span class="c">A</span><span class="c">U</span><span class="c">&nbsp;</span><span class="c">K</span><span class="c">E</span><span class="c">R</span><span class="c">E</span><span class="c">N</span><span class="c">G</span></span><span class="sr-only">Pulau Kereng</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">K</span><span class="c">E</span><span class="c">N</span><span class="c">A</span><span class="c">R</span><span class="c">I</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">Kenari</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">1</span></span><span class="sr-only">1</span></td>
+        <td class="f-status"><span class="flaps" aria-hidden="true"><span class="c">O</span><span class="c">N</span><span class="c">&nbsp;</span><span class="c">T</span><span class="c">I</span><span class="c">M</span><span class="c">E</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">On time</span></td>
+      </tr>
+      <tr>
+        <td class="f-time"><span class="flaps" aria-hidden="true"><span class="c">1</span><span class="c">1</span><span class="c">:</span><span class="c">1</span><span class="c">5</span></span><span class="sr-only">11:15</span></td>
+        <td class="f-dest"><span class="flaps" aria-hidden="true"><span class="c">T</span><span class="c">E</span><span class="c">L</span><span class="c">U</span><span class="c">K</span><span class="c">&nbsp;</span><span class="c">B</span><span class="c">A</span><span class="c">Y</span><span class="c">U</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">Teluk Bayu</span></td>
+        <td class="f-vessel"><span class="flaps" aria-hidden="true"><span class="c">L</span><span class="c">A</span><span class="c">Y</span><span class="c">A</span><span class="c">N</span><span class="c">G</span><span class="c">&nbsp;</span><span class="c">2</span></span><span class="sr-only">Layang 2</span></td>
+        <td class="f-pier"><span class="flaps" aria-hidden="true"><span class="c">&nbsp;</span><span class="c">4</span></span><span class="sr-only">4</span></td>
+        <td class="f-status"><span class="flaps" aria-hidden="true"><span class="c">O</span><span class="c">N</span><span class="c">&nbsp;</span><span class="c">T</span><span class="c">I</span><span class="c">M</span><span class="c">E</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span><span class="c">&nbsp;</span></span><span class="sr-only">On time</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="foot pause-group">
+    <p class="note"><span class="pulse" aria-hidden="true"></span>Boarding closes 10 minutes before departure. Tickets at counter 2.</p>
+    <label class="pause"><input type="checkbox"> Pause the board</label>
+  </footer>
+</main>
+</body>
+</html>
