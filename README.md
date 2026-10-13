@@ -31,7 +31,8 @@ Take the whole set as one file:
 <link rel="stylesheet" href="https://motion.rujilabs.com/motion.css">
 <script src="https://motion.rujilabs.com/play.js"></script>  <!-- only for in-view patterns -->
 
-<h1 class="rise">Hello</h1>
+<h1>Hello</h1>
+<p class="rise">The heading is already there; the line under it rises in.</p>
 ```
 
 Or copy one entry: [`tokens.css`](tokens.css) plus that entry's `style.css`. No build step, no package.
@@ -67,14 +68,14 @@ Every entry follows the same rules:
 | [Drift](https://motion.rujilabs.com/patterns/drift/) | pattern | Slow ambient float for clouds, water and floating objects. At most 12px of travel, at least 5s per cycle. | css, svg | Original | [code](patterns/drift/) |
 | [Fade](https://motion.rujilabs.com/patterns/fade/) | pattern | Opacity only, on the slow duration. For images and backgrounds where movement would distract. | css, svg | Original | [code](patterns/fade/) |
 | [Marquee](https://motion.rujilabs.com/patterns/marquee/) | pattern | An endless row of logos or words. Pauses on hover and keyboard focus; the duplicate is hidden from screen readers. | css | Original | [code](patterns/marquee/) |
-| [Paper diorama build](https://motion.rujilabs.com/patterns/paper/) | pattern | Flat SVG layers with a paper shadow and grain rise back to front, each landing with a small overshoot. | css, svg | Inspired by [@dikipirasaputra](https://www.threads.com/@dikipirasaputra) | [code](patterns/paper/) |
+| [Paper diorama build](https://motion.rujilabs.com/patterns/paper/) | pattern | Flat SVG layers with a paper shadow and grain rise back to front, each landing with a small overshoot. | css, svg | Recreation of [@dikipirasaputra](https://www.threads.com/@dikipirasaputra) | [code](patterns/paper/) |
 | [Pop](https://motion.rujilabs.com/patterns/pop/) | pattern | Springy scale-in for badges, dots, icons and stickers. Not for text blocks. | css | Original | [code](patterns/pop/) |
 | [Pulse](https://motion.rujilabs.com/patterns/pulse/) | pattern | A ring that grows and fades behind a live indicator dot. | css | Original | [code](patterns/pulse/) |
 | [Scroll reveal](https://motion.rujilabs.com/patterns/reveal/) | pattern | Rise tied to scroll position with animation-timeline: view(). No script; unsupported browsers show the content. | css | Original | [code](patterns/reveal/) |
 | [Rise](https://motion.rujilabs.com/patterns/rise/) | pattern | Entry from below: fades in while moving up 18px. Add .stagger to the parent for a one-beat delay between siblings. | css | Original | [code](patterns/rise/) |
 | [Stamp](https://motion.rujilabs.com/patterns/stamp/) | pattern | A label pressed onto the surface from above, landing at a slight tilt set by a class. | css | Original | [code](patterns/stamp/) |
 | [Stretch and squeeze](https://motion.rujilabs.com/patterns/stretch-squeeze/) | pattern | Variable-width type: a headline settles from wide to condensed, and links widen on hover or focus. | css, variable-font | Original | [code](patterns/stretch-squeeze/) |
-| [Paper diorama hero](https://motion.rujilabs.com/templates/paper-diorama-hero/) | template | A full-screen hero where a cut-paper landscape builds behind a headline that is readable from the first paint. Birds drift once the scene is built. | css, svg | Inspired by [@dikipirasaputra](https://www.threads.com/@dikipirasaputra) | [code](templates/paper-diorama-hero/) |
+| [Paper diorama hero](https://motion.rujilabs.com/templates/paper-diorama-hero/) | template | A full-screen hero where a cut-paper landscape builds behind a headline that is readable from the first paint. Birds drift once the scene is built. | css, svg | Recreation of [@dikipirasaputra](https://www.threads.com/@dikipirasaputra) | [code](templates/paper-diorama-hero/) |
 | [Squeeze headline](https://motion.rujilabs.com/templates/squeeze-headline/) | template | A shop hero where a wide headline settles condensed, an underline draws in, the copy rises and a category band loops below. | css, svg, variable-font | Original | [code](templates/squeeze-headline/) |
 | [Stamp collage](https://motion.rujilabs.com/templates/stamp-collage/) | template | A menu board where paper scraps stamp on at a tilt, price stickers pop after each one, a live dot pulses and a shape drifts in the corner. | css, svg | Original | [code](templates/stamp-collage/) |
 

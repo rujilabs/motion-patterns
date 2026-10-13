@@ -30,12 +30,12 @@ Defined in [`tokens.css`](../../tokens.css). Entries use these names; the gate f
 
 ## Same feel in other engines
 
-For video or JS animation that should match the web motion:
+For video or JS animation that should match the web motion. These are close matches, not exact curves:
 
-| Token | GSAP | Remotion |
+| Token | GSAP (approximate) | Remotion (approximate) |
 |---|---|---|
 | `--ease-out` | `CustomEase.create("out", ".2,.7,.2,1")` (close: `power3.out`) | `Easing.bezier(.2, .7, .2, 1)` |
-| `--ease-spring` | `back.out(1.7)` | `spring({ damping: 12 })` |
+| `--ease-spring` | `back.out(1.7)` | `Easing.bezier(.3, 1.6, .5, 1)` |
 | `--ease-inout` | `power2.inOut` | `Easing.bezier(.4, 0, .2, 1)` |
 
 Loop lengths (`marquee` 38s, `drift` 7s and 11s, `crossfade` 12s, `pulse` 1.6s, `squeeze` 1.3s) are part of each pattern, not tokens.
