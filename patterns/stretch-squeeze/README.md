@@ -31,6 +31,7 @@ Preload the font. With `font-display: swap` the first frames otherwise play on a
 
 ## Do
 
+- Put `overflow: clip` on the headline's container. Each line stays on one line, so the wide first frames can run past the edge instead of wrapping and making the page jump.
 - Keep it to headlines and short labels. Width changes reflow text, which is fine for a few words and costly for paragraphs.
 - Pair it with `text-transform: uppercase` and a heavy weight; condensed caps carry the effect best.
 

@@ -1,15 +1,19 @@
-/* Squeeze headline: a kinetic shop hero. Type does the moving; colour stays quiet. */
+/*
+ * Squeeze headline: a kinetic shop hero. Type does the moving; colour stays quiet.
+ * Order: the headline lines squeeze in (about 1.6s); as the last one settles the underline draws,
+ * then the lede and the button rise. Nothing competes with the headline while it moves.
+ */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; }
 body { background: #f7f5f0; color: #15140f; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh; display: grid; grid-template-rows: auto 1fr; grid-template-columns: minmax(0, 1fr); }
 a { color: inherit; }
-a:focus-visible { outline: 2px solid #d9480f; outline-offset: 3px; }
+a:focus-visible, .marquee:focus-visible { outline: 2px solid #d9480f; outline-offset: 3px; }
 
 .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px clamp(16px, 4vw, 48px);
   border-bottom: 1px solid #e2ded4; }
 .brand { font-weight: 800; letter-spacing: -.01em; }
-.nav { display: flex; gap: 18px; }
+.nav { display: flex; gap: clamp(10px, 3vw, 18px); }
 .nav a { text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase; }
 
 main { display: grid; grid-template-rows: 1fr auto; grid-template-columns: minmax(0, 1fr); }
@@ -18,16 +22,24 @@ main { display: grid; grid-template-rows: 1fr auto; grid-template-columns: minma
 .hero h1 em { font-style: normal; color: #d9480f; }
 .underline { display: block; width: min(420px, 70%); height: auto; margin: 10px 0 0; color: #d9480f; }
 .lede { max-width: 46ch; margin: 24px 0; color: #4a4639; }
-.cta { display: inline-block; padding: 14px 22px; border-radius: 999px; background: #15140f; color: #f7f5f0;
-  font-weight: 700; text-decoration: none; }
+.cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px 14px 24px; border-radius: 999px;
+  background: #15140f; color: #f7f5f0; font-weight: 700; text-decoration: none; }
+.cta .arrow { transition: translate var(--dur-quick) var(--ease-out); }
+.cta:hover .arrow, .cta:focus-visible .arrow { translate: 3px 0; }
 
-/* rise delays after the headline settles */
-.d4 { animation-delay: calc(var(--stagger) * 8); }
-.d5 { animation-delay: calc(var(--stagger) * 10); }
+/* choreography: start as the last headline line settles */
+.js .go .underline path { animation-delay: calc(var(--stagger) * 14); }
+.after-1 { animation-delay: calc(var(--stagger) * 16); }
+.after-2 { animation-delay: calc(var(--stagger) * 18); }
 
-.band { border-top: 1px solid #15140f; background: #15140f; color: #f7f5f0; }
+.band-wrap { position: relative; background: #15140f; color: #f7f5f0; }
+.band { border-top: 1px solid #15140f; }
 .band-list { display: flex; justify-content: space-around; gap: 56px; margin: 0; padding: 16px 28px; list-style: none; white-space: nowrap;
   font-family: "Anybody", system-ui, sans-serif; font-stretch: 125%; font-weight: 800; font-size: 22px; text-transform: uppercase; }
+.band-pause { position: absolute; right: 0; top: 0; bottom: 0; display: flex; align-items: center; gap: 6px; padding: 0 16px 0 40px;
+  font-size: 13px; color: #c9c4b6; cursor: pointer; background: linear-gradient(90deg, transparent, #15140f 32px); }
+.band-pause input { accent-color: #d9480f; }
 
-/* the underline draws once the headline has settled */
-.js .go .underline path { animation-delay: calc(var(--stagger) * 6); }
+@media (prefers-reduced-motion: reduce) {
+  .cta .arrow { transition: none; }
+}
