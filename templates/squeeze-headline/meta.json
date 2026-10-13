@@ -1,0 +1,14 @@
+{
+  "name": "Squeeze headline",
+  "slug": "squeeze-headline",
+  "kind": "template",
+  "summary": "A shop hero where a wide headline settles condensed, an underline draws in, the copy rises and a category band loops below.",
+  "category": "type",
+  "tech": ["css", "svg", "variable-font"],
+  "uses": ["stretch-squeeze", "draw", "rise", "marquee"],
+  "tokens": ["--ease-out", "--ease-inout", "--dur-base", "--dur-slow", "--dur-draw", "--stagger", "--rise-y"],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

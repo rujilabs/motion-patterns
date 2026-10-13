@@ -1,0 +1,36 @@
+/*
+ * paper: a cut-paper diorama that builds layer by layer, back to front.
+ * Layers are flat SVG shapes. Each carries the double paper shadow (an SVG filter in the markup)
+ * and its index in data-layer. One grain overlay sits over the whole scene.
+ * The scene is complete at rest: hidden start states only apply with play.js (.js) before .go.
+ */
+.paper .layer { transform-box: fill-box; transform-origin: 50% 100%; }
+.js .paper:not(.go) .layer { opacity: 0; }
+.js .paper.go .layer {
+  animation: paper-rise var(--dur-slow) var(--ease-paper) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger-paper));
+}
+.paper .layer[data-layer="1"]  { --i: 1; }
+.paper .layer[data-layer="2"]  { --i: 2; }
+.paper .layer[data-layer="3"]  { --i: 3; }
+.paper .layer[data-layer="4"]  { --i: 4; }
+.paper .layer[data-layer="5"]  { --i: 5; }
+.paper .layer[data-layer="6"]  { --i: 6; }
+.paper .layer[data-layer="7"]  { --i: 7; }
+.paper .layer[data-layer="8"]  { --i: 8; }
+.paper .layer[data-layer="9"]  { --i: 9; }
+.paper .layer[data-layer="10"] { --i: 10; }
+.paper .layer[data-layer="11"] { --i: 11; }
+.paper .layer[data-layer="12"] { --i: 12; }
+@keyframes paper-rise {
+  from { opacity: 0; transform: translateY(46%) rotate(var(--tilt, 0deg)); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+.paper .grain { mix-blend-mode: multiply; opacity: .35; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .paper .layer,
+  .js .paper:not(.go) .layer,
+  .js .paper.go .layer { opacity: 1; animation: none; }
+}

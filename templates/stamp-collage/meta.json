@@ -1,0 +1,14 @@
+{
+  "name": "Stamp collage",
+  "slug": "stamp-collage",
+  "kind": "template",
+  "summary": "A menu board where paper scraps stamp on at a tilt, price stickers pop after each one, a live dot pulses and a shape drifts in the corner.",
+  "category": "entry",
+  "tech": ["css", "svg"],
+  "uses": ["stamp", "pop", "pulse", "drift"],
+  "tokens": ["--ease-spring", "--ease-out", "--dur-base", "--stagger"],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

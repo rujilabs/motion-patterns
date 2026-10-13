@@ -1,0 +1,30 @@
+name: Report a bug
+description: An entry looks or behaves wrong.
+labels: ["bug"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      placeholder: patterns/rise
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens, and what you expected
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Safari 18 on iPhone 15
+    validations:
+      required: true
+  - type: checkboxes
+    id: rm
+    attributes:
+      label: Settings
+      options:
+        - label: Reduced motion is on

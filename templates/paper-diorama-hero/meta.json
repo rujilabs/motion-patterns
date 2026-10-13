@@ -1,0 +1,21 @@
+{
+  "name": "Paper diorama hero",
+  "slug": "paper-diorama-hero",
+  "kind": "template",
+  "summary": "A full-screen hero where a cut-paper landscape builds behind a headline that is readable from the first paint. Birds drift once the scene is built.",
+  "category": "scene",
+  "tech": ["css", "svg"],
+  "uses": ["paper", "drift", "pop"],
+  "tokens": ["--ease-paper", "--dur-slow", "--stagger-paper", "--ease-spring"],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "inspired-by",
+  "source": {
+    "title": "AI city paper diorama (video prompt)",
+    "author": "@dikipirasaputra",
+    "url": "https://www.threads.com/@dikipirasaputra",
+    "licence": "none stated",
+    "notes": "The source is an AI video prompt. This hero is written from scratch in CSS and SVG; no code or assets were copied."
+  },
+  "added": "2026-10-13"
+}

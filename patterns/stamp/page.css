@@ -1,0 +1,5 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.sticker { display: inline-block; padding: 12px 20px; border: 2px dashed currentColor; border-radius: 6px;
+  font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--demo-accent); }
+.sticker-warm { color: var(--demo-warm); }
+.row .stamp:nth-child(2) { animation-delay: calc(var(--stagger) * 4); }

@@ -1,0 +1,46 @@
+name: Suggest a motion
+description: Point us at a motion you would like in the collection.
+labels: ["suggestion"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Link to the motion
+      description: The original post, video, pen or page.
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Who made it
+      description: Handle or name as shown at the source.
+    validations:
+      required: true
+  - type: dropdown
+    id: licence
+    attributes:
+      label: Licence at the source
+      options:
+        - None stated
+        - MIT
+        - CC0
+        - Apache 2.0
+        - BSD
+        - Other (say below)
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What should it do
+      description: Describe the movement in a sentence or two, and where it would be used.
+    validations:
+      required: true
+  - type: checkboxes
+    id: build
+    attributes:
+      label: Building it
+      options:
+        - label: I would like to build this entry myself

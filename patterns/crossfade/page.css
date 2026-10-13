@@ -1,0 +1,7 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.xf-demo { width: min(320px, 100%); }
+.xf-frame { margin: 0; aspect-ratio: 16 / 10; border-radius: 12px; display: grid; place-items: end start;
+  padding: 16px; color: #fff; font-weight: 700; font-size: 20px; }
+.xf-a { background: #f6a46b; }
+.xf-b { background: #3d8bfd; }
+.xf-c { background: #3b2e6e; }

@@ -1,0 +1,19 @@
+{
+  "name": "Pop",
+  "slug": "pop",
+  "kind": "pattern",
+  "summary": "Springy scale-in for badges, dots, icons and stickers. Not for text blocks.",
+  "category": "entry",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

@@ -1,0 +1,47 @@
+/* Shared look for the demo pages only. Not part of any pattern: copy the entry's style.css, not this file. */
+:root {
+  --demo-paper: #ffffff;
+  --demo-ink: #111214;
+  --demo-mute: #6b6f76;
+  --demo-line: #e4e6ea;
+  --demo-soft: #f3f4f6;
+  --demo-accent: #3d5afe;
+  --demo-warm: #ff7a45;
+  --demo-mint: #1fb58f;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --demo-paper: #111214;
+    --demo-ink: #f2f3f5;
+    --demo-mute: #9aa0a8;
+    --demo-line: #2a2d33;
+    --demo-soft: #1b1d21;
+    --demo-accent: #7c8cff;
+    --demo-warm: #ff9466;
+    --demo-mint: #3fd1aa;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--demo-paper);
+  color: var(--demo-ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.card {
+  background: var(--demo-soft);
+  border: 1px solid var(--demo-line);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+.row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
+.col { display: grid; gap: 12px; width: min(320px, 100%); }
+.label { font-size: 13px; color: var(--demo-mute); }
+h1, h2, p { margin: 0; }

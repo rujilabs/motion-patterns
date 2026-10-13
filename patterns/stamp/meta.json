@@ -1,0 +1,19 @@
+{
+  "name": "Stamp",
+  "slug": "stamp",
+  "kind": "pattern",
+  "summary": "A label pressed onto the surface from above, landing at a slight tilt set by a class.",
+  "category": "entry",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

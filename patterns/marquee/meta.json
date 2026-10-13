@@ -1,0 +1,15 @@
+{
+  "name": "Marquee",
+  "slug": "marquee",
+  "kind": "pattern",
+  "summary": "An endless row of logos or words. Pauses on hover and keyboard focus; the duplicate is hidden from screen readers.",
+  "category": "loop",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

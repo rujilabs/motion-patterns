@@ -1,0 +1,11 @@
+/* drift: slow, small, looping. At most 12px of travel, at least 5s per cycle. */
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(10px, -6px); }
+}
+.drift { animation: drift 7s ease-in-out infinite alternate; }
+.drift-slow { animation-duration: 11s; animation-direction: alternate-reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  .drift { animation: none; }
+}

@@ -1,0 +1,10 @@
+/* pop: springy scale-in. Badges, dots, icons, stickers. Not for text blocks. */
+@keyframes pop {
+  from { opacity: 0; transform: scale(.6); }
+  to   { opacity: 1; transform: none; }
+}
+.pop { animation: pop var(--dur-base) var(--ease-spring) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pop { animation: none; }
+}

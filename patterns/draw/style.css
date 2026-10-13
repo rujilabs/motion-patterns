@@ -1,0 +1,11 @@
+/* draw: SVG stroke draw-on. Every path carries pathLength="1", so the dash values run 0..1. */
+.js .draw path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js .go .draw path,
+.js .go.draw path { animation: draw var(--dur-draw) var(--ease-inout) both; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .draw path,
+  .js .go .draw path,
+  .js .go.draw path { stroke-dashoffset: 0; animation: none; }
+}

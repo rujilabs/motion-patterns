@@ -1,0 +1,17 @@
+{
+  "name": "Crossfade",
+  "slug": "crossfade",
+  "kind": "pattern",
+  "summary": "Three stacked frames take turns on a 12s cycle. The first frame is visible from the first paint.",
+  "category": "loop",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

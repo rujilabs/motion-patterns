@@ -1,0 +1,17 @@
+{
+  "name": "Scroll reveal",
+  "slug": "reveal",
+  "kind": "pattern",
+  "summary": "Rise tied to scroll position with animation-timeline: view(). No script; unsupported browsers show the content.",
+  "category": "scroll",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--rise-y"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

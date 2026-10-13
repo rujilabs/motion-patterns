@@ -1,0 +1,17 @@
+{
+  "name": "Pulse",
+  "slug": "pulse",
+  "kind": "pattern",
+  "summary": "A ring that grows and fades behind a live indicator dot.",
+  "category": "loop",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

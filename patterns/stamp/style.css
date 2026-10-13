@@ -1,0 +1,12 @@
+/* stamp: pressed onto the surface from above. Tilt comes from a class, never inline style. */
+@keyframes stamp {
+  from { opacity: 0; transform: translateY(-14px) rotate(var(--tilt, 0deg)) scale(1.12); }
+  to   { opacity: 1; transform: rotate(var(--tilt, 0deg)); }
+}
+.stamp { transform: rotate(var(--tilt, 0deg)); animation: stamp var(--dur-base) var(--ease-spring) both; }
+.tilt-l { --tilt: -3deg; }
+.tilt-r { --tilt: 4deg; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp { animation: none; }
+}

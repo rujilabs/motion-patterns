@@ -1,0 +1,10 @@
+/* fade: opacity only. For images and backgrounds where movement would distract. */
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade { animation: fade var(--dur-slow) var(--ease-out) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade { animation: none; }
+}

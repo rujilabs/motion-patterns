@@ -1,0 +1,22 @@
+/*
+ * crossfade: three stacked frames take turns over a 12s cycle. Each frame holds about 3s and
+ * overlaps the next by about 1s. The first frame starts visible (negative delay), so nothing
+ * is ever blank on load.
+ */
+.crossfade { display: grid; }
+.crossfade > * { grid-area: 1 / 1; opacity: 0; animation: crossfade 12s var(--ease-inout) infinite; }
+.crossfade > :nth-child(1) { animation-delay: -1s; }
+.crossfade > :nth-child(2) { animation-delay: 3s; }
+.crossfade > :nth-child(3) { animation-delay: 7s; }
+@keyframes crossfade {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  33%  { opacity: 1; }
+  41%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crossfade > * { animation: none; }
+  .crossfade > :first-child { opacity: 1; }
+}

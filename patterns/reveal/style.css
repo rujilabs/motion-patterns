@@ -1,0 +1,19 @@
+/*
+ * reveal: scroll-linked rise using animation-timeline: view(). Browsers without support show
+ * the content still, which is the fallback.
+ * Keep animation-timeline in its own declaration AFTER the shorthand: the shorthand resets it,
+ * and some minifiers fold it in so the animation silently never runs.
+ * No overflow: hidden on any ancestor (it breaks the view timeline); use overflow: clip.
+ */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(var(--rise-y)); }
+  to   { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  .reveal { animation: reveal linear both; }
+  .reveal { animation-timeline: view(); animation-range: entry 0% cover 30%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+}

@@ -1,0 +1,31 @@
+name: Credit or removal request
+description: Your work is in the collection and the credit is wrong, missing, or you want it removed.
+labels: ["credit"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      placeholder: templates/paper-diorama-hero
+    validations:
+      required: true
+  - type: input
+    id: original
+    attributes:
+      label: Link to your original
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: ask
+    attributes:
+      label: What would you like
+      options:
+        - Fix or add the credit
+        - Remove the entry
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else

@@ -1,0 +1,17 @@
+/* rise: entry from below. Fade in while travelling up --rise-y. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(var(--rise-y)); }
+  to   { opacity: 1; transform: none; }
+}
+.rise { animation: rise var(--dur-base) var(--ease-out) both; }
+
+/* stagger: children of .stagger start one --stagger step apart */
+.stagger > :nth-child(2) { animation-delay: calc(var(--stagger) * 1); }
+.stagger > :nth-child(3) { animation-delay: calc(var(--stagger) * 2); }
+.stagger > :nth-child(4) { animation-delay: calc(var(--stagger) * 3); }
+.stagger > :nth-child(5) { animation-delay: calc(var(--stagger) * 4); }
+.stagger > :nth-child(6) { animation-delay: calc(var(--stagger) * 5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Drift",
+  "slug": "drift",
+  "kind": "pattern",
+  "summary": "Slow ambient float for clouds, water and floating objects. At most 12px of travel, at least 5s per cycle.",
+  "category": "loop",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

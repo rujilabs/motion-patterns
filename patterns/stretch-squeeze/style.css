@@ -1,0 +1,35 @@
+/*
+ * stretch and squeeze: variable-width type. Needs a variable font with a wdth axis, declared
+ * with a font-stretch range in its @font-face, or the browser ignores font-stretch.
+ * stretch: hover or focus widens a condensed heading. squeeze: a headline arrives wide and
+ * settles condensed, readable from the first frame.
+ */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+.stretch, .squeeze { font-family: "Anybody", system-ui, sans-serif; }
+
+.stretch {
+  font-stretch: 62%;
+  letter-spacing: .01em;
+  transition: font-stretch var(--dur-slow) var(--ease-out), letter-spacing var(--dur-slow) var(--ease-out);
+}
+.stretch-host:hover .stretch,
+.stretch-host:focus-visible .stretch { font-stretch: 112%; letter-spacing: 0; }
+
+@keyframes squeeze {
+  from { font-stretch: 150%; letter-spacing: .02em; }
+  to   { font-stretch: 62%; letter-spacing: -.01em; }
+}
+.squeeze > span { display: block; font-stretch: 62%; animation: squeeze 1.3s var(--ease-out) both; }
+.squeeze > span:nth-child(2) { animation-delay: calc(var(--stagger) * 2); }
+.squeeze > span:nth-child(3) { animation-delay: calc(var(--stagger) * 4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .squeeze > span { animation: none; }
+  .stretch { transition: none; }
+}

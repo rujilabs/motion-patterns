@@ -1,0 +1,20 @@
+{
+  "name": "Stretch and squeeze",
+  "slug": "stretch-squeeze",
+  "kind": "pattern",
+  "summary": "Variable-width type: a headline settles from wide to condensed, and links widen on hover or focus.",
+  "category": "type",
+  "tech": [
+    "css",
+    "variable-font"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow",
+    "--stagger"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

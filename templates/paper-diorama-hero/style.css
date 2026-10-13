@@ -1,0 +1,18 @@
+/* Paper diorama hero. The headline is readable from the first paint; the scene builds behind it. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #fff1dc; color: #2b2118; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+.hero { position: relative; min-height: 100vh; display: grid; align-items: start; overflow: clip; }
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.copy { position: relative; padding: clamp(24px, 6vw, 72px); max-width: 560px; }
+.eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8a4b2a; }
+h1 { margin: 0; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
+.lede { margin: 16px 0 24px; max-width: 40ch; color: #4a3a2c; }
+.cta { display: inline-flex; align-items: center; gap: 12px; padding: 12px 14px 12px 20px; border-radius: 999px;
+  background: #2b2118; color: #fff7ec; font-weight: 700; text-decoration: none; }
+.cta:focus-visible { outline: 3px solid #f2874a; outline-offset: 3px; }
+.tag { padding: 4px 10px; border-radius: 999px; background: #f2874a; color: #2b2118; font-size: 13px; }
+
+/* The price tag pops after the last paper layer lands (layer 9 x --stagger-paper + --dur-slow). */
+.js .tag.pop { animation-delay: calc(9 * var(--stagger-paper) + var(--dur-slow)); }

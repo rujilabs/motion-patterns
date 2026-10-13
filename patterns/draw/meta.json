@@ -1,0 +1,19 @@
+{
+  "name": "Draw",
+  "slug": "draw",
+  "kind": "pattern",
+  "summary": "SVG stroke draw-on for underlines, routes and signatures. Paths use pathLength=\"1\" so there are no magic numbers.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-draw"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

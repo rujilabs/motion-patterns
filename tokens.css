@@ -1,0 +1,19 @@
+/* Shared motion tokens. Every entry uses these; no raw cubic-bezier() or duration anywhere else. */
+:root {
+  /* curves */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);      /* default for entries */
+  --ease-spring: cubic-bezier(.3, 1.6, .5, 1);  /* overshoot, small elements only */
+  --ease-inout: cubic-bezier(.4, 0, .2, 1);     /* draw-on, crossfades, start-and-stop moves */
+  --ease-paper: cubic-bezier(.2, .9, .25, 1.15); /* paper layers: a slight landing overshoot */
+
+  /* durations */
+  --dur-quick: 200ms;   /* hover, press, toggles */
+  --dur-base: 600ms;    /* rise, fade, pop */
+  --dur-slow: 900ms;    /* large images, paper layers, calm pages */
+  --dur-draw: 1600ms;   /* SVG stroke draw-on */
+
+  /* rhythm and distance */
+  --stagger: 80ms;        /* delay step between siblings */
+  --stagger-paper: 500ms; /* delay step between paper layers */
+  --rise-y: 18px;         /* rise travel */
+}

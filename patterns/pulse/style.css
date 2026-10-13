@@ -1,0 +1,12 @@
+/* pulse: a ring that grows and fades behind a "live" dot. Never on buttons. */
+@keyframes pulse {
+  from { transform: scale(.6); opacity: 1; }
+  to   { transform: scale(1.6); opacity: 0; }
+}
+.pulse { position: relative; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.pulse::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid currentColor;
+  animation: pulse 1.6s var(--ease-out) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse::before { animation: none; opacity: 0; }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper · motion-patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <svg class="paper paper-demo" data-play viewBox="0 0 400 260" width="400" height="260" role="img" aria-label="A paper-cut scene: sky, sun, two rows of hills and a small house">
+    <defs>
+      <filter id="paper-shadow" x="-10%" y="-20%" width="120%" height="150%">
+        <feDropShadow dx="0" dy="5" stdDeviation="2" flood-color="rgb(70,45,20)" flood-opacity=".32" result="soft"/>
+        <feDropShadow in="soft" dx="0" dy="1" stdDeviation="0" flood-color="rgb(70,45,20)" flood-opacity=".25"/>
+      </filter>
+      <filter id="paper-grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+      <linearGradient id="paper-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9a8"/><stop offset="1" stop-color="#fff3df"/></linearGradient>
+    </defs>
+    <rect class="layer" data-layer="0" width="400" height="260" rx="10" fill="url(#paper-sky)"/>
+    <circle class="layer" data-layer="1" cx="292" cy="86" r="34" fill="#f28b4b" filter="url(#paper-shadow)"/>
+    <path class="layer" data-layer="2" d="M0 170 Q70 110 150 150 T300 130 T400 140 V260 H0Z" fill="#a9c99a" filter="url(#paper-shadow)"/>
+    <path class="layer" data-layer="3" d="M0 200 Q90 150 190 190 T400 180 V260 H0Z" fill="#6fa77c" filter="url(#paper-shadow)"/>
+    <g class="layer" data-layer="4" filter="url(#paper-shadow)">
+      <rect x="168" y="150" width="64" height="48" fill="#f6efe2"/>
+      <path d="M160 152 L200 118 L240 152Z" fill="#c4553b"/>
+      <rect x="192" y="172" width="16" height="26" fill="#7a4b33"/>
+    </g>
+    <path class="layer" data-layer="5" d="M0 232 Q100 206 210 228 T400 222 V260 H0Z" fill="#3f7a5a" filter="url(#paper-shadow)"/>
+    <rect class="grain" width="400" height="260" rx="10" filter="url(#paper-grain)"/>
+  </svg>
+</main>
+</body>
+</html>

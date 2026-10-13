@@ -1,0 +1,19 @@
+{
+  "name": "Fade",
+  "slug": "fade",
+  "kind": "pattern",
+  "summary": "Opacity only, on the slow duration. For images and backgrounds where movement would distract.",
+  "category": "entry",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

@@ -1,0 +1,4 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.draw-demo { display: grid; justify-items: center; gap: 2px; }
+.draw-demo h1 { font-size: clamp(28px, 6vw, 44px); letter-spacing: -.02em; }
+.draw-demo svg { max-width: 100%; height: auto; }

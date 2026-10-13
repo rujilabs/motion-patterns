@@ -1,0 +1,34 @@
+/* Stamp collage: paper scraps pressed onto a board, price stickers popping on after each scrap. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #efe9dd; color: #1d1a16; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+.board { position: relative; min-height: 100vh; padding: clamp(24px, 6vw, 72px); overflow: clip; }
+.intro { max-width: 560px; }
+.open { display: inline-flex; align-items: center; gap: 12px; margin: 0; font-weight: 600; color: #1f7a4d; }
+h1 { margin: 8px 0; font-size: clamp(40px, 8vw, 80px); line-height: 1; letter-spacing: -.03em; }
+.lede { margin: 0; max-width: 42ch; color: #5a5247; }
+
+.scraps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); max-width: 960px; }
+.scrap { position: relative; display: grid; gap: 4px; padding: 22px 20px 28px; background: #fffdf8;
+  box-shadow: 0 6px 6px rgb(70 50 30 / .18), 0 1px 0 rgb(70 50 30 / .2); }
+.scrap-warm { background: #ffe1cf; }
+.scrap-mint { background: #d7f0e2; }
+.scrap-blue { background: #dbe6ff; }
+.tilt-s { --tilt: -1.5deg; }
+.name { font-weight: 800; font-size: 20px; }
+.note { color: #6b6255; font-size: 14px; }
+.price { position: absolute; top: -12px; right: -10px; display: grid; place-items: center; width: 58px; height: 58px;
+  border-radius: 50%; background: #1d1a16; color: #fffdf8; font-weight: 800; font-size: 15px; }
+
+/* scraps land one after another; each price pops just after its scrap */
+.s2 { animation-delay: calc(var(--stagger) * 3); }
+.s3 { animation-delay: calc(var(--stagger) * 6); }
+.s4 { animation-delay: calc(var(--stagger) * 9); }
+.p1 { animation-delay: calc(var(--stagger) * 4); }
+.p2 { animation-delay: calc(var(--stagger) * 7); }
+.p3 { animation-delay: calc(var(--stagger) * 10); }
+.p4 { animation-delay: calc(var(--stagger) * 13); }
+
+.crumb { position: absolute; width: 120px; right: 6%; top: 8%; opacity: .55; pointer-events: none; }
