@@ -4,7 +4,7 @@ A credited collection of web motion: small CSS patterns and full scenes, each wi
 
 [![Live gallery](https://img.shields.io/badge/gallery-motion.rujilabs.com-111214)](https://motion.rujilabs.com)
 [![License: MIT](https://img.shields.io/badge/license-MIT-3d5afe)](LICENSE)
-![Version](https://img.shields.io/badge/version-0.1.0-5f646b)
+![Version](https://img.shields.io/badge/version-0.2.0-5f646b)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-1fb58f)
 ![CSS first](https://img.shields.io/badge/CSS-first-ff7a45)
 

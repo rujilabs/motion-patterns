@@ -1,13 +1,18 @@
 {
   "name": "motion-patterns",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "A credited collection of web motion: small CSS patterns and full scenes, each with a live demo and a reduced-motion state.",
   "license": "MIT",
   "type": "module",
-  "repository": { "type": "git", "url": "https://github.com/rujilabs/motion-patterns.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rujilabs/motion-patterns.git"
+  },
   "homepage": "https://motion.rujilabs.com",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "check": "node scripts/check.mjs",
     "catalogue": "node scripts/catalogue.mjs",
