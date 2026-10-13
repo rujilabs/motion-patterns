@@ -29,6 +29,7 @@ Same as a pattern, under `templates/<slug>/`, with two differences:
 
 ## Before you open the pull request
 
+- [ ] A template has a `poster.jpg`: run `npm run posters -- <slug>` after the last visual change (Playwright: `npm i --no-save playwright && npx playwright install chromium`)
 - [ ] `npm run check` passes
 - [ ] The demo looks right with reduced motion on (DevTools > Rendering > Emulate CSS `prefers-reduced-motion`)
 - [ ] The demo works at 375 px wide, and fits inside its gallery stage: 4:3 for patterns, while templates render at 1280 x 720 and scale down (a short frame: use a `max-height` query in `page.css` if it does not)

@@ -70,8 +70,8 @@ button { font: inherit; color: inherit; }
 /* top bar */
 .bar {
   position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 24px;
-  height: 60px; padding: 0 var(--gutter); background: color-mix(in srgb, var(--paper) 92%, transparent);
-  border-bottom: 1px solid var(--line); backdrop-filter: blur(10px);
+  height: 60px; padding: 0 var(--gutter); background: var(--paper);
+  border-bottom: 1px solid var(--line);
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 750 19px/1 var(--display); font-stretch: 112%; letter-spacing: -.01em; }
 .mark-svg { width: 40px; height: 16px; color: var(--blue); flex: none; }
@@ -96,7 +96,7 @@ button { font: inherit; color: inherit; }
 .onion { display: grid; font: 850 clamp(78px, 16vw, 272px)/.8 var(--display); letter-spacing: -.035em; margin-left: -.04em; }
 .ln { display: grid; justify-content: start; white-space: nowrap; }
 .ln > span { grid-area: 1 / 1; }
-.ln-b { justify-content: end; margin-top: .02em; font-size: 1.28em; line-height: .8; }
+.ln-b { justify-content: end; margin-top: .02em; padding-right: 9vw; font-size: 1.28em; line-height: .8; }
 .ln-a { font-stretch: 118%; font-weight: 850; }
 .ln-b { font-stretch: 58%; font-weight: 380; }
 .k { color: var(--ink); }
@@ -114,8 +114,15 @@ button { font: inherit; color: inherit; }
   from { transform: translateX(-52vw); font-stretch: 92%; }
   to   { transform: none; font-stretch: 58%; }
 }
-.ln-a > span { animation: motion-in 1500ms var(--ease-out) both; }
-.ln-b > span { animation: patterns-in 1700ms var(--ease-spring) 380ms both; }
+/* Ghosts imitate the width change with scaleX, which the compositor can run without re-laying out
+   twelve lines of display type every frame; only the two solid lines morph the real width axis. */
+@keyframes motion-ghost { from { transform: translateX(58vw) scaleX(.72); } to { transform: none; } }
+@keyframes patterns-ghost { from { transform: translateX(-52vw) scaleX(1.45); } to { transform: none; } }
+.ln > span { transform-origin: 0 50%; }
+.ln-a > .k { animation: motion-in 1500ms var(--ease-out) both; }
+.ln-b > .k { animation: patterns-in 1700ms var(--ease-spring) 380ms both; }
+.ln-a > .g { animation: motion-ghost 1500ms var(--ease-out) both; }
+.ln-b > .g { animation: patterns-ghost 1700ms var(--ease-spring) 380ms both; }
 .ln-a .g1 { animation-iteration-count: .08; } .ln-a .g2 { animation-iteration-count: .17; }
 .ln-a .g3 { animation-iteration-count: .28; } .ln-a .g4 { animation-iteration-count: .42; }
 .ln-a .g5 { animation-iteration-count: .6; }
@@ -136,7 +143,7 @@ button { font: inherit; color: inherit; }
 .hero-note { max-width: var(--wrap); margin: 12px auto 0; color: var(--mute); font-size: 14px; }
 @media (max-width: 760px) {
   .hero-copy { grid-template-columns: 1fr; }
-  .ln-b { justify-content: start; }
+  .ln-b { justify-content: start; padding-right: 0; }
 }
 
 /* sections */
@@ -150,9 +157,13 @@ button { font: inherit; color: inherit; }
 .stage { position: relative; overflow: hidden; background: var(--table); border: 1px solid var(--line); border-bottom: 0; border-radius: 8px 8px 0 0; aspect-ratio: 4 / 3; }
 .stage-template { aspect-ratio: 16 / 9; }
 .stage iframe { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; border: 0; background: var(--table); transform-origin: 0 0; }
+.stage-poster { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.has-poster iframe { visibility: hidden; opacity: 0; transition: opacity var(--dur-quick) var(--ease-out); }
+.has-poster.is-live iframe { visibility: visible; opacity: 1; }
+.stage-open { position: absolute; inset: 0; display: grid; place-items: center; color: var(--mute); }
 .stage.is-device iframe { border: 1px solid var(--line-strong); border-radius: 22px; }
 
-.sheet { border: 1px solid var(--line); border-radius: 0 0 8px 8px; background: var(--paper); font-size: 12px; font-variant-numeric: tabular-nums; }
+.sheet { contain: layout style; border: 1px solid var(--line); border-radius: 0 0 8px 8px; background: var(--paper); font-size: 12px; font-variant-numeric: tabular-nums; }
 .sheet-controls { display: flex; align-items: center; gap: 2px; padding: 5px 6px; border-bottom: 1px solid var(--line); }
 .sheet-btn, .sheet-speed { display: grid; place-items: center; height: 28px; min-width: 28px; padding: 0 6px; border: 0; border-radius: 5px; background: transparent; cursor: pointer; color: var(--mute); }
 .sheet-btn:hover, .sheet-speed:hover { background: var(--table); color: var(--ink); }
@@ -218,6 +229,9 @@ button { font: inherit; color: inherit; }
 .filters button[aria-pressed="true"] span { color: inherit; opacity: .7; }
 .specs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 56px 32px; }
 .spec[hidden] { display: none; }
+/* offscreen entries skip rendering, and so do the demos inside them */
+.spec { content-visibility: auto; contain-intrinsic-size: auto 620px; }
+.curves { content-visibility: auto; contain-intrinsic-size: auto 520px; }
 .spec-info { display: grid; gap: 8px; padding-top: 18px; }
 .spec-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 6px; }
 .spec .sh-row:nth-child(n + 7) { display: none; }
@@ -237,14 +251,15 @@ button { font: inherit; color: inherit; }
 .plot-x, .plot-y { position: absolute; inset: 0; }
 .plot-dot { position: absolute; top: 0; left: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px var(--paper); }
 .lane { position: relative; height: 16px; border-radius: 8px; background: var(--table); }
-.lane-ball { position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }
+.lane-run { position: absolute; inset: 2px 14px 2px 2px; }
+.lane-ball { position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }
 @keyframes plot-x { 0% { translate: 0 0; } 70%, 100% { translate: 100% 0; } }
 @keyframes plot-y { 0% { translate: 0 var(--y0); } 70%, 100% { translate: 0 var(--y1); } }
-@keyframes lane { 0% { left: 2px; } 70%, 100% { left: calc(100% - 14px); } }
+@keyframes lane { 0% { translate: 0 0; } 70%, 100% { translate: 100% 0; } }
 .plot-x { animation: plot-x 2400ms linear infinite; }
 .plot-y { animation: plot-y 2400ms var(--curve) infinite; }
-.lane-ball { animation: lane 2400ms var(--curve) infinite; }
-.curves:has(.curves-pause input:checked) :is(.plot-x, .plot-y, .lane-ball) { animation-play-state: paused; }
+.lane-run { animation: lane 2400ms var(--curve) infinite; }
+.curves:has(.curves-pause input:checked) :is(.plot-x, .plot-y, .lane-run) { animation-play-state: paused; }
 .curve figcaption { display: grid; gap: 2px; }
 .curve figcaption code { font-size: 14px; font-weight: 600; }
 .curve figcaption span { color: var(--mute); font-size: 14px; }
@@ -341,7 +356,7 @@ button { font: inherit; color: inherit; }
   .sheet-controls { display: none; }
   .plot-x { animation: none; translate: 100% 0; }
   .plot-y { animation: none; translate: 0 var(--y1); }
-  .lane-ball { animation: none; left: calc(100% - 14px); }
+  .lane-run { animation: none; translate: 100% 0; }
   .btn { transition: none; }
   .btn:active { translate: none; }
 }

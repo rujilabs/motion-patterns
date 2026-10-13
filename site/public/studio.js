@@ -65,6 +65,49 @@
     });
   });
 
+  /* demo loading: near the screen, and on the home page only after the headline has landed.
+     Templates (data-live) are heavier: their poster shows while the page scrolls, the live page loads once
+     the visitor stops with most of it in view, and unloads again when it leaves the screen. */
+  var waiting = $all("iframe[data-src]");
+  var live = waiting.filter(function (f) { return f.hasAttribute("data-live"); });
+  var plain = waiting.filter(function (f) { return !f.hasAttribute("data-live"); });
+  var load = function (f) { if (!f.getAttribute("src")) f.setAttribute("src", f.getAttribute("data-src")); };
+  var scrolling = false, settleTimer = 0;
+  function settle() {
+    live.forEach(function (f) {
+      if (f._ratio >= 0.5 && !f._live) { f._live = true; f.setAttribute("src", f.getAttribute("data-src")); }
+    });
+  }
+  function begin() {
+    if (!("IntersectionObserver" in window)) { waiting.forEach(load); return; }
+    var lo = new IntersectionObserver(function (list) {
+      list.forEach(function (en) { if (en.isIntersecting) { load(en.target); lo.unobserve(en.target); } });
+    }, { rootMargin: "500px 0px" });
+    plain.forEach(function (f) { lo.observe(f); });
+    var lv = new IntersectionObserver(function (list) {
+      list.forEach(function (en) {
+        var f = en.target;
+        f._ratio = en.isIntersecting ? en.intersectionRatio : 0;
+        if (!en.isIntersecting && f._live) {
+          f._live = false;
+          f.closest(".stage").classList.remove("is-live");
+          f.setAttribute("src", "about:blank");
+        }
+      });
+      if (!scrolling) settle();
+    }, { threshold: [0, 0.5] });
+    live.forEach(function (f) {
+      f.addEventListener("load", function () { if (f._live) f.closest(".stage").classList.add("is-live"); });
+      lv.observe(f);
+    });
+    window.addEventListener("scroll", function () {
+      scrolling = true;
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(function () { scrolling = false; settle(); }, 200);
+    }, { passive: true });
+  }
+  if (waiting.length) setTimeout(begin, document.querySelector("[data-hero]") && !reduce.matches ? 1900 : 0);
+
   /* timelines */
   var sheets = [];
   var offsets = typeof WeakMap === "function" ? new WeakMap() : null;
@@ -93,11 +136,16 @@
         try { var d = self.frame.contentDocument; return d && d.getAnimations ? d.getAnimations() : []; } catch (e) { return []; }
       };
       var loaded = function () {
+        self.known = []; // a reloaded demo is a new document; forget the old one's animations
+        self.sig = "";
         self.ready();
         setTimeout(function () { self.scan(); }, 400);
         setTimeout(function () { self.scan(); }, 1600);
       };
-      this.frame.addEventListener("load", loaded);
+      this.frame.addEventListener("load", function () {
+        try { if (self.frame.contentDocument.URL === "about:blank") return; } catch (e) { /* cross-origin never happens here */ }
+        loaded();
+      });
       try { if (this.frame.contentDocument && this.frame.contentDocument.readyState === "complete" && this.frame.contentDocument.URL !== "about:blank") loaded(); } catch (e) { /* not ready */ }
     }
     this.bind();
@@ -245,14 +293,40 @@
     return Math.max(0, Math.min(this.T, t));
   };
 
+  Sheet.prototype.running = function () {
+    for (var i = 0; i < this.items.length; i++) if (this.items[i].a.playState === "running") return true;
+    return false;
+  };
+
   Sheet.prototype.tick = function () {
     if (!this.items.length) return;
     var t = this.now();
-    this.body.style.setProperty("--t", (t / this.T).toFixed(4));
-    var txt = secs(t);
-    if (this.time.textContent !== txt) this.time.textContent = txt;
-    this.body.setAttribute("aria-valuenow", String(Math.round(t)));
-    this.body.setAttribute("aria-valuetext", txt);
+    var f = (t / this.T).toFixed(4);
+    if (f === this.lastF) return;
+    this.lastF = f;
+    this.body.style.setProperty("--t", f);
+    this.time.textContent = secs(t);
+    // Screen readers only need the value when someone is scrubbing, not sixty times a second.
+    if (this.paused || this.dragging) {
+      this.body.setAttribute("aria-valuenow", String(Math.round(t)));
+      this.body.setAttribute("aria-valuetext", secs(t));
+    }
+  };
+
+  // Offscreen demos stop: every stage shares this page's main thread, so a loop nobody can see
+  // still costs frames. Only animations this script paused are resumed.
+  Sheet.prototype.sleep = function (asleep) {
+    if (!this.frame) return;
+    var doc;
+    try { doc = this.frame.contentDocument; } catch (e) { return; }
+    if (!doc || !doc.getAnimations) return;
+    if (asleep) {
+      this.slept = doc.getAnimations().filter(function (a) { return a.playState === "running"; });
+      this.slept.forEach(function (a) { a.pause(); });
+    } else if (this.slept) {
+      if (!this.paused) this.slept.forEach(function (a) { try { a.play(); } catch (e) { /* gone */ } });
+      this.slept = null;
+    }
   };
 
   Sheet.prototype.each = function (fn) { this.items.forEach(function (i) { try { fn(i); } catch (e) { /* an animation can vanish mid-call */ } }); };
@@ -264,6 +338,7 @@
   Sheet.prototype.seek = function (t) {
     this.each(function (i) { i.a.pause(); i.a.currentTime = t - i.off; });
     this.setPaused(true);
+    this.lastF = null;
     this.tick();
   };
   Sheet.prototype.replay = function () {
@@ -336,19 +411,27 @@
 
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (list) {
-      list.forEach(function (en) { sheets.forEach(function (s) { if (s.node === en.target) s.visible = en.isIntersecting; }); });
-    });
-    sheets.forEach(function (s) { io.observe(s.node); });
+      list.forEach(function (en) {
+        sheets.forEach(function (s) {
+          if (s.box !== en.target) return;
+          s.visible = en.isIntersecting;
+          s.sleep(!en.isIntersecting);
+        });
+      });
+    }, { rootMargin: "120px 0px" });
+    sheets.forEach(function (s) { s.box = s.node.closest(".spec, .reel, .studio-stage, .hero") || s.node; io.observe(s.box); });
   } else sheets.forEach(function (s) { s.visible = true; });
 
-  // One clock for every visible timeline; a slower rescan picks up animations that start later.
+  // One clock for the timelines on screen. It only draws while something there is playing, and a
+  // slower rescan picks up animations that start later.
   var last = 0;
   function frame(now) {
     var rescan = now - last > 2000;
     if (rescan) last = now;
     sheets.forEach(function (s) {
       if (!s.visible || !s.node.hasAttribute("data-ready")) return;
-      if (rescan && !s.dragging && !s.paused) s.scan(); else s.tick();
+      if (rescan && !s.dragging && !s.paused) s.scan();
+      else if (s.dragging || s.running()) s.tick();
     });
     requestAnimationFrame(frame);
   }

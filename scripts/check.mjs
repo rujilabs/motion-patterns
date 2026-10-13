@@ -54,6 +54,7 @@ export function check() {
         fail(at, `a port copies code, so source.licence must be one of ${PORT_LICENCES.join(", ")}; otherwise rebuild it as a recreation`);
       }
     }
+    if (e.kind === "template" && !existsSync(join(e.path, "poster.jpg"))) fail(at, "missing poster.jpg; run npm run posters -- " + e.slug);
     if (e.kind === "template") {
       if (!Array.isArray(m.uses) || !m.uses.length) fail(at, "a template lists the patterns it uses in \"uses\"");
       else for (const u of m.uses) if (!patternSlugs.has(u)) fail(at, `uses unknown pattern "${u}"`);

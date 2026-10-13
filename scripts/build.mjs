@@ -132,8 +132,15 @@ function sheet(id, { trigger = "", label = "" } = {}) {
 
 function stage(e, { lazy = true, size = "" } = {}) {
   const m = e.meta;
-  return `<div class="stage stage-${e.kind}${size}" data-stage="${e.slug}">
-  <iframe src="/${e.rel}/demo.html" title="${esc(m.name)} demo"${lazy ? ' loading="lazy"' : ""} data-for="${e.slug}"></iframe>
+  // Gallery templates show their poster until the visitor stops on them; only then does the live page load.
+  const poster = lazy && e.kind === "template" && existsSync(join(e.path, "poster.jpg"));
+  return `<div class="stage stage-${e.kind}${size}${poster ? " has-poster" : ""}" data-stage="${e.slug}">
+  ${poster ? `<img class="stage-poster" src="/${e.rel}/poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">\n  ` : ""}${lazy
+    // In the gallery studio.js loads each demo once it is near the screen and the headline has landed,
+    // so sixteen documents never start on the same thread at once.
+    ? `<iframe data-src="/${e.rel}/demo.html" title="${esc(m.name)} demo" data-for="${e.slug}"${poster ? " data-live" : ""}></iframe>
+  <noscript><a class="stage-open" href="/${e.rel}/demo.html">Open the ${esc(m.name)} demo</a></noscript>`
+    : `<iframe src="/${e.rel}/demo.html" title="${esc(m.name)} demo" data-for="${e.slug}"></iframe>`}
 </div>`;
 }
 
@@ -208,7 +215,7 @@ function curveBlock(c) {
     <svg viewBox="0 0 ${PLOT.W} ${PLOT.H}" preserveAspectRatio="none" aria-hidden="true">${grid}<path d="${pathFor(c.points)}" class="plot-line" vector-effect="non-scaling-stroke"/></svg>
     <span class="plot-x"><span class="plot-y"><span class="plot-dot"></span></span></span>
   </div>
-  <div class="lane" aria-hidden="true"><span class="lane-ball"></span></div>
+  <div class="lane" aria-hidden="true"><span class="lane-run"><span class="lane-ball"></span></span></div>
   <figcaption><code>${c.name}</code><span>${esc(c.note)}</span></figcaption>
 </figure>`;
 }
