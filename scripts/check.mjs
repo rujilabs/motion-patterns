@@ -2,7 +2,7 @@
 // Exits non-zero with one line per problem.
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, relative, extname } from "node:path";
-import { loadEntries, ROOT } from "./entries.mjs";
+import { loadEntries, ROOT, isMain } from "./entries.mjs";
 import { catalogueIsFresh } from "./catalogue.mjs";
 
 const CATEGORIES = ["entry", "emphasis", "loop", "scroll", "scene", "type"];
@@ -79,16 +79,23 @@ export function check() {
     if (extname(file) === ".css" && rel !== "tokens.css" && /cubic-bezier\(/.test(text)) {
       fail(rel, "raw cubic-bezier(); add a token to tokens.css and use it");
     }
+    if (extname(file) === ".css" && /url\(\s*["']?\s*(https?:)?\/\/|@import/i.test(text)) {
+      fail(rel, "loads an external URL or uses @import; keep entries self-contained");
+    }
+    if (extname(file) === ".svg" && /<[a-z][^>]*\s(?:on[a-z]+|style)\s*=|<script/i.test(text)) {
+      fail(rel, "SVG with script, inline style or an event handler");
+    }
     if (extname(file) === ".html") {
       if (/\sstyle\s*=/.test(text)) fail(rel, "style=\"\" attribute (blocked by the site CSP); use a class");
       if (/<style[\s>]/.test(text)) fail(rel, "inline <style> block (blocked by the site CSP); use a stylesheet");
       if (/<script(?![^>]*\ssrc=)[^>]*>/.test(text)) fail(rel, "inline <script> (blocked by the site CSP); use a file");
-      if (/\son[a-z]+\s*=/.test(text)) fail(rel, "inline event handler (blocked by the site CSP)");
-      for (const u of text.matchAll(/\s(?:src|href)\s*=\s*"(https?:)?\/\//g)) fail(rel, "loads an external URL; entries must be self-contained");
+      if (/<[a-z][^>]*\son[a-z]+\s*=/i.test(text)) fail(rel, "inline event handler (blocked by the site CSP)");
+      for (const u of text.matchAll(/\s(?:src|href)\s*=\s*["']?\s*(https?:)?\/\//gi)) fail(rel, "loads an external URL; entries must be self-contained");
     }
   }
 
-  if (!catalogueIsFresh()) fail("README.md", "the catalogue is out of date; run npm run catalogue");
+  // The catalogue reads every meta.json, so only compare it once the metadata itself is sound.
+  if (!problems.length && !catalogueIsFresh()) fail("README.md", "the catalogue is out of date; run npm run catalogue");
   return problems;
 }
 
@@ -101,7 +108,7 @@ function* walk(dir) {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (isMain(import.meta.url)) {
   const problems = check();
   if (problems.length) {
     console.error(problems.map((p) => `x ${p}`).join("\n"));

@@ -14,5 +14,8 @@ h1 { margin: 0; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spa
 .cta:focus-visible { outline: 3px solid #f2874a; outline-offset: 3px; }
 .tag { padding: 4px 10px; border-radius: 999px; background: #f2874a; color: #2b2118; font-size: 13px; }
 
+/* The birds start drifting once the build is done. */
+.js .scene .drift { animation-delay: calc(9 * var(--stagger-paper) + var(--dur-slow)); }
+
 /* The price tag pops after the last paper layer lands (layer 9 x --stagger-paper + --dur-slow). */
 .js .tag.pop { animation-delay: calc(9 * var(--stagger-paper) + var(--dur-slow)); }

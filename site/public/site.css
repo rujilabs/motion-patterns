@@ -62,3 +62,4 @@ code, pre { font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monosp
 
 .foot { padding-block: 24px 48px; border-top: 1px solid var(--line); color: var(--mute); font-size: 14px; }
 .foot p { max-width: 80ch; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

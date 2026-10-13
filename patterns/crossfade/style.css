@@ -1,6 +1,6 @@
 /*
- * crossfade: three stacked frames take turns over a 12s cycle. Each frame holds about 3s and
- * overlaps the next by about 1s. The first frame starts visible (negative delay), so nothing
+ * crossfade: three stacked frames take turns over a 12s cycle. A frame stays opaque until the
+ * next one has fully faded in on top of it, so the background never shows through. The first frame starts visible (negative delay), so nothing
  * is ever blank on load.
  */
 .crossfade { display: grid; }
@@ -11,8 +11,8 @@
 @keyframes crossfade {
   0%   { opacity: 0; }
   8%   { opacity: 1; }
-  33%  { opacity: 1; }
-  41%  { opacity: 0; }
+  42%  { opacity: 1; }
+  50%  { opacity: 0; }
   100% { opacity: 0; }
 }
 

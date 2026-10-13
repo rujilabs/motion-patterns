@@ -26,9 +26,9 @@ h1 { margin: 8px 0; font-size: clamp(40px, 8vw, 80px); line-height: 1; letter-sp
 .s2 { animation-delay: calc(var(--stagger) * 3); }
 .s3 { animation-delay: calc(var(--stagger) * 6); }
 .s4 { animation-delay: calc(var(--stagger) * 9); }
-.p1 { animation-delay: calc(var(--stagger) * 4); }
-.p2 { animation-delay: calc(var(--stagger) * 7); }
-.p3 { animation-delay: calc(var(--stagger) * 10); }
-.p4 { animation-delay: calc(var(--stagger) * 13); }
+.p1 { animation-delay: var(--dur-base); }
+.p2 { animation-delay: calc(var(--stagger) * 3 + var(--dur-base)); }
+.p3 { animation-delay: calc(var(--stagger) * 6 + var(--dur-base)); }
+.p4 { animation-delay: calc(var(--stagger) * 9 + var(--dur-base)); }
 
 .crumb { position: absolute; width: 120px; right: 6%; top: 8%; opacity: .55; pointer-events: none; }

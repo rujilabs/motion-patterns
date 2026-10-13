@@ -39,6 +39,19 @@ if (gz > BUNDLE_BUDGET_GZ) {
   process.exit(1);
 }
 
+// Each template also gets bundle.css: tokens + the patterns it uses + its own CSS, so Copy CSS gives a
+// complete, working stylesheet. Font paths are rewritten for a file that sits next to a fonts/ folder.
+const patternCss = (slug) => readFileSync(join(ROOT, "patterns", slug, "style.css"), "utf8");
+for (const t of templates) {
+  const parts = [
+    `/* ${t.meta.name} | motion-patterns | MIT | ${REPO_URL}/tree/main/${t.rel} */`,
+    readFileSync(join(ROOT, "tokens.css"), "utf8"),
+    ...t.meta.uses.map((u) => `/* pattern: ${u} */\n` + patternCss(u)),
+    `/* template */\n` + readFileSync(join(t.path, "style.css"), "utf8"),
+  ];
+  writeFileSync(join(DIST, t.rel, "bundle.css"), parts.join("\n").replace(/\.\.\/\.\.\/fonts\//g, "fonts/"));
+}
+
 function credit(m) {
   if (m.relation === "original") return "Original";
   const label = { port: "Port of", recreation: "Recreation of", "inspired-by": "Inspired by" }[m.relation];
@@ -55,8 +68,8 @@ function card(e) {
     <p class="tags">${m.tech.map((t) => `<span>${esc(t)}</span>`).join("")}<span>${esc(m.trigger)}</span></p>
     <p class="credit">${credit(m)}</p>
     <div class="actions">
-      <button type="button" data-replay>Replay</button>
-      <button type="button" data-copy="${e.rel}/style.css">Copy CSS</button>
+      <button type="button" data-replay aria-label="Replay ${esc(m.name)}">Replay</button>
+      <button type="button" data-copy="${e.rel}/${e.kind === "template" ? "bundle" : "style"}.css" data-name="${esc(m.name)}" aria-label="Copy ${esc(m.name)} CSS">Copy CSS</button>
       <a href="${REPO_URL}/tree/main/${e.rel}" rel="noopener">Code</a>${existsSync(join(e.path, "preview.mp4")) ? `\n      <a href="${e.rel}/preview.mp4">Video</a>` : ""}
     </div>
   </div>
@@ -75,7 +88,7 @@ const html = `<!doctype html>
 <meta property="og:description" content="A credited collection of web motion. CSS first, no dependencies, MIT.">
 <meta property="og:url" content="${SITE_URL}/">
 <meta property="og:type" content="website">
-${existsSync(join(DIST, "og.png")) ? `<meta property="og:image" content="${SITE_URL}/og.png">\n<meta name="twitter:card" content="summary_large_image">` : ""}
+${existsSync(join(DIST, "og.jpg")) ? `<meta property="og:image" content="${SITE_URL}/og.jpg">\n<meta name="twitter:card" content="summary_large_image">` : ""}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="site.css">
 <script src="gallery.js" defer></script>
@@ -97,7 +110,8 @@ ${existsSync(join(DIST, "og.png")) ? `<meta property="og:image" content="${SITE_
   <pre><code>&lt;link rel="stylesheet" href="motion.css"&gt;
 &lt;script src="play.js"&gt;&lt;/script&gt;   &lt;!-- only for in-view patterns --&gt;
 
-&lt;h1 class="rise"&gt;Hello&lt;/h1&gt;</code></pre>
+&lt;h1&gt;Hello&lt;/h1&gt;
+&lt;p class="rise"&gt;The heading is already there; this line rises in.&lt;/p&gt;</code></pre>
   <p>Or copy one entry: <code>tokens.css</code> plus that entry's <code>style.css</code>. Everything respects <code>prefers-reduced-motion</code> by showing the finished state.</p>
 </section>
 
@@ -110,6 +124,8 @@ ${existsSync(join(DIST, "og.png")) ? `<meta property="og:image" content="${SITE_
 <main class="grid">
 ${[...templates, ...patterns].map(card).join("\n")}
 </main>
+
+<p class="sr-only" role="status" aria-live="polite" id="status"></p>
 
 <footer class="foot">
   <p>MIT licence for the code here. Every entry credits its source; recreations copy no code or assets.

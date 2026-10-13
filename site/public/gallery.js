@@ -1,6 +1,8 @@
 // Gallery behaviour: filters, replay, copy CSS. The page works without it.
 (function () {
   var cards = Array.prototype.slice.call(document.querySelectorAll(".entry"));
+  var status = document.getElementById("status");
+  function announce(msg) { if (status) status.textContent = msg; }
 
   document.querySelectorAll("[data-filter]").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -23,8 +25,8 @@
       fetch(btn.getAttribute("data-copy"))
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
         .then(function (css) { return navigator.clipboard.writeText(css); })
-        .then(function () { btn.textContent = "Copied"; })
-        .catch(function () { btn.textContent = "Copy failed"; })
+        .then(function () { btn.textContent = "Copied"; announce(btn.getAttribute("data-name") + " CSS copied"); })
+        .catch(function () { btn.textContent = "Copy failed"; announce("Copy failed"); })
         .then(function () { setTimeout(function () { btn.textContent = label; }, 1600); });
     });
   });

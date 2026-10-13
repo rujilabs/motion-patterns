@@ -15,13 +15,13 @@
   ],
   "trigger": "in-view",
   "reduced_motion": "final-state",
-  "relation": "inspired-by",
+  "relation": "recreation",
   "added": "2026-10-13",
   "source": {
-    "title": "AI city paper diorama (video prompt)",
+    "title": "Paper diorama video prompt (\"AI city paper diorama\"), posted on Threads",
     "author": "@dikipirasaputra",
     "url": "https://www.threads.com/@dikipirasaputra",
     "licence": "none stated",
-    "notes": "The source is an AI video prompt. This entry is a CSS and SVG build written from scratch; no code or assets were copied."
+    "notes": "The source post shares an AI video prompt and the video it made. This is a CSS and SVG rebuild of the look and motion, written from scratch; no prompt text, frames or assets were copied."
   }
 }

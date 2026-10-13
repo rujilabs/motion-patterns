@@ -1,5 +1,7 @@
 /* marquee: an endless row. The track holds the content twice; the copy is aria-hidden. */
-.marquee { overflow: clip; min-width: 0; max-width: 100%; }
+.marquee { overflow: clip; min-width: 0; max-width: 100%; container-type: inline-size; }
+/* each copy is at least as wide as the row, so the loop never shows a gap on wide screens */
+.marquee-track > * { flex: none; min-inline-size: 100cqi; }
 .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
 .marquee:hover .marquee-track,
 .marquee:focus-within .marquee-track { animation-play-state: paused; }

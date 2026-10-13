@@ -10,8 +10,13 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": 
   ".svg": "image/svg+xml", ".png": "image/png", ".woff2": "font/woff2", ".xml": "application/xml", ".txt": "text/plain", ".mp4": "video/mp4" };
 
 createServer(async (req, res) => {
-  let p = normalize(decodeURIComponent(new URL(req.url, "http://x").pathname)).replace(/^(\.\.[/\\])+/, "");
-  let file = join(DIST, p);
+  let file;
+  try {
+    file = join(DIST, normalize(decodeURIComponent(new URL(req.url, "http://x").pathname)).replace(/^(\.\.[/\\])+/, ""));
+  } catch {
+    res.writeHead(400).end("Bad request");
+    return;
+  }
   try {
     if ((await stat(file)).isDirectory()) file = join(file, "index.html");
     res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream", "cache-control": "no-store" });

@@ -2,7 +2,7 @@
 // npm run catalogue rewrites both; the check gate fails when either is stale.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { loadEntries, ROOT } from "./entries.mjs";
+import { loadEntries, ROOT, isMain } from "./entries.mjs";
 import { SITE_URL } from "./site.mjs";
 
 const START = "<!-- catalogue:start -->";
@@ -46,7 +46,7 @@ export function catalogueIsFresh() {
   return readFileSync(README, "utf8") === readmeWith(table("")) && readFileSync(REF, "utf8") === refDoc(table("../../"));
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (isMain(import.meta.url)) {
   writeFileSync(README, readmeWith(table("")));
   writeFileSync(REF, refDoc(table("../../")));
   console.log("catalogue written");

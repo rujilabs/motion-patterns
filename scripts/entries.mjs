@@ -1,8 +1,12 @@
 // Reads every entry (patterns/* and templates/*) and its meta.json.
 import { readdirSync, readFileSync, existsSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-export const ROOT = new URL("..", import.meta.url).pathname;
+export const ROOT = fileURLToPath(new URL("..", import.meta.url));
+
+// True when the given module file is the script node was started with.
+export const isMain = (url) => fileURLToPath(url) === process.argv[1] || fileURLToPath(url) === join(process.cwd(), process.argv[1] || "");
 export const KINDS = { pattern: "patterns", template: "templates" };
 
 export function loadEntries() {
