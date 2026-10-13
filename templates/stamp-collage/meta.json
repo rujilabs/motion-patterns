@@ -2,7 +2,7 @@
   "name": "Stamp collage",
   "slug": "stamp-collage",
   "kind": "template",
-  "summary": "A menu board where paper scraps stamp on at a tilt, price stickers pop after each one, a live dot pulses and a shape drifts in the corner.",
+  "summary": "A menu board: scraps stamp on, prices pop after each, a Sold out ink seal lands, cards lift on hover, a live dot beats and shapes drift behind.",
   "category": "entry",
   "tech": [
     "css",
@@ -15,11 +15,12 @@
     "drift"
   ],
   "tokens": [
-    "--ease-spring",
-    "--ease-out",
     "--dur-base",
-    "--stagger",
-    "--ease-in"
+    "--dur-quick",
+    "--ease-in",
+    "--ease-out",
+    "--ease-spring",
+    "--stagger"
   ],
   "trigger": "load",
   "reduced_motion": "final-state",
