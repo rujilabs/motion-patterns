@@ -1,16 +1,36 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.pop-demo { width: min(360px, 100%); display: grid; gap: 12px; justify-items: stretch; text-align: center; }
-.product { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; text-align: left; }
-.thumb { width: 56px; height: 56px; border-radius: 10px; background: linear-gradient(135deg, #e9dcc6, #cdb994); }
-.name { font-weight: 700; }
-.chips { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
-.chip { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--demo-accent); color: #fff; }
-.chip-mint { background: var(--demo-mint); }
-.cart { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-  border: 1px solid var(--demo-line); color: var(--demo-ink); }
-.count { --pop-origin: 0 100%; position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px;
-  border-radius: 999px; background: #e5484d; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
-.buy { font: inherit; font-weight: 700; padding: 14px; border: 0; border-radius: 12px; background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; }
-.buy:focus-visible { outline: 2px solid var(--demo-accent); outline-offset: 3px; }
-.chips .pop:nth-child(2) { animation-delay: calc(var(--stagger) * 2); }
-.count.pop { animation-delay: calc(var(--stagger) * 5); }
+.shop { width: min(340px, 100%); display: grid; gap: 10px; }
+.bar { display: flex; justify-content: space-between; align-items: center; padding: 0 2px; }
+.shopname { font-weight: 700; letter-spacing: -.01em; }
+.cart { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 6px;
+  background: var(--demo-paper); border: 1px solid var(--demo-line); color: var(--demo-ink); }
+/* springs out of its own corner, the one touching the icon */
+.count { --pop-origin: 0 100%; position: absolute; top: -7px; right: -7px; min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 9px; background: var(--demo-red); color: #fff; font-size: 11px; font-weight: 700; line-height: 18px; text-align: center; }
+.item { overflow: clip; }
+.shot { position: relative; display: grid; place-items: center; height: 168px; background: var(--demo-table); color: var(--demo-ink); border-bottom: 1px solid var(--demo-line); }
+.shot svg { width: 200px; height: 160px; }
+.badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 4px; }
+.badge { --pop-origin: 0 50%; padding: 2px 7px; border-radius: 4px; font-size: 12px; font-weight: 600;
+  background: var(--demo-paper); color: var(--demo-ink); border: 1px solid var(--demo-line); }
+.badge-new { background: var(--demo-blue); border-color: var(--demo-blue); color: #fff; }
+.item-body { display: grid; gap: 2px; padding: 12px 14px 14px; }
+.item-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.item h1 { font-size: 16px; font-weight: 650; letter-spacing: -.005em; }
+.price { font-weight: 650; }
+.item-sub { color: var(--demo-mute); font-size: 13px; }
+.buy { margin-top: 12px; font: inherit; font-weight: 600; padding: 11px; border: 0; border-radius: 6px;
+  background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; }
+/* the sequence: the product is there, then its labels, then the cart catches the count */
+.badges .pop:nth-child(1) { animation-delay: calc(var(--stagger) * 3); }
+.badges .pop:nth-child(2) { animation-delay: calc(var(--stagger) * 5); }
+.count.pop { animation-delay: calc(var(--stagger) * 9); }
+@media (max-height: 440px) {
+  .shot { height: 132px; }
+  .shot svg { height: 128px; }
+  .buy { margin-top: 8px; padding: 9px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .shop { width: 380px; }
+  .shot { height: 200px; }
+}

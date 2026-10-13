@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rise · motion-patterns</title>
+<title>Rise demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,15 +14,18 @@
 </head>
 <body>
 <main class="stage">
-  <section class="rise-demo" aria-labelledby="rise-h">
-    <h1 id="rise-h">Plan your week in one place</h1>
-    <p class="lede rise-soft">The heading is there from the first frame. This line softens in under it.</p>
-    <ul class="list stagger" role="list">
-      <li class="card rise"><strong>Calendar</strong><span>Every booking, one view</span></li>
-      <li class="card rise"><strong>Reminders</strong><span>Sent the day before</span></li>
-      <li class="card rise"><strong>Payments</strong><span>Collected at checkout</span></li>
-      <li class="card rise"><strong>Reports</strong><span>Weekly, by email</span></li>
-    </ul>
+  <section class="day sheet" aria-labelledby="day-h">
+    <header class="day-head">
+      <h1 id="day-h">Tuesday, 14 October</h1>
+      <p class="day-sum rise-soft">Four bookings. The 3 pm hour is still open.</p>
+    </header>
+    <ol class="slots stagger">
+      <li class="slot rise"><time class="num" datetime="09:00">09:00</time><span class="who"><strong>Hana Rahman</strong><span>Cut and blow-dry</span></span><span class="len num">45 min</span></li>
+      <li class="slot rise"><time class="num" datetime="10:30">10:30</time><span class="who"><strong>Wei Ling Tan</strong><span>Colour, roots only</span></span><span class="len num">90 min</span></li>
+      <li class="slot slot-now rise"><time class="num" datetime="13:15">13:15</time><span class="who"><strong>Arjun Nair</strong><span>Beard trim</span></span><span class="len num">20 min</span></li>
+      <li class="slot slot-open rise"><time class="num" datetime="15:00">15:00</time><span class="who"><strong>Open</strong><span>Share this hour with the waitlist</span></span><span class="len num">60 min</span></li>
+      <li class="slot rise"><time class="num" datetime="16:30">16:30</time><span class="who"><strong>Siti Aminah</strong><span>Cut</span></span><span class="len num">30 min</span></li>
+    </ol>
   </section>
 </main>
 </body>

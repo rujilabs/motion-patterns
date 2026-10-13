@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marquee · motion-patterns</title>
+<title>Marquee demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,25 +14,24 @@
 </head>
 <body>
 <main class="stage">
-  <section class="marquee-group" aria-labelledby="mq-h">
+  <section class="marquee-group stock sheet" aria-labelledby="mq-h">
     <div class="mq-head">
-      <h1 id="mq-h">Stocked by</h1>
-      <label class="marquee-pause"><input type="checkbox"> Pause</label>
+      <div>
+        <h1 id="mq-h">Stocked in 42 shops</h1>
+        <p class="mq-sub">From George Town to Kuching, and counting.</p>
+      </div>
+      <label class="marquee-pause switch"><input type="checkbox"> Pause</label>
     </div>
     <div class="marquee" role="region" tabindex="0" aria-label="Shops that stock us">
       <div class="marquee-track">
-        <ul class="marquee-list">
-          <li>Northwind</li><li>Kettle &amp; Co</li><li>Lumen</li><li>Harbor</li><li>Fieldnote</li><li>Orbit</li>
-        </ul>
-        <ul class="marquee-list" aria-hidden="true">
-          <li>Northwind</li><li>Kettle &amp; Co</li><li>Lumen</li><li>Harbor</li><li>Fieldnote</li><li>Orbit</li>
-        </ul>
+        <ul class="marquee-list shops"><li class="w8">Kedai Ruang</li><li class="w3">Northwind</li><li class="w6">Kettle and Co</li><li class="w5 caps">LUMEN</li><li class="w4">Harbor Goods</li><li class="w7 low">fieldnote</li><li class="w5">Pasar Kecil</li></ul>
+        <ul class="marquee-list shops" aria-hidden="true"><li class="w8">Kedai Ruang</li><li class="w3">Northwind</li><li class="w6">Kettle and Co</li><li class="w5 caps">LUMEN</li><li class="w4">Harbor Goods</li><li class="w7 low">fieldnote</li><li class="w5">Pasar Kecil</li></ul>
       </div>
     </div>
     <div class="marquee marquee-reverse slow" aria-hidden="true">
       <div class="marquee-track">
-        <ul class="marquee-list quiet"><li>Ceramics</li><li>Linen</li><li>Soap</li><li>Honey</li><li>Coffee</li><li>Paper</li></ul>
-        <ul class="marquee-list quiet"><li>Ceramics</li><li>Linen</li><li>Soap</li><li>Honey</li><li>Coffee</li><li>Paper</li></ul>
+        <ul class="marquee-list cities"><li>George Town <span class="num">9</span></li><li>Ipoh <span class="num">6</span></li><li>Kuala Lumpur <span class="num">14</span></li><li>Melaka <span class="num">4</span></li><li>Kota Bharu <span class="num">3</span></li><li>Kuching <span class="num">4</span></li><li>Johor Bahru <span class="num">2</span></li></ul>
+        <ul class="marquee-list cities"><li>George Town <span class="num">9</span></li><li>Ipoh <span class="num">6</span></li><li>Kuala Lumpur <span class="num">14</span></li><li>Melaka <span class="num">4</span></li><li>Kota Bharu <span class="num">3</span></li><li>Kuching <span class="num">4</span></li><li>Johor Bahru <span class="num">2</span></li></ul>
       </div>
     </div>
   </section>

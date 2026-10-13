@@ -1,8 +1,18 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.reveal-progress { color: var(--demo-accent); }
-.reveal-demo { display: grid; gap: 28vh; padding: 28px 20px 40vh; max-width: 420px; margin: 0 auto; }
-.reveal-demo h1 { font-size: clamp(26px, 6vw, 36px); letter-spacing: -.02em; margin-top: 4px; }
-.lede { color: var(--demo-mute); margin-top: 6px; }
-.reveal-demo h2 { font-size: 18px; margin-bottom: 2px; }
-.shot { margin: 0; border-radius: 12px; overflow: clip; aspect-ratio: 5 / 3; }
+.reveal-progress { color: var(--demo-blue); }
+.article { display: grid; gap: 22vh; max-width: 440px; margin: 0 auto; padding: 28px 16px 45vh; }
+.art-head { display: grid; gap: 8px; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.art-head h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+.art-meta { display: flex; gap: 16px; color: var(--demo-mute); font-size: 13px; }
+.shot { border-radius: 6px; overflow: clip; aspect-ratio: 5 / 3; margin-top: -16vh; }
 .shot svg { display: block; width: 100%; height: 100%; }
+.reveal-clip { margin-top: 0; }
+.step { display: grid; gap: 4px; padding: 16px 18px; }
+.step-n { color: var(--demo-blue); font-size: 13px; font-weight: 700; }
+.step h2 { font-size: 18px; font-weight: 650; }
+.step p:last-child { color: var(--demo-mute); }
+.end { color: var(--demo-mute); text-align: center; }
+@media (min-width: 900px) {
+  .article { max-width: 520px; }
+}

@@ -8,7 +8,7 @@ In about ten minutes you will add a small pattern called `nudge` to the collecti
 npm run dev
 ```
 
-Open http://localhost:4321. Every card is a live demo. Stop the server with `Ctrl+C` when you want to rebuild.
+Open http://localhost:4321. Every entry plays live above its own timeline; drag across the timeline to scrub. Stop the server with `Ctrl+C` when you want to rebuild.
 
 ## 2. Make the folder
 
@@ -55,7 +55,7 @@ It uses tokens from `tokens.css` and has a reduced-motion rule. The gate checks 
 </head>
 <body>
 <main class="stage">
-  <p class="card nudge">Swipe for more</p>
+  <p class="sheet nudge">Swipe for more</p>
 </main>
 </body>
 </html>
@@ -112,7 +112,7 @@ npm run catalogue
 npm run check
 ```
 
-`check passed`. Run `npm run dev` again and the Nudge card is in the gallery.
+`check passed`. Run `npm run dev` again and Nudge is in the gallery, with its own page at /patterns/nudge/.
 
 ## What you learned
 

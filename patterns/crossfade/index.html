@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crossfade · motion-patterns</title>
+<title>Crossfade demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,25 +14,60 @@
 </head>
 <body>
 <main class="stage">
-  <section class="crossfade-group xf-demo" aria-labelledby="xf-h">
-    <div class="xf-head">
-      <h1 id="xf-h">A day at the cabin</h1>
-      <label class="crossfade-pause"><input type="checkbox"> Pause</label>
+  <section class="crossfade-group stay sheet" aria-labelledby="xf-h">
+    <div class="crossfade crossfade-zoom" tabindex="0" role="group" aria-label="Three photos of the cabin, changing every 4 seconds">
+      <figure class="xf-frame">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#e7e3ea"/>
+          <circle cx="76" cy="92" r="20" fill="#f6c9a8"/>
+          <path d="M0 98 L60 74 L118 92 L176 66 L236 88 L320 70 V120 H0Z" fill="#b9b6c6"/>
+          <rect y="112" width="320" height="68" fill="#cfd3dc"/>
+          <rect x="0" y="122" width="320" height="6" fill="#e7e3ea" opacity=".8"/>
+          <rect x="40" y="138" width="240" height="4" fill="#e7e3ea" opacity=".6"/>
+          <path d="M196 112 V92 L222 74 L248 92 V112Z" fill="#6e5f63"/>
+          <path d="M204 113 h70 v3 h-70Z M212 116 v9 M240 116 v9 M268 116 v9" fill="#8b7f84" stroke="#8b7f84" stroke-width="2"/>
+          <rect x="214" y="98" width="10" height="14" fill="#4d4246"/>
+        </svg>
+        <figcaption><span class="num">06:50</span> Mist on the water before breakfast</figcaption>
+      </figure>
+      <figure class="xf-frame">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#9fd0f5"/>
+          <circle cx="250" cy="40" r="16" fill="#fff4c2"/>
+          <path d="M0 98 L60 74 L118 92 L176 66 L236 88 L320 70 V120 H0Z" fill="#3f9a62"/>
+          <path d="M0 108 L80 94 L150 106 L240 96 L320 104 V120 H0Z" fill="#2f7d4f"/>
+          <rect y="112" width="320" height="68" fill="#3d8fc8"/>
+          <path d="M60 140 h40 M150 152 h56 M240 136 h30" stroke="#8ccaf0" stroke-width="2" stroke-linecap="round"/>
+          <path d="M196 112 V92 L222 74 L248 92 V112Z" fill="#9a5b3c"/>
+          <path d="M192 93 L222 70 L252 93" fill="none" stroke="#5c3424" stroke-width="4"/>
+          <path d="M204 113 h70 v3 h-70Z M212 116 v9 M240 116 v9 M268 116 v9" fill="#6b4330" stroke="#6b4330" stroke-width="2"/>
+          <rect x="214" y="98" width="10" height="14" fill="#5c3424"/>
+        </svg>
+        <figcaption><span class="num">12:30</span> The jetty, warm enough to swim</figcaption>
+      </figure>
+      <figure class="xf-frame">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#1d2440"/>
+          <g fill="#e9e6d6"><circle cx="40" cy="30" r="1.2"/><circle cx="96" cy="18" r="1"/><circle cx="150" cy="40" r="1.3"/><circle cx="286" cy="26" r="1"/><circle cx="200" cy="14" r="1.1"/></g>
+          <circle cx="110" cy="52" r="12" fill="#f3efd8"/>
+          <path d="M0 98 L60 74 L118 92 L176 66 L236 88 L320 70 V120 H0Z" fill="#141a30"/>
+          <rect y="112" width="320" height="68" fill="#232c4c"/>
+          <rect x="214" y="120" width="10" height="34" fill="#ffcf6a" opacity=".35"/>
+          <path d="M196 112 V92 L222 74 L248 92 V112Z" fill="#0f1426"/>
+          <path d="M204 113 h70 v3 h-70Z M212 116 v9 M240 116 v9 M268 116 v9" fill="#0b0f1d" stroke="#0b0f1d" stroke-width="2"/>
+          <rect x="214" y="98" width="10" height="10" fill="#ffcf6a"/>
+        </svg>
+        <figcaption><span class="num">21:10</span> One window lit, the lake gone quiet</figcaption>
+      </figure>
     </div>
-    <div class="crossfade crossfade-zoom" tabindex="0" role="group" aria-label="Three photos, changing every 4 seconds">
-      <figure class="xf-frame">
-        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="200" fill="#ffd9b0"/><circle cx="80" cy="120" r="30" fill="#ff9a5a"/><path d="M0 150 Q90 110 180 140 T320 130 V200 H0Z" fill="#9cc79f"/><path d="M200 150 l40 -40 l40 40 Z" fill="#7a4b33"/></svg>
-        <figcaption>Morning, mist on the lake</figcaption>
-      </figure>
-      <figure class="xf-frame">
-        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="200" fill="#bfe3ff"/><circle cx="160" cy="54" r="24" fill="#ffd34d"/><path d="M0 150 Q90 110 180 140 T320 130 V200 H0Z" fill="#5fb36f"/><path d="M200 150 l40 -40 l40 40 Z" fill="#7a4b33"/></svg>
-        <figcaption>Noon, the long walk</figcaption>
-      </figure>
-      <figure class="xf-frame">
-        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="200" fill="#2f2a5e"/><circle cx="250" cy="60" r="18" fill="#f3efd8"/><path d="M0 150 Q90 110 180 140 T320 130 V200 H0Z" fill="#26485a"/><path d="M200 150 l40 -40 l40 40 Z" fill="#14202a"/><rect x="232" y="128" width="10" height="10" fill="#ffcf6a"/></svg>
-        <figcaption>Evening, one window lit</figcaption>
-      </figure>
+    <div class="stay-foot">
+      <div>
+        <h1 id="xf-h">Cabin 3, Tasik Kenyir</h1>
+        <p class="stay-sub">Sleeps 4. One day in June, three photos.</p>
+      </div>
+      <label class="crossfade-pause switch"><input type="checkbox"> Pause</label>
     </div>
+    <div class="ticks" aria-hidden="true"><span></span><span></span><span></span></div>
   </section>
 </main>
 </body>

@@ -1,8 +1,20 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.draw-demo { display: grid; justify-items: center; gap: 10px; text-align: center; }
-.draw-demo h1 { font-size: clamp(24px, 5.6vw, 40px); line-height: 1.15; letter-spacing: -.02em; max-width: 14ch; }
-.accent { --line-w: .12em; --line-y: .02em; color: var(--demo-ink); background-image: linear-gradient(var(--demo-accent), var(--demo-accent)); }
-.sig { width: min(240px, 70vw); height: auto; color: var(--demo-ink); }
-.hint { color: var(--demo-mute); font-size: 15px; }
-.hint a { color: var(--demo-ink); }
-.hint a:focus-visible { outline: 2px solid var(--demo-accent); outline-offset: 3px; border-radius: 2px; }
+.pod { width: min(420px, 100%); display: grid; gap: 16px; }
+.pod h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; line-height: 1.12; }
+/* the underline in blue pencil, sitting just under the baseline */
+.mark { --line-w: .1em; --line-y: -.04em; background-image: linear-gradient(var(--demo-blue), var(--demo-blue)); }
+.sigbox { position: relative; padding: 10px 16px 12px; }
+/* a dashed guide line and a cross, like the box on a courier's handset */
+.sigbox::after { content: "x"; position: absolute; left: 18px; bottom: 40px; color: var(--demo-mute); font-size: 14px; }
+.sig { display: block; width: 100%; height: auto; max-height: 110px; color: var(--demo-ink); }
+.sig-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 4px; padding-top: 8px; border-top: 1px dashed var(--demo-line); font-size: 13px; color: var(--demo-mute); }
+.hint { color: var(--demo-mute); font-size: 14px; }
+.hint a { color: var(--demo-ink); font-weight: 600; }
+@media (max-height: 340px) {
+  .pod { gap: 12px; }
+  .hint { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .pod { width: 480px; }
+  .pod h1 { font-size: 34px; }
+}

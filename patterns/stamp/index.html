@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stamp · motion-patterns</title>
+<title>Stamp demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,17 +14,22 @@
 </head>
 <body>
 <main class="stage">
-  <div class="stamp-demo">
-    <article class="invoice" aria-labelledby="inv-h">
-      <header><h1 id="inv-h">Invoice 0042</h1><span class="sticker stamp tilt-r">Handmade</span></header>
-      <dl>
-        <div><dt>Linen tote, natural</dt><dd>38.00</dd></div>
-        <div><dt>Shipping</dt><dd>6.00</dd></div>
-        <div class="total"><dt>Total</dt><dd>44.00</dd></div>
-      </dl>
-      <p class="seal stamp-ink" role="status">Paid</p>
-    </article>
-  </div>
+  <article class="invoice sheet" aria-labelledby="inv-h">
+    <header class="inv-head">
+      <div>
+        <h1 id="inv-h">Invoice <span class="num">0042</span></h1>
+        <p class="inv-meta num">Issued 9 Oct 2026, Tanah Studio, Ipoh</p>
+      </div>
+      <span class="sticker stamp tilt-r">Made by hand</span>
+    </header>
+    <dl class="lines">
+      <div><dt>Speckled mug, sage rim <span class="qty num">x 2</span></dt><dd class="num">96.00</dd></div>
+      <div><dt>Linen tote, natural</dt><dd class="num">38.00</dd></div>
+      <div><dt>Shipping, Peninsular</dt><dd class="num">8.00</dd></div>
+      <div class="total"><dt>Total, RM</dt><dd class="num">142.00</dd></div>
+    </dl>
+    <p class="seal stamp-ink" role="status"><span class="seal-word">Paid</span><span class="seal-date num">14 Oct 2026</span></p>
+  </article>
 </main>
 </body>
 </html>

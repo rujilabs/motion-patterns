@@ -1,2 +1,17 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.paper-demo { --paper-layers: 6; display: block; width: min(420px, 100%); height: auto; border-radius: 10px; }
+.trip { width: min(440px, 100%); padding: 6px; overflow: clip; }
+/* a slightly quicker build than the pattern's hero pace, so the whole scene lands in about 3 seconds */
+.paper-demo { --stagger-paper: 380ms; --paper-layers: 6; display: block; width: 100%; height: auto; border-radius: 4px; }
+.trip-text { display: grid; gap: 2px; padding: 12px 10px 8px; }
+.trip h1 { font-size: 18px; font-weight: 700; }
+.trip-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; color: var(--demo-mute); font-size: 13px; }
+@media (max-height: 440px) {
+  .trip { width: min(400px, 100%); }
+}
+@media (max-height: 360px) {
+  .trip-meta { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .trip { width: 560px; }
+  .trip h1 { font-size: 20px; }
+}

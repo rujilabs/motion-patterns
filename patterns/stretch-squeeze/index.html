@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stretch and squeeze · motion-patterns</title>
+<title>Stretch and squeeze demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../../fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -14,14 +15,20 @@
 </head>
 <body>
 <main class="stage">
-  <div class="ss-demo">
-    <h1 class="squeeze squeeze-weight"><span>Fresh</span><span>from the</span><span>market</span></h1>
-    <nav class="ss-links" aria-label="Sections">
-      <a class="stretch-host" href="#"><span class="stretch" data-text="Fruit">Fruit</span></a>
-      <a class="stretch-host" href="#"><span class="stretch" data-text="Bread">Bread</span></a>
-      <a class="stretch-host" href="#"><span class="stretch" data-text="Coffee">Coffee</span></a>
+  <article class="poster sheet" aria-labelledby="ss-h">
+    <h1 id="ss-h" class="squeeze squeeze-weight"><span>Sunday</span><span>market,</span><span>Bangsar</span></h1>
+    <dl class="facts">
+      <div><dt>When</dt><dd class="num">Sun, 7 to 11 am</dd></div>
+      <div><dt>Where</dt><dd>Jalan Telawi 3</dd></div>
+      <div><dt>Stalls</dt><dd class="num">62</dd></div>
+    </dl>
+    <nav class="ss-links" aria-label="What is on">
+      <a class="stretch-host" href="#fruit"><span class="stretch" data-text="Fruit">Fruit</span></a>
+      <a class="stretch-host" href="#bread"><span class="stretch" data-text="Bread">Bread</span></a>
+      <a class="stretch-host" href="#kopi"><span class="stretch" data-text="Kopi">Kopi</span></a>
+      <a class="stretch-host" href="#flowers"><span class="stretch" data-text="Flowers">Flowers</span></a>
     </nav>
-  </div>
+  </article>
 </main>
 </body>
 </html>

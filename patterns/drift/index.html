@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Drift · motion-patterns</title>
+<title>Drift demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,19 +14,20 @@
 </head>
 <body>
 <main class="stage">
-  <svg class="drift-demo" viewBox="0 0 400 250" role="img" aria-label="Clouds and a hot-air balloon floating over a hill">
-    <rect width="400" height="250" rx="14" fill="#dceefb"/>
-    <g class="drift drift-slow cloud"><ellipse cx="110" cy="66" rx="52" ry="17"/><ellipse cx="128" cy="54" rx="28" ry="18"/></g>
-    <g class="drift drift-2 drift-slow cloud"><ellipse cx="300" cy="104" rx="44" ry="14"/><ellipse cx="286" cy="95" rx="22" ry="14"/></g>
-    <g class="drift drift-3 balloon">
-      <path d="M232 92 C 210 92, 200 70, 210 52 C 220 34, 250 34, 258 52 C 266 70, 254 92, 232 92 Z" fill="#f2874a"/>
-      <path d="M232 36 C 226 50, 226 80, 232 92 C 238 80, 238 50, 232 36 Z" fill="#ffd2a1"/>
-      <path d="M226 96 L238 96 L236 106 L228 106 Z" fill="#7a4b33"/>
-      <path d="M224 90 L228 96 M240 90 L236 96" stroke="#7a4b33" stroke-width="1.2"/>
-    </g>
-    <path d="M0 200 Q110 150 220 190 T400 180 V250 H0Z" fill="#8fc49a"/>
-    <path d="M0 226 Q140 196 280 222 T400 218 V250 H0Z" fill="#4f9a6c"/>
-  </svg>
+  <section class="empty sheet" aria-labelledby="empty-h">
+    <svg class="sky" viewBox="0 0 320 150" role="img" aria-label="A paper plane floating between two clouds">
+      <path class="trail" d="M10 128 C 60 132, 84 100, 122 106 S 168 118, 186 92"/>
+      <g class="drift drift-slow cloud"><path d="M34 74 a15 15 0 0 1 24 -14 a20 20 0 0 1 38 4 a13 13 0 0 1 4 26 h-62 a11 11 0 0 1 -4 -16 Z"/></g>
+      <g class="drift drift-2 drift-slow cloud cloud-far"><path d="M246 36 a9 9 0 0 1 16 -7 a13 13 0 0 1 24 4 a8 8 0 0 1 2 16 h-40 a7 7 0 0 1 -2 -13 Z"/></g>
+      <g class="drift drift-3 plane">
+        <path class="plane-keel" d="M270 44 L222 92 L216 110 Z"/>
+        <path class="plane-wing" d="M270 44 L184 88 L222 92 Z"/>
+      </g>
+    </svg>
+    <h1 id="empty-h">You are all caught up</h1>
+    <p class="empty-sub">No new messages since Friday. We will let you know when Aiman replies about the venue.</p>
+    <button class="write" type="button">Write a message</button>
+  </section>
 </main>
 </body>
 </html>

@@ -1,14 +1,32 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.rise-demo { width: min(440px, 100%); display: grid; gap: 14px; }
-.rise-demo h1 { font-size: clamp(24px, 4.4vw, 32px); line-height: 1.1; letter-spacing: -.02em; }
-.lede { color: var(--demo-mute); }
-.list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 0; padding: 0; list-style: none; }
-.list .card { display: grid; gap: 2px; padding: 12px 14px; }
-.list span { font-size: 13px; color: var(--demo-mute); }
-@media (max-height: 360px) {
-  .rise-demo { gap: 8px; }
-  .rise-demo h1 { font-size: 20px; }
-  .lede { font-size: 14px; }
-  .list .card { padding: 8px 10px; }
-  .list span { display: none; }
+.day { width: min(440px, 100%); padding: 20px 20px 8px; }
+.day-head { display: grid; gap: 4px; padding-bottom: 14px; border-bottom: 1px solid var(--demo-line); }
+.day-head h1 { font-size: 22px; font-weight: 700; }
+.day-sum { color: var(--demo-mute); }
+.slot { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: baseline; padding: 11px 0; }
+.slot { position: relative; }
+/* a red key mark for the current time, between two bookings */
+.slot-now::after { content: ""; position: absolute; left: 52px; right: 0; bottom: -1px; height: 2px; z-index: 1; background: var(--demo-red); }
+.slot-now::before { content: ""; position: absolute; left: 49px; bottom: -4px; z-index: 1; width: 8px; height: 8px; border-radius: 50%; background: var(--demo-red); }
+.slot + .slot { border-top: 1px solid var(--demo-line); }
+.slot time { font-weight: 600; font-size: 14px; }
+.who { display: grid; min-width: 0; }
+.who strong { font-weight: 600; }
+.who span, .len { color: var(--demo-mute); font-size: 13px; }
+.who span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* the open hour is drawn in blue pencil: a dashed outline, not a filled card */
+.slot-open { margin: 2px -10px; padding: 10px; border: 1px dashed var(--demo-blue); border-radius: 6px; background: var(--demo-blue-soft); color: var(--demo-blue); }
+.slot-open + .slot, .slot + .slot-open { border-top-color: transparent; }
+.slot-open .who span, .slot-open .len { color: inherit; }
+@media (max-height: 440px) {
+  .day { padding-top: 16px; }
+  .day-head { padding-bottom: 10px; }
+  .slot { padding: 8px 0; }
+  .slot-open { padding: 7px 10px; }
+}
+@media (max-height: 340px) {
+  .who span { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .day { width: 480px; }
 }

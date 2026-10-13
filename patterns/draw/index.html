@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Draw · motion-patterns</title>
+<title>Draw demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,15 +14,18 @@
 </head>
 <body>
 <main class="stage">
-  <div class="draw-demo" data-play>
-    <h1>Signed, sealed, <span class="draw-line accent">delivered</span></h1>
-    <svg class="draw draw-seq sig" viewBox="0 0 240 70" role="img" aria-label="A handwritten signature">
-      <path pathLength="1" d="M10 48 C 22 10, 40 10, 34 40 S 52 62, 64 30 C 70 16, 78 50, 90 36 C 100 24, 106 46, 118 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <path pathLength="1" d="M124 38 C 140 18, 150 52, 168 30 S 196 26, 230 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <path pathLength="1" d="M20 60 C 80 54, 160 56, 226 52" fill="none" stroke="var(--demo-accent)" stroke-width="2.5" stroke-linecap="round"/>
-    </svg>
-    <p class="hint">Hover or tab to <a class="draw-hover" href="#terms">read the terms</a>.</p>
-  </div>
+  <article class="pod" data-play aria-labelledby="pod-h">
+    <h1 id="pod-h">Your parcel was <span class="draw-line mark">signed for</span> at 2.41 pm</h1>
+    <div class="sigbox sheet">
+      <svg class="draw draw-seq sig" viewBox="0 0 300 110" role="img" aria-label="The signature of Nurul Aina">
+        <path pathLength="1" d="M28 78 C 34 60, 40 34, 44 30 C 47 27, 46 50, 48 74 C 52 54, 60 34, 66 32 C 70 31, 66 60, 70 72 C 74 64, 78 56, 80 54 C 80 64, 82 72, 88 70 C 94 66, 96 56, 98 54 C 98 62, 98 70, 104 70 C 110 68, 112 60, 116 52 C 118 60, 116 68, 122 70 C 130 70, 132 46, 138 26 C 140 40, 136 62, 140 72" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path pathLength="1" d="M166 72 C 172 56, 180 36, 186 32 C 190 46, 192 62, 196 72 M174 58 C 182 56, 190 56, 198 58 C 206 60, 206 72, 212 70 C 216 68, 216 60, 218 56 C 218 64, 220 70, 226 70 C 232 68, 234 58, 236 56 C 236 64, 238 72, 246 70 C 252 68, 254 58, 256 56 C 256 64, 258 70, 266 68" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path pathLength="1" d="M36 92 C 90 84, 170 84, 270 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <p class="sig-foot"><span>Nurul Aina, front desk</span><span class="num">14 Oct, 14:41</span></p>
+    </div>
+    <p class="hint">Hover or tab to <a class="draw-hover" href="#photo">see the delivery photo</a></p>
+  </article>
 </main>
 </body>
 </html>

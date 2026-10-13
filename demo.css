@@ -1,47 +1,79 @@
-/* Shared look for the demo pages only. Not part of any pattern: copy the entry's style.css, not this file. */
+/* Shared look for the demo pages only. Not part of any pattern: copy the entry's style.css, not this file.
+   Every demo sits on a light table: a cool stage, white paper on top, blue pencil for guides, red for key marks. */
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("fonts/host-grotesk-vf.woff2") format("woff2");
+  font-weight: 300 800;
+  font-display: swap;
+}
 :root {
+  --demo-table: #eef2f7;
   --demo-paper: #ffffff;
-  --demo-ink: #111214;
-  --demo-mute: #6b6f76;
-  --demo-line: #e4e6ea;
-  --demo-soft: #f3f4f6;
-  --demo-accent: #3d5afe;
-  --demo-warm: #ff7a45;
-  --demo-mint: #1fb58f;
+  --demo-ink: #1e2229;
+  --demo-mute: #636b78;
+  --demo-line: #d9dfe8;
+  --demo-blue: #3d7bf2;
+  --demo-blue-soft: #dce7fd;
+  --demo-red: #ee3b2b;
+  /* supporting roles: status colours for the pulse demo */
+  --demo-ok: #16a36a;
+  --demo-warn: #e08a00;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --demo-paper: #111214;
-    --demo-ink: #f2f3f5;
-    --demo-mute: #9aa0a8;
-    --demo-line: #2a2d33;
-    --demo-soft: #1b1d21;
-    --demo-accent: #7c8cff;
-    --demo-warm: #ff9466;
-    --demo-mint: #3fd1aa;
+    --demo-table: #171c24;
+    --demo-paper: #1f2630;
+    --demo-ink: #e9edf3;
+    --demo-mute: #9aa3b0;
+    --demo-line: #2e3743;
+    --demo-blue: #7aa5ff;
+    --demo-blue-soft: #22324d;
+    --demo-red: #ff5a48;
+    --demo-ok: #3cc98d;
+    --demo-warn: #f2a93b;
   }
 }
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; }
 body {
-  background: var(--demo-paper);
+  background: var(--demo-table);
   color: var(--demo-ink);
-  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 400 15px/1.45 "Host Grotesk", system-ui, sans-serif;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 .stage {
   min-height: 100vh;
+  min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 24px 16px;
 }
-.card {
-  background: var(--demo-soft);
-  border: 1px solid var(--demo-line);
-  border-radius: 12px;
-  padding: 14px 18px;
+@media (max-height: 480px) { .stage { padding-block: 12px; } }
+h1, h2, h3, p, figure, dl, dd, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3 { font-weight: 650; letter-spacing: -.015em; line-height: 1.15; text-wrap: balance; }
+.num { font-variant-numeric: tabular-nums; }
+.mute { color: var(--demo-mute); }
+/* a sheet of paper on the table: 1px edge, no drop shadow kit */
+.sheet { background: var(--demo-paper); border: 1px solid var(--demo-line); border-radius: 8px; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--demo-blue); outline-offset: 3px; }
+/* a small switch used by the demos with a pause control (a checkbox styled, still a checkbox) */
+.switch { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--demo-mute); cursor: pointer; user-select: none; }
+.switch input {
+  appearance: none; margin: 0; width: 28px; height: 16px; border-radius: 8px; flex: none;
+  background: var(--demo-line); position: relative; cursor: pointer; transition: background-color .2s;
 }
-.row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
-.col { display: grid; gap: 12px; width: min(320px, 100%); }
-.label { font-size: 13px; color: var(--demo-mute); }
-h1, h2, p { margin: 0; }
+.switch input::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--demo-paper); transition: translate .2s;
+}
+.switch input:checked { background: var(--demo-ink); }
+.switch input:checked::after { translate: 12px 0; }
+@media (prefers-reduced-motion: reduce) {
+  .switch input, .switch input::after { transition: none; }
+}

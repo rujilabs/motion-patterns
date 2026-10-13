@@ -1,17 +1,30 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.stamp-demo { width: min(360px, 100%); }
-.invoice { position: relative; background: #fffdf8; color: #1d1a16; border-radius: 12px; padding: 18px 20px 70px;
-  box-shadow: 0 1px 0 rgb(0 0 0 / .06), 0 8px 24px rgb(0 0 0 / .08); }
-.invoice header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
-.invoice h1 { font-size: 18px; }
-.invoice dl { margin: 0; display: grid; gap: 6px; font-size: 14px; }
-.invoice dl div { display: flex; justify-content: space-between; }
-.invoice dt { color: #6b6255; }
-.invoice dd { margin: 0; font-variant-numeric: tabular-nums; }
-.invoice .total { border-top: 1px solid #e8e2d6; padding-top: 6px; font-weight: 700; }
-.invoice .total dt { color: inherit; }
-.sticker { display: inline-block; padding: 4px 10px; border: 2px dashed currentColor; border-radius: 6px;
-  font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: #3d5afe; }
-.seal { position: absolute; right: 22px; bottom: 16px; margin: 0; padding: 4px 14px; border: 3px double #d0342c; border-radius: 8px;
-  color: #d0342c; font-size: 26px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
-  animation-delay: calc(var(--stagger) * 6); }
+.invoice { position: relative; width: min(380px, 100%); padding: 20px 20px 92px; }
+.inv-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-bottom: 14px; margin-bottom: 4px; border-bottom: 1px solid var(--demo-line); }
+.invoice h1 { font-size: 20px; font-weight: 700; }
+.inv-meta { margin-top: 2px; color: var(--demo-mute); font-size: 12px; }
+/* a printed sticker in blue pencil: dashed edge, sits at a slight tilt */
+.sticker { flex: none; margin-top: 2px; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px;
+  color: var(--demo-blue); background: var(--demo-blue-soft); font-size: 12px; font-weight: 600; }
+.lines div { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: 14px; }
+.lines div + div { border-top: 1px solid var(--demo-line); }
+.lines dt { color: var(--demo-mute); }
+.qty { margin-left: 4px; color: var(--demo-mute); opacity: .8; }
+.lines .total { border-top: 1px solid var(--demo-ink); margin-top: 4px; padding-top: 9px; font-size: 16px; font-weight: 700; }
+.lines .total dt { color: var(--demo-ink); }
+/* the seal: two rules and a date, like a real rubber stamp. It lands once the total is read. */
+.seal { --tilt: -9deg; position: absolute; right: 26px; bottom: 18px; display: grid; justify-items: center; gap: 1px;
+  padding: 5px 14px 6px; border: 2px solid currentColor; border-radius: 6px; outline: 1px solid currentColor; outline-offset: 2px;
+  color: var(--demo-red); animation-delay: calc(var(--stagger) * 7); }
+.seal-word { font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: .12em; text-transform: uppercase; margin-right: -.12em; }
+.seal-date { font-size: 11px; font-weight: 700; letter-spacing: .06em; }
+/* multiply would vanish on a dark sheet; screen keeps the ink reading as ink */
+@media (prefers-color-scheme: dark) { .seal { mix-blend-mode: screen; } }
+@media (max-height: 440px) {
+  .invoice { padding: 16px 18px 84px; }
+  .inv-head { padding-bottom: 10px; }
+  .lines div { padding: 5px 0; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .invoice { width: 420px; }
+}

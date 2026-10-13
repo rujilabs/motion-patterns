@@ -1,9 +1,21 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.post { width: min(420px, 100%); display: grid; gap: 6px; }
-.photo { --fade-ratio: 16 / 10; --fade-bg: #f3d2ad; border-radius: 12px; margin-bottom: 8px; }
-.post h1 { font-size: clamp(20px, 4vw, 26px); line-height: 1.15; letter-spacing: -.015em; }
-.meta { color: var(--demo-mute); font-size: 14px; }
-@media (max-height: 360px) {
-  .photo { --fade-ratio: 2 / 1; }
-  .meta { display: none; }
+.trip { width: min(460px, 100%); padding: 8px; display: grid; gap: 12px; }
+.photos { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; aspect-ratio: 16 / 9; }
+.ph { border-radius: 2px; }
+.ph-ridge { grid-row: span 2; border-radius: 4px 2px 2px 4px; --fade-bg: #efc195; }
+.ph-rock { --fade-bg: #dfe1d6; border-top-right-radius: 4px; }
+.ph-city { --fade-bg: #283049; border-bottom-right-radius: 4px; }
+/* one photo after another, the tint holding each place until it lands */
+.ph-rock .fade-settle { animation-delay: calc(var(--stagger) * 3); }
+.ph-city .fade-settle { animation-delay: calc(var(--stagger) * 6); }
+.trip-text { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 16px; padding: 0 8px; }
+.trip h1 { font-size: 20px; font-weight: 700; }
+.trip-meta { color: var(--demo-mute); font-size: 13px; }
+.trip-note { padding: 10px 8px 6px; border-top: 1px solid var(--demo-line); color: var(--demo-mute); font-size: 13px; }
+@media (max-height: 440px) {
+  .trip { width: min(420px, 100%); gap: 10px; }
+  .trip-note { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .trip { width: 560px; }
 }

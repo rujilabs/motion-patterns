@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pulse · motion-patterns</title>
+<title>Pulse demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,11 +14,36 @@
 </head>
 <body>
 <main class="stage">
-  <ul class="status card" role="list" aria-label="Service status">
-    <li class="live"><span class="pulse pulse-double" aria-hidden="true"></span><strong>Live now</strong><span class="note">128 watching</span></li>
-    <li class="ok"><span class="pulse pulse-count" aria-hidden="true"></span><strong>All systems normal</strong><span class="note">Checked 1 min ago</span></li>
-    <li class="warn"><span class="pulse pulse-count" aria-hidden="true"></span><strong>2 orders to review</strong><span class="note">New</span></li>
-  </ul>
+  <section class="status sheet" aria-labelledby="st-h">
+    <header class="st-head">
+      <h1 id="st-h">System status</h1>
+      <p class="st-time">Updated <span class="num">14:02</span></p>
+    </header>
+    <p class="incident" role="status"><span class="pulse pulse-double" aria-hidden="true"></span><span><strong>Webhooks are running about 4 minutes late.</strong> Orders are safe; every event will arrive.</span></p>
+    <ul class="rows" aria-label="Components, last 30 days">
+      <li class="row ok">
+        <span class="comp"><span class="dot" aria-hidden="true"></span><strong>Checkout API</strong></span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="state"><span class="state-word">Operational</span> <span class="num">100%</span></span>
+      </li>
+      <li class="row warn">
+        <span class="comp"><span class="pulse pulse-count" aria-hidden="true"></span><strong>Webhooks</strong></span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="b-warn"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="b-down"></i><i class="b-warn"></i></span>
+        <span class="state"><span class="state-word">Delayed</span> <span class="num">99.2%</span></span>
+      </li>
+      <li class="row ok">
+        <span class="comp"><span class="dot" aria-hidden="true"></span><strong>Dashboard</strong></span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="b-warn"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="state"><span class="state-word">Operational</span> <span class="num">99.98%</span></span>
+      </li>
+      <li class="row ok">
+        <span class="comp"><span class="dot" aria-hidden="true"></span><strong>Email receipts</strong></span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="state"><span class="state-word">Operational</span> <span class="num">100%</span></span>
+      </li>
+    </ul>
+    <p class="st-foot"><span>30 days ago</span><span>Today</span></p>
+  </section>
 </main>
 </body>
 </html>

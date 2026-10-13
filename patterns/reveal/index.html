@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scroll reveal · motion-patterns</title>
+<title>Scroll reveal demo, motion patterns</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
 <link rel="stylesheet" href="style.css">
@@ -13,21 +14,22 @@
 </head>
 <body>
 <div class="reveal-progress" aria-hidden="true"></div>
-<main class="reveal-demo">
-  <header>
-    <p class="label">Scroll inside this frame</p>
-    <h1>How we roast</h1>
-    <p class="lede">Every block below is tied to your scroll. Scroll back up and it plays in reverse.</p>
+<main class="article">
+  <header class="art-head">
+    <p class="hint">Scroll inside this frame. Scroll back and it all plays in reverse.</p>
+    <h1>How we roast a bag of Kampung Gajah beans</h1>
+    <p class="art-meta"><span>Ipoh roastery</span><span class="num">6 min read</span></p>
   </header>
   <figure class="shot reveal-parallax">
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Coffee beans spread on a tray"><rect width="400" height="240" fill="#6b4a32"/><g fill="#3a2516"><ellipse cx="60" cy="50" rx="16" ry="11"/><ellipse cx="140" cy="90" rx="16" ry="11"/><ellipse cx="230" cy="40" rx="16" ry="11"/><ellipse cx="320" cy="110" rx="16" ry="11"/><ellipse cx="90" cy="170" rx="16" ry="11"/><ellipse cx="200" cy="190" rx="16" ry="11"/><ellipse cx="300" cy="200" rx="16" ry="11"/><ellipse cx="360" cy="40" rx="16" ry="11"/><ellipse cx="30" cy="120" rx="16" ry="11"/></g></svg>
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Roasted coffee beans spread on a tray"><rect width="400" height="240" fill="#8a5a3b"/><g transform="translate(52 48) rotate(-20)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(130 96) rotate(15)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(214 40) rotate(40)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(306 104) rotate(-30)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(86 170) rotate(25)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(196 184) rotate(-10)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(292 196) rotate(30)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(360 44) rotate(-40)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(26 118) rotate(50)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(250 130) rotate(5)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(160 30) rotate(-60)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(370 150) rotate(20)"><ellipse rx="15" ry="10" fill="#4a2c1a"/><path d="M-12 1 C -4 -4, 4 5, 12 -1" fill="none" stroke="#2a170c" stroke-width="2" stroke-linecap="round"/></g></svg>
   </figure>
-  <section class="card reveal"><h2>1. Green beans</h2><p>Sorted by hand, dried for three weeks.</p></section>
-  <section class="card reveal"><h2>2. First crack</h2><p>At nine minutes the beans pop. We listen for it.</p></section>
+  <section class="step sheet reveal"><p class="step-n num">01</p><h2>Green beans</h2><p>Sorted by hand on the long table, then dried for three weeks under the shed roof.</p></section>
+  <section class="step sheet reveal"><p class="step-n num">02</p><h2>First crack at 9 minutes</h2><p>The beans pop like popcorn. We stop the timer by ear, not by the clock.</p></section>
   <figure class="shot reveal-clip">
-    <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A cup of coffee on a wooden table"><rect width="400" height="200" fill="#e9d8c4"/><rect y="140" width="400" height="60" fill="#a8774f"/><path d="M160 90 h80 v40 a20 20 0 0 1 -20 20 h-40 a20 20 0 0 1 -20 -20 Z" fill="#fff"/><ellipse cx="200" cy="90" rx="40" ry="8" fill="#5a3a22"/><path d="M240 100 a14 14 0 0 1 0 26" fill="none" stroke="#fff" stroke-width="6"/></svg>
+    <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A cup of black coffee on a wooden table"><rect width="400" height="220" fill="#ece3d6"/><rect y="150" width="400" height="70" fill="#b07c52"/><path d="M0 150 h400" stroke="#8f6140" stroke-width="2"/><ellipse cx="200" cy="152" rx="70" ry="10" fill="#8f6140"/><path d="M156 92 h88 v38 a24 24 0 0 1 -24 24 h-40 a24 24 0 0 1 -24 -24 Z" fill="#fbfaf7"/><path d="M244 102 a15 15 0 0 1 0 30" fill="none" stroke="#fbfaf7" stroke-width="7"/><ellipse cx="200" cy="92" rx="44" ry="8" fill="#3b2416"/><path d="M186 76 c -6 -10, 6 -14, 0 -26 M210 78 c -6 -10, 6 -14, 0 -26" fill="none" stroke="#c9b9a6" stroke-width="2" stroke-linecap="round"/></svg>
   </figure>
-  <section class="card reveal"><h2>3. Rest</h2><p>Two days before it goes in a bag.</p></section>
+  <section class="step sheet reveal"><p class="step-n num">03</p><h2>Two days of rest</h2><p>Fresh beans are full of gas. They rest 48 hours before they go in a bag.</p></section>
+  <p class="end">That is the whole roast.</p>
 </main>
 </body>
 </html>
