@@ -7,13 +7,14 @@
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="../drift/style.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="page.css">
 <script src="../../play.js"></script>
 </head>
 <body>
 <main class="stage">
-  <svg class="paper paper-demo" data-play viewBox="0 0 400 260" width="400" height="260" role="img" aria-label="A paper-cut scene: sky, sun, two rows of hills and a small house">
+  <svg class="paper paper-demo" data-play viewBox="0 0 400 260" width="400" height="260" role="img" aria-label="A paper-cut scene: a low sun, two rows of hills, a small house with two trees and a cloud">
     <defs>
       <filter id="paper-shadow" x="-10%" y="-20%" width="120%" height="150%">
         <feDropShadow dx="0" dy="5" stdDeviation="2" flood-color="rgb(70,45,20)" flood-opacity=".32" result="soft"/>
@@ -26,12 +27,18 @@
     <circle class="layer" data-layer="1" cx="292" cy="86" r="34" fill="#f28b4b" filter="url(#paper-shadow)"/>
     <path class="layer" data-layer="2" d="M0 170 Q70 110 150 150 T300 130 T400 140 V260 H0Z" fill="#a9c99a" filter="url(#paper-shadow)"/>
     <path class="layer" data-layer="3" d="M0 200 Q90 150 190 190 T400 180 V260 H0Z" fill="#6fa77c" filter="url(#paper-shadow)"/>
-    <g class="layer" data-layer="4" filter="url(#paper-shadow)">
+    <g class="layer fold" data-layer="4" filter="url(#paper-shadow)">
       <rect x="168" y="150" width="64" height="48" fill="#f6efe2"/>
       <path d="M160 152 L200 118 L240 152Z" fill="#c4553b"/>
       <rect x="192" y="172" width="16" height="26" fill="#7a4b33"/>
+      <rect x="176" y="160" width="12" height="11" fill="#8fc1d6"/>
     </g>
-    <path class="layer" data-layer="5" d="M0 232 Q100 206 210 228 T400 222 V260 H0Z" fill="#3f7a5a" filter="url(#paper-shadow)"/>
+    <g class="layer fold" data-layer="5" filter="url(#paper-shadow)">
+      <path d="M126 200 L142 146 L158 200Z" fill="#3f7a5a"/>
+      <path d="M250 196 L264 152 L278 196Z" fill="#2f6449"/>
+    </g>
+    <path class="layer" data-layer="6" d="M0 232 Q100 206 210 228 T400 222 V260 H0Z" fill="#3f7a5a" filter="url(#paper-shadow)"/>
+    <g class="paper-after"><g class="drift" filter="url(#paper-shadow)"><ellipse cx="92" cy="62" rx="34" ry="11" fill="#fffaf2"/><ellipse cx="104" cy="54" rx="18" ry="11" fill="#fffaf2"/></g></g>
     <rect class="grain" width="400" height="260" rx="10" filter="url(#paper-grain)"/>
   </svg>
 </main>

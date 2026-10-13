@@ -2,7 +2,7 @@
   "name": "Paper diorama build",
   "slug": "paper",
   "kind": "pattern",
-  "summary": "Flat SVG layers with a paper shadow and grain rise back to front, each landing with a small overshoot.",
+  "summary": "A cut-paper scene that builds back to front: layers land, upright pieces pop up on a hinge, extras arrive after. Shadow, grain and a quick variant.",
   "category": "scene",
   "tech": [
     "css",
@@ -10,7 +10,9 @@
   ],
   "tokens": [
     "--ease-paper",
+    "--ease-out",
     "--dur-slow",
+    "--dur-base",
     "--stagger-paper"
   ],
   "trigger": "in-view",

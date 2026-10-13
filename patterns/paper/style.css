@@ -2,14 +2,20 @@
  * paper: a cut-paper diorama that builds layer by layer, back to front.
  * Layers are flat SVG shapes. Each carries the double paper shadow (an SVG filter in the markup)
  * and its index in data-layer. One grain overlay sits over the whole scene.
+ * Layers slide up from below and land with a small overshoot. Upright pieces marked .fold hinge
+ * up from their base instead, like a pop-up book. The back card (layer 0) only fades.
  * The scene is complete at rest: hidden start states only apply with play.js (.js) before .go.
  */
 .paper .layer { transform-box: fill-box; transform-origin: 50% 100%; }
-.js .paper:not(.go) .layer { opacity: 0; }
+.js .paper:not(.go) .layer,
+.js .paper:not(.go) .paper-after { opacity: 0; }
 .js .paper.go .layer {
   animation: paper-rise var(--dur-slow) var(--ease-paper) both;
   animation-delay: calc(var(--i, 0) * var(--stagger-paper));
 }
+.js .paper.go .layer.fold { animation-name: paper-fold; }
+.js .paper.go .layer[data-layer="0"] { animation-name: paper-card; animation-timing-function: var(--ease-out); }
+
 .paper .layer[data-layer="1"]  { --i: 1; }
 .paper .layer[data-layer="2"]  { --i: 2; }
 .paper .layer[data-layer="3"]  { --i: 3; }
@@ -22,15 +28,44 @@
 .paper .layer[data-layer="10"] { --i: 10; }
 .paper .layer[data-layer="11"] { --i: 11; }
 .paper .layer[data-layer="12"] { --i: 12; }
+
 @keyframes paper-rise {
   from { opacity: 0; transform: translateY(46%) rotate(var(--tilt, 0deg)); }
   60%  { opacity: 1; }
   to   { opacity: 1; transform: none; }
 }
+/* a hinge at the base: the piece stands up from flat and overshoots slightly before settling */
+@keyframes paper-fold {
+  from { opacity: 0; transform: scaleY(.04); }
+  25%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes paper-card {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/*
+ * paper-after: anything (a headline, a button, ambient extras) that should arrive once the build
+ * has landed. Set --paper-layers on the scene or a parent to the highest data-layer number.
+ */
+.js .paper.go .paper-after,
+.js .go .paper-after {
+  animation: paper-card var(--dur-base) var(--ease-out) both;
+  animation-delay: calc(var(--paper-layers, 8) * var(--stagger-paper) + var(--dur-slow));
+}
+
+/* paper-quick: the same build at twice the pace, for scenes that are not the page's hero */
+.paper-quick { --stagger-paper: 250ms; }
+
 .paper .grain { mix-blend-mode: multiply; opacity: .35; pointer-events: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .js .paper .layer,
   .js .paper:not(.go) .layer,
-  .js .paper.go .layer { opacity: 1; animation: none; }
+  .js .paper.go .layer,
+  .js .paper .paper-after,
+  .js .paper:not(.go) .paper-after,
+  .js .paper.go .paper-after,
+  .js .go .paper-after { opacity: 1; animation: none; }
 }
