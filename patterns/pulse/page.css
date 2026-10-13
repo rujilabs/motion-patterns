@@ -1,2 +1,8 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.live { display: inline-flex; align-items: center; gap: 12px; color: #e5484d; font-weight: 600; }
+.status { width: min(340px, 100%); display: grid; gap: 14px; margin: 0; padding: 18px 20px; list-style: none; }
+.status li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; font-size: 15px; }
+.status strong { color: var(--demo-ink); font-weight: 600; }
+.note { color: var(--demo-mute); font-size: 13px; }
+.live .pulse { color: #e5484d; }
+.ok .pulse { color: #1f9d6b; }
+.warn .pulse { color: #e09b00; }

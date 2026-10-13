@@ -13,7 +13,11 @@
 </head>
 <body>
 <main class="stage">
-  <p class="live card"><span class="pulse" aria-hidden="true"></span> Live now: 128 watching</p>
+  <ul class="status card" role="list" aria-label="Service status">
+    <li class="live"><span class="pulse pulse-double" aria-hidden="true"></span><strong>Live now</strong><span class="note">128 watching</span></li>
+    <li class="ok"><span class="pulse pulse-count" aria-hidden="true"></span><strong>All systems normal</strong><span class="note">Checked 1 min ago</span></li>
+    <li class="warn"><span class="pulse pulse-count" aria-hidden="true"></span><strong>2 orders to review</strong><span class="note">New</span></li>
+  </ul>
 </main>
 </body>
 </html>

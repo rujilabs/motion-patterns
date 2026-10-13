@@ -2,7 +2,7 @@
   "name": "Pulse",
   "slug": "pulse",
   "kind": "pattern",
-  "summary": "A ring that grows and fades behind a live indicator dot.",
+  "summary": "A soft halo that beats then rests behind a status dot. A sonar variant for live states, a counted variant that stops, and a still ring under reduced motion.",
   "category": "loop",
   "tech": [
     "css"
