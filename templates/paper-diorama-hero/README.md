@@ -40,7 +40,7 @@ Nothing loops, so there is nothing to pause.
 
 ## JS notes
 
-`scene.js` (under 1 KB gzipped) listens for `pointermove` on the hero and writes `--mx` and `--my` (each -1 to 1) on `.scene` with `style.setProperty`. CSS turns them into a `translate` per layer: `calc(var(--mx) * var(--d) * -30px)`. The values ease towards the pointer on `requestAnimationFrame`, and the loop stops as soon as they arrive. On `pointerleave` the scene drifts back to centre. The entrance animates `transform` and the pointer moves `translate`, so the two never fight. Layers carry `will-change: transform`, so moving them repaints nothing.
+`scene.js` (under 1 KB gzipped) listens for `pointermove` on the hero and writes `--mx` and `--my` (each -1 to 1) on `.scene` with `style.setProperty`. CSS turns them into a `translate` per layer: `calc(var(--mx) * var(--d) * -30px)`. The values ease towards the pointer on `requestAnimationFrame`, and the loop stops as soon as they arrive. On `pointerleave` the scene drifts back to centre. The entrance animates `transform` and the pointer moves `translate`, so the two never fight. While that loop runs, `.scene` carries `.is-moving` and the layers are promoted (`will-change: translate`), so moving them repaints nothing; at rest they are not, so their blurred shadows are painted once instead of being redrawn on every scrolled frame.
 
 ## Make it yours
 

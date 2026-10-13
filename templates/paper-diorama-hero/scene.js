@@ -1,7 +1,8 @@
 /*
  * Paper diorama hero: pointer depth. Sets --mx and --my (each -1 to 1) on .scene; every layer
  * moves by its own --d in CSS, so near layers travel further than far ones. The values ease
- * towards the pointer on requestAnimationFrame and the loop stops as soon as they arrive.
+ * towards the pointer on requestAnimationFrame and the loop stops as soon as they arrive. The layers
+ * are promoted (.is-moving) only while that loop runs.
  * Does nothing under reduced motion.
  */
 (function () {
@@ -20,12 +21,17 @@
     y += (ty - y) * 0.07;
     if (Math.abs(tx - x) < 0.0008 && Math.abs(ty - y) < 0.0008) {
       x = tx; y = ty; raf = 0;
+      scene.classList.remove("is-moving");
     } else {
       raf = requestAnimationFrame(tick);
     }
     write();
   }
-  function kick() { if (!raf) raf = requestAnimationFrame(tick); }
+  function kick() {
+    if (raf) return;
+    scene.classList.add("is-moving");
+    raf = requestAnimationFrame(tick);
+  }
 
   host.addEventListener("pointermove", function (e) {
     if (reduce && reduce.matches) return;
