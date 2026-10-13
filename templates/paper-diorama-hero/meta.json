@@ -2,7 +2,7 @@
   "name": "Paper diorama hero",
   "slug": "paper-diorama-hero",
   "kind": "template",
-  "summary": "A full-screen hero where a cut-paper landscape builds behind a headline that is readable from the first paint. Birds drift once the scene is built.",
+  "summary": "A hero where a cut-paper landscape builds behind a headline readable from the first frame: hills land, the house pops up, birds and a tag arrive after. Stacks on phones.",
   "category": "scene",
   "tech": [
     "css",
@@ -10,14 +10,15 @@
   ],
   "uses": [
     "paper",
-    "drift",
-    "pop"
+    "drift"
   ],
   "tokens": [
     "--ease-paper",
+    "--ease-out",
     "--dur-slow",
-    "--stagger-paper",
-    "--ease-spring"
+    "--dur-base",
+    "--dur-quick",
+    "--stagger-paper"
   ],
   "trigger": "in-view",
   "reduced_motion": "final-state",
