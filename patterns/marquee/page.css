@@ -1,4 +1,11 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.marquee { width: 100%; border-block: 1px solid var(--demo-line); }
-.marquee-list { display: flex; gap: 48px; margin: 0; padding: 18px 24px; list-style: none; justify-content: space-around;
-  font-size: 24px; font-weight: 700; white-space: nowrap; }
+.marquee-group { width: 100%; display: grid; gap: 4px; }
+.mq-head { display: flex; justify-content: space-between; align-items: center; padding: 0 8px 8px; }
+.mq-head h1 { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--demo-mute); }
+.marquee-pause { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--demo-mute); cursor: pointer; }
+.marquee-pause input { accent-color: var(--demo-accent); }
+.marquee:focus-visible { outline: 2px solid var(--demo-accent); outline-offset: 2px; }
+.marquee-list { display: flex; gap: 48px; margin: 0; padding: 12px 24px; list-style: none; justify-content: space-around;
+  font-size: 26px; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+.quiet { font-size: 18px; font-weight: 500; color: var(--demo-mute); letter-spacing: 0; }
+.slow { --marquee-dur: 52s; }

@@ -13,16 +13,28 @@
 </head>
 <body>
 <main class="stage">
-  <div class="marquee" role="region" tabindex="0" aria-label="Brands we work with">
-    <div class="marquee-track">
-      <ul class="marquee-list">
-        <li>Northwind</li><li>Kettle &amp; Co</li><li>Lumen</li><li>Harbor</li><li>Fieldnote</li><li>Orbit</li>
-      </ul>
-      <ul class="marquee-list" aria-hidden="true">
-        <li>Northwind</li><li>Kettle &amp; Co</li><li>Lumen</li><li>Harbor</li><li>Fieldnote</li><li>Orbit</li>
-      </ul>
+  <section class="marquee-group" aria-labelledby="mq-h">
+    <div class="mq-head">
+      <h1 id="mq-h">Stocked by</h1>
+      <label class="marquee-pause"><input type="checkbox"> Pause</label>
     </div>
-  </div>
+    <div class="marquee" role="region" tabindex="0" aria-label="Shops that stock us">
+      <div class="marquee-track">
+        <ul class="marquee-list">
+          <li>Northwind</li><li>Kettle &amp; Co</li><li>Lumen</li><li>Harbor</li><li>Fieldnote</li><li>Orbit</li>
+        </ul>
+        <ul class="marquee-list" aria-hidden="true">
+          <li>Northwind</li><li>Kettle &amp; Co</li><li>Lumen</li><li>Harbor</li><li>Fieldnote</li><li>Orbit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="marquee marquee-reverse slow" aria-hidden="true">
+      <div class="marquee-track">
+        <ul class="marquee-list quiet"><li>Ceramics</li><li>Linen</li><li>Soap</li><li>Honey</li><li>Coffee</li><li>Paper</li></ul>
+        <ul class="marquee-list quiet"><li>Ceramics</li><li>Linen</li><li>Soap</li><li>Honey</li><li>Coffee</li><li>Paper</li></ul>
+      </div>
+    </div>
+  </section>
 </main>
 </body>
 </html>

@@ -1,12 +1,33 @@
-/* marquee: an endless row. The track holds the content twice; the copy is aria-hidden. */
-.marquee { overflow: clip; min-width: 0; max-width: 100%; container-type: inline-size; }
-/* each copy is at least as wide as the row, so the loop never shows a gap on wide screens */
+/*
+ * marquee: an endless row. The track holds the content twice; the copy is aria-hidden.
+ * Each copy is at least as wide as the row, so the loop never shows a gap on wide screens.
+ * Moving content that runs longer than 5 seconds needs a way to pause it (WCAG 2.2.2):
+ * hover and focus pause it, and the optional .marquee-pause toggle pauses it for anyone.
+ */
+.marquee {
+  overflow: clip;
+  min-width: 0;
+  max-width: 100%;
+  container-type: inline-size;
+  /* the row fades out at both edges instead of being cut */
+  mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade, 48px), #000 calc(100% - var(--marquee-fade, 48px)), transparent);
+}
+.marquee-solid { mask-image: none; }
+.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-dur, 38s) linear infinite; }
 .marquee-track > * { flex: none; min-inline-size: 100cqi; }
-.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track { animation-play-state: paused; }
+.marquee-reverse .marquee-track { animation-direction: reverse; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
+/* pause: hover or focus on the row, or the toggle anywhere inside a .marquee-group */
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track,
+.marquee-group:has(.marquee-pause :checked) .marquee-track { animation-play-state: paused; }
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  /* no movement: hide the duplicate and let the first copy wrap, so every item is readable */
+  .marquee { mask-image: none; }
+  .marquee-track { animation: none; width: auto; }
+  .marquee-track > :nth-child(n + 2) { display: none; }
+  .marquee-track > * { min-inline-size: 0; flex: 1 1 auto; flex-wrap: wrap; }
+  .marquee-pause { display: none; }
 }

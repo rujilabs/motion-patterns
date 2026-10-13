@@ -2,7 +2,7 @@
   "name": "Marquee",
   "slug": "marquee",
   "kind": "pattern",
-  "summary": "An endless row of logos or words. Pauses on hover and keyboard focus; the duplicate is hidden from screen readers.",
+  "summary": "An endless row with edge fades, reverse rows and a CSS-only pause toggle. Under reduced motion it stops and wraps so every item is readable.",
   "category": "loop",
   "tech": [
     "css"
