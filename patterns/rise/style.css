@@ -1,17 +1,43 @@
-/* rise: entry from below. Fade in while travelling up --rise-y. */
+/*
+ * rise: entry from below. Opacity lands at 60% of the run so the text is readable early;
+ * the movement keeps settling to the end. That split is what makes it feel calm, not floaty.
+ */
 @keyframes rise {
   from { opacity: 0; transform: translateY(var(--rise-y)); }
+  60%  { opacity: 1; }
   to   { opacity: 1; transform: none; }
 }
 .rise { animation: rise var(--dur-base) var(--ease-out) both; }
 
-/* stagger: children of .stagger start one --stagger step apart */
+/* rise-in: same move, held until play.js marks the element (or an ancestor) with .go */
+.js .rise-in { animation: rise var(--dur-base) var(--ease-out) both paused; }
+.js .go .rise-in,
+.js .rise-in.go { animation-play-state: running; }
+
+/* rise-soft: adds a short blur. For one display line or a hero lede, not for lists or body text. */
+@keyframes rise-soft {
+  from { opacity: 0; transform: translateY(var(--rise-y)); filter: blur(6px); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.rise-soft { animation: rise-soft var(--dur-slow) var(--ease-out) both; }
+
+/*
+ * stagger: children of .stagger start one --stagger step apart. The delay stops growing after
+ * 8 steps, so a long list never makes the reader wait for its last item.
+ */
 .stagger > :nth-child(2) { animation-delay: calc(var(--stagger) * 1); }
 .stagger > :nth-child(3) { animation-delay: calc(var(--stagger) * 2); }
 .stagger > :nth-child(4) { animation-delay: calc(var(--stagger) * 3); }
 .stagger > :nth-child(5) { animation-delay: calc(var(--stagger) * 4); }
 .stagger > :nth-child(6) { animation-delay: calc(var(--stagger) * 5); }
+.stagger > :nth-child(7) { animation-delay: calc(var(--stagger) * 6); }
+.stagger > :nth-child(8) { animation-delay: calc(var(--stagger) * 7); }
+.stagger > :nth-child(n + 9) { animation-delay: calc(var(--stagger) * 8); }
+@supports (animation-delay: calc(sibling-index() * 1ms)) {
+  .stagger > * { animation-delay: calc(min(sibling-index() - 1, 8) * var(--stagger)); }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .rise { animation: none; }
+  .rise, .rise-soft, .js .rise-in { animation: none; }
 }

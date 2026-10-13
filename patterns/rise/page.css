@@ -1,2 +1,7 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.rise-title { font-size: 22px; }
+.rise-demo { width: min(440px, 100%); display: grid; gap: 14px; }
+.rise-demo h1 { font-size: clamp(24px, 4.4vw, 32px); line-height: 1.1; letter-spacing: -.02em; }
+.lede { color: var(--demo-mute); }
+.list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 0; padding: 0; list-style: none; }
+.list .card { display: grid; gap: 2px; padding: 12px 14px; }
+.list span { font-size: 13px; color: var(--demo-mute); }

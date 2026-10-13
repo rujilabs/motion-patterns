@@ -2,7 +2,7 @@
   "name": "Rise",
   "slug": "rise",
   "kind": "pattern",
-  "summary": "Entry from below: fades in while moving up 18px. Add .stagger to the parent for a one-beat delay between siblings.",
+  "summary": "Entry from below with opacity landing early. Variants for in-view and a soft blur, plus a stagger capped at 8 steps.",
   "category": "entry",
   "tech": [
     "css"
@@ -10,6 +10,7 @@
   "tokens": [
     "--ease-out",
     "--dur-base",
+    "--dur-slow",
     "--rise-y",
     "--stagger"
   ],
