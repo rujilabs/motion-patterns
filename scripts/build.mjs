@@ -135,7 +135,7 @@ function stage(e, { lazy = true, size = "" } = {}) {
   const m = e.meta;
   // Gallery templates show their poster until the visitor stops on them; only then does the live page load.
   const poster = lazy && e.kind === "template" && existsSync(join(e.path, "poster.jpg"));
-  return `<div class="stage stage-${e.kind}${size}${poster ? " has-poster" : ""}" data-stage="${e.slug}">
+  return `<div class="stage stage-${e.kind}${size}${poster ? " has-poster" : ""}${m.trigger === "scroll" ? " stage-scrolls" : ""}" data-stage="${e.slug}">
   ${poster ? `<img class="stage-poster" src="/${e.rel}/poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">\n  ` : ""}${lazy
     // In the gallery studio.js loads each demo once it is near the screen and the headline has landed,
     // so sixteen documents never start on the same thread at once.

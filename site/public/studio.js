@@ -41,11 +41,33 @@
     var cw = stage.clientWidth, ch = stage.clientHeight;
     var w = mode === "fit" ? (stage.classList.contains("stage-template") ? 1280 : cw) : Number(mode);
     var s = Math.min(1, cw / w);
-    frame.style.width = w + "px";
-    frame.style.height = ch / s + "px";
-    frame.style.transform = "translateX(" + Math.max(0, (cw - w * s) / 2) + "px) scale(" + s + ")";
+    function apply() {
+      frame.style.width = w + "px";
+      frame.style.height = ch / s + "px";
+      frame.style.transform = "translateX(" + Math.max(0, (cw - w * s) / 2) + "px) scale(" + s + ")";
+    }
+    apply();
+    // A pattern demo taller than its stage (three columns make stages short) renders on a larger canvas
+    // and scales down until it fits, so nothing is cut off at the bottom. Widening the canvas reflows the
+    // demo shorter, so a few passes settle it. Scroll demos are meant to scroll, so they keep their size.
+    if (mode !== "fit" || !stage.classList.contains("stage-pattern") || stage.classList.contains("stage-scrolls")) return;
+    var doc;
+    try { doc = frame.contentDocument; } catch (e) { return; }
+    if (!doc || !doc.body || doc.URL === "about:blank") return;
+    for (var i = 0; i < 4; i++) {
+      var need = doc.documentElement.scrollHeight, have = ch / s;
+      if (need <= have + 1) break;
+      s = Math.max(0.5, s * have / need * 0.99);
+      w = cw / s;
+      apply();
+    }
   }
   var stages = $all(".stage");
+  // refit when a demo loads, and once more after its fonts land
+  stages.forEach(function (stage) {
+    var f = stage.querySelector("iframe");
+    if (f) f.addEventListener("load", function () { layout(stage); setTimeout(function () { layout(stage); }, 700); });
+  });
   if ("ResizeObserver" in window) {
     var ro = new ResizeObserver(function (list) { list.forEach(function (r) { layout(r.target); }); });
     stages.forEach(function (s) { ro.observe(s); });
