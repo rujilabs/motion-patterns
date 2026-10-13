@@ -48,6 +48,7 @@
     var p = cell.parts, from = cell.cur;
     if (cell.anims) { cell.anims[0].cancel(); cell.anims[1].cancel(); }
     put(p.u, to); put(p.fd, to); put(p.fu, from); put(p.d, from);
+    cell.el.classList.add("is-flip");
     var top = p.fu.animate(
       [{ transform: "rotateX(0deg)", filter: "brightness(1)" }, { transform: "rotateX(-90deg)", filter: "brightness(.42)" }],
       { duration: last ? LAST_TOP : HALF, easing: EASE_IN, fill: "forwards" });
@@ -65,6 +66,7 @@
       put(p.d, to); put(p.fu, to);
       top.cancel(); bottom.cancel();
       cell.anims = null;
+      cell.el.classList.remove("is-flip");
     };
     cell.cur = to;
   }

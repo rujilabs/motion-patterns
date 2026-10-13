@@ -96,7 +96,6 @@ th:not(:last-child), td:not(:last-child) { padding-right: calc(var(--cw) * .85);
   font: 700 calc(var(--cw) * 1.12) / var(--chh) "Anybody", sans-serif;
   font-stretch: 68%;
   text-align: center;
-  perspective: calc(var(--cw) * 9);
   box-shadow: 0 1px 0 rgb(0 0 0 / .6);
 }
 /* the split: a dark gap with a faint lit lip under it */
@@ -107,14 +106,19 @@ th:not(:last-child), td:not(:last-child) { padding-right: calc(var(--cw) * .85);
 .clock .c { --flap-top: #1c1c20; --flap-bot: #141417; }
 
 /* halves, built by board.js */
-.h { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; backface-visibility: hidden; }
+.h { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; }
 .h > i { position: absolute; left: 0; right: 0; height: 200%; font-style: normal; }
 .h.u { top: 0; border-radius: calc(var(--cw) * .12) calc(var(--cw) * .12) 0 0; background: linear-gradient(var(--flap-top), color-mix(in srgb, var(--flap-top), #000 8%)); }
 .h.d { bottom: 0; border-radius: 0 0 calc(var(--cw) * .12) calc(var(--cw) * .12); background: linear-gradient(color-mix(in srgb, var(--flap-bot), #fff 3%), var(--flap-bot)); }
 .h.u > i { top: 0; }
 .h.d > i { top: -100%; }
-.h.fu { z-index: 2; transform-origin: 50% 100%; }
-.h.fd { z-index: 2; transform-origin: 50% 0; transform: rotateX(90deg); }
+/* The two moving flaps exist only while a cell turns (.is-flip, set by board.js). A resting cell is flat,
+   so a board of a few hundred characters does not hand the compositor a few hundred 3D layers. */
+.h.fu, .h.fd { display: none; z-index: 2; backface-visibility: hidden; }
+.is-flip { perspective: calc(var(--cw) * 9); }
+.is-flip > .h.fu, .is-flip > .h.fd { display: block; }
+.h.fu { transform-origin: 50% 100%; }
+.h.fd { transform-origin: 50% 0; transform: rotateX(90deg); }
 
 /* a band of light across the glass, once */
 .board::after {
