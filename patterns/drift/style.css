@@ -1,11 +1,42 @@
-/* drift: slow, small, looping. At most 12px of travel, at least 5s per cycle. */
-@keyframes drift {
-  from { transform: translate(0, 0); }
-  to   { transform: translate(10px, -6px); }
+/*
+ * drift: slow ambient float. x, y and a slight tilt each run on their own cycle (7s, 11s, 13s).
+ * Because the lengths share no factor, the combined path only repeats every 1001s, so the eye
+ * never catches the loop. Uses the individual translate and rotate properties, which sit on top
+ * of the element's own transform instead of replacing it.
+ * Travel stays within --drift-amp (default 10px); keep it at 12px or less.
+ */
+@property --drift-x { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --drift-y { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+@keyframes drift-x {
+  from { --drift-x: calc(var(--drift-amp, 10px) * -.5); }
+  to   { --drift-x: calc(var(--drift-amp, 10px) * .5); }
 }
-.drift { animation: drift 7s ease-in-out infinite alternate; }
-.drift-slow { animation-duration: 11s; animation-direction: alternate-reverse; }
+@keyframes drift-y {
+  from { --drift-y: calc(var(--drift-amp, 10px) * .3); }
+  to   { --drift-y: calc(var(--drift-amp, 10px) * -.3); }
+}
+@keyframes drift-tilt {
+  from { rotate: -1.5deg; }
+  to   { rotate: 1.5deg; }
+}
+.drift {
+  translate: var(--drift-x) var(--drift-y);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation:
+    drift-x 7s ease-in-out infinite alternate,
+    drift-y 11s ease-in-out infinite alternate,
+    drift-tilt 13s ease-in-out infinite alternate;
+}
+
+/* phases: neighbours that start at different points never move in step */
+.drift-2 { animation-delay: -3s, -7s, -2s; }
+.drift-3 { animation-delay: -5s, -2s, -9s; }
+
+/* drift-slow: for large or background shapes */
+.drift-slow { animation-duration: 11s, 17s, 19s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .drift { animation: none; }
+  .drift { animation: none; translate: none; rotate: none; }
 }

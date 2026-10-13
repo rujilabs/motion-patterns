@@ -1,2 +1,4 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.drift-demo { display: block; max-width: 100%; height: auto; }
+.drift-demo { display: block; width: min(420px, 100%); height: auto; }
+.cloud { fill: #ffffff; }
+.balloon { --drift-amp: 12px; }

@@ -13,11 +13,18 @@
 </head>
 <body>
 <main class="stage">
-  <svg class="drift-demo" viewBox="0 0 320 200" width="320" height="200" role="img" aria-label="Two clouds floating over a hill">
-    <rect width="320" height="200" rx="12" fill="var(--demo-soft)"/>
-    <g class="drift"><ellipse cx="96" cy="64" rx="44" ry="16" fill="var(--demo-line)"/><ellipse cx="112" cy="54" rx="24" ry="16" fill="var(--demo-line)"/></g>
-    <g class="drift drift-slow"><ellipse cx="226" cy="90" rx="38" ry="13" fill="var(--demo-line)"/><ellipse cx="214" cy="82" rx="20" ry="13" fill="var(--demo-line)"/></g>
-    <path d="M0 160 Q160 110 320 160 V200 H0Z" fill="var(--demo-mint)"/>
+  <svg class="drift-demo" viewBox="0 0 400 250" role="img" aria-label="Clouds and a hot-air balloon floating over a hill">
+    <rect width="400" height="250" rx="14" fill="#dceefb"/>
+    <g class="drift drift-slow cloud"><ellipse cx="110" cy="66" rx="52" ry="17"/><ellipse cx="128" cy="54" rx="28" ry="18"/></g>
+    <g class="drift drift-2 drift-slow cloud"><ellipse cx="300" cy="104" rx="44" ry="14"/><ellipse cx="286" cy="95" rx="22" ry="14"/></g>
+    <g class="drift drift-3 balloon">
+      <path d="M232 92 C 210 92, 200 70, 210 52 C 220 34, 250 34, 258 52 C 266 70, 254 92, 232 92 Z" fill="#f2874a"/>
+      <path d="M232 36 C 226 50, 226 80, 232 92 C 238 80, 238 50, 232 36 Z" fill="#ffd2a1"/>
+      <path d="M226 96 L238 96 L236 106 L228 106 Z" fill="#7a4b33"/>
+      <path d="M224 90 L228 96 M240 90 L236 96" stroke="#7a4b33" stroke-width="1.2"/>
+    </g>
+    <path d="M0 200 Q110 150 220 190 T400 180 V250 H0Z" fill="#8fc49a"/>
+    <path d="M0 226 Q140 196 280 222 T400 218 V250 H0Z" fill="#4f9a6c"/>
   </svg>
 </main>
 </body>

@@ -2,7 +2,7 @@
   "name": "Drift",
   "slug": "drift",
   "kind": "pattern",
-  "summary": "Slow ambient float for clouds, water and floating objects. At most 12px of travel, at least 5s per cycle.",
+  "summary": "Ambient float on three cycles that share no factor, so the path never visibly repeats. Composes with existing transforms; phase and size controls.",
   "category": "loop",
   "tech": [
     "css",

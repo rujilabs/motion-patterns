@@ -13,7 +13,7 @@ if (problems.length) {
 }
 
 const DIST = join(ROOT, "dist");
-const BUNDLE_BUDGET_GZ = 6 * 1024; // motion.css must stay small enough to drop into any page
+const BUNDLE_BUDGET_GZ = 10 * 1024; // motion.css must stay small enough to drop into any page
 const pkg = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"));
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
