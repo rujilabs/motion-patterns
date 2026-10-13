@@ -1,3 +1,9 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.fade-demo { margin: 0; }
-.fade-demo svg { display: block; max-width: 100%; height: auto; }
+.post { width: min(420px, 100%); display: grid; gap: 6px; }
+.photo { --fade-ratio: 16 / 10; --fade-bg: #f3d2ad; border-radius: 12px; margin-bottom: 8px; }
+.post h1 { font-size: clamp(20px, 4vw, 26px); line-height: 1.15; letter-spacing: -.015em; }
+.meta { color: var(--demo-mute); font-size: 14px; }
+@media (max-height: 360px) {
+  .photo { --fade-ratio: 2 / 1; }
+  .meta { display: none; }
+}

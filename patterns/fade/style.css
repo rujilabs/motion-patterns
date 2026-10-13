@@ -1,10 +1,34 @@
-/* fade: opacity only. For images and backgrounds where movement would distract. */
+/*
+ * fade: opacity only, on the slow duration. For images and backgrounds where movement would
+ * distract. Never on the page's main (LCP) image: that one should simply be there.
+ */
 @keyframes fade {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 .fade { animation: fade var(--dur-slow) var(--ease-out) both; }
 
+/* fade-in: held until play.js marks it (or an ancestor) with .go. For images below the fold. */
+.js .fade-in { animation: fade var(--dur-slow) var(--ease-out) both paused; }
+.js .go .fade-in,
+.js .fade-in.go { animation-play-state: running; }
+
+/* fade-settle: a photo fades in while easing from 3% larger. Reads as the image coming into focus. */
+@keyframes fade-settle {
+  from { opacity: 0; transform: scale(1.03); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-settle { animation: fade-settle var(--dur-slow) var(--ease-out) both; }
+.js .fade-settle.fade-in { animation-name: fade-settle; }
+
+/*
+ * fade-frame: put it on the image's parent. It reserves the space (no layout shift) and shows a
+ * tint while the image fades in, so there is never a white flash. Set --fade-bg to a colour from
+ * the image, and --fade-ratio to its aspect ratio.
+ */
+.fade-frame { aspect-ratio: var(--fade-ratio, auto); overflow: clip; background: var(--fade-bg, #e9e6e1); }
+.fade-frame > img, .fade-frame > svg, .fade-frame > picture { display: block; width: 100%; height: 100%; object-fit: cover; }
+
 @media (prefers-reduced-motion: reduce) {
-  .fade { animation: none; }
+  .fade, .fade-settle, .js .fade-in { animation: none; }
 }

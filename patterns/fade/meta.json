@@ -2,7 +2,7 @@
   "name": "Fade",
   "slug": "fade",
   "kind": "pattern",
-  "summary": "Opacity only, on the slow duration. For images and backgrounds where movement would distract.",
+  "summary": "Opacity only, for images and backgrounds. A frame that removes the white flash and layout shift, a focus-settle for photos, and an in-view variant.",
   "category": "entry",
   "tech": [
     "css",

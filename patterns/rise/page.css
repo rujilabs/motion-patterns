@@ -5,3 +5,10 @@
 .list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 0; padding: 0; list-style: none; }
 .list .card { display: grid; gap: 2px; padding: 12px 14px; }
 .list span { font-size: 13px; color: var(--demo-mute); }
+@media (max-height: 360px) {
+  .rise-demo { gap: 8px; }
+  .rise-demo h1 { font-size: 20px; }
+  .lede { font-size: 14px; }
+  .list .card { padding: 8px 10px; }
+  .list span { display: none; }
+}
