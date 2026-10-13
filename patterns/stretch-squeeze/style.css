@@ -1,8 +1,9 @@
 /*
  * stretch and squeeze: variable-width type. Needs a variable font with a wdth axis, declared
  * with a font-stretch range in its @font-face, or the browser ignores font-stretch.
- * stretch: hover or focus widens a condensed heading. squeeze: a headline arrives wide and
- * settles condensed, readable from the first frame.
+ * Preload the font file, or the first run plays on a fallback font that cannot change width.
+ * stretch: hover or focus widens a condensed word. squeeze: a headline arrives wide and settles
+ * condensed, readable from the first frame.
  */
 @font-face {
   font-family: "Anybody";
@@ -13,10 +14,25 @@
 }
 .stretch, .squeeze { font-family: "Anybody", system-ui, sans-serif; }
 
+/*
+ * stretch: the word reserves its widest size up front (a hidden copy from data-text), so widening
+ * on hover never pushes the words next to it. The copy is visibility: hidden, which also keeps it
+ * out of the accessibility tree.
+ */
 .stretch {
+  display: inline-grid;
+  justify-items: center;
   font-stretch: 62%;
   letter-spacing: .01em;
   transition: font-stretch var(--dur-slow) var(--ease-out), letter-spacing var(--dur-slow) var(--ease-out);
+}
+.stretch[data-text]::after {
+  content: attr(data-text);
+  font-stretch: 112%;
+  letter-spacing: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 .stretch-host:hover .stretch,
 .stretch-host:focus-visible .stretch { font-stretch: 112%; letter-spacing: 0; }
@@ -25,9 +41,16 @@
   from { font-stretch: 150%; letter-spacing: .02em; }
   to   { font-stretch: 62%; letter-spacing: -.01em; }
 }
+/* squeeze-weight: also goes from light to heavy as it condenses */
+@keyframes squeeze-weight {
+  from { font-stretch: 150%; font-weight: 300; letter-spacing: .02em; }
+  to   { font-stretch: 62%; font-weight: 800; letter-spacing: -.01em; }
+}
 .squeeze > span { display: block; font-stretch: 62%; animation: squeeze 1.3s var(--ease-out) both; }
+.squeeze-weight > span { font-weight: 800; animation-name: squeeze-weight; }
 .squeeze > span:nth-child(2) { animation-delay: calc(var(--stagger) * 2); }
 .squeeze > span:nth-child(3) { animation-delay: calc(var(--stagger) * 4); }
+.squeeze > span:nth-child(4) { animation-delay: calc(var(--stagger) * 6); }
 
 @media (prefers-reduced-motion: reduce) {
   .squeeze > span { animation: none; }

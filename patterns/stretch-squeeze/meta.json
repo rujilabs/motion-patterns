@@ -2,7 +2,7 @@
   "name": "Stretch and squeeze",
   "slug": "stretch-squeeze",
   "kind": "pattern",
-  "summary": "Variable-width type: a headline settles from wide to condensed, and links widen on hover or focus.",
+  "summary": "Variable-width type: headlines settle from wide to condensed (optionally light to heavy), and hover words widen without shifting their neighbours.",
   "category": "type",
   "tech": [
     "css",
