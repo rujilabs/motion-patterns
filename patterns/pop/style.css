@@ -1,10 +1,31 @@
-/* pop: springy scale-in. Badges, dots, icons, stickers. Not for text blocks. */
-@keyframes pop {
-  from { opacity: 0; transform: scale(.6); }
-  to   { opacity: 1; transform: none; }
+/*
+ * pop: springy scale-in for badges, dots, icons and stickers. Not for text blocks.
+ * Scale and opacity run as two animations: the scale springs, the opacity is done in 200ms,
+ * so the element is fully visible while it is still settling.
+ */
+@keyframes pop-scale {
+  from { transform: scale(.6); }
+  to   { transform: none; }
 }
-.pop { animation: pop var(--dur-base) var(--ease-spring) both; }
+@keyframes pop-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.pop, .js .pop-in {
+  transform-origin: var(--pop-origin, center);
+  animation: pop-scale var(--dur-base) var(--ease-spring) both, pop-fade var(--dur-quick) linear both;
+}
+
+/* pop-in: held until play.js marks it (or an ancestor) with .go */
+.js .pop-in { animation-play-state: paused; }
+.js .go .pop-in,
+.js .pop-in.go { animation-play-state: running; }
+
+/* pop-press: a tactile press for buttons. Shrinks fast on press, springs back on release. */
+.pop-press { transition: transform var(--dur-quick) var(--ease-spring); }
+.pop-press:active { transform: scale(.96); transition-duration: 80ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .pop { animation: none; }
+  .pop, .js .pop-in { animation: none; }
+  .pop-press, .pop-press:active { transition: none; transform: none; }
 }

@@ -2,7 +2,7 @@
   "name": "Pop",
   "slug": "pop",
   "kind": "pattern",
-  "summary": "Springy scale-in for badges, dots, icons and stickers. Not for text blocks.",
+  "summary": "Springy scale-in on a real damped spring, with opacity done early. Variants for in-view, corner origins and a tactile button press.",
   "category": "entry",
   "tech": [
     "css"
@@ -10,6 +10,7 @@
   "tokens": [
     "--ease-spring",
     "--dur-base",
+    "--dur-quick",
     "--stagger"
   ],
   "trigger": "load",
