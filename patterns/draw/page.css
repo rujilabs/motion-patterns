@@ -1,4 +1,8 @@
 /* Demo page layout for this entry. Not part of the pattern. */
-.draw-demo { display: grid; justify-items: center; gap: 2px; }
-.draw-demo h1 { font-size: clamp(28px, 6vw, 44px); letter-spacing: -.02em; }
-.draw-demo svg { max-width: 100%; height: auto; }
+.draw-demo { display: grid; justify-items: center; gap: 10px; text-align: center; }
+.draw-demo h1 { font-size: clamp(24px, 5.6vw, 40px); line-height: 1.15; letter-spacing: -.02em; max-width: 14ch; }
+.accent { --line-w: .12em; --line-y: .02em; color: var(--demo-ink); background-image: linear-gradient(var(--demo-accent), var(--demo-accent)); }
+.sig { width: min(240px, 70vw); height: auto; color: var(--demo-ink); }
+.hint { color: var(--demo-mute); font-size: 15px; }
+.hint a { color: var(--demo-ink); }
+.hint a:focus-visible { outline: 2px solid var(--demo-accent); outline-offset: 3px; border-radius: 2px; }

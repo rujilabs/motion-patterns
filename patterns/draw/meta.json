@@ -2,7 +2,7 @@
   "name": "Draw",
   "slug": "draw",
   "kind": "pattern",
-  "summary": "SVG stroke draw-on for underlines, routes and signatures. Paths use pathLength=\"1\" so there are no magic numbers.",
+  "summary": "Lines that draw themselves: SVG strokes in sequence, a CSS-only text underline that wraps, and a link hover underline. No cap dot before the start.",
   "category": "emphasis",
   "tech": [
     "css",
@@ -10,7 +10,9 @@
   ],
   "tokens": [
     "--ease-inout",
-    "--dur-draw"
+    "--ease-out",
+    "--dur-draw",
+    "--dur-base"
   ],
   "trigger": "in-view",
   "reduced_motion": "final-state",

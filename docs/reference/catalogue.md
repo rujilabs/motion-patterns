@@ -5,7 +5,7 @@ Every entry in the collection, generated from each entry's `meta.json` by `npm r
 | Entry | Kind | What it does | Tech | Credit | Source |
 |---|---|---|---|---|---|
 | [Crossfade](https://motion.rujilabs.com/patterns/crossfade/) | pattern | Three stacked frames take turns on a 12s cycle. The first frame is visible from the first paint. | css | Original | [code](../../patterns/crossfade/) |
-| [Draw](https://motion.rujilabs.com/patterns/draw/) | pattern | SVG stroke draw-on for underlines, routes and signatures. Paths use pathLength="1" so there are no magic numbers. | css, svg | Original | [code](../../patterns/draw/) |
+| [Draw](https://motion.rujilabs.com/patterns/draw/) | pattern | Lines that draw themselves: SVG strokes in sequence, a CSS-only text underline that wraps, and a link hover underline. No cap dot before the start. | css, svg | Original | [code](../../patterns/draw/) |
 | [Drift](https://motion.rujilabs.com/patterns/drift/) | pattern | Slow ambient float for clouds, water and floating objects. At most 12px of travel, at least 5s per cycle. | css, svg | Original | [code](../../patterns/drift/) |
 | [Fade](https://motion.rujilabs.com/patterns/fade/) | pattern | Opacity only, for images and backgrounds. A frame that removes the white flash and layout shift, a focus-settle for photos, and an in-view variant. | css, svg | Original | [code](../../patterns/fade/) |
 | [Marquee](https://motion.rujilabs.com/patterns/marquee/) | pattern | An endless row of logos or words. Pauses on hover and keyboard focus; the duplicate is hidden from screen readers. | css | Original | [code](../../patterns/marquee/) |

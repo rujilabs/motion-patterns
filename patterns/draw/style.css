@@ -1,11 +1,58 @@
-/* draw: SVG stroke draw-on. Every path carries pathLength="1", so the dash values run 0..1. */
-.js .draw path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+/*
+ * draw: SVG stroke draw-on. Every path carries pathLength="1", so the dash values run 0..1 and
+ * a long path and a short one finish together. The path stays transparent until its first frame:
+ * a round line cap would otherwise show a dot where the line is about to start.
+ */
+.js .draw path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; }
 .js .go .draw path,
 .js .go.draw path { animation: draw var(--dur-draw) var(--ease-inout) both; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes draw {
+  from { stroke-dashoffset: 1; opacity: 0; }
+  1%   { opacity: 1; }
+  to   { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/*
+ * draw-seq: on the svg. Strokes draw one after another, each starting halfway through the last.
+ * The selectors repeat the .go context so they outrank the animation shorthand above.
+ */
+.js .go .draw-seq path:nth-of-type(2), .js .go.draw-seq path:nth-of-type(2) { animation-delay: calc(var(--dur-draw) * .5); }
+.js .go .draw-seq path:nth-of-type(3), .js .go.draw-seq path:nth-of-type(3) { animation-delay: calc(var(--dur-draw) * 1); }
+.js .go .draw-seq path:nth-of-type(4), .js .go.draw-seq path:nth-of-type(4) { animation-delay: calc(var(--dur-draw) * 1.5); }
+.js .go .draw-seq path:nth-of-type(5), .js .go.draw-seq path:nth-of-type(5) { animation-delay: calc(var(--dur-draw) * 2); }
+
+/*
+ * draw-line: an underline drawn under any inline text, no SVG. The line is a background, so it
+ * wraps with the text across lines. Thickness and offset come from --line-w and --line-y.
+ */
+.draw-line {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - var(--line-y, 0px)) / 100% var(--line-w, .08em);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.js .draw-line { background-size: 0 var(--line-w, .08em); }
+.js .go .draw-line,
+.js .draw-line.go { animation: draw-line var(--dur-draw) var(--ease-inout) both; }
+@keyframes draw-line {
+  from { background-size: 0 var(--line-w, .08em); }
+  to   { background-size: 100% var(--line-w, .08em); }
+}
+
+/* draw-hover: a link underline that draws in from the left on hover or focus and leaves to the right. */
+.draw-hover {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) no-repeat 100% 100% / 0 1px;
+  transition: background-size var(--dur-base) var(--ease-out);
+}
+.draw-hover:hover,
+.draw-hover:focus-visible { background-size: 100% 1px; background-position: 0 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .js .draw path,
   .js .go .draw path,
-  .js .go.draw path { stroke-dashoffset: 0; animation: none; }
+  .js .go.draw path { stroke-dashoffset: 0; opacity: 1; animation: none; }
+  .js .draw-line,
+  .js .go .draw-line,
+  .js .draw-line.go { background-size: 100% var(--line-w, .08em); animation: none; }
+  .draw-hover { transition: none; }
 }
