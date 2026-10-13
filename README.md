@@ -63,7 +63,7 @@ Every entry follows the same rules:
 
 | Entry | Kind | What it does | Tech | Credit | Source |
 |---|---|---|---|---|---|
-| [Crossfade](https://motion.rujilabs.com/patterns/crossfade/) | pattern | Three stacked frames take turns on a 12s cycle. The first frame is visible from the first paint. | css | Original | [code](patterns/crossfade/) |
+| [Crossfade](https://motion.rujilabs.com/patterns/crossfade/) | pattern | Stacked frames that take turns with no background flash. 2, 3 or 4 frames, an optional slow zoom on the image, and a pause toggle. | css | Original | [code](patterns/crossfade/) |
 | [Draw](https://motion.rujilabs.com/patterns/draw/) | pattern | Lines that draw themselves: SVG strokes in sequence, a CSS-only text underline that wraps, and a link hover underline. No cap dot before the start. | css, svg | Original | [code](patterns/draw/) |
 | [Drift](https://motion.rujilabs.com/patterns/drift/) | pattern | Ambient float on three cycles that share no factor, so the path never visibly repeats. Composes with existing transforms; phase and size controls. | css, svg | Original | [code](patterns/drift/) |
 | [Fade](https://motion.rujilabs.com/patterns/fade/) | pattern | Opacity only, for images and backgrounds. A frame that removes the white flash and layout shift, a focus-settle for photos, and an in-view variant. | css, svg | Original | [code](patterns/fade/) |

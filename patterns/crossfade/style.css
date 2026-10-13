@@ -1,22 +1,44 @@
 /*
- * crossfade: three stacked frames take turns over a 12s cycle. A frame stays opaque until the
- * next one has fully faded in on top of it, so the background never shows through. The first frame starts visible (negative delay), so nothing
- * is ever blank on load.
+ * crossfade: stacked frames take turns. Each frame gets 4s: a 1s fade-in on top of the one before,
+ * then it holds. The outgoing frame stays opaque until the incoming one is fully in, so the
+ * background never shows through. The first frame starts visible (negative delay), so nothing is
+ * blank on load. 3 frames by default; .crossfade-2 and .crossfade-4 for other counts.
  */
 .crossfade { display: grid; }
-.crossfade > * { grid-area: 1 / 1; opacity: 0; animation: crossfade 12s var(--ease-inout) infinite; }
-.crossfade > :nth-child(1) { animation-delay: -1s; }
-.crossfade > :nth-child(2) { animation-delay: 3s; }
-.crossfade > :nth-child(3) { animation-delay: 7s; }
-@keyframes crossfade {
-  0%   { opacity: 0; }
-  8%   { opacity: 1; }
-  42%  { opacity: 1; }
-  50%  { opacity: 0; }
-  100% { opacity: 0; }
+.crossfade > * {
+  grid-area: 1 / 1;
+  opacity: 0;
+  animation: crossfade-3 12s var(--ease-inout) infinite;
+  animation-delay: var(--xf-delay);
 }
+.crossfade > :nth-child(1) { --xf-delay: -1s; }
+.crossfade > :nth-child(2) { --xf-delay: 3s; }
+.crossfade > :nth-child(3) { --xf-delay: 7s; }
+.crossfade > :nth-child(4) { --xf-delay: 11s; }
+.crossfade-2 > * { animation-name: crossfade-2; animation-duration: 8s; }
+.crossfade-4 > * { animation-name: crossfade-4; animation-duration: 16s; }
+
+@keyframes crossfade-2 { 0% { opacity: 0; } 12.5% { opacity: 1; } 62.5% { opacity: 1; } 75% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes crossfade-3 { 0% { opacity: 0; } 8.33% { opacity: 1; } 41.67% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes crossfade-4 { 0% { opacity: 0; } 6.25% { opacity: 1; } 31.25% { opacity: 1; } 37.5% { opacity: 0; } 100% { opacity: 0; } }
+
+/*
+ * crossfade-zoom: the first child of each frame (the image) eases from 108% to 100% while its
+ * frame is on screen. Captions and other children stay still.
+ */
+.crossfade-zoom > * { overflow: clip; }
+.crossfade-zoom > * > :first-child { animation: xf-zoom 12s linear infinite; animation-delay: var(--xf-delay); }
+.crossfade-zoom.crossfade-2 > * > :first-child { animation-duration: 8s; }
+.crossfade-zoom.crossfade-4 > * > :first-child { animation-duration: 16s; }
+@keyframes xf-zoom { from { scale: 1.08; } 60% { scale: 1; } to { scale: 1; } }
+
+/* pause: hover or focus on the frames, or a .crossfade-pause toggle inside a .crossfade-group */
+.crossfade:hover *,
+.crossfade:focus-within *,
+.crossfade-group:has(.crossfade-pause :checked) .crossfade * { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
-  .crossfade > * { animation: none; }
+  .crossfade > *, .crossfade-zoom > * > :first-child { animation: none; }
   .crossfade > :first-child { opacity: 1; }
+  .crossfade-pause { display: none; }
 }

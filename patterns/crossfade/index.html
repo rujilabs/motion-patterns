@@ -13,11 +13,26 @@
 </head>
 <body>
 <main class="stage">
-  <div class="crossfade xf-demo">
-    <figure class="xf-frame xf-a"><figcaption>Morning</figcaption></figure>
-    <figure class="xf-frame xf-b" aria-hidden="true"><figcaption>Noon</figcaption></figure>
-    <figure class="xf-frame xf-c" aria-hidden="true"><figcaption>Evening</figcaption></figure>
-  </div>
+  <section class="crossfade-group xf-demo" aria-labelledby="xf-h">
+    <div class="xf-head">
+      <h1 id="xf-h">A day at the cabin</h1>
+      <label class="crossfade-pause"><input type="checkbox"> Pause</label>
+    </div>
+    <div class="crossfade crossfade-zoom" tabindex="0" role="group" aria-label="Three photos, changing every 4 seconds">
+      <figure class="xf-frame">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="200" fill="#ffd9b0"/><circle cx="80" cy="120" r="30" fill="#ff9a5a"/><path d="M0 150 Q90 110 180 140 T320 130 V200 H0Z" fill="#9cc79f"/><path d="M200 150 l40 -40 l40 40 Z" fill="#7a4b33"/></svg>
+        <figcaption>Morning, mist on the lake</figcaption>
+      </figure>
+      <figure class="xf-frame">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="200" fill="#bfe3ff"/><circle cx="160" cy="54" r="24" fill="#ffd34d"/><path d="M0 150 Q90 110 180 140 T320 130 V200 H0Z" fill="#5fb36f"/><path d="M200 150 l40 -40 l40 40 Z" fill="#7a4b33"/></svg>
+        <figcaption>Noon, the long walk</figcaption>
+      </figure>
+      <figure class="xf-frame">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="200" fill="#2f2a5e"/><circle cx="250" cy="60" r="18" fill="#f3efd8"/><path d="M0 150 Q90 110 180 140 T320 130 V200 H0Z" fill="#26485a"/><path d="M200 150 l40 -40 l40 40 Z" fill="#14202a"/><rect x="232" y="128" width="10" height="10" fill="#ffcf6a"/></svg>
+        <figcaption>Evening, one window lit</figcaption>
+      </figure>
+    </div>
+  </section>
 </main>
 </body>
 </html>

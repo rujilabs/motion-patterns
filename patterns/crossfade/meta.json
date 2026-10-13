@@ -2,7 +2,7 @@
   "name": "Crossfade",
   "slug": "crossfade",
   "kind": "pattern",
-  "summary": "Three stacked frames take turns on a 12s cycle. The first frame is visible from the first paint.",
+  "summary": "Stacked frames that take turns with no background flash. 2, 3 or 4 frames, an optional slow zoom on the image, and a pause toggle.",
   "category": "loop",
   "tech": [
     "css"
