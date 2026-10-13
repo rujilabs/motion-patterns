@@ -1,0 +1,43 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.wrap { display: grid; gap: 12px; justify-items: center; width: min(400px, 100%); }
+.order { width: 100%; overflow: clip; }
+.map { margin: 0; aspect-ratio: 3 / 1; border-radius: 7px 7px 0 0; overflow: clip; }
+.map svg { display: block; width: 100%; height: 100%; }
+.body { display: grid; gap: 14px; padding: 14px 18px 16px; }
+.eta { display: grid; gap: 2px; }
+.eta h1 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.eta-sub { color: var(--demo-mute); font-size: 14px; }
+.rider { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-block: 1px solid var(--demo-line); }
+.face { width: 40px; height: 40px; border-radius: 50%; overflow: clip; }
+.face svg { display: block; width: 100%; height: 100%; }
+.who { display: grid; justify-items: start; min-width: 0; line-height: 1.35; }
+.who span { color: var(--demo-mute); font-size: 13px; }
+.rate { font-size: 13px; font-weight: 600; }
+.lines { display: grid; gap: 6px; font-size: 14px; }
+.lines li, .total { display: flex; justify-content: space-between; gap: 12px; }
+.lines li > :last-child { color: var(--demo-mute); }
+.total { font-size: 14px; color: var(--demo-mute); padding-top: 10px; border-top: 1px dashed var(--demo-line); }
+.total strong { color: var(--demo-ink); font-size: 15px; }
+.replay { font: inherit; font-size: 13px; font-weight: 600; color: var(--demo-ink); background: var(--demo-paper); border: 1px solid var(--demo-line); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.replay:hover { border-color: var(--demo-mute); }
+.replay:disabled { color: var(--demo-mute); cursor: progress; }
+@media (max-width: 380px) {
+  .eta h1 { font-size: 21px; }
+  .lines li > :first-child, .total > :first-child { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+@media (max-height: 520px) {
+  .map { aspect-ratio: 4 / 1; }
+  .body { gap: 10px; padding-block: 10px 12px; }
+  .rider { padding: 8px 0; }
+}
+@media (max-height: 420px) {
+  .lines { display: none; }
+}
+@media (prefers-color-scheme: dark) {
+  .m-ground { fill: #26303c; }
+  .m-street { stroke: #313c4a; }
+  .m-river { stroke: #24405a; }
+  .m-park { fill: #2b3f34; }
+  .m-block { fill: #2e3845; }
+  .m-start { fill: #1f2630; stroke: #e9edf3; }
+}

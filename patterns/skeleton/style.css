@@ -1,0 +1,90 @@
+/*
+ * skeleton: placeholders that sit on the real layout. A bone is the real element with its content
+ * hidden, so when the data lands nothing moves: the bone hands over in place.
+ *
+ * One light, not twelve: every bone paints the same gradient fixed to the viewport, so a single
+ * sheen crosses the whole card and each bone only shows the slice of it that passes over it.
+ * The busy state only applies under .js (play.js or skeleton.js marks <html>), so without a script
+ * the content just shows.
+ */
+[data-skeleton] {
+  --bone: rgb(120 132 152 / .16);
+  --bone-sheen: rgb(255 255 255 / .75);
+  --sheen-dur: 2.2s;
+}
+@media (prefers-color-scheme: dark) {
+  [data-skeleton] { --bone: rgb(160 172 192 / .14); --bone-sheen: rgb(220 230 245 / .16); }
+}
+
+.bone, .bone-lines, .bone-block { position: relative; }
+.bone::before, .bone-lines::before, .bone-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* .bone: one line of text. The bar is cap height, centred on the line, as wide as the text. */
+.bone { display: inline-block; }
+.bone::before { inset: calc((1lh - .72em) / 2) 0; inset: calc((1lh - 1cap) / 2) 0; border-radius: 3px; }
+/* .bone-lines: a paragraph. One bar per line, cut from a single sheet with a mask. */
+.bone-lines::before {
+  border-radius: 0;
+  -webkit-mask: repeating-linear-gradient(transparent 0 calc((1lh - 1cap) / 2), #000 0 calc((1lh + 1cap) / 2), transparent 0 1lh);
+          mask: repeating-linear-gradient(transparent 0 calc((1lh - 1cap) / 2), #000 0 calc((1lh + 1cap) / 2), transparent 0 1lh);
+}
+/* .bone-block: an image, avatar or map. Takes the element's own border-radius. */
+.bone-block::before { border-radius: inherit; }
+
+/* busy: hide the content, show the bone and run the shared sheen */
+.js [data-skeleton][aria-busy="true"] :is(.bone, .bone-lines, .bone-block) { color: transparent; }
+.js [data-skeleton][aria-busy="true"] :is(.bone, .bone-lines, .bone-block) > * { opacity: 0; }
+.js [data-skeleton][aria-busy="true"] :is(.bone, .bone-lines, .bone-block)::before {
+  opacity: 1;
+  background: var(--bone) linear-gradient(105deg, transparent 43%, var(--bone-sheen) 50%, transparent 57%) no-repeat fixed;
+  background-size: 200vw 100vh;
+  animation: bone-sheen var(--sheen-dur) linear infinite;
+}
+/* the light crosses the viewport at an even speed in the first 80% of the cycle, then the card rests before the next pass */
+@keyframes bone-sheen {
+  0%   { background-position: -120vw 0; }
+  80%, 100% { background-position: 20vw 0; }
+}
+
+/*
+ * handover: when aria-busy turns false, each bone dissolves into its content. The text sharpens
+ * out of a 4px blur while the bar fades, so it reads as one material turning into another.
+ * --bone-i (set by skeleton.js in reading order) staggers them top to bottom, capped at 8 steps.
+ */
+.js [data-skeleton][aria-busy="false"] :is(.bone, .bone-lines, .bone-block) {
+  animation: bone-in var(--dur-base) var(--ease-out) both;
+  animation-delay: calc(min(var(--bone-i, 0), 8) * var(--stagger));
+}
+.js [data-skeleton][aria-busy="false"] :is(.bone, .bone-lines, .bone-block)::before {
+  background: var(--bone);
+  animation: bone-out calc(var(--dur-base) * .6) var(--ease-out) both;
+  animation-delay: calc(min(var(--bone-i, 0), 8) * var(--stagger));
+}
+@keyframes bone-in {
+  from { color: transparent; filter: blur(4px); }
+  to   { filter: none; }
+}
+@keyframes bone-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+.js [data-skeleton][aria-busy="false"] :is(.bone, .bone-lines, .bone-block) > * {
+  animation: bone-child var(--dur-base) var(--ease-out) both;
+  animation-delay: calc(min(var(--bone-i, 0), 8) * var(--stagger));
+}
+@keyframes bone-child { from { opacity: 0; } to { opacity: 1; } }
+
+/* Reduced motion: the bones hold still, and the content replaces them at once. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-skeleton][aria-busy="true"] :is(.bone, .bone-lines, .bone-block)::before { animation: none; background-image: none; }
+  .js [data-skeleton][aria-busy="false"] :is(.bone, .bone-lines, .bone-block),
+  .js [data-skeleton][aria-busy="false"] :is(.bone, .bone-lines, .bone-block) > * { animation: none; }
+  .js [data-skeleton][aria-busy="false"] :is(.bone, .bone-lines, .bone-block)::before { animation: none; opacity: 0; }
+}

@@ -1,0 +1,35 @@
+/*
+ * reorder: the CSS half of reorder.js. The script moves the rows (FLIP with the Web Animations API);
+ * this file only sets the stacking that makes a reorder read as people overtaking each other.
+ * A row that climbs passes in front of the rows it overtakes and lifts off the table on the way;
+ * a row that drops slides behind them. Rows need an opaque background, or the crossing shows through.
+ */
+.reorder { position: relative; }
+.reorder > * { position: relative; z-index: 1; background: var(--reorder-bg, Canvas); }
+.reorder > [hidden] { display: none !important; } /* a row's own display: grid would otherwise beat [hidden] */
+.reorder > .is-rising { z-index: 3; }
+.reorder > .is-sinking { z-index: 0; }
+/* while the list changes height, rows outside it are cut at its edge rather than spilling out */
+.reorder.is-resizing { overflow: clip; }
+/* a row a filter removes leaves the flow at once, so the others can close the gap while it fades */
+.reorder > .is-leaving { position: absolute; z-index: 0; margin: 0; pointer-events: none; }
+
+/* the lift: a soft shadow under a climbing row, shown only at the top of its arc */
+.reorder > *::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 24px -10px var(--reorder-shadow, rgb(16 24 40 / .35)), 0 0 0 1px var(--reorder-edge, rgb(16 24 40 / .08));
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* roll: a number that changes rolls old out and new in, inside its own box */
+.roll { display: inline-grid; overflow: hidden; vertical-align: bottom; }
+.roll > * { grid-area: 1 / 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* reorder.js skips every animation here; rows land in their new place in one frame */
+  .reorder > *::after { display: none; }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bars and count-up demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="rush sheet" data-play aria-labelledby="rush-h">
+    <header class="rush-head">
+      <h1 id="rush-h">The 8 am rush</h1>
+      <p class="rush-sub">Kedai Kopi Seri Pagi, Ipoh. Cups sold each hour, Saturday 11 October.</p>
+    </header>
+    <figure class="bars-plot hours">
+      <ol class="bars" aria-label="Cups sold per hour">
+        <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">38 cups</span></span></span></span><span class="bar-label">6 am</span></li>
+        <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">112 cups</span></span></span></span><span class="bar-label">7</span></li>
+        <li class="peak"><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">164 cups</span></span></span></span><span class="bar-label">8</span></li>
+        <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">131 cups</span></span></span></span><span class="bar-label">9</span></li>
+        <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">76 cups</span></span></span></span><span class="bar-label">10</span></li>
+        <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">58 cups</span></span></span></span><span class="bar-label">11</span></li>
+        <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">97 cups</span></span></span></span><span class="bar-label">12 pm</span></li>
+      </ol>
+      <span class="bar-mark peak-mark" aria-hidden="true"><span>Four times the 6 am trickle</span></span>
+    </figure>
+    <h2 class="split-h">What the 8 am hour ordered</h2>
+    <ol class="bars bars-h orders" aria-label="Cups ordered between 8 and 9 am">
+      <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">62 cups</span></span></span></span><span class="bar-label">Kopi O</span></li>
+      <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">48 cups</span></span></span></span><span class="bar-label">Teh tarik</span></li>
+      <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">31 cups</span></span></span></span><span class="bar-label">Kopi C peng</span></li>
+      <li><span class="bar-col"><span class="bar-fill"></span><span class="bar-tag"><span class="bar-num"><span class="vh">23 cups</span></span></span></span><span class="bar-label">Milo ais</span></li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>

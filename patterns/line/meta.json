@@ -1,0 +1,24 @@
+{
+  "name": "Line and area",
+  "slug": "line",
+  "kind": "pattern",
+  "summary": "A line chart drawn by a pen: the line draws itself, a dot rides the tip, the area is wiped in right under it, and notes land as the pen passes them.",
+  "category": "data",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-spring",
+    "--dur-draw",
+    "--dur-slow",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

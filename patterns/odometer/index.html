@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odometer demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="odometer.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="stall sheet" aria-labelledby="stall-h">
+    <header class="stall-head">
+      <div>
+        <h1 id="stall-h">Apam balik, lot 41</h1>
+        <p class="mute">Pasar malam Taman Connaught, Wednesday</p>
+      </div>
+      <p class="clock" role="status">As at <time class="num" id="clock">7:00 pm</time></p>
+    </header>
+
+    <dl class="tally">
+      <div class="tile tile-main">
+        <dt>Takings tonight</dt>
+        <dd class="num"><span class="cur">RM</span> <span class="odometer" id="takings" data-value="744" data-decimals="2">744.00</span></dd>
+      </div>
+      <div class="tile">
+        <dt>Pieces sold</dt>
+        <dd class="num"><span class="odometer" id="sold" data-value="186">186</span></dd>
+      </div>
+      <div class="tile">
+        <dt>In the queue</dt>
+        <dd class="num"><span class="odometer" id="queue" data-value="9">9</span> <span class="unit">people</span></dd>
+      </div>
+    </dl>
+
+    <footer class="stall-foot">
+      <p class="mute" id="note">Gas tank changed at 6:40 pm. Peanut and corn, RM 4 a piece.</p>
+      <button class="next" type="button" id="next">Next hour</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

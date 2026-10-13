@@ -1,0 +1,49 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.solar { width: min(600px, 100%); padding: 20px 22px 16px; }
+.solar-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; }
+.solar h1 { font-size: 22px; font-weight: 750; letter-spacing: -.02em; }
+.solar-sub { margin-top: 4px; color: var(--demo-mute); font-size: 13.5px; }
+.solar-total { color: var(--demo-mute); font-size: 13px; white-space: nowrap; text-align: right; }
+.solar-total .num { display: block; color: var(--demo-ink); font-size: 34px; font-weight: 750; letter-spacing: -.03em; line-height: 1; }
+
+/* the sun in amber, yesterday in blue pencil */
+.sun { --line-path: path("M0.0 246.3 C8.9 242.7 35.6 234.7 53.3 224.3 C71.1 213.9 88.9 198.1 106.7 184.0 C124.4 169.9 142.2 154.1 160.0 140.0 C177.8 125.9 195.6 111.3 213.3 99.7 C231.1 88.1 248.9 77.7 266.7 70.3 C284.4 63.0 306.7 56.9 320.0 55.7 C333.3 54.4 337.8 58.7 346.7 63.0 C355.6 67.3 364.4 63.6 373.3 81.3 C382.2 99.1 391.1 163.2 400.0 169.3 C408.9 175.4 416.3 123.5 426.7 118.0 C437.0 112.5 456.3 133.3 462.2 136.3"); --line-delay: 450ms; margin-top: 22px; color: var(--demo-warn); }
+.sun .grid line { stroke: var(--demo-line); stroke-width: 1; }
+.sun .grid line:first-child { stroke: var(--demo-ink); }
+.line-prev { fill: none; stroke: var(--demo-blue); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; }
+.line-area { fill: color-mix(in srgb, var(--demo-warn) 16%, transparent); }
+.line-pen { stroke-width: 3.5; }
+.line-dot { fill: var(--demo-paper); stroke: var(--demo-warn); stroke-width: 3.5; }
+
+.kw { position: absolute; left: 0; translate: 0 -120%; color: var(--demo-mute); font-size: 11px; }
+.kw-6 { top: calc(30 / 260 * 100%); } .kw-4 { top: calc(103.3 / 260 * 100%); } .kw-2 { top: calc(176.7 / 260 * 100%); }
+
+/* notes sit at their data-x, above the line; positions are the svg units as a share of the box */
+.line-note { margin: 0; font-size: 12px; font-weight: 600; white-space: nowrap; translate: -50% calc(-100% - 14px); }
+.note-peak  { left: calc(320 / 640 * 100%); top: calc(55.7 / 260 * 100%); translate: -50% calc(-100% - 5px); color: var(--demo-ink); }
+.note-cloud { left: calc(400 / 640 * 100%); top: calc(169.3 / 260 * 100%); translate: -50% 16px; color: var(--demo-mute); font-weight: 500; }
+.note-now   { left: calc(462.2 / 640 * 100%); top: calc(136.3 / 260 * 100%); translate: 12px -50%; transform-origin: 0 50%;
+  padding: 3px 8px; border-radius: 4px; background: var(--demo-ink); color: var(--demo-paper); }
+.note-now .num { font-weight: 750; }
+
+.hours { position: relative; height: 18px; margin-top: 6px; color: var(--demo-mute); font-size: 11.5px; }
+.hours span { position: absolute; translate: -50% 0; white-space: nowrap; }
+.hours span:nth-child(1) { left: 0; translate: 0 0; } .hours span:nth-child(2) { left: 25%; } .hours span:nth-child(3) { left: 50%; }
+.hours span:nth-child(4) { left: 75%; } .hours span:nth-child(5) { left: 100%; translate: -100% 0; }
+.legend { display: flex; gap: 16px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--demo-line); color: var(--demo-mute); font-size: 12px; }
+.key { display: inline-flex; align-items: center; gap: 7px; }
+.key::before { content: ""; width: 18px; height: 0; border-top: 3px solid var(--demo-warn); border-radius: 2px; }
+.key-prev::before { border-top: 2px dotted var(--demo-blue); }
+
+@media (max-width: 480px) {
+  .solar { padding: 16px 14px 14px; }
+  .solar-head { flex-direction: column; align-items: start; gap: 10px; }
+  .solar-total { text-align: left; }
+  .solar-total .num { display: inline; font-size: 26px; }
+  .note-cloud { display: none; }
+}
+@media (max-height: 520px) {
+  .solar { padding-block: 14px 10px; }
+  .sun { margin-top: 12px; }
+  .legend { display: none; }
+}

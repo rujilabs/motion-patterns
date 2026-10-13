@@ -1,0 +1,47 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.stall { width: min(620px, 100%); padding: 22px 24px 18px; display: grid; gap: 18px; }
+.stall-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.stall-head h1 { font-size: 22px; font-weight: 700; }
+.stall-head .mute { font-size: 13px; }
+.clock { font-size: 13px; color: var(--demo-mute); white-space: nowrap; padding-top: 4px; }
+.clock time { color: var(--demo-ink); font-weight: 600; }
+
+.tally { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--demo-line); }
+.tile { display: grid; gap: 6px; padding: 16px 0; }
+.tile dt { font-size: 13px; color: var(--demo-mute); }
+.tile dd { margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em; line-height: 1.15; }
+.tile-main { grid-column: 1 / -1; border-bottom: 1px solid var(--demo-line); }
+.tile-main dd { font-size: 64px; letter-spacing: -.02em; }
+.tile:nth-child(3) { border-left: 1px solid var(--demo-line); padding-left: 20px; }
+.cur, .unit { font-size: .38em; font-weight: 600; color: var(--demo-mute); letter-spacing: 0; vertical-align: .9em; }
+.unit { vertical-align: baseline; font-size: 15px; font-weight: 400; }
+
+/* each digit sits in its own counter window, like the drum it imitates */
+.odometer .odo-wheel { --odo-pad: .14em; background: var(--demo-table); border-radius: .08em; margin-inline: .02em; padding-inline: .04em; }
+.odometer .odo-sep { color: var(--demo-mute); padding-inline: .02em; }
+
+.stall-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.stall-foot p { font-size: 13px; }
+.next { display: none; font: inherit; font-size: 14px; font-weight: 600; color: var(--demo-paper); background: var(--demo-ink); border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer; white-space: nowrap; transition: scale var(--dur-quick) var(--ease-out); }
+.next:active { scale: .97; }
+.js .next { display: inline-block; }
+
+@media (max-width: 560px) {
+  .stall { padding: 18px 16px 16px; gap: 14px; }
+  .stall-head { flex-direction: column; gap: 4px; }
+  .stall-head h1 { font-size: 19px; }
+  .clock { padding-top: 0; }
+  .tile dd { font-size: 30px; }
+  .tile-main dd { font-size: 46px; }
+  .tile:nth-child(3) { padding-left: 16px; }
+  .stall-foot { flex-direction: column; align-items: stretch; }
+}
+@media (max-height: 500px) and (min-width: 561px) {
+  .stall { padding-block: 16px 14px; gap: 12px; }
+  .tile { padding: 10px 0; }
+  .tile dd { font-size: 34px; }
+  .tile-main dd { font-size: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .next { transition: none; }
+}

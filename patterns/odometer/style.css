@@ -1,0 +1,31 @@
+/*
+ * odometer: numbers that roll like counter wheels. odometer.js builds one wheel per digit; this
+ * file shapes them. Each wheel is a window one digit tall with a strip of digits behind it. The
+ * strip's edges fade, so a rolling digit blurs into the window edge instead of being cut by it.
+ * Without the script, the plain number shows and nothing moves.
+ */
+.odometer { display: inline-flex; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.js .odometer[data-value]:not(.is-ready) { visibility: hidden; }
+.odo-text {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+.odo-face { display: inline-flex; align-items: flex-start; }
+.odo-wheel {
+  position: relative;
+  display: inline-block;
+  height: var(--odo-h, 1.15em);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(transparent, #000 22%, #000 78%, transparent);
+  mask-image: linear-gradient(transparent, #000 22%, #000 78%, transparent);
+}
+/* the mask needs room: pad the window and pull the neighbours back so the digit keeps its line */
+.odo-wheel { padding-block: var(--odo-pad, .18em); margin-block: calc(var(--odo-pad, .18em) * -1); height: calc(var(--odo-h, 1.15em) + var(--odo-pad, .18em) * 2); }
+.odo-strip { display: block; }
+.odo-strip > span { display: block; height: var(--odo-h, 1.15em); line-height: var(--odo-h, 1.15em); text-align: center; }
+.odo-sep { line-height: var(--odo-h, 1.15em); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* odometer.js sets each wheel straight to its digit; nothing rolls */
+  .odo-strip { transition: none; }
+}

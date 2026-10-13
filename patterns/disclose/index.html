@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accordion and tabs demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="tabs.js"></script>
+</head>
+<body>
+<main class="stage">
+  <article class="shirt sheet" aria-labelledby="shirt-h">
+    <header class="shirt-head">
+      <svg class="swatch" viewBox="0 0 56 56" aria-hidden="true">
+        <rect width="56" height="56" rx="6" fill="#1f3a5f"/>
+        <g fill="#e8c27a"><path d="M14 4 L20 16 L8 16Z"/><path d="M42 4 L48 16 L36 16Z"/><path d="M28 22 L34 34 L22 34Z"/><path d="M14 40 L20 52 L8 52Z"/><path d="M42 40 L48 52 L36 52Z"/></g>
+        <g fill="#c4553b"><circle cx="28" cy="10" r="2.4"/><circle cx="14" cy="28" r="2.4"/><circle cx="42" cy="28" r="2.4"/><circle cx="28" cy="46" r="2.4"/></g>
+      </svg>
+      <div>
+        <h1 id="shirt-h">Kemeja Pucuk Rebung</h1>
+        <p class="shirt-sub">Hand-stamped batik from Kuala Terengganu</p>
+      </div>
+      <p class="price num">RM 189</p>
+    </header>
+
+    <div class="cols">
+      <section class="tabs" data-tabs aria-label="About this shirt">
+        <div class="tabs-list" role="tablist" aria-label="About this shirt">
+          <button type="button" role="tab" id="t-details" aria-controls="p-details" aria-selected="true">Details</button>
+          <button type="button" role="tab" id="t-sizing" aria-controls="p-sizing" aria-selected="false">Sizing</button>
+          <button type="button" role="tab" id="t-care" aria-controls="p-care" aria-selected="false">Care</button>
+          <span class="tabs-ink" aria-hidden="true"></span>
+        </div>
+        <div class="tabs-panels">
+          <div role="tabpanel" id="p-details" aria-labelledby="t-details" tabindex="0">
+            <p>Cotton voile, stamped by hand with a copper block in two colours. Every panel is waxed and dyed on its own, so no two shirts line up the same way.</p>
+            <dl class="facts">
+              <div><dt>Fabric</dt><dd>Cotton voile</dd></div>
+              <div><dt>Fit</dt><dd>Regular, long sleeve</dd></div>
+              <div><dt>Made by</dt><dd>Bengkel Wan Ismail</dd></div>
+            </dl>
+          </div>
+          <div role="tabpanel" id="p-sizing" aria-labelledby="t-sizing" tabindex="0">
+            <table class="sizes num">
+              <caption>Measured flat, in cm</caption>
+              <thead><tr><th scope="col">Size</th><th scope="col">Chest</th><th scope="col">Length</th><th scope="col">Sleeve</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">S</th><td>100</td><td>72</td><td>60</td></tr>
+                <tr><th scope="row">M</th><td>106</td><td>74</td><td>61</td></tr>
+                <tr><th scope="row">L</th><td>112</td><td>76</td><td>62</td></tr>
+                <tr><th scope="row">XL</th><td>118</td><td>78</td><td>63</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" id="p-care" aria-labelledby="t-care" tabindex="0">
+            <ul class="care">
+              <li>Hand wash cold, apart from whites, for the first three washes.</li>
+              <li>Dry in the shade. Direct sun fades the indigo.</li>
+              <li>Iron inside out on medium heat.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" aria-labelledby="faq-h">
+        <h2 id="faq-h">Delivery and returns</h2>
+        <details class="disclose" name="faq" open>
+          <summary>When will it arrive? <span class="disclose-mark" aria-hidden="true"></span></summary>
+          <p>Peninsular Malaysia in 2 to 4 working days by courier. Sabah and Sarawak in 5 to 7.</p>
+        </details>
+        <details class="disclose" name="faq">
+          <summary>Can I return it? <span class="disclose-mark" aria-hidden="true"></span></summary>
+          <p>Within 14 days, unworn with the tag on. Small breaks in the stamp are part of handmade cloth, not a fault.</p>
+        </details>
+        <details class="disclose" name="faq">
+          <summary>Can I order a longer sleeve? <span class="disclose-mark" aria-hidden="true"></span></summary>
+          <p>Yes, up to 6 cm longer on sleeves or body. Add 5 working days.</p>
+        </details>
+      </section>
+    </div>
+  </article>
+</main>
+</body>
+</html>

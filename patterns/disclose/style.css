@@ -1,0 +1,67 @@
+/*
+ * disclose: two ways to show one part of a page at a time, both answering a click.
+ *
+ * Accordion: native <details>. The height animates from 0 to auto (interpolate-size), the plus
+ * folds into a minus on the spring, and the answer rises in a beat after the box has opened, so the
+ * eye follows the opening first and the words second. Browsers without ::details-content open at once.
+ */
+.disclose { --disclose-dur: calc(var(--dur-base) * .7); interpolate-size: allow-keywords; }
+.disclose::details-content {
+  block-size: 0;
+  overflow-y: clip;
+  transition: block-size var(--disclose-dur) var(--ease-out), content-visibility var(--disclose-dur) allow-discrete;
+}
+.disclose[open]::details-content { block-size: auto; }
+.disclose > :not(summary) {
+  opacity: 0;
+  translate: 0 8px;
+  transition: opacity var(--dur-quick) var(--ease-out), translate var(--dur-quick) var(--ease-out);
+}
+.disclose[open] > :not(summary) {
+  opacity: 1;
+  translate: none;
+  transition-duration: var(--disclose-dur);
+  transition-delay: calc(var(--disclose-dur) * .3);
+}
+.disclose > summary { list-style: none; cursor: pointer; }
+.disclose > summary::-webkit-details-marker { display: none; }
+/* the mark: two bars. Open turns the upright bar flat, so the plus folds into a minus. */
+.disclose-mark { position: relative; flex: none; width: 12px; height: 12px; }
+.disclose-mark::before, .disclose-mark::after {
+  content: ""; position: absolute; left: 0; top: 5px; width: 12px; height: 2px; border-radius: 1px; background: currentColor;
+}
+.disclose-mark::after { rotate: 90deg; transition: rotate var(--dur-base) var(--ease-spring); }
+.disclose[open] .disclose-mark::after { rotate: 0deg; }
+
+/*
+ * Tabs: the inchworm. The ink under the chosen tab moves its leading edge first and lets the
+ * trailing edge follow a beat later, so it stretches toward the new tab and then gathers itself.
+ * tabs.js sets --ink-l and --ink-r (insets from the list's edges) and data-ink="left|right".
+ * The new panel slides a short way in from the side the ink travelled toward while the old one
+ * leaves the other way. The new one waits until the old one is mostly gone, so the words never overlap.
+ */
+.tabs-list { position: relative; isolation: isolate; }
+.tabs-ink {
+  --ink-dur: calc(var(--dur-base) * .5);
+  --ink-lag: calc(var(--stagger) * 1.25);
+  position: absolute; z-index: -1;
+  left: var(--ink-l, 0); right: var(--ink-r, 100%);
+  transition: left var(--ink-dur) var(--ease-out), right var(--ink-dur) var(--ease-out);
+}
+.tabs-list[data-ink="right"] .tabs-ink { transition-delay: var(--ink-lag), 0s; }
+.tabs-list[data-ink="left"] .tabs-ink { transition-delay: 0s, var(--ink-lag); }
+.tabs-list[data-ink="none"] .tabs-ink { transition: none; }
+
+.js .tabs-panels { display: grid; }
+.js .tabs-panels > [role="tabpanel"] { grid-area: 1 / 1; }
+.js .tabs-panels > .is-off { visibility: hidden; }
+.tabs-panels > .is-in { animation: tabs-in calc(var(--dur-base) * .6) var(--ease-out) calc(var(--dur-quick) * .6) both; }
+.tabs-panels > .is-out { animation: tabs-out var(--dur-quick) var(--ease-in) both; pointer-events: none; }
+@keyframes tabs-in { from { opacity: 0; translate: calc(var(--tabs-dir, 1) * 18px) 0; } }
+@keyframes tabs-out { to { opacity: 0; translate: calc(var(--tabs-dir, 1) * -18px) 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .disclose::details-content, .disclose > :not(summary), .disclose[open] > :not(summary), .disclose-mark::after { transition: none; }
+  .tabs-ink { transition: none; }
+  .tabs-panels > .is-in, .tabs-panels > .is-out { animation: none; }
+}

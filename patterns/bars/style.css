@@ -1,0 +1,64 @@
+/*
+ * bars: bars grow from the baseline on the spring, and each value label rides the top of its own
+ * bar while it counts up. The fill and the label share one duration, one delay and one curve, so the
+ * label stays glued to the bar through the overshoot instead of chasing it.
+ *
+ * Per bar: --v (0..1, the bar's share of the plot) and --to (the integer the label counts to).
+ * Optional: --i (stagger step, set for you where sibling-index() exists), --bars-delay on the list.
+ */
+@property --bar-n { syntax: "<integer>"; inherits: false; initial-value: 0; }
+
+.bars { --bar-label-h: 1.9em; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--bar-gap, 8px); height: var(--bars-h, 200px); }
+.bars > li { --bar-delay: calc(var(--bars-delay, 0ms) + var(--i, 0) * var(--stagger)); display: grid; grid-template-rows: 1fr var(--bar-label-h); min-width: 0; }
+@supports (animation-delay: calc(sibling-index() * 1ms)) {
+  .bars > li { --i: calc(sibling-index() - 1); }
+}
+.bar-col { position: relative; }
+.bar-fill { position: absolute; inset: 0; transform-origin: 50% 100%; scale: 1 var(--v); background: var(--bar-color, currentColor); }
+/* the tag is a column-tall box; moving it by (1 - v) of its own height puts its top edge on the bar's top */
+.bar-tag { position: absolute; inset: 0; translate: 0 calc((1 - var(--v)) * 100%); pointer-events: none; }
+.bar-num { --bar-n: var(--to); counter-reset: bar-n var(--bar-n); display: block; translate: 0 calc(-100% - 4px); text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* the counter is drawn, the real number is in the markup for screen readers (an empty alt hides the drawn one) */
+.bar-num::before { content: counter(bar-n); content: counter(bar-n) / ""; }
+.bar-label { align-self: end; text-align: center; white-space: nowrap; }
+
+/* bars-h: the same parts, growing to the right; the label rides the end of the bar */
+.bars-h { display: grid; grid-auto-flow: row dense; grid-auto-columns: auto; grid-template-columns: max-content 1fr; height: auto; gap: var(--bar-gap, 8px) 12px; }
+.bars-h > li { display: contents; }
+.bars-h .bar-label { grid-column: 1; align-self: center; text-align: left; }
+.bars-h .bar-col { grid-column: 2; }
+.bars-h .bar-col { height: var(--bar-thick, 14px); margin-right: 3.5em; }
+.bars-h .bar-fill { transform-origin: 0 50%; scale: var(--v) 1; }
+.bars-h .bar-tag { translate: calc((var(--v) - 1) * 100%) 0; display: flex; justify-content: flex-end; align-items: center; }
+.bars-h .bar-num { translate: calc(100% + 6px) 0; }
+
+/* bar-mark: an optional rule across the plot at one bar's height (set --v on it), drawn after the bars land */
+.bars-plot { position: relative; }
+.bar-mark { position: absolute; left: 0; right: 0; bottom: calc(var(--bar-label-h, 1.9em) + var(--v) * (var(--bars-h, 200px) - var(--bar-label-h, 1.9em))); border-top: 1px dashed currentColor; transform-origin: 0 50%; pointer-events: none; }
+
+@keyframes bar-grow   { from { scale: 1 0; } }
+@keyframes bar-ride   { from { translate: 0 100%; } }
+@keyframes bar-grow-x { from { scale: 0 1; } }
+@keyframes bar-ride-x { from { translate: -100% 0; } }
+@keyframes bar-count  { from { --bar-n: 0; } }
+@keyframes bar-show   { from { opacity: 0; } }
+@keyframes bar-mark   { from { scale: 0 1; opacity: 0; } 1% { opacity: 1; } }
+
+/* Hidden start states only with play.js; the bars start when it adds .go to them or an ancestor */
+.js .bars .bar-fill { animation: bar-grow var(--dur-slow) var(--ease-spring) var(--bar-delay) both paused; }
+.js .bars .bar-tag  { animation: bar-ride var(--dur-slow) var(--ease-spring) var(--bar-delay) both paused; }
+.js .bars .bar-num  { animation: bar-count var(--dur-slow) var(--ease-out) var(--bar-delay) both paused, bar-show var(--dur-quick) linear var(--bar-delay) both paused; }
+.js .bars-h .bar-fill { animation-name: bar-grow-x; }
+.js .bars-h .bar-tag  { animation-name: bar-ride-x; }
+.js .bar-mark { animation: bar-mark var(--dur-base) var(--ease-inout) var(--mark-delay, 1400ms) both paused; }
+.js .go .bars :is(.bar-fill, .bar-tag, .bar-num),
+.js .bars.go :is(.bar-fill, .bar-tag, .bar-num),
+.js .go .bar-mark { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .bars :is(.bar-fill, .bar-tag, .bar-num),
+  .js .go .bars :is(.bar-fill, .bar-tag, .bar-num),
+  .js .bars.go :is(.bar-fill, .bar-tag, .bar-num),
+  .js .bar-mark,
+  .js .go .bar-mark { animation: none; }
+}

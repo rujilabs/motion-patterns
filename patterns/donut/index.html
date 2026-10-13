@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donut and gauge demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="budget sheet" aria-labelledby="budget-h" data-play>
+    <header class="budget-head">
+      <h1 id="budget-h">Where September's RM 3,200 went</h1>
+      <p class="mute">Household spending, Seksyen 7, Shah Alam</p>
+    </header>
+
+    <div class="budget-split">
+      <figure class="donut-fig">
+        <svg class="donut" viewBox="0 0 200 200" role="img" aria-labelledby="budget-h">
+          <defs>
+            <mask id="donut-sweep" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+              <circle class="donut-pen" cx="100" cy="100" r="80" pathLength="100"/>
+            </mask>
+          </defs>
+          <g transform="rotate(-90 100 100)">
+            <circle class="donut-track" cx="100" cy="100" r="80" pathLength="100"/>
+            <g mask="url(#donut-sweep)">
+              <circle class="donut-seg seg-rent" cx="100" cy="100" r="80" pathLength="100"/>
+              <circle class="donut-seg donut-key seg-food" cx="100" cy="100" r="80" pathLength="100"/>
+              <circle class="donut-seg seg-ride" cx="100" cy="100" r="80" pathLength="100"/>
+              <circle class="donut-seg seg-kids" cx="100" cy="100" r="80" pathLength="100"/>
+              <circle class="donut-seg seg-bills" cx="100" cy="100" r="80" pathLength="100"/>
+              <circle class="donut-seg seg-save" cx="100" cy="100" r="80" pathLength="100"/>
+            </g>
+            <circle class="donut-tip" cx="180" cy="100" r="4.5"/>
+          </g>
+        </svg>
+        <figcaption class="donut-total">
+          <span class="mute">Spent</span>
+          <strong class="num">RM <span class="count count-k total"><span class="count-text">3,200</span></span></strong>
+        </figcaption>
+      </figure>
+
+      <ul class="legend">
+        <li class="l-rent"><span class="sw" aria-hidden="true"></span><span>Rent</span><span class="num">1,100</span></li>
+        <li class="l-food is-key"><span class="sw" aria-hidden="true"></span><span>Food <em>RM 120 over plan</em></span><span class="num">720</span></li>
+        <li class="l-ride"><span class="sw" aria-hidden="true"></span><span>Petrol and tolls</span><span class="num">410</span></li>
+        <li class="l-kids"><span class="sw" aria-hidden="true"></span><span>Kids, school and tuition</span><span class="num">380</span></li>
+        <li class="l-bills"><span class="sw" aria-hidden="true"></span><span>TNB, water, internet</span><span class="num">260</span></li>
+        <li class="l-save"><span class="sw" aria-hidden="true"></span><span>Into ASB</span><span class="num">330</span></li>
+      </ul>
+    </div>
+
+    <div class="pace">
+      <svg class="gauge" viewBox="0 0 200 112" role="img" aria-labelledby="pace-h pace-sub">
+        <defs>
+          <mask id="gauge-sweep" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="112">
+            <path class="gauge-pen" d="M20 100 A80 80 0 0 1 180 100" pathLength="100"/>
+          </mask>
+        </defs>
+        <path class="gauge-track" d="M20 100 A80 80 0 0 1 180 100" pathLength="100"/>
+        <g mask="url(#gauge-sweep)">
+          <path class="gauge-fill" d="M20 100 A80 80 0 0 1 180 100" pathLength="100"/>
+          <path class="gauge-fill gauge-over" d="M20 100 A80 80 0 0 1 180 100" pathLength="100"/>
+        </g>
+        <line class="gauge-mark" x1="100" y1="6" x2="100" y2="34"/>
+        <g class="gauge-needle">
+          <line x1="100" y1="100" x2="100" y2="30"/>
+          <circle cx="100" cy="100" r="6"/>
+        </g>
+      </svg>
+      <div class="pace-text">
+        <h2 id="pace-h">October so far</h2>
+        <p class="pace-value num"><span class="count gauge-count"><span class="count-text">68</span></span>% <span class="mute">of the budget</span></p>
+        <p id="pace-sub" class="mute">19 of 31 days gone. The blue tick is where spending should be: 61%.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "Donut and gauge",
+  "slug": "donut",
+  "kind": "pattern",
+  "summary": "One pen draws the whole donut, lifting at each gap, while the total counts on the same clock. A gauge needle swings past and settles. No script.",
+  "category": "data",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-spring",
+    "--ease-paper",
+    "--dur-draw",
+    "--dur-base"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

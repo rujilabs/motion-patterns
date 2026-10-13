@@ -1,0 +1,20 @@
+{
+  "name": "Skeleton and handover",
+  "slug": "skeleton",
+  "kind": "pattern",
+  "summary": "Loading bones drawn on the real layout, one light passing over all of them, and a handover where each bone dissolves into its content in reading order. Nothing shifts.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-13"
+}

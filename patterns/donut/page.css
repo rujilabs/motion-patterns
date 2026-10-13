@@ -1,0 +1,85 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.budget { width: min(660px, 100%); padding: 22px 24px 20px; display: grid; gap: 18px; }
+.budget-head { display: grid; gap: 2px; }
+.budget-head h1 { font-size: 22px; font-weight: 700; }
+.budget-head p { font-size: 13px; }
+
+.budget-split { display: grid; grid-template-columns: 196px 1fr; gap: 28px; align-items: center; }
+.donut-fig { position: relative; margin: 0; width: 196px; }
+.donut-total { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 0; pointer-events: none; }
+.donut-total .mute { font-size: 12px; }
+.donut-total strong { font-size: 25px; font-weight: 700; letter-spacing: -.02em; }
+
+/* the household's figures: each segment's share (--v) and where it starts (--at) */
+.donut { --donut-track: var(--demo-ink); }
+.seg-rent  { --v: 34.375; --at: 0;       --c: var(--demo-ink); }
+.seg-food  { --v: 22.5;   --at: 34.375;  --c: var(--demo-red); }
+.seg-ride  { --v: 12.8125; --at: 56.875; --c: var(--demo-blue); }
+.seg-kids  { --v: 11.875; --at: 69.6875; --c: color-mix(in srgb, var(--demo-blue) 62%, var(--demo-paper)); }
+.seg-bills { --v: 8.125;  --at: 81.5625; --c: color-mix(in srgb, var(--demo-blue) 34%, var(--demo-paper)); }
+.seg-save  { --v: 10.3125; --at: 89.6875; --c: var(--demo-ok); }
+.total { --to: 3200; }
+
+.legend { display: grid; font-size: 14px; }
+.legend li { display: grid; grid-template-columns: 10px 1fr auto; gap: 10px; align-items: baseline; padding: 6px 0; }
+.legend li + li { border-top: 1px solid var(--demo-line); }
+.legend .sw { width: 10px; height: 10px; border-radius: 2px; background: var(--c); translate: 0 1px; }
+.legend .num { font-weight: 600; }
+.legend em { font-style: normal; color: var(--demo-red); font-size: 12px; margin-left: 4px; white-space: nowrap; }
+.legend .is-key .num { color: var(--demo-red); }
+.l-rent  { --c: var(--demo-ink); }
+.l-food  { --c: var(--demo-red); }
+.l-ride  { --c: var(--demo-blue); }
+.l-kids  { --c: color-mix(in srgb, var(--demo-blue) 62%, var(--demo-paper)); }
+.l-bills { --c: color-mix(in srgb, var(--demo-blue) 34%, var(--demo-paper)); }
+.l-save  { --c: var(--demo-ok); }
+
+/* each legend row wakes as the pen reaches its segment (times read off the --ease-inout curve) */
+@keyframes legend-on { from { opacity: .28; } to { opacity: 1; } }
+.js .legend li { opacity: .28; }
+.js .go .legend li { animation: legend-on var(--dur-quick) var(--ease-out) both; }
+.js .go .legend .l-food  { animation-delay: 466ms; }
+.js .go .legend .l-ride  { animation-delay: 606ms; }
+.js .go .legend .l-kids  { animation-delay: 713ms; }
+.js .go .legend .l-bills { animation-delay: 855ms; }
+.js .go .legend .l-save  { animation-delay: 1006ms; }
+
+.pace { display: grid; grid-template-columns: 196px 1fr; gap: 28px; align-items: end; padding-top: 16px; border-top: 1px solid var(--demo-line); }
+.gauge { width: 196px; --gauge-track: var(--demo-ink); --v: 68; --gauge-delay: 900ms; }
+.gauge-fill { --c: var(--demo-blue); --v: 61; }
+.gauge-over { --c: var(--demo-red); stroke-dasharray: 0 61 7 100; }
+/* the pace tick, drawn in blue pencil where spending should be today */
+.gauge-mark { stroke: var(--demo-blue); stroke-width: 2.5; stroke-linecap: round; transform-box: view-box; transform-origin: 100px 100px; transform: rotate(19.8deg); }
+.gauge-needle line { stroke: var(--demo-ink); stroke-width: 3; stroke-linecap: round; }
+.gauge-needle circle { fill: var(--demo-ink); }
+.donut-tip { fill: var(--demo-paper); stroke: var(--demo-ink); stroke-width: 2; }
+.pace-text { display: grid; gap: 2px; padding-bottom: 2px; }
+.pace-text h2 { font-size: 15px; font-weight: 600; }
+.pace-value { font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; color: var(--demo-red); }
+.pace-value .mute { font-size: 14px; font-weight: 400; letter-spacing: 0; }
+.pace-text p:last-child { font-size: 13px; max-width: 34ch; }
+.gauge-count { --to: 68; --count-dur: 1200ms; --count-ease: var(--ease-paper); --count-delay: 900ms; }
+
+@media (max-width: 560px) {
+  .budget { padding: 18px 16px 16px; gap: 14px; }
+  .budget-head h1 { font-size: 19px; }
+  .budget-split { grid-template-columns: 1fr; justify-items: center; gap: 14px; }
+  .donut-fig { width: 168px; }
+  .donut-total strong { font-size: 22px; }
+  .legend { width: 100%; font-size: 13px; }
+  .legend li { padding: 4px 0; }
+  .pace { grid-template-columns: 132px 1fr; gap: 14px; align-items: center; padding-top: 12px; }
+  .gauge { width: 132px; }
+  .pace-value { font-size: 24px; }
+}
+@media (max-height: 560px) and (min-width: 561px) {
+  .budget { padding-block: 16px; gap: 12px; }
+  .donut-fig, .gauge { width: 160px; }
+  .donut-total strong { font-size: 20px; }
+  .budget-split, .pace { grid-template-columns: 160px 1fr; }
+  .legend li { padding: 3px 0; }
+  .pace { padding-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .legend li, .js .go .legend li { animation: none; opacity: 1; }
+}

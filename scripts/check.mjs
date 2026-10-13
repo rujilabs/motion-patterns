@@ -5,9 +5,9 @@ import { join, relative, extname } from "node:path";
 import { loadEntries, ROOT, isMain } from "./entries.mjs";
 import { catalogueIsFresh } from "./catalogue.mjs";
 
-const CATEGORIES = ["entry", "emphasis", "loop", "scroll", "scene", "type"];
+const CATEGORIES = ["entry", "emphasis", "loop", "scroll", "data", "state", "scene", "type"];
 const TECH = ["css", "svg", "js", "canvas", "webgl", "variable-font"];
-const TRIGGERS = ["load", "in-view", "hover", "scroll", "loop"];
+const TRIGGERS = ["load", "in-view", "hover", "click", "scroll", "loop"];
 const REDUCED = ["final-state", "static"];
 const RELATIONS = ["original", "port", "recreation", "inspired-by"];
 // A port copies code, so the source licence must allow it. Recreations and inspired-by entries copy nothing.

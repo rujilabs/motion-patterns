@@ -30,11 +30,12 @@ const entries = loadEntries();
 const patterns = entries.filter((e) => e.kind === "pattern");
 const templates = entries.filter((e) => e.kind === "template");
 
-// motion.css: tokens + every pattern, one file.
+// motion.css: tokens + every pattern, one file. Comments are stripped here; each entry's style.css keeps them.
+const bare = (css) => css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\n\s*\n+/g, "\n").trim();
 const bundle = [
   `/* motion-patterns v${pkg.version} | MIT | ${REPO_URL} */`,
-  readFileSync(join(ROOT, "tokens.css"), "utf8"),
-  ...patterns.map((e) => `/* ${e.slug} */\n` + readFileSync(join(e.path, "style.css"), "utf8").replace(/\.\.\/\.\.\/fonts\//g, "fonts/")),
+  bare(readFileSync(join(ROOT, "tokens.css"), "utf8")),
+  ...patterns.map((e) => `/* ${e.slug} */\n` + bare(readFileSync(join(e.path, "style.css"), "utf8")).replace(/\.\.\/\.\.\/fonts\//g, "fonts/")),
 ].join("\n");
 writeFileSync(join(DIST, "motion.css"), bundle);
 const gz = gzipSync(bundle).length;
@@ -59,8 +60,8 @@ for (const t of templates) {
 // The entry's own index.html becomes demo.html; its folder index becomes the entry page.
 for (const e of entries) renameSync(join(DIST, e.rel, "index.html"), join(DIST, e.rel, "demo.html"));
 
-const CATEGORY = { entry: "Entrances", emphasis: "Emphasis", loop: "Loops", scroll: "Scroll", scene: "Scenes", type: "Type" };
-const TRIGGER = { load: "Plays on load", "in-view": "Plays in view", hover: "Plays on hover", scroll: "Follows scroll", loop: "Loops" };
+const CATEGORY = { entry: "Entrances", emphasis: "Emphasis", loop: "Loops", scroll: "Scroll", data: "Data", state: "State changes", scene: "Scenes", type: "Type" };
+const TRIGGER = { load: "Plays on load", "in-view": "Plays in view", hover: "Plays on hover", click: "Answers a click", scroll: "Follows scroll", loop: "Loops" };
 const REDUCED = { "final-state": "Shows the finished state", static: "Holds still" };
 const TECH = { css: "CSS", svg: "SVG", js: "JavaScript", canvas: "Canvas", webgl: "WebGL", "variable-font": "Variable font" };
 const byName = Object.fromEntries(entries.map((e) => [e.slug, e]));

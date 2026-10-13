@@ -1,0 +1,19 @@
+{
+  "name": "Odometer",
+  "slug": "odometer",
+  "kind": "pattern",
+  "summary": "Numbers roll like counter wheels. The last digit spins the most, as many turns as the change really passed, and the digits ripple from the left. Change data-value to roll again.",
+  "category": "data",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

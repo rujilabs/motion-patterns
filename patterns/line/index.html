@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line and area demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="solar sheet" data-play aria-labelledby="solar-h">
+    <header class="solar-head">
+      <div>
+        <h1 id="solar-h">Rooftop solar, Tuesday</h1>
+        <p class="solar-sub">6.2 kWp on a terrace roof in Shah Alam. Yesterday made 31.2 kWh.</p>
+      </div>
+      <p class="solar-total"><span class="num">27.6</span> kWh so far</p>
+    </header>
+    <figure class="line-chart sun">
+      <svg viewBox="0 0 640 260" role="img" aria-label="Power through the day: from 0.1 kW at 7 am up to a 5.3 kW peak at 1 pm, a drop to 2.2 kW under cloud at 2.30 pm, and 3.1 kW now at 3.40 pm. Yesterday peaked at 4.6 kW.">
+        <g class="grid" aria-hidden="true">
+          <line x1="0" x2="640" y1="250" y2="250"/><line x1="0" x2="640" y1="176.7" y2="176.7"/><line x1="0" x2="640" y1="103.3" y2="103.3"/><line x1="0" x2="640" y1="30" y2="30"/>
+        </g>
+        <path class="line-prev" d="M0.0 248.2 C8.9 245.4 35.6 240.5 53.3 231.7 C71.1 222.8 88.9 207.8 106.7 195.0 C124.4 182.2 142.2 167.5 160.0 154.7 C177.8 141.8 195.6 128.4 213.3 118.0 C231.1 107.6 248.9 98.4 266.7 92.3 C284.4 86.2 302.2 81.3 320.0 81.3 C337.8 81.3 355.6 85.6 373.3 92.3 C391.1 99.1 408.9 110.1 426.7 121.7 C444.4 133.3 462.2 148.6 480.0 162.0 C497.8 175.4 515.6 190.1 533.3 202.3 C551.1 214.6 568.9 227.4 586.7 235.3 C604.4 243.3 631.1 247.6 640.0 250.0"/>
+        <path class="line-area" d="M0.0 246.3 C8.9 242.7 35.6 234.7 53.3 224.3 C71.1 213.9 88.9 198.1 106.7 184.0 C124.4 169.9 142.2 154.1 160.0 140.0 C177.8 125.9 195.6 111.3 213.3 99.7 C231.1 88.1 248.9 77.7 266.7 70.3 C284.4 63.0 306.7 56.9 320.0 55.7 C333.3 54.4 337.8 58.7 346.7 63.0 C355.6 67.3 364.4 63.6 373.3 81.3 C382.2 99.1 391.1 163.2 400.0 169.3 C408.9 175.4 416.3 123.5 426.7 118.0 C437.0 112.5 456.3 133.3 462.2 136.3 L462.2 250 L0 250 Z"/>
+        <path class="line-pen" pathLength="1" d="M0.0 246.3 C8.9 242.7 35.6 234.7 53.3 224.3 C71.1 213.9 88.9 198.1 106.7 184.0 C124.4 169.9 142.2 154.1 160.0 140.0 C177.8 125.9 195.6 111.3 213.3 99.7 C231.1 88.1 248.9 77.7 266.7 70.3 C284.4 63.0 306.7 56.9 320.0 55.7 C333.3 54.4 337.8 58.7 346.7 63.0 C355.6 67.3 364.4 63.6 373.3 81.3 C382.2 99.1 391.1 163.2 400.0 169.3 C408.9 175.4 416.3 123.5 426.7 118.0 C437.0 112.5 456.3 133.3 462.2 136.3"/>
+        <circle class="line-dot" r="6.5"/>
+      </svg>
+      <p class="kw kw-6" aria-hidden="true">6 kW</p><p class="kw kw-4" aria-hidden="true">4</p><p class="kw kw-2" aria-hidden="true">2</p>
+      <p class="line-note note-peak" data-x="320">Peak 5.3 kW</p>
+      <p class="line-note note-cloud" data-x="400">Cloud, 2.30 pm</p>
+      <p class="line-note note-now" data-x="462.2"><span class="num">3.1 kW</span> now</p>
+    </figure>
+    <p class="hours" aria-hidden="true"><span>7 am</span><span>10</span><span>1 pm</span><span>4</span><span>7 pm</span></p>
+    <p class="legend"><span class="key key-today">Today</span><span class="key key-prev">Monday</span></p>
+  </section>
+</main>
+<script src="line.js"></script>
+</body>
+</html>

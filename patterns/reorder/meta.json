@@ -1,0 +1,20 @@
+{
+  "name": "Reorder",
+  "slug": "reorder",
+  "kind": "pattern",
+  "summary": "A list that sorts and filters by moving, not jumping. Rows that climb lift and pass in front, rows that drop sink behind, and changed numbers roll.",
+  "category": "state",
+  "tech": [
+    "js",
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

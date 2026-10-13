@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skeleton demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="skeleton.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <div class="wrap">
+    <article class="order sheet" data-skeleton aria-busy="true" aria-labelledby="order-h">
+      <figure class="map bone-block">
+        <svg viewBox="0 0 360 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: the rider is two thirds of the way from the warung to your door">
+          <rect class="m-ground" width="360" height="120" fill="#e9eef3"/>
+          <path d="M0 34 H360 M0 86 H360 M70 0 V120 M180 0 V120 M290 0 V120" class="m-street" stroke="#fff" stroke-width="9"/>
+          <path d="M-10 112 C60 98 120 120 200 104 S320 96 370 108" class="m-river" stroke="#cfe0ea" stroke-width="14" fill="none"/>
+          <rect x="90" y="46" width="70" height="28" rx="3" class="m-park" fill="#d6e8d3"/>
+          <rect x="200" y="6" width="74" height="22" rx="3" class="m-block" fill="#dfe3ea"/>
+          <path class="route" d="M46 86 H180 V34 H306" stroke="#3d7bf2" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M46 86 H180 V60" stroke="#3d7bf2" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+          <circle cx="46" cy="86" r="6" class="m-start" fill="#fff" stroke="#1e2229" stroke-width="2.5"/>
+          <path d="M306 20 a9 9 0 0 1 9 9 c0 7 -9 15 -9 15 s-9 -8 -9 -15 a9 9 0 0 1 9 -9Z" fill="#ee3b2b"/>
+          <circle cx="306" cy="29" r="3.2" fill="#fff"/>
+          <circle cx="180" cy="52" r="10" fill="#3d7bf2" opacity=".18"/>
+          <circle cx="180" cy="52" r="5.5" fill="#3d7bf2" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </figure>
+      <div class="body">
+        <header class="eta">
+          <h1 id="order-h"><span class="bone">Arriving in <span class="num">12 min</span></span></h1>
+          <p class="eta-sub"><span class="bone">Faizal is 2.1 km away on Jalan Raja Muda</span></p>
+        </header>
+        <div class="rider">
+          <span class="face bone-block">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" fill="#f2d4b8"/><path d="M8 48 c2 -10 9 -14 16 -14 s14 4 16 14Z" fill="#2f5f9e"/><circle cx="24" cy="21" r="9" fill="#b98560"/><path d="M14 19 a10 10 0 0 1 20 0 v1 h-20Z" fill="#1e2229"/></svg>
+          </span>
+          <p class="who"><strong class="bone">Faizal Hakim</strong><span class="bone">Yamaha Y15, plate WVK 4821</span></p>
+          <p class="rate"><span class="bone num">4.9 of 5</span></p>
+        </div>
+        <ul class="lines">
+          <li><span class="bone">Nasi lemak ayam berempah x2</span><span class="bone num">RM 25.80</span></li>
+          <li><span class="bone">Teh tarik kurang manis x2</span><span class="bone num">RM 7.00</span></li>
+        </ul>
+        <p class="total"><span class="bone">Paid by DuitNow, Warung Mak Jah</span><strong class="bone num">RM 32.80</strong></p>
+      </div>
+    </article>
+    <button class="replay" type="button">Load the order again</button>
+  </div>
+</main>
+</body>
+</html>

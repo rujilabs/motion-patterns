@@ -1,0 +1,23 @@
+{
+  "name": "Accordion and tabs",
+  "slug": "disclose",
+  "kind": "pattern",
+  "summary": "Native details that open to their real height while the plus folds into a minus, and tabs whose ink moves like an inchworm: the leading edge first, the trailing edge a beat later.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-spring",
+    "--dur-base",
+    "--dur-quick",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

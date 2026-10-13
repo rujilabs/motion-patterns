@@ -1,0 +1,43 @@
+/*
+ * line: a line chart drawn by a pen. The line draws itself, a dot rides the pen tip on the same
+ * path, the area under the line is wiped in behind the pen, and notes land as the pen reaches them.
+ *
+ * The line and the dot are CSS. Arc length and x are not the same thing (a steep stretch is long and
+ * narrow), so line.js measures the path and gives the area wipe and the notes keyframes that follow
+ * the pen exactly. Without line.js the area wipes left to right in the same time and the notes land at
+ * the end: close, and still correct at rest.
+ *
+ * Markup: an svg with .line-pen (pathLength="1"), .line-area (the same path closed to the baseline)
+ * and .line-dot (a circle at 0,0). The dot follows --line-path, the pen's path data as path("...").
+ */
+.line-chart { position: relative; }
+.line-chart > svg { display: block; width: 100%; height: auto; overflow: visible; }
+.line-pen { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.line-dot { offset-path: var(--line-path); offset-distance: 100%; offset-rotate: 0deg; }
+.line-note { position: absolute; transform-origin: 50% 100%; }
+
+@keyframes line-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes line-ride { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes line-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes line-show { from { opacity: 0; } }
+@keyframes line-land { from { opacity: 0; scale: .6; } }
+
+/* Hidden start states only with play.js. --line-delay holds the pen (and everything that follows it). */
+.js .line-pen  { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js .line-dot  { offset-distance: 0%; opacity: 0; }
+.js .line-area { clip-path: inset(0 100% 0 0); }
+.js .line-prev { clip-path: inset(0 100% 0 0); }
+.js .line-note { opacity: 0; }
+.js .go .line-pen,  .js .go.line-chart .line-pen  { animation: line-draw var(--dur-draw) var(--ease-inout) var(--line-delay, 0ms) both; }
+.js .go .line-dot,  .js .go.line-chart .line-dot  { animation: line-ride var(--dur-draw) var(--ease-inout) var(--line-delay, 0ms) both, line-show var(--dur-quick) linear var(--line-delay, 0ms) both; opacity: 1; }
+.js .go .line-area, .js .go.line-chart .line-area { animation: line-wipe var(--dur-draw) var(--ease-inout) var(--line-delay, 0ms) both; }
+/* line-prev: a reference line (last period, a target) wiped in before the pen starts */
+.js .go .line-prev, .js .go.line-chart .line-prev { animation: line-wipe var(--dur-slow) var(--ease-inout) both; }
+.js .go .line-note, .js .go.line-chart .line-note { animation: line-land var(--dur-base) var(--ease-spring) calc(var(--line-delay, 0ms) + var(--dur-draw)) both; opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .line-pen, .js .go .line-pen, .js .go.line-chart .line-pen { stroke-dashoffset: 0; animation: none; }
+  .js .line-dot, .js .go .line-dot, .js .go.line-chart .line-dot { offset-distance: 100%; opacity: 1; animation: none; }
+  .js :is(.line-area, .line-prev), .js .go :is(.line-area, .line-prev), .js .go.line-chart :is(.line-area, .line-prev) { clip-path: none; animation: none; }
+  .js .line-note, .js .go .line-note, .js .go.line-chart .line-note { opacity: 1; animation: none; }
+}

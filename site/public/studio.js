@@ -206,7 +206,7 @@
       return;
     }
     if (!this.items.length && !this.scroll.length) {
-      body.appendChild(el("p", "sheet-empty", this.trigger === "hover" ? "Hover or focus the stage to play it." : this.trigger === "in-view" ? "Plays when the stage scrolls into view." : "Nothing is moving right now. Press replay."));
+      body.appendChild(el("p", "sheet-empty", this.trigger === "hover" ? "Hover or focus the stage to play it." : this.trigger === "click" ? "Use the controls in the stage to play it." : this.trigger === "in-view" ? "Plays when the stage scrolls into view." : "Nothing is moving right now. Press replay."));
       return;
     }
     var pct = function (ms) { return Math.max(0, Math.min(100, (ms / T) * 100)) + "%"; };

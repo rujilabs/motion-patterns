@@ -1,0 +1,55 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.shirt { width: min(720px, 100%); padding: 18px 20px 20px; display: grid; gap: 16px; }
+.shirt-head { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; padding-bottom: 14px; border-bottom: 1px solid var(--demo-line); }
+.swatch { width: 44px; height: 44px; display: block; }
+.shirt-head h1 { font-size: 20px; font-weight: 700; }
+.shirt-sub { color: var(--demo-mute); font-size: 13px; }
+.price { font-size: 17px; font-weight: 700; }
+.cols { display: grid; gap: 20px; }
+@media (min-width: 640px) { .cols { grid-template-columns: 1.1fr 1fr; gap: 28px; } }
+
+/* tabs */
+.tabs { display: grid; gap: 12px; align-content: start; }
+.tabs-list { display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--demo-table); justify-self: start; }
+.tabs-list [role="tab"] {
+  font: inherit; font-size: 14px; font-weight: 600; color: var(--demo-mute); background: none; border: 0; cursor: pointer;
+  padding: 6px 14px; border-radius: 999px; transition: color var(--dur-quick) var(--ease-out);
+}
+.tabs-list [role="tab"][aria-selected="true"] { color: var(--demo-ink); }
+.tabs-list [role="tab"]:hover { color: var(--demo-ink); }
+.tabs-list [role="tab"]:focus-visible { outline-offset: 0; }
+.tabs-ink { top: 3px; bottom: 3px; border-radius: 999px; background: var(--demo-paper); box-shadow: 0 0 0 1px var(--demo-line); }
+[role="tabpanel"] { font-size: 14px; line-height: 1.5; }
+[role="tabpanel"]:focus-visible { outline-offset: 4px; border-radius: 4px; }
+.facts { display: grid; gap: 4px; margin-top: 10px; font-size: 13px; }
+.facts div { display: grid; grid-template-columns: 72px 1fr; }
+.facts dt { color: var(--demo-mute); }
+.facts dd { margin: 0; }
+.sizes { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sizes caption { text-align: left; color: var(--demo-mute); padding-bottom: 6px; }
+.sizes th, .sizes td { text-align: left; padding: 5px 0; border-bottom: 1px solid var(--demo-line); }
+.sizes thead th { color: var(--demo-mute); font-weight: 500; }
+.care { display: grid; gap: 8px; }
+.care li { padding-left: 16px; position: relative; }
+.care li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--demo-blue); }
+
+/* accordion */
+.faq h2 { font-size: 13px; font-weight: 600; color: var(--demo-mute); padding-bottom: 6px; }
+.disclose { border-top: 1px solid var(--demo-line); }
+.disclose:last-child { border-bottom: 1px solid var(--demo-line); }
+.disclose > summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 2px; font-weight: 600; font-size: 14px; }
+.disclose > summary:focus-visible { outline-offset: 0; border-radius: 4px; }
+.disclose > summary:hover .disclose-mark { color: var(--demo-blue); }
+.disclose-mark { color: var(--demo-mute); transition: color var(--dur-quick); }
+.disclose[open] .disclose-mark { color: var(--demo-ink); }
+.disclose p { padding: 0 2px 12px; font-size: 14px; color: var(--demo-mute); }
+
+@media (max-width: 400px) {
+  .shirt { padding: 16px; }
+  .shirt-head h1 { font-size: 18px; }
+}
+@media (max-height: 460px) {
+  .shirt { padding-block: 12px; gap: 10px; }
+  .shirt-head { padding-bottom: 10px; }
+  .facts { display: none; }
+}

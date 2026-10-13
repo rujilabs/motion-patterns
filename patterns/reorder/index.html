@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reorder demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="reorder.js" defer></script>
+<script src="league.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="league sheet" aria-labelledby="lg-h">
+    <header class="lg-head">
+      <div>
+        <h1 id="lg-h">Liga Futsal Lembah</h1>
+        <p class="lg-sub">Matchday <span class="num" data-md>5</span> of 14. The top two go up.</p>
+      </div>
+      <button class="go-btn" type="button" data-matchday>Play matchday 6</button>
+    </header>
+    <div class="lg-tools">
+      <div class="sorts" role="group" aria-label="Sort the table by">
+        <button type="button" data-sort="pts" aria-pressed="true">Points</button>
+        <button type="button" data-sort="gd" aria-pressed="false">Goal difference</button>
+        <button type="button" data-sort="name" aria-pressed="false">Name</button>
+      </div>
+      <label class="switch"><input type="checkbox" data-top> Top four</label>
+    </div>
+    <div class="cols" aria-hidden="true"><span>#</span><span>Team</span><span class="p">P</span><span>GD</span><span>Pts</span><span></span></div>
+    <ol class="table reorder" data-league aria-label="League table">
+      <li class="row zone" data-team="bmr"><span class="rank num">1</span><span class="team"><span class="crest" aria-hidden="true">BM</span><strong>Bukit Merah</strong></span><span class="num p">5</span><span class="num gd">+9</span><span class="num pts">13</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row zone" data-team="srs"><span class="rank num">2</span><span class="team"><span class="crest" aria-hidden="true">SR</span><strong>Sungai Rusa</strong></span><span class="num p">5</span><span class="num gd">+6</span><span class="num pts">11</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row" data-team="tml"><span class="rank num">3</span><span class="team"><span class="crest" aria-hidden="true">TM</span><strong>Taman Melati</strong></span><span class="num p">5</span><span class="num gd">+7</span><span class="num pts">10</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row" data-team="kbr"><span class="rank num">4</span><span class="team"><span class="crest" aria-hidden="true">KB</span><strong>Kampung Baru</strong></span><span class="num p">5</span><span class="num gd">+2</span><span class="num pts">8</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row" data-team="skb"><span class="rank num">5</span><span class="team"><span class="crest" aria-hidden="true">SK</span><strong>Seri Kembangan</strong></span><span class="num p">5</span><span class="num gd">-1</span><span class="num pts">7</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row" data-team="pdl"><span class="rank num">6</span><span class="team"><span class="crest" aria-hidden="true">PD</span><strong>Pantai Dalam</strong></span><span class="num p">5</span><span class="num gd">-4</span><span class="num pts">5</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row" data-team="btc"><span class="rank num">7</span><span class="team"><span class="crest" aria-hidden="true">BC</span><strong>Batu Caves</strong></span><span class="num p">5</span><span class="num gd">-8</span><span class="num pts">4</span><span class="move num" aria-hidden="true"></span></li>
+      <li class="row" data-team="amh"><span class="rank num">8</span><span class="team"><span class="crest" aria-hidden="true">AH</span><strong>Ampang Hilir</strong></span><span class="num p">5</span><span class="num gd">-11</span><span class="num pts">1</span><span class="move num" aria-hidden="true"></span></li>
+    </ol>
+    <p class="sr" aria-live="polite" data-say></p>
+  </section>
+</main>
+</body>
+</html>

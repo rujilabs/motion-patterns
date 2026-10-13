@@ -1,0 +1,23 @@
+{
+  "name": "Bars and count-up",
+  "slug": "bars",
+  "kind": "pattern",
+  "summary": "Bars spring up from the baseline and each value rides the top of its own bar while it counts up. Vertical and horizontal, with an optional marked rule.",
+  "category": "data",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-base",
+    "--dur-quick",
+    "--stagger"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-13"
+}

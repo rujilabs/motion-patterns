@@ -1,0 +1,76 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.league { width: min(560px, 100%); padding: 18px 18px 12px; --reorder-bg: var(--demo-paper); }
+@media (prefers-color-scheme: dark) { .league { --reorder-shadow: rgb(0 0 0 / .6); --reorder-edge: rgb(255 255 255 / .08); } }
+.lg-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.league h1 { font-size: 19px; font-weight: 700; }
+.lg-sub { color: var(--demo-mute); font-size: 13px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.go-btn {
+  flex: none; padding: 8px 14px; border: 0; border-radius: 6px;
+  background: var(--demo-ink); color: var(--demo-paper); font-size: 13px; font-weight: 600;
+  transition: transform var(--dur-quick) var(--ease-out);
+}
+.go-btn:active { transform: scale(.97); }
+.lg-tools { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 14px 0 8px; }
+/* the sort control reads as one segmented strip of paper */
+.sorts { display: inline-flex; padding: 2px; border: 1px solid var(--demo-line); border-radius: 7px; }
+.sorts button { padding: 4px 10px; border: 0; border-radius: 5px; background: none; color: var(--demo-mute); font-size: 13px; white-space: nowrap; }
+.sorts button[aria-pressed="true"] { background: var(--demo-blue-soft); color: var(--demo-blue); font-weight: 600; }
+
+.cols, .row { display: grid; grid-template-columns: 24px minmax(0, 1fr) 26px 40px 34px 30px; gap: 8px; align-items: center; }
+.cols { padding: 0 8px 4px; color: var(--demo-mute); font-size: 11px; }
+.cols span:nth-child(n + 3), .row .num:not(.rank):not(.move) { text-align: right; }
+.row { padding: 7px 8px; font-size: 14px; }
+.row + .row { box-shadow: 0 -1px 0 var(--demo-line); }
+.rank { justify-self: start; color: var(--demo-mute); font-weight: 600; }
+.team { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.team strong { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.crest {
+  flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 5px;
+  color: #fff; font-size: 9.5px; font-weight: 700; letter-spacing: .02em;
+}
+[data-team="bmr"] .crest { background: #b8432f; }
+[data-team="srs"] .crest { background: #1f6f8b; }
+[data-team="tml"] .crest { background: #6b5bb5; }
+[data-team="kbr"] .crest { background: #2f7d4f; }
+[data-team="skb"] .crest { background: #b07a12; }
+[data-team="pdl"] .crest { background: #3b5ba9; }
+[data-team="btc"] .crest { background: #7a4a3a; }
+[data-team="amh"] .crest { background: #9c3d6e; }
+.pts { font-weight: 700; }
+/* promotion places: a blue pencil bar at the left edge */
+.row.zone::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 2px; background: var(--demo-blue); }
+/* who moved on the last matchday, and how far */
+.move { display: inline-flex; align-items: center; justify-content: flex-end; gap: 3px; font-size: 11px; font-weight: 700; }
+.move.up { color: var(--demo-ok); }
+.move.down { color: var(--demo-red); }
+.move.up::before, .move.down::before { content: ""; width: 7px; height: 6px; background: currentColor; }
+.move.up::before { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.move.down::before { clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (max-width: 460px) {
+  .league { padding-inline: 14px; }
+  .cols, .row { grid-template-columns: 22px minmax(0, 1fr) 34px 30px 26px; gap: 6px; }
+  .cols .p, .row .p { display: none; }
+  .lg-tools { flex-wrap: wrap; row-gap: 8px; }
+  .sorts button { padding-inline: 8px; }
+  .team { gap: 8px; }
+}
+@media (max-height: 470px) {
+  .league { padding-block: 12px 8px; }
+  .lg-tools { margin: 10px 0 4px; }
+  .row { padding-block: 4px; }
+  .crest { width: 20px; height: 20px; font-size: 8.5px; }
+}
+@media (max-height: 380px) {
+  .lg-sub { display: none; }
+  .row { padding-block: 2px; font-size: 13px; }
+}
+@media (min-width: 900px) and (min-height: 600px) {
+  .league { width: 600px; }
+  .row { padding-block: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .go-btn { transition: none; }
+}
