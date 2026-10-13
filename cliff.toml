@@ -21,7 +21,7 @@ body = """
 {% endfor %}
 {% endfor %}\n
 """
-trim = true
+trim = false
 
 [git]
 conventional_commits = true
