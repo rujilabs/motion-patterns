@@ -1,0 +1,59 @@
+/*
+ * modal: a native <dialog> opened with showModal(). It scales up from 96% and fades in over a
+ * dimming backdrop on the ease-out curve, then leaves in about half the time on ease-in. Arriving
+ * slowly enough to be followed and leaving fast is what makes a dialog feel responsive: once the
+ * choice is made, nobody wants to watch it go.
+ * Opening uses @starting-style; closing keeps the dialog in the top layer until the fade ends
+ * (overlay and display with allow-discrete). Browsers without these open and close at once.
+ */
+.modal,
+.modal::backdrop {
+  --modal-in: calc(var(--dur-base) * .45);
+  --modal-out: calc(var(--dur-quick) * .75);
+  --modal-scrim: rgb(12 16 22 / .48);
+}
+.modal {
+  opacity: 0;
+  scale: .96;
+  translate: 0 6px;
+  transition:
+    opacity var(--modal-out) var(--ease-in),
+    scale var(--modal-out) var(--ease-in),
+    translate var(--modal-out) var(--ease-in),
+    overlay var(--modal-out) allow-discrete,
+    display var(--modal-out) allow-discrete;
+}
+.modal[open] {
+  opacity: 1;
+  scale: 1;
+  translate: none;
+  transition-duration: var(--modal-in);
+  transition-timing-function: var(--ease-out);
+}
+@starting-style {
+  .modal[open] { opacity: 0; scale: .96; translate: 0 6px; }
+}
+
+.modal::backdrop {
+  background-color: transparent;
+  transition:
+    background-color var(--modal-out) var(--ease-in),
+    overlay var(--modal-out) allow-discrete,
+    display var(--modal-out) allow-discrete;
+}
+.modal[open]::backdrop {
+  background-color: var(--modal-scrim);
+  transition-duration: var(--modal-in);
+  transition-timing-function: var(--ease-out);
+}
+@starting-style {
+  .modal[open]::backdrop { background-color: transparent; }
+}
+
+/* the page behind does not scroll while the dialog is open */
+html:has(.modal:modal) { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal, .modal[open], .modal::backdrop, .modal[open]::backdrop { transition: none; }
+  .modal { scale: none; translate: none; }
+}

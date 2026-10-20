@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modal dialog demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="modal.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="boards sheet" aria-labelledby="bd-h">
+    <header class="bd-head">
+      <h1 id="bd-h">Studio boards</h1>
+      <p class="mute">3 active, last edited today</p>
+    </header>
+    <ul class="bd-list">
+      <li class="bd-row">
+        <span class="bd-thumb t1" aria-hidden="true"></span>
+        <span class="bd-name"><strong>Harbour signage</strong><span class="num">12 cards, Aisyah and Ben</span></span>
+        <button class="bd-btn" type="button" data-modal="archive">Archive</button>
+      </li>
+      <li class="bd-row">
+        <span class="bd-thumb t2" aria-hidden="true"></span>
+        <span class="bd-name"><strong>Spring menu</strong><span class="num">7 cards, Mei</span></span>
+        <span class="bd-tag">Draft</span>
+      </li>
+      <li class="bd-row">
+        <span class="bd-thumb t3" aria-hidden="true"></span>
+        <span class="bd-name"><strong>Wayfinding kit</strong><span class="num">21 cards, Omar</span></span>
+        <span class="bd-tag">Shared</span>
+      </li>
+    </ul>
+  </section>
+
+  <dialog class="modal box" id="archive" aria-labelledby="ar-h" aria-describedby="ar-p">
+    <form method="dialog">
+      <h2 id="ar-h">Archive Harbour signage?</h2>
+      <p id="ar-p" class="mute">The board and its 12 cards move to Archive. You can restore it for 30 days.</p>
+      <div class="box-actions">
+        <button type="submit" value="cancel" class="btn" autofocus>Cancel</button>
+        <button type="submit" value="archive" class="btn btn-key">Archive board</button>
+      </div>
+    </form>
+  </dialog>
+</main>
+</body>
+</html>

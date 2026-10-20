@@ -1,0 +1,22 @@
+{
+  "name": "Toast",
+  "slug": "toast",
+  "kind": "pattern",
+  "summary": "Notices slide in at a corner while their slot opens, so the stack moves up smoothly. A thin line runs down each one's time; hover or focus on the stack pauses every line.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-inout",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

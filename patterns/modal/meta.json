@@ -1,0 +1,21 @@
+{
+  "name": "Modal dialog",
+  "slug": "modal",
+  "kind": "pattern",
+  "summary": "A native dialog that scales and fades in over a dimming backdrop on ease-out, then leaves in about half the time on ease-in. Esc, backdrop click and focus return come from the platform.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

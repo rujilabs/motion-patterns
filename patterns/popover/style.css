@@ -1,0 +1,69 @@
+/*
+ * popover: a richer panel tied to a button with the native popover attribute (light dismiss, Esc
+ * and the top layer come free). It springs open from the tip of its arrow, so it grows out of the
+ * button, with one clear overshoot on --ease-spring while the fade is done in a fifth of the time.
+ * It closes on ease-in in a quarter of the time.
+ * popover.js places it: --pp-x (the button's centre) and --pp-y (its bottom edge, or its top edge
+ * when data-side="top"). The CSS keeps the panel 12px inside the viewport and slides the arrow so
+ * it still points at the button.
+ */
+.popover {
+  --pp-w: min(var(--pp-width, 300px), calc(100vw - 24px));
+  --pp-gap: 12px;
+  --pp-left: clamp(calc(var(--pp-w) / 2 + 12px), var(--pp-x, 50vw), calc(100vw - var(--pp-w) / 2 - 12px));
+  --pp-arrow: calc(50% + var(--pp-x, 50vw) - var(--pp-left));
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  width: var(--pp-w);
+  left: var(--pp-left);
+  top: calc(var(--pp-y, 40vh) + var(--pp-gap));
+  translate: -50% 0;
+  transform-origin: var(--pp-arrow) 0;
+  overflow: visible;
+  opacity: 0;
+  scale: .9;
+  transition:
+    opacity calc(var(--dur-quick) * .75) var(--ease-in),
+    scale calc(var(--dur-quick) * .75) var(--ease-in),
+    overlay calc(var(--dur-quick) * .75) allow-discrete,
+    display calc(var(--dur-quick) * .75) allow-discrete;
+}
+.popover[data-side="top"] {
+  top: calc(var(--pp-y, 40vh) - var(--pp-gap));
+  translate: -50% -100%;
+  transform-origin: var(--pp-arrow) 100%;
+}
+.popover:popover-open {
+  opacity: 1;
+  scale: 1;
+  transition:
+    opacity calc(var(--dur-base) * .2) var(--ease-out),
+    scale var(--dur-base) var(--ease-spring),
+    overlay var(--dur-base) allow-discrete,
+    display var(--dur-base) allow-discrete;
+}
+@starting-style {
+  .popover:popover-open { opacity: 0; scale: .88; }
+}
+
+/* the arrow: a square turned 45deg, sharing the panel's paper and edge, so it reads as one shape */
+.popover::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--pp-arrow) - 7px);
+  top: -7px;
+  width: 12px;
+  height: 12px;
+  background: inherit;
+  border: inherit;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 3px 0 0 0;
+  rotate: 45deg;
+}
+.popover[data-side="top"]::before { top: auto; bottom: -7px; rotate: 225deg; }
+
+@media (prefers-reduced-motion: reduce) {
+  .popover, .popover:popover-open { transition: none; scale: none; }
+}

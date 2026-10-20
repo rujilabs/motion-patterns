@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooltip demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="tooltip.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <article class="doc sheet" aria-labelledby="doc-h">
+    <div class="bar tip-group" role="toolbar" aria-label="Formatting">
+      <span class="tip" data-side="bottom"><button type="button" class="tool" aria-describedby="tt1" aria-label="Bold"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4h5a3 3 0 0 1 0 6H6zM6 10h6a3 3 0 0 1 0 6H6z"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt1">Bold <kbd>Ctrl B</kbd></span></span>
+      <span class="tip" data-side="bottom"><button type="button" class="tool" aria-describedby="tt2" aria-label="Italic"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4H8M12 16H8M11 4l-2 12"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt2">Italic <kbd>Ctrl I</kbd></span></span>
+      <span class="tip" data-side="bottom"><button type="button" class="tool" aria-describedby="tt3" aria-label="Link"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8.5 11.5l3-3M9 6.5l1.5-1.5a2.8 2.8 0 0 1 4 4L13 10.5M11 13.5L9.5 15a2.8 2.8 0 0 1-4-4L7 9.5"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt3">Add link <kbd>Ctrl K</kbd></span></span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="tip" data-side="bottom"><button type="button" class="tool" aria-describedby="tt4" aria-label="Bulleted list"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 6h8M8 10h8M8 14h8"/><circle cx="4.5" cy="6" r=".8"/><circle cx="4.5" cy="10" r=".8"/><circle cx="4.5" cy="14" r=".8"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt4">Bulleted list</span></span>
+      <span class="tip" data-side="bottom"><button type="button" class="tool" aria-describedby="tt5" aria-label="Comment"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12v8H9l-3 3v-3H4z"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt5">Comment <kbd>Ctrl M</kbd></span></span>
+      <span class="tip tip-end" data-side="bottom" data-align="end"><button type="button" class="tool" aria-describedby="tt6" aria-label="Undo"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 7H12a4 4 0 0 1 0 8H8M7 7l3-3M7 7l3 3"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt6">Undo <kbd>Ctrl Z</kbd></span></span>
+    </div>
+    <div class="body">
+      <h1 id="doc-h">Opening hours, December</h1>
+      <p>The shop opens late on the 24th and closes on the 25th. Online orders keep shipping, with the last courier pickup on the 22nd.</p>
+      <p class="meta mute">
+        <span class="num">212 words</span>
+        <span class="tip" data-side="right"><button type="button" class="info" aria-describedby="tt7" aria-label="About reading time"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 9v5M10 6.5v.2"/></svg></button><span class="tip-label lbl" role="tooltip" id="tt7">At 220 words a minute</span></span>
+        <span class="num">1 min read</span>
+      </p>
+    </div>
+  </article>
+</main>
+</body>
+</html>

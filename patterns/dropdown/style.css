@@ -1,0 +1,51 @@
+/*
+ * dropdown: a menu that unfolds from its trigger. The scale grows out of the corner nearest the
+ * trigger (top left for a menu that opens down from the left, bottom right for one that opens up
+ * from the right), so the menu visibly comes out of the button. It unfolds more in height than in
+ * width, then the items arrive one short step apart, moving away from the trigger.
+ * Closing is quicker and all at once: no stagger on the way out.
+ * dropdown.js sets data-side="bottom|top" and data-align="start|end" on .dropdown from the room
+ * around the trigger, and --i (0, 1, 2...) on each item.
+ */
+.dropdown { position: relative; display: inline-block; }
+.dropdown-menu {
+  --dd-in: calc(var(--dur-base) * .4);
+  --dd-out: calc(var(--dur-quick) * .6);
+  --dd-dir: 1;
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + var(--dd-gap, 6px));
+  left: 0;
+  min-width: 100%;
+  transform-origin: top left;
+  visibility: hidden;
+  opacity: 0;
+  scale: .96 .86;
+  transition:
+    opacity var(--dd-out) var(--ease-in),
+    scale var(--dd-out) var(--ease-in),
+    visibility 0s linear var(--dd-out);
+}
+.dropdown[data-align="end"] .dropdown-menu { left: auto; right: 0; transform-origin: top right; }
+.dropdown[data-side="top"] .dropdown-menu { --dd-dir: -1; top: auto; bottom: calc(100% + var(--dd-gap, 6px)); transform-origin: bottom left; }
+.dropdown[data-side="top"][data-align="end"] .dropdown-menu { transform-origin: bottom right; }
+
+.dropdown.is-open .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  scale: 1;
+  transition:
+    opacity calc(var(--dd-in) * .6) var(--ease-out),
+    scale var(--dd-in) var(--ease-out),
+    visibility 0s;
+}
+.dropdown.is-open .dropdown-menu > * {
+  animation: dd-item var(--dd-in) var(--ease-out) both;
+  animation-delay: calc(var(--dd-in) * .25 + min(var(--i, 0), 8) * var(--stagger) * .4);
+}
+@keyframes dd-item { from { opacity: 0; translate: 0 calc(var(--dd-dir) * -6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-menu, .dropdown.is-open .dropdown-menu { transition: none; scale: none; }
+  .dropdown.is-open .dropdown-menu > * { animation: none; }
+}

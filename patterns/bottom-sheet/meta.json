@@ -1,0 +1,22 @@
+{
+  "name": "Bottom sheet",
+  "slug": "bottom-sheet",
+  "kind": "pattern",
+  "summary": "A sheet rises from the bottom to a half detent. Drag the grip to full or down to close; a quick flick throws further, and it settles on the paper curve with a slight landing.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-paper",
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

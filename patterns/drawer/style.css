@@ -1,0 +1,76 @@
+/*
+ * drawer: an off-canvas panel on a native <dialog> opened with showModal(). It slides in from the
+ * right edge on ease-out with a scrim behind it, and slides back out faster on ease-in. Optional:
+ * .drawer-shift on the page content moves it a short way the other way, so the page reads as
+ * pushed aside rather than covered. Leave it off and the page stays still.
+ * Opening uses @starting-style; closing keeps the panel in the top layer until it has slid away.
+ */
+.drawer,
+.drawer::backdrop {
+  --drawer-in: calc(var(--dur-base) * .6);
+  --drawer-out: calc(var(--dur-quick) * 1.2);
+  --drawer-scrim: rgb(12 16 22 / .4);
+}
+.drawer {
+  --drawer-from: 100%;
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: var(--drawer-w, min(360px, 88vw));
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  translate: var(--drawer-from) 0;
+  transition:
+    translate var(--drawer-out) var(--ease-in),
+    overlay var(--drawer-out) allow-discrete,
+    display var(--drawer-out) allow-discrete;
+}
+.drawer-left { --drawer-from: -100%; inset: 0 auto 0 0; }
+.drawer[open] {
+  translate: none;
+  transition-duration: var(--drawer-in);
+  transition-timing-function: var(--ease-out);
+}
+@starting-style {
+  .drawer[open] { translate: var(--drawer-from) 0; }
+}
+
+.drawer::backdrop {
+  background-color: transparent;
+  transition:
+    background-color var(--drawer-out) var(--ease-in),
+    overlay var(--drawer-out) allow-discrete,
+    display var(--drawer-out) allow-discrete;
+}
+.drawer[open]::backdrop {
+  background-color: var(--drawer-scrim);
+  transition-duration: var(--drawer-in);
+  transition-timing-function: var(--ease-out);
+}
+@starting-style {
+  .drawer[open]::backdrop { background-color: transparent; }
+}
+
+/* the panel's own content arrives a beat after the panel, so the edge leads */
+.drawer[open] > * { animation: drawer-content var(--drawer-in) var(--ease-out) calc(var(--drawer-in) * .3) both; }
+@keyframes drawer-content { from { opacity: 0; translate: calc(var(--drawer-from) * .08) 0; } }
+
+/* drawer-shift: the page moves a little away from the opening panel, on the same timing */
+.drawer-shift {
+  transition: translate calc(var(--dur-quick) * 1.2) var(--ease-in), opacity calc(var(--dur-quick) * 1.2) var(--ease-in);
+}
+html:has(.drawer[open]:not(.drawer-left)) .drawer-shift { translate: calc(var(--drawer-push, 48px) * -1) 0; }
+html:has(.drawer-left[open]) .drawer-shift { translate: var(--drawer-push, 48px) 0; }
+html:has(.drawer[open]) .drawer-shift {
+  opacity: .7;
+  transition-duration: calc(var(--dur-base) * .6);
+  transition-timing-function: var(--ease-out);
+}
+html:has(.drawer:modal) { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer, .drawer[open], .drawer::backdrop, .drawer[open]::backdrop, .drawer-shift { transition: none; }
+  .drawer[open] > * { animation: none; }
+  html:has(.drawer[open]) .drawer-shift { translate: none; }
+}

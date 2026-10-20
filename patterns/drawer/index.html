@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawer demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="drawer.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shop sheet drawer-shift" aria-labelledby="shop-h">
+    <header class="shop-head">
+      <div>
+        <h1 id="shop-h">Kettle and Co</h1>
+        <p class="mute">Stoneware, fired in small batches</p>
+      </div>
+      <button class="bag-btn" type="button" data-drawer="bag" aria-expanded="false" aria-controls="bag">Bag <span class="num bag-count">2</span></button>
+    </header>
+    <ul class="grid">
+      <li class="item"><span class="art a1" aria-hidden="true"></span><strong>Tide cup</strong><span class="num mute">RM 48</span></li>
+      <li class="item"><span class="art a2" aria-hidden="true"></span><strong>Low bowl</strong><span class="num mute">RM 62</span></li>
+      <li class="item"><span class="art a3" aria-hidden="true"></span><strong>Pour jug</strong><span class="num mute">RM 95</span></li>
+    </ul>
+  </section>
+
+  <dialog class="drawer panel" id="bag" aria-labelledby="bag-h">
+    <form method="dialog" class="panel-in">
+      <header class="panel-head">
+        <h2 id="bag-h">Your bag</h2>
+        <button class="x" type="submit" aria-label="Close bag"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+      </header>
+      <ul class="lines">
+        <li><span class="art sm a1" aria-hidden="true"></span><span><strong>Tide cup</strong><span class="mute">Sea glaze, 2 pcs</span></span><span class="num">RM 96</span></li>
+        <li><span class="art sm a3" aria-hidden="true"></span><span><strong>Pour jug</strong><span class="mute">Oat glaze</span></span><span class="num">RM 95</span></li>
+      </ul>
+      <dl class="total"><dt>Subtotal</dt><dd class="num">RM 191</dd></dl>
+      <button class="pay" type="submit">Check out</button>
+    </form>
+  </dialog>
+</main>
+</body>
+</html>

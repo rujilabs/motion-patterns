@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popover demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="popover.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="day sheet" aria-labelledby="day-h">
+    <header class="day-head">
+      <h1 id="day-h">Thursday, 23 October</h1>
+      <p class="mute">Studio calendar</p>
+    </header>
+    <div class="hours" aria-hidden="true"><span class="num">13:00</span><span class="num">14:00</span><span class="num">15:00</span></div>
+    <article class="event" aria-labelledby="ev-h">
+      <div>
+        <h2 id="ev-h">Design review</h2>
+        <p class="num mute">14:00 to 15:00, Room Cempaka</p>
+        <ul class="faces" aria-label="Guests"><li class="f1">AR</li><li class="f2">BL</li><li class="f3">MO</li></ul>
+      </div>
+      <button class="share" type="button" popovertarget="share">Share</button>
+    </article>
+  </section>
+
+  <div class="popover panel" id="share" popover aria-labelledby="sh-h">
+    <h3 id="sh-h">Share Design review</h3>
+    <ul class="people">
+      <li><span class="av f1" aria-hidden="true">AR</span><span><strong>Aisyah Rahim</strong><span class="mute">Organiser</span></span><span class="role">Can edit</span></li>
+      <li><span class="av f2" aria-hidden="true">BL</span><span><strong>Ben Lau</strong><span class="mute">Guest</span></span><span class="role">Can view</span></li>
+      <li><span class="av f3" aria-hidden="true">MO</span><span><strong>Mei Ong</strong><span class="mute">Guest</span></span><span class="role">Can view</span></li>
+    </ul>
+    <p class="link mute">Anyone in the studio with the link can view.</p>
+    <div class="acts">
+      <button type="button" class="btn">Copy link</button>
+      <button type="button" class="btn btn-ink" popovertarget="share" popovertargetaction="hide">Done</button>
+    </div>
+  </div>
+</main>
+</body>
+</html>

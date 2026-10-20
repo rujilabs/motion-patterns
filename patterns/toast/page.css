@@ -1,0 +1,45 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.invoice { width: min(460px, 100%); padding: 18px 20px 20px; display: grid; gap: 14px; }
+.iv-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.iv-head p { font-size: 13px; }
+.iv-head h1 { font-size: 20px; font-weight: 700; }
+.iv-head .total { font-size: 20px; font-weight: 700; color: var(--demo-ink); }
+.lines { display: grid; gap: 8px; font-size: 14px; }
+.lines li { display: flex; justify-content: space-between; gap: 12px; }
+.lines li span:first-child { color: var(--demo-mute); }
+.acts { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; padding-top: 12px; border-top: 1px solid var(--demo-line); }
+.btn {
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--demo-ink); background: var(--demo-paper); cursor: pointer;
+  border: 1px solid var(--demo-line); border-radius: 6px; padding: 7px 12px;
+}
+.btn:hover { border-color: var(--demo-mute); }
+.btn-ink { background: var(--demo-ink); border-color: var(--demo-ink); color: var(--demo-paper); }
+
+/* a toast: paper card, 1px edge, a key colour for its tone */
+.toast-card {
+  --tone: var(--demo-blue);
+  display: grid; gap: 2px; padding: 11px 40px 13px 14px; overflow: hidden;
+  background: var(--demo-paper); border: 1px solid var(--demo-line); border-radius: 8px; color: var(--tone);
+}
+.toast-card[data-tone="ok"] { --tone: var(--demo-ok); }
+.toast-card[data-tone="warn"] { --tone: var(--demo-warn); }
+.toast-title { font-size: 14px; font-weight: 650; color: var(--demo-ink); display: flex; align-items: center; gap: 8px; }
+.toast-title::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--tone); flex: none; }
+.toast-body { font-size: 13px; color: var(--demo-mute); padding-left: 16px; }
+.toast-close { position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; display: grid; place-items: center; border: 0; border-radius: 5px; background: none; color: var(--demo-mute); cursor: pointer; padding: 0; }
+.toast-close:hover { background: var(--demo-table); color: var(--demo-ink); }
+.toast-close svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; fill: none; }
+
+@media (max-width: 480px) {
+  .toast-region { --toast-inset: 12px; }
+}
+
+/* keep the stack clear of the invoice's buttons: card to the left on wide stages, to the top on narrow ones */
+.toast-region { --toast-w: 320px; }
+@media (min-width: 720px) {
+  .stage { justify-items: start; padding-left: max(24px, calc(50vw - 380px)); }
+  .invoice { width: 400px; }
+}
+@media (max-width: 719px) {
+  .stage { align-content: start; }
+}

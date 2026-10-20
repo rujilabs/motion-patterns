@@ -1,0 +1,22 @@
+{
+  "name": "Dropdown",
+  "slug": "dropdown",
+  "kind": "pattern",
+  "summary": "A menu that unfolds out of the corner nearest its trigger, opening up or down by the room it has, then lets its items arrive a short step apart. It closes quicker and all at once.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Popover",
+  "slug": "popover",
+  "kind": "pattern",
+  "summary": "A richer panel on the native popover attribute that springs open from the tip of its arrow, so it grows out of its button. It flips above when there is no room, and closes quickly.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

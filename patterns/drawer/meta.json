@@ -1,0 +1,21 @@
+{
+  "name": "Drawer",
+  "slug": "drawer",
+  "kind": "pattern",
+  "summary": "An off-canvas panel on a native dialog slides in from the side over a scrim and leaves faster than it came. Optionally the page shifts a short way aside, or it stays still.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

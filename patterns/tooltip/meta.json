@@ -1,0 +1,21 @@
+{
+  "name": "Tooltip",
+  "slug": "tooltip",
+  "kind": "pattern",
+  "summary": "A small label that waits a moment on hover but shows at once on focus, then fades in moving 4px off its anchor toward its side. Hoverable, Esc hides it, and a warm toolbar skips the wait.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

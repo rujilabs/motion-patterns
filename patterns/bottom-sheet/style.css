@@ -1,0 +1,64 @@
+/*
+ * bottom-sheet: a panel on a native <dialog> that rises from the bottom edge to a detent: half
+ * (the default) or full. The grip can be dragged; on release the sheet settles on the nearest
+ * detent, or closes if it was pulled well below half, on the paper curve, which lands with a
+ * slight overshoot like something set down. It leaves faster on ease-in.
+ * sheet.js sets data-stop="half|full" and --bs-drag (px) while a finger or pointer holds the grip.
+ */
+.bottom-sheet,
+.bottom-sheet::backdrop {
+  --bs-in: calc(var(--dur-base) * .75);
+  --bs-out: calc(var(--dur-quick) * 1.25);
+  --bs-scrim: rgb(12 16 22 / .36);
+}
+.bottom-sheet {
+  --bs-stop: 50%;
+  position: fixed;
+  inset: auto 0 0 0;
+  margin: 0 auto;
+  width: min(var(--bs-w, 560px), 100%);
+  height: var(--bs-h, 88%);
+  max-width: none;
+  max-height: none;
+  translate: 0 100%;
+  transition:
+    translate var(--bs-out) var(--ease-in),
+    overlay var(--bs-out) allow-discrete,
+    display var(--bs-out) allow-discrete;
+}
+.bottom-sheet[data-stop="full"] { --bs-stop: 0%; }
+.bottom-sheet[open] {
+  translate: 0 calc(var(--bs-stop) + var(--bs-drag, 0px));
+  transition-duration: var(--bs-in);
+  transition-timing-function: var(--ease-paper);
+}
+/* while held, the sheet follows the pointer with no lag */
+.bottom-sheet.is-dragging { transition: none; }
+@starting-style {
+  .bottom-sheet[open] { translate: 0 100%; }
+}
+
+.bottom-sheet::backdrop {
+  background-color: transparent;
+  transition:
+    background-color var(--bs-out) var(--ease-in),
+    overlay var(--bs-out) allow-discrete,
+    display var(--bs-out) allow-discrete;
+}
+.bottom-sheet[open]::backdrop {
+  background-color: var(--bs-scrim);
+  transition-duration: var(--bs-in);
+  transition-timing-function: var(--ease-out);
+}
+@starting-style {
+  .bottom-sheet[open]::backdrop { background-color: transparent; }
+}
+
+/* the grip: a wide, tall hit area around a short bar */
+.bottom-sheet-grip { touch-action: none; cursor: grab; }
+.bottom-sheet.is-dragging .bottom-sheet-grip { cursor: grabbing; }
+html:has(.bottom-sheet:modal) { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-sheet, .bottom-sheet[open], .bottom-sheet::backdrop, .bottom-sheet[open]::backdrop { transition: none; }
+}

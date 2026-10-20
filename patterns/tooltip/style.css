@@ -1,0 +1,65 @@
+/*
+ * tooltip: a small label for an icon button or a term. It waits --tip-delay (450ms) on hover so a
+ * pointer passing across a toolbar does not set off a row of labels, but shows at once on keyboard
+ * focus. It fades in while moving 4px away from its anchor, toward the side it sits on, and leaves
+ * quicker with no delay. data-side picks the side: top (default), bottom, left or right.
+ * The label stays while the pointer is on it (a hidden bridge covers the gap), so it can be read
+ * and selected. data-align="start|end" lines a top or bottom label up with one edge of its
+ * anchor, for anchors near the edge of the page. tooltip.js adds Esc to hide it and a warm group: after one label has shown, the
+ * next one in the same .tip-group shows without the wait.
+ */
+.tip { position: relative; display: inline-flex; }
+.tip-label {
+  --tip-delay: calc(var(--dur-base) * .75);
+  --tip-gap: 8px;
+  --tip-x: -50%;
+  --tip-y: 0px;
+  --tip-fx: 0px;
+  --tip-fy: 4px;
+  position: absolute;
+  z-index: 20;
+  bottom: calc(100% + var(--tip-gap));
+  left: 50%;
+  width: max-content;
+  max-width: 240px;
+  opacity: 0;
+  visibility: hidden;
+  translate: calc(var(--tip-x) + var(--tip-fx)) calc(var(--tip-y) + var(--tip-fy));
+  transition:
+    opacity calc(var(--dur-quick) * .5) var(--ease-in),
+    translate calc(var(--dur-quick) * .5) var(--ease-in),
+    visibility 0s linear calc(var(--dur-quick) * .5);
+}
+/* the bridge: an invisible margin around the label, so moving onto it keeps it open */
+.tip-label::after { content: ""; position: absolute; inset: calc(var(--tip-gap) * -1 - 1px); z-index: -1; }
+.tip[data-side="bottom"] > .tip-label { bottom: auto; top: calc(100% + var(--tip-gap)); --tip-fy: -4px; }
+.tip[data-side="right"] > .tip-label { bottom: auto; top: 50%; left: calc(100% + var(--tip-gap)); --tip-x: 0px; --tip-y: -50%; --tip-fx: -4px; --tip-fy: 0px; }
+.tip[data-side="left"] > .tip-label { bottom: auto; top: 50%; left: auto; right: calc(100% + var(--tip-gap)); --tip-x: 0px; --tip-y: -50%; --tip-fx: 4px; --tip-fy: 0px; }
+/* data-align on a top or bottom tip: line the label up with the anchor's start or end edge, near a page edge */
+.tip[data-align="start"] > .tip-label { left: 0; --tip-x: 0px; }
+.tip[data-align="end"] > .tip-label { left: auto; right: 0; --tip-x: 0px; }
+
+.tip:hover > .tip-label,
+.tip:has(:focus-visible) > .tip-label {
+  opacity: 1;
+  visibility: visible;
+  translate: var(--tip-x) var(--tip-y);
+  transition:
+    opacity var(--dur-quick) var(--ease-out) var(--tip-delay),
+    translate var(--dur-quick) var(--ease-out) var(--tip-delay),
+    visibility 0s linear var(--tip-delay);
+}
+/* keyboard focus and a warm group skip the wait */
+.tip:has(:focus-visible) > .tip-label,
+.tip-group[data-tip-warm] .tip:hover > .tip-label { --tip-delay: 0s; }
+/* Esc (tooltip.js) */
+.tip.tip-off > .tip-label { opacity: 0; visibility: hidden; transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tip-label { --tip-fx: 0px; --tip-fy: 0px; }
+  .tip[data-side] > .tip-label { --tip-fx: 0px; --tip-fy: 0px; }
+  .tip-label { transition: none; }
+  .tip:hover > .tip-label, .tip:has(:focus-visible) > .tip-label {
+    transition: visibility 0s linear var(--tip-delay), opacity 0s linear var(--tip-delay);
+  }
+}

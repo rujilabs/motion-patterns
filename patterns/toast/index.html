@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toast demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="toast.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="invoice sheet" aria-labelledby="iv-h">
+    <header class="iv-head">
+      <div>
+        <p class="num mute">INV-0419</p>
+        <h1 id="iv-h">Kedai Ruang</h1>
+      </div>
+      <p class="num total">RM 1,480</p>
+    </header>
+    <ul class="lines">
+      <li><span>Shelf brackets, oak, 12 pcs</span><span class="num">RM 720</span></li>
+      <li><span>Fitting, half day</span><span class="num">RM 480</span></li>
+      <li><span>Delivery, Petaling Jaya</span><span class="num">RM 280</span></li>
+    </ul>
+    <div class="acts">
+      <button type="button" class="btn" data-toast-title="Draft saved" data-toast-body="Saved at 10:42. Only you can see it." data-toast-tone="info">Save draft</button>
+      <button type="button" class="btn" data-toast-title="Due date is a Sunday" data-toast-body="Payment may land on Monday, 3 November." data-toast-tone="warn">Check dates</button>
+      <button type="button" class="btn btn-ink" data-toast-title="Invoice sent" data-toast-body="INV-0419 is on its way to Kedai Ruang." data-toast-tone="ok">Send invoice</button>
+    </div>
+  </section>
+  <ol class="toast-region" aria-live="polite" aria-label="Notifications"></ol>
+</main>
+</body>
+</html>

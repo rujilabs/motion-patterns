@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottom sheet demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="sheet.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="mapcard sheet" aria-labelledby="map-h">
+    <svg class="map" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect class="m-land" width="400" height="260"/>
+      <path class="m-park" d="M250 20h110v80H250z"/>
+      <path class="m-water" d="M-10 200 C 80 170, 140 230, 230 200 S 360 170, 410 190 V 270 H -10Z"/>
+      <path class="m-road" d="M0 70 H400 M0 140 H400 M90 0 V260 M200 0 V260 M320 0 V180"/>
+      <path class="m-lane" d="M40 0 V180 M140 0 V170 M260 110 H400 M0 105 H200"/>
+      <path class="m-route" d="M90 260 V140 H200 V70 H320"/>
+      <circle class="m-stop" cx="90" cy="140" r="6"/>
+      <circle class="m-stop" cx="200" cy="70" r="6"/>
+      <circle class="m-stop" cx="320" cy="70" r="6"/>
+      <circle class="m-you" cx="150" cy="140" r="7"/>
+    </svg>
+    <div class="map-bar">
+      <div>
+        <h1 id="map-h">Jalan Telawi</h1>
+        <p class="mute">3 stops within 400 m</p>
+      </div>
+      <button class="open-btn" type="button" data-sheet="stops">Stops near you</button>
+    </div>
+  </section>
+
+  <dialog class="bottom-sheet panel" id="stops" aria-labelledby="st-h">
+    <button class="bottom-sheet-grip grip" type="button" aria-label="Expand to full"><span class="bar" aria-hidden="true"></span></button>
+    <header class="panel-head">
+      <h2 id="st-h">Stops near you</h2>
+      <p class="mute">Drag the grip, or tap it to expand</p>
+    </header>
+    <ol class="stops">
+      <li><span class="route r1">T21</span><span><strong>Telawi Square</strong><span class="mute">120 m, towards Midvale</span></span><span class="num eta">2 min</span></li>
+      <li><span class="route r2">852</span><span><strong>Bangsar Lama</strong><span class="mute">240 m, towards Sentral</span></span><span class="num eta">6 min</span></li>
+      <li><span class="route r1">T21</span><span><strong>Jalan Maarof</strong><span class="mute">380 m, towards Damai</span></span><span class="num eta">9 min</span></li>
+      <li><span class="route r3">T78</span><span><strong>Lorong Kurau</strong><span class="mute">410 m, towards Pantai</span></span><span class="num eta">11 min</span></li>
+      <li><span class="route r2">852</span><span><strong>Kampung Haji</strong><span class="mute">520 m, towards Sentral</span></span><span class="num eta">14 min</span></li>
+      <li><span class="route r3">T78</span><span><strong>Taman Bukit</strong><span class="mute">640 m, towards Pantai</span></span><span class="num eta">18 min</span></li>
+    </ol>
+  </dialog>
+</main>
+</body>
+</html>

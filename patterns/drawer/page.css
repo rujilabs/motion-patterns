@@ -1,0 +1,45 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.shop { width: min(560px, 100%); padding: 18px 20px 20px; display: grid; gap: 16px; }
+.shop-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--demo-line); }
+.shop-head h1 { font-size: 20px; font-weight: 700; }
+.shop-head p { font-size: 13px; }
+.bag-btn, .pay {
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; border-radius: 999px;
+  padding: 7px 14px; border: 1px solid var(--demo-ink); background: var(--demo-ink); color: var(--demo-paper);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.bag-count { display: inline-grid; place-items: center; min-width: 20px; height: 20px; border-radius: 10px; background: var(--demo-red); color: #fff; font-size: 12px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.item { display: grid; gap: 2px; font-size: 14px; }
+.item strong { font-weight: 600; margin-top: 6px; }
+.item .mute { font-size: 13px; }
+/* stoneware drawn with gradients: a body, a glaze line, a shadow on the table */
+.art { display: block; aspect-ratio: 1; border-radius: 6px; border: 1px solid var(--demo-line); background-color: var(--demo-table); position: relative; overflow: hidden; }
+.art::before { content: ""; position: absolute; left: 28%; right: 28%; top: 30%; bottom: 22%; border-radius: 6px 6px 12px 12px; background: linear-gradient(180deg, var(--demo-blue) 0 34%, var(--demo-paper) 34%); border: 1px solid var(--demo-line); }
+.a2::before { left: 18%; right: 18%; top: 48%; border-radius: 4px 4px 40% 40%; background: linear-gradient(180deg, var(--demo-paper) 0 40%, var(--demo-blue-soft) 40%); }
+.a3::before { left: 32%; right: 32%; top: 20%; border-radius: 30% 30% 10px 10px; background: linear-gradient(180deg, var(--demo-paper) 0 60%, var(--demo-mute) 60%); }
+
+/* the panel */
+.panel { padding: 0; border: 0; border-left: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); }
+.panel-in { display: flex; flex-direction: column; gap: 14px; height: 100%; padding: 18px 20px 20px; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.panel-head h2 { font-size: 18px; font-weight: 700; }
+.x { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--demo-line); border-radius: 6px; background: none; color: var(--demo-ink); cursor: pointer; }
+.x svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; fill: none; }
+.lines { display: grid; gap: 12px; }
+.lines li { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; font-size: 14px; }
+.lines li > span:nth-child(2) { display: grid; }
+.lines .mute { font-size: 13px; }
+.art.sm { width: 52px; }
+.total { display: flex; justify-content: space-between; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--demo-line); font-weight: 600; }
+.total dd { margin: 0; }
+.pay { justify-content: center; width: 100%; border-radius: 8px; padding: 10px; }
+
+@media (max-width: 420px) {
+  .grid { gap: 8px; }
+  .item { font-size: 13px; }
+}
+@media (max-height: 400px) {
+  .shop { gap: 10px; padding-block: 12px; }
+  .grid { grid-template-columns: repeat(3, minmax(0, 110px)); }
+}

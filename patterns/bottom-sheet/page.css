@@ -1,0 +1,34 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.mapcard { width: min(560px, 100%); overflow: hidden; display: grid; }
+.map { display: block; width: 100%; height: auto; aspect-ratio: 400 / 230; max-height: 58vh; border-bottom: 1px solid var(--demo-line); }
+.m-land { fill: var(--demo-table); }
+.m-park { fill: var(--demo-ok); opacity: .14; }
+.m-water { fill: var(--demo-blue-soft); }
+.m-road { stroke: var(--demo-paper); stroke-width: 10; fill: none; }
+.m-lane { stroke: var(--demo-paper); stroke-width: 4; fill: none; }
+.m-route { stroke: var(--demo-blue); stroke-width: 3; fill: none; stroke-linejoin: round; stroke-dasharray: 6 5; }
+.m-stop { fill: var(--demo-paper); stroke: var(--demo-blue); stroke-width: 2.5; }
+.m-you { fill: var(--demo-red); stroke: var(--demo-paper); stroke-width: 3; }
+.map-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 18px; }
+.map-bar h1 { font-size: 18px; font-weight: 700; }
+.map-bar p { font-size: 13px; }
+.open-btn { font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; border-radius: 999px; padding: 8px 14px; border: 1px solid var(--demo-ink); background: var(--demo-ink); color: var(--demo-paper); white-space: nowrap; }
+
+/* the sheet */
+.panel { padding: 0 18px 18px; border: 1px solid var(--demo-line); border-bottom: 0; border-radius: 14px 14px 0 0; background: var(--demo-paper); color: var(--demo-ink); overflow: hidden; }
+.grip { display: grid; place-items: center; width: calc(100% + 36px); height: 28px; margin: 0 -18px; padding: 0; border: 0; background: none; }
+.grip .bar { width: 40px; height: 4px; border-radius: 2px; background: var(--demo-line); }
+.grip:hover .bar, .grip:focus-visible .bar { background: var(--demo-mute); }
+.grip:focus-visible { outline-offset: -4px; border-radius: 10px; }
+.panel-head { padding-bottom: 10px; border-bottom: 1px solid var(--demo-line); }
+.panel-head h2 { font-size: 17px; font-weight: 700; }
+.panel-head p { font-size: 13px; }
+.stops li { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; padding: 10px 0; font-size: 14px; }
+.stops li + li { border-top: 1px solid var(--demo-line); }
+.stops li > span:nth-child(2) { display: grid; min-width: 0; }
+.stops .mute { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.route { font-size: 12px; font-weight: 700; text-align: center; padding: 3px 0; border-radius: 4px; border: 1px solid currentColor; }
+.r1 { color: var(--demo-blue); }
+.r2 { color: var(--demo-red); }
+.r3 { color: var(--demo-mute); }
+.eta { font-weight: 600; }
