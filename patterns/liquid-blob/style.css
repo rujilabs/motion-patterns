@@ -1,0 +1,38 @@
+/*
+ * liquid blob: round shapes that pull out of each other, travel, and melt into the next one, like
+ * drops of ink. The goo is an SVG filter on the layer that holds them: it blurs the shapes together,
+ * then cuts the blur back to a hard edge, so two circles that come close grow a bridge instead of
+ * overlapping. Put the filter once in the page (see the README) and .goo on the layer.
+ *
+ * .blob: a circle in currentColor. Size and place it yourself.
+ * .blob-travel: moves --blob-dx across (and --blob-dy up at the middle), then starts again. Give
+ *   several blobs the same move with different delays and they leave one anchor and join the next.
+ * .blob-breathe: an anchor that swells a little as drops leave and arrive.
+ * They loop: give people the .blob-pause toggle.
+ */
+.goo { filter: url(#goo); }
+.blob { position: absolute; border-radius: 50%; background: currentColor; }
+
+.blob-travel { animation: blob-travel var(--blob-dur, 2.4s) var(--ease-inout) infinite both; animation-delay: var(--blob-delay, 0s); }
+@keyframes blob-travel {
+  0%   { translate: 0 0; scale: .7; }
+  20%  { scale: 1; }
+  50%  { translate: calc(var(--blob-dx, 200px) / 2) var(--blob-dy, 0px); }
+  80%  { scale: 1; }
+  100% { translate: var(--blob-dx, 200px) 0; scale: .7; }
+}
+
+.blob-breathe { animation: blob-breathe calc(var(--blob-dur, 2.4s) / 2) var(--ease-inout) infinite alternate; animation-delay: var(--blob-delay, 0s); }
+@keyframes blob-breathe {
+  from { scale: 1; }
+  to   { scale: 1.08; }
+}
+
+.blob-group:has(.blob-pause :checked) :is(.blob-travel, .blob-breathe) { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still picture: the anchors stay, the travelling drops are not shown */
+  .blob-travel { animation: none; visibility: hidden; }
+  .blob-breathe { animation: none; }
+  .blob-pause { display: none; }
+}

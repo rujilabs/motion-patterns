@@ -1,0 +1,20 @@
+{
+  "name": "Mask reveal",
+  "slug": "mask-reveal",
+  "kind": "pattern",
+  "summary": "Lines rise into view from behind their own edge, one after another, and a picture is uncovered by a travelling clip-path edge while it settles from slightly larger.",
+  "category": "entry",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow",
+    "--stagger"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Shape morph",
+  "slug": "shape-morph",
+  "kind": "pattern",
+  "summary": "A play triangle that folds into a pause pair through matched clip-path polygons, and a block that drifts from circle to rounded square to soft blob.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

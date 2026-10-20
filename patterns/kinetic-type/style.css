@@ -1,0 +1,101 @@
+/*
+ * kinetic type: a headline built word by word on a beat, then one word keeps swapping.
+ * --kt-beat sets the rhythm. Put .kt-at-1 to .kt-at-8 on a word to land it on that beat, and pick
+ * how it arrives: .kt-up rises into its line, .kt-slam lands from large, .kt-slide comes in from
+ * the left. Words share one rhythm, so the line reads as a phrase being said, not a list appearing.
+ *
+ * .kt-swap holds 2 to 5 words stacked in one cell. They take turns, each held --kt-hold, the
+ * outgoing word leaving upward while the next rises in under it. The cell is as wide as the widest
+ * word, so put the swap at the end of a line. It loops: give people the .kt-pause toggle.
+ */
+.kt { --kt-beat: 300ms; --kt-hold: 1.6s; }
+.kt-up, .kt-slam, .kt-slide { display: inline-block; }
+.kt-up { animation: kt-up var(--dur-base) var(--ease-out) both; animation-delay: calc(var(--kt-beat) * var(--kt-at, 0)); }
+.kt-slam { animation: kt-slam var(--dur-base) var(--ease-spring) both; animation-delay: calc(var(--kt-beat) * var(--kt-at, 0)); }
+.kt-slide { animation: kt-slide var(--dur-base) var(--ease-out) both; animation-delay: calc(var(--kt-beat) * var(--kt-at, 0)); }
+@keyframes kt-up {
+  from { opacity: 0; translate: 0 .55em; }
+  50%  { opacity: 1; }
+  to   { opacity: 1; translate: none; }
+}
+@keyframes kt-slam {
+  from { opacity: 0; scale: 1.7; }
+  25%  { opacity: 1; }
+  to   { opacity: 1; scale: 1; }
+}
+@keyframes kt-slide {
+  from { opacity: 0; translate: -.7em 0; }
+  50%  { opacity: 1; }
+  to   { opacity: 1; translate: none; }
+}
+.kt-at-1 { --kt-at: 1; }
+.kt-at-2 { --kt-at: 2; }
+.kt-at-3 { --kt-at: 3; }
+.kt-at-4 { --kt-at: 4; }
+.kt-at-5 { --kt-at: 5; }
+.kt-at-6 { --kt-at: 6; }
+.kt-at-7 { --kt-at: 7; }
+.kt-at-8 { --kt-at: 8; }
+
+/* the swap */
+.kt-swap {
+  --kt-n: 2;
+  display: inline-grid;
+  justify-items: start;
+  vertical-align: bottom;
+  overflow: clip;
+  /* room for descenders, given back so the line keeps its height */
+  padding-block-end: .1em;
+  margin-block-end: -.1em;
+}
+.kt-swap:has(> :nth-child(3)) { --kt-n: 3; }
+.kt-swap:has(> :nth-child(4)) { --kt-n: 4; }
+.kt-swap:has(> :nth-child(5)) { --kt-n: 5; }
+.kt-swap > * {
+  --kt-k: 0;
+  grid-area: 1 / 1;
+  animation: kt-swap-2 calc(var(--kt-hold) * var(--kt-n)) var(--ease-out) infinite both;
+  animation-delay: calc(var(--kt-beat) * var(--kt-at, 0) + var(--kt-hold) * var(--kt-k));
+}
+.kt-swap > :nth-child(2) { --kt-k: 1; }
+.kt-swap > :nth-child(3) { --kt-k: 2; }
+.kt-swap > :nth-child(4) { --kt-k: 3; }
+.kt-swap > :nth-child(5) { --kt-k: 4; }
+.kt-swap:has(> :nth-child(3)) > * { animation-name: kt-swap-3; }
+.kt-swap:has(> :nth-child(4)) > * { animation-name: kt-swap-4; }
+.kt-swap:has(> :nth-child(5)) > * { animation-name: kt-swap-5; }
+/* each word is in for 1/n of the cycle; the way in and the way out take a fifth of its turn */
+@keyframes kt-swap-2 {
+  0% { opacity: 0; translate: 0 100%; }
+  10%, 50% { opacity: 1; translate: none; }
+  60%, 100% { opacity: 0; translate: 0 -100%; }
+}
+@keyframes kt-swap-3 {
+  0% { opacity: 0; translate: 0 100%; }
+  6.667%, 33.333% { opacity: 1; translate: none; }
+  40%, 100% { opacity: 0; translate: 0 -100%; }
+}
+@keyframes kt-swap-4 {
+  0% { opacity: 0; translate: 0 100%; }
+  5%, 25% { opacity: 1; translate: none; }
+  30%, 100% { opacity: 0; translate: 0 -100%; }
+}
+@keyframes kt-swap-5 {
+  0% { opacity: 0; translate: 0 100%; }
+  4%, 20% { opacity: 1; translate: none; }
+  24%, 100% { opacity: 0; translate: 0 -100%; }
+}
+
+/* pause: hover on the swap, or the .kt-pause toggle anywhere inside the .kt group */
+.kt-swap:hover > *,
+.kt:has(.kt-pause :checked) .kt-swap > * { animation-play-state: paused; }
+
+/* a visually hidden copy of the swap words for screen readers; mark the swap aria-hidden */
+.kt-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-up, .kt-slam, .kt-slide, .kt-swap > * { animation: none; }
+  /* the swap stops on its first word */
+  .kt-swap > :nth-child(n + 2) { visibility: hidden; }
+  .kt-pause { display: none; }
+}

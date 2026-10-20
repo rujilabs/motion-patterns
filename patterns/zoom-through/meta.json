@@ -1,0 +1,23 @@
+{
+  "name": "Zoom through",
+  "slug": "zoom-through",
+  "kind": "pattern",
+  "summary": "The camera pushes through an opening in one view, a window or a letter cut out of an SVG, into the view behind it, and steps back out on a decelerating curve.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-in",
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

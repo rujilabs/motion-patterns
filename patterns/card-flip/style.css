@@ -1,0 +1,33 @@
+/*
+ * card-flip: a card turns over in 3D to show its back. The two faces share one grid cell, each
+ * hides its back face, and the back starts turned 180deg, so turning the card shows it the right
+ * way round. The turn lands with a slight overshoot (--ease-paper), like a card set down on a table.
+ *
+ * .flip-hover   turns on hover and while anything inside has focus
+ * .is-flipped   turns it from script (flip.js toggles it from a button)
+ * .flip-toggle  a checkbox anywhere inside the .flip turns it with no script
+ * .flip-x       turns over the top edge instead of the side
+ */
+.flip { display: grid; perspective: var(--flip-depth, 900px); }
+.flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform var(--dur-slow) var(--ease-paper);
+}
+.flip-front, .flip-back { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-back { transform: rotateY(180deg); }
+.flip-x .flip-back { transform: rotateX(180deg); }
+
+.flip-hover:hover .flip-inner,
+.flip-hover:focus-within .flip-inner,
+.flip.is-flipped .flip-inner,
+.flip:has(.flip-toggle:checked) .flip-inner { transform: rotateY(180deg); }
+.flip-x.flip-hover:hover .flip-inner,
+.flip-x.flip-hover:focus-within .flip-inner,
+.flip-x.is-flipped .flip-inner,
+.flip-x:has(.flip-toggle:checked) .flip-inner { transform: rotateX(-180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no turn: the faces swap in place */
+  .flip-inner { transition: none; }
+}

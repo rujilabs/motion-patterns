@@ -1,0 +1,21 @@
+{
+  "name": "Mask transition",
+  "slug": "mask-transition",
+  "kind": "pattern",
+  "summary": "The next view shows through a mask that grows until it covers the frame: a circle from the click point, a diagonal edge, or a letter shape.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-in",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

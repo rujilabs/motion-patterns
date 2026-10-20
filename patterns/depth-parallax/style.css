@@ -1,0 +1,37 @@
+/*
+ * depth-parallax: layers at different depths shift by different amounts, so a flat scene reads
+ * as near and far. Each .parallax-layer has a --depth from 0 (still, the horizon) to 1 (closest).
+ * Two drivers that add together:
+ *   pointer  parallax.js writes --px and --py (-1 to 1) on the .parallax; near layers move most,
+ *            against the pointer, as if you leant to look around them. A transition smooths it.
+ *   loop     .parallax-loop drifts every layer slowly back and forth by its depth. It pauses while
+ *            the pointer is over the scene, and with a .parallax-pause toggle in a .parallax-group.
+ * Layers overhang the frame by 2x --parallax-range on every side, so no edge ever shows.
+ */
+.parallax { position: relative; overflow: clip; --parallax-range: 16px; }
+.parallax-layer {
+  position: absolute;
+  inset: calc(var(--parallax-range) * -2);
+  width: calc(100% + var(--parallax-range) * 4);
+  height: calc(100% + var(--parallax-range) * 4);
+  --parallax-d: calc(var(--depth, 0) * var(--parallax-range));
+  transform: translate(calc(var(--px, 0) * var(--parallax-d) * -1), calc(var(--py, 0) * var(--parallax-d) * -1));
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.parallax-far { --depth: .15; }
+.parallax-mid { --depth: .4; }
+.parallax-near { --depth: .75; }
+.parallax-front { --depth: 1; }
+
+.parallax-loop .parallax-layer { animation: parallax-drift var(--parallax-every, 7s) var(--ease-inout) infinite alternate; }
+@keyframes parallax-drift {
+  from { translate: calc(var(--parallax-d) * -.8) calc(var(--parallax-d) * .15); }
+  to   { translate: calc(var(--parallax-d) * .8) calc(var(--parallax-d) * -.15); }
+}
+.parallax-loop:hover .parallax-layer,
+.parallax-group:has(.parallax-pause :checked) .parallax-layer { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer, .parallax-loop .parallax-layer { transform: none; translate: none; transition: none; animation: none; }
+  .parallax-pause { display: none; }
+}

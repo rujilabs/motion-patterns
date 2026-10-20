@@ -1,0 +1,60 @@
+/*
+ * particles: a quiet field of small dots behind a section, for a sense of air or activity without
+ * saying anything. particles.js draws the dots into a .particles-field layer behind the content;
+ * this file moves them.
+ *
+ * .particles-rise (on the host): dots float up from below the bottom edge, swaying a little,
+ *   fading in and out, like bubbles or embers. The rise is the field's own height (cqh).
+ * .particles-drift (on the host): dots wander slowly around where they are, like dust in light.
+ * Dots take currentColor from the field: set color on the host or on .particles-field.
+ * They move for as long as the page is open: give people the .particles-pause toggle.
+ */
+[data-particles] { position: relative; isolation: isolate; }
+.particles-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: clip;
+  container-type: size;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: var(--o);
+}
+
+.particles-rise .particle { top: calc(100% + 8px); opacity: 0; animation: particle-rise var(--d) linear var(--delay) infinite; }
+@keyframes particle-rise {
+  0%   { translate: 0 0; opacity: 0; }
+  15%  { opacity: var(--o); }
+  50%  { translate: var(--dx) calc(-50cqh - 8px); }
+  80%  { opacity: var(--o); }
+  100% { translate: 0 calc(-100cqh - 16px); opacity: 0; }
+}
+
+.particles-drift .particle { animation: particle-drift var(--d) var(--ease-inout) var(--delay) infinite; }
+@keyframes particle-drift {
+  0%, 100% { translate: 0 0; }
+  33%      { translate: var(--dx) var(--dy); }
+  66%      { translate: calc(var(--dy) * -1) var(--dx); }
+}
+
+/* paused by the toggle, or while the field is off screen (particles.js marks it) */
+.particles-group:has(.particles-pause :checked) .particle,
+.particles-off .particle { animation-play-state: paused; }
+
+/* still: reduced motion. The dots stay where they were placed, at their own strength */
+.particles-still .particle,
+.particles-rise .particles-still .particle { animation: none; top: var(--y); opacity: var(--o); }
+
+@media (prefers-reduced-motion: reduce) {
+  .particles-rise .particle, .particles-drift .particle { animation: none; top: var(--y); opacity: var(--o); }
+  .particles-pause { display: none; }
+}

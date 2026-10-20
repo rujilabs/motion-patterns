@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zoom through demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="zoom.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="visit sheet" aria-labelledby="visit-h">
+    <div class="zoom-through visit-screen" id="studio">
+      <div class="zoom-back room">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="200" fill="#f1e2c8"/>
+          <rect y="150" width="320" height="50" fill="#b9875a"/>
+          <path d="M0 150 h320" stroke="#8e6440" stroke-width="2"/>
+          <rect x="34" y="40" width="64" height="48" fill="#fbf4e8" stroke="#8e6440" stroke-width="2"/>
+          <path d="M42 80 l16 -18 l12 12 l8 -8 l12 14Z" fill="#9db7a0"/>
+          <rect x="196" y="36" width="90" height="114" fill="#d7b98f" stroke="#8e6440" stroke-width="2"/>
+          <g fill="#8e6440"><rect x="196" y="72" width="90" height="3"/><rect x="196" y="110" width="90" height="3"/></g>
+          <g><rect x="204" y="48" width="8" height="24" fill="#3d7bf2"/><rect x="214" y="52" width="8" height="20" fill="#6d4f3a"/><rect x="224" y="46" width="6" height="26" fill="#ee3b2b"/><rect x="240" y="86" width="10" height="24" fill="#fbf4e8"/><rect x="252" y="90" width="8" height="20" fill="#3d7bf2"/></g>
+          <rect x="110" y="118" width="70" height="6" fill="#6d4f3a"/>
+          <path d="M118 124 v26 M172 124 v26" stroke="#6d4f3a" stroke-width="4"/>
+          <path d="M150 118 v-34" stroke="#3b2a1e" stroke-width="2"/>
+          <path d="M136 84 h28 l-6 -16 h-16Z" fill="#ffcf6a"/>
+          <ellipse cx="150" cy="96" rx="44" ry="26" fill="#ffcf6a" opacity=".18"/>
+          <path d="M126 118 v-12 a6 6 0 0 1 12 0 v12Z" fill="#4f7a58"/>
+        </svg>
+        <p class="tag">Studio 2B, open studio night until 11 pm</p>
+      </div>
+      <div class="zoom-front street">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path fill-rule="evenodd" fill="#2a3352" d="M0 0 H320 V200 H0Z M176 62 H224 V98 H176Z"/>
+          <g fill="#3a4568"><rect x="96" y="62" width="48" height="36"/><rect x="96" y="126" width="48" height="74"/><rect x="176" y="126" width="48" height="74"/></g>
+          <path d="M80 40 h160 v4 h-160Z M80 110 h160 v4 h-160Z" fill="#1d2440"/>
+          <path d="M172 58 h56 v44 h-56Z" fill="none" stroke="#e9e6d6" stroke-width="2"/>
+          <path d="M200 58 v44" stroke="#e9e6d6" stroke-width="2"/>
+          <path d="M92 58 h56 v44 h-56Z" fill="none" stroke="#56627f" stroke-width="2"/>
+          <rect x="120" y="18" width="80" height="14" rx="2" fill="#1d2440"/>
+          <rect y="186" width="320" height="14" fill="#1a2036"/>
+          <path d="M30 186 v-70 M30 116 h14" stroke="#56627f" stroke-width="3"/>
+          <circle cx="46" cy="120" r="5" fill="#ffcf6a"/>
+        </svg>
+        <p class="tag">Lorong Kapas, 21:40</p>
+      </div>
+    </div>
+    <div class="visit-bar">
+      <div><h1 id="visit-h">The lit window on the first floor</h1><p class="mute">An open studio, one night a month</p></div>
+      <button type="button" data-zoom-toggle aria-controls="studio" aria-pressed="false" data-label-in="Look inside" data-label-out="Step back">Look inside</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

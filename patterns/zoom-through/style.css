@@ -1,0 +1,28 @@
+/*
+ * zoom-through: the camera pushes through an opening in one view into the next.
+ * The front view has a real hole in it (a window, a door, a letter cut out of an SVG) and the next
+ * view sits behind, seen through the hole. Going in, the front view scales up around the hole on an
+ * accelerating curve until the hole is bigger than the frame, while the view behind grows from small
+ * to full size. The front fades only in the last third, so the push is what you see, not a fade.
+ * --zoom-x / --zoom-y put the origin on the hole's centre; --zoom-scale is how far the front grows.
+ * Going back runs on transitions too, with a decelerating curve, so it settles like a step back.
+ */
+.zoom-through { display: grid; overflow: clip; --zoom-scale: 10; --zoom-from: .4; }
+.zoom-through > * { grid-area: 1 / 1; transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%); }
+.zoom-front {
+  z-index: 1;
+  transition: scale var(--dur-slow) var(--ease-out), opacity var(--dur-quick) linear, visibility 0s;
+}
+.zoom-back { scale: var(--zoom-from); transition: scale var(--dur-slow) var(--ease-out); }
+
+.zoom-through.is-inside > .zoom-front {
+  scale: var(--zoom-scale);
+  opacity: 0;
+  visibility: hidden;
+  transition: scale var(--dur-slow) var(--ease-in), opacity var(--dur-quick) linear calc(var(--dur-slow) - var(--dur-quick)), visibility 0s linear var(--dur-slow);
+}
+.zoom-through.is-inside > .zoom-back { scale: 1; transition-timing-function: var(--ease-inout); }
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-front, .zoom-back, .zoom-through.is-inside > .zoom-front, .zoom-through.is-inside > .zoom-back { transition: none; }
+}

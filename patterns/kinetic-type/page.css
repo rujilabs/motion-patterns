@@ -1,0 +1,22 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.poster { width: min(460px, 100%); padding: 18px 22px 16px; display: grid; gap: 18px; }
+.poster-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.shop { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.headline { display: grid; font-size: clamp(36px, 11vw, 52px); font-weight: 750; letter-spacing: -.035em; line-height: 1.02; }
+.line { display: block; white-space: nowrap; }
+/* the one word in red, and the swap in blue pencil with an underline */
+.key { color: var(--demo-red); transform-origin: 30% 70%; }
+.swap { color: var(--demo-blue); }
+.swap > * { border-bottom: 2px solid currentColor; line-height: .96; }
+.poster-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--demo-line); font-size: 13px; color: var(--demo-mute); }
+@media (max-width: 360px) {
+  .poster { padding-inline: 16px; }
+}
+@media (max-height: 440px) {
+  .poster { gap: 10px; padding-block: 12px; }
+  .headline { font-size: 34px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .poster { width: 520px; }
+  .headline { font-size: 60px; }
+}

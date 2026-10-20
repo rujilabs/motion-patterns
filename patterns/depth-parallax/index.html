@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Depth parallax demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="parallax.js"></script>
+</head>
+<body>
+<main class="stage">
+  <article class="trail parallax-group sheet" aria-labelledby="trail-h">
+    <div class="parallax parallax-loop scene" data-parallax aria-hidden="true">
+      <svg class="parallax-layer parallax-far" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+        <circle cx="290" cy="80" r="22" fill="#fbe3b0"/>
+        <path d="M0 150 L60 112 L110 132 L170 96 L230 128 L290 104 L350 124 L400 110 V250 H0Z" fill="#b9c7d6"/>
+      </svg>
+      <svg class="parallax-layer parallax-mid" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+        <path d="M0 170 C50 140 90 150 140 160 C200 172 240 136 300 146 C340 152 370 160 400 150 V250 H0Z" fill="#8fae9c"/>
+      </svg>
+      <svg class="parallax-layer parallax-near" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+        <path d="M0 196 C60 182 120 190 180 200 C250 210 320 186 400 194 V250 H0Z" fill="#5d8a6c"/>
+        <g fill="#4a7558"><path d="M70 196 l12 -44 l12 44Z"/><path d="M92 198 l9 -32 l9 32Z"/><path d="M300 192 l14 -52 l14 52Z"/><path d="M326 194 l10 -36 l10 36Z"/></g>
+        <path d="M170 250 C176 228 196 214 214 206" fill="none" stroke="#e9dcc0" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <svg class="parallax-layer parallax-front" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="#2f4d3a" stroke-width="3" stroke-linecap="round">
+          <path d="M20 250 C24 226 36 212 52 204"/><path d="M34 250 C34 232 30 220 20 210"/><path d="M28 230 c-8 -4 -14 -4 -20 0"/>
+          <path d="M372 250 C368 228 358 216 344 208"/><path d="M386 250 C388 230 394 220 400 214"/><path d="M366 232 c8 -6 14 -6 22 -2"/>
+        </g>
+        <rect x="236" y="190" width="5" height="40" fill="#6d4f3a"/>
+        <rect x="222" y="184" width="40" height="14" rx="2" fill="#f3efe2" stroke="#6d4f3a" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="trail-body">
+      <div>
+        <p class="mute small">Trail, 6.2 km, about 3 hours</p>
+        <h1 id="trail-h">Bukit Sena ridge loop</h1>
+      </div>
+      <label class="parallax-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+    <dl class="facts num">
+      <div><dt>Climb</dt><dd>420 m</dd></div>
+      <div><dt>Start</dt><dd>Before 8 am</dd></div>
+      <div><dt>Water</dt><dd>1 stream</dd></div>
+    </dl>
+  </article>
+</main>
+</body>
+</html>

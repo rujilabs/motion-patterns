@@ -1,0 +1,16 @@
+{
+  "name": "Typewriter",
+  "slug": "typewriter",
+  "kind": "pattern",
+  "summary": "Text typed one character at a time behind a caret, pausing at commas and stops. Lines never rewrap while typing, and screen readers get the whole text at once.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Light sweep",
+  "slug": "light-sweep",
+  "kind": "pattern",
+  "summary": "A band of light passes across a button, card or logo. One pass on hover or focus, one when it comes into view, or a slow repeat with a pause toggle.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-base"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

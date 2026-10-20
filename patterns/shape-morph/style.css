@@ -1,0 +1,45 @@
+/*
+ * shape morph: one shape becomes another instead of being swapped.
+ *
+ * .morph-icon: a play triangle that folds into a pause pair. The icon is two layers, each a
+ *   four-point clip-path polygon: the left and right halves of the triangle, and the two bars of
+ *   pause. Same point count, matched corner to corner, so the browser can tween one into the other
+ *   in every current browser. It follows aria-pressed on the nearest button: pressed means playing.
+ * .morph-shape: a block that drifts through circle, rounded square and soft blob by border-radius,
+ *   turning slowly as it goes. It loops: pause it with --morph-state: paused (the demo does that
+ *   when the player is paused).
+ */
+.morph-icon { position: relative; display: inline-block; width: 1em; height: 1em; }
+.morph-icon::before,
+.morph-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transition: clip-path var(--dur-base) var(--ease-inout);
+}
+/* play: the triangle (25% 12%, 85% 50%, 25% 88%) split at x = 55% */
+.morph-icon::before { clip-path: polygon(25% 12%, 55% 31%, 55% 69%, 25% 88%); }
+.morph-icon::after  { clip-path: polygon(55% 31%, 85% 50%, 85% 50%, 55% 69%); }
+/* pause: two bars, corners in the same order */
+[aria-pressed="true"] .morph-icon::before,
+.morph-icon.is-on::before { clip-path: polygon(22% 14%, 41% 14%, 41% 86%, 22% 86%); }
+[aria-pressed="true"] .morph-icon::after,
+.morph-icon.is-on::after  { clip-path: polygon(59% 14%, 78% 14%, 78% 86%, 59% 86%); }
+
+.morph-shape {
+  border-radius: 50%;
+  animation: morph-shape var(--morph-dur, 9s) var(--ease-inout) infinite;
+  animation-play-state: var(--morph-state, running);
+}
+@keyframes morph-shape {
+  0%, 100% { border-radius: 50%; rotate: 0deg; }
+  30%      { border-radius: 22%; rotate: 45deg; }
+  65%      { border-radius: 62% 38% 46% 54% / 54% 44% 56% 46%; rotate: 120deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the icon swaps at once and the shape holds still as a circle */
+  .morph-icon::before, .morph-icon::after { transition: none; }
+  .morph-shape { animation: none; }
+}

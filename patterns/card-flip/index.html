@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card flip demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="flip.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="pair">
+    <section class="col" aria-labelledby="word-h">
+      <h1 id="word-h" class="col-h">Word of the day <span class="mute">click</span></h1>
+      <div class="flip card" id="word">
+        <div class="flip-inner">
+          <div class="flip-front face sheet">
+            <p class="face-k">Bahasa Melayu, noun</p>
+            <p class="word">rindu</p>
+            <p class="mute small">What does it mean?</p>
+          </div>
+          <div class="flip-back face face-back sheet">
+            <p class="face-k">Meaning</p>
+            <p class="answer">A longing for someone or somewhere you are away from.</p>
+            <p class="mute small">"Saya rindu kampung."</p>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="act" data-flip aria-controls="word" aria-pressed="false" data-label-off="Show the meaning" data-label-on="Show the word">Show the meaning</button>
+    </section>
+    <section class="col" aria-labelledby="gift-h">
+      <h1 id="gift-h" class="col-h">Your gift card <span class="mute">hover or tab</span></h1>
+      <div class="flip flip-hover card" tabindex="0" aria-label="Gift card, turn over for the code">
+        <div class="flip-inner">
+          <div class="flip-front face gift">
+            <svg class="gift-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="12" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M20 12 v24 M4 20 h32" stroke="currentColor" stroke-width="1.5"/><path d="M20 12 c-4 -8 -12 -6 -8 0 M20 12 c4 -8 12 -6 8 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <p class="gift-shop">Kedai Buku Lorong</p>
+            <p class="gift-amt num">RM 50</p>
+          </div>
+          <div class="flip-back face gift gift-back">
+            <p class="face-k">Code</p>
+            <p class="code num">4KQ7 92MX</p>
+            <p class="small">Valid until 31 March 2027</p>
+          </div>
+        </div>
+      </div>
+      <p class="mute small hint">Turns over while the pointer or focus is on it.</p>
+    </section>
+  </div>
+</main>
+</body>
+</html>

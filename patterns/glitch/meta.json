@@ -1,0 +1,15 @@
+{
+  "name": "Glitch",
+  "slug": "glitch",
+  "kind": "pattern",
+  "summary": "A broken signal in short bursts: jitter, two colour copies split to the sides and slices jumping sideways, on text or an image. Loops with a pause toggle, or once on hover.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

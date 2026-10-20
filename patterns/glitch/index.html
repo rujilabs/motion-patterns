@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glitch demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="call glitch-group sheet" aria-labelledby="call-h">
+    <div class="tile">
+      <div class="glitch-img feed">
+        <img src="caller.svg" alt="Aiman at his desk, the picture breaking up" width="320" height="200">
+        <img class="glitch-copy" src="caller.svg" alt="" aria-hidden="true" width="320" height="200">
+        <img class="glitch-copy" src="caller.svg" alt="" aria-hidden="true" width="320" height="200">
+      </div>
+      <p class="who">Aiman Hakim</p>
+      <p class="weak"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="glitch" data-text="Weak connection">Weak connection</span></p>
+    </div>
+    <div class="call-bar">
+      <div>
+        <h1 id="call-h">Weekly design review</h1>
+        <p class="mute num">00:14:32, 3 people</p>
+      </div>
+      <label class="glitch-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+    <p class="tip">Point at <span class="glitch glitch-hover" data-text="Reconnect" tabindex="0">Reconnect</span> for a single burst.</p>
+  </section>
+</main>
+</body>
+</html>

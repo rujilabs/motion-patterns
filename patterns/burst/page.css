@@ -1,0 +1,42 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.note { width: min(400px, 100%); padding: 18px 20px 12px; display: grid; gap: 12px; }
+.note-head { display: flex; align-items: center; gap: 10px; }
+.avatar { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; font-weight: 700; }
+.who { font-weight: 600; font-size: 14px; }
+.when { color: var(--demo-mute); font-size: 12px; }
+.note h1 { font-size: 20px; font-weight: 700; }
+.tasks { display: grid; }
+.tasks li + li { border-top: 1px solid var(--demo-line); }
+.task { display: flex; align-items: center; gap: 12px; padding: 10px 0; cursor: pointer; font-size: 14px; }
+/* the real checkbox stays in the page for keyboard and screen readers; the box is drawn next to it */
+.task input, .like input { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; }
+.box { position: relative; flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 5px;
+  border: 1px solid var(--demo-line); background: var(--demo-paper); color: transparent; transition: background-color var(--dur-quick), border-color var(--dur-quick); }
+.box svg { width: 16px; height: 16px; }
+.task input:checked + .box { background: var(--demo-blue); border-color: var(--demo-blue); color: #fff; }
+.task input:checked ~ .label { color: var(--demo-mute); text-decoration: line-through; text-decoration-color: var(--demo-line); }
+.task input:focus-visible + .box, .like input:focus-visible + .heart { outline: 2px solid var(--demo-blue); outline-offset: 3px; }
+/* confetti in the three demo inks */
+.burst-confetti { color: var(--demo-blue); --burst-c2: var(--demo-red); --burst-c3: var(--demo-ink); --burst-r: 30px; }
+.note-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--demo-line); font-size: 13px; }
+.like { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; color: var(--demo-mute); }
+.heart { position: relative; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: var(--demo-mute); }
+.heart svg { width: 22px; height: 22px; fill-opacity: 0; transition: fill-opacity var(--dur-quick); }
+.heart svg path { fill-opacity: inherit; }
+.like input:checked + .heart { color: var(--demo-red); }
+.like input:checked + .heart svg { fill-opacity: 1; }
+.heart .burst { --burst-r: 24px; --burst-size: 5px; }
+.n-on, .like input:checked ~ .like-n .n-off { display: none; }
+.like input:checked ~ .like-n .n-on { display: inline; }
+.like input:checked ~ .like-n { color: var(--demo-ink); font-weight: 600; }
+.comments { color: var(--demo-mute); }
+@media (prefers-reduced-motion: reduce) {
+  .box, .heart svg { transition: none; }
+}
+@media (max-height: 420px) {
+  .note { gap: 8px; padding-block: 12px 8px; }
+  .task { padding: 7px 0; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .note { width: 440px; }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Burst",
+  "slug": "burst",
+  "kind": "pattern",
+  "summary": "Dots or paper slips fly out from a like or a done tick and fade, while the icon gives one springy beat. CSS only, replays each time the box is checked.",
+  "category": "entry",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-spring",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

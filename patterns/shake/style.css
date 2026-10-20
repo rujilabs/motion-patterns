@@ -1,0 +1,35 @@
+/*
+ * shake: a short shake that dies away. Each swing is smaller than the last, so it reads as one
+ * knock settling, not a vibration. shake.js adds .is-shaking and removes it on animationend, so it
+ * can play again; without script, add the class yourself.
+ *
+ * .shake-x       side to side only, like a head saying no. For a wrong PIN or a rejected field.
+ * .shake-screen  a knock: both axes and a touch of rotation. For an impact on a whole panel.
+ * --shake sets the first swing (default 10px for shake-x, 8px for shake-screen).
+ */
+.shake-x.is-shaking { animation: shake-x calc(var(--dur-base) * .8) linear; }
+@keyframes shake-x {
+  0%   { translate: 0; }
+  12%  { translate: calc(var(--shake, 10px) * -1) 0; }
+  27%  { translate: calc(var(--shake, 10px) * .8) 0; }
+  42%  { translate: calc(var(--shake, 10px) * -.55) 0; }
+  57%  { translate: calc(var(--shake, 10px) * .35) 0; }
+  72%  { translate: calc(var(--shake, 10px) * -.18) 0; }
+  86%  { translate: calc(var(--shake, 10px) * .06) 0; }
+  100% { translate: 0; }
+}
+
+.shake-screen.is-shaking { animation: shake-screen var(--dur-base) var(--ease-out); }
+@keyframes shake-screen {
+  0%   { transform: none; }
+  10%  { transform: translate(calc(var(--shake, 8px) * -1), calc(var(--shake, 8px) * .5)) rotate(-1deg); }
+  22%  { transform: translate(calc(var(--shake, 8px) * .8), calc(var(--shake, 8px) * -.6)) rotate(.8deg); }
+  36%  { transform: translate(calc(var(--shake, 8px) * -.5), calc(var(--shake, 8px) * .4)) rotate(-.5deg); }
+  52%  { transform: translate(calc(var(--shake, 8px) * .3), calc(var(--shake, 8px) * -.2)) rotate(.3deg); }
+  70%  { transform: translate(calc(var(--shake, 8px) * -.12), calc(var(--shake, 8px) * .1)) rotate(-.1deg); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shake-x.is-shaking, .shake-screen.is-shaking { animation: none; }
+}

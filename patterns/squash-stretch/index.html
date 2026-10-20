@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Squash and stretch demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="wait sheet squash-group" aria-labelledby="wait-h">
+    <div class="pit" aria-hidden="true">
+      <span class="floor"></span>
+      <span class="shadow squash-shadow"></span>
+      <span class="squash"><span class="ball"></span></span>
+    </div>
+    <div class="wait-copy">
+      <h1 id="wait-h">Reconnecting</h1>
+      <p>Your edits are saved on this phone and will sync as soon as you are back online.</p>
+    </div>
+    <footer class="wait-foot">
+      <button class="retry squash-press" type="button">Try again</button>
+      <label class="squash-pause switch"><input type="checkbox"> Pause</label>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

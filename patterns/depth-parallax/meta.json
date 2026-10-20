@@ -1,0 +1,21 @@
+{
+  "name": "Depth parallax",
+  "slug": "depth-parallax",
+  "kind": "pattern",
+  "summary": "Layers at different depths shift by different amounts, following the pointer or drifting in a slow loop with a pause toggle, so a flat scene reads as near and far.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

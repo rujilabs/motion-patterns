@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.player { width: min(340px, 100%); padding: 16px 16px 18px; display: grid; gap: 12px; }
+/* the cover art: two soft shapes drifting through their forms, overlapping in blue pencil */
+.art { position: relative; display: grid; place-items: center; height: 170px; border-radius: 6px; background: var(--demo-blue-soft); overflow: clip; }
+.blob { grid-area: 1 / 1; width: 110px; height: 110px; background: var(--demo-blue); opacity: .9; translate: -14px 6px; }
+.blob-2 { width: 74px; height: 74px; background: var(--demo-red); opacity: .78; translate: 34px -18px; --morph-dur: 7s; animation-direction: reverse; }
+/* the art only moves while the episode plays */
+.player:has(.play[aria-pressed="false"]) { --morph-state: paused; }
+.meta { display: grid; gap: 2px; }
+.show { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--demo-mute); }
+.meta h1 { font-size: 17px; font-weight: 650; }
+.progress { height: 4px; border-radius: 2px; background: var(--demo-line); overflow: clip; }
+.progress-fill { display: block; height: 100%; width: 37%; background: var(--demo-ink); }
+.times { display: flex; justify-content: space-between; margin-top: -6px; font-size: 12px; color: var(--demo-mute); }
+.controls { display: flex; justify-content: center; align-items: center; gap: 28px; }
+.skip { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--demo-ink); cursor: pointer; }
+.skip svg { width: 24px; height: 24px; }
+.play { display: grid; place-items: center; width: 58px; height: 58px; padding: 0; border: 0; border-radius: 50%; background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; font-size: 24px; }
+@media (max-height: 460px) {
+  .art { height: 110px; }
+  .blob { width: 80px; height: 80px; }
+  .blob-2 { width: 54px; height: 54px; }
+  .player { gap: 8px; padding-block: 12px; }
+  .play { width: 48px; height: 48px; font-size: 20px; }
+}
+@media (max-height: 360px) {
+  .art { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .player { width: 360px; }
+  .art { height: 200px; }
+}

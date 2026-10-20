@@ -1,0 +1,20 @@
+{
+  "name": "Shape transition",
+  "slug": "shape-transition",
+  "kind": "pattern",
+  "summary": "A solid shape sweeps in and covers the frame, the view changes underneath, then the shape moves on to uncover it. One band, three staggered stripes, or a disc.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

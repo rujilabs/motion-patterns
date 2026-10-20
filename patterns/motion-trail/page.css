@@ -1,0 +1,51 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.track { width: min(340px, 100%); padding: 16px 18px 14px; display: grid; gap: 12px; }
+.track-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.track-head h1 { font-size: 19px; font-weight: 700; }
+.eta { font-size: 13px; color: var(--demo-mute); }
+.eta strong { color: var(--demo-ink); }
+/* the map is drawn at its real size, 300 x 140, so the rider's path lines up with the streets */
+.map { position: relative; width: 300px; height: 140px; margin: 0 auto; border-radius: 6px; overflow: clip; background: var(--demo-table); border: 1px solid var(--demo-line); box-sizing: content-box; }
+.streets { position: absolute; inset: 0; width: 300px; height: 140px; }
+.blocks rect { fill: var(--demo-paper); }
+.roads path { fill: none; stroke: var(--demo-line); stroke-width: 6; }
+.route { fill: none; stroke: var(--demo-blue); stroke-width: 2; stroke-dasharray: 4 4; stroke-linecap: round; }
+.pin-from { fill: var(--demo-paper); stroke: var(--demo-ink); stroke-width: 2; }
+.pin-to { fill: var(--demo-red); }
+.pin-dot { fill: #fff; }
+/* the rider runs the same route as the dashed line */
+.trail { position: absolute; left: 0; top: 0; --trail-gap: 100ms; }
+.rider {
+  width: 14px; height: 14px; border-radius: 50%; background: var(--demo-blue);
+  offset-path: path("M40 110 H87 V58 H201 V46 H262"); offset-rotate: 0deg; offset-anchor: 50% 50%;
+  animation: ride 4.2s var(--ease-inout) infinite both;
+}
+.rider:nth-child(n + 2) { width: 10px; height: 10px; }
+.rider:first-child { background: var(--demo-ink); box-shadow: 0 0 0 3px var(--demo-paper), 0 0 0 4px var(--demo-line); }
+@keyframes ride {
+  0%, 12% { offset-distance: 0%; }
+  80%, 100% { offset-distance: 100%; }
+}
+/* the whole trail fades out at the door and back in at the bakery, so the loop has no jump */
+.trail-fade { animation: trail-fade 4.2s linear infinite both; }
+@keyframes trail-fade {
+  0%, 7% { opacity: 0; }
+  11%, 86% { opacity: 1; }
+  95%, 100% { opacity: 0; }
+}
+.trail-group:has(.trail-pause :checked) .trail-fade { animation-play-state: paused; }
+.track-foot { display: flex; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px solid var(--demo-line); font-size: 13px; color: var(--demo-mute); }
+.track-foot strong { color: var(--demo-ink); font-weight: 600; }
+.avatar { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--demo-blue-soft); color: var(--demo-blue); font-weight: 700; font-size: 13px; }
+.nowrap { white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .trail-fade { animation: none; }
+  .rider:first-child { offset-distance: 55%; }
+}
+@media (max-height: 400px) {
+  .track { gap: 8px; padding-block: 10px; }
+  .track-foot { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .track { width: 360px; }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Overshoot",
+  "slug": "overshoot",
+  "kind": "pattern",
+  "summary": "The element passes its target and settles back: transitions for thumbs and inks that overshoot in proportion to the move, and an entrance for panels and tags.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-paper",
+    "--ease-spring",
+    "--ease-out",
+    "--dur-base",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

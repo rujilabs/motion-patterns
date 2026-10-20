@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impact shake demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="shake.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="locker sheet shake-screen" id="locker" aria-labelledby="locker-h">
+    <header class="locker-head">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="18" width="24" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 18 v-5 a7 7 0 0 1 14 0 v5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="27" r="2.2" fill="currentColor"/></svg>
+      <div><h1 id="locker-h">Locker 14</h1><p class="mute">Level 2, beside the lifts</p></div>
+    </header>
+    <p class="pin-k">Enter your 4-digit PIN</p>
+    <div class="pin shake-x" id="pin" aria-label="PIN entered, 4 digits">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <p class="msg" id="msg" aria-live="polite"></p>
+    <div class="locker-bar">
+      <button type="button" class="primary" data-shake aria-controls="pin" data-shake-out="msg" data-shake-say="Wrong PIN. 2 tries left before a 5 minute wait.">Unlock</button>
+      <button type="button" data-shake aria-controls="locker" data-shake-out="msg" data-shake-say="Something knocked the locker. Check the door is shut.">Knock the door</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

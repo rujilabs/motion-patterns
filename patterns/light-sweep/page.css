@@ -1,0 +1,22 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.member { width: min(400px, 100%); padding: 16px; display: grid; gap: 14px; }
+.member-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.logo { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: -.01em; }
+.logo-mark { width: 22px; height: 22px; border-radius: 6px 6px 6px 0; background: var(--demo-red); --sheen-color: rgb(255 255 255 / .75); --sheen-width: 22%; }
+.pass { display: grid; gap: 4px; padding: 18px; min-height: 150px; align-content: space-between; border-radius: 12px; background: #1f3a5f; color: #f3efe2; --sheen-color: rgb(255 255 255 / .3); --sheen-width: 18%; }
+.pass-k { font-size: 12px; opacity: .75; }
+.pass-name { font-size: 22px; font-weight: 650; }
+.pass-foot { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; letter-spacing: .04em; }
+.tier { padding: 2px 8px; border-radius: 4px; background: #e8c27a; color: #1f3a5f; font-weight: 700; letter-spacing: 0; }
+.perk { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--demo-line); }
+.perk-h { font-weight: 600; font-size: 14px; }
+.perk .mute { font-size: 12px; }
+button { font: inherit; cursor: pointer; }
+.cta { flex: none; padding: 8px 14px; border: 0; border-radius: 6px; background: var(--demo-blue); color: var(--demo-paper); font-size: 13px; font-weight: 600; }
+@media (max-height: 420px) {
+  .pass { min-height: 110px; padding: 14px; }
+  .member { gap: 10px; padding: 12px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .member { width: 440px; }
+}

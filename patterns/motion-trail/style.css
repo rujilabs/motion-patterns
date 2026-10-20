@@ -1,0 +1,32 @@
+/*
+ * motion trail: a moving thing leaves fading copies of itself on the path it just left, so the eye
+ * reads its speed and direction, like a long exposure. The trail is made of copies stacked in one
+ * grid cell, all running the same animation; each copy starts --trail-gap later and is fainter.
+ * Fast parts of the move spread the copies out, slow parts bunch them up.
+ *
+ * Put your animation on the copies (.trail > *); the pattern only sets their delay, opacity
+ * and stacking. Mark every copy after the first aria-hidden. Up to six copies.
+ * Keep opacity out of your keyframes: the copies use it. The copies are not scaled down, because
+ * the scale property is applied before offset-path and would pull a scaled copy off the path.
+ */
+.trail { display: grid; }
+.trail > * { grid-area: 1 / 1; }
+.trail > :nth-child(1) { z-index: 6; animation-delay: var(--trail-delay, 0s); }
+.trail > :nth-child(2) { --trail-k: 1; z-index: 5; opacity: .5; }
+.trail > :nth-child(3) { --trail-k: 2; z-index: 4; opacity: .34; }
+.trail > :nth-child(4) { --trail-k: 3; z-index: 3; opacity: .22; }
+.trail > :nth-child(5) { --trail-k: 4; z-index: 2; opacity: .13; }
+.trail > :nth-child(6) { --trail-k: 5; z-index: 1; opacity: .07; }
+.trail > :nth-child(n + 2) { animation-delay: calc(var(--trail-delay, 0s) + var(--trail-gap, 60ms) * var(--trail-k)); }
+.trail > :nth-child(n + 7) { display: none; }
+
+/* pause: the toggle anywhere inside a .trail-group */
+.trail-group:has(.trail-pause :checked) .trail > * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no movement, so no trail: only the object itself, standing still */
+  /* :nth-child(n) lifts the rule above a single class, such as the one that set the animation */
+  .trail > :nth-child(n) { animation: none; }
+  .trail > :nth-child(n + 2) { display: none; }
+  .trail-pause { display: none; }
+}

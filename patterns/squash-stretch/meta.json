@@ -1,0 +1,18 @@
+{
+  "name": "Squash and stretch",
+  "slug": "squash-stretch",
+  "kind": "pattern",
+  "summary": "A ball that stretches in flight and squashes on contact with its volume kept, on a true parabola with a floor shadow, plus a button that squashes under the finger.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--dur-base"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

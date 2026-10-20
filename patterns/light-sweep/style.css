@@ -1,0 +1,43 @@
+/*
+ * light-sweep: a band of light passes across a button, card or logo, like a sheet of glass caught
+ * by a lamp. The band is a ::after gradient that travels from fully off one side to fully off the
+ * other, so it never pops in or out. The host clips it (overflow: clip) and keeps its own content.
+ * --sheen-color sets the light, --sheen-angle its slant, --sheen-width the band.
+ *
+ * .sheen-hover  one pass on hover or keyboard focus
+ * .sheen-in     one pass when play.js marks it (or an ancestor) with .go
+ * .sheen-loop   a pass every --sheen-every (default 5s); pause it with a .sheen-pause toggle
+ */
+.sheen { position: relative; overflow: clip; isolation: isolate; }
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(var(--sheen-angle, 105deg), transparent calc(50% - var(--sheen-width, 14%)), var(--sheen-color, rgb(255 255 255 / .5)) 50%, transparent calc(50% + var(--sheen-width, 14%)));
+  transform: translateX(-100%);
+}
+@keyframes sheen { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+
+.sheen-hover:hover::after,
+.sheen-hover:focus-visible::after { animation: sheen var(--dur-slow) var(--ease-inout); }
+
+.js .go .sheen-in::after,
+.js .sheen-in.go::after { animation: sheen calc(var(--dur-slow) * 1.2) var(--ease-inout) var(--dur-base) both; }
+
+/* the pass takes the first 24% of the cycle, then the band waits off the right edge */
+.sheen-loop::after { animation: sheen-loop var(--sheen-every, 5s) var(--ease-inout) 1s infinite; }
+@keyframes sheen-loop {
+  from { transform: translateX(-100%); }
+  24%, to { transform: translateX(100%); }
+}
+.sheen-group:has(.sheen-pause :checked) .sheen-loop::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sheen::after,
+  .sheen-hover:hover::after, .sheen-hover:focus-visible::after,
+  .js .go .sheen-in::after, .js .sheen-in.go::after,
+  .sheen-loop::after { animation: none; transform: translateX(-100%); }
+  .sheen-pause { display: none; }
+}

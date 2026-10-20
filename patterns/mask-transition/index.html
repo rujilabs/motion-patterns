@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mask transition demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="mask.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="wx sheet" aria-labelledby="wx-h">
+    <div class="mask-stack wx-screen" id="wx-views" data-mask aria-live="polite">
+      <article class="view v-noon is-current" aria-label="Ipoh">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="200" fill="#bfe0f7"/>
+          <circle cx="238" cy="62" r="26" fill="#ffd36b"/>
+          <circle cx="238" cy="62" r="38" fill="none" stroke="#ffd36b" stroke-width="2" stroke-dasharray="4 8"/>
+          <path d="M0 150 L50 128 L96 140 L150 112 L204 134 L260 118 L320 132 V200 H0Z" fill="#8fc49b"/>
+          <path d="M0 168 L70 156 L140 166 L220 154 L320 164 V200 H0Z" fill="#6aa97a"/>
+        </svg>
+        <div class="wx-text"><p class="wx-city">Ipoh</p><p class="wx-temp num">31&deg;</p><p class="wx-cond">Sunny, light wind</p></div>
+      </article>
+      <article class="view v-rain" aria-label="Cameron Highlands">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="200" fill="#c7cfd9"/>
+          <path d="M196 70 a20 20 0 0 1 38 -8 a16 16 0 0 1 28 12 a13 13 0 0 1 -4 26 h-62 a15 15 0 0 1 0 -30Z" fill="#eef1f5"/>
+          <g stroke="#7d8da1" stroke-width="2" stroke-linecap="round"><path d="M210 112 l-5 12"/><path d="M228 112 l-5 12"/><path d="M246 112 l-5 12"/><path d="M219 130 l-5 12"/><path d="M237 130 l-5 12"/></g>
+          <path d="M0 160 C40 150 60 170 100 160 C140 150 160 170 200 160 C240 150 270 168 320 158 V200 H0Z" fill="#5f8a6c"/>
+          <g fill="#4b745a"><path d="M40 172 h60 v4 h-60Z"/><path d="M40 182 h80 v4 h-80Z"/><path d="M180 176 h90 v4 h-90Z"/></g>
+        </svg>
+        <div class="wx-text"><p class="wx-city">Cameron Highlands</p><p class="wx-temp num">18&deg;</p><p class="wx-cond">Rain until 4 pm</p></div>
+      </article>
+      <article class="view v-night" aria-label="Kuching">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="200" fill="#1f2a48"/>
+          <path d="M248 40 a24 24 0 1 0 22 34 a19 19 0 1 1 -22 -34Z" fill="#f3efd8"/>
+          <g fill="#e9e6d6"><circle cx="40" cy="30" r="1.2"/><circle cx="110" cy="22" r="1"/><circle cx="168" cy="48" r="1.3"/><circle cx="300" cy="24" r="1"/><circle cx="196" cy="16" r="1.1"/></g>
+          <path d="M0 150 h30 v-30 h16 v30 h20 v-46 h22 v46 h16 v-22 h18 v22 h40 v-38 h14 v38 h30 v-26 h24 v26 h90 V200 H0Z" fill="#141c34"/>
+          <rect y="170" width="320" height="30" fill="#24335c"/>
+          <g fill="#ffcf6a"><rect x="74" y="112" width="4" height="5"/><rect x="82" y="124" width="4" height="5"/><rect x="200" y="122" width="4" height="5"/></g>
+        </svg>
+        <div class="wx-text"><p class="wx-city">Kuching</p><p class="wx-temp num">26&deg;</p><p class="wx-cond">Clear night</p></div>
+      </article>
+    </div>
+    <div class="wx-bar">
+      <h1 id="wx-h">Next city</h1>
+      <div class="wx-btns">
+        <button type="button" data-mask-go="circle" aria-controls="wx-views">Circle</button>
+        <button type="button" data-mask-go="diagonal" aria-controls="wx-views">Diagonal</button>
+        <button type="button" data-mask-go="letter" aria-controls="wx-views">Letter</button>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

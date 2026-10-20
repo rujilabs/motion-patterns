@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.draft { width: min(440px, 100%); display: grid; overflow: clip; }
+.draft-bar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--demo-line); }
+.draft-bar h1 { font-size: 15px; font-weight: 650; }
+.saved { font-size: 12px; color: var(--demo-mute); }
+.fields { display: grid; padding: 0 18px; }
+.fields > div { display: grid; grid-template-columns: 64px 1fr; align-items: center; min-height: 40px; border-bottom: 1px solid var(--demo-line); font-size: 14px; }
+.fields dt { color: var(--demo-mute); }
+.fields dd { margin: 0; min-width: 0; }
+.chip { display: inline-block; padding: 2px 9px; border-radius: 999px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 13px; font-weight: 600; }
+/* one line: never wraps, the caret is the blue pencil */
+.one-line { white-space: nowrap; overflow: hidden; font-weight: 600; --type-caret: var(--demo-blue); }
+.body { display: grid; gap: 10px; padding: 14px 18px 18px; min-height: 120px; font-size: 15px; line-height: 1.5; --type-caret: var(--demo-red); }
+.draft-foot { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-top: 1px solid var(--demo-line); }
+.send { font: inherit; font-weight: 600; font-size: 14px; padding: 8px 16px; border: 0; border-radius: 6px; background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; }
+.hint { font-size: 12px; color: var(--demo-mute); }
+@media (max-height: 460px) {
+  .draft-bar { padding-block: 10px; }
+  .fields > div { min-height: 34px; }
+  .body { padding-block: 10px 12px; min-height: 0; }
+  .draft-foot { padding-block: 8px; }
+}
+@media (max-height: 360px) {
+  .hint { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .draft { width: 480px; }
+  .body { font-size: 16px; }
+}

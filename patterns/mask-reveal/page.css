@@ -1,0 +1,24 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.story { width: min(440px, 100%); overflow: clip; }
+.plate { display: block; aspect-ratio: 20 / 9; border-bottom: 1px solid var(--demo-line); background: var(--demo-table); }
+.plate svg { display: block; width: 100%; height: 100%; }
+.story-body { display: grid; gap: 8px; padding: 16px 20px 20px; }
+.kicker { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--demo-blue); }
+.story h1 { font-size: clamp(25px, 7vw, 30px); font-weight: 700; letter-spacing: -.025em; line-height: 1.08; }
+.byline { font-size: 13px; color: var(--demo-mute); }
+/* the order: the picture opens, the kicker, the headline line by line, then the byline */
+.kicker { --mask-delay: calc(var(--stagger) * 3); }
+.story h1 { --mask-delay: calc(var(--stagger) * 4); }
+.byline { --mask-delay: calc(var(--stagger) * 10); }
+@media (max-height: 460px) {
+  .plate { aspect-ratio: 4 / 1; }
+  .story-body { padding-block: 12px 14px; gap: 6px; }
+  .story h1 { font-size: 24px; }
+}
+@media (max-height: 330px) {
+  .byline { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .story { width: 500px; }
+  .story h1 { font-size: 34px; }
+}

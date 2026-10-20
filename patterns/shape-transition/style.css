@@ -1,0 +1,34 @@
+/*
+ * shape-transition: a solid shape sweeps in and covers the frame, the view changes underneath,
+ * then the shape moves on and uncovers the next view. Two phases, so the swap is never seen.
+ * The cover is a .shape-cover element inside the stack with one child per band. shape.js adds
+ * .is-covering, swaps the views when that ends, then .is-uncovering.
+ *
+ * shape-sweep    one band from left to right
+ * shape-stripes  three horizontal bands, one --stagger apart
+ * shape-circle   a disc grows from the centre, then shrinks back into it
+ */
+.shape-stack { position: relative; display: grid; overflow: clip; }
+.shape-stack > :not(.shape-cover) { grid-area: 1 / 1; }
+.shape-stack > :not(.shape-cover):not(.is-current) { visibility: hidden; }
+.shape-cover { position: absolute; inset: 0; z-index: 2; display: grid; pointer-events: none; }
+.shape-cover > * { background: var(--shape-color, currentColor); clip-path: inset(0 100% 0 0); margin-bottom: -1px; }
+.shape-cover:not(.shape-stripes) > :not(:first-child) { display: none; }
+
+.shape-cover.is-covering > * { animation: shape-cover var(--dur-base) var(--ease-inout) both; }
+.shape-cover.is-uncovering > * { animation: shape-uncover var(--dur-base) var(--ease-inout) both; }
+@keyframes shape-cover { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+@keyframes shape-uncover { from { clip-path: inset(0); } to { clip-path: inset(0 0 0 100%); } }
+
+.shape-cover.shape-stripes > :nth-child(2) { animation-delay: var(--stagger); }
+.shape-cover.shape-stripes > :nth-child(3) { animation-delay: calc(var(--stagger) * 2); }
+
+.shape-cover.shape-circle.is-covering > * { animation-name: shape-disc-in; }
+.shape-cover.shape-circle.is-uncovering > * { animation-name: shape-disc-out; }
+@keyframes shape-disc-in { from { clip-path: circle(0 at 50% 50%); } to { clip-path: circle(72% at 50% 50%); } }
+@keyframes shape-disc-out { from { clip-path: circle(72% at 50% 50%); } to { clip-path: circle(0 at 50% 50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .shape-cover.is-covering > *, .shape-cover.is-uncovering > * { animation: none; }
+  .shape-cover > * { clip-path: inset(0 100% 0 0); }
+}

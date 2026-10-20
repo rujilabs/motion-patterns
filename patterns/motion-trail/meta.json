@@ -1,0 +1,15 @@
+{
+  "name": "Motion trail",
+  "slug": "motion-trail",
+  "kind": "pattern",
+  "summary": "A moving object leaves fading echo copies on the path it just left: copies run the same animation a beat apart, spreading out where it moves fast. Pausable.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

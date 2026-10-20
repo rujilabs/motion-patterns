@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mask reveal demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <article class="story sheet" data-play aria-labelledby="story-h">
+    <figure class="plate mask-wipe">
+      <svg class="mask-zoom" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A small ferry crossing calm water at dusk, low hills behind">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9eef6"/><stop offset="1" stop-color="#f6e7da"/></linearGradient>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb4cf"/><stop offset="1" stop-color="#6f86a6"/></linearGradient>
+        </defs>
+        <rect width="400" height="180" fill="url(#sky)"/>
+        <circle cx="292" cy="96" r="22" fill="#f1b493"/>
+        <path d="M0 112 C 50 92, 90 98, 130 104 C 170 110, 200 86, 250 90 C 300 94, 340 104, 400 96 V 118 H 0 Z" fill="#b9c3cf"/>
+        <path d="M0 118 C 60 108, 120 112, 180 116 C 240 120, 320 110, 400 114 V 124 H 0 Z" fill="#8f9cad"/>
+        <rect y="122" width="400" height="58" fill="url(#sea)"/>
+        <g stroke="#dfe7f1" stroke-width="1.2" stroke-linecap="round" opacity=".7"><path d="M40 140 h26"/><path d="M220 152 h40"/><path d="M300 136 h18"/><path d="M120 164 h30"/><path d="M330 166 h24"/></g>
+        <g transform="translate(150 106)">
+          <path d="M0 14 H70 L62 24 H8 Z" fill="#2c3440"/>
+          <rect x="14" y="4" width="38" height="10" fill="#eef1f5"/>
+          <rect x="20" y="0" width="22" height="5" fill="#eef1f5"/>
+          <g fill="#2c3440"><rect x="18" y="7" width="5" height="4"/><rect x="27" y="7" width="5" height="4"/><rect x="36" y="7" width="5" height="4"/><rect x="45" y="7" width="4" height="4"/></g>
+          <rect x="30" y="-6" width="3" height="7" fill="#d9483a"/>
+        </g>
+        <path d="M152 131 h66" stroke="#dfe7f1" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </figure>
+    <div class="story-body">
+      <p class="kicker mask-line"><span>Field notes, No. 14</span></p>
+      <h1 id="story-h" class="mask-lines">
+        <span class="mask-line"><span>The last ferry leaves</span></span>
+        <span class="mask-line"><span>at nine, and nobody</span></span>
+        <span class="mask-line"><span>on the jetty hurries</span></span>
+      </h1>
+      <p class="byline mask-line"><span>Words by Lina Ong, 6 min read</span></p>
+    </div>
+  </article>
+</main>
+</body>
+</html>

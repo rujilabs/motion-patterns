@@ -1,0 +1,43 @@
+/*
+ * overshoot: the element runs past its target and settles back. It says "this landed here" for
+ * things that slide into place: a slider thumb, a selection ink, a tag, a panel.
+ *
+ * .overshoot: transitions position and size on --ease-paper, a gentle curve that passes the target
+ *   by about 5% of the distance. The overshoot grows with the move, so short moves stay calm.
+ *   Good for a thumb or an ink that travels between values.
+ * .overshoot-spring: the same on the spring, about 20% past. Only for short moves of small things.
+ * .overshoot-in: an entrance that comes in from --os-from, runs a fixed --os-past beyond its place
+ *   and settles, whatever the distance. Good for panels and tags. Pick a side with .os-from-*.
+ */
+.overshoot {
+  transition-property: left, right, top, bottom, width, height, translate, inset-inline-start, inset-inline-end;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-paper);
+}
+.overshoot-spring {
+  transition-property: left, right, top, bottom, width, height, translate, inset-inline-start, inset-inline-end;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-spring);
+}
+
+.overshoot-in { animation: overshoot-in var(--dur-slow) var(--ease-out) both; animation-delay: var(--os-delay, 0s); }
+@keyframes overshoot-in {
+  0%   { translate: var(--os-from, 0 100%); opacity: 0; }
+  25%  { opacity: 1; }
+  60%  { translate: var(--os-past, 0 -8px); }
+  100% { translate: none; opacity: 1; }
+}
+.os-from-right { --os-from: 100% 0; --os-past: -10px 0; }
+.os-from-left  { --os-from: -100% 0; --os-past: 10px 0; }
+.os-from-below { --os-from: 0 100%; --os-past: 0 -8px; }
+.os-from-above { --os-from: 0 -100%; --os-past: 0 8px; }
+
+/* overshoot-in-go: the same entrance, held until play.js marks it (or an ancestor) with .go */
+.js .overshoot-in-go { animation: overshoot-in var(--dur-slow) var(--ease-out) both paused; animation-delay: var(--os-delay, 0s); }
+.js .go .overshoot-in-go,
+.js .overshoot-in-go.go { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .overshoot, .overshoot-spring { transition: none; }
+  .overshoot-in, .js .overshoot-in-go { animation: none; }
+}

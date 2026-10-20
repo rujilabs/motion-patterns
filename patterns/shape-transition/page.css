@@ -1,0 +1,26 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.cook { width: min(420px, 100%); padding: 16px; display: grid; gap: 12px; }
+.cook-head h1 { font-size: 17px; font-weight: 700; }
+.cook-head p { font-size: 13px; }
+.cook-screen { --shape-color: var(--demo-blue); border: 1px solid var(--demo-line); border-radius: 6px; }
+.step { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; padding: 18px 16px; background: var(--demo-paper); }
+.step svg { width: 120px; height: 90px; color: var(--demo-ink); }
+.step h2 { font-size: 18px; font-weight: 650; margin: 2px 0 4px; }
+.step p.mute { font-size: 13px; }
+.step-n { font-size: 12px; font-weight: 600; color: var(--demo-blue); }
+.cook-bar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 13px; }
+.cook-bar .mute { margin-right: auto; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.cook-bar button { padding: 5px 11px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-weight: 550; }
+.cook-bar button:hover { border-color: var(--demo-blue); color: var(--demo-blue); }
+@media (max-width: 400px) {
+  .step { grid-template-columns: 1fr; gap: 6px; }
+  .step svg { width: 96px; height: 72px; }
+}
+@media (max-height: 420px) {
+  .cook { padding: 12px; gap: 8px; }
+  .step { padding: 10px 14px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .cook { width: 480px; }
+}

@@ -1,0 +1,58 @@
+/*
+ * squash and stretch: a body that keeps its volume as it moves. It stretches tall and thin while it
+ * falls fast, squashes flat and wide on contact, and stretches again as it leaves the floor. Every
+ * shape keeps width x height close to 1 (1.28 x .78, .88 x 1.14), so it reads as rubber, not as
+ * something growing and shrinking.
+ *
+ * .squash: the bounce. It carries the height; its one child carries the shape, scaled from its foot.
+ *   The height follows a real parabola (slow at the top, fast at the floor) written out as keyframe
+ *   points, so the whole thing runs on linear time and stays in step with the shape.
+ * .squash-shadow: a floor shadow that shrinks and fades as the body rises. Same cycle.
+ * .squash-press: a button that squashes under the finger and springs back with a little stretch.
+ * The bounce loops: give people the .squash-pause toggle.
+ */
+.squash { display: inline-block; animation: squash-hop var(--squash-dur, 1.2s) linear infinite; }
+.squash > * { display: block; transform-origin: 50% 100%; animation: squash-shape var(--squash-dur, 1.2s) linear infinite; }
+
+/* on the floor for the first 6%, then in the air: height = 4s(1 - s) of --squash-h */
+@keyframes squash-hop {
+  0%, 6% { translate: 0 0; }
+  15.4%  { translate: 0 calc(var(--squash-h, 72px) * -.36); }
+  24.8%  { translate: 0 calc(var(--squash-h, 72px) * -.64); }
+  34.2%  { translate: 0 calc(var(--squash-h, 72px) * -.84); }
+  43.6%  { translate: 0 calc(var(--squash-h, 72px) * -.96); }
+  53%    { translate: 0 calc(var(--squash-h, 72px) * -1); }
+  62.4%  { translate: 0 calc(var(--squash-h, 72px) * -.96); }
+  71.8%  { translate: 0 calc(var(--squash-h, 72px) * -.84); }
+  81.2%  { translate: 0 calc(var(--squash-h, 72px) * -.64); }
+  90.6%  { translate: 0 calc(var(--squash-h, 72px) * -.36); }
+  100%   { translate: 0 0; }
+}
+@keyframes squash-shape {
+  0%       { scale: .88 1.14; }  /* touching down, still stretched from the fall */
+  3%       { scale: 1.28 .78; }  /* flat on the floor */
+  6%       { scale: .9 1.11; }   /* leaving the floor */
+  22%, 82% { scale: 1 1; }       /* round through the slow top of the arc */
+  100%     { scale: .88 1.14; }
+}
+
+.squash-shadow { animation: squash-shadow var(--squash-dur, 1.2s) linear infinite; }
+@keyframes squash-shadow {
+  0%, 6%   { scale: 1 1; opacity: 1; }
+  53%      { scale: .5 .5; opacity: .35; }
+  100%     { scale: 1 1; opacity: 1; }
+}
+
+/* pause: the toggle anywhere inside a .squash-group */
+.squash-group:has(.squash-pause :checked) :is(.squash, .squash > *, .squash-shadow) { animation-play-state: paused; }
+
+/* press: wide and short under the finger (1.06 x .92), then a spring back that stretches past round */
+.squash-press { transition: scale var(--dur-base) var(--ease-spring); }
+.squash-press:active { scale: 1.06 .92; transition-duration: 80ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the body rests on the floor, round, with its full shadow */
+  .squash, .squash > *, .squash-shadow { animation: none; }
+  .squash-press, .squash-press:active { transition: none; scale: none; }
+  .squash-pause { display: none; }
+}

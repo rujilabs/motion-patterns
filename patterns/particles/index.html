@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Particles demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="particles.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="focus sheet particles-group" aria-labelledby="focus-h">
+    <header class="focus-head">
+      <p class="mode">Focus session 2 of 4</p>
+      <label class="particles-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="dial particles-rise" data-particles="28" data-seed="11">
+      <p class="left num" id="focus-h">24:13</p>
+      <p class="left-sub">left in this session</p>
+    </div>
+    <div class="task">
+      <p class="task-label">Working on</p>
+      <p class="task-name">Draft the quarterly letter to members</p>
+    </div>
+    <footer class="focus-foot">
+      <button class="btn btn-ghost" type="button">Skip break</button>
+      <button class="btn" type="button">End early</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

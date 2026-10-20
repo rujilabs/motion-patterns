@@ -1,0 +1,19 @@
+{
+  "name": "Card flip",
+  "slug": "card-flip",
+  "kind": "pattern",
+  "summary": "A card turns over in 3D to show its back and lands with a slight overshoot. Hover and focus, button or checkbox triggers, and a turn over the top edge.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-paper",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

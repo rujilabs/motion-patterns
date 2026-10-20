@@ -1,0 +1,28 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.focus { width: min(360px, 100%); padding: 16px 18px; display: grid; gap: 14px; }
+.focus-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.mode { font-size: 13px; font-weight: 600; color: var(--demo-mute); }
+/* the dial: a soft blue room with dots rising slowly behind the time */
+.dial { display: grid; place-content: center; justify-items: center; gap: 2px; height: 180px; border-radius: 8px;
+  background: var(--demo-blue-soft); color: var(--demo-blue); border: 1px solid var(--demo-line); }
+.left { font-size: 54px; font-weight: 700; letter-spacing: -.03em; line-height: 1; color: var(--demo-ink); }
+.left-sub { font-size: 13px; color: var(--demo-mute); }
+.task { display: grid; gap: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--demo-line); }
+.task-label { font-size: 12px; color: var(--demo-mute); }
+.task-name { font-weight: 600; }
+.focus-foot { display: flex; justify-content: flex-end; gap: 8px; }
+.btn { font: inherit; font-weight: 600; font-size: 14px; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--demo-ink); background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; }
+.btn-ghost { background: none; color: var(--demo-ink); border-color: var(--demo-line); }
+@media (max-height: 460px) {
+  .dial { height: 120px; }
+  .left { font-size: 42px; }
+  .focus { gap: 10px; padding-block: 12px; }
+  .task { padding-bottom: 10px; }
+}
+@media (max-height: 360px) {
+  .task { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .focus { width: 400px; }
+  .dial { height: 210px; }
+}

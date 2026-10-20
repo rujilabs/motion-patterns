@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.menu { width: min(400px, 100%); padding: 14px; display: grid; gap: 12px; }
+.menu-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.menu-head h1 { font-size: 17px; font-weight: 700; }
+.menu-head p { font-size: 13px; }
+.menu-screen { border-radius: 6px; }
+.drink { display: grid; grid-template-columns: 110px 1fr; gap: 16px; align-items: center; padding: 18px 20px; min-height: 200px; }
+.drink svg { width: 110px; height: 128px; }
+.drink h2 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+.drink p { font-size: 13px; }
+.drink .price { margin-top: 10px; font-size: 15px; font-weight: 650; }
+.d-teh { background: #ead1b0; color: #3b2414; }
+.d-kopi { background: #3a2619; color: #f6eee4; }
+.d-sirap { background: #f7d3dd; color: #5c2233; }
+.menu-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.menu-bar button { padding: 6px 12px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-size: 13px; font-weight: 550; }
+.menu-bar button:first-child { background: var(--demo-ink); border-color: var(--demo-ink); color: var(--demo-paper); }
+.menu-bar button:hover { border-color: var(--demo-blue); }
+@media (max-width: 360px) {
+  .drink { grid-template-columns: 80px 1fr; gap: 12px; padding: 14px; }
+  .drink svg { width: 80px; height: 94px; }
+}
+@media (max-height: 420px) {
+  .drink { min-height: 0; padding-block: 10px; }
+  .drink svg { height: 96px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .menu { width: 460px; }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liquid transition demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="liquid.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="menu sheet" aria-labelledby="menu-h">
+    <header class="menu-head">
+      <h1 id="menu-h">Kedai Sudut, drinks</h1>
+      <p class="mute">Hot and iced</p>
+    </header>
+    <div class="liquid-stack menu-screen" id="drinks" data-liquid aria-live="polite">
+      <article class="drink d-teh is-current">
+        <svg viewBox="0 0 120 140" aria-hidden="true">
+          <path d="M30 30 h60 l-8 96 a6 6 0 0 1 -6 5 h-32 a6 6 0 0 1 -6 -5Z" fill="#fff" fill-opacity=".35" stroke="#3b2414" stroke-width="1.5"/>
+          <path d="M34 52 h52 l-6 72 a4 4 0 0 1 -4 4 h-32 a4 4 0 0 1 -4 -4Z" fill="#a8703f"/>
+          <path d="M34 52 h52 l-1 10 h-50Z" fill="#f2e3cc"/>
+        </svg>
+        <div class="drink-text"><h2>Teh tarik</h2><p>Strong tea, pulled until it foams</p><p class="price num">RM 3.20</p></div>
+      </article>
+      <article class="drink d-kopi">
+        <svg viewBox="0 0 120 140" aria-hidden="true">
+          <path d="M28 60 h56 v38 a24 24 0 0 1 -24 24 h-8 a24 24 0 0 1 -24 -24Z" fill="#f6eee4" stroke="#f6eee4" stroke-width="1.5"/>
+          <path d="M84 70 a12 12 0 0 1 0 24" fill="none" stroke="#f6eee4" stroke-width="4"/>
+          <ellipse cx="56" cy="62" rx="26" ry="4" fill="#2a1a12"/>
+          <path d="M46 48 c0 -6 6 -6 6 -12 M60 48 c0 -6 6 -6 6 -12" fill="none" stroke="#f6eee4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 124 h88" stroke="#f6eee4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="drink-text"><h2>Kopi O</h2><p>Black, sweet, roasted with margarine</p><p class="price num">RM 2.80</p></div>
+      </article>
+      <article class="drink d-sirap">
+        <svg viewBox="0 0 120 140" aria-hidden="true">
+          <path d="M30 30 h60 l-8 96 a6 6 0 0 1 -6 5 h-32 a6 6 0 0 1 -6 -5Z" fill="#fff" fill-opacity=".35" stroke="#5c2233" stroke-width="1.5"/>
+          <path d="M33 44 h54 l-7 80 a4 4 0 0 1 -4 4 h-32 a4 4 0 0 1 -4 -4Z" fill="#e58aa3"/>
+          <g fill="#fff" fill-opacity=".8"><rect x="44" y="50" width="12" height="12" rx="2"/><rect x="62" y="56" width="12" height="12" rx="2"/></g>
+          <path d="M70 12 l-8 100" stroke="#5c2233" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="drink-text"><h2>Sirap bandung</h2><p>Rose syrup and evaporated milk, iced</p><p class="price num">RM 3.50</p></div>
+      </article>
+    </div>
+    <div class="menu-bar">
+      <button type="button" data-liquid-go="fill" aria-controls="drinks">Next drink</button>
+      <button type="button" data-liquid-go="drain" aria-controls="drinks">Pour from the top</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

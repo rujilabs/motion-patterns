@@ -1,0 +1,62 @@
+/*
+ * mask reveal: content slides into view from behind an edge, so it seems to come up through a slot.
+ * .mask-line: one line of text. The line clips, its inner span rises from below its own edge.
+ *   Put each line in its own .mask-line inside a .mask-lines parent and they follow one another.
+ * .mask-wipe: a block (an image, a panel) uncovered by a clip-path edge that travels across it.
+ *   An inner .mask-zoom settles from 8% larger while it is uncovered, so the picture seems to arrive.
+ * Both hold until play.js puts .go on them or an ancestor. Without the script everything shows.
+ */
+.mask-line {
+  display: block;
+  overflow: clip;
+  /* room for descenders, given back so the line spacing does not change */
+  padding-block-end: .12em;
+  margin-block-end: -.12em;
+}
+.mask-line > * { display: block; }
+.js .mask-line > * { translate: 0 110%; }
+.js .go .mask-line > *,
+.js .mask-line.go > * { animation: mask-up var(--dur-slow) var(--ease-out) both; animation-delay: var(--mask-delay, 0s); }
+@keyframes mask-up {
+  from { translate: 0 110%; }
+  to   { translate: none; }
+}
+/* lines one after another, a stagger and a half apart, capped at six */
+.js .go .mask-lines > :nth-child(2) > *, .js .mask-lines.go > :nth-child(2) > * { animation-delay: calc(var(--mask-delay, 0s) + var(--stagger) * 1.5); }
+.js .go .mask-lines > :nth-child(3) > *, .js .mask-lines.go > :nth-child(3) > * { animation-delay: calc(var(--mask-delay, 0s) + var(--stagger) * 3); }
+.js .go .mask-lines > :nth-child(4) > *, .js .mask-lines.go > :nth-child(4) > * { animation-delay: calc(var(--mask-delay, 0s) + var(--stagger) * 4.5); }
+.js .go .mask-lines > :nth-child(5) > *, .js .mask-lines.go > :nth-child(5) > * { animation-delay: calc(var(--mask-delay, 0s) + var(--stagger) * 6); }
+.js .go .mask-lines > :nth-child(n + 6) > *, .js .mask-lines.go > :nth-child(n + 6) > * { animation-delay: calc(var(--mask-delay, 0s) + var(--stagger) * 7.5); }
+
+.mask-wipe { overflow: clip; }
+.js .mask-wipe { clip-path: inset(0 100% 0 0); }
+.js .go .mask-wipe,
+.js .mask-wipe.go { animation: mask-wipe var(--dur-slow) var(--ease-inout) both; animation-delay: var(--mask-delay, 0s); }
+@keyframes mask-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0); }
+}
+/* mask-wipe-up: the edge travels from the bottom to the top instead */
+.js .mask-wipe-up { clip-path: inset(100% 0 0 0); }
+.js .go .mask-wipe-up,
+.js .mask-wipe-up.go { animation-name: mask-wipe-up; }
+@keyframes mask-wipe-up {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0); }
+}
+.js .go .mask-zoom,
+.js .mask-wipe.go .mask-zoom { animation: mask-zoom calc(var(--dur-slow) * 1.6) var(--ease-out) both; animation-delay: var(--mask-delay, 0s); }
+@keyframes mask-zoom {
+  from { scale: 1.08; }
+  to   { scale: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .mask-line > *,
+  .js .go .mask-line > *,
+  .js .mask-line.go > * { translate: none; animation: none; }
+  .js .mask-wipe, .js .mask-wipe-up,
+  .js .go .mask-wipe, .js .mask-wipe.go,
+  .js .go .mask-wipe-up, .js .mask-wipe-up.go { clip-path: none; animation: none; }
+  .js .go .mask-zoom, .js .mask-wipe.go .mask-zoom { animation: none; }
+}

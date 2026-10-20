@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion trail demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="track sheet trail-group" aria-labelledby="track-h">
+    <header class="track-head">
+      <div>
+        <h1 id="track-h">On the way</h1>
+        <p class="eta">Arrives in about <strong class="num">6 min</strong></p>
+      </div>
+      <label class="trail-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="map" role="img" aria-label="Map: the rider is between the bakery and your door">
+      <svg class="streets" viewBox="0 0 300 140" aria-hidden="true">
+        <g class="blocks"><rect x="8" y="8" width="70" height="40" rx="3"/><rect x="96" y="8" width="96" height="30" rx="3"/><rect x="210" y="60" width="82" height="72" rx="3"/><rect x="96" y="78" width="96" height="54" rx="3"/><rect x="8" y="66" width="70" height="26" rx="3"/></g>
+        <g class="roads"><path d="M0 58 H300"/><path d="M87 0 V140"/><path d="M201 0 V140"/><path d="M0 110 H87"/><path d="M201 46 H300"/></g>
+        <path class="route" d="M40 110 H87 V58 H201 V46 H262"/>
+        <circle class="pin pin-from" cx="40" cy="110" r="5"/>
+        <path class="pin pin-to" d="M262 30 a9 9 0 0 1 9 9 c0 7 -9 15 -9 15 s-9 -8 -9 -15 a9 9 0 0 1 9 -9 Z"/>
+        <circle class="pin-dot" cx="262" cy="39" r="3"/>
+      </svg>
+      <div class="trail trail-fade" aria-hidden="true">
+        <span class="rider"></span><span class="rider"></span><span class="rider"></span><span class="rider"></span><span class="rider"></span><span class="rider"></span>
+      </div>
+    </div>
+    <footer class="track-foot">
+      <span class="avatar" aria-hidden="true">F</span>
+      <p><strong>Faizal</strong> is bringing your order from <span class="nowrap">Roti Pagi</span></p>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

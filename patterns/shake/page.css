@@ -1,0 +1,18 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.locker { width: min(340px, 100%); padding: 18px; display: grid; gap: 12px; }
+.locker-head { display: flex; gap: 12px; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.locker-head svg { width: 36px; height: 36px; color: var(--demo-ink); flex: none; }
+.locker-head h1 { font-size: 18px; font-weight: 700; }
+.locker-head p { font-size: 13px; }
+.pin-k { font-size: 13px; color: var(--demo-mute); text-align: center; }
+.pin { display: flex; justify-content: center; gap: 14px; padding: 6px 0; }
+.pin span { width: 14px; height: 14px; border-radius: 50%; background: var(--demo-ink); }
+.msg { min-height: 2.9em; font-size: 13px; text-align: center; color: var(--demo-red); }
+.locker-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.locker-bar button { padding: 8px 10px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-size: 13px; font-weight: 600; }
+.locker-bar .primary { background: var(--demo-ink); border-color: var(--demo-ink); color: var(--demo-paper); }
+@media (max-height: 420px) {
+  .locker { padding: 12px; gap: 8px; }
+  .locker-head { padding-bottom: 8px; }
+}

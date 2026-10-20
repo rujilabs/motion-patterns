@@ -1,0 +1,40 @@
+/*
+ * mask-transition: the next view is revealed through a mask that grows until it covers the frame.
+ * Views stack in one grid cell. The view on show has .is-current; the incoming one gets .mask-in plus
+ * a shape class and sits on top while it plays. mask.js swaps the classes when the shape is done.
+ *
+ * mask-circle   grows from --mask-x / --mask-y (mask.js sets them to the click point) to --mask-r
+ * mask-diagonal a straight edge sweeps from the top left corner to the bottom right
+ * mask-letter   the view shows through a letter (letter.svg) that grows until its crossbar fills the frame
+ */
+.mask-stack { display: grid; overflow: clip; }
+.mask-stack > * { grid-area: 1 / 1; }
+.mask-stack > :not(.is-current):not(.mask-in) { visibility: hidden; }
+.mask-in { z-index: 1; }
+
+.mask-in.mask-circle { animation: mask-circle var(--dur-slow) var(--ease-inout) both; }
+@keyframes mask-circle {
+  from { clip-path: circle(0 at var(--mask-x, 50%) var(--mask-y, 50%)); }
+  to   { clip-path: circle(var(--mask-r, 72%) at var(--mask-x, 50%) var(--mask-y, 50%)); }
+}
+
+.mask-in.mask-diagonal { animation: mask-diagonal var(--dur-slow) var(--ease-inout) both; }
+@keyframes mask-diagonal {
+  from { clip-path: polygon(0 0, 0 0, 0 0); }
+  to   { clip-path: polygon(0 0, 200% 0, 0 200%); }
+}
+
+/* The size grows on an accelerating curve: a linear grow looks like it stalls at the end. */
+.mask-in.mask-letter {
+  mask: url("letter.svg") 50% 50% / 24% auto no-repeat;
+  animation: mask-letter calc(var(--dur-slow) * 1.4) var(--ease-in) both;
+}
+@keyframes mask-letter {
+  from { mask-size: 0% auto; }
+  25%  { mask-size: 24% auto; }
+  to   { mask-size: 4000% auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-in.mask-circle, .mask-in.mask-diagonal, .mask-in.mask-letter { animation: none; clip-path: none; mask: none; }
+}

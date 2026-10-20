@@ -1,0 +1,19 @@
+{
+  "name": "Kinetic type",
+  "slug": "kinetic-type",
+  "kind": "pattern",
+  "summary": "A headline built word by word on one beat (rise, slide, slam), ending in a word slot that keeps swapping 2 to 5 words, with a CSS-only pause toggle.",
+  "category": "type",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-base"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

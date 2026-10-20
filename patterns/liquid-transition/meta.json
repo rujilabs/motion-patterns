@@ -1,0 +1,20 @@
+{
+  "name": "Liquid transition",
+  "slug": "liquid-transition",
+  "kind": "pattern",
+  "summary": "The next view floods in from the bottom behind a wavy edge made of two drifting waves, or pours down from the top. A CSS mask, removed when the run ends.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

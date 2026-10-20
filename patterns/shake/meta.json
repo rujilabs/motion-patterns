@@ -1,0 +1,19 @@
+{
+  "name": "Impact shake",
+  "slug": "shake",
+  "kind": "pattern",
+  "summary": "A short shake that dies away: side to side for a wrong PIN or a rejected field, or a two-axis knock with a touch of rotation for an impact on a whole panel.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

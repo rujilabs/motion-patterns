@@ -1,0 +1,31 @@
+/*
+ * liquid-transition: the next view floods in from the bottom behind a wavy edge.
+ * The mask is wave.svg, repeated across, twice as tall as the view: a wave on top, solid below.
+ * Two copies of different widths drift in opposite directions while they rise, so the edge keeps
+ * changing shape like water, not like a moving sticker. When the run ends the mask is removed.
+ */
+.liquid-stack { display: grid; overflow: clip; }
+.liquid-stack > * { grid-area: 1 / 1; }
+.liquid-stack > :not(.is-current):not(.liquid-in) { visibility: hidden; }
+
+.liquid-in {
+  --liquid-w: 180px;
+  z-index: 1;
+  mask-image: url("wave.svg"), url("wave.svg");
+  mask-size: var(--liquid-w) 200%, calc(var(--liquid-w) * 1.37) 200%;
+  mask-repeat: repeat-x;
+  animation: liquid-in calc(var(--dur-slow) * 1.6) var(--ease-inout) both;
+}
+/* y runs from -100% (the solid part sits just under the view) to past 0 (the wave clears the top) */
+@keyframes liquid-in {
+  from { mask-position: 0 -100%, 40px -97%; }
+  to   { mask-position: calc(var(--liquid-w) * -2) 16%, calc(var(--liquid-w) * 1.5) 18%; }
+}
+
+/* liquid-drain: the same edge, falling from the top instead */
+.liquid-in.liquid-drain { scale: 1 -1; }
+.liquid-in.liquid-drain > * { scale: 1 -1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-in { animation: none; mask: none; }
+}

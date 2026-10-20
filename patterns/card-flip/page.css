@@ -1,0 +1,31 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 20px; width: min(460px, 100%); }
+.col { display: grid; gap: 10px; align-content: start; }
+.col-h { font-size: 14px; font-weight: 650; }
+.col-h .mute { font-weight: 450; font-size: 12px; margin-left: 4px; }
+.face { display: grid; align-content: space-between; gap: 6px; min-height: 150px; padding: 16px; border-radius: 10px; }
+.face-k { font-size: 12px; color: var(--demo-mute); }
+.word { font-size: 34px; font-weight: 700; letter-spacing: -.03em; }
+.answer { font-size: 15px; font-weight: 550; line-height: 1.35; }
+.small { font-size: 12px; }
+.face-back { border-color: var(--demo-blue); background: var(--demo-blue-soft); }
+.face-back .face-k { color: var(--demo-blue); }
+.gift { background: #1f3a5f; color: #f3efe2; border: 1px solid #1f3a5f; }
+.gift-back { background: #f3efe2; color: #1f3a5f; border-color: #c9c0a8; }
+.gift-back .face-k { color: #6b6450; }
+.gift-mark { width: 32px; height: 32px; }
+.gift-shop { font-size: 13px; font-weight: 550; }
+.gift-amt { font-size: 28px; font-weight: 700; letter-spacing: -.02em; }
+.code { font-size: 22px; font-weight: 700; letter-spacing: .06em; }
+.card { border-radius: 10px; }
+button { font: inherit; cursor: pointer; }
+.act { justify-self: start; padding: 6px 12px; border: 1px solid var(--demo-ink); border-radius: 6px; background: var(--demo-ink); color: var(--demo-paper); font-size: 13px; font-weight: 550; }
+.hint { padding-block: 6px; }
+@media (max-width: 440px) {
+  .pair { grid-template-columns: minmax(0, 1fr); gap: 18px; width: min(300px, 100%); }
+  .face { min-height: 120px; }
+}
+@media (max-height: 420px) {
+  .face { min-height: 110px; padding: 12px; }
+  .word { font-size: 28px; }
+}

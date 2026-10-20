@@ -1,0 +1,48 @@
+/*
+ * easing: one move, run on each curve side by side, so the difference is felt rather than read.
+ * Pick a curve with a class on the lane (or any element): .lane-linear, .lane-out, .lane-in,
+ * .lane-inout, .lane-spring. Each sets --lane-ease from the shared tokens, which you can also pass to
+ * your own transition: transition: translate var(--dur-base) var(--lane-ease).
+ *
+ * .ease-lane holds one .ease-dot. The dot travels --lane-reach (80%) of the lane, so the spring has
+ * room to overshoot, holds at the end, fades and starts again. Every lane shares one cycle, so they
+ * leave together and you can see which arrives first. It loops: give people the .ease-pause toggle.
+ */
+.lane-linear { --lane-ease: linear; }
+.lane-out { --lane-ease: var(--ease-out); }
+.lane-in { --lane-ease: var(--ease-in); }
+.lane-inout { --lane-ease: var(--ease-inout); }
+.lane-spring { --lane-ease: var(--ease-spring); }
+
+.ease-lane { position: relative; container-type: inline-size; height: var(--lane-dot, 14px); }
+.ease-dot {
+  --lane-run: calc((100cqi - var(--lane-dot, 14px)) * var(--lane-reach, .8));
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--lane-dot, 14px);
+  height: var(--lane-dot, 14px);
+  border-radius: 50%;
+  background: currentColor;
+  animation: ease-run var(--lane-cycle, 2.6s) var(--lane-ease, linear) infinite both;
+  animation-delay: var(--lane-wait, .4s);
+}
+/*
+ * The move takes the first 45% of the cycle (about 1.2s); the rest is the hold and the reset.
+ * The curve is set on the element, not inside the keyframes: browsers ignore var() there.
+ */
+@keyframes ease-run {
+  0%       { translate: 0 0; opacity: 1; }
+  45%      { translate: var(--lane-run) 0; }
+  84%      { translate: var(--lane-run) 0; opacity: 1; }
+  94%, to  { translate: var(--lane-run) 0; opacity: 0; }
+}
+
+.ease-group:has(.ease-pause :checked) .ease-dot,
+.ease-lane:hover .ease-dot { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the dots wait at the finish; the curves beside them still tell the story */
+  .ease-dot { animation: none; translate: var(--lane-run) 0; }
+  .ease-pause { display: none; }
+}

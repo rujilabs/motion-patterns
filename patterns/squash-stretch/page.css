@@ -1,0 +1,28 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.wait { width: min(360px, 100%); padding: 18px 20px 16px; display: grid; gap: 14px; text-align: center; }
+/* a small pit with a floor line drawn in pencil; the ball sits on it */
+.pit { --squash-h: 70px; position: relative; height: 120px; display: grid; justify-items: center; align-items: end; padding-bottom: 18px;
+  background: var(--demo-table); border-radius: 6px; }
+.floor { position: absolute; left: 20%; right: 20%; bottom: 18px; border-top: 1px solid var(--demo-line); }
+.shadow { position: absolute; bottom: 13px; left: 50%; width: 34px; height: 8px; margin-left: -17px; border-radius: 50%; background: var(--demo-line); }
+.squash { position: relative; z-index: 1; }
+.ball { width: 30px; height: 30px; border-radius: 50%; background: var(--demo-blue);
+  background-image: radial-gradient(circle at 35% 30%, rgb(255 255 255 / .35) 0 4px, transparent 5px); }
+.wait-copy { display: grid; gap: 4px; }
+.wait-copy h1 { font-size: 19px; font-weight: 700; }
+.wait-copy p { font-size: 14px; color: var(--demo-mute); text-wrap: pretty; }
+.wait-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; border-top: 1px solid var(--demo-line); }
+.retry { font: inherit; font-weight: 600; font-size: 14px; padding: 9px 18px; border: 0; border-radius: 999px; background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; }
+@media (max-height: 440px) {
+  .pit { --squash-h: 46px; height: 88px; padding-bottom: 14px; }
+  .floor { bottom: 14px; }
+  .shadow { bottom: 9px; }
+  .wait { gap: 10px; padding-block: 12px; }
+}
+@media (max-height: 340px) {
+  .wait-copy p { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .wait { width: 400px; }
+  .pit { --squash-h: 84px; height: 140px; }
+}

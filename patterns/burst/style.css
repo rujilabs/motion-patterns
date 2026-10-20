@@ -1,0 +1,93 @@
+/*
+ * burst: small shapes fly out from one point and fade, for a like, a save or a done tick.
+ * A .burst ring sits at the centre of a position: relative box. Each bit flies along its own angle
+ * (set by its place in the ring) out to --burst-r and shrinks away. The shorter, smaller even bits
+ * keep it from reading as a perfect clock face.
+ *
+ * CSS only. It plays when a checkbox before it is checked, or when .go lands on it or an ancestor.
+ * Unchecking removes the animation, so checking again plays it again.
+ */
+.burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.burst > * {
+  --burst-a: 0deg;
+  position: absolute;
+  left: calc(var(--burst-size, 6px) / -2);
+  top: calc(var(--burst-size, 6px) / -2);
+  width: var(--burst-size, 6px);
+  height: var(--burst-size, 6px);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+}
+/* eight bits, 45 degrees apart; the even ones travel 70% as far and start smaller */
+.burst > :nth-child(2) { --burst-a: 45deg; }
+.burst > :nth-child(3) { --burst-a: 90deg; }
+.burst > :nth-child(4) { --burst-a: 135deg; }
+.burst > :nth-child(5) { --burst-a: 180deg; }
+.burst > :nth-child(6) { --burst-a: 225deg; }
+.burst > :nth-child(7) { --burst-a: 270deg; }
+.burst > :nth-child(8) { --burst-a: 315deg; }
+.burst > :nth-child(even) { --burst-k: .7; scale: .7; }
+/* rotate the whole ring a little so the first bit does not point straight right */
+.burst { rotate: var(--burst-turn, -22.5deg); }
+
+@keyframes burst {
+  from { opacity: 1; transform: rotate(var(--burst-a)) translateX(calc(var(--burst-r, 26px) * .35)) scale(1); }
+  70%  { opacity: 1; }
+  to   { opacity: 0; transform: rotate(var(--burst-a)) translateX(calc(var(--burst-r, 26px) * var(--burst-k, 1))) scale(.2); }
+}
+
+:checked ~ .burst > *,
+:checked ~ * .burst > *,
+.go .burst > *,
+.burst.go > * {
+  animation: burst var(--dur-base) var(--ease-out) both;
+  animation-delay: var(--burst-delay, 0s);
+}
+
+/*
+ * burst-confetti: on the ring. Small paper slips in three inks that spin as they fly and drop
+ * a little under their own weight (the drop is a separate translate, so it stays straight down).
+ */
+.burst-confetti > * { width: 4px; height: 8px; left: -2px; top: -4px; border-radius: 1px; }
+.burst-confetti > :nth-child(3n + 2) { background: var(--burst-c2, currentColor); }
+.burst-confetti > :nth-child(3n) { background: var(--burst-c3, currentColor); }
+@keyframes burst-confetti {
+  from { opacity: 1; transform: rotate(var(--burst-a)) translateX(calc(var(--burst-r, 26px) * .35)) rotate(0deg); }
+  70%  { opacity: 1; }
+  to   { opacity: 0; transform: rotate(var(--burst-a)) translateX(calc(var(--burst-r, 26px) * var(--burst-k, 1))) rotate(200deg) scale(.6); }
+}
+@keyframes burst-drop {
+  from { translate: 0 0; }
+  to   { translate: 0 var(--burst-drop, 10px); }
+}
+:checked ~ .burst-confetti > *,
+:checked ~ * .burst-confetti > *,
+.go .burst-confetti > *,
+.burst-confetti.go > * {
+  animation: burst-confetti calc(var(--dur-base) * 1.3) var(--ease-out) both, burst-drop calc(var(--dur-base) * 1.3) var(--ease-in) both;
+  animation-delay: var(--burst-delay, 0s);
+}
+
+/* burst-pop: the icon at the centre gives one springy beat as the bits leave it */
+@keyframes burst-pop {
+  from { transform: scale(.6); }
+  to   { transform: none; }
+}
+:checked ~ .burst-pop,
+:checked ~ * .burst-pop,
+.go .burst-pop,
+.burst-pop.go { animation: burst-pop var(--dur-base) var(--ease-spring) both; animation-delay: var(--burst-delay, 0s); }
+
+@media (prefers-reduced-motion: reduce) {
+  :checked ~ .burst > *, :checked ~ * .burst > *, .go .burst > *, .burst.go > *,
+  :checked ~ .burst-confetti > *, :checked ~ * .burst-confetti > *, .go .burst-confetti > *, .burst-confetti.go > * { animation: none; opacity: 0; }
+  :checked ~ .burst-pop, :checked ~ * .burst-pop, .go .burst-pop, .burst-pop.go { animation: none; }
+}

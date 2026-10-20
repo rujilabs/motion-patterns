@@ -1,0 +1,24 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.call { width: min(420px, 100%); padding: 6px; display: grid; }
+.tile { position: relative; border-radius: 4px; overflow: clip; }
+.feed { display: block; }
+.feed img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.who, .weak { position: absolute; left: 8px; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; background: var(--demo-paper); color: var(--demo-ink); }
+.who { bottom: 8px; }
+.weak { top: 8px; display: flex; align-items: center; gap: 6px; }
+.bars { display: inline-flex; align-items: end; gap: 2px; height: 10px; }
+.bars i { width: 3px; background: var(--demo-line); border-radius: 1px; }
+.bars i:nth-child(1) { height: 4px; background: var(--demo-red); }
+.bars i:nth-child(2) { height: 7px; }
+.bars i:nth-child(3) { height: 10px; }
+.call-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 8px 4px; }
+.call-bar h1 { font-size: 15px; font-weight: 650; }
+.call-bar p { font-size: 13px; }
+.tip { padding: 4px 8px 8px; font-size: 13px; color: var(--demo-mute); }
+.tip .glitch { color: var(--demo-blue); font-weight: 600; cursor: default; }
+@media (max-height: 420px) {
+  .tip { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .call { width: 520px; }
+}

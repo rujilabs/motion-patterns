@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easing demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="bench sheet ease-group" aria-labelledby="bench-h">
+    <header class="bench-head">
+      <div>
+        <h1 id="bench-h">Same move, five curves</h1>
+        <p class="sub">Each dot travels the same distance in the same time.</p>
+      </div>
+      <label class="ease-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <ol class="rows">
+      <li class="row lane-linear">
+        <svg class="curve" viewBox="-3 -12 46 56" aria-hidden="true"><path class="guide" d="M0 0 H40 M0 40 H40"/><path d="M0 40 L40 0"/></svg>
+        <p class="name"><strong>Linear</strong><code>linear</code></p>
+        <div class="ease-lane"><span class="ease-dot"></span></div>
+      </li>
+      <li class="row lane-out">
+        <svg class="curve" viewBox="-3 -12 46 56" aria-hidden="true"><path class="guide" d="M0 0 H40 M0 40 H40"/><path d="M0 40 C8 12 8 0 40 0"/></svg>
+        <p class="name"><strong>Ease out</strong><code>--ease-out</code></p>
+        <div class="ease-lane"><span class="ease-dot"></span></div>
+      </li>
+      <li class="row lane-in">
+        <svg class="curve" viewBox="-3 -12 46 56" aria-hidden="true"><path class="guide" d="M0 0 H40 M0 40 H40"/><path d="M0 40 C22 40 40 22 40 0"/></svg>
+        <p class="name"><strong>Ease in</strong><code>--ease-in</code></p>
+        <div class="ease-lane"><span class="ease-dot"></span></div>
+      </li>
+      <li class="row lane-inout">
+        <svg class="curve" viewBox="-3 -12 46 56" aria-hidden="true"><path class="guide" d="M0 0 H40 M0 40 H40"/><path d="M0 40 C16 40 8 0 40 0"/></svg>
+        <p class="name"><strong>Ease in-out</strong><code>--ease-inout</code></p>
+        <div class="ease-lane"><span class="ease-dot"></span></div>
+      </li>
+      <li class="row lane-spring">
+        <svg class="curve" viewBox="-3 -12 46 56" aria-hidden="true"><path class="guide" d="M0 0 H40 M0 40 H40"/><polyline points="0.0 40.0 1.3 38.4 2.5 34.4 3.8 28.7 5.0 22.2 6.3 15.6 7.5 9.3 8.8 3.8 10.0 -0.7 11.3 -4.2 12.5 -6.5 13.8 -7.8 15.0 -8.2 16.3 -7.9 17.5 -7.1 18.8 -6.0 20.0 -4.6 21.3 -3.3 22.5 -2.0 23.8 -0.8 25.0 0.1 26.3 0.8 27.5 1.3 28.8 1.6 30.0 1.7 31.3 1.6 32.5 1.5 33.8 1.2 35.0 1.0 36.3 0.7 37.5 0.4 38.8 0.2 40.0 0.0"/></svg>
+        <p class="name"><strong>Spring</strong><code>--ease-spring</code></p>
+        <div class="ease-lane"><span class="ease-dot"></span></div>
+      </li>
+    </ol>
+    <p class="foot"><span>Start</span><span class="finish">Finish</span></p>
+  </section>
+</main>
+</body>
+</html>

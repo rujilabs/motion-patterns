@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overshoot demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="shelf">
+    <aside class="filters sheet overshoot-in os-from-right" aria-labelledby="f-h">
+      <header class="f-head">
+        <h1 id="f-h">Filters</h1>
+        <span class="f-count num">38 items</span>
+      </header>
+      <fieldset class="f-group">
+        <legend>Max price</legend>
+        <div class="seg">
+          <input type="radio" name="max" id="m50" value="50"><label for="m50">RM 50</label>
+          <input type="radio" name="max" id="m100" value="100" checked><label for="m100">RM 100</label>
+          <input type="radio" name="max" id="m150" value="150"><label for="m150">RM 150</label>
+          <input type="radio" name="max" id="many" value="any"><label for="many">Any</label>
+          <span class="seg-ink overshoot" aria-hidden="true"></span>
+        </div>
+        <div class="range" aria-hidden="true">
+          <span class="range-fill overshoot"></span>
+          <span class="range-thumb overshoot"></span>
+        </div>
+        <p class="range-scale num" aria-hidden="true"><span>RM 0</span><span>RM 150+</span></p>
+      </fieldset>
+      <div class="f-group">
+        <p class="legend">Applied</p>
+        <p class="tags">
+          <span class="tag overshoot-in os-from-below t1">Hand-thrown</span>
+          <span class="tag overshoot-in os-from-below t2">In stock</span>
+          <span class="tag tag-price overshoot-in os-from-below t3">Under <span class="p50">RM 50</span><span class="p100">RM 100</span><span class="p150">RM 150</span><span class="pany">any price</span></span>
+        </p>
+      </div>
+      <button class="show" type="button">Show results</button>
+    </aside>
+  </div>
+</main>
+</body>
+</html>

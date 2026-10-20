@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typewriter demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="typewriter.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="draft sheet" aria-labelledby="draft-h" data-type-group data-type-speed="24" data-type-delay="200">
+    <header class="draft-bar">
+      <h1 id="draft-h">New message</h1>
+      <span class="saved">Draft saved</span>
+    </header>
+    <dl class="fields">
+      <div><dt>To</dt><dd><span class="chip">Ravi Menon</span></dd></div>
+      <div class="subject"><dt>Subject</dt><dd class="one-line" data-type>Saturday stall, final plan</dd></div>
+    </dl>
+    <div class="body">
+      <p data-type>Hi Ravi,</p>
+      <p data-type>The tent goes up at 7. Bring the folding table, I have the float.</p>
+    </div>
+    <footer class="draft-foot">
+      <button class="send" type="button">Send</button>
+      <span class="hint">Typed by the suggestion tool. Edit before sending.</span>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

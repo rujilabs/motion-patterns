@@ -1,0 +1,20 @@
+{
+  "name": "Easing",
+  "slug": "easing",
+  "kind": "pattern",
+  "summary": "The same move on linear, ease-out, ease-in, ease-in-out and spring, side by side with each curve drawn, plus classes that hand any element one of the shared curves.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-inout",
+    "--ease-spring"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}
