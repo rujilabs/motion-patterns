@@ -103,9 +103,19 @@
   function begin() {
     if (!("IntersectionObserver" in window)) { waiting.forEach(load); return; }
     var lo = new IntersectionObserver(function (list) {
-      list.forEach(function (en) { if (en.isIntersecting) { load(en.target); lo.unobserve(en.target); } });
+      list.forEach(function (en) { if (en.isIntersecting) load(en.target); });
     }, { rootMargin: "500px 0px" });
-    plain.forEach(function (f) { lo.observe(f); });
+    // With 150 demos a long scroll would leave every one running: a demo far off screen goes back to blank
+    // and loads fresh when it comes near again.
+    var far = new IntersectionObserver(function (list) {
+      list.forEach(function (en) {
+        var f = en.target;
+        if (en.isIntersecting || !f.getAttribute("src")) return;
+        f.contentWindow.location.replace("about:blank"); // replace: no history entry per unload
+        f.removeAttribute("src"); // load() checks for a missing src
+      });
+    }, { rootMargin: "2500px 0px" });
+    plain.forEach(function (f) { lo.observe(f); far.observe(f); });
     var lv = new IntersectionObserver(function (list) {
       list.forEach(function (en) {
         var f = en.target;
