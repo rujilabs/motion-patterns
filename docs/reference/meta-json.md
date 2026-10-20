@@ -8,7 +8,7 @@ Every entry folder has one. [`scripts/check.mjs`](../../scripts/check.mjs) valid
 | `slug` | yes | Equal to the folder name |
 | `kind` | yes | `pattern` (in `patterns/`) or `template` (in `templates/`) |
 | `summary` | yes | One or two sentences, at most 200 characters |
-| `category` | yes | `entry`, `emphasis`, `loop`, `scroll`, `data` (charts and numbers), `state` (loading, opening, sorting), `scene`, `type` |
+| `category` | yes | `entry`, `emphasis`, `loop`, `scroll`, `data` (charts and numbers), `state` (loading, opening, sorting, UI controls), `scene`, `type`, `transition` (one view replacing another), `camera` (film camera moves and shot styles, done in CSS), `look` (photo lighting, lens and tone looks) |
 | `tech` | yes | Non-empty list from `css`, `svg`, `js`, `canvas`, `webgl`, `variable-font` |
 | `tokens` | yes | Token names used, each defined in `tokens.css` (may be empty) |
 | `trigger` | yes | `load`, `in-view`, `hover`, `click`, `scroll`, `loop` |
