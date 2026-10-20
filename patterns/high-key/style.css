@@ -1,0 +1,46 @@
+/*
+ * high-key: bright, soft and low in contrast, almost white. Shadows lift to pale grey, colour
+ * thins out and nothing in the frame is darker than a light mid tone. .look-high-key grades any
+ * image or section with a filter (flatter, then brighter, with less colour) and a white wash on top.
+ * With data-play on the frame or an ancestor, the scene grades into the look when play.js adds .go.
+ */
+.look-high-key {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  filter: contrast(var(--hk-contrast, .55)) brightness(var(--hk-bright, 1.3)) saturate(var(--hk-sat, .6));
+}
+.look-high-key::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--hk-wash, linear-gradient(180deg, #ffffff, #fbf8f3));
+  mix-blend-mode: screen;
+  opacity: var(--hk-strength, .4);
+}
+
+@keyframes look-high-key {
+  from { filter: none; }
+  to   { filter: contrast(var(--hk-contrast, .55)) brightness(var(--hk-bright, 1.3)) saturate(var(--hk-sat, .6)); }
+}
+@keyframes look-high-key-wash {
+  from { opacity: 0; }
+  to   { opacity: var(--hk-strength, .4); }
+}
+.js [data-play].look-high-key,
+.js [data-play] .look-high-key { animation: look-high-key var(--hk-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-high-key::after,
+.js [data-play] .look-high-key::after { animation: look-high-key-wash var(--hk-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-high-key,
+.js .go .look-high-key,
+.js .go.look-high-key::after,
+.js .go .look-high-key::after { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-high-key,
+  .js [data-play] .look-high-key,
+  .js [data-play].look-high-key::after,
+  .js [data-play] .look-high-key::after { animation: none; }
+}

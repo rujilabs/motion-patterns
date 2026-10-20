@@ -1,0 +1,54 @@
+/*
+ * light leak: warm light that got into the camera where it should not, washing in from the edge
+ * of the frame. .look-leak adds two soft, translucent washes in screen blend mode: a red-orange
+ * one on the left edge (--leak-a) and an amber one on the right (--leak-b). They drift slowly in
+ * and out on their own, so give the frame a .look-leak-pause toggle inside a .look-leak-group.
+ * --leak-time sets the slow cycle (default 9s). Add .look-leak-still for washes that never move.
+ */
+.look-leak { position: relative; isolation: isolate; overflow: clip; }
+.look-leak::before,
+.look-leak::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.look-leak::before {
+  inset: -30% auto -30% -34%;
+  width: 84%;
+  background: radial-gradient(closest-side, var(--leak-a, rgb(255 78 30 / .95)), rgb(255 120 50 / .5) 50%, transparent);
+  opacity: .8;
+  animation: look-leak-a var(--leak-time, 9s) var(--ease-inout) infinite alternate;
+}
+.look-leak::after {
+  inset: -40% -35% -20% auto;
+  width: 70%;
+  background: radial-gradient(closest-side, var(--leak-b, rgb(255 170 50 / .9)), rgb(255 150 60 / .4) 50%, transparent);
+  opacity: .6;
+  animation: look-leak-b calc(var(--leak-time, 9s) * 1.3) var(--ease-inout) infinite alternate;
+}
+@keyframes look-leak-a {
+  0%   { transform: translate(-14%, 18%) scale(.9); opacity: .35; }
+  55%  { opacity: 1; }
+  100% { transform: translate(10%, -12%) scale(1.1); opacity: .7; }
+}
+@keyframes look-leak-b {
+  0%   { transform: translate(12%, -16%); opacity: .3; }
+  60%  { opacity: .95; }
+  100% { transform: translate(-8%, 14%); opacity: .55; }
+}
+
+.look-leak-still::before,
+.look-leak-still::after { animation: none; }
+
+/* pause: a checkbox anywhere inside the group holds the washes where they are */
+.look-leak-group:has(.look-leak-pause :checked) .look-leak::before,
+.look-leak-group:has(.look-leak-pause :checked) .look-leak::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the washes stay at their resting strength, still */
+  .look-leak::before,
+  .look-leak::after { animation: none; }
+  .look-leak-pause { display: none; }
+}

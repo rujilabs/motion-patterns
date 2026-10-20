@@ -1,0 +1,19 @@
+{
+  "name": "Teal and orange",
+  "slug": "teal-and-orange",
+  "kind": "pattern",
+  "summary": "Warm tones push to orange and the rest to teal through one SVG colour matrix, with a before and after divider that wipes in.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

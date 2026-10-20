@@ -1,0 +1,33 @@
+/*
+ * double exposure: two frames on one piece of film. A dark subject on a light ground, with a
+ * second picture laid over it in screen blend mode: the light ground stays light, and the
+ * second picture shows only where the subject is dark, so it fills the silhouette.
+ * .look-double is the frame; put the subject first and the second picture in .look-double-second.
+ * --double-strength sets how much of the second picture shows (default 1).
+ * With data-play on the frame or an ancestor, the second exposure fades in and settles
+ * from a slight drift when play.js adds .go.
+ */
+.look-double { position: relative; isolation: isolate; overflow: clip; }
+.look-double > .look-double-second {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+  opacity: var(--double-strength, 1);
+}
+
+@keyframes look-double-in {
+  from { opacity: 0; transform: translateY(var(--double-from, 8%)) scale(1.08); }
+  to   { opacity: var(--double-strength, 1); transform: none; }
+}
+.js [data-play].look-double > .look-double-second,
+.js [data-play] .look-double > .look-double-second { animation: look-double-in var(--double-dur, calc(var(--dur-slow) * 3)) var(--ease-out) both paused; }
+.js .go.look-double > .look-double-second,
+.js .go .look-double > .look-double-second { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-double > .look-double-second,
+  .js [data-play] .look-double > .look-double-second { animation: none; }
+}

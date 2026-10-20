@@ -1,0 +1,19 @@
+{
+  "name": "Low-key",
+  "slug": "low-key",
+  "kind": "pattern",
+  "summary": "The room falls dark and contrasty around one pool of light. A class for any image or section; place the pool with four custom properties.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

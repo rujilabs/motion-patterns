@@ -1,0 +1,19 @@
+{
+  "name": "High-key",
+  "slug": "high-key",
+  "kind": "pattern",
+  "summary": "The scene grades to bright, soft, low-contrast tones that sit near white. A class for any image or section: a flattening filter and a white wash.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

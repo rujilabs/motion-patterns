@@ -1,0 +1,19 @@
+{
+  "name": "Duotone",
+  "slug": "duotone",
+  "kind": "pattern",
+  "summary": "The picture maps to two colours, dark and light, with blend layers. A cycle variant moves slowly through three colour pairs, with a CSS-only pause toggle.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

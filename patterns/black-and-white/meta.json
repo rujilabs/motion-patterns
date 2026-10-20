@@ -1,0 +1,19 @@
+{
+  "name": "Black and white",
+  "slug": "black-and-white",
+  "kind": "pattern",
+  "summary": "Colour drains out to greys through a saturation blend layer. A held colour accent variant keeps one object in colour above the grade.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,62 @@
+/*
+ * low-key: mostly dark, high in contrast, with one pool of light. Everything outside the pool
+ * falls toward black; the lit part keeps its colour and gets a little warmth.
+ * .look-low-key grades any image or section: a dark layer with a soft hole where the light falls
+ * (--lk-x, --lk-y, size --lk-w by --lk-h) and a warm glow inside the hole.
+ * With data-play on the frame or an ancestor, the room falls dark when play.js adds .go:
+ * the darkness closes in on the pool.
+ */
+.look-low-key {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  filter: contrast(var(--lk-contrast, 1.25));
+}
+.look-low-key::before,
+.look-low-key::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.look-low-key::before {
+  z-index: 1;
+  background: radial-gradient(ellipse var(--lk-w, 28%) var(--lk-h, 44%) at var(--lk-x, 50%) var(--lk-y, 50%), transparent 30%, rgb(0 0 0 / .7) 70%, var(--lk-dark, #06080b) 100%);
+  mix-blend-mode: multiply;
+  opacity: var(--lk-strength, .96);
+  transform-origin: var(--lk-x, 50%) var(--lk-y, 50%);
+}
+.look-low-key::after {
+  z-index: 2;
+  background: radial-gradient(ellipse var(--lk-w, 28%) var(--lk-h, 44%) at var(--lk-x, 50%) var(--lk-y, 50%), var(--lk-glow, rgb(255 214 150 / .38)), transparent 70%);
+  mix-blend-mode: screen;
+}
+
+@keyframes look-low-key-dark {
+  from { opacity: 0; transform: scale(2.4); }
+  to   { opacity: var(--lk-strength, .96); transform: none; }
+}
+@keyframes look-low-key-glow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes look-low-key-contrast {
+  from { filter: none; }
+  to   { filter: contrast(var(--lk-contrast, 1.25)); }
+}
+.js [data-play].look-low-key,
+.js [data-play] .look-low-key { animation: look-low-key-contrast var(--lk-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-low-key::before,
+.js [data-play] .look-low-key::before { animation: look-low-key-dark var(--lk-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-low-key::after,
+.js [data-play] .look-low-key::after { animation: look-low-key-glow var(--lk-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-low-key,
+.js .go .look-low-key,
+.js .go.look-low-key::before,
+.js .go .look-low-key::before,
+.js .go.look-low-key::after,
+.js .go .look-low-key::after { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-low-key,
+  .js [data-play] .look-low-key,
+  .js [data-play].look-low-key::before,
+  .js [data-play] .look-low-key::before,
+  .js [data-play].look-low-key::after,
+  .js [data-play] .look-low-key::after { animation: none; }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Double exposure",
+  "slug": "double-exposure",
+  "kind": "pattern",
+  "summary": "A second picture in screen blend mode over a dark subject on a light ground, so it shows only inside the silhouette. It fades in and settles.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

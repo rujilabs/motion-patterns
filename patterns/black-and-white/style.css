@@ -1,0 +1,34 @@
+/*
+ * black and white: the colour drains out and leaves the picture in greys. .look-bw lays a grey
+ * layer in saturation blend mode over any image or section: it keeps every pixel's light and
+ * takes away its colour. --bw-strength below 1 leaves a trace of colour.
+ * Held colour accent: put the one thing that keeps its colour in a layer above the grade,
+ * marked .look-bw-keep (a cut-out image or an SVG of just that object, the same size as the frame).
+ * With data-play on the frame or an ancestor, the colour drains when play.js adds .go.
+ */
+.look-bw { position: relative; isolation: isolate; overflow: clip; }
+.look-bw::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: #808080;
+  mix-blend-mode: saturation;
+  opacity: var(--bw-strength, 1);
+}
+.look-bw > .look-bw-keep { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+@keyframes look-bw-drain {
+  from { opacity: 0; }
+  to   { opacity: var(--bw-strength, 1); }
+}
+.js [data-play].look-bw::after,
+.js [data-play] .look-bw::after { animation: look-bw-drain var(--bw-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-bw::after,
+.js .go .look-bw::after { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-bw::after,
+  .js [data-play] .look-bw::after { animation: none; }
+}

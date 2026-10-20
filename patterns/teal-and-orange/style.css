@@ -1,0 +1,52 @@
+/*
+ * teal and orange: the film grade that pushes warm tones (skin, wood, lamplight) toward orange
+ * and everything else (walls, sky, clothes, shadows) toward teal, so people stand out warm
+ * against a cool frame.
+ * Blend layers cannot tell skin from a light wall, so the grade is an SVG colour matrix: it
+ * reads how much warmer than blue each pixel is and pushes it further that way, adds a small
+ * teal shift to neutral tones and a little more teal as the tone gets darker. Paste the
+ * <svg class="look-defs"> block from the README once per page; .look-teal-orange applies it to
+ * every child (an image, a video, a drawn scene).
+ * Before and after: lay a graded copy (.look-teal-orange.look-to-split) over the original inside
+ * a .look-to-pair, with an optional .look-to-line divider. With data-play the divider wipes in
+ * from the right and stops at --to-split (default 50%) when play.js adds .go.
+ */
+.look-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.look-teal-orange { position: relative; overflow: clip; }
+.look-teal-orange > * { filter: url(#look-teal-orange) contrast(var(--to-contrast, 1.08)); }
+
+/* before and after */
+.look-to-pair { position: relative; isolation: isolate; overflow: clip; }
+.look-to-pair > .look-to-split { position: absolute; inset: 0; z-index: 1; clip-path: inset(0 0 0 var(--to-split, 50%)); }
+.look-to-pair > .look-to-line { position: absolute; inset: 0; z-index: 2; pointer-events: none; transform: translateX(var(--to-split, 50%)); }
+.look-to-line::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -1px;
+  width: 2px;
+  background: var(--to-line, #ffffff);
+}
+
+@keyframes look-to-wipe {
+  from { clip-path: inset(0 0 0 100%); }
+  to   { clip-path: inset(0 0 0 var(--to-split, 50%)); }
+}
+@keyframes look-to-line {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(var(--to-split, 50%)); }
+}
+.js [data-play] .look-to-pair > .look-to-split,
+.js [data-play].look-to-pair > .look-to-split { animation: look-to-wipe var(--to-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play] .look-to-pair > .look-to-line,
+.js [data-play].look-to-pair > .look-to-line { animation: look-to-line var(--to-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go .look-to-pair > .look-to-split,
+.js .go.look-to-pair > .look-to-split,
+.js .go .look-to-pair > .look-to-line,
+.js .go.look-to-pair > .look-to-line { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play] .look-to-pair > .look-to-split,
+  .js [data-play].look-to-pair > .look-to-split,
+  .js [data-play] .look-to-pair > .look-to-line,
+  .js [data-play].look-to-pair > .look-to-line { animation: none; }
+}

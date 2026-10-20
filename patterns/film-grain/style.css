@@ -1,0 +1,46 @@
+/*
+ * film grain: the fine, random speckle of film, new on every frame. .look-grain lays a noise
+ * texture over any image or section in overlay blend mode, so it shows most in the mid tones
+ * and least in pure black and white, like real grain. The texture is an SVG turbulence filter
+ * written into this file, so there is nothing else to copy.
+ * The grain jumps to a new position about 12 times a second (--grain-fps-time per cycle of 8).
+ * It runs on its own, so give it a .look-grain-pause toggle inside a .look-grain-group.
+ * --grain-strength sets how strong it is (default .5), --grain-size how coarse (default 180px).
+ */
+.look-grain { position: relative; isolation: isolate; overflow: clip; }
+.look-grain::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: 1;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E") 0 0 / var(--grain-size, 180px);
+  mix-blend-mode: overlay;
+  opacity: var(--grain-strength, .5);
+  animation: look-grain-in var(--dur-slow) var(--ease-out) both, look-grain-shift var(--grain-fps-time, .68s) steps(1, end) infinite;
+}
+@keyframes look-grain-in {
+  from { opacity: 0; }
+  to   { opacity: var(--grain-strength, .5); }
+}
+/* eight jumps per cycle: far enough apart that no two frames line up */
+@keyframes look-grain-shift {
+  0%    { transform: translate(0, 0); }
+  12.5% { transform: translate(-7%, 4%); }
+  25%   { transform: translate(5%, -9%); }
+  37.5% { transform: translate(-11%, -3%); }
+  50%   { transform: translate(9%, 8%); }
+  62.5% { transform: translate(-3%, 11%); }
+  75%   { transform: translate(12%, -5%); }
+  87.5% { transform: translate(-9%, -10%); }
+  100%  { transform: translate(0, 0); }
+}
+
+/* pause: a checkbox anywhere inside the group freezes the grain on one frame */
+.look-grain-group:has(.look-grain-pause :checked) .look-grain::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the grain stays, still */
+  .look-grain::after { animation: none; }
+  .look-grain-pause { display: none; }
+}

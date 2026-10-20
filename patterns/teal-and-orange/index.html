@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teal and orange demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <svg class="look-defs" aria-hidden="true" focusable="false">
+    <filter id="look-teal-orange" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1.344 0.047 -0.311 0 -0.09  -0.28 1 0.28 0 0.025  -0.344 -0.047 1.311 0 0.09  0 0 0 1 0"/>
+    </filter>
+  </svg>
+  <figure class="shot sheet" data-play>
+    <div class="frame look-to-pair" role="img" aria-label="A person at a window seat with a red cup, a plant and a pendant lamp, a city skyline outside; a divider wipes across to show the original on the left and the teal and orange grade on the right">
+      <img src="scene.svg" alt="" width="320" height="240">
+      <div class="look-teal-orange look-to-split"><img src="scene.svg" alt="" width="320" height="240"></div>
+      <span class="look-to-line"></span>
+      <span class="tag tag-before">Before</span><span class="tag tag-after">After</span>
+    </div>
+    <figcaption class="shot-bar">
+      <p><strong>Teal and orange</strong> <span class="mute">shadows teal, skin warm</span></p>
+      <span class="shot-end"><span class="mute">Before / After</span></span>
+    </figcaption>
+  </figure>
+</main>
+</body>
+</html>

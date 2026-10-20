@@ -1,0 +1,81 @@
+/*
+ * duotone: the picture is mapped to two colours. Its darkest tone becomes --duo-dark, its
+ * lightest --duo-light, and every grey in between a mix of the two.
+ * .look-duotone does it in three layers: the content turns grey (filter), a multiply layer tints
+ * the light end, and a lighten layer lifts the dark end.
+ * .look-duotone-cycle moves slowly through three colour pairs (--duo-dark-1 to -3,
+ * --duo-light-1 to -3), holding each. It runs on its own, so give it a .look-duotone-pause toggle
+ * inside a .look-duotone-group, or leave the class off for a still duotone.
+ * With data-play on the frame or an ancestor, the colour grade fades in when play.js adds .go.
+ */
+.look-duotone { position: relative; isolation: isolate; overflow: clip; }
+.look-duotone > * { filter: grayscale(1) contrast(var(--duo-contrast, 1.1)); }
+.look-duotone::before,
+.look-duotone::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.look-duotone::before { z-index: 1; background-color: var(--duo-light, #f3c7a4); mix-blend-mode: multiply; }
+.look-duotone::after { z-index: 2; background-color: var(--duo-dark, #27306b); mix-blend-mode: lighten; }
+
+@keyframes look-duotone-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes look-duotone-grey {
+  from { filter: none; }
+  to   { filter: grayscale(1) contrast(var(--duo-contrast, 1.1)); }
+}
+@keyframes look-duotone-light {
+  0%, 26%   { background-color: var(--duo-light-1, #f3c7a4); }
+  34%, 59%  { background-color: var(--duo-light-2, #e9e3b4); }
+  67%, 92%  { background-color: var(--duo-light-3, #bfe0e6); }
+  100%      { background-color: var(--duo-light-1, #f3c7a4); }
+}
+@keyframes look-duotone-dark {
+  0%, 26%   { background-color: var(--duo-dark-1, #27306b); }
+  34%, 59%  { background-color: var(--duo-dark-2, #17443d); }
+  67%, 92%  { background-color: var(--duo-dark-3, #4a1f3a); }
+  100%      { background-color: var(--duo-dark-1, #27306b); }
+}
+
+/* the cycle on its own (no data-play) */
+.look-duotone-cycle::before { animation: look-duotone-light var(--duo-cycle, 15s) var(--ease-inout) infinite; }
+.look-duotone-cycle::after { animation: look-duotone-dark var(--duo-cycle, 15s) var(--ease-inout) infinite; }
+
+/* with data-play: fade the grade in, then cycle */
+.js [data-play].look-duotone > *,
+.js [data-play] .look-duotone > * { animation: look-duotone-grey var(--duo-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-duotone::before,
+.js [data-play] .look-duotone::before,
+.js [data-play].look-duotone::after,
+.js [data-play] .look-duotone::after { animation: look-duotone-in var(--duo-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-duotone-cycle::before,
+.js [data-play] .look-duotone-cycle::before {
+  animation: look-duotone-in var(--duo-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused,
+             look-duotone-light var(--duo-cycle, 15s) var(--ease-inout) var(--duo-dur, calc(var(--dur-slow) * 3)) infinite paused;
+}
+.js [data-play].look-duotone-cycle::after,
+.js [data-play] .look-duotone-cycle::after {
+  animation: look-duotone-in var(--duo-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused,
+             look-duotone-dark var(--duo-cycle, 15s) var(--ease-inout) var(--duo-dur, calc(var(--dur-slow) * 3)) infinite paused;
+}
+.js .go.look-duotone > *,
+.js .go .look-duotone > *,
+.js .go.look-duotone::before,
+.js .go .look-duotone::before,
+.js .go.look-duotone::after,
+.js .go .look-duotone::after { animation-play-state: running; }
+
+/* pause: a checkbox anywhere inside the group stops the cycle */
+.look-duotone-group:has(.look-duotone-pause :checked) .look-duotone-cycle::before,
+.look-duotone-group:has(.look-duotone-pause :checked) .look-duotone-cycle::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .look-duotone-cycle::before,
+  .look-duotone-cycle::after,
+  .js [data-play].look-duotone > *,
+  .js [data-play] .look-duotone > *,
+  .js [data-play].look-duotone::before,
+  .js [data-play] .look-duotone::before,
+  .js [data-play].look-duotone::after,
+  .js [data-play] .look-duotone::after { animation: none; }
+  .look-duotone-pause { display: none; }
+}
