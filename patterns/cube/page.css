@@ -13,8 +13,9 @@
 button { font: inherit; color: inherit; cursor: pointer; }
 .trip-btns button { padding: 5px 12px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-size: 13px; font-weight: 550; }
 .trip-btns button:hover { border-color: var(--demo-blue); color: var(--demo-blue); }
+/* a short frame: keep the cube's 16:9 faces and make the whole card narrower, so the face never covers the bar */
 @media (max-height: 420px) {
-  .trip-screen { aspect-ratio: 16 / 8; }
+  .trip { width: min(380px, 100%); }
   .trip-bar { padding-top: 8px; }
 }
 @media (min-width: 900px) and (min-height: 560px) {

@@ -24,6 +24,11 @@
   .nt-text h1 { font-size: 32px; }
   .scribble { width: 220px; }
 }
+/* a short, wide frame: side by side again, with the text left-aligned */
 @media (max-height: 420px) {
-  .note { grid-template-columns: 150px 1fr; padding: 14px; }
+  .note { grid-template-columns: 140px 1fr; justify-items: stretch; width: min(580px, 100%); padding: 14px; gap: 18px; }
+  .cup { width: 100%; }
+  .nt-text { justify-items: start; text-align: start; }
+  .nt-text h1 { font-size: 30px; }
+  .scribble { width: min(220px, 100%); }
 }
