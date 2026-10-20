@@ -1,0 +1,18 @@
+{
+  "name": "FPV flight",
+  "slug": "fpv-flight",
+  "kind": "pattern",
+  "summary": "A fast, low fly-through: a 3D ground plane streams toward the camera, things beside the route grow and sweep past, and the whole view banks into turns. CSS only, with a pause toggle.",
+  "category": "camera",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-in"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

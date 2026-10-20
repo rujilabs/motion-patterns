@@ -1,0 +1,27 @@
+/*
+ * dolly in: the camera itself travels toward the subject. Near things grow fast and slide out
+ * past the edges, far things hardly change. That spread of speeds (parallax) is what sets it
+ * apart from a lens zoom, where the whole picture scales as one flat sheet.
+ * .dolly-in is the frame. Each .dolly-layer stacks on top of the last and sets --depth:
+ * 0 for the far distance, 1 for the nearest layer. A layer grows to 1 + --dolly-push x --depth.
+ */
+.dolly-in { position: relative; overflow: clip; }
+.dolly-layer {
+  position: absolute;
+  inset: 0;
+  transform-origin: var(--dolly-origin, 50% 50%);
+  animation: dolly-in var(--dolly-dur, 9s) var(--ease-inout) infinite alternate both;
+}
+@keyframes dolly-in {
+  0%, 10% { scale: 1; }
+  90%, 100% { scale: calc(1 + var(--dolly-push, 1.4) * var(--depth, 0)); }
+}
+
+/* a checkbox anywhere inside .dolly-in-group pauses the move (it runs longer than 5 seconds) */
+.dolly-in-group:has(.dolly-in-pause :checked) .dolly-layer { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no move: every layer rests where the push ends */
+  .dolly-layer { animation: none; scale: calc(1 + var(--dolly-push, 1.4) * var(--depth, 0)); }
+  .dolly-in-pause { display: none; }
+}

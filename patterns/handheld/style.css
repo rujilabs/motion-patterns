@@ -1,0 +1,40 @@
+/*
+ * handheld: the frame drifts and rolls a little, like a camera held in two hands. Two loops of
+ * different lengths (drift on translate, roll on rotate) never line up, so the sway does not
+ * look like a repeat. The layer is scaled up 6% so its edges never show inside the frame.
+ * Put .handheld on the layer that moves, inside a parent that clips (.handheld-frame).
+ */
+.handheld-frame { overflow: clip; }
+.handheld {
+  --handheld-amp: 1;
+  --handheld-speed: 1;
+  scale: 1.06;
+  animation:
+    handheld-drift calc(6.7s / var(--handheld-speed)) var(--ease-inout) infinite alternate,
+    handheld-roll calc(4.3s / var(--handheld-speed)) var(--ease-inout) infinite alternate;
+}
+@keyframes handheld-drift {
+  0%   { translate: 0 0; }
+  22%  { translate: calc(var(--handheld-amp) * 2.4px) calc(var(--handheld-amp) * -1.6px); }
+  47%  { translate: calc(var(--handheld-amp) * -1.8px) calc(var(--handheld-amp) * 2px); }
+  71%  { translate: calc(var(--handheld-amp) * 2.8px) calc(var(--handheld-amp) * 1.2px); }
+  100% { translate: calc(var(--handheld-amp) * -1.2px) calc(var(--handheld-amp) * -2.2px); }
+}
+@keyframes handheld-roll {
+  0%   { rotate: calc(var(--handheld-amp) * -.35deg); }
+  38%  { rotate: calc(var(--handheld-amp) * .3deg); }
+  69%  { rotate: calc(var(--handheld-amp) * -.12deg); }
+  100% { rotate: calc(var(--handheld-amp) * .42deg); }
+}
+/* calm: a camera on a shoulder rig. walk: the operator is walking, so more sway and faster. */
+.handheld-calm { --handheld-amp: .5; }
+.handheld-walk { --handheld-amp: 2.6; --handheld-speed: 2.2; scale: 1.1; }
+
+/* pause: a checkbox in .handheld-pause anywhere inside a .handheld-group stops everything in it */
+.handheld-group:has(.handheld-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a tripod: the frame holds still at its normal size */
+  .handheld { animation: none; scale: none; }
+  .handheld-pause { display: none; }
+}

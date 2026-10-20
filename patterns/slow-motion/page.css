@@ -1,0 +1,79 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+/* the shot: a sheet with a title row, the frame and a small lens note */
+.shot { width: min(560px, 100%, calc((100svh - 150px) * 1.6)); padding: 14px; display: grid; gap: 10px; }
+.shot-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.shot-head h1 { font-size: 18px; font-weight: 700; }
+.shot-sub { color: var(--demo-mute); font-size: 13px; }
+.shot-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: var(--demo-mute); }
+/* the frame: a 16:10 window onto the scene, with blue pencil corner marks like a viewfinder */
+.frame { position: relative; aspect-ratio: 16 / 10; overflow: clip; border-radius: 4px; border: 1px solid var(--demo-line); background: var(--sky); }
+.frame svg { display: block; width: 100%; height: 100%; }
+.vf {
+  position: absolute; inset: 8px; pointer-events: none; z-index: 3;
+  --c: var(--demo-blue);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 1px 14px no-repeat;
+}
+/* the scene palette: calm and flat, one warm light, one blue */
+.frame {
+  --sky: #e3ebf5; --far: #c5d0de; --mid: #9eadc1; --near: #6b7a90; --ground: #d2d9e2;
+  --ink: #2b3443; --paper: #fbfcfe; --warm: #e6b25e; --accent: var(--demo-blue);
+}
+@media (prefers-color-scheme: dark) {
+  .frame {
+    --sky: #1c2532; --far: #2a3545; --mid: #3a475a; --near: #4f5d72; --ground: #232c39;
+    --ink: #0f141b; --paper: #d9e0ea; --warm: #d29a45;
+  }
+}
+.c-sky { fill: var(--sky); } .c-far { fill: var(--far); } .c-mid { fill: var(--mid); } .c-near { fill: var(--near); }
+.c-ground { fill: var(--ground); } .c-ink { fill: var(--ink); } .c-paper { fill: var(--paper); } .c-warm { fill: var(--warm); }
+.c-accent { fill: var(--accent); } .c-red { fill: var(--demo-red); }
+@media (max-height: 380px) {
+  .shot { width: min(560px, 100%, calc((100svh - 80px) * 1.6)); padding: 10px; gap: 8px; }
+  .shot-sub, .shot-foot { display: none; }
+}
+/* this scene: a drop falls into a glass of water. Every part shares one 1.4s length. */
+.slowmo { --slowmo-accent: var(--demo-red); }
+.slowmo-scene { --act: 1.4s; }
+.slowmo-scene * { transform-box: fill-box; transform-origin: 50% 100%; }
+.rate { position: absolute; z-index: 4; top: 14px; left: 18px; font-size: 11px; font-weight: 600; color: var(--demo-ink); }
+.glass { fill: var(--paper); fill-opacity: .35; stroke: var(--ink); stroke-opacity: .4; stroke-width: 1; }
+.water { fill: var(--accent); fill-opacity: .28; }
+.surface { fill: var(--accent); fill-opacity: .4; }
+.ring { fill: none; stroke: var(--accent); stroke-width: 1.2; transform-origin: 50% 50%; }
+.c-drop { fill: var(--accent); }
+/* resting pose (and the still frame under reduced motion): just after the drop lands */
+.drop { opacity: 0; animation: drop var(--act) linear infinite; }
+.ring { opacity: .6; transform: scale(3); animation: ring var(--act) var(--ease-out) infinite; }
+.jet { transform: scaleY(.7); animation: jet var(--act) linear infinite; }
+.bead { --dx: 0; transform: translate(calc(var(--dx) * 1px), -30px); animation: bead var(--act) linear infinite; }
+.b1 { --dx: -16; } .b2 { --dx: 14; } .b3 { --dx: -4; }
+@keyframes drop {
+  0%   { opacity: 1; transform: translateY(-70px); animation-timing-function: var(--ease-in); }
+  40%  { opacity: 1; transform: none; }
+  41%, 100% { opacity: 0; transform: none; }
+}
+@keyframes ring {
+  0%, 40% { opacity: 0; transform: scale(.4); }
+  41%  { opacity: 1; transform: scale(.6); }
+  100% { opacity: 0; transform: scale(5.5); }
+}
+@keyframes jet {
+  0%, 44% { transform: scaleY(0); }
+  62% { transform: scaleY(1); animation-timing-function: var(--ease-inout); }
+  86%, 100% { transform: scaleY(0); }
+}
+@keyframes bead {
+  0%, 41% { opacity: 0; transform: none; }
+  42% { opacity: 1; transform: none; animation-timing-function: var(--ease-out); }
+  66% { transform: translate(calc(var(--dx) * 1px), -38px); animation-timing-function: var(--ease-in); }
+  92% { opacity: 1; transform: translate(calc(var(--dx) * 1.8px), 0); }
+  93%, 100% { opacity: 0; transform: translate(calc(var(--dx) * 1.8px), 0); }
+}

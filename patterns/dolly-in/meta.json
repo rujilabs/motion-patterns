@@ -1,0 +1,18 @@
+{
+  "name": "Dolly in",
+  "slug": "dolly-in",
+  "kind": "pattern",
+  "summary": "The camera travels toward the subject: near layers grow fast and slide out of frame, far layers barely change. Set --depth per layer; the parallax is what a zoom lacks.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

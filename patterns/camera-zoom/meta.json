@@ -1,0 +1,18 @@
+{
+  "name": "Camera zoom",
+  "slug": "camera-zoom",
+  "kind": "pattern",
+  "summary": "A lens zoom: the whole flat frame scales toward one point, near and far by the same amount, so nothing slides past anything else. Set the point and the end scale.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slow motion demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="slowmo.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet slowmo-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Slow motion</h1>
+        <p class="shot-sub">One drop, at full speed and then at a quarter</p>
+      </div>
+      <label class="slowmo-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame slowmo" data-slowmo="0.25" role="img" aria-label="A drop of water falls into a glass. It plays at normal speed, then again at a quarter of the speed, so the splash and the leaping beads can be seen.">
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="c-sky" width="320" height="200"/>
+        <rect class="c-near" x="0" y="168" width="320" height="32"/>
+        <path class="water" d="M114 104 H206 L201 166 H119 Z"/>
+        <g class="slowmo-scene">
+          <path class="c-drop drop" d="M160 82 C164 90 166 94 166 97 A6 6 0 0 1 154 97 C154 94 156 90 160 82 Z"/>
+          <ellipse class="ring" cx="160" cy="104" rx="8" ry="1.6"/>
+          <path class="c-drop jet" d="M157 104 C157 92 158 82 160 80 C162 82 163 92 163 104 Z"/>
+          <circle class="c-drop bead b1" cx="160" cy="102" r="2.4"/>
+          <circle class="c-drop bead b2" cx="160" cy="102" r="2"/>
+          <circle class="c-drop bead b3" cx="160" cy="102" r="1.6"/>
+        </g>
+        <ellipse class="surface" cx="160" cy="104" rx="46" ry="4"/>
+        <path class="glass" d="M108 54 H212 L204 168 H116 Z"/>
+      </svg>
+      <p class="rate" aria-hidden="true"><span class="slowmo-rate">1x</span></p>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Same movement, quarter speed</span>
+      <span class="num">24 then 96 fps</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

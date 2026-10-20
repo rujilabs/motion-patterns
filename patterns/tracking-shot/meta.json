@@ -1,0 +1,18 @@
+{
+  "name": "Tracking shot",
+  "slug": "tracking-shot",
+  "kind": "pattern",
+  "summary": "The camera rides beside a moving subject: it stays in the middle of the frame while seamless looping layers stream past behind it, near ones fast and far ones slow.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

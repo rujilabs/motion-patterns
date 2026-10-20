@@ -1,0 +1,66 @@
+/*
+ * fpv-flight: a fast forward flight over a scene, with banking turns. Three parts:
+ *   .fpv-world  everything in view; it banks (rolls and slides) on a slow loop
+ *   .fpv-ground a 3D plane whose tiles stream toward the camera
+ *   .fpv-pass   things beside the route (trees, posts) that grow from the horizon and fly past
+ * A thing at lateral offset --x is drawn as scale(s) translate(--x, eye height): scaling the
+ * offset with the size is what a real perspective does, so near things also sweep outward.
+ */
+.fpv {
+  --fpv-speed: .5s;    /* time for one ground tile to pass */
+  --fpv-tile: 40px;    /* height of one ground tile, matching the ground background */
+  --fpv-bank: 10deg;   /* roll at the peak of a turn */
+  --fpv-turn: 8s;      /* one left turn and one right turn */
+  --fpv-pass: 2.4s;    /* time for one thing to fly from the horizon past the camera */
+  --fpv-horizon: 44%;
+  position: relative;
+  overflow: clip;
+}
+.fpv-world {
+  position: absolute;
+  inset: -25%;
+  perspective: 240px;
+  perspective-origin: 50% var(--fpv-horizon);
+  animation: fpv-bank var(--fpv-turn) var(--ease-inout) infinite;
+}
+@keyframes fpv-bank {
+  0%, 50%, 100% { transform: none; }
+  25% { transform: translateX(5%) rotate(calc(var(--fpv-bank) * -1)); }
+  75% { transform: translateX(-5%) rotate(var(--fpv-bank)); }
+}
+.fpv-ground {
+  position: absolute;
+  left: -60%;
+  right: -60%;
+  top: var(--fpv-horizon);
+  height: 100%;
+  transform-origin: 50% 0;
+  transform: rotateX(78deg);
+  animation: fpv-ground var(--fpv-speed) linear infinite;
+}
+@keyframes fpv-ground { to { background-position-y: var(--fpv-tile); } }
+.fpv-pass {
+  --x: 0;      /* lateral offset beside the route, in px at the horizon size */
+  --eye: 14;   /* how far below the camera the ground is */
+  position: absolute;
+  left: 50%;
+  top: var(--fpv-horizon);
+  translate: -50% -100%;
+  transform-origin: 50% 100%;
+  animation: fpv-pass var(--fpv-pass) var(--ease-in) infinite;
+}
+@keyframes fpv-pass {
+  from { transform: scale(.04) translate(calc(var(--x) * 1px), calc(var(--eye) * 1px)); opacity: 0; }
+  15%  { opacity: 1; }
+  to   { transform: scale(4) translate(calc(var(--x) * 1px), calc(var(--eye) * 1px)); opacity: 1; }
+}
+
+/* pause: a checkbox in .fpv-pause anywhere inside a .fpv-group stops everything in it */
+.fpv-group:has(.fpv-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still frame: level flight, the things beside the route at a middle distance */
+  .fpv-world, .fpv-ground { animation: none; }
+  .fpv-pass { animation: none; transform: scale(1.4) translate(calc(var(--x) * 1px), calc(var(--eye) * 1px)); }
+  .fpv-pause { display: none; }
+}

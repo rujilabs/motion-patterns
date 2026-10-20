@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time-lapse demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet tl-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Time-lapse</h1>
+        <p class="shot-sub">A day in the town square, in 16 seconds</p>
+      </div>
+      <label class="tl-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame timelapse" role="img" aria-label="A town square with a clock tower. A whole day passes quickly: the sun crosses the sky, the tower's shadow swings across the square, night falls and the windows light up, then dawn comes again.">
+      <div class="tl-sky" aria-hidden="true"></div>
+      <div class="stars tl-night" aria-hidden="true"></div>
+      <div class="tl-orbit" aria-hidden="true"><span class="sun"></span><span class="moon"></span></div>
+      <span class="tl-drift cloud" aria-hidden="true"><svg viewBox="0 0 60 20" aria-hidden="true"><path class="c-paper" d="M8 20 A8 8 0 0 1 10 6 A12 12 0 0 1 32 3 A10 10 0 0 1 50 8 A6 6 0 0 1 54 20 Z"/></svg></span>
+      <span class="tl-drift cloud two" aria-hidden="true"><svg viewBox="0 0 60 20" aria-hidden="true"><path class="c-paper" d="M8 20 A8 8 0 0 1 10 6 A12 12 0 0 1 32 3 A10 10 0 0 1 50 8 A6 6 0 0 1 54 20 Z"/></svg></span>
+      <svg class="town" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path class="c-far" d="M0 144 V112 H40 V100 H78 V120 H110 V144 Z M210 144 V104 H246 V92 H286 V114 H320 V144 Z"/>
+        <rect class="c-mid" x="140" y="58" width="40" height="86"/>
+        <path class="c-mid" d="M136 60 L160 36 L184 60 Z"/>
+        <circle class="c-paper" cx="160" cy="76" r="10"/>
+        <path class="tower-hands" d="M160 76 V69 M160 76 H165"/>
+        <rect class="c-ground" x="0" y="144" width="320" height="56"/>
+        <rect class="c-shadow tl-shadow" x="144" y="144" width="32" height="44"/>
+        <rect class="c-near" x="138" y="140" width="44" height="5"/>
+        <path class="c-near" d="M40 160 H112 V166 H40 Z M208 160 H280 V166 H208 Z"/>
+      </svg>
+      <div class="tint tl-night" aria-hidden="true"></div>
+      <svg class="town" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="c-warm tl-night"><rect x="10" y="120" width="8" height="8"/><rect x="26" y="120" width="8" height="8"/><rect x="50" y="108" width="8" height="8"/><rect x="62" y="126" width="8" height="8"/><rect x="90" y="128" width="8" height="8"/><rect x="152" y="102" width="16" height="12"/><rect x="220" y="114" width="8" height="8"/><rect x="232" y="128" width="8" height="8"/><rect x="256" y="102" width="8" height="8"/><rect x="270" y="118" width="8" height="8"/><rect x="298" y="124" width="8" height="8"/></g>
+      </svg>
+      <p class="dial" aria-hidden="true">
+        <svg viewBox="0 0 26 26"><circle class="dial-face" cx="13" cy="13" r="11.5"/><path class="dial-hand tl-hour" d="M13 13 V7"/><path class="dial-hand tl-minute" d="M13 13 V4"/></svg>
+      </p>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>6 am to 6 am, one frame every 30 seconds</span>
+      <span class="num">24 h in 16 s</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

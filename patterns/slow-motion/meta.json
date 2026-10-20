@@ -1,0 +1,22 @@
+{
+  "name": "Slow motion",
+  "slug": "slow-motion",
+  "kind": "pattern",
+  "summary": "The same action at normal speed, then slowed to a quarter. A small script changes the playback rate of your own CSS animation each pass, so both passes are the exact same movement.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-out",
+    "--ease-in",
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

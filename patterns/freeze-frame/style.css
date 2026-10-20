@@ -1,0 +1,44 @@
+/*
+ * freeze-frame: the action stops on its key frame, a flash goes off, the picture drops most of its
+ * colour and a label lands, then the action runs on. freeze.js does the stopping and sets .is-frozen;
+ * this file is the look of the frozen moment.
+ *   .freeze        the frame (position it; the flash and label sit inside it)
+ *   .freeze-scene  the action, your own CSS animations
+ *   .freeze-flash  an empty element for the flash
+ *   .freeze-label  the caption that lands on the frozen frame
+ */
+.freeze { position: relative; overflow: clip; }
+.freeze-scene { transition: filter var(--dur-quick) var(--ease-out); }
+.freeze.is-frozen .freeze-scene { filter: grayscale(.75) contrast(1.08); }
+.freeze-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--freeze-flash, #fff);
+  opacity: 0;
+}
+.freeze.is-frozen .freeze-flash { animation: freeze-flash var(--dur-slow) var(--ease-out) both; }
+@keyframes freeze-flash {
+  from { opacity: .9; }
+  to   { opacity: 0; }
+}
+.freeze-label { position: absolute; z-index: 3; opacity: 0; }
+.freeze.is-frozen .freeze-label { animation: freeze-label var(--dur-base) var(--ease-spring) calc(var(--stagger) * 2) both; }
+@keyframes freeze-label {
+  from { opacity: 0; transform: translateY(14px) scale(.86) rotate(-4deg); }
+  30%  { opacity: 1; }
+  to   { opacity: 1; transform: rotate(-2deg); }
+}
+
+/* pause: the toggle stops the flash and the label here; freeze.js stops the action */
+.freeze-group:has(.freeze-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script does not run: the frame shows its resting pose with the frozen look and the label */
+  .freeze .freeze-scene * { animation: none; }
+  .freeze-scene { transition: none; filter: grayscale(.75) contrast(1.08); }
+  .freeze-label, .freeze.is-frozen .freeze-label { opacity: 1; transform: rotate(-2deg); animation: none; }
+  .freeze.is-frozen .freeze-flash { animation: none; }
+  .freeze-pause { display: none; }
+}

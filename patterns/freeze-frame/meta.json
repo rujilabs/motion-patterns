@@ -1,0 +1,25 @@
+{
+  "name": "Freeze frame",
+  "slug": "freeze-frame",
+  "kind": "pattern",
+  "summary": "The action stops on its key frame, a flash goes off, the colour drains and a label lands, then the action runs on. A small script stops your own CSS animations exactly on the frame.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--dur-slow",
+    "--dur-base",
+    "--ease-out",
+    "--ease-spring",
+    "--ease-in",
+    "--stagger"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

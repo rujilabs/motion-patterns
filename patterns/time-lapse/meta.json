@@ -1,0 +1,16 @@
+{
+  "name": "Time-lapse",
+  "slug": "time-lapse",
+  "kind": "pattern",
+  "summary": "A whole day compressed into one 16s loop: sky colour, a sun and moon on one orbit, a swinging shadow, lights at night and a racing clock, all on one shared length so they stay in step.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

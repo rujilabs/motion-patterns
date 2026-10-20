@@ -1,0 +1,73 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+/* the shot: a sheet with a title row, the frame and a small lens note */
+.shot { width: min(560px, 100%, calc((100svh - 150px) * 1.6)); padding: 14px; display: grid; gap: 10px; }
+.shot-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.shot-head h1 { font-size: 18px; font-weight: 700; }
+.shot-sub { color: var(--demo-mute); font-size: 13px; }
+.shot-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: var(--demo-mute); }
+/* the frame: a 16:10 window onto the scene, with blue pencil corner marks like a viewfinder */
+.frame { position: relative; aspect-ratio: 16 / 10; overflow: clip; border-radius: 4px; border: 1px solid var(--demo-line); background: var(--sky); }
+.frame svg { display: block; width: 100%; height: 100%; }
+.vf {
+  position: absolute; inset: 8px; pointer-events: none; z-index: 3;
+  --c: var(--demo-blue);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 1px 14px no-repeat;
+}
+/* the scene palette: calm and flat, one warm light, one blue */
+.frame {
+  --sky: #e3ebf5; --far: #c5d0de; --mid: #9eadc1; --near: #6b7a90; --ground: #d2d9e2;
+  --ink: #2b3443; --paper: #fbfcfe; --warm: #e6b25e; --accent: var(--demo-blue);
+}
+@media (prefers-color-scheme: dark) {
+  .frame {
+    --sky: #1c2532; --far: #2a3545; --mid: #3a475a; --near: #4f5d72; --ground: #232c39;
+    --ink: #0f141b; --paper: #d9e0ea; --warm: #d29a45;
+  }
+}
+.c-sky { fill: var(--sky); } .c-far { fill: var(--far); } .c-mid { fill: var(--mid); } .c-near { fill: var(--near); }
+.c-ground { fill: var(--ground); } .c-ink { fill: var(--ink); } .c-paper { fill: var(--paper); } .c-warm { fill: var(--warm); }
+.c-accent { fill: var(--accent); } .c-red { fill: var(--demo-red); }
+@media (max-height: 380px) {
+  .shot { width: min(560px, 100%, calc((100svh - 80px) * 1.6)); padding: 10px; gap: 8px; }
+  .shot-sub, .shot-foot { display: none; }
+}
+/* this scene: a town square with a clock tower, from 6 am to 6 am */
+.timelapse { --tl-dawn: #ecd9cc; --tl-day: var(--sky); --tl-dusk: #e5c4ab; --tl-night: #1b2230; }
+@media (prefers-color-scheme: dark) {
+  .timelapse { --tl-dawn: #3a3640; --tl-day: #2c3a4e; --tl-dusk: #47393a; --tl-night: #10151e; }
+}
+.tl-sky { position: absolute; inset: 0; }
+.tl-orbit { position: absolute; left: 14%; width: 72%; aspect-ratio: 1; top: 72%; translate: 0 -50%; }
+.sun, .moon { position: absolute; left: 50%; width: 9%; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; }
+.sun { top: 0; background: var(--warm); }
+.moon { top: 100%; background: var(--paper); box-shadow: inset -4px -2px 0 0 var(--far); }
+.stars { position: absolute; inset: 0 0 40% 0; background-image: radial-gradient(1px 1px at 12% 20%, var(--paper) 99%, transparent), radial-gradient(1px 1px at 34% 12%, var(--paper) 99%, transparent), radial-gradient(1px 1px at 58% 26%, var(--paper) 99%, transparent), radial-gradient(1px 1px at 76% 10%, var(--paper) 99%, transparent), radial-gradient(1px 1px at 90% 30%, var(--paper) 99%, transparent); }
+.frame .town { position: absolute; inset: 0; }
+.cloud { top: 14%; width: 18%; height: auto; }
+.cloud.two { top: 28%; width: 12%; animation-delay: calc(var(--tl-dur) / -4); }
+.frame .cloud { height: auto; }
+.c-shadow { fill: var(--ink); }
+/* the clock: a small dial in the corner that runs with the day */
+.dial { position: absolute; z-index: 4; top: 12px; left: 16px; display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--demo-ink); }
+.frame .dial svg { width: 26px; height: 26px; }
+.dial-face { fill: var(--demo-paper); stroke: var(--demo-ink); stroke-width: 1.5; }
+.dial-hand { stroke: var(--demo-ink); stroke-width: 2; stroke-linecap: round; }
+.dial-hand.tl-minute { stroke: var(--demo-red); stroke-width: 1.4; }
+.tower-hands { fill: none; stroke: #2b3443; stroke-width: 1.6; stroke-linecap: round; }
+/* night falls over the town as a tint; the lit windows sit above it */
+.tint { position: absolute; inset: 0; background: var(--tl-night); }
+.tint.tl-night { animation-name: tl-tint; }
+@keyframes tl-tint {
+  0%, 100% { opacity: .2; }
+  6%, 44%  { opacity: 0; }
+  56%, 92% { opacity: .5; }
+}
+@media (max-width: 420px) { .shot-foot span:first-child { display: none; } }

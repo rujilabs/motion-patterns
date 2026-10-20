@@ -1,0 +1,17 @@
+{
+  "name": "Orbit",
+  "slug": "orbit",
+  "kind": "pattern",
+  "summary": "The camera circles the subject in real CSS 3D: a perspective frame and a rig that turns on the subject. An arc shot by default, a full turn with .orbit-full.",
+  "category": "camera",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

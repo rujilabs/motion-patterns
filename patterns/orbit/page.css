@@ -1,0 +1,71 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+/* the shot: a sheet holding a 16:10 frame and a caption bar; it shrinks to fit short stages */
+.shot { width: min(600px, 100%, calc((100svh - 128px) * 1.6)); padding: 10px; display: grid; gap: 10px; }
+.frame { position: relative; aspect-ratio: 16 / 10; min-height: 0; border: 1px solid var(--demo-line); border-radius: 4px; background: var(--demo-paper); }
+/* viewfinder marks in blue pencil: four corners and a small centre cross, drawn over the shot */
+.vf {
+  --c: var(--demo-blue);
+  position: absolute; inset: 10px; z-index: 5; pointer-events: none;
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 1px 14px no-repeat;
+}
+.vf::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; translate: -50% -50%;
+  background:
+    linear-gradient(var(--c), var(--c)) 50% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 50% / 100% 1px no-repeat;
+}
+.shot-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 4px 2px; font-size: 13px; }
+.shot-bar strong { font-weight: 650; font-size: 14px; }
+/* a gallery floor, a plinth with a piece on it and four corner posts, all built from boxes */
+.orbit { background: linear-gradient(var(--demo-paper) 46%, color-mix(in srgb, var(--demo-paper), var(--demo-table) 60%) 46%); }
+.floor {
+  position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px;
+  transform: translateY(60px) rotateX(90deg);
+  border: 1px solid var(--demo-line); background-color: var(--demo-paper);
+  background-image:
+    repeating-linear-gradient(0deg, var(--demo-line) 0 1px, transparent 1px 50px),
+    repeating-linear-gradient(90deg, var(--demo-line) 0 1px, transparent 1px 50px);
+  background-position: -1px -1px;
+}
+/* the path the camera travels, in blue pencil on the floor */
+.floor::after { content: ""; position: absolute; inset: 40px; border: 1px dashed var(--demo-blue); border-radius: 50%; }
+/* a box from six faces: set --w, --h, --d and place it with --x, --y, --z */
+.box {
+  position: absolute; left: 50%; top: 50%; transform-style: preserve-3d;
+  transform: translate3d(var(--x, 0px), var(--y, 0px), var(--z, 0px)) rotateY(var(--ry, 0deg));
+}
+.f {
+  position: absolute; left: calc(var(--w) / -2); top: calc(var(--h) / -2); width: var(--w); height: var(--h);
+  background: var(--demo-paper); border: 1px solid var(--demo-ink);
+}
+.fr { transform: translateZ(calc(var(--d) / 2)); }
+.bk { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); }
+.lf, .rt { width: var(--d); left: calc(var(--d) / -2); background: color-mix(in srgb, var(--demo-paper), var(--demo-ink) 7%); }
+.lf { transform: rotateY(-90deg) translateZ(calc(var(--w) / 2)); }
+.rt { transform: rotateY(90deg) translateZ(calc(var(--w) / 2)); }
+.tp, .bt { height: var(--d); top: calc(var(--d) / -2); }
+.tp { transform: rotateX(90deg) translateZ(calc(var(--h) / 2)); }
+.bt { transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); }
+.plinth { --w: 64px; --h: 70px; --d: 64px; --y: 25px; }
+.piece { --w: 38px; --h: 38px; --d: 38px; --y: -29px; --ry: 30deg; }
+.piece .fr { background: var(--demo-red); border-color: var(--demo-red); }
+.post { --w: 6px; --h: 44px; --d: 6px; --y: 38px; }
+.p1 { --x: -110px; --z: -110px; }
+.p2 { --x: 110px; --z: -110px; }
+.p3 { --x: -110px; --z: 110px; }
+.p4 { --x: 110px; --z: 110px; }
+/* the scene is drawn for a 600px frame; scale it down with the frame */
+.orbit-rig { scale: var(--fit, 1); }
+@media (max-width: 560px) { .orbit-rig { --fit: .62; } }
+@media (max-height: 420px) { .orbit-rig { --fit: .55; } }
+@media (max-width: 420px) {
+  .shot-bar .mute { display: none; }
+}

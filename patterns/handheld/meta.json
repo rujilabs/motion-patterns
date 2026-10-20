@@ -1,0 +1,17 @@
+{
+  "name": "Handheld",
+  "slug": "handheld",
+  "kind": "pattern",
+  "summary": "A small organic sway of the whole frame, as if the camera is held by hand: two loops of different lengths that never line up. Calm and walking variants, a pause toggle.",
+  "category": "camera",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

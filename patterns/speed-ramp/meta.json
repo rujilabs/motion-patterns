@@ -1,0 +1,16 @@
+{
+  "name": "Speed ramp",
+  "slug": "speed-ramp",
+  "kind": "pattern",
+  "summary": "An action speeds up, slows to a crawl at the key moment, then speeds up again. One keyframe curve drives a registered --ramp-t clock that every moving part reads.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

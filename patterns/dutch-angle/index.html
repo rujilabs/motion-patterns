@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dutch angle demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet dutch-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Dutch angle</h1>
+        <p class="shot-sub">Someone is waiting at the end of the lane</p>
+      </div>
+      <label class="dutch-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame dutch-frame" role="img" aria-label="A narrow back lane with doors on both walls and one light at the far end, where a figure stands. The frame tilts to a canted angle, holds, and levels again.">
+      <svg class="dutch" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path class="c-sky" d="M0 0 H320 L188 64 H132 Z"/>
+        <path class="c-mid" d="M0 0 L132 64 V138 L0 200 Z"/>
+        <path class="c-far" d="M320 0 L188 64 V138 L320 200 Z"/>
+        <path class="c-near" d="M0 200 L132 138 H188 L320 200 Z"/>
+        <rect class="c-paper" x="132" y="64" width="56" height="74"/>
+        <path class="wall-line" d="M0 40 L132 82 M0 80 L132 100 M0 120 L132 118 M0 160 L132 130 M320 40 L188 82 M320 80 L188 100 M320 120 L188 118 M320 160 L188 130"/>
+        <path class="c-ink" d="M30 70 L66 84 V160 L30 176 Z"/>
+        <path class="c-ink" d="M98 98 L114 104 V140 L98 146 Z"/>
+        <path class="c-ink" d="M286 66 L252 80 V162 L286 178 Z"/>
+        <path class="c-ink" d="M224 92 L208 98 V142 L224 148 Z"/>
+        <rect class="c-warm" x="152" y="70" width="16" height="6" rx="1"/>
+        <path class="glow" d="M136 138 H184 L200 152 H120 Z"/>
+        <circle class="c-ink" cx="160" cy="106" r="5"/>
+        <path class="c-ink" d="M153 138 L154 114 Q160 110 166 114 L167 138 Z"/>
+      </svg>
+      <span class="level" aria-hidden="true"></span>
+      <span class="cant num" aria-hidden="true">10&deg; cant</span>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Tilts in, holds, levels out</span>
+      <span class="num">35 mm, handheld rig</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

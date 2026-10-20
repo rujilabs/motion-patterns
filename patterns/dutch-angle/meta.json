@@ -1,0 +1,18 @@
+{
+  "name": "Dutch angle",
+  "slug": "dutch-angle",
+  "kind": "pattern",
+  "summary": "The frame rolls to a canted angle to signal tension, holds, and levels again. It scales while it turns so no corner shows. Loop, roll once on view, or cant on hover.",
+  "category": "camera",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

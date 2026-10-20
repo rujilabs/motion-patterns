@@ -1,0 +1,40 @@
+/*
+ * rack-focus: focus moves from a near layer to a far one. Two stacked layers swap blur, and the
+ * layer coming into focus grows by 2%, the small size change a real lens shows when it refocuses.
+ * Put .rack on the frame, .rack-near on the front layer and .rack-far on the back one.
+ */
+.rack { --rack-blur: 4px; --rack-dur: 7s; position: relative; overflow: clip; }
+.rack-near, .rack-far { animation: var(--rack-dur) var(--ease-inout) infinite; }
+.rack-near { animation-name: rack-near; }
+.rack-far { animation-name: rack-far; }
+/* each step eases on its own: hold near, pull to far, hold far, pull back */
+@keyframes rack-near {
+  0%, 35%  { filter: none; }
+  50%, 85% { filter: blur(var(--rack-blur)); }
+  100%     { filter: none; }
+}
+@keyframes rack-far {
+  0%, 35%  { filter: blur(var(--rack-blur)); transform: none; }
+  50%, 85% { filter: none; transform: scale(1.02); }
+  100%     { filter: blur(var(--rack-blur)); transform: none; }
+}
+
+/* rack-once: on the frame instead of the loop. One pull from near to far when play.js adds .go. */
+.rack-once .rack-near { animation: none; filter: blur(var(--rack-blur)); }
+.rack-once .rack-far { animation: none; filter: none; transform: scale(1.02); }
+.js .rack-once .rack-near { animation: rack-pull-near calc(var(--dur-slow) * 1.6) var(--ease-inout) both paused; }
+.js .rack-once .rack-far { animation: rack-pull-far calc(var(--dur-slow) * 1.6) var(--ease-inout) both paused; }
+.js .rack-once.go .rack-near, .js .go .rack-once .rack-near,
+.js .rack-once.go .rack-far, .js .go .rack-once .rack-far { animation-play-state: running; }
+@keyframes rack-pull-near { from { filter: none; } to { filter: blur(var(--rack-blur)); } }
+@keyframes rack-pull-far { from { filter: blur(var(--rack-blur)); transform: none; } to { filter: none; transform: scale(1.02); } }
+
+/* pause: a checkbox in .rack-pause anywhere inside a .rack-group stops everything in the group */
+.rack-group:has(.rack-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no pull: the far subject is in focus and the near one is soft, as at the end of the move */
+  .rack-near, .js .rack-once .rack-near { animation: none; filter: blur(var(--rack-blur)); }
+  .rack-far, .js .rack-once .rack-far { animation: none; filter: none; transform: none; }
+  .rack-pause { display: none; }
+}

@@ -1,0 +1,27 @@
+/*
+ * crane up: the camera rises and tips down as it goes, so a scene hidden behind something at
+ * eye level opens up below it. Built in CSS 3D: .crane-up is the frame and the lens
+ * (perspective); .crane-up-rig holds the scene, with the ground laid flat in it, and turns about
+ * the ground's centre (--crane-origin) while it lifts.
+ */
+.crane-up { position: relative; overflow: clip; perspective: var(--crane-lens, 600px); }
+.crane-up-rig {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: var(--crane-origin, 50% 50%);
+  animation: crane-up var(--crane-dur, 10s) var(--ease-inout) infinite alternate both;
+}
+@keyframes crane-up {
+  0%, 10% { transform: translateY(0) rotateX(0deg); }
+  90%, 100% { transform: translateY(var(--crane-lift, 0px)) rotateX(var(--crane-tilt, -55deg)); }
+}
+
+/* a checkbox anywhere inside .crane-up-group pauses the move (it runs longer than 5 seconds) */
+.crane-up-group:has(.crane-up-pause :checked) .crane-up-rig { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no move: the view from the top of the crane */
+  .crane-up-rig { animation: none; transform: translateY(var(--crane-lift, 0px)) rotateX(var(--crane-tilt, -55deg)); }
+  .crane-up-pause { display: none; }
+}

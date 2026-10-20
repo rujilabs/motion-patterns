@@ -1,0 +1,28 @@
+/*
+ * tilt: the camera turns up or down on the spot, so a tall scene slides through a fixed frame.
+ * .tilt is the frame; .tilt-scene inside it is --tilt-span frames tall (default 3).
+ * The default tilts up: it starts at the foot of the scene and ends at the top.
+ */
+/* min-height: 0 keeps a frame sized by aspect-ratio from growing to the scene's height */
+.tilt { position: relative; overflow: clip; min-height: 0; }
+.tilt-scene {
+  width: 100%;
+  height: calc(var(--tilt-span, 3) * 100%);
+  animation: tilt var(--tilt-dur, 10s) var(--ease-inout) infinite alternate both;
+}
+@keyframes tilt {
+  0%, 12% { transform: translateY(calc((1 / var(--tilt-span, 3) - 1) * 100%)); }
+  88%, 100% { transform: translateY(0); }
+}
+/* start at the top and tilt down */
+.tilt-down .tilt-scene { animation-direction: alternate-reverse; }
+
+/* a checkbox anywhere inside .tilt-group pauses the move (it runs longer than 5 seconds) */
+.tilt-group:has(.tilt-pause :checked) .tilt-scene { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no move: the frame rests where the tilt would end */
+  .tilt-scene { animation: none; transform: none; }
+  .tilt-down .tilt-scene { transform: translateY(calc((1 / var(--tilt-span, 3) - 1) * 100%)); }
+  .tilt-pause { display: none; }
+}

@@ -1,0 +1,27 @@
+/*
+ * slow-motion: the same action twice, at normal speed and then slowed down. The action is your own
+ * CSS animation inside .slowmo-scene; slowmo.js only changes its playback rate pass by pass, so the
+ * slow pass is exactly the same movement, not a second animation that could drift from the first.
+ * Every animation in the scene must share one length and start together.
+ */
+.slowmo-rate {
+  display: inline-block;
+  min-width: 4.5ch;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out);
+}
+/* while the slow pass runs, the rate badge turns to the accent colour */
+.slowmo[data-speed="slow"] .slowmo-rate { background: var(--slowmo-accent, #ee3b2b); color: #fff; }
+
+/* pause: a checkbox in .slowmo-pause anywhere inside a .slowmo-group stops everything in it */
+.slowmo-group:has(.slowmo-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script does not run; the scene shows its resting pose, a single still frame */
+  .slowmo .slowmo-scene * { animation: none; }
+  .slowmo-rate { transition: none; }
+  .slowmo-rate, .slowmo-pause { display: none; }
+}

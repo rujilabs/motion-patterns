@@ -1,0 +1,28 @@
+/*
+ * dolly zoom: the camera travels back while the lens zooms in by the same amount (or the other
+ * way round). The subject keeps its size; everything behind it swells or shrinks with distance.
+ * The result is the uneasy stretch of space known as the vertigo effect.
+ * .dolly-zoom is the frame. Leave the subject as a plain child: it does not move. Each
+ * .dolly-zoom-layer behind it sets --depth (0 at the subject, about 1 at the far end) and
+ * scales about the vanishing point to 1 + --dz-amount x --depth.
+ */
+.dolly-zoom { position: relative; overflow: clip; }
+.dolly-zoom-layer {
+  position: absolute;
+  inset: 0;
+  transform-origin: var(--dz-origin, 50% 50%);
+  animation: dolly-zoom var(--dz-dur, 8s) var(--ease-inout) infinite alternate both;
+}
+@keyframes dolly-zoom {
+  0%, 12% { scale: 1; }
+  88%, 100% { scale: calc(1 + var(--dz-amount, 1) * var(--depth, 0)); }
+}
+
+/* a checkbox anywhere inside .dolly-zoom-group pauses the move (it runs longer than 5 seconds) */
+.dolly-zoom-group:has(.dolly-zoom-pause :checked) .dolly-zoom-layer { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no move: the stretched end of the shot */
+  .dolly-zoom-layer { animation: none; scale: calc(1 + var(--dz-amount, 1) * var(--depth, 0)); }
+  .dolly-zoom-pause { display: none; }
+}

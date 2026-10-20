@@ -1,0 +1,63 @@
+/*
+ * time-lapse: a whole day compressed into one loop (16s by default). Every part runs on the same
+ * length, so they stay in step: 0% is dawn at 6 am, 25% noon, 50% dusk, 75% midnight.
+ *   .tl-sky     background colour through dawn, day, dusk and night
+ *   .tl-orbit   a square centred on the horizon that turns once; put the sun at its top, a moon at its bottom
+ *   .tl-night   things that only show at night (lit windows, stars)
+ *   .tl-shadow  a shadow that swings from one side to the other and shortens at noon (SVG or HTML)
+ *   .tl-hour, .tl-minute  clock hands: two turns and 24 turns a loop
+ *   .tl-drift   clouds or traffic that cross the frame twice a loop
+ */
+.timelapse {
+  --tl-dur: 16s;
+  --tl-dawn: #f0d9c8; --tl-day: #dbe7f4; --tl-dusk: #e9c3a6; --tl-night: #1d2433;
+  position: relative;
+  overflow: clip;
+}
+.tl-sky { background: var(--tl-day); animation: tl-sky var(--tl-dur) linear infinite; }
+@keyframes tl-sky {
+  0%, 100% { background-color: var(--tl-dawn); }
+  8%, 42%  { background-color: var(--tl-day); }
+  50%      { background-color: var(--tl-dusk); }
+  58%, 92% { background-color: var(--tl-night); }
+}
+.tl-orbit { animation: tl-orbit var(--tl-dur) linear infinite; }
+@keyframes tl-orbit { from { rotate: -90deg; } to { rotate: 270deg; } }
+.tl-night { opacity: 0; animation: tl-night var(--tl-dur) linear infinite; }
+@keyframes tl-night {
+  0%, 100% { opacity: .3; }
+  6%, 44%  { opacity: 0; }
+  56%, 92% { opacity: 1; }
+}
+.tl-shadow {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  transform: scaleY(.45);
+  animation: tl-shadow var(--tl-dur) linear infinite;
+}
+@keyframes tl-shadow {
+  0%, 100% { transform: skewX(62deg) scaleY(1.4); opacity: 0; }
+  4%  { opacity: .5; }
+  25% { transform: skewX(0deg) scaleY(.45); }
+  46% { opacity: .5; }
+  50% { transform: skewX(-62deg) scaleY(1.4); opacity: 0; }
+}
+.tl-hour, .tl-minute { transform-box: view-box; transform-origin: 50% 50%; }
+.tl-hour { animation: tl-hour var(--tl-dur) linear infinite; }
+.tl-minute { animation: tl-minute calc(var(--tl-dur) / 24) linear infinite; }
+@keyframes tl-hour { from { rotate: 180deg; } to { rotate: 900deg; } }
+@keyframes tl-minute { to { rotate: 360deg; } }
+.tl-drift { position: absolute; left: -25%; animation: tl-drift calc(var(--tl-dur) / 2) linear infinite; }
+@keyframes tl-drift { to { left: 105%; } }
+
+/* pause: a checkbox in .tl-pause anywhere inside a .tl-group stops everything in it */
+.tl-group:has(.tl-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* one still frame at 10 am */
+  .tl-sky, .tl-orbit, .tl-night, .tl-shadow, .tl-hour, .tl-minute, .tl-drift { animation: none; }
+  .tl-orbit { rotate: -30deg; }
+  .tl-shadow { opacity: .5; transform: skewX(30deg) scaleY(.6); }
+  .tl-hour { rotate: 300deg; }
+  .tl-pause { display: none; }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Crane up",
+  "slug": "crane-up",
+  "kind": "pattern",
+  "summary": "The camera rises and tips down to show a scene from above that was hidden at eye level. Real CSS 3D: a perspective frame and a rig that lifts and turns about the ground.",
+  "category": "camera",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

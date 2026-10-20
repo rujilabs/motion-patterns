@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speed ramp demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet ramp-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Speed ramp</h1>
+        <p class="shot-sub">Fast in, a crawl over the gap, fast out</p>
+      </div>
+      <label class="ramp-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame ramp" role="img" aria-label="A skater rides fast toward a gap between two ledges, slows almost to a stop at the top of the jump, then lands and speeds away.">
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="c-sky" width="320" height="200"/>
+        <path class="c-far" d="M0 140 V96 H34 V70 H70 V104 H102 V84 H150 V60 H176 V92 H214 V76 H258 V100 H292 V80 H320 V140 Z"/>
+        <rect class="c-mid" x="0" y="140" width="136" height="60"/>
+        <rect class="c-mid" x="184" y="140" width="136" height="60"/>
+        <rect class="c-ink" x="136" y="146" width="48" height="54" opacity=".25"/>
+        <rect class="c-near" x="0" y="138" width="136" height="4"/>
+        <rect class="c-near" x="184" y="138" width="136" height="4"/>
+      </svg>
+      <span class="skater ramp-x" aria-hidden="true">
+        <svg viewBox="0 0 32 44"><circle class="c-ink" cx="17" cy="6" r="4.5"/><path class="c-ink" d="M12 13 Q17 10 22 13 L23 28 L27 36 H23 L19 30 L15 36 H10 L13 28 Z"/><path class="arm" d="M12 15 L5 22 M22 15 L29 20"/><rect class="c-accent" x="3" y="37" width="26" height="3" rx="1.5"/><circle class="c-ink" cx="8" cy="42" r="2"/><circle class="c-ink" cx="24" cy="42" r="2"/></svg>
+      </span>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="curve" aria-hidden="true">
+      <svg viewBox="0 0 200 44" preserveAspectRatio="none">
+        <path class="curve-line" d="M0 6 L8 6.5 L16 8.1 L24 10.6 L32 13.9 L40 17.8 L48 22 L56 26.2 L64 30.3 L72 33.9 L80 36.8 L88 38.9 L96 40 L104 40 L112 38.9 L120 36.8 L128 33.9 L136 30.3 L144 26.2 L152 22 L160 17.8 L168 13.9 L176 10.6 L184 8.1 L192 6.5 L200 6"/>
+        <path class="curve-key" d="M100 0 V44"/>
+      </svg>
+      <span class="curve-label l">fast</span>
+      <span class="curve-label k">key moment</span>
+      <span class="curve-label r">fast</span>
+      <span class="playhead"></span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

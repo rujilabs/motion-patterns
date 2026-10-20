@@ -1,0 +1,36 @@
+/*
+ * tracking shot: the camera travels beside a moving subject. The subject holds its place in the
+ * frame while the world streams past behind it: near layers fast, far layers slow.
+ * .tracking-shot is the frame. Each .tracking-shot-layer holds its picture twice side by side
+ * (two equal children) and slides one copy width per --track-dur, so the loop has no seam.
+ * .tracking-shot-subject adds a small ride bob; .tracking-shot-spin turns wheels (SVG groups).
+ */
+.tracking-shot { position: relative; overflow: clip; }
+.tracking-shot-layer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: flex;
+  width: 200%;
+  animation: tracking-shot var(--track-dur, 8s) linear infinite;
+}
+.tracking-shot-layer > * { flex: none; width: 50%; height: 100%; }
+@keyframes tracking-shot { to { transform: translateX(-50%); } }
+/* the subject travels to the right; .tracking-shot-left sends the world the other way */
+.tracking-shot-left .tracking-shot-layer { animation-direction: reverse; }
+
+.tracking-shot-subject { animation: tracking-shot-bob var(--track-bob, .5s) var(--ease-inout) infinite alternate; }
+@keyframes tracking-shot-bob { to { translate: 0 -1.5px; } }
+.tracking-shot-spin { transform-box: fill-box; transform-origin: center; animation: tracking-shot-spin var(--track-spin, 1s) linear infinite; }
+@keyframes tracking-shot-spin { to { rotate: 1turn; } }
+.tracking-shot-left .tracking-shot-spin { animation-direction: reverse; }
+
+/* a checkbox anywhere inside .tracking-shot-group pauses everything (it never stops on its own) */
+.tracking-shot-group:has(.tracking-shot-pause :checked) :is(.tracking-shot-layer, .tracking-shot-subject, .tracking-shot-spin) {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still frame: the subject in place, the world at rest */
+  .tracking-shot-layer, .tracking-shot-subject, .tracking-shot-spin { animation: none; }
+  .tracking-shot-pause { display: none; }
+}

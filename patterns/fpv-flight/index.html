@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPV flight demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet fpv-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">FPV flight</h1>
+        <p class="shot-sub">Low over the fields, following the farm road</p>
+      </div>
+      <label class="fpv-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame fpv" role="img" aria-label="A low, fast flight along a road through fields, with trees rushing past on both sides. The view banks left, levels, then banks right.">
+      <div class="fpv-world" aria-hidden="true">
+        <svg class="hills" viewBox="0 0 320 40" preserveAspectRatio="none"><path class="c-far" d="M0 40 V26 C40 14 70 18 110 26 C150 12 190 10 230 22 C260 14 290 16 320 24 V40 Z"/><path class="c-mid" d="M0 40 V34 C60 28 120 30 170 34 C220 28 280 30 320 34 V40 Z"/></svg>
+        <div class="fpv-ground"></div>
+        <span class="fpv-pass p1"><svg viewBox="0 0 22 34" aria-hidden="true"><path class="c-near" d="M11 0 L21 24 H1 Z"/><rect class="c-ink" x="9.5" y="24" width="3" height="10"/></svg></span>
+        <span class="fpv-pass p2"><svg viewBox="0 0 22 34" aria-hidden="true"><path class="c-near" d="M11 0 L21 24 H1 Z"/><rect class="c-ink" x="9.5" y="24" width="3" height="10"/></svg></span>
+        <span class="fpv-pass p3"><svg viewBox="0 0 22 34" aria-hidden="true"><path class="c-near" d="M11 0 L21 24 H1 Z"/><rect class="c-ink" x="9.5" y="24" width="3" height="10"/></svg></span>
+        <span class="fpv-pass p4"><svg viewBox="0 0 22 34" aria-hidden="true"><path class="c-near" d="M11 0 L21 24 H1 Z"/><rect class="c-ink" x="9.5" y="24" width="3" height="10"/></svg></span>
+        <span class="fpv-pass p5"><svg viewBox="0 0 22 34" aria-hidden="true"><path class="c-near" d="M11 0 L21 24 H1 Z"/><rect class="c-ink" x="9.5" y="24" width="3" height="10"/></svg></span>
+        <span class="fpv-pass p6"><svg viewBox="0 0 22 34" aria-hidden="true"><path class="c-near" d="M11 0 L21 24 H1 Z"/><rect class="c-ink" x="9.5" y="24" width="3" height="10"/></svg></span>
+      </div>
+      <div class="hud" aria-hidden="true">
+        <span class="hud-l num">ALT 12 m</span>
+        <span class="hud-r num">74 km/h</span>
+        <span class="hud-cross"></span>
+      </div>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Rolls into each turn, then levels</span>
+      <span class="num">150 degree lens</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

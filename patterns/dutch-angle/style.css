@@ -1,0 +1,36 @@
+/*
+ * dutch-angle: the frame rolls to a canted angle, which reads as unease, then rolls back.
+ * The layer scales up while it turns so the corners of the frame never show what is behind it.
+ * For a 16:10 frame, 10 degrees needs 128%; work out other sizes as cos(a) + (width / height) * sin(a).
+ * Put .dutch on the layer that turns, inside a parent that clips (.dutch-frame).
+ */
+.dutch-frame { overflow: clip; }
+.dutch, .dutch-in, .dutch-hover { --dutch-angle: -10deg; --dutch-scale: 1.28; }
+.dutch { animation: dutch var(--dutch-dur, 6s) var(--ease-inout) infinite; }
+@keyframes dutch {
+  0%, 20%  { transform: none; }
+  40%, 75% { transform: rotate(var(--dutch-angle)) scale(var(--dutch-scale)); }
+  95%, 100% { transform: none; }
+}
+
+/* dutch-in: rolls once and stays canted, when play.js adds .go. Without the script it starts canted. */
+.dutch-in { transform: rotate(var(--dutch-angle)) scale(var(--dutch-scale)); }
+.js .dutch-in { animation: dutch-in calc(var(--dur-slow) * 1.6) var(--ease-inout) both paused; }
+.js .go .dutch-in, .js .dutch-in.go { animation-play-state: running; }
+@keyframes dutch-in { from { transform: none; } }
+
+/* dutch-hover: level at rest, cants while the frame is hovered or holds focus */
+.dutch-hover { transition: transform var(--dur-slow) var(--ease-inout); }
+.dutch-frame:hover .dutch-hover,
+.dutch-frame:focus-within .dutch-hover { transform: rotate(var(--dutch-angle)) scale(var(--dutch-scale)); }
+
+/* pause: a checkbox in .dutch-pause anywhere inside a .dutch-group stops everything in it */
+.dutch-group:has(.dutch-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the loop stays level; the one-way and hover variants show their canted frame without turning */
+  .dutch { animation: none; }
+  .js .dutch-in { animation: none; }
+  .dutch-hover { transition: none; }
+  .dutch-pause { display: none; }
+}

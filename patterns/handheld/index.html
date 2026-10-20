@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handheld demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet handheld-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Handheld</h1>
+        <p class="shot-sub">Evening at the harbour, filmed from the pier</p>
+      </div>
+      <label class="handheld-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame handheld-frame" role="img" aria-label="A small harbour at evening: a lighthouse on the breakwater, a moored boat and low hills. The frame sways gently like a handheld camera.">
+      <svg class="handheld" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="c-sky" width="320" height="200"/>
+        <circle class="c-warm" cx="226" cy="74" r="16"/>
+        <path class="c-far" d="M0 112 C40 92 80 96 120 108 C160 96 200 88 250 102 C280 94 300 98 320 104 V130 H0 Z"/>
+        <rect class="c-sea" x="0" y="124" width="320" height="76"/>
+        <path class="sea-line" d="M20 140 H70 M140 136 H200 M230 150 H300 M40 166 H120 M170 176 H260"/>
+        <path class="c-near" d="M190 124 H320 V134 H196 Z"/>
+        <path class="c-paper" d="M262 124 L266 74 H276 L280 124 Z"/>
+        <rect class="c-red" x="265" y="92" width="14" height="6"/>
+        <rect class="c-red" x="264" y="108" width="15" height="6"/>
+        <rect class="c-ink" x="263" y="66" width="16" height="9" rx="1"/>
+        <rect class="c-warm" x="266" y="68" width="10" height="5"/>
+        <path class="c-paper" d="M62 158 H136 L128 172 H70 Z"/>
+        <rect class="c-ink" x="84" y="146" width="22" height="12"/>
+        <rect class="c-ink" x="98" y="110" width="2" height="48"/>
+        <path class="c-paper" d="M100 112 L124 150 H100 Z"/>
+        <rect class="c-near" x="0" y="186" width="320" height="14"/>
+      </svg>
+      <p class="rec" aria-hidden="true"><span class="rec-dot"></span>REC</p>
+      <p class="rec-time num" aria-hidden="true">00:14:07</p>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Held by hand, no rig</span>
+      <span class="num">28 mm, 1/50 s</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

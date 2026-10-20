@@ -1,0 +1,19 @@
+{
+  "name": "Rack focus",
+  "slug": "rack-focus",
+  "kind": "pattern",
+  "summary": "Focus pulls from a near layer to a far one: two stacked layers swap blur, with the small size change of a real lens. A loop with a pause toggle, or one pull when it scrolls into view.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

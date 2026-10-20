@@ -1,0 +1,32 @@
+/*
+ * orbit: the camera circles the subject, always looking at it. Built in real CSS 3D:
+ * .orbit is the frame and the lens (perspective); .orbit-rig holds the 3D scene with its centre
+ * on the subject and turns around the vertical axis. The default is an arc shot that swings
+ * from --orbit-from to --orbit-to and back; .orbit-full goes all the way round.
+ */
+.orbit { position: relative; overflow: clip; perspective: var(--orbit-lens, 800px); }
+.orbit-rig {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: orbit var(--orbit-dur, 12s) var(--ease-inout) infinite alternate both;
+}
+@keyframes orbit {
+  from { transform: rotateX(var(--orbit-pitch, -14deg)) rotateY(var(--orbit-from, -40deg)); }
+  to { transform: rotateX(var(--orbit-pitch, -14deg)) rotateY(var(--orbit-to, 40deg)); }
+}
+/* a full turn at an even speed */
+.orbit-full .orbit-rig { animation: orbit-full var(--orbit-dur, 20s) linear infinite; }
+@keyframes orbit-full {
+  from { transform: rotateX(var(--orbit-pitch, -14deg)) rotateY(0deg); }
+  to { transform: rotateX(var(--orbit-pitch, -14deg)) rotateY(-360deg); }
+}
+
+/* a checkbox anywhere inside .orbit-group pauses the move (it runs longer than 5 seconds) */
+.orbit-group:has(.orbit-pause :checked) .orbit-rig { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still three-quarter view */
+  .orbit-rig, .orbit-full .orbit-rig { animation: none; transform: rotateX(var(--orbit-pitch, -14deg)) rotateY(var(--orbit-from, -40deg)); }
+  .orbit-pause { display: none; }
+}

@@ -1,0 +1,28 @@
+/*
+ * pan: the camera turns on the spot, so a wide scene slides sideways through a fixed frame.
+ * .pan is the frame; .pan-scene inside it is --pan-span frames wide (default 3). Every part of the
+ * scene moves at the same speed: that is what tells a pan apart from a tracking shot.
+ * The move holds still at both ends, so the eye can settle before it swings back.
+ */
+.pan { position: relative; overflow: clip; }
+.pan-scene {
+  width: calc(var(--pan-span, 3) * 100%);
+  height: 100%;
+  animation: pan var(--pan-dur, 10s) var(--ease-inout) infinite alternate both;
+}
+@keyframes pan {
+  0%, 12% { transform: translateX(0); }
+  88%, 100% { transform: translateX(calc((1 / var(--pan-span, 3) - 1) * 100%)); }
+}
+/* start on the right and pan left */
+.pan-reverse .pan-scene { animation-direction: alternate-reverse; }
+
+/* a checkbox anywhere inside .pan-group pauses the move (it runs longer than 5 seconds) */
+.pan-group:has(.pan-pause :checked) .pan-scene { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no move: the frame rests where the pan would end */
+  .pan-scene { animation: none; transform: translateX(calc((1 / var(--pan-span, 3) - 1) * 100%)); }
+  .pan-reverse .pan-scene { transform: none; }
+  .pan-pause { display: none; }
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freeze frame demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="freeze.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet freeze-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Freeze frame</h1>
+        <p class="shot-sub">The last shot of the match, stopped in the air</p>
+      </div>
+      <label class="freeze-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame freeze" data-freeze data-freeze-at="0.55" data-freeze-hold="1600" role="img" aria-label="A player shoots from the left; the ball arcs toward the hoop. Just before it reaches the rim the picture freezes with a flash and a caption, Buzzer beater, then the ball drops through the net.">
+      <svg class="freeze-scene" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="c-sky" width="320" height="200"/>
+        <rect class="c-far" x="0" y="0" width="320" height="56"/>
+        <rect class="c-near" x="0" y="164" width="320" height="36"/>
+        <rect class="c-ink" x="0" y="164" width="320" height="1.5" opacity=".3"/>
+        <rect class="c-mid" x="286" y="40" width="6" height="124"/>
+        <rect class="board" x="262" y="42" width="8" height="52"/>
+        <path class="c-mid" d="M270 54 H288 V58 H270 Z"/>
+        <circle class="c-ink" cx="48" cy="104" r="7"/>
+        <path class="c-ink" d="M40 164 L42 122 Q48 114 54 122 L56 164 Z"/>
+        <path class="arm" d="M43 122 L52 98 M53 122 L60 100"/>
+        <g class="ball-x"><g class="ball-y"><g class="ball-spin">
+          <circle class="c-ball" cx="60" cy="120" r="8"/>
+          <path class="seam" d="M52 120 H68 M60 112 V128 M54.5 114 Q60 120 54.5 126 M65.5 114 Q60 120 65.5 126"/>
+        </g></g></g>
+        <path class="net" d="M234 80 L240 102 H260 L266 80 M240 80 L246 102 M250 80 V102 M260 80 L254 102 M237 90 H263"/>
+        <ellipse class="rim" cx="250" cy="80" rx="16" ry="3"/>
+      </svg>
+      <div class="freeze-flash" aria-hidden="true"></div>
+      <p class="freeze-label" aria-hidden="true"><strong>Buzzer beater</strong><span class="num">0.4 s on the clock</span></p>
+      <p class="score num" aria-hidden="true"><span>Home 61</span><span>Away 62</span><span class="clock">0:00.4</span></p>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Stops on the key frame, then runs on</span>
+      <span class="num">hold 1.6 s</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

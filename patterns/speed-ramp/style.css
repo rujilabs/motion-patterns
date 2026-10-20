@@ -1,0 +1,49 @@
+/*
+ * speed-ramp: one clock, --ramp-t, runs from 0 to 1 on a single keyframe curve: fast, a crawl at
+ * the key moment in the middle, then fast again. Anything inside .ramp that reads var(--ramp-t)
+ * (a position, a lift, a turn) follows the same ramp, so every part speeds up and slows together.
+ * The curve is t = u + .9 * sin(2 pi u) / (2 pi): speed 1.9 at the ends, 0.1 at the middle.
+ */
+@property --ramp-t {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+.ramp { animation: ramp var(--ramp-dur, 5s) linear infinite; }
+@keyframes ramp {
+  0%   { --ramp-t: 0; }
+  5%   { --ramp-t: .0943; }
+  10%  { --ramp-t: .1842; }
+  15%  { --ramp-t: .2659; }
+  20%  { --ramp-t: .3362; }
+  25%  { --ramp-t: .3932; }
+  30%  { --ramp-t: .4362; }
+  35%  { --ramp-t: .4659; }
+  40%  { --ramp-t: .4842; }
+  45%  { --ramp-t: .4943; }
+  50%  { --ramp-t: .5; }
+  55%  { --ramp-t: .5057; }
+  60%  { --ramp-t: .5158; }
+  65%  { --ramp-t: .5341; }
+  70%  { --ramp-t: .5638; }
+  75%  { --ramp-t: .6068; }
+  80%  { --ramp-t: .6638; }
+  85%  { --ramp-t: .7341; }
+  90%  { --ramp-t: .8158; }
+  95%  { --ramp-t: .9057; }
+  100% { --ramp-t: 1; }
+}
+/* ramp-x: a helper that carries an element across its positioned parent, from --ramp-from to --ramp-to */
+.ramp-x {
+  position: absolute;
+  left: calc(var(--ramp-from, 0%) + var(--ramp-t) * (var(--ramp-to, 100%) - var(--ramp-from, 0%)));
+}
+
+/* pause: a checkbox in .ramp-pause anywhere inside a .ramp-group stops everything in it */
+.ramp-group:has(.ramp-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still frame of the key moment, the middle of the ramp */
+  .ramp { animation: none; --ramp-t: .5; }
+  .ramp-pause { display: none; }
+}
