@@ -1,0 +1,25 @@
+{
+  "name": "Preloader",
+  "slug": "preloader",
+  "kind": "pattern",
+  "summary": "A full-screen loading screen with a count and a progress bar. When loading ends its contents leave first, the screen lifts away and the page rises in behind it.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-inout",
+    "--dur-quick",
+    "--dur-base",
+    "--dur-slow",
+    "--rise-y",
+    "--stagger"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

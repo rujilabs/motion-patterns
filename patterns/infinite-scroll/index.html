@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infinite scroll demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="infinite.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="board">
+  <header class="b-head">
+    <p class="hint">Scroll inside this frame. More notes load at the bottom.</p>
+    <h1>Team board</h1>
+    <p class="b-meta"><span>Riverside site office</span><span class="num">16 notes</span></p>
+  </header>
+  <section class="feed sheet" data-infinite aria-labelledby="feed-h">
+    <h2 id="feed-h" class="feed-h">Latest notes</h2>
+    <ul class="inf-list">
+      <li class="note inf-new"><span class="av" aria-hidden="true">NA</span><div><p class="note-top"><strong>Nadia Aziz</strong><time class="num">12 min</time></p><p class="note-text">Keys for the meeting room are now in the blue box by the door.</p></div></li>
+      <li class="note inf-new"><span class="av" aria-hidden="true">JW</span><div><p class="note-top"><strong>James Whitfield</strong><time class="num">40 min</time></p><p class="note-text">Site visit moved to 3 pm. Bring boots, the path is muddy.</p></div></li>
+      <li class="note inf-new"><span class="av" aria-hidden="true">RS</span><div><p class="note-top"><strong>Rani Subramaniam</strong><time class="num">1 h</time></p><p class="note-text">Uploaded the safety checklist, version 4.</p></div></li>
+      <li class="note inf-new"><span class="av" aria-hidden="true">CL</span><div><p class="note-top"><strong>Chen Lu</strong><time class="num">1 h</time></p><p class="note-text">Coffee machine is back. Please rinse the jug.</p></div></li>
+    </ul>
+    <div class="inf-foot">
+      <button class="inf-more" type="button">Load more notes</button>
+      <span class="inf-loader" aria-hidden="true"></span>
+      <p class="inf-end">You are all caught up.</p>
+      <p class="inf-status" role="status"></p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

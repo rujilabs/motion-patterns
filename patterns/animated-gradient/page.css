@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.promo { width: min(640px, 100%); overflow: clip; display: grid; }
+.hero {
+  --mesh-base: #eef3fb; --mesh-1: #3d7bf2; --mesh-2: #a9c6ff; --mesh-3: #dce7fd; --mesh-4: #f7b8ad;
+  min-height: min(340px, 62vh); display: grid; align-items: end; padding: 28px 24px;
+}
+.hero-copy { display: grid; gap: 10px; max-width: 420px; color: #14213d; }
+.eyebrow { font-size: 12px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(26px, 6.4vw, 38px); font-weight: 700; letter-spacing: -.025em; line-height: 1.05; }
+.sub { font-size: 15px; color: #33415c; }
+.cta a {
+  display: inline-block; padding: 9px 16px; border-radius: 999px; background: #14213d; color: #fff;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.promo-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; border-top: 1px solid var(--demo-line); font-size: 12px; }
+@media (prefers-color-scheme: dark) {
+  .hero { --mesh-base: #121a2b; --mesh-1: #2f5fd0; --mesh-2: #1f3c7a; --mesh-3: #27407a; --mesh-4: #8a3b3a; }
+  .hero-copy { color: #eef2fa; }
+  .sub { color: #b8c3d9; }
+  .cta a { background: #eef2fa; color: #121a2b; }
+}
+@media (max-width: 420px) {
+  .hero { padding: 20px 18px; }
+  .promo-foot .mute { display: none; }
+  .promo-foot { justify-content: flex-end; }
+}
+@media (max-height: 420px) {
+  .hero { min-height: 0; padding-block: 18px; }
+  .sub { display: none; }
+}

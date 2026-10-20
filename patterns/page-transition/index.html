@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page transition demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="page-transition.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <div class="app sheet">
+    <section id="pt-list" class="pt-page" aria-labelledby="list-h">
+      <header class="l-head">
+        <h1 id="list-h">Weekend trips</h1>
+        <p class="mute">Pick one to see the plan.</p>
+      </header>
+      <ul class="cards">
+        <li><button class="card" type="button" data-text="Two nights in a stilt house on the north beach. Kayaks at sunrise, grilled fish at the night stall, and a slow ferry home on Sunday.">
+          <span class="thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="180" fill="#cfe2ee"/><circle cx="240" cy="54" r="18" fill="#f6e3b4"/><rect y="110" width="320" height="70" fill="#5c86a8"/><path d="M0 124 h320 M0 146 h320" stroke="#7aa0bf" stroke-width="2"/><rect x="60" y="74" width="60" height="30" fill="#b9a68e"/><path d="M54 76 l36 -22 l36 22Z" fill="#c4553b"/><path d="M68 104 v20 M112 104 v20" stroke="#6d5a46" stroke-width="3"/></svg></span>
+          <span class="c-text"><span class="c-title">Pulau Seri</span><span class="c-meta">Island, 2 nights</span></span>
+        </button></li>
+        <li><button class="card" type="button" data-text="A cool weekend at 1,500 metres. Tea fields in the morning mist, a strawberry farm, and a long walk to the old radio mast.">
+          <span class="thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="180" fill="#dfe8e2"/><path d="M0 110 C60 70 120 100 180 76 S280 70 320 90 V180 H0Z" fill="#8fb39a"/><path d="M0 140 C80 110 160 140 240 124 S300 120 320 130 V180 H0Z" fill="#5f8a6c"/><path d="M20 150 C80 136 140 150 200 140 M30 166 C100 152 170 166 260 154" fill="none" stroke="#3f6249" stroke-width="2"/><rect x="250" y="40" width="3" height="50" fill="#5b6470"/></svg></span>
+          <span class="c-text"><span class="c-title">Bukit Kabus</span><span class="c-meta">Highlands, 2 nights</span></span>
+        </button></li>
+        <li><button class="card" type="button" data-text="One night in the old quarter. Shophouse cafes, the river walk at dusk, and the Saturday market for breakfast.">
+          <span class="thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="180" fill="#f1e6d2"/><rect y="150" width="320" height="30" fill="#d7c4a4"/><rect x="20" y="70" width="80" height="80" fill="#2f6b5a"/><rect x="100" y="56" width="90" height="94" fill="#e3a23b"/><rect x="190" y="74" width="100" height="76" fill="#3d6a8c"/><g fill="#f1e6d2"><rect x="36" y="90" width="16" height="22"/><rect x="66" y="90" width="16" height="22"/><rect x="120" y="76" width="18" height="24"/><rect x="152" y="76" width="18" height="24"/><rect x="210" y="94" width="18" height="22"/><rect x="250" y="94" width="18" height="22"/></g></svg></span>
+          <span class="c-text"><span class="c-title">Kota Lama</span><span class="c-meta">Old town, 1 night</span></span>
+        </button></li>
+      </ul>
+    </section>
+    <section id="pt-detail" class="pt-page" aria-labelledby="detail-h" hidden>
+      <button class="back" type="button">Back to trips</button>
+      <figure class="hero"></figure>
+      <h1 id="detail-h" tabindex="-1">Trip</h1>
+      <p class="d-meta mute"></p>
+      <p class="d-text"></p>
+      <p class="d-price"><span class="mute">From</span> <strong class="num">RM 420</strong></p>
+    </section>
+  </div>
+</main>
+</body>
+</html>

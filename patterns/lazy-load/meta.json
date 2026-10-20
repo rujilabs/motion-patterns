@@ -1,0 +1,22 @@
+{
+  "name": "Lazy loading",
+  "slug": "lazy-load",
+  "kind": "pattern",
+  "summary": "Blur-up lazy images: a colour placeholder with a soft loading light, then the real picture sharpens and fades in over it once it has loaded near the view.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout",
+    "--dur-quick",
+    "--dur-base",
+    "--dur-slow"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

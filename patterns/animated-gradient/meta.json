@@ -1,0 +1,17 @@
+{
+  "name": "Animated gradient",
+  "slug": "animated-gradient",
+  "kind": "pattern",
+  "summary": "A slow mesh gradient: four soft colour fields drift on long, unequal loops over a base colour. Transform only, no blur filter, with a CSS-only pause toggle.",
+  "category": "loop",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

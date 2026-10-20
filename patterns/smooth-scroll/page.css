@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+html { --smooth-offset: 64px; }
+.toc {
+  position: sticky; top: 0; z-index: 2;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px;
+  padding: 10px 16px; background: var(--demo-paper); border-bottom: 1px solid var(--demo-line);
+}
+.toc-h { font-size: 13px; font-weight: 650; }
+.toc-links { display: flex; gap: 4px; }
+.toc-links a {
+  display: block; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--demo-mute);
+  transition: color var(--dur-quick) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
+}
+.toc-links a:hover { color: var(--demo-ink); background: var(--demo-table); }
+.doc { display: grid; gap: 14px; max-width: 520px; margin: 0 auto; padding: 20px 16px 30vh; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.doc h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.lede { color: var(--demo-mute); }
+.part { --smooth-line: var(--demo-blue); --smooth-mark: var(--demo-blue-soft); display: grid; gap: 10px; margin-top: 30vh; padding: 14px 16px 16px; }
+.part:first-of-type { margin-top: 18px; }
+.part h2 { display: flex; align-items: baseline; gap: 10px; font-size: 19px; }
+.part .n { color: var(--demo-blue); font-size: 13px; font-weight: 700; }
+.part p { font-size: 14px; line-height: 1.55; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-top: 10px; border-top: 1px solid var(--demo-line); font-size: 13px; }
+.facts dt { color: var(--demo-mute); }
+.facts dd { margin: 0; font-weight: 600; }
+.top { margin-top: 20vh; text-align: center; font-size: 13px; }
+.top a { color: var(--demo-blue); font-weight: 600; }
+@media (max-width: 420px) {
+  html { --smooth-offset: 88px; }
+  .toc-h { width: 100%; }
+}

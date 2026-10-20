@@ -1,0 +1,39 @@
+/*
+ * lazy-load: blur-up. Each image sits on a placeholder (a two or three colour gradient you set
+ * with --lazy-ph, the cheapest stand-in for the real picture). lazy.js sets the real src only when
+ * the frame nears the viewport; once it has decoded, .is-loaded fades it in from a blur and a
+ * slight zoom, so the picture seems to come into focus over its own colours.
+ */
+.lazy {
+  position: relative;
+  overflow: clip;
+  background: var(--lazy-ph, #dfe3ea);
+}
+.lazy > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.js .lazy > img {
+  opacity: 0;
+  filter: blur(var(--lazy-blur, 14px));
+  scale: 1.06;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out),
+    scale var(--dur-slow) var(--ease-out);
+}
+.js .lazy.is-loaded > img { opacity: 1; filter: none; scale: 1; }
+
+/* while it waits: a soft light passes over the placeholder, so it reads as loading, not empty */
+.js .lazy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / .28) 50%, transparent 70%);
+  translate: -100% 0;
+  animation: lazy-wait 1.4s var(--ease-inout) infinite;
+}
+.js .lazy.is-loaded::after { animation: none; opacity: 0; }
+@keyframes lazy-wait { to { translate: 100% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .lazy > img { transition: opacity var(--dur-quick) linear; filter: none; scale: 1; }
+  .js .lazy::after { animation: none; display: none; }
+}

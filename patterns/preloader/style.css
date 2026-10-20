@@ -1,0 +1,57 @@
+/*
+ * preloader: a full-screen loading screen with a progress bar and a count. When loading ends the
+ * bar fills, the count and wordmark leave first, then the whole screen lifts away upward and the
+ * page under it rises in. preloader.js drives --preload (0 to 1) and the classes.
+ * Without JavaScript the screen never shows, so the page is never stuck behind it.
+ */
+.preloader { display: none; }
+.js .preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  background: var(--preloader-bg, #15181d);
+  color: var(--preloader-fg, #ffffff);
+  transition: translate var(--dur-slow) var(--ease-inout);
+}
+.preloader-bar {
+  width: var(--preloader-w, min(240px, 60vw));
+  height: 2px;
+  overflow: clip;
+  background: color-mix(in srgb, currentColor 20%, transparent);
+}
+.preloader-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  background: currentColor;
+  transform-origin: 0 50%;
+  scale: var(--preload, 0) 1;
+  transition: scale var(--dur-base) var(--ease-out);
+}
+
+/* done: the contents leave a beat ahead of the curtain, then the curtain lifts */
+.preloader > * { transition: opacity var(--dur-quick) var(--ease-in), translate var(--dur-quick) var(--ease-in); }
+.js .preloader.is-done > * { opacity: 0; translate: 0 -12px; }
+.js .preloader.is-done { translate: 0 -100%; transition-delay: var(--dur-quick); }
+.js .preloader.is-gone { visibility: hidden; }
+/* reset without playing anything backwards */
+.preloader.is-snap, .preloader.is-snap *, .preloader.is-snap ::after { transition: none; }
+
+/* the page under it: .preload-rise elements rise in as the curtain clears. Space them with --preload-i. */
+.js .preload-rise { opacity: 0; translate: 0 var(--rise-y); }
+.js.is-loaded .preload-rise {
+  opacity: 1;
+  translate: none;
+  transition: opacity var(--dur-slow) var(--ease-out), translate var(--dur-slow) var(--ease-out);
+  transition-delay: calc(var(--dur-quick) + var(--dur-slow) * .4 + var(--preload-i, 0) * var(--stagger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .preloader, .preloader > *, .preloader-bar::after, .js.is-loaded .preload-rise { transition: none; }
+  .js .preloader.is-done { translate: none; visibility: hidden; }
+  .js .preload-rise { opacity: 1; translate: none; }
+}

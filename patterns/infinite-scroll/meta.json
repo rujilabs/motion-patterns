@@ -1,0 +1,21 @@
+{
+  "name": "Infinite scroll",
+  "slug": "infinite-scroll",
+  "kind": "pattern",
+  "summary": "Near the end of a list a loader turns, then the next batch arrives one item after another. A Load more button stays as the keyboard path, and the end is announced.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base",
+    "--rise-y",
+    "--stagger"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

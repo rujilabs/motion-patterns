@@ -1,0 +1,20 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.journal { display: grid; gap: 20px; max-width: 520px; margin: 0 auto; padding: 24px 16px 30vh; }
+.j-head { display: grid; gap: 8px; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.j-head h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.j-meta { display: flex; justify-content: space-between; gap: 16px; color: var(--demo-mute); font-size: 13px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 14px; }
+.grid li { display: grid; align-content: start; gap: 6px; font-size: 13px; color: var(--demo-mute); }
+.grid li:nth-child(3n + 1) { grid-column: 1 / -1; }
+.lazy { border-radius: 6px; aspect-ratio: 400 / 260; }
+.grid li:nth-child(3n + 1) .lazy { aspect-ratio: 400 / 200; }
+/* each placeholder: the picture's two or three main colours, nothing more */
+.ph-hills { --lazy-ph: linear-gradient(#cfe0ee 45%, #8fb39a 65%, #5f8a6c); }
+.ph-harbour { --lazy-ph: linear-gradient(#e7ddd0 55%, #5c86a8 60%); }
+.ph-market { --lazy-ph: linear-gradient(#f1e6d2, #b88d5a 40%, #e2d2b6 60%, #d7c4a4); }
+.ph-dunes { --lazy-ph: linear-gradient(#f3d9b8 45%, #e2a96b 65%, #c9844a); }
+.ph-forest { --lazy-ph: linear-gradient(#dfe8e2 25%, #3f6b55 50%, #9fb8a5 80%); }
+.ph-city { --lazy-ph: linear-gradient(#d9dfef 30%, #5a6482 50%); }
+.end { color: var(--demo-mute); text-align: center; }
+@media (min-width: 900px) { .journal { max-width: 600px; } }

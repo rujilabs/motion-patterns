@@ -1,0 +1,33 @@
+/*
+ * page-transition: one view replaces another with the View Transitions API. The page crossfades
+ * (the old one leaves quickly, the new one rises in a beat later) while shared elements, such as a
+ * card's picture and title, morph from their old place and size to the new one.
+ * page-transition.js runs the swap and names the shared pair; browsers without the API get the
+ * rise-in on the new page only.
+ */
+
+/* multi-page sites: also run it on real same-origin navigations (put this on both pages) */
+@view-transition { navigation: auto; }
+
+::view-transition-group(*) {
+  animation-duration: var(--dur-base);
+  animation-timing-function: var(--ease-inout);
+}
+::view-transition-old(root) { animation: pt-out var(--dur-quick) var(--ease-in) both; }
+::view-transition-new(root) { animation: pt-in var(--dur-base) var(--ease-out) calc(var(--dur-quick) * .5) both; }
+@keyframes pt-out { to { opacity: 0; } }
+@keyframes pt-in { from { opacity: 0; translate: 0 calc(var(--rise-y) * .6); } }
+
+/* a picture that changes shape (a 4:3 thumb into a wide hero) crops instead of stretching */
+::view-transition-old(pt-media),
+::view-transition-new(pt-media) { height: 100%; object-fit: cover; overflow: clip; }
+
+/* fallback without the API: page-transition.js adds .pt-in to the new page */
+.pt-in { animation: pt-in var(--dur-base) var(--ease-out) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none; }
+  .pt-in { animation: none; }
+}

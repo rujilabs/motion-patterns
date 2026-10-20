@@ -1,0 +1,17 @@
+{
+  "name": "Smooth scroll",
+  "slug": "smooth-scroll",
+  "kind": "pattern",
+  "summary": "In-page links glide to their section with scroll-behavior, clear a sticky header with scroll-padding, then the target lights up and draws a key line so the eye knows where it landed.",
+  "category": "scroll",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

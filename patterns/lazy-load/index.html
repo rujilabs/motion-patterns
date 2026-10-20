@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lazy loading demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="lazy.js"></script>
+</head>
+<body>
+<main class="journal" data-lazy-margin="-12%">
+  <header class="j-head">
+    <p class="hint">Scroll inside this frame. Each picture loads as it arrives.</p>
+    <h1>Field notes, week 42</h1>
+    <p class="j-meta"><span>Six stops on the east coast</span><span class="num">6 photos</span></p>
+  </header>
+  <ul class="grid">
+    <li><figure class="lazy ph-hills" data-lazy-delay="500"><img data-src="hills.svg" width="400" height="260" alt="Green hills under a pale sun"></figure><p>Hills above the tea estate</p></li>
+    <li><figure class="lazy ph-harbour" data-lazy-delay="900"><img data-src="harbour.svg" width="400" height="260" alt="A red boat with a white sail in a blue harbour"></figure><p>Morning boat out of the harbour</p></li>
+    <li><figure class="lazy ph-market" data-lazy-delay="600"><img data-src="market.svg" width="400" height="260" alt="Two market stalls with green and red awnings and fruit"></figure><p>Fruit stalls by the jetty</p></li>
+    <li><figure class="lazy ph-dunes" data-lazy-delay="900"><img data-src="dunes.svg" width="400" height="260" alt="Orange sand dunes and a low sun"></figure><p>Dunes at the river mouth</p></li>
+    <li><figure class="lazy ph-forest" data-lazy-delay="600"><img data-src="forest.svg" width="400" height="260" alt="Dark green pine trees in a row"></figure><p>Pines on the ridge trail</p></li>
+    <li><figure class="lazy ph-city" data-lazy-delay="900"><img data-src="city.svg" width="400" height="260" alt="Blue city blocks with a few lit windows at dusk"></figure><p>The town at dusk</p></li>
+  </ul>
+  <p class="end">End of the week.</p>
+</main>
+</body>
+</html>

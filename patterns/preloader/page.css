@@ -1,0 +1,28 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.preloader { --preloader-bg: var(--demo-ink); --preloader-fg: var(--demo-paper); }
+.pl-mark { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+.pl-count { font-size: clamp(48px, 14vw, 72px); font-weight: 300; line-height: 1; letter-spacing: -.04em; }
+.pl-pct { font-size: .4em; margin-left: 4px; vertical-align: .9em; opacity: .6; }
+.studio { width: min(560px, 100%); padding: 18px 20px 20px; display: grid; gap: 16px; }
+.st-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.st-mark { font-size: 12px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
+.st-nav { display: flex; gap: 14px; font-size: 13px; color: var(--demo-mute); }
+.studio h1 { font-size: clamp(22px, 5.4vw, 28px); font-weight: 700; letter-spacing: -.02em; --preload-i: 1; }
+.works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.work { display: grid; gap: 6px; }
+.work:nth-child(1) { --preload-i: 2; }
+.work:nth-child(2) { --preload-i: 3; }
+.work:nth-child(3) { --preload-i: 4; }
+.work svg { display: block; width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--demo-line); }
+.work p { display: grid; font-size: 13px; line-height: 1.3; }
+.work span { color: var(--demo-mute); font-size: 12px; }
+.replay { --preload-i: 5; justify-self: start; font: inherit; font-size: 13px; font-weight: 600; color: var(--demo-ink); background: var(--demo-paper); border: 1px solid var(--demo-line); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.replay:hover { border-color: var(--demo-mute); }
+@media (max-width: 420px) {
+  .st-nav span:nth-child(2) { display: none; }
+  .works { gap: 8px; }
+}
+@media (max-height: 420px) {
+  .studio { gap: 10px; padding-block: 12px; }
+  .work p span { display: none; }
+}

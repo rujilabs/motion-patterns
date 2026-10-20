@@ -1,0 +1,23 @@
+{
+  "name": "Page transition",
+  "slug": "page-transition",
+  "kind": "pattern",
+  "summary": "View Transitions between two pages: the picture and title of the chosen card morph into the detail page while the rest crossfades. A rise-in fallback where the API is missing.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-in",
+    "--ease-out",
+    "--dur-quick",
+    "--dur-base",
+    "--rise-y"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,27 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.board { display: grid; gap: 18px; max-width: 480px; margin: 0 auto; padding: 24px 16px 40px; }
+.b-head { display: grid; gap: 8px; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.b-head h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.b-meta { display: flex; justify-content: space-between; gap: 16px; color: var(--demo-mute); font-size: 13px; }
+.feed { padding: 6px 18px 16px; }
+.feed-h { font-size: 13px; font-weight: 600; color: var(--demo-mute); padding: 10px 0 6px; }
+.note { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--demo-line); }
+.av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 650; color: var(--demo-blue); background: var(--demo-blue-soft); }
+.note-top { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.note-top time { color: var(--demo-mute); font-size: 12px; }
+.note-text { font-size: 14px; color: var(--demo-mute); }
+.inf-foot { border-top: 1px solid var(--demo-line); padding-top: 14px; color: var(--demo-blue); }
+.inf-more { font: inherit; font-size: 13px; font-weight: 600; color: var(--demo-ink); background: var(--demo-paper); border: 1px solid var(--demo-line); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.inf-more:hover { border-color: var(--demo-mute); }
+.inf-end { font-size: 13px; color: var(--demo-mute); }
+.inf-status { font-size: 12px; color: var(--demo-mute); }
+/* the status line is for screen readers, except under reduced motion where it stands in for the ring */
+.inf-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  [data-infinite][aria-busy="true"] .inf-status { position: static; width: auto; height: auto; clip-path: none; }
+}
+/* the first page arrives with the same stagger on load */
+.inf-list > :nth-child(2) { --inf-i: 1; }
+.inf-list > :nth-child(3) { --inf-i: 2; }
+.inf-list > :nth-child(4) { --inf-i: 3; }

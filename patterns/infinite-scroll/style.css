@@ -1,0 +1,40 @@
+/*
+ * infinite-scroll: when the reader nears the end of a list, a loader turns in the footer, then the
+ * next batch arrives one item after another. infinite.js sets aria-busy on the [data-infinite]
+ * section while loading, marks new items .inf-new with --inf-i (their place in the batch), and
+ * sets data-end when there is nothing left.
+ */
+.inf-new {
+  animation: inf-in var(--dur-base) var(--ease-out) both;
+  animation-delay: calc(min(var(--inf-i, 0), 8) * var(--stagger));
+}
+@keyframes inf-in {
+  from { opacity: 0; translate: 0 var(--rise-y); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; translate: none; }
+}
+
+/* the footer: a Load more button by default, the loader while busy, an end note at the end */
+.inf-foot { display: grid; justify-items: center; gap: 8px; min-height: 40px; align-content: center; }
+.inf-loader {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-top-color: currentColor;
+  animation: inf-spin .8s linear infinite;
+}
+@keyframes inf-spin { to { rotate: 1turn; } }
+[data-infinite][aria-busy="true"] .inf-loader { display: block; }
+[data-infinite][aria-busy="true"] .inf-more,
+[data-infinite][data-end] .inf-more,
+[data-infinite][data-end] .inf-loader { display: none; }
+.inf-end { display: none; }
+[data-infinite][data-end] .inf-end { display: block; animation: inf-in var(--dur-base) var(--ease-out) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .inf-new, [data-infinite][data-end] .inf-end { animation: none; }
+  /* a still ring would look stuck: show the status text instead */
+  [data-infinite][aria-busy="true"] .inf-loader { display: none; }
+}

@@ -1,0 +1,50 @@
+/*
+ * smooth-scroll: in-page links glide to their target instead of jumping, then the target section
+ * lights up briefly so the eye knows where it landed. CSS only: scroll-behavior on the scroller,
+ * scroll-padding so a sticky header never covers the target, and a :target highlight that waits
+ * for most of the glide before it shows.
+ * Put .smooth-scroll on <html> for the page, or on any scrolling box.
+ */
+.smooth-scroll { scroll-padding-top: var(--smooth-offset, 0px); }
+@media (prefers-reduced-motion: no-preference) {
+  .smooth-scroll { scroll-behavior: smooth; }
+}
+
+.smooth-target { position: relative; border-radius: var(--smooth-radius, 6px); }
+.smooth-target:target {
+  animation: smooth-mark 2s var(--ease-out) var(--smooth-delay, 350ms) both;
+}
+/* a key line at the left edge draws down as the light comes up */
+.smooth-target::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--smooth-line, currentColor);
+  transform-origin: 50% 0;
+  scale: 1 0;
+}
+.smooth-target:target::before {
+  animation: smooth-line 2s var(--ease-out) var(--smooth-delay, 350ms) both;
+}
+@keyframes smooth-mark {
+  0%   { background-color: transparent; }
+  15%  { background-color: var(--smooth-mark, rgb(61 123 242 / .14)); }
+  55%  { background-color: var(--smooth-mark, rgb(61 123 242 / .14)); }
+  100% { background-color: transparent; }
+}
+@keyframes smooth-line {
+  0%   { scale: 1 0; opacity: 1; }
+  20%  { scale: 1 1; opacity: 1; }
+  70%  { scale: 1 1; opacity: 1; }
+  100% { scale: 1 1; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the page jumps, and the target simply stays marked */
+  .smooth-target:target { animation: none; background-color: var(--smooth-mark, rgb(61 123 242 / .14)); }
+  .smooth-target:target::before { animation: none; scale: 1 1; }
+}
