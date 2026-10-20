@@ -9,6 +9,10 @@
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=3600
 
+/motion-*.css
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
 /tokens.css
   Access-Control-Allow-Origin: *
 

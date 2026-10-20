@@ -18,7 +18,8 @@ if (problems.length) {
 }
 
 const DIST = join(ROOT, "dist");
-const BUNDLE_BUDGET_GZ = 10 * 1024; // motion.css must stay small enough to drop into any page
+const BUNDLE_BUDGET_GZ = 48 * 1024; // motion.css: the whole collection in one file
+const CATEGORY_BUDGET_GZ = 10 * 1024; // motion-<category>.css must stay small enough to drop into any page
 const pkg = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"));
 
 rmSync(DIST, { recursive: true, force: true });
@@ -44,6 +45,22 @@ if (gz > BUNDLE_BUDGET_GZ) {
   process.exit(1);
 }
 
+// motion-<category>.css: tokens + the patterns of one category, for a page that needs only that kind of move.
+const header = (what) => `/* motion-patterns v${pkg.version} | ${what} | MIT | ${REPO_URL} */`;
+for (const cat of [...new Set(patterns.map((e) => e.meta.category))]) {
+  const css = [
+    header(cat),
+    bare(readFileSync(join(ROOT, "tokens.css"), "utf8")),
+    ...patterns.filter((e) => e.meta.category === cat).map((e) => `/* ${e.slug} */\n` + bare(readFileSync(join(e.path, "style.css"), "utf8")).replace(/\.\.\/\.\.\/fonts\//g, "fonts/")),
+  ].join("\n");
+  writeFileSync(join(DIST, `motion-${cat}.css`), css);
+  const cgz = gzipSync(css).length;
+  if (cgz > CATEGORY_BUDGET_GZ) {
+    console.error(`x motion-${cat}.css is ${cgz} bytes gzipped, over the ${CATEGORY_BUDGET_GZ} byte budget`);
+    process.exit(1);
+  }
+}
+
 // Each template also gets bundle.css: tokens + the patterns it uses + its own CSS, so Copy CSS gives a
 // complete, working stylesheet. Font paths are rewritten for a file that sits next to a fonts/ folder.
 const patternCss = (slug) => readFileSync(join(ROOT, "patterns", slug, "style.css"), "utf8");
@@ -60,7 +77,7 @@ for (const t of templates) {
 // The entry's own index.html becomes demo.html; its folder index becomes the entry page.
 for (const e of entries) renameSync(join(DIST, e.rel, "index.html"), join(DIST, e.rel, "demo.html"));
 
-const CATEGORY = { entry: "Entrances", emphasis: "Emphasis", loop: "Loops", scroll: "Scroll", data: "Data", state: "State changes", scene: "Scenes", type: "Type", transition: "Transitions", camera: "Camera moves", look: "Photo looks" };
+const CATEGORY = { entry: "Entrances", emphasis: "Emphasis", type: "Type", loop: "Loops", scroll: "Scroll", data: "Data", state: "State changes", transition: "Transitions", camera: "Camera moves", look: "Photo looks", scene: "Scenes" };
 const TRIGGER = { load: "Plays on load", "in-view": "Plays in view", hover: "Plays on hover", click: "Answers a click", scroll: "Follows scroll", loop: "Loops" };
 const REDUCED = { "final-state": "Shows the finished state", static: "Holds still" };
 const TECH = { css: "CSS", svg: "SVG", js: "JavaScript", canvas: "Canvas", webgl: "WebGL", "variable-font": "Variable font" };
@@ -222,7 +239,7 @@ function curveBlock(c) {
 }
 
 const facts = `${patterns.length} patterns, ${templates.length} templates, one ${kb(gz)} KB file`;
-const cats = [...new Set(patterns.map((e) => e.meta.category))];
+const cats = Object.keys(CATEGORY).filter((c) => patterns.some((e) => e.meta.category === c)); // filter buttons in CATEGORY order
 
 const home = `${head({ title: "Motion patterns: web motion you can scrub, read and copy", description: "An open collection of web motion: CSS patterns and full templates, each with a live timeline you can scrub, a reduced-motion state and a credit to its source. No dependencies, MIT.", path: "/", extra: '\n<link rel="stylesheet" href="/curves.css">' })}
 <body class="home">
@@ -259,7 +276,7 @@ ${templates.map(templateBlock).join("\n")}
 <section class="section" id="patterns" aria-labelledby="patterns-h">
   <header class="section-head">
     <h2 id="patterns-h">Patterns</h2>
-    <p>One move each, a class and a keyframe on shared tokens. Copy one, or take them all in <a href="/motion.css" download>motion.css</a>.</p>
+    <p>One move each, a class and a keyframe on shared tokens. Copy one, take one kind in <code>motion-&lt;category&gt;.css</code>, or take them all in <a href="/motion.css" download>motion.css</a>.</p>
   </header>
   <nav class="filters" aria-label="Filter patterns">
     <button type="button" data-filter="all" aria-pressed="true">All <span>${patterns.length}</span></button>
