@@ -1,0 +1,55 @@
+/*
+ * mega-menu: a wide panel that drops from the nav bar. On first open the panel unrolls from its
+ * top edge and its columns rise in one --stagger apart. Switching to another section while it is
+ * open does not close and reopen it: the panel morphs to the new section's height, a marker slides
+ * under the new nav item, and the new columns come in from the side you moved toward.
+ * mega.js measures heights and positions and sets --mega-h, --mega-x, --mega-w, --mega-dir.
+ */
+.mega { position: relative; }
+.mega-mark {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: var(--mega-w, 0px);
+  translate: var(--mega-x, 0px) 0;
+  background: currentColor;
+  opacity: 0;
+  transition: translate var(--dur-base) var(--ease-out), width var(--dur-base) var(--ease-out), opacity var(--dur-quick) linear;
+}
+.mega.is-open .mega-mark { opacity: 1; }
+.mega:not(.is-open) .mega-mark { transition: opacity var(--dur-quick) linear; }
+
+.mega-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  overflow: clip;
+  height: var(--mega-h, auto);
+  transition: height var(--dur-base) var(--ease-out), clip-path var(--dur-base) var(--ease-out), visibility 0s;
+}
+.js .mega:not(.is-open) .mega-panel {
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition: clip-path calc(var(--dur-base) * .5) var(--ease-in), visibility 0s linear calc(var(--dur-base) * .5);
+}
+.js .mega.is-open .mega-panel { clip-path: inset(0 0 0 0); }
+
+/* sections share one grid cell, so the outgoing one can fade while the new one arrives */
+.mega-sections { display: grid; align-items: start; }
+.mega-section { grid-area: 1 / 1; }
+.js .mega-section:not(.is-current) { visibility: hidden; }
+.mega-section.is-leaving { visibility: visible; animation: mega-leave var(--dur-quick) var(--ease-in) both; }
+.mega-section.is-current .mega-col {
+  animation: mega-col var(--dur-base) var(--ease-out) both;
+  animation-delay: calc(var(--dur-quick) * .5 + min(var(--i, 0), 6) * var(--stagger));
+}
+@keyframes mega-col { from { opacity: 0; translate: calc(var(--mega-dir, 0) * 24px) calc((1 - var(--mega-dir, 0) * var(--mega-dir, 0)) * 10px); } }
+@keyframes mega-leave { to { opacity: 0; translate: calc(var(--mega-dir, 0) * -16px) 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mega-mark, .mega-panel, .js .mega:not(.is-open) .mega-panel { transition: none; }
+  .mega-section.is-current .mega-col, .mega-section.is-leaving { animation: none; }
+  .mega-section.is-leaving { visibility: hidden; }
+}

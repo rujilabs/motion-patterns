@@ -1,0 +1,41 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.board { width: min(560px, 100%); padding: 18px 20px 8px; }
+.board-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--demo-line); }
+.board-head h1 { font-size: 19px; font-weight: 700; }
+.board-head .mute { font-size: 13px; }
+.row { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; padding: 16px 0; }
+.row + .row { border-top: 1px solid var(--demo-line); }
+.row-k { font-size: 13px; color: var(--demo-mute); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.save {
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 10px 14px; border-radius: 8px; border: 0;
+  font: inherit; font-size: 14px; font-weight: 600; background: var(--demo-ink); color: var(--demo-paper); cursor: progress;
+  --spin-size: 18px;
+}
+
+.chat { display: flex; align-items: flex-end; gap: 8px; }
+.face {
+  display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; flex: none;
+  background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 11px; font-weight: 700;
+}
+.bubble {
+  position: relative; display: inline-flex; padding: 10px 14px; border-radius: 16px 16px 16px 4px;
+  background: var(--demo-table); color: var(--demo-mute); --spin-size: 22px;
+}
+
+.report { position: relative; padding: 14px 14px 12px; border: 1px solid var(--demo-line); border-radius: 8px; overflow: clip; color: var(--demo-blue); }
+.report .spin-bar { position: absolute; inset: 0 0 auto; border-radius: 0; }
+.report p { display: grid; color: var(--demo-ink); font-size: 14px; }
+.report .mute { font-size: 13px; }
+
+@media (max-width: 520px) {
+  .row { grid-template-columns: 1fr; gap: 8px; padding: 12px 0; }
+  .board-head { flex-direction: column; gap: 8px; }
+}
+@media (max-height: 440px) {
+  .board { padding-top: 12px; }
+  .board-head { padding-bottom: 8px; flex-direction: row; align-items: center; }
+  .board-head .mute { display: none; }
+  .row { padding: 8px 0; gap: 4px; }
+}

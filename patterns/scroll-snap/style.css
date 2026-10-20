@@ -1,0 +1,43 @@
+/*
+ * scroll-snap: full-height sections that the scroll settles on, one at a time, with a dot rail that
+ * marks the one in view. The section that arrives lifts its content in; the dot for it stretches
+ * into a pill. Snapping is plain CSS; snap.js only says which section is active.
+ *   .snap         on the scroller (the <html> element for the whole page, or any box)
+ *   .snap-section each stop. At least one scroller tall
+ *   .snap-in      content inside a section that rises when its section becomes active
+ *   .snap-dots    a list of links to the sections; the active one carries aria-current="true"
+ */
+.snap { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.snap-section { min-height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; }
+
+.js .snap-section .snap-in {
+  opacity: 0;
+  transform: translateY(var(--rise-y));
+  transition: opacity var(--dur-quick) linear, transform var(--dur-quick) var(--ease-out);
+}
+.js .snap-section.is-active .snap-in {
+  opacity: 1;
+  transform: none;
+  transition-duration: var(--dur-base);
+  transition-delay: calc(var(--dur-quick) * .5 + var(--snap-i, 0) * var(--stagger));
+}
+.snap-in:nth-child(2) { --snap-i: 1; }
+.snap-in:nth-child(3) { --snap-i: 2; }
+.snap-in:nth-child(n + 4) { --snap-i: 3; }
+
+.snap-dots a {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: currentColor;
+  opacity: .35;
+  transition: height var(--dur-base) var(--ease-spring), opacity var(--dur-quick) linear;
+}
+.snap-dots a[aria-current="true"] { height: 24px; opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .snap { scroll-behavior: auto; }
+  .js .snap-section .snap-in, .js .snap-section.is-active .snap-in { opacity: 1; transform: none; transition: none; }
+  .snap-dots a { transition: none; }
+}

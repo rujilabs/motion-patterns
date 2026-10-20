@@ -1,0 +1,32 @@
+/*
+ * breadcrumbs: a trail that grows as you go deeper and folds back when you climb up.
+ * A new crumb opens its own width first (grid column 0fr to 1fr), so the trail makes room
+ * smoothly, while its label slides in from the right a beat behind. Climbing up folds the
+ * crumbs after the one you picked, the last one first, so the trail shortens from its end.
+ * breadcrumbs.js adds .crumb-in and .crumb-out and removes folded crumbs when they finish.
+ */
+.crumbs { display: flex; align-items: center; min-width: 0; }
+.crumb { display: grid; grid-template-columns: 1fr; flex: none; min-width: 0; }
+.crumb > * { min-width: 0; overflow: clip; white-space: nowrap; }
+
+.crumb-in { animation: crumb-open var(--dur-base) var(--ease-out) both; }
+.crumb-in > * { animation: crumb-label var(--dur-base) var(--ease-out) calc(var(--dur-base) * .15) both; }
+@keyframes crumb-open { from { grid-template-columns: 0fr; } }
+@keyframes crumb-label { from { opacity: 0; translate: 12px 0; } }
+
+/* --crumb-o: 0 for the last crumb, 1 for the one before it, and so on (set by the script) */
+.crumb-out {
+  animation: crumb-fold calc(var(--dur-base) * .6) var(--ease-inout) both;
+  animation-delay: calc(min(var(--crumb-o, 0), 6) * var(--stagger) * .6);
+  pointer-events: none;
+}
+.crumb-out > * {
+  animation: crumb-leave calc(var(--dur-base) * .4) var(--ease-in) both;
+  animation-delay: calc(min(var(--crumb-o, 0), 6) * var(--stagger) * .6);
+}
+@keyframes crumb-fold { to { grid-template-columns: 0fr; } }
+@keyframes crumb-leave { to { opacity: 0; translate: 8px 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .crumb-in, .crumb-in > *, .crumb-out, .crumb-out > * { animation: none; }
+}

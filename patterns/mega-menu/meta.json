@@ -1,0 +1,22 @@
+{
+  "name": "Mega menu",
+  "slug": "mega-menu",
+  "kind": "pattern",
+  "summary": "A wide panel that unrolls from the nav with its columns rising in turn. Switching section morphs the panel's height, slides the marker and brings the new columns in from that side.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-quick",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

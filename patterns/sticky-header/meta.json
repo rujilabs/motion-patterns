@@ -1,0 +1,20 @@
+{
+  "name": "Sticky header",
+  "slug": "sticky-header",
+  "kind": "pattern",
+  "summary": "A header that slims and gains a shadow once the page scrolls, slides away while the reader scrolls down and returns on scroll up. The slimming is drawn, so the page never jumps.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,66 @@
+/*
+ * hamburger: three bars that fold into an X, and the menu they open.
+ * The bars move in two beats. Opening, the outer bars slide to the middle first and then turn;
+ * closing, they turn back first and then slide apart. That order makes it read as one object
+ * folding, not three lines spinning. hamburger.js only flips aria-expanded and .is-open.
+ */
+.burger-box { position: relative; display: block; width: 20px; height: 14px; }
+.burger-bar {
+  --burger-beat: calc(var(--dur-base) * .3);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  /* closing: turn first, then slide apart, then the middle bar grows back */
+  transition:
+    translate var(--dur-quick) var(--ease-out) var(--burger-beat),
+    rotate var(--dur-base) var(--ease-spring) 0s,
+    scale var(--dur-quick) var(--ease-out) var(--burger-beat);
+}
+.burger-bar:nth-child(1) { translate: 0 -6px; }
+.burger-bar:nth-child(3) { translate: 0 6px; }
+/* opening: slide together first, then turn */
+[aria-expanded="true"] > .burger-box .burger-bar {
+  translate: none;
+  transition-delay: 0s, var(--burger-beat), 0s;
+}
+[aria-expanded="true"] > .burger-box .burger-bar:nth-child(1) { rotate: 45deg; }
+[aria-expanded="true"] > .burger-box .burger-bar:nth-child(2) { scale: 0 1; }
+[aria-expanded="true"] > .burger-box .burger-bar:nth-child(3) { rotate: -45deg; }
+
+/*
+ * burger-menu: unfolds from its top edge like a blind, and the items drop in one --stagger apart
+ * once the blind is mostly open. Hidden only under .js, so without the script the menu shows.
+ * hamburger.js sets --i on each item.
+ */
+.js .burger-menu {
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition: clip-path calc(var(--dur-base) * .5) var(--ease-in), visibility 0s linear calc(var(--dur-base) * .5);
+}
+.js .burger-menu.is-open {
+  clip-path: inset(0 0 0 0);
+  visibility: visible;
+  transition: clip-path var(--dur-base) var(--ease-out), visibility 0s;
+}
+.js .burger-menu > * {
+  opacity: 0;
+  translate: 0 -8px;
+  transition: opacity var(--dur-quick) var(--ease-out), translate var(--dur-quick) var(--ease-out);
+}
+.js .burger-menu.is-open > * {
+  opacity: 1;
+  translate: none;
+  transition-duration: var(--dur-base);
+  transition-delay: calc(var(--dur-base) * .25 + min(var(--i, 0), 8) * var(--stagger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .burger-bar,
+  [aria-expanded="true"] > .burger-box .burger-bar,
+  .js .burger-menu, .js .burger-menu.is-open,
+  .js .burger-menu > *, .js .burger-menu.is-open > * { transition: none; }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Breadcrumbs",
+  "slug": "breadcrumbs",
+  "kind": "pattern",
+  "summary": "A trail that opens room for each new crumb and slides its label in as you go deeper, then folds back from the end, last crumb first, when you climb up.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-inout",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

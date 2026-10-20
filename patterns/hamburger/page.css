@@ -1,0 +1,47 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.site { position: relative; width: min(380px, 100%); overflow: clip; }
+.site-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 10px 10px 18px; border-bottom: 1px solid var(--demo-line); }
+.mark { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: -.01em; }
+.mark-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--demo-red); }
+.burger {
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 1px solid transparent; border-radius: 8px; background: none; color: var(--demo-ink); cursor: pointer;
+}
+.burger:hover { border-color: var(--demo-line); }
+.burger[aria-expanded="true"] { color: var(--demo-blue); }
+
+/* the menu lies over the page, under the header */
+.burger-menu {
+  position: absolute; z-index: 2; left: 0; right: 0; top: 65px;
+  display: grid; padding: 6px 18px 18px; background: var(--demo-paper); border-bottom: 1px solid var(--demo-line);
+}
+.burger-menu a {
+  display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0;
+  border-bottom: 1px solid var(--demo-line); font-size: 18px; font-weight: 600; text-decoration: none;
+}
+.burger-menu a .num { font-size: 13px; font-weight: 500; color: var(--demo-mute); }
+.burger-menu a:hover { color: var(--demo-blue); }
+.menu-cta {
+  margin-top: 16px; padding: 11px 16px; font: inherit; font-weight: 600; border-radius: 8px; cursor: pointer;
+  background: var(--demo-ink); color: var(--demo-paper); border: 0;
+}
+
+.hero { display: grid; gap: 8px; padding: 22px 18px 20px; }
+.eyebrow { color: var(--demo-blue); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.hero h1 { font-size: 24px; font-weight: 700; }
+.hero .mute { font-size: 14px; }
+.baskets { display: flex; align-items: flex-end; justify-content: center; gap: 14px; height: 120px; margin-top: 10px; border-bottom: 1px solid var(--demo-line); }
+.basket {
+  display: block; border-radius: 6px 6px 18px 18px; border: 1px solid #a0773f;
+  background: repeating-linear-gradient(0deg, #d7b27a 0 6px, #c69c5f 6px 7px), #d7b27a;
+}
+.b1 { width: 70px; height: 64px; }
+.b2 { width: 92px; height: 96px; border-radius: 8px 8px 30px 30px; }
+.b3 { width: 56px; height: 46px; }
+
+@media (max-height: 440px) {
+  .hero { padding-block: 14px; }
+  .baskets { height: 70px; }
+  .b2 { height: 66px; }
+  .burger-menu a { padding: 8px 0; font-size: 16px; }
+}

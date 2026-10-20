@@ -1,0 +1,45 @@
+/*
+ * horizontal-scroll: the reader scrolls down and a row of panels slides sideways.
+ * .hscroll is a tall track; .hscroll-frame sticks to the top for its length; .hscroll-track
+ * moves left on the track's view timeline, from its first panel to its last, exactly as far as it
+ * overhangs the frame (-100% of the row plus the frame's width in container units).
+ * Set the track's height with --hscroll-len (default 400svh). No JavaScript.
+ * Keep animation-timeline after the shorthand; it resets it.
+ */
+.hscroll { height: var(--hscroll-len, 400svh); view-timeline: --hscroll block; }
+.hscroll-frame {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hscroll-track { display: flex; width: max-content; }
+
+@keyframes hscroll { to { transform: translateX(calc(-100% + 100cqw)); } }
+@keyframes hscroll-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@supports (animation-timeline: view()) {
+  .hscroll-track { animation: hscroll linear both; }
+  .hscroll-track { animation-timeline: --hscroll; animation-range: contain; }
+  .hscroll-progress { transform-origin: 0 50%; animation: hscroll-progress linear both; }
+  .hscroll-progress { animation-timeline: --hscroll; animation-range: contain; }
+}
+
+/* Without scroll timelines, and under reduced motion: a row the reader swipes or scrolls sideways, snapping per panel. */
+@supports not (animation-timeline: view()) {
+  .hscroll { height: auto; }
+  .hscroll-frame { position: static; height: auto; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .hscroll-track > * { scroll-snap-align: start; }
+  .hscroll .hscroll-progress { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hscroll { height: auto; }
+  .hscroll-frame { position: static; height: auto; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .hscroll-track { animation: none; }
+  .hscroll-track > * { scroll-snap-align: start; }
+  .hscroll .hscroll-progress { display: none; animation: none; }
+}

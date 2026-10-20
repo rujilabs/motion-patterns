@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spinner demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <section class="spin-group board sheet" aria-labelledby="sp-h">
+    <header class="board-head">
+      <div>
+        <h1 id="sp-h">Three ways to say "working"</h1>
+        <p class="mute">None of them pretends to know how long.</p>
+      </div>
+      <label class="spin-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+
+    <div class="row">
+      <p class="row-k">Ring, inside a button</p>
+      <div class="row-v">
+        <button class="save" type="button" aria-disabled="true">
+          <svg class="spin-ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="spin-track" cx="12" cy="12" r="9.5"/><circle class="spin-arc" cx="12" cy="12" r="9.5" pathLength="100"/></svg>
+          <span role="status">Saving changes</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <p class="row-k">Dots, for someone typing</p>
+      <div class="row-v chat">
+        <span class="face" aria-hidden="true">NA</span>
+        <span class="bubble"><span class="spin-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr" role="status">Nadia is typing</span></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <p class="row-k">Bar, across a panel</p>
+      <div class="row-v report">
+        <span class="spin-bar" aria-hidden="true"></span>
+        <p role="status"><strong>October report</strong><span class="mute">Adding up 1,284 orders</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

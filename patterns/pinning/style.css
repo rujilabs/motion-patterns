@@ -1,0 +1,65 @@
+/*
+ * pinning: a section holds still while the reader scrolls, its content steps through a few
+ * stages, and then it lets go and the page moves on. No JavaScript.
+ * .pin is a tall track (one screen per step). .pin-frame sticks to the top for the length of the
+ * track. Each .pin-step owns one slice of the track (animation-range on the named view timeline):
+ * it comes up, holds, and leaves just as the next one starts. Short fades on purpose: two
+ * steps crossfading over each other read as a smudge. .pin-progress fills over the whole pin.
+ * Set the number of steps with --pin-n on .pin (default 3).
+ * Keep animation-timeline after the shorthand; it resets it.
+ */
+.pin { --pin-n: 3; height: calc(var(--pin-n) * 100svh); view-timeline: --pin block; }
+.pin-frame { position: sticky; top: 0; height: 100svh; overflow: clip; }
+.pin-steps { display: grid; }
+.pin-step { grid-area: 1 / 1; }
+.pin-step:nth-child(2) { --pin-i: 1; }
+.pin-step:nth-child(3) { --pin-i: 2; }
+.pin-step:nth-child(4) { --pin-i: 3; }
+.pin-step:nth-child(5) { --pin-i: 4; }
+.pin-step:nth-child(6) { --pin-i: 5; }
+
+@keyframes pin-step {
+  0%   { opacity: 0; transform: translateY(32px); }
+  15%, 85% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(-32px); }
+}
+/* the first step is already there when the pin starts; the last one stays when it ends */
+@keyframes pin-step-first {
+  0%, 85% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(-32px); }
+}
+@keyframes pin-step-last {
+  0% { opacity: 0; transform: translateY(32px); }
+  15%, 100% { opacity: 1; transform: none; }
+}
+@keyframes pin-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@supports (animation-timeline: view()) {
+  .pin-step { animation: pin-step linear both; }
+  .pin-step:first-child { animation-name: pin-step-first; }
+  .pin-step:last-child { animation-name: pin-step-last; }
+  .pin-step {
+    animation-timeline: --pin;
+    animation-range:
+      contain calc(var(--pin-i, 0) * 100% / var(--pin-n))
+      contain calc((var(--pin-i, 0) + 1) * 100% / var(--pin-n));
+  }
+  .pin-progress { transform-origin: 0 50%; animation: pin-progress linear both; }
+  .pin-progress { animation-timeline: --pin; animation-range: contain; }
+}
+
+/* Without scroll timelines, and under reduced motion, the steps are a plain list and nothing pins. */
+@supports not (animation-timeline: view()) {
+  .pin { height: auto; }
+  .pin-frame { position: static; height: auto; }
+  .pin-steps { gap: 24px; }
+  .pin-step { grid-area: auto; }
+  .pin .pin-progress { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pin { height: auto; }
+  .pin-frame { position: static; height: auto; }
+  .pin-steps { gap: 24px; }
+  .pin-step, .pin-step:first-child, .pin-step:last-child { grid-area: auto; animation: none; }
+  .pin .pin-progress { display: none; animation: none; }
+}

@@ -1,0 +1,42 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.intro, .outro { display: grid; gap: 10px; max-width: 520px; margin: 0 auto; padding: 28px 16px; }
+.intro { min-height: 70svh; align-content: start; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.intro h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.outro { min-height: 80svh; align-content: start; }
+.released { color: var(--demo-mute); text-align: center; }
+.faq { display: grid; gap: 4px; padding: 16px 18px; }
+.faq h2 { font-size: 16px; }
+
+.pin-frame { display: grid; place-items: center; padding: 16px; }
+.card { width: min(520px, 100%); display: grid; gap: 14px; padding: 18px 20px 22px; }
+.card-top { display: grid; gap: 8px; }
+.card-k { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--demo-mute); }
+.bar { display: block; height: 3px; border-radius: 2px; background: var(--demo-line); overflow: clip; }
+.pin-progress { display: block; height: 100%; background: var(--demo-blue); }
+.pin-step { display: grid; gap: 6px; align-content: start; }
+.art { width: 100%; max-height: 150px; margin-bottom: 6px; border-radius: 6px; background: var(--demo-table); }
+.n { color: var(--demo-blue); font-size: 13px; font-weight: 700; }
+.pin-step h2 { font-size: 20px; font-weight: 650; }
+.pin-step .mute { font-size: 14px; }
+.a-body { fill: var(--demo-paper); stroke: var(--demo-ink); stroke-width: 1.5; }
+.a-screen { fill: var(--demo-blue-soft); stroke: var(--demo-blue); stroke-width: 1; }
+.a-ink { fill: var(--demo-ink); }
+.a-line { stroke: var(--demo-blue); stroke-width: 3; stroke-linecap: round; fill: none; }
+.a-keys rect, .a-doors rect { fill: var(--demo-table); stroke: var(--demo-mute); stroke-width: 1; }
+.a-keys .a-hot { fill: var(--demo-red); stroke: var(--demo-red); }
+.a-open { fill: var(--demo-ink); }
+.a-box { fill: #c69c5f; }
+.a-door { fill: var(--demo-paper); stroke: var(--demo-red); stroke-width: 1.5; stroke-linejoin: round; }
+@media (max-height: 460px) {
+  .pin-frame { padding-block: 8px; }
+  .card { gap: 8px; padding-block: 12px; }
+  .art { max-height: 80px; }
+  .pin-step h2 { font-size: 17px; }
+}
+@media (max-height: 340px) {
+  .art { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bar { display: none; }
+}

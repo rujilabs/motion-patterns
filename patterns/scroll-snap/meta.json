@@ -1,0 +1,23 @@
+{
+  "name": "Scroll snap",
+  "slug": "scroll-snap",
+  "kind": "pattern",
+  "summary": "Full-height sections the scroll settles on one at a time. The section that arrives lifts its content in, and its dot on the side rail stretches into a pill.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-quick",
+    "--dur-base",
+    "--stagger",
+    "--rise-y"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

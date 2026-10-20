@@ -1,0 +1,68 @@
+/*
+ * step-indicator: a row of steps joined by a line. Moving on, the step you leave ticks at once
+ * (its check draws on), then the line fills to the next step, and that step lights up as the line
+ * arrives. Moving back runs the same beats the other way: the tick undraws, the line drains, and
+ * the earlier step lights up again. steps.js sets data-state on each step and --steps-p (0..1)
+ * and --steps-n on the list.
+ */
+.steps { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
+/* the line runs from the centre of the first dot to the centre of the last */
+.steps-track {
+  position: absolute;
+  top: calc(var(--steps-dot, 28px) / 2 - 1px);
+  left: calc(50% / var(--steps-n, 4));
+  right: calc(50% / var(--steps-n, 4));
+  height: 2px;
+  background: var(--steps-line, #d9dfe8);
+}
+.steps-fill {
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform-origin: 0 50%;
+  scale: var(--steps-p, 0) 1;
+  transition: scale var(--dur-slow) var(--ease-inout);
+}
+.step { position: relative; display: grid; justify-items: center; gap: 6px; }
+.step-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--steps-dot, 28px);
+  height: var(--steps-dot, 28px);
+  border-radius: 50%;
+  border: 2px solid var(--steps-line, #d9dfe8);
+  background: var(--steps-bg, #fff);
+  transition: border-color var(--dur-quick) linear, background-color var(--dur-quick) linear, box-shadow var(--dur-base) var(--ease-out);
+}
+.step-dot > * { grid-area: 1 / 1; }
+.step-num { transition: opacity var(--dur-quick) linear; }
+.step-tick { width: 60%; height: 60%; overflow: visible; }
+.step-tick path {
+  fill: none;
+  stroke: var(--steps-bg, #fff);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--dur-quick) var(--ease-in);
+}
+
+/* done: the dot fills, the number goes and the tick draws, all at once on leaving the step */
+.step[data-state="done"] .step-dot { border-color: currentColor; background-color: currentColor; }
+.step[data-state="done"] .step-num { opacity: 0; }
+.step[data-state="done"] .step-tick path { stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-base) var(--ease-out) calc(var(--dur-quick) * .5); }
+
+/* current: lit by a soft ring, timed to when the line arrives */
+.step[data-state="current"] .step-dot {
+  border-color: currentColor;
+  box-shadow: 0 0 0 5px color-mix(in srgb, currentColor 18%, transparent);
+  transition-delay: calc(var(--dur-slow) * .75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steps-fill, .step-dot, .step-num, .step-tick path,
+  .step[data-state="done"] .step-tick path,
+  .step[data-state="current"] .step-dot { transition: none; }
+}

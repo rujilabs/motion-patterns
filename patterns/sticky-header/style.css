@@ -1,0 +1,52 @@
+/*
+ * sticky-header: a header that stays at the top, gets slimmer and gains a shadow once the page has
+ * scrolled, slides away while the reader scrolls down and comes back the moment they scroll up.
+ * The slimming is drawn, not laid out: the header keeps its height in the page, its background
+ * (::before) scales down from the top and the row inside moves up to stay centred, so nothing below
+ * it jumps. sticky.js sets .is-scrolled and .is-hidden.
+ */
+.sticky-header {
+  --sticky-h: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  isolation: isolate;
+  height: var(--sticky-h);
+  transition: translate var(--dur-base) var(--ease-out);
+}
+.sticky-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--sticky-bg, #fff);
+  border-bottom: 1px solid var(--sticky-line, transparent);
+  transform-origin: 50% 0;
+  transition: scale var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.sticky-row {
+  height: 100%;
+  transition: translate var(--dur-base) var(--ease-out);
+}
+.sticky-logo { transform-origin: 0 50%; transition: scale var(--dur-base) var(--ease-out); }
+
+/* scrolled: the background shrinks to --sticky-shrink of its height and the row moves up to its middle */
+.sticky-header.is-scrolled { pointer-events: none; }
+.sticky-header.is-scrolled :is(a, button, input, select, label) { pointer-events: auto; }
+.sticky-header.is-scrolled::before {
+  scale: 1 var(--sticky-shrink, .75);
+  box-shadow: 0 8px 20px -14px rgb(0 0 0 / .45);
+}
+.sticky-header.is-scrolled .sticky-row { translate: 0 calc(var(--sticky-h) * (var(--sticky-shrink, .75) - 1) / 2); }
+.sticky-header.is-scrolled .sticky-logo { scale: .86; }
+
+/* hidden: out of the way while reading down. Leaves faster than it returns. */
+.sticky-header.is-hidden {
+  translate: 0 -100%;
+  transition-duration: calc(var(--dur-base) * .6);
+  transition-timing-function: var(--ease-in);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-header, .sticky-header::before, .sticky-row, .sticky-logo { transition: none; }
+}

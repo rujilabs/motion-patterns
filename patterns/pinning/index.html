@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinning demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll inside this frame. The card below holds still while its three steps play, then lets go.</p>
+    <h1>Collect a parcel at any Peti locker</h1>
+    <p class="mute">Open 24 hours at 140 train stations and petrol stations.</p>
+  </header>
+
+  <section class="pin" aria-label="How it works">
+    <div class="pin-frame">
+      <div class="card sheet">
+        <div class="card-top">
+          <p class="card-k">How it works</p>
+          <span class="bar" aria-hidden="true"><span class="pin-progress"></span></span>
+        </div>
+        <ol class="pin-steps">
+          <li class="pin-step">
+            <svg class="art" viewBox="0 0 160 110" aria-hidden="true">
+              <rect x="56" y="8" width="48" height="94" rx="8" class="a-body"/>
+              <rect x="62" y="18" width="36" height="66" rx="3" class="a-screen"/>
+              <g class="a-ink"><rect x="68" y="26" width="10" height="10"/><rect x="82" y="26" width="10" height="10"/><rect x="68" y="40" width="10" height="10"/><rect x="84" y="42" width="4" height="4"/><rect x="88" y="46" width="4" height="4"/></g>
+              <path d="M68 60 h24 M68 68 h16" class="a-line"/>
+              <circle cx="80" cy="93" r="3" class="a-ink"/>
+            </svg>
+            <p class="n num">1 of 3</p>
+            <h2>Open the code</h2>
+            <p class="mute">When the parcel lands, you get a message with a six-digit code and a QR.</p>
+          </li>
+          <li class="pin-step">
+            <svg class="art" viewBox="0 0 160 110" aria-hidden="true">
+              <rect x="36" y="10" width="88" height="90" rx="6" class="a-body"/>
+              <rect x="46" y="20" width="68" height="20" rx="3" class="a-screen"/>
+              <path d="M54 30 h6 M64 30 h6 M74 30 h6 M84 30 h6" class="a-line"/>
+              <g class="a-keys"><rect x="48" y="48" width="18" height="12" rx="2"/><rect x="71" y="48" width="18" height="12" rx="2"/><rect x="94" y="48" width="18" height="12" rx="2"/><rect x="48" y="64" width="18" height="12" rx="2"/><rect x="71" y="64" width="18" height="12" rx="2" class="a-hot"/><rect x="94" y="64" width="18" height="12" rx="2"/><rect x="48" y="80" width="18" height="12" rx="2"/><rect x="71" y="80" width="18" height="12" rx="2"/><rect x="94" y="80" width="18" height="12" rx="2"/></g>
+            </svg>
+            <p class="n num">2 of 3</p>
+            <h2>Scan or type it in</h2>
+            <p class="mute">Hold the QR under the scanner, or key in the six digits on the screen.</p>
+          </li>
+          <li class="pin-step">
+            <svg class="art" viewBox="0 0 160 110" aria-hidden="true">
+              <rect x="28" y="8" width="104" height="94" rx="4" class="a-body"/>
+              <g class="a-doors"><rect x="34" y="14" width="44" height="26" rx="2"/><rect x="82" y="14" width="44" height="26" rx="2"/><rect x="34" y="44" width="44" height="26" rx="2"/><rect x="34" y="74" width="44" height="22" rx="2"/><rect x="82" y="74" width="44" height="22" rx="2"/></g>
+              <rect x="82" y="44" width="44" height="26" rx="2" class="a-open"/>
+              <rect x="92" y="52" width="24" height="16" rx="2" class="a-box"/>
+              <path d="M126 44 l14 -6 v38 l-14 -6" class="a-door"/>
+            </svg>
+            <p class="n num">3 of 3</p>
+            <h2>Take it, close the door</h2>
+            <p class="mute">The door that opens is yours. Close it after, and the locker tells the sender.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <footer class="outro">
+    <p class="released">Released. The page scrolls on as usual.</p>
+    <section class="sheet faq"><h2>What if I miss the pickup?</h2><p class="mute">Parcels wait three days, then go back to the sender's nearest hub.</p></section>
+  </footer>
+</main>
+</body>
+</html>

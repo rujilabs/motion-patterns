@@ -1,0 +1,15 @@
+{
+  "name": "Horizontal scroll",
+  "slug": "horizontal-scroll",
+  "kind": "pattern",
+  "summary": "Vertical scrolling drives a row of panels sideways while the section holds, with a progress line. CSS scroll timelines only; a swipeable snapping row where they are missing.",
+  "category": "scroll",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

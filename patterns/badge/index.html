@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Badge demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="badge.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="app sheet" aria-labelledby="app-h">
+    <header class="app-bar">
+      <h1 id="app-h">Pasar Pagi</h1>
+      <div class="tools">
+        <button class="tool" type="button" data-tool="inbox" aria-label="Messages, none unread">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5 A2.5 2.5 0 0 1 6.5 4 h11 A2.5 2.5 0 0 1 20 6.5 v8 A2.5 2.5 0 0 1 17.5 17 H10 l-4 3.5 V17 h0.5 A2.5 2.5 0 0 1 4 14.5 Z"/></svg>
+          <span class="badge" data-count="0" hidden aria-hidden="true"><span class="badge-num">0</span></span>
+        </button>
+        <button class="tool" type="button" data-tool="cart" aria-label="Basket, 2 items">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4 h2.5 l2.2 11 h10.3 l2-8 H6.4"/><circle cx="9" cy="19.5" r="1.4"/><circle cx="16.5" cy="19.5" r="1.4"/></svg>
+          <span class="badge" data-count="2" aria-hidden="true"><span class="badge-num">2</span></span>
+        </button>
+      </div>
+    </header>
+    <div class="feed">
+      <article class="stall">
+        <span class="stall-art a1" aria-hidden="true"></span>
+        <p><strong>Kuih lapis, box of 8</strong><span class="mute">Dapur Mak Long, ready at 7 am</span></p>
+        <p class="price num">RM 12</p>
+      </article>
+      <article class="stall">
+        <span class="stall-art a2" aria-hidden="true"></span>
+        <p><strong>Nasi kerabu</strong><span class="mute">Gerai Kak Yah, ready at 8 am</span></p>
+        <p class="price num">RM 9</p>
+      </article>
+    </div>
+    <div class="try" role="group" aria-label="Try it">
+      <button type="button" data-do="msg">New message</button>
+      <button type="button" data-do="read">Read all</button>
+      <button type="button" data-do="add">Add item</button>
+      <button type="button" data-do="remove">Remove item</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

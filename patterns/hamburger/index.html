@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamburger menu demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="hamburger.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="site sheet">
+    <header class="site-head">
+      <p class="mark"><span class="mark-dot" aria-hidden="true"></span>Kedai Sudut</p>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
+        <span class="burger-box" aria-hidden="true"><span class="burger-bar"></span><span class="burger-bar"></span><span class="burger-bar"></span></span>
+      </button>
+    </header>
+    <nav class="burger-menu" id="site-menu" aria-label="Main">
+      <a href="#shop">Shop <span class="num">48</span></a>
+      <a href="#visit">Visit the shop</a>
+      <a href="#makers">Makers</a>
+      <a href="#journal">Journal</a>
+      <button type="button" class="menu-cta">Sign in</button>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow">New this week</p>
+      <h1>Rattan baskets, woven in Kampung Dusun</h1>
+      <p class="mute">Twelve shapes, each one made to order. Ships in five working days.</p>
+      <div class="baskets" aria-hidden="true">
+        <span class="basket b1"></span><span class="basket b2"></span><span class="basket b3"></span>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

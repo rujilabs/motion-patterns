@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Empty state demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="tasks sheet" aria-labelledby="t-h">
+    <header class="t-head">
+      <h1 id="t-h">Today</h1>
+      <p class="t-count mute num">0 open</p>
+    </header>
+    <ul class="t-list" aria-label="Tasks"></ul>
+    <div class="empty" role="status">
+      <svg class="empty-art" viewBox="0 0 200 130" aria-hidden="true">
+        <ellipse class="empty-shadow e-shadow" cx="100" cy="118" rx="58" ry="6"/>
+        <path class="e-tray" d="M38 74 h124 l-10 38 a6 6 0 0 1 -6 4 h-92 a6 6 0 0 1 -6 -4 Z"/>
+        <path class="e-lip" d="M38 74 h40 a4 4 0 0 1 4 4 v2 a6 6 0 0 0 6 6 h24 a6 6 0 0 0 6 -6 v-2 a4 4 0 0 1 4 -4 h40"/>
+        <g class="empty-pop">
+          <circle class="e-dot" cx="100" cy="40" r="17"/>
+          <path class="e-tick" d="M92 40.5 l5.5 5.5 l11 -12"/>
+        </g>
+        <path class="empty-draw e-spark" pathLength="1" d="M62 34 l-9 -7"/>
+        <path class="empty-draw e-spark" pathLength="1" d="M138 34 l9 -7"/>
+        <path class="empty-draw e-spark" pathLength="1" d="M100 12 v-8"/>
+      </svg>
+      <h2>Nothing left for today</h2>
+      <p class="mute">Tasks you add, or that someone hands you, will show up here.</p>
+      <button type="button" class="add">Add a task</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

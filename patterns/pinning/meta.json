@@ -1,0 +1,15 @@
+{
+  "name": "Pinning",
+  "slug": "pinning",
+  "kind": "pattern",
+  "summary": "A section holds still while the reader scrolls, steps through its stages with a progress line, then lets go. CSS scroll timelines only; a plain list where they are missing.",
+  "category": "scroll",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

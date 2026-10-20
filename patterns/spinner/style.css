@@ -1,0 +1,74 @@
+/*
+ * spinner: three honest indeterminate loaders. They say "working", never "how far": none of them
+ * fakes progress or slows down near an end. Use a real progress bar when you know the fraction.
+ *   .spin-ring  an arc that stretches and shrinks while the ring turns
+ *   .spin-dots  three dots that rise in turn
+ *   .spin-bar   a segment that crosses a track, for the top of a panel or page
+ * .spin-late on any of them waits 400ms before it shows, so a fast answer never flashes a loader.
+ * .spin-group with a .spin-pause checkbox inside pauses every loader in the group.
+ */
+.spin-ring { display: block; width: var(--spin-size, 24px); height: var(--spin-size, 24px); animation: spin-turn 1.4s linear infinite; }
+.spin-ring circle { fill: none; stroke: currentColor; stroke-width: 2.5; }
+.spin-ring .spin-track { opacity: .18; }
+.spin-ring .spin-arc {
+  stroke-linecap: round;
+  stroke-dasharray: 2 100;
+  transform-origin: 50% 50%;
+  rotate: -90deg;
+  animation: spin-arc 1.4s var(--ease-inout) infinite;
+}
+@keyframes spin-turn { to { transform: rotate(1turn); } }
+/* the circle carries pathLength="100": dash values are percent of the ring */
+@keyframes spin-arc {
+  0%   { stroke-dasharray: 2 100; stroke-dashoffset: 0; }
+  50%  { stroke-dasharray: 62 100; stroke-dashoffset: -14; }
+  100% { stroke-dasharray: 2 100; stroke-dashoffset: -98; }
+}
+
+.spin-dots { display: inline-flex; gap: calc(var(--spin-size, 24px) * .18); align-items: center; height: var(--spin-size, 24px); }
+.spin-dots > * {
+  width: calc(var(--spin-size, 24px) * .26);
+  height: calc(var(--spin-size, 24px) * .26);
+  border-radius: 50%;
+  background: currentColor;
+  animation: spin-dot 1.2s var(--ease-inout) infinite;
+}
+.spin-dots > :nth-child(2) { animation-delay: .16s; }
+.spin-dots > :nth-child(3) { animation-delay: .32s; }
+@keyframes spin-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: .35; }
+  30% { transform: translateY(-40%); opacity: 1; }
+}
+
+.spin-bar { position: relative; display: block; height: 3px; overflow: clip; border-radius: 2px; background: color-mix(in srgb, currentColor 16%, transparent); }
+.spin-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  border-radius: inherit;
+  background: currentColor;
+  animation: spin-bar 1.6s var(--ease-inout) infinite;
+}
+@keyframes spin-bar {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(250%); }
+}
+
+/* .spin-late: hidden for the first 400ms */
+.spin-late:not(.spin-ring) { animation: spin-late .2s linear .4s both; }
+.spin-ring.spin-late { animation: spin-late .2s linear .4s both, spin-turn 1.4s linear infinite; }
+@keyframes spin-late { from { opacity: 0; } }
+
+/* pause: the toggle anywhere inside a .spin-group */
+.spin-group:has(.spin-pause :checked) :is(.spin-ring, .spin-ring .spin-arc, .spin-dots > *),
+.spin-group:has(.spin-pause :checked) .spin-bar::before { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still frame: a quarter arc, three level dots, a centred segment. The words beside them carry the state. */
+  .spin-ring, .spin-ring.spin-late, .spin-ring .spin-arc, .spin-dots > *, .spin-bar::before, .spin-late:not(.spin-ring) { animation: none; }
+  .spin-ring .spin-arc { stroke-dasharray: 25 100; }
+  .spin-dots > * { opacity: .6; }
+  .spin-bar::before { transform: translateX(75%); }
+  .spin-pause { display: none; }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Hamburger menu",
+  "slug": "hamburger",
+  "kind": "pattern",
+  "summary": "Three bars fold into an X in two beats (slide together, then turn) while the menu unfolds from its top edge and the items drop in one after another.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-spring",
+    "--dur-quick",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

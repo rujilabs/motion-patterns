@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" class="snap">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll snap demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="snap.js"></script>
+</head>
+<body>
+<nav class="snap-dots" aria-label="Steps">
+  <a href="#s1" aria-label="Step 1"></a>
+  <a href="#s2" aria-label="Step 2"></a>
+  <a href="#s3" aria-label="Step 3"></a>
+  <a href="#s4" aria-label="Step 4"></a>
+</nav>
+<main>
+  <section class="snap-section" id="s1" aria-labelledby="s1-h">
+    <div class="card sheet">
+      <p class="snap-in hint">Scroll inside this frame. Each step settles into place.</p>
+      <p class="snap-in n num">1 of 4</p>
+      <h1 class="snap-in" id="s1-h">Brew the tea strong</h1>
+      <p class="snap-in mute">Two spoons of black tea dust to one cup of water. Boil for three minutes, then strain it through a cloth bag.</p>
+    </div>
+  </section>
+  <section class="snap-section" id="s2" aria-labelledby="s2-h">
+    <div class="card sheet">
+      <svg class="snap-in art" viewBox="0 0 160 70" aria-hidden="true"><rect x="40" y="26" width="34" height="38" rx="3" class="a-tin"/><rect x="40" y="20" width="34" height="8" rx="2" class="a-lid"/><path d="M92 36 h30 v24 a4 4 0 0 1 -4 4 h-22 a4 4 0 0 1 -4 -4 Z" class="a-cup"/><path d="M92 40 h30" class="a-milk"/></svg>
+      <p class="snap-in n num">2 of 4</p>
+      <h2 class="snap-in" id="s2-h">Add the milk</h2>
+      <p class="snap-in mute">Sweetened condensed milk, two spoons per cup. Stir until the colour turns to a deep caramel.</p>
+    </div>
+  </section>
+  <section class="snap-section" id="s3" aria-labelledby="s3-h">
+    <div class="card sheet">
+      <svg class="snap-in art" viewBox="0 0 160 70" aria-hidden="true"><path d="M40 8 h26 v18 a4 4 0 0 1 -4 4 h-18 a4 4 0 0 1 -4 -4 Z" class="a-cup"/><path d="M66 22 C 90 30, 92 44, 96 60" class="a-pour"/><path d="M84 40 h30 v22 a4 4 0 0 1 -4 4 h-22 a4 4 0 0 1 -4 -4 Z" class="a-cup"/></svg>
+      <p class="snap-in n num">3 of 4</p>
+      <h2 class="snap-in" id="s3-h">Pull it, high</h2>
+      <p class="snap-in mute">Pour from one mug to the other at arm's length, five or six times. The pull cools it and builds the froth.</p>
+    </div>
+  </section>
+  <section class="snap-section" id="s4" aria-labelledby="s4-h">
+    <div class="card sheet">
+      <svg class="snap-in art" viewBox="0 0 160 70" aria-hidden="true"><path d="M62 22 h36 v34 a6 6 0 0 1 -6 6 h-24 a6 6 0 0 1 -6 -6 Z" class="a-cup"/><ellipse cx="80" cy="22" rx="18" ry="4" class="a-froth"/><path d="M98 30 a8 8 0 0 1 0 16" class="a-handle"/></svg>
+      <p class="snap-in n num">4 of 4</p>
+      <h2 class="snap-in" id="s4-h">Serve with the froth on top</h2>
+      <p class="snap-in mute">Into a glass while it is still foaming. Kurang manis if you asked for less sugar.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.store { width: min(760px, 100%); min-height: 420px; position: relative; }
+.bar { display: flex; align-items: center; gap: 20px; padding: 0 20px; border-bottom: 1px solid var(--demo-line); color: var(--demo-blue); z-index: 2; }
+.logo { font-weight: 800; letter-spacing: -.02em; color: var(--demo-ink); }
+.mega-list { display: flex; gap: 4px; margin-right: auto; }
+.mega-list button {
+  font: inherit; font-size: 14px; font-weight: 600; color: var(--demo-mute); background: none; border: 0; cursor: pointer;
+  padding: 18px 10px;
+}
+.mega-list button:hover, .mega-list button[aria-expanded="true"] { color: var(--demo-ink); }
+.mega-list button:focus-visible { outline-offset: -6px; border-radius: 6px; }
+.cart { font-size: 13px; color: var(--demo-mute); }
+
+/* the panel paints the paper and a bottom line; the pattern only moves it */
+.mega-panel { background: var(--demo-paper); border-bottom: 1px solid var(--demo-line); color: var(--demo-ink); }
+.mega-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 20px 20px 22px; }
+.mega-col h2 { font-size: 12px; font-weight: 600; color: var(--demo-mute); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.mega-col ul { display: grid; gap: 2px; }
+.mega-col a { display: block; padding: 4px 0; font-size: 15px; text-decoration: none; }
+.mega-col a:hover { color: var(--demo-blue); }
+.mega-col p { font-size: 14px; }
+.feature { display: grid; gap: 8px; align-content: start; padding: 0; text-decoration: none; }
+.feature svg { width: 100%; height: auto; border-radius: 6px; display: block; }
+.feature > span { display: grid; font-size: 13px; }
+.feature strong { font-weight: 600; font-size: 14px; }
+.feature:hover strong { color: var(--demo-blue); }
+.f-bg { fill: #ece3d6; }
+.f-wood { fill: #b07c52; }
+.f-cush { fill: #e8dcc6; stroke: #8f6140; }
+.f-leg { stroke: #6b4529; stroke-width: 3; stroke-linecap: round; fill: none; }
+
+.hero { display: grid; gap: 8px; padding: 34px 20px 24px; }
+.hero h1 { font-size: 28px; font-weight: 700; max-width: 16ch; }
+.room { position: relative; height: 120px; margin-top: 14px; border-bottom: 1px solid var(--demo-line); }
+.room span { position: absolute; bottom: 0; display: block; }
+.r-sofa { left: 8%; width: 46%; height: 56px; border-radius: 12px 12px 4px 4px; background: #b07c52; }
+.r-lamp { left: 62%; width: 4px; height: 104px; background: var(--demo-mute); }
+.r-lamp::before { content: ""; position: absolute; top: -6px; left: -16px; width: 36px; height: 22px; background: #e8c27a; clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%); }
+.r-rug { left: 2%; width: 70%; height: 6px; bottom: -1px; background: var(--demo-blue-soft); border-radius: 3px; }
+
+@media (max-width: 560px) {
+  .bar { gap: 8px; padding: 0 12px; }
+  .cart { display: none; }
+  .mega-list button { padding-inline: 7px; font-size: 13px; }
+  .mega-section { grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px 14px; }
+  .mega-section .feature { grid-column: 1 / -1; grid-template-columns: 110px 1fr; align-items: center; }
+  .hero h1 { font-size: 24px; }
+}
+@media (max-width: 360px) {
+  .logo { display: none; }
+}
+@media (max-height: 460px) {
+  .store { min-height: 0; }
+  .mega-section { padding-block: 12px; gap: 16px; }
+  .mega-col a { padding: 2px 0; font-size: 14px; }
+  .feature svg { max-height: 70px; }
+  .hero { padding-block: 18px; }
+  .room { height: 70px; }
+  .r-lamp { height: 60px; }
+}

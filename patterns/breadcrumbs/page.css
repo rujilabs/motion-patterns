@@ -1,0 +1,43 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.drive { width: min(560px, 100%); padding: 18px 20px 14px; display: grid; gap: 12px; align-content: start; min-height: 360px; }
+.drive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.drive-head h1 { font-size: 20px; font-weight: 700; }
+.count { font-size: 13px; }
+
+/* the trail: one line, scrolls sideways when it runs out of room */
+.trail { padding: 6px 8px; border: 1px solid var(--demo-line); border-radius: 8px; background: var(--demo-table); }
+.crumbs { overflow-x: auto; scrollbar-width: none; }
+.crumbs::-webkit-scrollbar { display: none; }
+.crumb-body { display: flex; align-items: center; }
+.crumb + .crumb .crumb-body::before {
+  content: ""; flex: none; width: 6px; height: 6px; margin: 0 8px 0 6px;
+  border-top: 1.5px solid var(--demo-mute); border-right: 1.5px solid var(--demo-mute); rotate: 45deg;
+}
+.crumb button {
+  font: inherit; font-size: 14px; padding: 4px 6px; border: 0; border-radius: 5px; background: none;
+  color: var(--demo-mute); cursor: pointer;
+}
+.crumb button:hover { color: var(--demo-blue); background: var(--demo-blue-soft); }
+.crumb button[aria-current="page"] { color: var(--demo-ink); font-weight: 650; cursor: default; background: none; }
+
+/* folder rows */
+.rows { display: grid; }
+.rows li { animation: row-in var(--dur-base) var(--ease-out) both; animation-delay: calc(var(--row-i, 0) * 50ms); }
+@keyframes row-in { from { opacity: 0; translate: 0 6px; } }
+.row {
+  width: 100%; display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: center;
+  padding: 10px 6px; border: 0; border-bottom: 1px solid var(--demo-line); background: none;
+  font: inherit; font-size: 15px; color: inherit; text-align: left; cursor: pointer;
+}
+.row:hover { background: var(--demo-table); }
+.row svg { width: 20px; height: 16px; fill: var(--demo-blue-soft); stroke: var(--demo-blue); stroke-width: 1.2; }
+.row small { color: var(--demo-mute); font-size: 12px; }
+.row-empty { padding: 28px 6px; color: var(--demo-mute); text-align: center; border: 1px dashed var(--demo-line); border-radius: 8px; }
+
+@media (max-height: 420px) {
+  .drive { min-height: 0; padding-block: 12px; gap: 8px; }
+  .row { padding-block: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rows li { animation: none; }
+}

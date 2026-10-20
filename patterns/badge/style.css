@@ -1,0 +1,43 @@
+/*
+ * badge: a count badge. It springs in from its corner when the count goes above zero, bumps once
+ * and rolls the digits when the number changes (up rolls up, down rolls down), and drops out
+ * quickly when it reaches zero. badge.js restarts the classes; the CSS is the whole motion.
+ */
+.badge {
+  display: inline-grid;
+  overflow: clip;
+  transform-origin: var(--badge-origin, 50% 50%);
+}
+.badge[hidden] { display: none; }
+.badge > * { grid-area: 1 / 1; }
+
+/* in: from nothing, on the spring */
+.badge-pop { animation: badge-pop var(--dur-base) var(--ease-spring) both; }
+@keyframes badge-pop {
+  from { scale: 0; opacity: 0; }
+  20%  { opacity: 1; }
+  to   { scale: 1; opacity: 1; }
+}
+
+/* change: one quick swell and settle */
+.badge-bump { animation: badge-bump calc(var(--dur-base) * .7) var(--ease-out); }
+@keyframes badge-bump {
+  0%   { scale: 1; }
+  30%  { scale: 1.25; }
+  100% { scale: 1; }
+}
+
+/* out: falls inward, faster than it came */
+.badge-out { animation: badge-out var(--dur-quick) var(--ease-in) both; }
+@keyframes badge-out { to { scale: 0; opacity: 0; } }
+
+/* the digits: the old number leaves the way the count moved, the new one arrives behind it */
+.badge-old { animation: badge-num-out calc(var(--dur-base) * .5) var(--ease-in) both; }
+.badge-new { animation: badge-num-in calc(var(--dur-base) * .6) var(--ease-out) both; }
+@keyframes badge-num-out { to { translate: 0 calc(var(--badge-dir, 1) * -100%); opacity: 0; } }
+@keyframes badge-num-in { from { translate: 0 calc(var(--badge-dir, 1) * 100%); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-pop, .badge-bump, .badge-out, .badge-old, .badge-new { animation: none; }
+  .badge-old { display: none; }
+}

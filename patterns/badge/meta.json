@@ -1,0 +1,22 @@
+{
+  "name": "Badge",
+  "slug": "badge",
+  "kind": "pattern",
+  "summary": "A count badge that springs in from its corner, bumps and rolls its digits up or down when the number changes, and drops out fast at zero.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--ease-in",
+    "--dur-quick",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

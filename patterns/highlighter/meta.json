@@ -1,0 +1,18 @@
+{
+  "name": "Highlighter",
+  "slug": "highlighter",
+  "kind": "pattern",
+  "summary": "A marker stroke sweeps behind words when they come into view. A background on the text, so it wraps across lines; a low underline variant and per-mark delays.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

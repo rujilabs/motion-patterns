@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mega menu demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="mega.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <div class="store sheet">
+    <header>
+      <nav class="mega bar" aria-label="Main">
+        <p class="logo">Rumah Kayu</p>
+        <ul class="mega-list">
+          <li><button type="button" aria-expanded="false" aria-controls="m-furniture">Furniture</button></li>
+          <li><button type="button" aria-expanded="false" aria-controls="m-lighting">Lighting</button></li>
+          <li><button type="button" aria-expanded="false" aria-controls="m-studio">Studio</button></li>
+        </ul>
+        <span class="mega-mark" aria-hidden="true"></span>
+        <div class="mega-panel">
+          <div class="mega-sections">
+            <section class="mega-section" id="m-furniture" aria-label="Furniture">
+              <div class="mega-col">
+                <h2>Living</h2>
+                <ul><li><a href="#sofas">Sofas</a></li><li><a href="#armchairs">Armchairs</a></li><li><a href="#tables">Coffee tables</a></li><li><a href="#shelving">Shelving</a></li></ul>
+              </div>
+              <div class="mega-col">
+                <h2>Bedroom</h2>
+                <ul><li><a href="#beds">Beds</a></li><li><a href="#wardrobes">Wardrobes</a></li><li><a href="#side">Side tables</a></li></ul>
+              </div>
+              <a class="mega-col feature" href="#lounge">
+                <svg viewBox="0 0 120 80" aria-hidden="true"><rect x="0" y="0" width="120" height="80" class="f-bg"/><path d="M34 22 h44 a6 6 0 0 1 6 6 v22 h-56 v-22 a6 6 0 0 1 6 -6 Z" class="f-wood"/><rect x="24" y="44" width="72" height="10" rx="3" class="f-cush"/><path d="M32 54 l-4 18 M88 54 l4 18" class="f-leg"/></svg>
+                <span><strong>New: teak lounge chair</strong><span class="mute">Made in Muar, from RM 1,480</span></span>
+              </a>
+            </section>
+            <section class="mega-section" id="m-lighting" aria-label="Lighting">
+              <div class="mega-col">
+                <h2>Lamps</h2>
+                <ul><li><a href="#floor">Floor lamps</a></li><li><a href="#table">Table lamps</a></li><li><a href="#pendant">Rattan pendants</a></li></ul>
+              </div>
+              <div class="mega-col">
+                <h2>By room</h2>
+                <ul><li><a href="#living-light">Living</a></li><li><a href="#bed-light">Bedroom</a></li></ul>
+              </div>
+            </section>
+            <section class="mega-section" id="m-studio" aria-label="Studio">
+              <div class="mega-col">
+                <h2>Visit</h2>
+                <p>12 Lorong Seri, Petaling Jaya</p>
+                <p class="mute">Tuesday to Sunday, 10 am to 7 pm</p>
+              </div>
+              <div class="mega-col">
+                <h2>Services</h2>
+                <ul><li><a href="#custom">Custom sizes</a></li><li><a href="#repairs">Repairs and refinishing</a></li><li><a href="#delivery">White glove delivery</a></li><li><a href="#trade">Trade accounts</a></li><li><a href="#gift">Gift cards</a></li></ul>
+              </div>
+            </section>
+          </div>
+        </div>
+        <p class="cart num">Cart 2</p>
+      </nav>
+    </header>
+    <div class="hero">
+      <h1>Furniture that outlives the house</h1>
+      <p class="mute">Solid teak and rattan, joined by hand. Every piece is numbered.</p>
+      <div class="room" aria-hidden="true"><span class="r-sofa"></span><span class="r-lamp"></span><span class="r-rug"></span></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

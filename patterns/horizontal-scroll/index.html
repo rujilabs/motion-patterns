@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Horizontal scroll demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll down inside this frame. The row below moves sideways while the page holds.</p>
+    <h1>The riverside walk, in five stops</h1>
+    <p class="mute">Four kilometres, flat the whole way. Two hours with stops.</p>
+  </header>
+
+  <section class="hscroll" aria-label="Five stops on the walk">
+    <div class="hscroll-frame">
+      <div class="row-head">
+        <p class="row-k">Stops</p>
+        <span class="bar" aria-hidden="true"><span class="hscroll-progress"></span></span>
+      </div>
+      <ol class="hscroll-track">
+        <li class="stop sheet"><div class="scene s1" aria-hidden="true"><span class="sun"></span><span class="land"></span><span class="post"></span></div><p class="n num">01</p><h2>The old jetty</h2><p class="mute">Start where the ferry used to land. Kopi from the kiosk.</p></li>
+        <li class="stop sheet"><div class="scene s2" aria-hidden="true"><span class="land"></span><span class="tree t1"></span><span class="tree t2"></span><span class="tree t3"></span></div><p class="n num">02</p><h2>Mangrove boardwalk</h2><p class="mute">Mudskippers at low tide. Stay on the boards.</p></li>
+        <li class="stop sheet"><div class="scene s3" aria-hidden="true"><span class="water"></span><span class="arch"></span></div><p class="n num">03</p><h2>Iron bridge</h2><p class="mute">Built in 1931. Cross it for the view upstream.</p></li>
+        <li class="stop sheet"><div class="scene s4" aria-hidden="true"><span class="land"></span><span class="roof"></span><span class="hut"></span></div><p class="n num">04</p><h2>Fishing village</h2><p class="mute">Houses on stilts. Dried fish for sale by the steps.</p></li>
+        <li class="stop sheet"><div class="scene s5" aria-hidden="true"><span class="sun"></span><span class="water"></span><span class="tower"></span></div><p class="n num">05</p><h2>Lighthouse point</h2><p class="mute">End at sunset. The last bus back leaves at 7.40 pm.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="outro">
+    <p class="mute">That is the walk. The page scrolls down again from here.</p>
+  </footer>
+</main>
+</body>
+</html>

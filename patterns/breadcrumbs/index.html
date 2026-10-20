@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breadcrumbs demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="breadcrumbs.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="drive sheet" aria-labelledby="drive-h">
+    <header class="drive-head">
+      <h1 id="drive-h">Shared drive</h1>
+      <p class="count mute num"></p>
+    </header>
+    <nav class="trail" aria-label="Breadcrumb">
+      <ol class="crumbs">
+        <li class="crumb"><span class="crumb-body"><button type="button" aria-current="page">Shared</button></span></li>
+      </ol>
+    </nav>
+    <ul class="rows" aria-label="Folders"></ul>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step indicator demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="steps.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="checkout sheet" aria-labelledby="co-h">
+    <h1 id="co-h" class="co-title">Checkout</h1>
+    <ol class="steps" aria-label="Checkout progress">
+      <li class="steps-track" aria-hidden="true"><span class="steps-fill"></span></li>
+      <li class="step"><span class="step-dot" aria-hidden="true"><span class="step-num num">1</span><svg class="step-tick" viewBox="0 0 16 16"><path pathLength="1" d="M3.5 8.5 L6.8 11.6 L12.6 4.6"/></svg></span><span class="step-label">Bag</span></li>
+      <li class="step" aria-current="step"><span class="step-dot" aria-hidden="true"><span class="step-num num">2</span><svg class="step-tick" viewBox="0 0 16 16"><path pathLength="1" d="M3.5 8.5 L6.8 11.6 L12.6 4.6"/></svg></span><span class="step-label">Delivery</span></li>
+      <li class="step"><span class="step-dot" aria-hidden="true"><span class="step-num num">3</span><svg class="step-tick" viewBox="0 0 16 16"><path pathLength="1" d="M3.5 8.5 L6.8 11.6 L12.6 4.6"/></svg></span><span class="step-label">Payment</span></li>
+      <li class="step"><span class="step-dot" aria-hidden="true"><span class="step-num num">4</span><svg class="step-tick" viewBox="0 0 16 16"><path pathLength="1" d="M3.5 8.5 L6.8 11.6 L12.6 4.6"/></svg></span><span class="step-label">Review</span></li>
+    </ol>
+    <div class="panel" aria-live="polite">
+      <h2 class="panel-h"></h2>
+      <p class="panel-p mute"></p>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn ghost" data-back>Back</button>
+      <button type="button" class="btn" data-next>Continue</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

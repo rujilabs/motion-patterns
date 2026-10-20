@@ -1,0 +1,27 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.snap-section { display: grid; place-items: center; padding: 24px 44px 24px 16px; }
+.snap-section:nth-child(even) { background: var(--demo-paper); }
+.snap-section:nth-child(even) .card { background: var(--demo-table); }
+.card { width: min(440px, 100%); display: grid; gap: 8px; padding: 22px 22px 24px; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.n { color: var(--demo-blue); font-size: 13px; font-weight: 700; }
+.card h1, .card h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.card .mute { font-size: 15px; }
+.art { width: 100%; max-width: 240px; height: auto; }
+.a-tin { fill: #c4553b; }
+.a-lid { fill: var(--demo-ink); }
+.a-cup { fill: var(--demo-paper); stroke: var(--demo-ink); stroke-width: 1.6; stroke-linejoin: round; }
+.a-milk { stroke: #c69c5f; stroke-width: 6; }
+.a-pour { fill: none; stroke: #b07c52; stroke-width: 4; stroke-linecap: round; }
+.a-froth { fill: #e8dcc6; stroke: var(--demo-ink); stroke-width: 1.6; }
+.a-handle { fill: none; stroke: var(--demo-ink); stroke-width: 1.6; }
+
+.snap-dots { position: fixed; z-index: 2; right: 14px; top: 50%; translate: 0 -50%; display: grid; gap: 8px; color: var(--demo-blue); }
+.snap-dots a { position: relative; }
+/* a larger hit area than the dot */
+.snap-dots a::after { content: ""; position: absolute; inset: -6px -10px; }
+@media (max-height: 420px) {
+  .card { padding: 14px 18px; gap: 4px; }
+  .art { max-width: 150px; }
+  .card h1, .card h2 { font-size: 20px; }
+}

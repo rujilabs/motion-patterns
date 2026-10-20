@@ -1,0 +1,24 @@
+{
+  "name": "Step indicator",
+  "slug": "step-indicator",
+  "kind": "pattern",
+  "summary": "Steps joined by a line. The step you leave ticks at once, the line fills to the next one, and it lights up as the line arrives. Going back runs the same beats in reverse.",
+  "category": "state",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--ease-inout",
+    "--dur-quick",
+    "--dur-base",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

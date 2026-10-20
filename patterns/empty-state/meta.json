@@ -1,0 +1,25 @@
+{
+  "name": "Empty state",
+  "slug": "empty-state",
+  "kind": "pattern",
+  "summary": "When a list is empty, its picture comes down and lands with a slight give while its shadow grows, an accent springs in, strokes draw on, and the message and action rise after.",
+  "category": "entry",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-paper",
+    "--ease-out",
+    "--ease-spring",
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-base",
+    "--stagger",
+    "--rise-y"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,61 @@
+/*
+ * empty-state: a picture and a message that settle in when a list has nothing to show.
+ * Calm on purpose: the picture comes down a short way and lands with a slight give (--ease-paper)
+ * while its shadow grows under it, then one small accent springs in and two or three strokes draw
+ * on, and the words and the action rise after the picture, not with it. About 1.5s in all.
+ *
+ *   .empty         plays when shown (on load, or when hidden turns false: display none restarts it)
+ *   .empty-in      the same, held until play.js adds .go to it or an ancestor
+ * Inside the picture (an inline SVG with class .empty-art):
+ *   .empty-shadow  an ellipse under the object; grows as the object lands
+ *   .empty-pop     a small accent (a tick, a star) that springs in after the landing
+ *   .empty-draw    strokes with pathLength="1" that draw on last
+ */
+@keyframes empty-settle {
+  from { opacity: 0; transform: translateY(-16px) scale(.96); }
+  50%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes empty-shadow { from { opacity: 0; transform: scaleX(.5); } }
+@keyframes empty-pop { from { opacity: 0; transform: scale(.4); } }
+@keyframes empty-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes empty-rise { from { opacity: 0; transform: translateY(var(--rise-y)); } }
+
+.empty .empty-art, .js .empty-in .empty-art { animation: empty-settle var(--dur-slow) var(--ease-paper) both; }
+.empty .empty-shadow, .js .empty-in .empty-shadow {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: empty-shadow var(--dur-slow) var(--ease-out) both;
+}
+.empty .empty-pop, .js .empty-in .empty-pop {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: empty-pop var(--dur-base) var(--ease-spring) calc(var(--dur-slow) * .55) both;
+}
+.empty-draw { stroke-dasharray: 1; }
+.empty .empty-draw, .js .empty-in .empty-draw {
+  animation: empty-draw var(--dur-base) var(--ease-inout) calc(var(--dur-slow) * .8) both;
+}
+/* the words and the action: every child after the picture, one --stagger apart */
+.empty > :not(.empty-art), .js .empty-in > :not(.empty-art) {
+  animation: empty-rise var(--dur-base) var(--ease-out) both;
+  animation-delay: calc(var(--dur-slow) * .45 + var(--empty-i, 0) * var(--stagger));
+}
+.empty > :nth-child(3), .empty-in > :nth-child(3) { --empty-i: 1; }
+.empty > :nth-child(4), .empty-in > :nth-child(4) { --empty-i: 2; }
+.empty > :nth-child(n + 5), .empty-in > :nth-child(n + 5) { --empty-i: 3; }
+
+/* held until .go */
+.js .empty-in :is(.empty-art, .empty-shadow, .empty-pop, .empty-draw),
+.js .empty-in > * { animation-play-state: paused; }
+.js .go .empty-in :is(.empty-art, .empty-shadow, .empty-pop, .empty-draw),
+.js .go .empty-in > *,
+.js .empty-in.go :is(.empty-art, .empty-shadow, .empty-pop, .empty-draw),
+.js .empty-in.go > * { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .empty .empty-art, .empty .empty-shadow, .empty .empty-pop, .empty .empty-draw, .empty > :not(.empty-art),
+  .js .empty-in .empty-art, .js .empty-in .empty-shadow, .js .empty-in .empty-pop, .js .empty-in .empty-draw,
+  .js .empty-in > :not(.empty-art) { animation: none; }
+  .empty-draw { stroke-dasharray: none; }
+}

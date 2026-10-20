@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.sticky-header { --sticky-bg: var(--demo-paper); --sticky-line: var(--demo-line); }
+.sticky-row { display: flex; align-items: center; gap: 20px; max-width: 640px; margin: 0 auto; padding: 0 16px; }
+.logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 800; letter-spacing: -.02em; margin-right: auto; }
+.logo-mark { width: 22px; height: 22px; border-radius: 50% 50% 4px 50%; background: var(--demo-blue); }
+.links { display: flex; gap: 16px; font-size: 14px; }
+.links a { text-decoration: none; color: var(--demo-mute); }
+.links a:hover { color: var(--demo-ink); }
+.book { padding: 7px 14px; border-radius: 999px; background: var(--demo-ink); color: var(--demo-paper); font-size: 14px; font-weight: 600; text-decoration: none; }
+
+.article { display: grid; gap: 18px; max-width: 640px; margin: 0 auto; padding: 24px 16px 40vh; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.article h1 { font-size: clamp(24px, 6vw, 32px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+.meta { display: flex; gap: 16px; font-size: 13px; }
+.scene { position: relative; height: 180px; border-radius: 8px; overflow: clip; }
+.scene span { position: absolute; display: block; }
+.sky { inset: 0; background: linear-gradient(#f6d9a8, #f2b880); }
+.hill { bottom: 40px; border-radius: 50% 50% 0 0; }
+.h1 { left: -10%; width: 70%; height: 90px; background: #6f8f6a; }
+.h2 { right: -12%; width: 60%; height: 70px; background: #567553; }
+.river { left: 0; right: 0; bottom: 0; height: 46px; background: #4f7a9a; }
+.boat { left: 42%; bottom: 22px; width: 54px; height: 10px; background: #3a2a20; border-radius: 0 0 14px 14px; }
+.block { display: grid; gap: 6px; padding: 16px 18px; }
+.block h2 { font-size: 17px; font-weight: 650; }
+.block p { color: var(--demo-mute); }
+.end { text-align: center; }
+@media (max-width: 480px) {
+  .links { display: none; }
+}
