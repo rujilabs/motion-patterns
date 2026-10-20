@@ -1,0 +1,17 @@
+{
+  "name": "Text on a path",
+  "slug": "text-on-path",
+  "kind": "pattern",
+  "summary": "Text set on a curved SVG path that travels along it in a seamless loop. A CSS animation drives it, so it pauses, scrubs and stops for reduced motion like any other.",
+  "category": "type",
+  "tech": [
+    "svg",
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

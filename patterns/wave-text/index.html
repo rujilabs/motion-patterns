@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wave text demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="wave.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="player wave-group sheet" aria-labelledby="pl-h">
+    <div class="art" aria-hidden="true"><span class="art-sun"></span><span class="art-hill"></span><span class="art-hill art-hill-2"></span></div>
+    <div class="info">
+      <p class="eyebrow"><span class="live"></span>Now playing</p>
+      <h1 id="pl-h" class="track" data-wave>Slow Tide</h1>
+      <p class="artist">Sora Lim, from <em>Harbour Lights</em></p>
+      <div class="bar" aria-hidden="true"><span></span></div>
+      <p class="times num"><span>1:12</span><span>3:40</span></p>
+      <label class="wave-pause switch"><input type="checkbox"> Pause the wave</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

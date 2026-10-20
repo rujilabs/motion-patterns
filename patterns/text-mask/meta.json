@@ -1,0 +1,18 @@
+{
+  "name": "Text mask",
+  "slug": "text-mask",
+  "kind": "pattern",
+  "summary": "Big letters as a window onto a moving scene or gradient behind them, with a seamless tile loop, a sweep variant, a CSS pause toggle and a plain colour fallback.",
+  "category": "type",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

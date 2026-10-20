@@ -1,0 +1,26 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.gift { width: min(420px, 100%); padding: 22px 22px 18px; display: grid; gap: 14px; }
+.gift-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13px; color: var(--demo-mute); }
+.gift-top strong { color: var(--demo-ink); font-weight: 650; }
+.gift h1 { font-size: 22px; font-weight: 700; }
+.code {
+  display: block; padding: 18px 12px; border: 1px dashed var(--demo-blue); border-radius: 6px;
+  background: var(--demo-blue-soft); text-align: center; white-space: nowrap;
+  font-size: clamp(20px, 6.6vw, 32px); font-weight: 650; letter-spacing: .06em; font-variant-numeric: tabular-nums;
+  --scramble-color: var(--demo-blue);
+}
+.gift-meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 13px; }
+.gift-meta dt { color: var(--demo-mute); }
+.gift-meta dd { font-variant-numeric: tabular-nums; }
+.gift-meta .ok { color: var(--demo-ok); font-weight: 600; }
+.gift-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--demo-line); }
+.gift-foot p { font-size: 13px; color: var(--demo-mute); }
+.btn { font: inherit; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--demo-ink); background: var(--demo-ink); color: var(--demo-paper); cursor: pointer; }
+.btn:hover { background: transparent; color: var(--demo-ink); }
+@media (max-height: 420px) {
+  .gift { padding-block: 14px 12px; gap: 10px; }
+  .code { padding: 12px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .gift { width: 460px; }
+}

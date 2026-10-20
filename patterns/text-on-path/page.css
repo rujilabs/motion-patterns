@@ -1,0 +1,18 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.market { width: min(620px, 100%); padding: 18px 18px 10px; display: grid; gap: 8px; }
+.mk-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.mk-head h1 { font-size: 22px; font-weight: 700; }
+.mk-head p { font-size: 13px; }
+.ribbon { display: block; width: 100%; height: auto; overflow: hidden; }
+/* the path itself, drawn in blue pencil under the text */
+.guide { fill: none; stroke: var(--demo-blue); stroke-width: 1; stroke-dasharray: 4 5; }
+.ribbon-text { fill: var(--demo-ink); font-size: 24px; font-weight: 600; letter-spacing: .01em; }
+.tents path { fill: none; stroke: var(--demo-ink); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.tents .flag { stroke: var(--demo-red); }
+@media (max-width: 480px) {
+  .mk-head { flex-direction: column; gap: 10px; }
+  .ribbon-text { font-size: 30px; }
+}
+@media (max-height: 400px) {
+  .market { width: min(520px, 100%); }
+}

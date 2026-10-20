@@ -1,0 +1,19 @@
+{
+  "name": "Kaleidoscope",
+  "slug": "kaleidoscope",
+  "kind": "pattern",
+  "summary": "One thin slice of a picture, drawn and animated once, then mirrored and turned into a twelve-fold circle. The slice drifts, the circle turns, and a CSS toggle pauses both.",
+  "category": "loop",
+  "tech": [
+    "svg",
+    "js",
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

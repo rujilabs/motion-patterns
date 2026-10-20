@@ -1,0 +1,60 @@
+/*
+ * font-axis: animate a variable font's axes. Each axis is a registered custom property, so it
+ * interpolates on its own and can have its own timing:
+ *   --fa-wght  weight (wght)          default 400
+ *   --fa-wdth  width, in % (wdth)     default 100
+ *   --fa-slnt  slant, in degrees (slnt) default 0, negative leans right
+ * An axis the font does not have is ignored, so the same classes work on any variable font.
+ * Browsers without @property still show every state; they just switch instead of easing.
+ */
+@property --fa-wght { syntax: "<number>"; inherits: true; initial-value: 400; }
+@property --fa-wdth { syntax: "<number>"; inherits: true; initial-value: 100; }
+@property --fa-slnt { syntax: "<number>"; inherits: true; initial-value: 0; }
+
+.axis,
+.axis-hover,
+.axis-loop,
+.axis-ripple > * {
+  font-variation-settings: "wght" var(--fa-wght), "wdth" var(--fa-wdth), "slnt" var(--fa-slnt);
+}
+
+/* axis-hover: heavier and leaning on hover or focus. Width narrows a little so the word keeps its length. */
+.axis-hover {
+  transition: --fa-wght var(--dur-base) var(--ease-out), --fa-wdth var(--dur-base) var(--ease-out), --fa-slnt var(--dur-base) var(--ease-out);
+}
+.axis-hover:hover,
+.axis-hover:focus-visible,
+.axis-host:hover .axis-hover,
+.axis-host:focus-visible .axis-hover { --fa-wght: 800; --fa-wdth: 90; --fa-slnt: -10; }
+
+/* axis-loop: the whole word breathes from light and wide to heavy and narrow */
+@keyframes axis-breathe {
+  from { --fa-wght: 200; --fa-wdth: 112; --fa-slnt: 0; }
+  to { --fa-wght: 900; --fa-wdth: 86; --fa-slnt: -10; }
+}
+.axis-loop { animation: axis-breathe var(--fa-dur, 2.4s) var(--ease-inout) infinite alternate; }
+
+/* axis-ripple: on a word split into letters (one span each): the same breath runs through the letters */
+.axis-ripple > * {
+  animation: axis-breathe var(--fa-dur, 2.4s) var(--ease-inout) infinite alternate;
+  animation-delay: calc(var(--fa-i, 0) * var(--fa-step, 120ms) - var(--fa-dur, 2.4s) * 4);
+}
+.axis-ripple > :nth-child(2) { --fa-i: 1; }
+.axis-ripple > :nth-child(3) { --fa-i: 2; }
+.axis-ripple > :nth-child(4) { --fa-i: 3; }
+.axis-ripple > :nth-child(5) { --fa-i: 4; }
+.axis-ripple > :nth-child(6) { --fa-i: 5; }
+.axis-ripple > :nth-child(7) { --fa-i: 6; }
+.axis-ripple > :nth-child(8) { --fa-i: 7; }
+.axis-ripple > :nth-child(9) { --fa-i: 8; }
+.axis-ripple > :nth-child(n + 10) { --fa-i: 9; }
+
+/* pause: the toggle anywhere inside an .axis-group (WCAG 2.2.2: the loops run longer than 5 s) */
+.axis-group:has(.axis-pause :checked) :is(.axis-loop, .axis-ripple > *) { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the loops hold a middle weight; hover still changes weight, without the transition */
+  .axis-loop, .axis-ripple > * { animation: none; --fa-wght: 600; --fa-wdth: 100; --fa-slnt: 0; }
+  .axis-hover { transition: none; }
+  .axis-pause { display: none; }
+}

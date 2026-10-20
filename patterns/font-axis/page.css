@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+/* the variable font for the demo: weight 100 to 900 and width 50% to 150%, no slant axis */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+.spec { width: min(520px, 100%); padding: 18px 22px 18px; display: grid; gap: 10px; }
+.sp-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.sp-tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--demo-mute); }
+.sp-word { font-family: "Anybody", system-ui, sans-serif; font-size: clamp(56px, 17vw, 96px); line-height: 1; letter-spacing: -.01em; white-space: nowrap; text-align: center; padding-block: 8px 4px; }
+.sp-word span { display: inline-block; }
+.sp-scale { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--demo-blue); font-variant-numeric: tabular-nums; }
+.sp-rule { flex: 1; height: 1px; background: var(--demo-blue); }
+.sp-row { display: flex; justify-content: center; gap: 28px; padding: 12px 0 4px; border-top: 1px solid var(--demo-line); margin-top: 6px; }
+.sp-row a { font-family: "Anybody", system-ui, sans-serif; font-size: 22px; text-decoration: none; display: inline-block; min-width: 4.6em; text-align: center; }
+.sp-row a:hover { color: var(--demo-red); }
+.sp-note { font-size: 12px; color: var(--demo-mute); text-wrap: pretty; }
+@media (max-width: 420px) {
+  .sp-row { gap: 10px; }
+  .sp-row a { font-size: 19px; }
+}
+@media (max-height: 420px) {
+  .spec { gap: 6px; padding-block: 12px; }
+  .sp-word { font-size: 64px; }
+  .sp-note { display: none; }
+}

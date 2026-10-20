@@ -1,0 +1,26 @@
+/*
+ * text-on-path: text set on a curved SVG path that travels along it. on-path.js copies the
+ * animated --tp-shift into the textPath's startOffset. One cycle moves the text by one phrase
+ * (--tp-unit, measured by the script), so the loop is seamless. Linear timing: anything that
+ * loops at a constant speed should not ease.
+ */
+@property --tp-shift {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@keyframes path-travel {
+  from { --tp-shift: 0px; }
+  to { --tp-shift: calc(-1 * var(--tp-unit, 0px)); }
+}
+.path-travel { animation: path-travel var(--tp-dur, 9s) linear infinite; }
+/* path-travel-reverse: the text runs toward the end of the path instead */
+.path-travel-reverse { animation-direction: reverse; }
+
+/* pause: the toggle anywhere inside a .path-group (WCAG 2.2.2: it runs longer than 5 s) */
+.path-group:has(.path-pause :checked) .path-travel { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .path-travel { animation: none; }
+  .path-pause { display: none; }
+}

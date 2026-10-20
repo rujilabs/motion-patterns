@@ -1,0 +1,44 @@
+/*
+ * text-mask: big letters as a window onto something moving behind them. The fill is the
+ * element's own background, clipped to the letter shapes, and the animation slides it.
+ *   --mask-fill  the background: an image tile, gradients, or both
+ *   --mask-size  its background-size
+ *   --mask-to    where the background ends one cycle (from 0 0). Set it to one tile, so the
+ *                loop has no seam
+ * Linear timing: a loop at constant speed should not ease. Without background-clip: text
+ * the letters keep a plain colour (--mask-ink), never transparent.
+ */
+.text-mask {
+  color: var(--mask-ink, currentColor);
+  background: var(--mask-fill, linear-gradient(90deg, currentColor, currentColor));
+  background-size: var(--mask-size, auto);
+  background-position: 0 0;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-mask {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: text-mask-pan var(--mask-dur, 6s) linear infinite;
+  }
+}
+@keyframes text-mask-pan {
+  to { background-position: var(--mask-to, 240px 0); }
+}
+
+/* text-mask-sweep: a gradient twice as wide as the text sweeps across it and back */
+.text-mask-sweep {
+  --mask-size: 200% 100%;
+  --mask-to: 100% 0;
+  animation-timing-function: var(--ease-inout);
+  animation-direction: alternate;
+}
+
+/* pause: the toggle anywhere inside a .mask-group (WCAG 2.2.2: it runs longer than 5 s) */
+.mask-group:has(.mask-pause :checked) .text-mask { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the window stays, still */
+  .text-mask, .text-mask.text-mask-sweep { animation: none; }
+  .mask-pause { display: none; }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Line boil",
+  "slug": "line-boil",
+  "kind": "pattern",
+  "summary": "A hand-drawn line that shimmers between three slightly different tracings, like animated pencil lines. Hard cuts, eight drawings a second, a CSS pause toggle.",
+  "category": "loop",
+  "tech": [
+    "svg",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Wave text",
+  "slug": "wave-text",
+  "kind": "pattern",
+  "summary": "Letters rise and fall in a wave that travels across a word, then rest so it stays readable. Words never break, a flag variant tips the letters, and a CSS toggle pauses it.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

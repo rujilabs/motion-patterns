@@ -1,0 +1,20 @@
+{
+  "name": "Variable font axes",
+  "slug": "font-axis",
+  "kind": "pattern",
+  "summary": "Weight, width and slant axes as registered custom properties: a hover that turns heavier and leaning, a breathing loop and a ripple through the letters. Missing axes are skipped.",
+  "category": "type",
+  "tech": [
+    "css",
+    "variable-font"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-out",
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

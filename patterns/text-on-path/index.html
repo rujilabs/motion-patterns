@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text on a path demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="on-path.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="market path-group sheet" aria-labelledby="mk-h">
+    <header class="mk-head">
+      <div>
+        <h1 id="mk-h">Saturday market</h1>
+        <p class="mute">Lorong Kebun car park, 8 am to 1 pm</p>
+      </div>
+      <label class="path-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <svg class="ribbon" viewBox="0 0 600 230" role="img" aria-label="Fresh bread, coffee, plants, old books, batik and kuih">
+      <path id="curve" class="guide" d="M 0 124 C 110 30, 220 30, 300 104 S 480 180, 600 70" />
+      <text class="ribbon-text" aria-hidden="true"><textPath class="path-travel" href="#curve" startOffset="12">Fresh bread · Coffee · Plants · Old books · Batik · Kuih · </textPath></text>
+      <g class="tents" aria-hidden="true">
+        <path d="M70 226 V188 L100 166 L130 188 V226" />
+        <path d="M100 166 V150 M100 150 L114 155 L100 160" class="flag" />
+        <path d="M250 226 V196 L284 172 L318 196 V226" />
+        <path d="M500 226 V184 L532 162 L564 184 V226" />
+        <path d="M532 162 V146 M532 146 L546 151 L532 156" class="flag" />
+        <path d="M20 226 H580" />
+      </g>
+    </svg>
+  </section>
+</main>
+</body>
+</html>

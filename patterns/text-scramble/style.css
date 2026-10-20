@@ -1,0 +1,30 @@
+/*
+ * text-scramble: letters cycle through random characters, then settle on the real word from left
+ * to right. scramble.js does the work; this file only draws it. Each real letter keeps its place
+ * (its fill made transparent while it scrambles) and the random glyph is painted on top of it from
+ * data-glyph, so the line never changes width while the glyphs flicker.
+ */
+.scramble-ch { position: relative; }
+.scramble-ch.is-scrambling { -webkit-text-fill-color: transparent; }
+.scramble-ch.is-scrambling::after {
+  content: attr(data-glyph);
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-text-fill-color: var(--scramble-color, currentColor);
+}
+/* the whole text for screen readers; the flickering letters are aria-hidden */
+.scramble-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* scramble.js does not split the text under reduced motion; this covers a split done before the switch */
+  .scramble-ch.is-scrambling { -webkit-text-fill-color: currentColor; }
+  .scramble-ch.is-scrambling::after { content: none; }
+}

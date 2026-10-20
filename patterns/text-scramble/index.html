@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text scramble demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="scramble.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="gift sheet" aria-labelledby="gift-h">
+    <p class="gift-top"><strong>Gift card</strong><span class="num">RM 50.00</span></p>
+    <h1 id="gift-h">Here is your code</h1>
+    <output class="code" id="gift-code" data-scramble data-scramble-list="KT7Q-4MRW-29HX|PN3V-8LCA-H6ZE|RW2D-Y5FM-7QJT" aria-live="polite">KT7Q-4MRW-29HX</output>
+    <dl class="gift-meta">
+      <dt>For</dt><dd>Mei Ling Ong</dd>
+      <dt>Reference</dt><dd><span data-scramble data-scramble-delay="350" data-scramble-dur="500">GC 40817</span></dd>
+      <dt>Status</dt><dd class="ok">Ready to use</dd>
+    </dl>
+    <div class="gift-foot">
+      <p>Valid until 31 December</p>
+      <button class="btn" type="button" data-scramble-next="gift-code">New code</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

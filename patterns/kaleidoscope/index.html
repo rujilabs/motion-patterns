@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaleidoscope demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="kaleido.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="tile kaleido-group sheet" aria-labelledby="tl-h">
+    <figure class="tl-art">
+      <svg class="kaleidoscope" data-slices="12" viewBox="-100 -100 200 200" role="img" aria-label="A twelve-fold mirrored pattern of circles and petals, slowly turning">
+        <g class="k-turn">
+          <g class="k-slice">
+            <g class="k-drift">
+              <circle class="k-fill" cx="46" cy="14" r="14" />
+              <circle class="k-line" cx="46" cy="14" r="22" />
+              <path class="k-petal" d="M62 4 C 74 12, 86 12, 96 4 C 86 -4, 74 -4, 62 4 Z" />
+              <circle class="k-key" cx="80" cy="22" r="4" />
+              <path class="k-line" d="M10 0 L30 26 M54 40 L94 30" />
+            </g>
+          </g>
+        </g>
+        <circle class="k-rim" r="99.5" />
+      </svg>
+    </figure>
+    <div class="tl-info">
+      <p class="tl-tag">Pattern study 12</p>
+      <h1 id="tl-h">Twelve mirrors</h1>
+      <p class="mute">One thin slice, drawn once, then mirrored and turned eleven times. Only the slice moves.</p>
+      <dl class="tl-spec">
+        <div><dt>Slices</dt><dd class="num">12</dd></div>
+        <div><dt>Turn</dt><dd class="num">90 s</dd></div>
+      </dl>
+      <label class="kaleido-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

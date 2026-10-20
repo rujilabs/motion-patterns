@@ -1,0 +1,42 @@
+/*
+ * wave-text: letters rise and fall in a wave that travels left to right. wave.js splits the text
+ * and numbers each letter (--wave-i); every letter runs the same short bump, one --wave-step
+ * later than the letter before it. The bump takes a quarter of the cycle and the rest is still, so the
+ * word is readable between passes. The delay is shifted back by a whole number of cycles, so the
+ * wave is already travelling on the first frame.
+ */
+@keyframes wave {
+  0%, 24%, 100% { transform: none; }
+  12% { transform: translateY(calc(-1 * var(--wave-h, .25em))); }
+}
+.wave-word { display: inline-block; white-space: nowrap; }
+.wave-ch {
+  display: inline-block;
+  animation: wave var(--wave-dur, 2.4s) var(--ease-inout) infinite;
+  animation-delay: calc(var(--wave-i, 0) * var(--wave-step, 80ms) - var(--wave-dur, 2.4s) * 4);
+}
+/* wave-flag: the letters also tip a little as they rise, like cloth */
+@keyframes wave-flag {
+  0%, 24%, 100% { transform: none; }
+  6% { transform: translateY(calc(-.5 * var(--wave-h, .25em))) rotate(-5deg); }
+  12% { transform: translateY(calc(-1 * var(--wave-h, .25em))); }
+  18% { transform: translateY(calc(-.5 * var(--wave-h, .25em))) rotate(5deg); }
+}
+.wave-flag .wave-ch { animation-name: wave-flag; }
+
+/* pause: the toggle anywhere inside a .wave-group (WCAG 2.2.2: it runs longer than 5 s) */
+.wave-group:has(.wave-pause :checked) .wave-ch { animation-play-state: paused; }
+
+.wave-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-ch, .wave-flag .wave-ch { animation: none; }
+  .wave-pause { display: none; }
+}

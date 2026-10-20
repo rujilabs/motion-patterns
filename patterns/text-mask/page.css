@@ -1,0 +1,35 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+.ferry { width: min(560px, 100%); padding: 18px 22px 16px; display: grid; gap: 6px; container-type: inline-size; }
+.fr-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.fr-tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--demo-mute); }
+/* the window: heavy, slightly wide letters give the scene the most room */
+.fr-word {
+  font-family: "Anybody", system-ui, sans-serif; font-weight: 900; font-stretch: 112%;
+  font-size: 21cqi; line-height: .95; letter-spacing: -.01em; text-align: center; white-space: nowrap;
+  padding-block: 10px 6px;
+  --mask-ink: var(--demo-blue);
+  --mask-fill: url("sea.svg") repeat-x 0 0;
+  --mask-size: 240px 100%;
+  --mask-to: 240px 0;
+  --mask-dur: 7s;
+}
+.fr-times { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--demo-line); padding-top: 12px; margin-top: 4px; }
+.fr-times div { display: grid; gap: 2px; }
+.fr-times div + div { padding-left: 14px; border-left: 1px solid var(--demo-line); }
+.fr-times dt { font-size: 12px; color: var(--demo-mute); }
+.fr-times dd { font-size: 18px; font-weight: 650; }
+.fr-times .calm { color: var(--demo-ok); }
+@media (max-width: 420px) {
+  .ferry { padding-inline: 16px; }
+  .fr-times dd { font-size: 16px; }
+}
+@media (max-height: 400px) {
+  .ferry { width: min(460px, 100%); }
+}

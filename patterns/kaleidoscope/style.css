@@ -1,0 +1,24 @@
+/*
+ * kaleidoscope: one thin slice of a picture, mirrored and turned into a full circle.
+ * kaleido.js clones the slice (.k-slice) into its mirrored copies; this file moves it:
+ *   .k-drift  the shapes inside the slice drift and turn, in every copy at once, so the
+ *             whole pattern changes shape. A mirrored copy drifts the mirrored way.
+ *   .k-turn   the whole circle turns, slowly
+ * Transforms are in SVG user units, about the 0 0 centre of the viewBox.
+ */
+.kaleidoscope .k-turn { animation: k-turn var(--k-turn-dur, 90s) linear infinite; }
+.kaleidoscope .k-drift { animation: k-drift var(--k-drift-dur, 7s) var(--ease-inout) infinite alternate; }
+@keyframes k-turn { to { transform: rotate(360deg); } }
+@keyframes k-drift {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(12px, 4px) rotate(10deg); }
+}
+
+/* pause: the toggle anywhere inside a .kaleido-group (WCAG 2.2.2: it runs longer than 5 s) */
+.kaleido-group:has(.kaleido-pause :checked) .kaleidoscope :is(.k-turn, .k-drift) { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still pattern: the mirrors stay, nothing turns */
+  .kaleidoscope .k-turn, .kaleidoscope .k-drift { animation: none; }
+  .kaleido-pause { display: none; }
+}

@@ -1,0 +1,27 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.tile { width: min(580px, 100%); padding: 22px; display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center; }
+.tl-art { width: 220px; }
+.kaleidoscope { display: block; width: 100%; height: auto; }
+/* the slice, in demo colours: blue pencil lines, a soft blue fill, one red key mark */
+.k-fill { fill: var(--demo-blue-soft); }
+.k-line { fill: none; stroke: var(--demo-blue); stroke-width: 1; }
+.k-petal { fill: var(--demo-ink); }
+.k-key { fill: var(--demo-red); }
+.k-rim { fill: none; stroke: var(--demo-line); stroke-width: 1; }
+.tl-info { display: grid; gap: 6px; justify-items: start; min-width: 0; }
+.tl-tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--demo-mute); }
+.tl-info h1 { font-size: 26px; font-weight: 700; }
+.tl-info .mute { font-size: 14px; text-wrap: pretty; }
+.tl-spec { display: flex; gap: 22px; margin-top: 4px; }
+.tl-spec dt { font-size: 12px; color: var(--demo-mute); }
+.tl-spec dd { font-weight: 650; }
+.kaleido-pause { margin-top: 6px; }
+@media (max-width: 520px) {
+  .tile { grid-template-columns: 1fr; justify-items: center; gap: 16px; width: min(340px, 100%); }
+  .tl-info { justify-items: center; text-align: center; }
+  .tl-art { width: 200px; }
+}
+@media (max-height: 420px) {
+  .tl-art { width: 170px; }
+  .tile { padding: 14px; }
+}

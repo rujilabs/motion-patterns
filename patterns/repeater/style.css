@@ -1,0 +1,61 @@
+/*
+ * repeater: one shape copied many times. Each copy is numbered (--rep-i) and turned, scaled and
+ * delayed a little more than the one before it, so a single simple move becomes a pattern.
+ * The copies share one place (a one-cell grid); the base offset is set with transform and the
+ * animation uses the separate rotate and scale properties, so the two add up instead of fighting.
+ *   --rep-turn    extra turn per copy, default 15deg
+ *   --rep-shrink  scale lost per copy, default .06
+ *   --rep-delay   delay per copy, default 90ms
+ *   --rep-dur     one cycle, default 6s
+ */
+.repeater { display: grid; place-items: center; }
+.repeater > * {
+  grid-area: 1 / 1;
+  transform: rotate(calc(var(--rep-i, 0) * var(--rep-turn, 15deg))) scale(calc(1 - var(--rep-i, 0) * var(--rep-shrink, .06)));
+  animation: repeater var(--rep-dur, 6s) var(--ease-inout) infinite;
+  animation-delay: calc(var(--rep-i, 0) * var(--rep-delay, 90ms) - var(--rep-dur, 6s) * 4);
+}
+@keyframes repeater {
+  0%, 100% { rotate: 0deg; scale: 1; }
+  50% { rotate: 90deg; scale: .82; }
+}
+
+/* repeater-ring: the copies stand around a circle of radius --rep-r and pulse in turn, like a loader */
+.repeater-ring > * {
+  transform: rotate(calc(var(--rep-i, 0) * var(--rep-turn, 30deg))) translateY(calc(-1 * var(--rep-r, 24px)));
+  animation-name: repeater-ring;
+  animation-timing-function: var(--ease-out);
+}
+@keyframes repeater-ring {
+  0% { scale: 1.6; opacity: 1; }
+  40%, 100% { scale: .6; opacity: .3; }
+}
+
+/* copy numbers: up to 16 copies; browsers with sibling-index() count any number */
+.repeater > :nth-child(2) { --rep-i: 1; }
+.repeater > :nth-child(3) { --rep-i: 2; }
+.repeater > :nth-child(4) { --rep-i: 3; }
+.repeater > :nth-child(5) { --rep-i: 4; }
+.repeater > :nth-child(6) { --rep-i: 5; }
+.repeater > :nth-child(7) { --rep-i: 6; }
+.repeater > :nth-child(8) { --rep-i: 7; }
+.repeater > :nth-child(9) { --rep-i: 8; }
+.repeater > :nth-child(10) { --rep-i: 9; }
+.repeater > :nth-child(11) { --rep-i: 10; }
+.repeater > :nth-child(12) { --rep-i: 11; }
+.repeater > :nth-child(13) { --rep-i: 12; }
+.repeater > :nth-child(14) { --rep-i: 13; }
+.repeater > :nth-child(15) { --rep-i: 14; }
+.repeater > :nth-child(16) { --rep-i: 15; }
+@supports (scale: calc(sibling-index() * 1)) {
+  .repeater > * { --rep-i: calc(sibling-index() - 1); }
+}
+
+/* pause: the toggle anywhere inside a .repeater-group (WCAG 2.2.2: it runs longer than 5 s) */
+.repeater-group:has(.repeater-pause :checked) .repeater > * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the pattern stays, still: every copy keeps its turn and scale */
+  .repeater > *, .repeater-ring > * { animation: none; }
+  .repeater-pause { display: none; }
+}

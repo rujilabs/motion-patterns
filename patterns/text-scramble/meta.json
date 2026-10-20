@@ -1,0 +1,16 @@
+{
+  "name": "Text scramble",
+  "slug": "text-scramble",
+  "kind": "pattern",
+  "summary": "Letters flicker through random characters, then settle on the real text from left to right. The line never changes width, and screen readers get the text at once.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

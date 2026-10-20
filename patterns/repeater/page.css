@@ -1,0 +1,27 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.focus { width: min(580px, 100%); padding: 22px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+/* the shape: a square in blue pencil, 12 copies. The first copy is the red key mark. */
+.squares { width: 200px; height: 200px; }
+.squares span { width: 130px; height: 130px; border: 1px solid var(--demo-blue); border-radius: 10px; }
+.squares span:first-child { border-color: var(--demo-red); }
+.fc-info { display: grid; gap: 6px; justify-items: start; min-width: 0; }
+.fc-tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--demo-mute); }
+.fc-info h1 { font-size: 44px; font-weight: 700; letter-spacing: -.02em; }
+.fc-info h1 span { font-size: 18px; font-weight: 500; color: var(--demo-mute); letter-spacing: 0; }
+.fc-info .mute { font-size: 14px; }
+.fc-sync { display: flex; align-items: center; gap: 10px; margin-top: 6px; font-size: 13px; color: var(--demo-mute); }
+/* the small ring: 12 dots, 1.2s a turn */
+.dots { width: 22px; height: 22px; --rep-r: 8px; --rep-dur: 1.2s; --rep-delay: 100ms; }
+.dots i { width: 3px; height: 3px; border-radius: 50%; background: var(--demo-ink); }
+.repeater-pause { margin-top: 8px; }
+@media (max-width: 520px) {
+  .focus { grid-template-columns: 1fr; gap: 14px; justify-items: center; width: min(340px, 100%); }
+  .fc-info { justify-items: center; text-align: center; }
+  .squares { width: 170px; height: 170px; }
+  .squares span { width: 112px; height: 112px; }
+}
+@media (max-height: 420px) {
+  .squares { width: 150px; height: 150px; }
+  .squares span { width: 100px; height: 100px; }
+  .focus { padding: 14px; }
+}
