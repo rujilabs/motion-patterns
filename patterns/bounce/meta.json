@@ -1,0 +1,18 @@
+{
+  "name": "Bounce",
+  "slug": "bounce",
+  "kind": "pattern",
+  "summary": "Dropped from above, it bounces lower each time until it rests: true parabolas with each bounce a quarter as high. A soft one-bounce variant for badges, and in-view.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

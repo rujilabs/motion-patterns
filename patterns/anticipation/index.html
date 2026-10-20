@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anticipation demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="anticipation.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="note sheet" data-composer aria-labelledby="note-h">
+    <header class="note-head">
+      <h1 id="note-h">New message</h1>
+      <p class="to"><span>To</span> Aiko Tanaka</p>
+    </header>
+    <div class="msg">
+      <p>Hi Aiko, the proofs for the spring menu are ready. I left two options for the cover, see pages 2 and 3. Can we talk on Thursday?</p>
+      <p class="sent-note" role="status"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sent-text">Sent at <span class="num">14:02</span></span></p>
+    </div>
+    <footer class="note-foot">
+      <div class="lane" aria-hidden="true">
+        <svg class="plane antic" viewBox="0 0 28 28" width="28" height="28"><path d="M3 13.5 24.5 4.5 18 23.5l-4.5-7.5L3 13.5Z" class="wing" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M13.5 16 24.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <button class="send" type="button" data-send><span>Send</span></button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

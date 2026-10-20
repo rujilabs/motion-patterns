@@ -1,0 +1,19 @@
+{
+  "name": "Motion path",
+  "slug": "motion-path",
+  "kind": "pattern",
+  "summary": "An object travels along a curve with offset-path and turns to follow it, while a trail draws behind it on the same curve and clock. In-view variant included.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

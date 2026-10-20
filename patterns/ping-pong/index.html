@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ping-pong loop demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="scan sheet pingpong-group" aria-labelledby="scan-h">
+    <header class="scan-head">
+      <div>
+        <h1 id="scan-h">Scan the parcel label</h1>
+        <p class="scan-sub">Hold the label flat inside the frame.</p>
+      </div>
+      <label class="pingpong-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame" aria-hidden="true">
+      <div class="label">
+        <p class="lab-top"><span>FROM</span><span class="v">Kedai Ruang, Ipoh</span></p>
+        <p class="lab-to"><span>TO</span><span class="v">Aiko Tanaka<br>Jalan Bunga 12, Kuching</span></p>
+        <svg class="code" viewBox="0 0 120 30" preserveAspectRatio="none">
+          <g fill="currentColor"><rect x="0" width="2" height="30"/><rect x="4" width="1" height="30"/><rect x="7" width="3" height="30"/><rect x="12" width="1" height="30"/><rect x="15" width="2" height="30"/><rect x="19" width="1" height="30"/><rect x="22" width="4" height="30"/><rect x="28" width="1" height="30"/><rect x="31" width="2" height="30"/><rect x="35" width="1" height="30"/><rect x="38" width="3" height="30"/><rect x="43" width="2" height="30"/><rect x="47" width="1" height="30"/><rect x="50" width="1" height="30"/><rect x="53" width="4" height="30"/><rect x="59" width="1" height="30"/><rect x="62" width="2" height="30"/><rect x="66" width="3" height="30"/><rect x="71" width="1" height="30"/><rect x="74" width="2" height="30"/><rect x="78" width="1" height="30"/><rect x="81" width="3" height="30"/><rect x="86" width="1" height="30"/><rect x="89" width="2" height="30"/><rect x="93" width="4" height="30"/><rect x="99" width="1" height="30"/><rect x="102" width="2" height="30"/><rect x="106" width="1" height="30"/><rect x="109" width="3" height="30"/><rect x="114" width="1" height="30"/><rect x="117" width="3" height="30"/></g>
+        </svg>
+        <p class="awb num">7731 0042 5518</p>
+      </div>
+      <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+      <span class="beam pingpong"></span>
+    </div>
+    <div class="status">
+      <p>Looking up the tracking number</p>
+      <div class="track"><span class="seek pingpong"></span></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

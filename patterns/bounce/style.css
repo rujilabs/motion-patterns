@@ -1,0 +1,77 @@
+/*
+ * bounce: dropped from above, it hits the floor and bounces lower each time until it rests.
+ * Only the height changes, never the shape (for a body that squashes, see squash-stretch).
+ * Each bounce keeps half the speed of the one before, so it rises a quarter as high and lasts half
+ * as long: 1, .25, .06, .02 of --bounce-h. The arcs are real parabolas written out as keyframe
+ * points on linear time: slow at the top, fastest at the floor.
+ *
+ * .bounce       three bounces, for a thing that lands: a card dropped in a slot, a file, a token.
+ * .bounce-soft  one small bounce, for a badge or a count that arrives.
+ * .bounce-in    add next to either to hold it until play.js marks it (or an ancestor) with .go.
+ * --bounce-h    drop height (default 96px). --bounce-dur sets the whole run.
+ */
+@keyframes bounce-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.bounce {
+  animation: bounce var(--bounce-dur, 1.3s) linear both, bounce-fade var(--dur-quick) linear both;
+}
+.bounce-soft {
+  animation: bounce-soft var(--bounce-dur, .8s) linear both, bounce-fade var(--dur-quick) linear both;
+}
+.js .bounce-in { animation-play-state: paused; }
+.js .go .bounce-in,
+.js .bounce-in.go { animation-play-state: running; }
+
+@keyframes bounce {
+  0% { translate: 0 calc(var(--bounce-h, 96px) * -1); }
+  4.55% { translate: 0 calc(var(--bounce-h, 96px) * -0.9844); }
+  9.09% { translate: 0 calc(var(--bounce-h, 96px) * -0.9375); }
+  13.64% { translate: 0 calc(var(--bounce-h, 96px) * -0.8594); }
+  18.18% { translate: 0 calc(var(--bounce-h, 96px) * -0.75); }
+  22.73% { translate: 0 calc(var(--bounce-h, 96px) * -0.6094); }
+  27.27% { translate: 0 calc(var(--bounce-h, 96px) * -0.4375); }
+  31.82% { translate: 0 calc(var(--bounce-h, 96px) * -0.2344); }
+  36.36% { translate: 0 0; }
+  42.42% { translate: 0 calc(var(--bounce-h, 96px) * -0.1389); }
+  48.48% { translate: 0 calc(var(--bounce-h, 96px) * -0.2222); }
+  54.55% { translate: 0 calc(var(--bounce-h, 96px) * -0.25); }
+  60.61% { translate: 0 calc(var(--bounce-h, 96px) * -0.2222); }
+  66.67% { translate: 0 calc(var(--bounce-h, 96px) * -0.1389); }
+  72.73% { translate: 0 0; }
+  75.76% { translate: 0 calc(var(--bounce-h, 96px) * -0.0347); }
+  78.79% { translate: 0 calc(var(--bounce-h, 96px) * -0.0556); }
+  81.82% { translate: 0 calc(var(--bounce-h, 96px) * -0.0625); }
+  84.85% { translate: 0 calc(var(--bounce-h, 96px) * -0.0556); }
+  87.88% { translate: 0 calc(var(--bounce-h, 96px) * -0.0347); }
+  90.91% { translate: 0 0; }
+  92.42% { translate: 0 calc(var(--bounce-h, 96px) * -0.0087); }
+  93.94% { translate: 0 calc(var(--bounce-h, 96px) * -0.0139); }
+  95.45% { translate: 0 calc(var(--bounce-h, 96px) * -0.0156); }
+  96.97% { translate: 0 calc(var(--bounce-h, 96px) * -0.0139); }
+  98.48% { translate: 0 calc(var(--bounce-h, 96px) * -0.0087); }
+  100% { translate: 0 0; }
+}
+@keyframes bounce-soft {
+  0% { translate: 0 calc(var(--bounce-h, 96px) * -1); }
+  7.62% { translate: 0 calc(var(--bounce-h, 96px) * -0.9844); }
+  15.24% { translate: 0 calc(var(--bounce-h, 96px) * -0.9375); }
+  22.87% { translate: 0 calc(var(--bounce-h, 96px) * -0.8594); }
+  30.49% { translate: 0 calc(var(--bounce-h, 96px) * -0.75); }
+  38.11% { translate: 0 calc(var(--bounce-h, 96px) * -0.6094); }
+  45.73% { translate: 0 calc(var(--bounce-h, 96px) * -0.4375); }
+  53.35% { translate: 0 calc(var(--bounce-h, 96px) * -0.2344); }
+  60.98% { translate: 0 0; }
+  67.48% { translate: 0 calc(var(--bounce-h, 96px) * -0.0569); }
+  73.98% { translate: 0 calc(var(--bounce-h, 96px) * -0.091); }
+  80.49% { translate: 0 calc(var(--bounce-h, 96px) * -0.1024); }
+  86.99% { translate: 0 calc(var(--bounce-h, 96px) * -0.091); }
+  93.5% { translate: 0 calc(var(--bounce-h, 96px) * -0.0569); }
+  100% { translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* it is simply in its place */
+  .bounce, .bounce-soft, .js .bounce-in { animation: none; }
+}

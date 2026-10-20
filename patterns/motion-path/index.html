@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion path demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="motion-path.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="trip sheet" data-mp aria-labelledby="trip-h">
+    <div class="map" aria-hidden="true">
+      <svg class="map-art" viewBox="0 0 300 170" width="300" height="170">
+        <path class="river" d="M0 18 C 60 30 90 0 150 10 S 250 40 300 6 V0 H0 Z"/>
+        <rect class="park" x="128" y="118" width="58" height="40" rx="4"/>
+        <g class="streets">
+          <path d="M0 96 H300"/><path d="M0 140 H300"/><path d="M60 0 V170"/><path d="M168 0 V170"/><path d="M240 0 V170"/><path d="M0 52 C 100 60 200 44 300 60"/>
+        </g>
+        <path class="route" d="M 26 140 C 70 140 60 62 116 62 S 168 128 206 106 S 238 48 278 46"/>
+        <path class="trail motion-trail" pathLength="1" d="M 26 140 C 70 140 60 62 116 62 S 168 128 206 106 S 238 48 278 46"/>
+        <circle class="from" cx="26" cy="140" r="5"/>
+        <path class="pin" d="M278 33 c0 0 -9 -9.5 -9 -15 a9 9 0 0 1 18 0 c0 5.5 -9 15 -9 15Z"/>
+        <circle class="pin-eye" cx="278" cy="18" r="3"/>
+      </svg>
+      <span class="rider motion-path"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="11" class="rider-disc"/><path d="M8 7.5 15.5 12 8 16.5" class="rider-arrow"/></svg></span>
+    </div>
+    <div class="info">
+      <h1 id="trip-h">Rider on the way</h1>
+      <p class="info-sub">Mee goreng and two teh ais from Warung Seri</p>
+      <dl class="facts">
+        <div><dt>Rider</dt><dd>Azlan, on a red scooter</dd></div>
+        <div><dt>Distance</dt><dd class="num">2.4 km</dd></div>
+        <div><dt>Arrives</dt><dd class="num">12:18</dd></div>
+      </dl>
+      <button class="again" type="button" data-mp-replay>Replay</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

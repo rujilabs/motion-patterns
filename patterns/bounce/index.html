@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bounce demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="bounce.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="week sheet" data-bounce aria-labelledby="week-h">
+    <header class="week-head">
+      <div>
+        <h1 id="week-h">Week 43</h1>
+        <p class="week-sub">Studio room booking, 20 to 24 October</p>
+      </div>
+      <button class="again" type="button" data-bounce-replay>Drop it again</button>
+    </header>
+    <ol class="days">
+      <li class="day d-mon"><p class="dname">Mon <span class="num">20</span></p>
+        <p class="chip">Stand-up<span class="num">09:30</span></p>
+      </li>
+      <li class="day"><p class="dname">Tue <span class="num">21</span></p>
+        <p class="chip">Client call<span class="num">11:00</span></p>
+        <p class="chip">Print proofs<span class="num">15:00</span></p>
+      </li>
+      <li class="day day-drop"><p class="dname">Wed <span class="num">22</span> <span class="fresh bounce-soft">1 new</span></p>
+        <p class="slot">
+          <span class="chip chip-new bounce">Design review<span class="num">14:00</span></span>
+        </p>
+      </li>
+      <li class="day"><p class="dname">Thu <span class="num">23</span></p>
+        <p class="chip">Photo shoot<span class="num">10:00</span></p>
+      </li>
+      <li class="day d-fri"><p class="dname">Fri <span class="num">24</span></p>
+        <p class="chip">Wrap-up<span class="num">16:30</span></p>
+      </li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>

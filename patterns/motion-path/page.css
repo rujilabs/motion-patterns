@@ -1,0 +1,37 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.trip { width: min(600px, 100%); padding: 10px; display: grid; gap: 14px; }
+@media (min-width: 560px) { .trip { grid-template-columns: 300px 1fr; align-items: center; padding: 12px 18px 12px 12px; gap: 20px; } }
+/* the map is a fixed 300 x 170 so the CSS path and the SVG d share one set of px */
+.map { position: relative; width: 300px; height: 170px; justify-self: center; border-radius: 6px; overflow: clip;
+  background: var(--demo-table); border: 1px solid var(--demo-line); }
+.map-art { position: absolute; top: 0; left: 0; display: block; }
+.river { fill: var(--demo-blue-soft); }
+.park { fill: color-mix(in srgb, var(--demo-ok) 14%, transparent); }
+.streets path { fill: none; stroke: var(--demo-line); stroke-width: 5; }
+.route { fill: none; stroke: var(--demo-blue); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.trail { fill: none; stroke: var(--demo-ink); stroke-width: 3; stroke-linecap: round; }
+.from { fill: var(--demo-paper); stroke: var(--demo-ink); stroke-width: 2; }
+.pin { fill: var(--demo-red); }
+.pin-eye { fill: #fff; }
+.rider { --mp-path: path("M 26 140 C 70 140 60 62 116 62 S 168 128 206 106 S 238 48 278 46"); --mp-dur: 2.6s; position: absolute; top: 0; left: 0; width: 24px; height: 24px; }
+.rider svg { display: block; }
+.rider-disc { fill: var(--demo-ink); stroke: var(--demo-paper); stroke-width: 2; }
+.rider-arrow { fill: none; stroke: var(--demo-paper); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.info { display: grid; gap: 4px; padding: 0 4px; }
+.info h1 { font-size: 18px; font-weight: 700; }
+.info-sub { color: var(--demo-mute); font-size: 13px; }
+.facts { display: grid; gap: 3px; margin-top: 8px; font-size: 13px; }
+.facts div { display: grid; grid-template-columns: 72px 1fr; }
+.facts dt { color: var(--demo-mute); }
+.facts dd { margin: 0; font-weight: 600; }
+.again { justify-self: start; margin-top: 10px; font: inherit; font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 6px;
+  background: var(--demo-paper); color: var(--demo-ink); border: 1px solid var(--demo-line); cursor: pointer; }
+.again:hover { border-color: var(--demo-ink); }
+@media (max-width: 559px) {
+  .info { grid-template-columns: 1fr auto; column-gap: 12px; }
+  .info h1, .info-sub, .facts { grid-column: 1; }
+  .again { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; align-self: start; }
+}
+@media (max-width: 559px) and (max-height: 460px) {
+  .facts { display: none; }
+}

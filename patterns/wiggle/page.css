@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.desk { width: min(460px, 100%); display: grid; }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--demo-line); }
+.brand { font-weight: 700; letter-spacing: -.01em; }
+.brand span { font-weight: 400; color: var(--demo-mute); font-size: 13px; margin-left: 2px; }
+.tools { display: flex; align-items: center; gap: 6px; }
+.tool { position: relative; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 6px;
+  background: var(--demo-paper); border: 1px solid var(--demo-line); color: var(--demo-ink); cursor: pointer; }
+.tool svg { display: block; overflow: visible; }
+.tool:hover { border-color: var(--demo-ink); }
+.tool-cart svg { --wiggle-origin: 50% 90%; --wiggle-a: 10deg; }
+.dot { position: absolute; top: -6px; right: -6px; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px;
+  background: var(--demo-red); color: #fff; font-size: 10px; font-weight: 700; line-height: 17px; text-align: center; }
+.avatar { display: grid; place-items: center; width: 32px; height: 32px; margin-left: 4px; border-radius: 50%;
+  background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; font-weight: 700; }
+.body { padding: 16px 14px 6px; display: grid; gap: 10px; }
+.body h1 { font-size: 18px; font-weight: 700; }
+.orders li { display: grid; grid-template-columns: 56px 1fr auto; gap: 10px; padding: 9px 0; font-size: 14px; }
+.orders li + li { border-top: 1px solid var(--demo-line); }
+.ord { color: var(--demo-mute); }
+.amt { font-weight: 600; }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px 12px; border-top: 1px solid var(--demo-line); }
+.hint { color: var(--demo-mute); font-size: 12px; }
+@media (max-width: 400px) {
+  .brand span { display: none; }
+}
+@media (max-height: 420px) {
+  .orders li:nth-child(3) { display: none; }
+  .body { padding-top: 10px; }
+}

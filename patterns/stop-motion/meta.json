@@ -1,0 +1,16 @@
+{
+  "name": "Stop-motion",
+  "slug": "stop-motion",
+  "kind": "pattern",
+  "summary": "Choppy steps() timing that jumps pose to pose at 8 frames a second, like a paper model moved by hand. A crossing, a handmade boil, a stepped wheel and a pause toggle.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

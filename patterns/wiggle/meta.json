@@ -1,0 +1,18 @@
+{
+  "name": "Wiggle",
+  "slug": "wiggle",
+  "kind": "pattern",
+  "summary": "A quick rotation wiggle on a pivot that dies away, to draw the eye to a bell or a cart. A resting loop with a pause toggle, a one-time wiggle and a hover wiggle.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-base"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

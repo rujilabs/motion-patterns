@@ -1,0 +1,21 @@
+{
+  "name": "Anticipation",
+  "slug": "anticipation",
+  "kind": "pattern",
+  "summary": "A small wind-up the opposite way, a beat of stillness, then the main move speeding away. Set by a destination and a share, started by a class or in view.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

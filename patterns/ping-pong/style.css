@@ -1,0 +1,33 @@
+/*
+ * ping-pong: a loop that plays forward, then the same way back, forever. animation-direction:
+ * alternate does it, so the end of one run is always the start of the next and there is no jump
+ * to cover. The curve must be symmetric (ease-in-out): played backwards it is the same curve, so
+ * the turn at each end is a soft stop, the way a hand-held scanner or a pendulum turns.
+ *
+ * .pingpong        moves between where it sits and (--pp-x, --pp-y), and back.
+ * .pingpong-loop   only the timing: alternate, infinite, ease-in-out. Add your own animation-name
+ *                  (a fade, a colour, a scale) with the longhand, not the shorthand.
+ * --pp-dur         one way, default 1.6s. A full cycle is twice that.
+ * It never stops: give people the .pingpong-pause toggle.
+ */
+@keyframes pingpong {
+  from { translate: 0 0; }
+  to   { translate: var(--pp-x, 0px) var(--pp-y, 0px); }
+}
+.pingpong { animation: pingpong var(--pp-dur, 1.6s) var(--ease-inout) infinite alternate both; }
+.pingpong-loop {
+  animation-duration: var(--pp-dur, 1.6s);
+  animation-timing-function: var(--ease-inout);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+/* pause: the toggle anywhere inside a .pingpong-group */
+.pingpong-group:has(.pingpong-pause :checked) :is(.pingpong, .pingpong-loop) { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* still, at the start */
+  .pingpong, .pingpong-loop { animation: none; }
+  .pingpong-pause { display: none; }
+}

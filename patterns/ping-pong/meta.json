@@ -1,0 +1,17 @@
+{
+  "name": "Ping-pong loop",
+  "slug": "ping-pong",
+  "kind": "pattern",
+  "summary": "A loop that plays forward, then the same way back, with alternate direction and a symmetric curve, so there is no seam. A move class, a timing-only class and a pause toggle.",
+  "category": "loop",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

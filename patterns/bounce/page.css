@@ -1,0 +1,34 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.week { width: min(620px, 100%); padding: 18px 18px 20px; display: grid; gap: 16px; }
+.week-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.week-head h1 { font-size: 20px; font-weight: 700; }
+.week-sub { color: var(--demo-mute); font-size: 13px; }
+.again { font: inherit; font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 6px; flex: none;
+  background: var(--demo-paper); color: var(--demo-ink); border: 1px solid var(--demo-line); cursor: pointer; }
+.again:hover { border-color: var(--demo-ink); }
+.days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--demo-line); }
+.day { display: grid; align-content: start; gap: 6px; padding: 10px 6px 0; min-height: 170px; }
+.day + .day { border-left: 1px solid var(--demo-line); }
+.dname { font-size: 12px; font-weight: 600; color: var(--demo-mute); display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.dname .num { color: var(--demo-ink); }
+.chip { display: grid; gap: 1px; padding: 6px 7px; border-radius: 5px; font-size: 12px; font-weight: 600; line-height: 1.25;
+  background: var(--demo-table); border: 1px solid var(--demo-line); }
+.chip .num { font-weight: 400; color: var(--demo-mute); }
+/* the slot the new booking lands in: blue pencil until something is in it */
+.slot { margin-top: 64px; border-bottom: 2px solid var(--demo-blue); padding-bottom: 2px; }
+.day-drop { background: linear-gradient(var(--demo-blue-soft), transparent 70%); }
+.chip-new { position: relative; z-index: 1; background: var(--demo-ink); border-color: var(--demo-ink); color: var(--demo-paper); }
+.chip-new .num { color: inherit; opacity: .7; }
+.chip-new { --bounce-h: 104px; }
+.fresh { --bounce-h: 14px; padding: 0 5px; border-radius: 3px; background: var(--demo-red); color: #fff; font-size: 10px; line-height: 16px; animation-delay: 1.15s; }
+@media (max-width: 560px) {
+  .days { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .d-mon, .d-fri { display: none; }
+  .d-mon + .day { border-left: 0; }
+}
+@media (max-height: 440px) {
+  .week { gap: 10px; padding-block: 12px; }
+  .day { min-height: 130px; }
+  .slot { margin-top: 40px; }
+  .chip-new { --bounce-h: 72px; }
+}

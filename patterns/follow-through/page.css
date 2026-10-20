@@ -1,0 +1,33 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.track { width: min(520px, 100%); padding: 16px 18px 0; display: grid; gap: 12px; overflow: clip; }
+.track-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.track-head h1 { font-size: 18px; font-weight: 700; }
+.track-sub { color: var(--demo-mute); font-size: 13px; }
+.again { font: inherit; font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 6px; flex: none;
+  background: var(--demo-paper); color: var(--demo-ink); border: 1px solid var(--demo-line); cursor: pointer; }
+.again:hover { border-color: var(--demo-ink); }
+/* the street: a house on the right, the van parks in front of it, a 1px kerb line */
+.street { position: relative; height: 150px; margin-inline: -18px; overflow: clip; container-type: inline-size; color: var(--demo-ink);
+  background: linear-gradient(transparent 128px, var(--demo-table) 128px); }
+.house { position: absolute; right: 8%; bottom: 22px; width: 104px; height: 94px; color: var(--demo-mute); }
+.ground { position: absolute; left: 0; right: 0; bottom: 22px; height: 1px; background: var(--demo-line); }
+.van { --follow-x: -100cqi; position: absolute; left: calc(92% - 104px - 150px); bottom: 20px; }
+.van svg { display: block; overflow: visible; }
+.shell { fill: var(--demo-paper); }
+.glass { fill: var(--demo-blue-soft); }
+.stripe { fill: var(--demo-blue); }
+.lamp { fill: var(--demo-warn); }
+.tyre { fill: var(--demo-ink); }
+.hub { fill: var(--demo-paper); }
+.spoke { stroke: var(--demo-paper); stroke-width: 1.5; }
+/* the aerial stands on the roof, so its forward swing is positive; it is a whip, so it swings wide */
+.aerial { --follow-a: 22deg; --follow-origin: 50% 100%; }
+.tip { fill: var(--demo-red); }
+.van-body { --follow-rock: 2.5deg; --follow-origin: 100% 100%; }
+@media (max-width: 440px) {
+  .house { right: 2%; width: 84px; height: 76px; }
+  .van { left: calc(98% - 84px - 132px); }
+}
+@media (max-height: 420px) {
+  .street { height: 132px; background: linear-gradient(transparent 110px, var(--demo-table) 110px); }
+}

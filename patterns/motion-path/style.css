@@ -1,0 +1,41 @@
+/*
+ * motion path: the element travels along a curve, not a straight line, and turns to follow it.
+ * offset-path holds the curve, offset-distance runs 0 to 100% along it, and offset-rotate: auto
+ * keeps the element's right-hand side pointing along the curve at every point.
+ *
+ * .motion-path    the traveller. --mp-path is the curve as path("..."), in px of its containing
+ *                 block: draw the same d in an SVG whose viewBox matches its size in px, and put
+ *                 both at the same top-left corner (the traveller at top: 0; left: 0).
+ * .motion-trail   an SVG <path pathLength="1"> that draws behind it on the same curve and clock.
+ *                 Both run by length, so the line's end stays under the traveller all the way.
+ * .motion-in      add next to either to hold it until play.js marks it (or an ancestor) with .go.
+ * --mp-dur        the trip, default 2.4s. --mp-rotate: auto (default), "auto 90deg" for art that
+ *                 points up, or 0deg to keep it upright.
+ */
+@keyframes motion-path {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
+@keyframes motion-trail {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+.motion-path {
+  offset-path: var(--mp-path, none);
+  offset-rotate: var(--mp-rotate, auto);
+  offset-anchor: 50% 50%;
+  animation: motion-path var(--mp-dur, 2.4s) var(--ease-inout) both;
+}
+.motion-trail {
+  stroke-dasharray: 1;
+  animation: motion-trail var(--mp-dur, 2.4s) var(--ease-inout) both;
+}
+.js .motion-in { animation-play-state: paused; }
+.js .go .motion-in,
+.js .motion-in.go { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* arrived: the traveller at the end of the curve, the trail drawn in full */
+  .motion-path, .js .motion-path.motion-in { animation: none; offset-distance: 100%; }
+  .motion-trail, .js .motion-trail.motion-in { animation: none; stroke-dashoffset: 0; }
+}

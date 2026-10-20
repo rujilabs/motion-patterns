@@ -1,0 +1,48 @@
+/*
+ * wiggle: a quick rotation back and forth that dies away, to pull the eye to one small thing
+ * (a bell with news, a cart that just changed). It turns on a pivot, so it reads as a thing
+ * hanging or held: a bell swings from its top, an icon rocks on its base. Each swing is smaller
+ * than the last (14, -11, 8, -5, 2 degrees). Rotation, not travel: for a sideways "no", use shake.
+ *
+ * .wiggle         wiggles once, then rests, and repeats every --wiggle-every (default 4s).
+ *                 It loops: give people the .wiggle-pause toggle, and stop it once the item is seen.
+ * .wiggle-once    wiggles one time on load.
+ * .wiggle-hover   wiggles each time the pointer comes over it or its parent (the button around an
+ *                 icon), or either takes keyboard focus.
+ * --wiggle-origin the pivot. Default 50% 0 (hangs from the top). A cart on its wheels: 50% 100%.
+ * --wiggle-a      the first swing, default 14deg. The rest scale with it.
+ */
+@keyframes wiggle {
+  0%   { rotate: 0deg; }
+  10%  { rotate: var(--wiggle-a, 14deg); }
+  25%  { rotate: calc(var(--wiggle-a, 14deg) * -.8); }
+  40%  { rotate: calc(var(--wiggle-a, 14deg) * .55); }
+  55%  { rotate: calc(var(--wiggle-a, 14deg) * -.35); }
+  70%  { rotate: calc(var(--wiggle-a, 14deg) * .15); }
+  85%, 100% { rotate: 0deg; }
+}
+/* the loop: the wiggle takes the first 700ms of each --wiggle-every, the rest is stillness */
+@keyframes wiggle-rest {
+  0%   { rotate: 0deg; }
+  1.75%  { rotate: var(--wiggle-a, 14deg); }
+  4.375% { rotate: calc(var(--wiggle-a, 14deg) * -.8); }
+  7%     { rotate: calc(var(--wiggle-a, 14deg) * .55); }
+  9.625% { rotate: calc(var(--wiggle-a, 14deg) * -.35); }
+  12.25% { rotate: calc(var(--wiggle-a, 14deg) * .15); }
+  14.875%, 100% { rotate: 0deg; }
+}
+.wiggle, .wiggle-once, .wiggle-hover { transform-origin: var(--wiggle-origin, 50% 0); }
+.wiggle { animation: wiggle-rest var(--wiggle-every, 4s) var(--ease-inout) var(--wiggle-delay, 1s) infinite; }
+.wiggle-once { animation: wiggle calc(var(--dur-base) * 1.2) var(--ease-inout) var(--wiggle-delay, 0s) both; }
+.wiggle-hover:hover, .wiggle-hover:focus-visible,
+:hover > .wiggle-hover, :focus-visible > .wiggle-hover { animation: wiggle calc(var(--dur-base) * 1.2) var(--ease-inout); }
+
+/* pause: the toggle anywhere inside a .wiggle-group */
+.wiggle-group:has(.wiggle-pause :checked) .wiggle { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* still, upright; the badge or colour beside it carries the news */
+  .wiggle, .wiggle-once, .wiggle-hover:hover, .wiggle-hover:focus-visible,
+  :hover > .wiggle-hover, :focus-visible > .wiggle-hover { animation: none; }
+  .wiggle-pause { display: none; }
+}

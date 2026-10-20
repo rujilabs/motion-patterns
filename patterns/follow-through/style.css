@@ -1,0 +1,63 @@
+/*
+ * follow-through: the body stops, its loose parts do not. While the body moves, a part lags behind;
+ * when the body brakes, the part carries on past, swings back, and settles in shrinking swings
+ * (1, -.6, .35, -.18, .07 of its amplitude). The body is already still while this happens, so the
+ * eye reads weight: the part was moving too, and needs time to stop.
+ *
+ * Everything runs on one clock, --follow-dur (default 2s): the body travels in the first 45%,
+ * the parts swing through the rest.
+ *
+ * .follow         the body. Arrives from translate(--follow-x, --follow-y) with a decisive stop.
+ * .follow-part    a loose part: an antenna, a hanging tag, a ponytail. Rotates on --follow-origin.
+ *                 --follow-a is the forward swing, signed: a part that stands up (an antenna) on a
+ *                 body moving right wants a positive angle; a part that hangs down wants a negative one.
+ * .follow-rock    the body's own top rocking forward on its wheels or feet, a smaller follow-through.
+ * .follow-spin    a wheel: turns -2 full turns while the body travels, and stops with it.
+ * In SVG, put the parts in <g> elements: transform-box: fill-box makes the origin their own box.
+ */
+@keyframes follow-move {
+  from { translate: var(--follow-x, -120px) var(--follow-y, 0px); }
+  to   { translate: 0 0; }
+}
+@keyframes follow-part {
+  0%   { rotate: 0deg; }
+  10%  { rotate: calc(var(--follow-a, 16deg) * -.4); }
+  30%  { rotate: calc(var(--follow-a, 16deg) * .2); }
+  46%  { rotate: var(--follow-a, 16deg); }
+  58%  { rotate: calc(var(--follow-a, 16deg) * -.6); }
+  70%  { rotate: calc(var(--follow-a, 16deg) * .35); }
+  81%  { rotate: calc(var(--follow-a, 16deg) * -.18); }
+  91%  { rotate: calc(var(--follow-a, 16deg) * .07); }
+  100% { rotate: 0deg; }
+}
+@keyframes follow-rock {
+  0%, 40% { rotate: 0deg; }
+  50%  { rotate: var(--follow-rock, 2deg); }
+  63%  { rotate: calc(var(--follow-rock, 2deg) * -.45); }
+  76%  { rotate: calc(var(--follow-rock, 2deg) * .15); }
+  88%, 100% { rotate: 0deg; }
+}
+@keyframes follow-spin {
+  from { rotate: -720deg; }
+  to   { rotate: 0deg; }
+}
+.follow { animation: follow-move calc(var(--follow-dur, 2s) * .45) var(--ease-out) both; }
+.follow-part, .follow-rock, .follow-spin { transform-box: fill-box; }
+.follow-part {
+  transform-origin: var(--follow-origin, 50% 100%);
+  animation: follow-part var(--follow-dur, 2s) var(--ease-inout) both;
+}
+.follow-rock {
+  transform-origin: var(--follow-origin, 100% 100%);
+  animation: follow-rock var(--follow-dur, 2s) var(--ease-inout) both;
+}
+.follow-spin { transform-origin: 50% 50%; animation: follow-spin calc(var(--follow-dur, 2s) * .45) var(--ease-out) both; }
+
+/* follow-in: add next to each class to hold it until play.js marks an ancestor with .go */
+.js .follow-in { animation-play-state: paused; }
+.js .go .follow-in { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* parked, every part at rest */
+  .follow, .follow-part, .follow-rock, .follow-spin { animation: none; }
+}

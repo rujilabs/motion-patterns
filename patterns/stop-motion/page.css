@@ -1,0 +1,45 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.event { width: min(480px, 100%); overflow: clip; display: grid; }
+/* the scene: cut-paper blocks, each a little off square, on a cool table */
+.scene { position: relative; height: 180px; overflow: clip; container-type: inline-size; background: var(--demo-table); border-bottom: 1px solid var(--demo-line); }
+.sun { position: absolute; top: 18px; right: 14%; width: 34px; height: 34px; border-radius: 50%; background: var(--demo-warn); opacity: .85; }
+.block { position: absolute; bottom: 40px; background: var(--demo-paper); border: 1px solid var(--demo-line);
+  background-image: radial-gradient(circle, var(--demo-blue-soft) 3px, transparent 3.5px); background-size: 16px 18px; background-position: 4px 6px; }
+.b1 { left: 4%; width: 18%; height: 78px; rotate: -1.2deg; }
+.b2 { left: 24%; width: 15%; height: 112px; rotate: .8deg; }
+.b3 { left: 57%; width: 20%; height: 90px; rotate: -.6deg; }
+.b4 { left: 80%; width: 16%; height: 64px; rotate: 1.4deg; }
+.banner { position: absolute; top: 22px; left: 41%; padding: 5px 10px; font-weight: 700; font-size: 14px; letter-spacing: .02em;
+  background: var(--demo-red); color: #fff; border-radius: 2px; transform: rotate(-2deg); --sm-boil: 375ms; animation-delay: -120ms; }
+.road { position: absolute; left: 0; right: 0; bottom: 0; height: 40px; background: var(--demo-paper); border-top: 1px solid var(--demo-line); }
+.road::after { content: ""; position: absolute; left: 0; right: 0; top: 19px; height: 2px;
+  background: linear-gradient(90deg, var(--demo-line) 50%, transparent 0) 0 0 / 22px 2px repeat-x; }
+.bus { position: absolute; left: 0; bottom: 14px; width: 120px; }
+.bus svg { display: block; overflow: visible; }
+.bus-shell { fill: var(--demo-blue); }
+.bus-win rect, .bus-win path { fill: var(--demo-paper); }
+.bus-band { fill: var(--demo-paper); opacity: .5; }
+.tyre { fill: var(--demo-ink); }
+.spoke { stroke: var(--demo-paper); stroke-width: 1.5; }
+.ev-body { display: grid; gap: 4px; padding: 14px 18px 16px; }
+.ev-kicker { font-size: 12px; font-weight: 600; color: var(--demo-blue); text-transform: uppercase; letter-spacing: .08em; }
+.ev-body h1 { font-size: 19px; font-weight: 700; }
+.ev-sub { color: var(--demo-mute); font-size: 14px; }
+.ev-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--demo-line); }
+.ev-when { font-weight: 600; font-size: 14px; }
+.toggles { display: flex; gap: 14px; }
+/* demo only: the Smooth switch plays the same moves on linear time, to compare */
+.stop-group:has(.stop-smooth :checked) .stop-cross { animation-timing-function: linear; }
+.stop-group:has(.stop-smooth :checked) .stop-spin { animation-timing-function: linear; }
+.stop-group:has(.stop-smooth :checked) .stop-boil { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .stop-smooth { display: none; }
+}
+@media (max-width: 400px) {
+  .ev-foot { flex-wrap: wrap; }
+}
+@media (max-height: 440px) {
+  .scene { height: 140px; }
+  .b2 { height: 84px; }
+  .ev-sub { display: none; }
+}

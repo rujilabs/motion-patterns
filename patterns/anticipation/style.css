@@ -1,0 +1,42 @@
+/*
+ * anticipation: a small wind-up the opposite way before the main move. The wind-up is short and
+ * slows into its far point (ease-out), there is a beat of stillness, then the move goes the other
+ * way and speeds up as it leaves (ease-in). The wind-up is 14% of the trip by default: enough to
+ * read as "getting ready", small enough that nobody thinks it is going the wrong way.
+ *
+ * .antic          the element that will move. Starts the move when it gets .is-going (from your
+ *                 own script, on a click) or, with .antic-in, when play.js marks it with .go.
+ * --antic-x/-y    where it goes, as a translate. Container units (100cqi) send it out of a box.
+ * --antic-pull    the wind-up as a share of the trip, default .14.
+ * --antic-tilt    a turn during the wind-up (a plane noses up, a ball is cocked back), released on the move.
+ * --antic-wind, --antic-hold, --antic-go   the three beats: 270ms, 80ms, 600ms by default.
+ * The two parts are two animations. The second fills forwards only, so during the wind-up and the
+ * hold the first one shows, and from its start the second one takes over from the same pose.
+ */
+@keyframes antic-wind {
+  to {
+    translate: calc(var(--antic-x, 0px) * var(--antic-pull, .14) * -1) calc(var(--antic-y, 0px) * var(--antic-pull, .14) * -1);
+    rotate: var(--antic-tilt, 0deg);
+  }
+}
+@keyframes antic-go {
+  from {
+    translate: calc(var(--antic-x, 0px) * var(--antic-pull, .14) * -1) calc(var(--antic-y, 0px) * var(--antic-pull, .14) * -1);
+    rotate: var(--antic-tilt, 0deg);
+  }
+  to { translate: var(--antic-x, 0px) var(--antic-y, 0px); rotate: 0deg; }
+}
+.antic.is-going,
+.js .go .antic-in,
+.js .antic-in.go {
+  animation:
+    antic-wind var(--antic-wind, calc(var(--dur-base) * .45)) var(--ease-out) both,
+    antic-go var(--antic-go, var(--dur-base)) var(--ease-in) calc(var(--antic-wind, calc(var(--dur-base) * .45)) + var(--antic-hold, var(--stagger))) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* no wind-up and no travel: it is at its destination at once */
+  .antic.is-going,
+  .js .go .antic-in,
+  .js .antic-in.go { animation: none; translate: var(--antic-x, 0px) var(--antic-y, 0px); }
+}

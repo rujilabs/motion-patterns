@@ -1,0 +1,45 @@
+/*
+ * stop-motion: steps() timing makes a smooth move jump from pose to pose, like a model moved by
+ * hand between photographs. Film animation shoots "on twos": 12 drawings a second. Paper and
+ * clay are often shot slower, 8 a second, which is what these defaults give.
+ *
+ * .stop-motion    a modifier for your own animation: holds each pose for one frame. Set
+ *                 --sm-frames to duration x frame rate (a 3s move at 8 fps: 24). Put it after
+ *                 your animation shorthand, which would otherwise reset the timing.
+ * .stop-cross     crosses its container left to right and loops, in --sm-frames steps
+ *                 (default 48 over --sm-dur 6s = 8 fps). The container needs container-type: inline-size.
+ * .stop-boil      the "boil" of hand-cut work: three slightly different poses (1px off, half a
+ *                 degree turned) swapped at 8 fps forever, so a still thing looks handmade.
+ * .stop-spin      a wheel turning in 8 poses per turn.
+ * These loop: give people the .stop-pause toggle.
+ */
+.stop-motion { animation-timing-function: steps(var(--sm-frames, 12), end); }
+
+@keyframes stop-cross {
+  from { translate: -100% 0; }
+  to   { translate: 100cqi 0; }
+}
+.stop-cross { animation: stop-cross var(--sm-dur, 6s) steps(var(--sm-frames, 48), end) infinite; }
+
+@keyframes stop-boil {
+  0%     { translate: 0 0; rotate: 0deg; }
+  33.33% { translate: 1px -1px; rotate: -.5deg; }
+  66.66% { translate: -1px 0; rotate: .4deg; }
+  100%   { translate: 0 0; rotate: 0deg; }
+}
+.stop-boil { animation: stop-boil var(--sm-boil, 375ms) step-start infinite; }
+
+@keyframes stop-spin {
+  from { rotate: 0deg; }
+  to   { rotate: 360deg; }
+}
+.stop-spin { transform-box: fill-box; transform-origin: 50% 50%; animation: stop-spin 1s steps(8, end) infinite; }
+
+/* pause: the toggle anywhere inside a .stop-group */
+.stop-group:has(.stop-pause :checked) :is(.stop-cross, .stop-boil, .stop-spin) { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* one still frame: the scene as a photograph */
+  .stop-cross, .stop-boil, .stop-spin { animation: none; }
+  .stop-pause { display: none; }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Follow-through",
+  "slug": "follow-through",
+  "kind": "pattern",
+  "summary": "The body stops, its loose parts carry on: an antenna lags, swings past and settles in shrinking swings while the body rocks on its wheels. One clock for body and parts.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}
