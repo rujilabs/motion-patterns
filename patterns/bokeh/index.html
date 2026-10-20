@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bokeh demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet bokeh-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Bokeh</h1>
+        <p class="shot-sub">A plant on the sill, the street lights behind it</p>
+      </div>
+      <label class="bokeh-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame night" role="img" aria-label="A small plant in a white pot on a window sill at night. The street lights behind it open into soft round discs that drift slowly.">
+      <svg class="bk-bg bokeh-defocus" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="n-sky" width="320" height="200"/>
+        <rect class="n-far" x="0" y="70" width="70" height="130"/>
+        <rect class="n-far" x="82" y="40" width="58" height="160"/>
+        <rect class="n-mid" x="150" y="86" width="80" height="114"/>
+        <rect class="n-far" x="240" y="56" width="80" height="144"/>
+        <g class="n-win"><rect x="12" y="86" width="10" height="12"/><rect x="40" y="110" width="10" height="12"/><rect x="96" y="60" width="10" height="12"/><rect x="118" y="96" width="10" height="12"/><rect x="164" y="104" width="12" height="12"/><rect x="204" y="130" width="12" height="12"/><rect x="256" y="76" width="10" height="12"/><rect x="290" y="112" width="10" height="12"/></g>
+      </svg>
+      <div class="bokeh" aria-hidden="true">
+        <span class="bokeh-disc d1"></span><span class="bokeh-disc d2"></span><span class="bokeh-disc d3"></span>
+        <span class="bokeh-disc d4"></span><span class="bokeh-disc d5"></span><span class="bokeh-disc d6"></span>
+        <span class="bokeh-disc d7"></span><span class="bokeh-disc d8"></span><span class="bokeh-disc d9"></span>
+        <span class="bokeh-disc d10"></span><span class="bokeh-disc d11"></span><span class="bokeh-disc d12"></span>
+      </div>
+      <svg class="bk-subject" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="n-sill" x="0" y="170" width="320" height="30"/>
+        <rect class="n-edge" x="0" y="170" width="320" height="1.5"/>
+        <g class="n-leaf">
+          <path d="M160 132 C150 104 126 88 104 88 C114 108 136 126 160 132 Z"/>
+          <path d="M160 132 C170 100 194 82 222 82 C210 106 186 126 160 132 Z"/>
+          <path d="M160 132 C154 98 158 70 172 50 C180 76 174 108 160 132 Z"/>
+          <path d="M160 132 C146 112 128 108 112 114 C126 128 144 134 160 132 Z"/>
+          <path d="M160 132 C176 116 196 116 210 124 C194 134 176 136 160 132 Z"/>
+        </g>
+        <g class="n-rib">
+          <path d="M160 132 C144 114 126 98 110 91"/>
+          <path d="M160 132 C178 112 196 96 216 85"/>
+          <path d="M160 132 C162 104 164 78 171 55"/>
+        </g>
+        <path class="n-pot" d="M132 130 H188 L182 170 H138 Z"/>
+        <rect class="n-pot" x="128" y="126" width="64" height="10" rx="2"/>
+        <path class="n-potline" d="M132 136 H188"/>
+      </svg>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Lights open into discs, then drift</span>
+      <span class="num">85 mm, f/1.4</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "Vignette",
+  "slug": "vignette",
+  "kind": "pattern",
+  "summary": "Edges darken toward the corners so the eye settles on the middle. One overlay class for any image or section, with a white variant and an amount that fades in.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

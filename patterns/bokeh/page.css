@@ -1,0 +1,66 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+/* the shot: a sheet with a title row, the frame and a small lens note */
+.shot { width: min(560px, 100%, calc((100svh - 150px) * 1.6)); padding: 14px; display: grid; gap: 10px; }
+.shot-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.shot-head h1 { font-size: 18px; font-weight: 700; }
+.shot-sub { color: var(--demo-mute); font-size: 13px; }
+.shot-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: var(--demo-mute); }
+/* the frame: a 16:10 window onto the scene, with blue pencil corner marks like a viewfinder */
+.frame { position: relative; aspect-ratio: 16 / 10; min-height: 0; overflow: clip; border-radius: 4px; border: 1px solid var(--demo-line); background: var(--sky); }
+.frame svg { display: block; width: 100%; height: 100%; }
+.vf {
+  position: absolute; inset: 8px; pointer-events: none; z-index: 5;
+  --c: var(--demo-blue);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 1px 14px no-repeat;
+}
+/* the scene palette: calm and flat, one warm light, one blue */
+.frame {
+  --sky: #e3ebf5; --far: #c5d0de; --mid: #9eadc1; --near: #6b7a90; --ground: #d2d9e2;
+  --ink: #2b3443; --paper: #fbfcfe; --warm: #e6b25e; --accent: var(--demo-blue);
+}
+@media (prefers-color-scheme: dark) {
+  .frame {
+    --sky: #1c2532; --far: #2a3545; --mid: #3a475a; --near: #4f5d72; --ground: #232c39;
+    --ink: #0f141b; --paper: #d9e0ea; --warm: #d29a45;
+  }
+}
+.c-sky { fill: var(--sky); } .c-far { fill: var(--far); } .c-mid { fill: var(--mid); } .c-near { fill: var(--near); }
+.c-ground { fill: var(--ground); } .c-ink { fill: var(--ink); } .c-paper { fill: var(--paper); } .c-warm { fill: var(--warm); }
+.c-accent { fill: var(--accent); } .c-red { fill: var(--demo-red); }
+@media (max-height: 380px) {
+  .shot { width: min(560px, 100%, calc((100svh - 80px) * 1.6)); padding: 10px; gap: 8px; }
+  .shot-sub, .shot-foot { display: none; }
+}
+@media (max-width: 420px) {
+  .shot-head h1 { font-size: 16px; }
+}
+/* this scene: night, so the frame keeps a dark palette in both colour schemes */
+.night { --sky: #18202d; container-type: inline-size; }
+.night svg, .night .bokeh { position: absolute; inset: 0; }
+/* the defocused background runs 12px past the frame so its soft edge never shows */
+.night .bk-bg { inset: auto; left: -12px; top: -12px; width: calc(100% + 24px); height: calc(100% + 24px); }
+.n-sky { fill: #18202d; } .n-far { fill: #222c3b; } .n-mid { fill: #2a3546; } .n-win { fill: #c9a466; }
+.n-sill { fill: #0f141c; } .n-edge { fill: #3a4658; }
+.n-leaf { fill: #3f6a52; } .n-rib { fill: none; stroke: #6f9c80; stroke-width: 1; stroke-linecap: round; }
+.n-pot { fill: #e9edf2; } .n-potline { stroke: #b9c2ce; stroke-width: 1; }
+/* each light: place, size, colour, strength, when it opens and how it drifts */
+.d1  { --bx: 10%; --by: 28%; --bs: 17cqw; --bo: .75; --bokeh-delay: .05s; --bdx: 12px; --bdy: -6px; --bokeh-dur: 15s; }
+.d2  { --bx: 27%; --by: 60%; --bs: 10cqw; --bo: .7;  --bokeh-delay: .25s; --bdx: -8px; --bdy: 8px; --bokeh-dur: 12s; --bokeh-color: #fff1d8; }
+.d3  { --bx: 37%; --by: 20%; --bs: 12cqw; --bo: .65; --bokeh-delay: .15s; --bdx: 10px; --bdy: 10px; --bokeh-dur: 17s; --bokeh-color: #9cbcf5; }
+.d4  { --bx: 72%; --by: 26%; --bs: 19cqw; --bo: .7;  --bokeh-delay: 0s;   --bdx: -14px; --bdy: 6px; --bokeh-dur: 16s; }
+.d5  { --bx: 86%; --by: 56%; --bs: 11cqw; --bo: .75; --bokeh-delay: .35s; --bdx: 8px; --bdy: -10px; --bokeh-dur: 13s; }
+.d6  { --bx: 63%; --by: 64%; --bs: 8cqw;  --bo: .7;  --bokeh-delay: .3s;  --bdx: -6px; --bdy: -8px; --bokeh-dur: 14s; --bokeh-color: #9cbcf5; }
+.d7  { --bx: 93%; --by: 16%; --bs: 9cqw;  --bo: .7;  --bokeh-delay: .45s; --bdx: -10px; --bdy: 6px; --bokeh-dur: 18s; --bokeh-color: #fff1d8; }
+.d8  { --bx: 6%;  --by: 74%; --bs: 13cqw; --bo: .65; --bokeh-delay: .2s;  --bdx: 10px; --bdy: -6px; --bokeh-dur: 15s; }
+.d9  { --bx: 49%; --by: 38%; --bs: 8cqw;  --bo: .65; --bokeh-delay: .4s;  --bdx: 6px; --bdy: 8px; --bokeh-dur: 12s; --bokeh-color: #fff1d8; }
+.d10 { --bx: 80%; --by: 78%; --bs: 14cqw; --bo: .6;  --bokeh-delay: .5s;  --bdx: -10px; --bdy: -4px; --bokeh-dur: 17s; --bokeh-color: #9cbcf5; }
+.d11 { --bx: 20%; --by: 10%; --bs: 7cqw;  --bo: .7;  --bokeh-delay: .55s; --bdx: 6px; --bdy: 6px; --bokeh-dur: 13s; }
+.d12 { --bx: 56%; --by: 12%; --bs: 11cqw; --bo: .6;  --bokeh-delay: .1s;  --bdx: -8px; --bdy: 8px; --bokeh-dur: 16s; }

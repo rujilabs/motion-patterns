@@ -1,0 +1,16 @@
+{
+  "name": "Long exposure",
+  "slug": "long-exposure",
+  "kind": "pattern",
+  "summary": "Moving lights grow into smooth streaks at a steady speed while buildings and lamps stay sharp, then the frame clears for the next exposure. SVG paths, CSS only, with a pause toggle.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

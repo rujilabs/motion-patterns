@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Long exposure demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet exposure-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Long exposure</h1>
+        <p class="shot-sub">Evening traffic on the ring road, shutter open for 30 seconds</p>
+      </div>
+      <label class="exposure-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame night" role="img" aria-label="A city road at night. The buildings and street lamps stay sharp while the cars become smooth streaks of white headlights and red tail lights that grow across the frame.">
+      <svg class="exposure" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="n-sky" width="320" height="200"/>
+        <g class="n-far"><rect x="0" y="62" width="30" height="80"/><rect x="34" y="40" width="26" height="100"/><rect x="64" y="70" width="36" height="66"/><rect x="104" y="30" width="22" height="100"/><rect x="130" y="58" width="40" height="70"/><rect x="176" y="46" width="26" height="78"/><rect x="206" y="72" width="34" height="50"/><rect x="246" y="38" width="28" height="82"/><rect x="278" y="64" width="42" height="56"/></g>
+        <g class="n-win"><rect x="40" y="50" width="4" height="5"/><rect x="50" y="64" width="4" height="5"/><rect x="40" y="86" width="4" height="5"/><rect x="110" y="40" width="4" height="5"/><rect x="116" y="60" width="4" height="5"/><rect x="110" y="84" width="4" height="5"/><rect x="140" y="68" width="4" height="5"/><rect x="156" y="80" width="4" height="5"/><rect x="182" y="56" width="4" height="5"/><rect x="190" y="74" width="4" height="5"/><rect x="252" y="48" width="4" height="5"/><rect x="262" y="66" width="4" height="5"/><rect x="286" y="76" width="4" height="5"/><rect x="72" y="80" width="4" height="5"/><rect x="216" y="82" width="4" height="5"/></g>
+        <path class="n-road" d="M-10 170 C90 142 200 120 330 110 L330 134 C200 152 90 182 -10 212 Z"/>
+        <path class="n-kerb" d="M-10 170 C90 142 200 120 330 110"/>
+        <path class="n-kerb" d="M-10 212 C90 182 200 152 330 134"/>
+        <g class="n-pole"><path d="M60 156 V96 H74"/><path d="M168 132 V86 H180"/><path d="M262 118 V84 H272"/></g>
+        <g class="n-lamp"><circle cx="76" cy="97" r="2.6"/><circle cx="182" cy="87" r="2.2"/><circle cx="274" cy="85" r="1.8"/></g>
+        <g class="le-white s1"><path class="exposure-streak exposure-glow" pathLength="1" d="M330 115 C200 127 90 149 -10 177"/><path class="exposure-streak le-core" pathLength="1" d="M330 115 C200 127 90 149 -10 177"/></g>
+        <g class="le-white s2"><path class="exposure-streak exposure-glow" pathLength="1" d="M330 117 C200 130 90 153 -10 182"/><path class="exposure-streak le-core" pathLength="1" d="M330 117 C200 130 90 153 -10 182"/></g>
+        <g class="le-amber s3"><path class="exposure-streak exposure-glow" pathLength="1" d="M330 119 C200 132 90 156 -10 186"/><path class="exposure-streak le-core" pathLength="1" d="M330 119 C200 132 90 156 -10 186"/></g>
+        <g class="le-red s4"><path class="exposure-streak exposure-glow" pathLength="1" d="M-10 194 C90 166 200 140 330 124"/><path class="exposure-streak le-core" pathLength="1" d="M-10 194 C90 166 200 140 330 124"/></g>
+        <g class="le-red s5"><path class="exposure-streak exposure-glow" pathLength="1" d="M-10 199 C90 171 200 144 330 127"/><path class="exposure-streak le-core" pathLength="1" d="M-10 199 C90 171 200 144 330 127"/></g>
+        <g class="le-red s6"><path class="exposure-streak exposure-glow" pathLength="1" d="M-10 203 C90 175 200 147 330 129"/><path class="exposure-streak le-core" pathLength="1" d="M-10 203 C90 175 200 147 330 129"/></g>
+      </svg>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span class="timer" aria-hidden="true"><span>Shutter</span><span class="timer-track"><span class="timer-fill"></span></span></span>
+      <span class="num">30 s, f/11, ISO 100</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

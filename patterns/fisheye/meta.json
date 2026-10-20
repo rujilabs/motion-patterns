@@ -1,0 +1,20 @@
+{
+  "name": "Fisheye",
+  "slug": "fisheye",
+  "kind": "pattern",
+  "summary": "A true barrel distortion for SVG drawings: the middle swells, straight lines bow outward and the corners fall off. Tweened point by point with the Web Animations API.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-draw"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

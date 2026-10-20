@@ -1,0 +1,20 @@
+{
+  "name": "Tilt-shift",
+  "slug": "tilt-shift",
+  "kind": "pattern",
+  "summary": "Blur bands at the top and bottom, with a small colour lift, make a real scene look like a model. The band of focus drifts up and down. One wrapper class, CSS only.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

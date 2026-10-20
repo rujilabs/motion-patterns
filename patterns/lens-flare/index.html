@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lens flare demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet flare-group" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Lens flare</h1>
+        <p class="shot-sub">Late sun over the ridge, shooting into the light</p>
+      </div>
+      <label class="flare-pause switch"><input type="checkbox"> Pause</label>
+    </header>
+    <div class="frame dusk flare-move" role="img" aria-label="Low sun over a line of hills. As the sun moves across the sky, a row of soft discs and rings lines up through the middle of the frame and swings with it.">
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="lf-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" class="lf-top"/>
+            <stop offset="1" class="lf-low"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="200" fill="url(#lf-sky)"/>
+        <path class="lf-hill1" d="M0 132 C40 112 80 118 120 126 C170 136 210 104 260 110 C290 114 306 122 320 120 V200 H0 Z"/>
+        <path class="lf-hill2" d="M0 156 C50 140 100 150 150 146 C200 142 250 158 320 148 V200 H0 Z"/>
+        <g class="lf-tree"><path d="M60 150 L66 128 L72 150 Z"/><path d="M72 151 L77 134 L82 151 Z"/><path d="M236 152 L243 126 L250 152 Z"/><path d="M252 153 L257 136 L262 153 Z"/></g>
+      </svg>
+      <div class="flare" aria-hidden="true">
+        <span class="flare-disc flare-streak fl-streak"></span>
+        <span class="flare-disc flare-source fl-src"></span>
+        <span class="flare-disc fl-a"></span>
+        <span class="flare-disc fl-b"></span>
+        <span class="flare-disc flare-ring fl-c"></span>
+        <span class="flare-disc fl-d"></span>
+        <span class="flare-disc fl-e"></span>
+        <span class="flare-disc flare-ring fl-f"></span>
+        <span class="flare-disc fl-g"></span>
+      </div>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Discs line up through the centre</span>
+      <span class="num">35 mm, f/8</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

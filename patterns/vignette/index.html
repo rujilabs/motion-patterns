@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vignette demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shot sheet" aria-labelledby="shot-h">
+    <header class="shot-head">
+      <div>
+        <h1 id="shot-h">Vignette</h1>
+        <p class="shot-sub">One boat on the lake at first light</p>
+      </div>
+    </header>
+    <div class="frame look-vignette vignette-in" data-play role="img" aria-label="A small rowing boat in the middle of a still lake, hills behind it under a pale sky. The edges of the picture slowly darken toward the corners, so the eye settles on the boat.">
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="vg-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" class="vg-top"/>
+            <stop offset="1" class="vg-low"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="200" fill="url(#vg-sky)"/>
+        <circle class="vg-sun" cx="214" cy="74" r="12"/>
+        <path class="vg-hill1" d="M0 104 C40 76 76 80 110 96 C140 108 170 70 214 78 C250 84 284 98 320 92 V120 H0 Z"/>
+        <path class="vg-hill2" d="M0 112 C50 100 90 106 140 112 C190 118 250 100 320 108 V120 H0 Z"/>
+        <rect class="vg-water" x="0" y="120" width="320" height="80"/>
+        <g class="vg-ripple"><path d="M40 140 H90"/><path d="M220 136 H282"/><path d="M30 176 H70"/><path d="M250 170 H300"/><path d="M120 186 H170"/></g>
+        <path class="vg-shine" d="M206 128 H222 M200 134 H228 M208 140 H220"/>
+        <g class="vg-boat">
+          <path class="vg-hull" d="M134 148 H190 L182 158 H142 Z"/>
+          <path class="vg-oar" d="M144 150 L122 160 M178 150 L200 160"/>
+          <rect class="vg-coat" x="156" y="134" width="12" height="15" rx="3"/>
+          <circle class="vg-head" cx="162" cy="130" r="4.5"/>
+          <path class="vg-reflect" d="M142 160 H182"/>
+        </g>
+      </svg>
+      <span class="vf" aria-hidden="true"></span>
+    </div>
+    <div class="shot-foot">
+      <span>Corners darken, the boat holds the eye</span>
+      <span class="num">50 mm, f/2</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

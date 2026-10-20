@@ -1,0 +1,19 @@
+{
+  "name": "Panning shot",
+  "slug": "panning-shot",
+  "kind": "pattern",
+  "summary": "The camera follows a moving subject: it stays sharp while the background slides past and streaks with a blur along the direction of travel. CSS with an SVG blur, pause toggle.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,45 @@
+/*
+ * tilt-shift: blur bands at the top and bottom of a picture make a real scene look like a model.
+ * One overlay twice the frame's height blurs what is behind it (backdrop-filter), with a clear band
+ * across its middle. On load the blur fades in and the colours lift a little (models are painted
+ * brighter than life), then the band of focus drifts slowly up and down the frame.
+ * Put .tilt-shift on a wrapper around your image or scene.
+ */
+.tilt-shift { position: relative; overflow: clip; isolation: isolate; }
+.tilt-shift > * { filter: saturate(1.35) contrast(1.05); animation: tilt-lift calc(var(--dur-slow) * 2) var(--ease-out) both; }
+@keyframes tilt-lift { from { filter: none; } }
+.tilt-shift::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -50%;
+  height: 200%;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(var(--tilt-blur, 4px));
+  backdrop-filter: blur(var(--tilt-blur, 4px));
+  /* blur, ramp, clear band, ramp, blur: the band sits on the frame's middle at rest */
+  mask-image: linear-gradient(#000 26%, transparent 43%, transparent 57%, #000 74%);
+  animation:
+    tilt-in calc(var(--dur-slow) * 2) var(--ease-out) both,
+    tilt-band var(--tilt-dur, 14s) var(--ease-inout) calc(var(--dur-slow) * 2) infinite;
+}
+@keyframes tilt-in { from { opacity: 0; } }
+/* the band travels up, down and back to the middle; --tilt-travel is a share of the overlay */
+@keyframes tilt-band {
+  0%, 100% { translate: 0 0; }
+  25%      { translate: 0 calc(var(--tilt-travel, 8%) * -1); }
+  75%      { translate: 0 var(--tilt-travel, 8%); }
+}
+/* tilt-still: the look without the moving band */
+.tilt-shift.tilt-still::after { animation: tilt-in calc(var(--dur-slow) * 2) var(--ease-out) both; }
+
+/* pause: a checkbox in .tilt-pause anywhere inside a .tilt-group stops everything in the group */
+.tilt-group:has(.tilt-pause :checked) *,
+.tilt-group:has(.tilt-pause :checked) .tilt-shift::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the look is on from the start, with the band of focus across the middle */
+  .tilt-shift > *, .tilt-shift::after, .tilt-shift.tilt-still::after { animation: none; }
+  .tilt-pause { display: none; }
+}

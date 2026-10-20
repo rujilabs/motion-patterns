@@ -1,0 +1,19 @@
+{
+  "name": "Lens flare",
+  "slug": "lens-flare",
+  "kind": "pattern",
+  "summary": "A bright light throws a row of soft discs and rings through the frame centre; as the light moves the row swings with it. Animated registered custom properties, CSS only.",
+  "category": "look",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,28 @@
+/*
+ * vignette: the edges darken toward the corners and the eye settles on the middle. One overlay on
+ * ::after, an ellipse that follows the frame's shape: clear in the middle, a soft fall in the
+ * outer third, darkest in the corners. --vignette is how dark the corners get (0 to 1).
+ * .vignette-in starts with no vignette and brings it in when play.js adds .go.
+ */
+.look-vignette { position: relative; isolation: isolate; }
+.look-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(farthest-corner, transparent var(--vignette-inner, 38%), color-mix(in srgb, var(--vignette-color, #000) 35%, transparent) 72%, var(--vignette-color, #000) 100%);
+  opacity: var(--vignette, .6);
+}
+/* vignette-light: a white falloff for bright, high key pictures */
+.vignette-light { --vignette-color: #fff; --vignette: .85; }
+
+/* vignette-in: the amount fades in, so the picture settles toward its centre */
+@keyframes vignette-in { from { opacity: 0; } }
+.js .vignette-in::after { animation: vignette-in calc(var(--dur-slow) * 2.5) var(--ease-inout) var(--vignette-delay, .3s) both paused; }
+.js .go.vignette-in::after,
+.js .go .vignette-in::after { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .vignette-in::after, .js .go.vignette-in::after, .js .go .vignette-in::after { animation: none; }
+}

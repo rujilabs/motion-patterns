@@ -1,0 +1,28 @@
+/*
+ * chromatic-aberration: a lens bends red, green and blue light by slightly different amounts, so
+ * each colour lands at a slightly different size. The picture is laid three times, one copy per
+ * colour channel: a copy keeps one channel (multiply by pure red, green or blue) and the three add
+ * back together (screen on black). Red is scaled up a little, green half as much, blue not at all,
+ * so the copies agree in the middle and part toward the edges: fringes that peak in the corners.
+ * .ca-in starts with the channels together and splits them when play.js adds .go.
+ */
+.ca { position: relative; overflow: clip; isolation: isolate; background: #000; }
+.ca-ch { position: absolute; inset: 0; mix-blend-mode: screen; }
+.ca-ch > * { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ca-ch::after { content: ""; position: absolute; inset: 0; mix-blend-mode: multiply; }
+.ca-r::after { background: #f00; }
+.ca-g::after { background: #0f0; }
+.ca-b::after { background: #00f; }
+.ca-r { scale: calc(1 + var(--ca, .01) * 2); }
+.ca-g { scale: calc(1 + var(--ca, .01)); }
+
+/* ca-in: the channels start together (a clean picture) and part as it comes into view */
+@keyframes ca-split { from { scale: 1; } }
+.js .ca-in .ca-ch { animation: ca-split calc(var(--dur-slow) * 2) var(--ease-out) var(--ca-delay, .2s) both paused; }
+.js .go.ca-in .ca-ch,
+.js .go .ca-in .ca-ch { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the fringes are there from the start */
+  .js .ca-in .ca-ch, .js .go.ca-in .ca-ch, .js .go .ca-in .ca-ch { animation: none; }
+}

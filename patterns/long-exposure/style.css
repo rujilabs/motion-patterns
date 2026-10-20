@@ -1,0 +1,31 @@
+/*
+ * long-exposure: moving lights leave smooth streaks while everything that stands still stays sharp.
+ * Each light is an SVG path with pathLength="1" and the class .exposure-streak. While the shutter
+ * is open the streak grows at a steady speed along its path (a car does not ease in), holds, then
+ * fades before the next exposure. Draw the still parts of the scene as usual: they never move.
+ */
+.exposure-streak {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: exposure var(--exposure-dur, 8s) linear var(--exposure-delay, 0s) infinite both;
+}
+@keyframes exposure {
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  1%   { opacity: 1; }
+  55%  { stroke-dashoffset: 0; }
+  85%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+/* exposure-glow: a wide, faint copy under the core line, the halo a bright light leaves on film */
+.exposure-glow { stroke-width: var(--exposure-glow, 6px); stroke-opacity: .28; }
+
+/* pause: a checkbox in .exposure-pause anywhere inside an .exposure-group stops everything */
+.exposure-group:has(.exposure-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the finished photograph: every streak complete */
+  .exposure-streak { animation: none; stroke-dashoffset: 0; opacity: 1; }
+  .exposure-pause { display: none; }
+}

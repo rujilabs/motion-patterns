@@ -1,0 +1,46 @@
+/*
+ * bokeh: soft out-of-focus light discs drift behind a sharp subject.
+ * .bokeh is a layer behind your subject; fill it with .bokeh-disc spans. Each disc reads its place
+ * from --bx and --by (percent of the layer), its diameter from --bs and its colour from --bokeh-color.
+ * On load each light opens from a sharp point into a disc, the way a point of light grows when the
+ * lens racks off it. Then the discs drift slowly. Put .bokeh-defocus on the background picture to
+ * blur it in step with the lights.
+ */
+.bokeh { position: absolute; inset: 0; overflow: clip; pointer-events: none; }
+.bokeh-disc {
+  position: absolute;
+  left: var(--bx, 50%);
+  top: var(--by, 50%);
+  width: var(--bs, 48px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  /* an out-of-focus highlight is nearly flat, with a slightly brighter rim */
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--bokeh-color, #ffd59a) 70%, transparent) 80%, var(--bokeh-color, #ffd59a) 92%, transparent 100%);
+  opacity: var(--bo, .75);
+  mix-blend-mode: screen;
+  animation:
+    bokeh-open calc(var(--dur-slow) * 2) var(--ease-out) var(--bokeh-delay, 0s) both,
+    bokeh-drift var(--bokeh-dur, 14s) var(--ease-inout) calc(var(--bokeh-delay, 0s) + var(--dur-slow) * 2) infinite alternate;
+}
+@keyframes bokeh-open {
+  from { scale: .08; }
+  to   { scale: 1; }
+}
+@keyframes bokeh-drift {
+  from { transform: none; }
+  to   { transform: translate(var(--bdx, 10px), var(--bdy, -8px)); }
+}
+
+/* bokeh-defocus: the background picture goes soft while the lights open */
+.bokeh-defocus { filter: blur(var(--bokeh-blur, 6px)); animation: bokeh-defocus calc(var(--dur-slow) * 2) var(--ease-out) both; }
+@keyframes bokeh-defocus { from { filter: none; } }
+
+/* pause: a checkbox in .bokeh-pause anywhere inside a .bokeh-group stops everything in the group */
+.bokeh-group:has(.bokeh-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the lights are open discs from the start and stay where they are */
+  .bokeh-disc, .bokeh-defocus { animation: none; }
+  .bokeh-pause { display: none; }
+}

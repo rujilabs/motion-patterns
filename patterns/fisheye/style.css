@@ -1,0 +1,19 @@
+/*
+ * fisheye: fisheye.js bends the drawing itself (see that file). This stylesheet adds what comes
+ * with the lens: the picture falls off toward the corners as the glass curves away. The script
+ * puts .is-bent on the .fisheye frame while the distortion is on; the falloff fades in with it.
+ */
+.fisheye { position: relative; overflow: clip; }
+.fisheye-edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(farthest-corner, transparent 62%, color-mix(in srgb, var(--fisheye-edge, #000) 34%, transparent) 100%);
+}
+.js .fisheye .fisheye-edge { opacity: 0; transition: opacity var(--dur-draw) var(--ease-inout); }
+.js .fisheye.is-bent .fisheye-edge { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script bends the drawing at once; the falloff appears with it */
+  .js .fisheye .fisheye-edge { transition: none; }
+}

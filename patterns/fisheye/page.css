@@ -1,0 +1,50 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+/* the shot: a sheet with a title row, the frame and a small lens note */
+.shot { width: min(560px, 100%, calc((100svh - 150px) * 1.6)); padding: 14px; display: grid; gap: 10px; }
+.shot-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.shot-head h1 { font-size: 18px; font-weight: 700; }
+.shot-sub { color: var(--demo-mute); font-size: 13px; }
+.shot-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: var(--demo-mute); }
+/* the frame: a 16:10 window onto the scene, with blue pencil corner marks like a viewfinder */
+.frame { position: relative; aspect-ratio: 16 / 10; min-height: 0; overflow: clip; border-radius: 4px; border: 1px solid var(--demo-line); background: var(--sky); }
+.frame svg { display: block; width: 100%; height: 100%; }
+.vf {
+  position: absolute; inset: 8px; pointer-events: none; z-index: 5;
+  --c: var(--demo-blue);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / 1px 14px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 14px 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 1px 14px no-repeat;
+}
+/* the scene palette: calm and flat, one warm light, one blue */
+.frame {
+  --sky: #e3ebf5; --far: #c5d0de; --mid: #9eadc1; --near: #6b7a90; --ground: #d2d9e2;
+  --ink: #2b3443; --paper: #fbfcfe; --warm: #e6b25e; --accent: var(--demo-blue);
+}
+@media (prefers-color-scheme: dark) {
+  .frame {
+    --sky: #1c2532; --far: #2a3545; --mid: #3a475a; --near: #4f5d72; --ground: #232c39;
+    --ink: #0f141b; --paper: #d9e0ea; --warm: #d29a45;
+  }
+}
+.c-sky { fill: var(--sky); } .c-far { fill: var(--far); } .c-mid { fill: var(--mid); } .c-near { fill: var(--near); }
+.c-ground { fill: var(--ground); } .c-ink { fill: var(--ink); } .c-paper { fill: var(--paper); } .c-warm { fill: var(--warm); }
+.c-accent { fill: var(--accent); } .c-red { fill: var(--demo-red); }
+@media (max-height: 380px) {
+  .shot { width: min(560px, 100%, calc((100svh - 80px) * 1.6)); padding: 10px; gap: 8px; }
+  .shot-sub, .shot-foot { display: none; }
+}
+@media (max-width: 420px) {
+  .shot-head h1 { font-size: 16px; }
+}
+/* this scene: a street front over a square grid, so the bend is easy to read */
+.fe-sky { fill: var(--sky); }
+.fe-grid { fill: none; stroke: var(--demo-blue); stroke-opacity: .35; stroke-width: .6; }
+.fe-kerb { fill: none; stroke: var(--near); stroke-width: 1.2; }
+.fe-lane { fill: none; stroke: var(--paper); stroke-width: 1.6; }
+.fe-pole { fill: none; stroke: var(--ink); stroke-width: 1.6; }

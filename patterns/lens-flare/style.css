@@ -1,0 +1,56 @@
+/*
+ * lens-flare: a bright light inside the frame throws a row of discs through the frame centre.
+ * The light sits at --flare-x, --flare-y (0 to 100, percent of the frame). Each disc sits on the
+ * line from the light through the centre at --k times the light's offset: 1 is on the light,
+ * 0 the centre, negative values the far side. Move the light and the whole row swings with it.
+ * Each .flare-disc is a full-frame layer moved with a transform; its ::before is the visible disc.
+ */
+@property --flare-x { syntax: "<number>"; inherits: true; initial-value: 70; }
+@property --flare-y { syntax: "<number>"; inherits: true; initial-value: 25; }
+
+.flare { position: absolute; inset: 0; overflow: clip; pointer-events: none; }
+.flare-disc {
+  position: absolute;
+  inset: 0;
+  transform: translate(calc((var(--flare-x) - 50) * var(--k, 0) * 1%), calc((var(--flare-y) - 50) * var(--k, 0) * 1%));
+  opacity: var(--fo, .35);
+  animation: flare-in calc(var(--dur-slow) * 2) var(--ease-out) var(--flare-delay, 0s) both;
+}
+.flare-disc::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--fs, 40px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--fc, #ffe3b0), color-mix(in srgb, var(--fc, #ffe3b0) 60%, transparent) 70%, transparent);
+}
+/* a hollow ring, the ghost of the aperture */
+.flare-ring::before { background: radial-gradient(closest-side, transparent 68%, var(--fc, #ffe3b0) 86%, transparent); }
+/* the light itself: a hot core inside a wide soft glow */
+.flare-source::before { background: radial-gradient(closest-side, #fff 0 9%, var(--fc, #ffe3b0) 14%, color-mix(in srgb, var(--fc, #ffe3b0) 30%, transparent) 40%, transparent); }
+/* a thin horizontal streak through the light */
+.flare-streak::before { aspect-ratio: auto; height: 2px; border-radius: 1px; background: linear-gradient(90deg, transparent, var(--fc, #ffe3b0), transparent); }
+@keyframes flare-in { from { opacity: 0; } }
+
+/* flare-move: the light crosses the frame in an arc and back */
+.flare-move { animation: flare-move var(--flare-dur, 12s) var(--ease-inout) infinite alternate; }
+@keyframes flare-move {
+  0%   { --flare-x: 14; --flare-y: 34; }
+  50%  { --flare-x: 52; --flare-y: 14; }
+  100% { --flare-x: 86; --flare-y: 32; }
+}
+/* anything else that should follow the light (the sun in a drawing) can use .flare-follow */
+.flare-follow { translate: calc((var(--flare-x) - 50) * 1%) calc((var(--flare-y) - 50) * 1%); }
+
+/* pause: a checkbox in .flare-pause anywhere inside a .flare-group stops everything in the group */
+.flare-group:has(.flare-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the flare shows at once, with the light held where it starts */
+  .flare-disc, .flare-move { animation: none; }
+  .flare-move { --flare-x: 30; --flare-y: 24; }
+  .flare-pause { display: none; }
+}

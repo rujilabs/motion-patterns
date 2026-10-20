@@ -1,0 +1,28 @@
+/*
+ * panning-shot: the camera follows a moving subject, so the subject stays sharp and the world
+ * behind it streaks in the direction of travel. The background is drawn as a tile and repeated;
+ * .pan-move slides it one tile to the left on a loop. Two copies sit on top of each other: the
+ * sharp one fades out as the streaked one fades in, so the scene picks up speed into the look.
+ * The streak is an SVG blur along x only (see the README for the filter to add to the page).
+ */
+.pan-move { animation: pan-move var(--pan-dur, 2s) linear infinite; }
+@keyframes pan-move { to { transform: translateX(calc(var(--pan-w, 320px) * -1)); } }
+
+/* the crossfade from a still world to a streaked one */
+.pan-blur { filter: url(#pan-streak); animation: pan-in calc(var(--dur-slow) * 1.5) var(--ease-inout) both; }
+.pan-sharp { opacity: 0; animation: pan-out calc(var(--dur-slow) * 1.5) var(--ease-inout) both; }
+@keyframes pan-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pan-out { from { opacity: 1; } to { opacity: 0; } }
+
+/* look-pan: the streak alone, on any picture (an image, a section background) */
+.look-pan { filter: url(#pan-streak); }
+
+/* pause: a checkbox in .pan-pause anywhere inside a .pan-group stops everything in the group */
+.pan-group:has(.pan-pause :checked) * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a still photograph of the pan: streaked world, sharp subject, nothing moves */
+  .pan-move, .pan-blur, .pan-sharp { animation: none; }
+  .pan-blur { opacity: 1; }
+  .pan-pause { display: none; }
+}

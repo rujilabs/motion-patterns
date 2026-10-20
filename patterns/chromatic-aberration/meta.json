@@ -1,0 +1,19 @@
+{
+  "name": "Chromatic aberration",
+  "slug": "chromatic-aberration",
+  "kind": "pattern",
+  "summary": "Red and blue fringes split along dark edges and grow toward the corners: three colour channel copies scaled by slightly different amounts. CSS blend modes only.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}
