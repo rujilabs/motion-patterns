@@ -1,0 +1,19 @@
+{
+  "name": "Rembrandt lighting",
+  "slug": "rembrandt-lighting",
+  "kind": "pattern",
+  "summary": "Key light at 45 degrees: the far side falls into shadow except a small soft triangle of light on the cheek. One class on any portrait, triangle placed by fractions.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

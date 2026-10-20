@@ -1,0 +1,21 @@
+{
+  "name": "Blue hour",
+  "slug": "blue-hour",
+  "kind": "pattern",
+  "summary": "After sunset: the scene cools to deep blue, then warm windows and a street lamp switch on one by one. A grade class plus a light layer that stays warm.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--dur-quick",
+    "--ease-inout",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

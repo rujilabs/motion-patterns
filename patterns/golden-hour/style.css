@@ -1,0 +1,66 @@
+/*
+ * golden hour: the last hour of sun. The light is low, warm and soft, and every shadow is long.
+ * .look-golden grades any image or section into gold with a multiply layer and adds a glow where
+ * the sun is. Two helper classes for scenes you build yourself: .look-golden-sun lowers an
+ * element (the sun) to where it sits, and .look-golden-shadow stretches a shadow from its foot.
+ * With data-play on the frame or an ancestor, the sun goes down when play.js adds .go.
+ */
+.look-golden { position: relative; isolation: isolate; overflow: clip; }
+.look-golden::before,
+.look-golden::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.look-golden::after {
+  background: var(--golden-grade, linear-gradient(180deg, #ffc879 0%, #ffab5c 55%, #e19461 100%));
+  mix-blend-mode: multiply;
+  opacity: var(--golden-strength, .72);
+}
+.look-golden::before {
+  background: radial-gradient(circle at var(--golden-sun-x, 14%) var(--golden-sun-y, 62%), var(--golden-glow, rgb(255 222 168 / .95)), transparent var(--golden-glow-size, 42%));
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+.look-golden-sun { transform-box: fill-box; }
+.look-golden-shadow { transform-box: fill-box; transform-origin: var(--golden-foot, 0 50%); }
+
+@keyframes look-golden-grade {
+  from { opacity: 0; }
+  to   { opacity: var(--golden-strength, .72); }
+}
+@keyframes look-golden-glow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes look-golden-sun {
+  from { transform: translateY(var(--golden-sun-from, -320%)); }
+  to   { transform: none; }
+}
+@keyframes look-golden-shadow {
+  from { transform: scaleX(var(--golden-short, .3)); }
+  to   { transform: none; }
+}
+.js [data-play].look-golden::after,
+.js [data-play] .look-golden::after { animation: look-golden-grade var(--golden-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-golden::before,
+.js [data-play] .look-golden::before { animation: look-golden-glow var(--golden-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-golden .look-golden-sun,
+.js [data-play] .look-golden .look-golden-sun { animation: look-golden-sun var(--golden-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-golden .look-golden-shadow,
+.js [data-play] .look-golden .look-golden-shadow { animation: look-golden-shadow var(--golden-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-golden::before,
+.js .go .look-golden::before,
+.js .go.look-golden::after,
+.js .go .look-golden::after,
+.js .go.look-golden .look-golden-sun,
+.js .go .look-golden .look-golden-sun,
+.js .go.look-golden .look-golden-shadow,
+.js .go .look-golden .look-golden-shadow { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-golden::before,
+  .js [data-play] .look-golden::before,
+  .js [data-play].look-golden::after,
+  .js [data-play] .look-golden::after,
+  .js [data-play].look-golden .look-golden-sun,
+  .js [data-play] .look-golden .look-golden-sun,
+  .js [data-play].look-golden .look-golden-shadow,
+  .js [data-play] .look-golden .look-golden-shadow { animation: none; }
+}

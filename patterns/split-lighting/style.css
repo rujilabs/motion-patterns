@@ -1,0 +1,34 @@
+/*
+ * split lighting: the key light sits at 90 degrees to one side, so half the face is lit and half
+ * is in shadow, split down the nose. Works on any image or section: the shadow is a multiply
+ * layer with a soft edge at --split-at. With data-play on it or an ancestor, the light swings
+ * round from the front and the edge sweeps in from the far side, the way a real terminator does.
+ */
+@property --split-edge { syntax: "<percentage>"; inherits: false; initial-value: 50%; }
+
+.look-split { position: relative; isolation: isolate; overflow: clip; }
+.look-split::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  --split-edge: var(--split-at, 50%);
+  background: linear-gradient(var(--split-side, 90deg), transparent calc(var(--split-edge) - var(--split-soft, 2.5%)), var(--split-shade, rgb(14 14 18 / .9)) calc(var(--split-edge) + var(--split-soft, 2.5%)));
+  mix-blend-mode: multiply;
+}
+
+@keyframes look-split {
+  from { --split-edge: 100%; opacity: 0; }
+  35%  { opacity: 1; }
+  to   { --split-edge: var(--split-at, 50%); opacity: 1; }
+}
+.js [data-play].look-split::after,
+.js [data-play] .look-split::after { animation: look-split var(--split-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-split::after,
+.js .go .look-split::after { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-split::after,
+  .js [data-play] .look-split::after { animation: none; }
+}

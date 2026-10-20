@@ -1,0 +1,19 @@
+{
+  "name": "Butterfly lighting",
+  "slug": "butterfly-lighting",
+  "kind": "pattern",
+  "summary": "Light high and straight in front: the forehead brightens and a small butterfly shadow drops under the nose, with a soft one under the chin. One class on any portrait.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

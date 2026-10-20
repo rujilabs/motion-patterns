@@ -1,0 +1,30 @@
+/*
+ * rim light: a thin bright edge traces the subject's outline against a dark ground, and the
+ * rest of the subject sits in shadow. The edge is a hard drop-shadow offset toward the light,
+ * so it shows only where the outline faces that way. Needs a cut-out subject (.look-subject).
+ * Registered properties let the light travel smoothly around the outline.
+ */
+@property --rim-x { syntax: "<length>"; inherits: false; initial-value: -2px; }
+@property --rim-y { syntax: "<length>"; inherits: false; initial-value: -1px; }
+
+.look-rim { position: relative; isolation: isolate; overflow: clip; background: var(--rim-ground, #121317); }
+.look-rim .look-subject {
+  filter: brightness(var(--rim-body, .22)) drop-shadow(var(--rim-x) var(--rim-y) 0 var(--rim-color, #f5efe4)) drop-shadow(var(--rim-x) var(--rim-y) 6px var(--rim-glow, #9c8d76));
+}
+
+/* look-rim-move: the light travels behind the subject, left edge, over the top, right edge, and back */
+@keyframes look-rim-move {
+  0%   { --rim-x: -2.5px; --rim-y: -.5px; }
+  50%  { --rim-x: 0px;    --rim-y: -2.5px; }
+  100% { --rim-x: 2.5px;  --rim-y: -.5px; }
+}
+.look-rim-move .look-subject { animation: look-rim-move var(--rim-dur, 7s) var(--ease-inout) infinite alternate both; }
+
+/* it loops longer than 5 seconds: a checkbox anywhere inside .look-rim-group pauses it */
+.look-rim-group:has(.look-rim-pause :checked) .look-rim-move .look-subject { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the light rests behind and to the left */
+  .look-rim-move .look-subject { animation: none; }
+  .look-rim-pause { display: none; }
+}

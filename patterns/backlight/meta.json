@@ -1,0 +1,19 @@
+{
+  "name": "Backlighting",
+  "slug": "backlight",
+  "kind": "pattern",
+  "summary": "The light sits behind the subject: a glow rises on the wall, a halo wraps the outline and the front falls into soft shade. One class on a cut-out subject.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,49 @@
+/*
+ * butterfly lighting: the key light sits high and straight in front. The forehead and cheekbones
+ * catch the light, a small butterfly shaped shadow falls under the nose, and a soft one under the
+ * chin. Works on any portrait: the highlight is a soft-light layer, the shadows a multiply layer
+ * placed at the nose and chin with custom properties. As the light rises the shadows drop.
+ */
+@property --bf-drop { syntax: "<percentage>"; inherits: false; initial-value: 2.5%; }
+
+.look-butterfly { position: relative; isolation: isolate; overflow: clip; }
+.look-butterfly::before,
+.look-butterfly::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.look-butterfly::before {
+  background: radial-gradient(ellipse 34% 42% at var(--bf-x, 50%) var(--bf-top, 22%), var(--bf-light, rgb(255 250 240 / .75)), transparent 100%);
+  mix-blend-mode: soft-light;
+}
+.look-butterfly::after {
+  --bf-drop: var(--bf-fall, 2.5%);
+  background:
+    radial-gradient(var(--bf-nose-w, 2.4%) var(--bf-nose-h, 1.6%) at var(--bf-x, 50%) calc(var(--bf-nose, 47.5%) + var(--bf-drop)), var(--bf-shade, rgb(40 32 28 / .75)) 0 30%, transparent 100%),
+    radial-gradient(var(--bf-chin-w, 11%) var(--bf-chin-h, 5%) at var(--bf-x, 50%) calc(var(--bf-chin, 58.5%) + var(--bf-drop) * 1.6), var(--bf-chin-shade, rgb(40 32 28 / .45)), transparent 100%),
+    linear-gradient(180deg, transparent 50%, rgb(20 18 20 / .3));
+  mix-blend-mode: multiply;
+}
+
+/* the light rises: the highlight grows and the shadows slide down from under the nose and chin */
+@keyframes look-butterfly-light {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes look-butterfly-shade {
+  from { --bf-drop: 0%; opacity: 0; }
+  30%  { opacity: 1; }
+  to   { --bf-drop: var(--bf-fall, 2.5%); opacity: 1; }
+}
+.js [data-play].look-butterfly::before,
+.js [data-play] .look-butterfly::before { animation: look-butterfly-light var(--bf-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-butterfly::after,
+.js [data-play] .look-butterfly::after { animation: look-butterfly-shade var(--bf-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-butterfly::before,
+.js .go .look-butterfly::before,
+.js .go.look-butterfly::after,
+.js .go .look-butterfly::after { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-butterfly::before,
+  .js [data-play] .look-butterfly::before,
+  .js [data-play].look-butterfly::after,
+  .js [data-play] .look-butterfly::after { animation: none; }
+}

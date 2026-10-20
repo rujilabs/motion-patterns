@@ -1,0 +1,19 @@
+{
+  "name": "Silhouette",
+  "slug": "silhouette",
+  "kind": "pattern",
+  "summary": "The sky behind brightens and the subject drops to a flat dark shape, so only its outline reads. One class on a cut-out subject.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

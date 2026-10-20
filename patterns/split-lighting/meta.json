@@ -1,0 +1,19 @@
+{
+  "name": "Split lighting",
+  "slug": "split-lighting",
+  "kind": "pattern",
+  "summary": "The key light swings to one side until half the face is lit and half is in shadow. One class with a soft terminator on any image.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

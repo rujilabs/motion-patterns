@@ -1,0 +1,19 @@
+{
+  "name": "Golden hour",
+  "slug": "golden-hour",
+  "kind": "pattern",
+  "summary": "The sun lowers, the scene grades into warm gold and the shadows stretch long. A grade class for any image, plus helpers for a sun and shadows you draw.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

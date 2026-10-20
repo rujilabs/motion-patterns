@@ -1,0 +1,44 @@
+/*
+ * backlight: the light sits behind the subject. A glow spreads on the wall behind it, a halo
+ * wraps the outline, and the side facing the camera falls into shade. Put .look-backlight on a
+ * frame that holds a cut-out subject (.look-subject: an inline SVG or a transparent PNG), so the
+ * halo can follow the real outline. Add data-play to the frame or an ancestor and the light
+ * rises when play.js adds .go; without data-play the look simply sits there.
+ */
+.look-backlight { position: relative; isolation: isolate; overflow: clip; background: var(--backlight-ground, #2b2c32); }
+.look-backlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 44% 60% at var(--backlight-x, 50%) var(--backlight-y, 42%), var(--backlight-color, #fff2d8) 0%, var(--backlight-warm, #e9b57a) 34%, transparent 74%);
+}
+.look-backlight .look-subject {
+  filter: brightness(var(--backlight-front, .5)) drop-shadow(0 0 1px var(--backlight-color, #fff2d8)) drop-shadow(0 0 9px var(--backlight-warm, #e9b57a));
+}
+
+/* the light rises: the glow climbs up behind the subject while the front darkens and the halo grows */
+@keyframes look-backlight-glow {
+  from { opacity: 0; transform: translateY(22%) scale(.8); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes look-backlight-subject {
+  from { filter: brightness(1) drop-shadow(0 0 0 transparent) drop-shadow(0 0 0 transparent); }
+  to   { filter: brightness(var(--backlight-front, .5)) drop-shadow(0 0 1px var(--backlight-color, #fff2d8)) drop-shadow(0 0 9px var(--backlight-warm, #e9b57a)); }
+}
+.js [data-play].look-backlight::before,
+.js [data-play] .look-backlight::before { animation: look-backlight-glow var(--backlight-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-backlight .look-subject,
+.js [data-play] .look-backlight .look-subject { animation: look-backlight-subject var(--backlight-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-backlight::before,
+.js .go .look-backlight::before,
+.js .go.look-backlight .look-subject,
+.js .go .look-backlight .look-subject { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-backlight::before,
+  .js [data-play] .look-backlight::before,
+  .js [data-play].look-backlight .look-subject,
+  .js [data-play] .look-backlight .look-subject { animation: none; }
+}

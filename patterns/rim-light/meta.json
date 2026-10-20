@@ -1,0 +1,18 @@
+{
+  "name": "Rim light",
+  "slug": "rim-light",
+  "kind": "pattern",
+  "summary": "A thin bright edge traces the outline of a dark subject on a dark ground, and the light travels around it. A pause toggle stops the loop.",
+  "category": "look",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

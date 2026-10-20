@@ -1,0 +1,49 @@
+/*
+ * blue hour: the short time after sunset when the sky is deep blue and still bright enough to
+ * see by, and warm lights come on against it. .look-blue cools any image or section with a
+ * multiply layer. Lights go in a layer above it (.look-blue-light, with each light marked
+ * .look-blue-on) so they stay warm. Space the lights with --blue-on-at on each one.
+ * With data-play on the frame or an ancestor, dusk falls when play.js adds .go.
+ */
+.look-blue { position: relative; isolation: isolate; overflow: clip; }
+.look-blue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--blue-grade, linear-gradient(180deg, #2c4482 0%, #5a6fb2 52%, #3b4774 74%, #343b5c 100%));
+  mix-blend-mode: multiply;
+  opacity: var(--blue-strength, .92);
+}
+.look-blue-light {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 0 3px var(--blue-glow, rgb(255 196 110 / .85)));
+}
+
+@keyframes look-blue-dusk {
+  from { opacity: 0; }
+  to   { opacity: var(--blue-strength, .92); }
+}
+@keyframes look-blue-on {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.js [data-play].look-blue::after,
+.js [data-play] .look-blue::after { animation: look-blue-dusk var(--blue-dur, calc(var(--dur-slow) * 2)) var(--ease-inout) both paused; }
+.js [data-play].look-blue .look-blue-on,
+.js [data-play] .look-blue .look-blue-on { animation: look-blue-on var(--dur-quick) var(--ease-out) var(--blue-on-at, 0s) both paused; }
+.js .go.look-blue::after,
+.js .go .look-blue::after,
+.js .go.look-blue .look-blue-on,
+.js .go .look-blue .look-blue-on { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-blue::after,
+  .js [data-play] .look-blue::after,
+  .js [data-play].look-blue .look-blue-on,
+  .js [data-play] .look-blue .look-blue-on { animation: none; }
+}

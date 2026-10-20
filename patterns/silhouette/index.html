@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silhouette demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <figure class="shot sheet" data-play>
+    <div class="frame look-silhouette" role="img" aria-label="A plaster bust in front of a dull sky; the sky behind it brightens to a warm glow and the bust drops to a flat dark shape">
+        <svg class="look-subject bust" viewBox="0 0 320 240" aria-hidden="true">
+          <defs>
+            <radialGradient id="bust-skin" cx="46%" cy="36%" r="72%">
+              <stop offset="0" stop-color="#e4ded4"/><stop offset="1" stop-color="#b7afa3"/>
+            </radialGradient>
+            <linearGradient id="bust-cloth" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#aaa49a"/><stop offset="1" stop-color="#837d74"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#bust-cloth)" d="M56 240 C 60 204, 94 186, 140 176 L 180 176 C 226 186, 260 204, 264 240 Z"/>
+          <path fill="none" stroke="#77716a" stroke-width="1.2" d="M140 176 C 150 191, 170 191, 180 176"/>
+          <path fill="url(#bust-skin)" d="M142 120 L 178 120 L 181 178 C 170 186, 150 186, 139 178 Z"/>
+          <ellipse fill="#cdc6ba" cx="121" cy="96" rx="7" ry="12"/>
+          <ellipse fill="#cdc6ba" cx="199" cy="96" rx="7" ry="12"/>
+          <ellipse fill="url(#bust-skin)" cx="160" cy="90" rx="40" ry="50"/>
+          <path fill="#a0988c" d="M120 88 C 116 54, 138 38, 161 38 C 185 38, 205 54, 200 88 C 196 70, 186 60, 172 57 C 160 64, 140 64, 130 68 C 125 73, 122 80, 120 88 Z"/>
+          <g fill="none" stroke="#857d71" stroke-width="1.6" stroke-linecap="round">
+            <path d="M141 92 q 6 -3.5 12 0"/><path d="M167 92 q 6 -3.5 12 0"/>
+            <path d="M139 84 q 7 -4 15 -1"/><path d="M166 83 q 8 -3 15 1"/>
+            <path d="M160 94 L 157 113 q 3.5 2.5 7 0"/>
+            <path d="M151 127 q 9 4 18 0"/>
+          </g>
+        </svg>
+    </div>
+    <figcaption class="shot-bar">
+      <p><strong>Silhouette</strong> <span class="mute">the sky behind brightens and the subject turns to a shape</span></p>
+      <span class="shot-end"><span class="plan" aria-hidden="true"><span class="plan-light"></span></span></span>
+    </figcaption>
+  </figure>
+</main>
+</body>
+</html>

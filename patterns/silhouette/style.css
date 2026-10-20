@@ -1,0 +1,42 @@
+/*
+ * silhouette: the light behind is so much brighter than the subject that the subject drops to a
+ * flat dark shape. Only the outline is left to read. Put .look-silhouette on a frame holding a
+ * cut-out subject (.look-subject). With data-play on the frame or an ancestor, the light behind
+ * rises when play.js adds .go.
+ */
+.look-silhouette { position: relative; isolation: isolate; overflow: clip; background: var(--silhouette-dusk, linear-gradient(#5f6679, #8e8b93)); }
+.look-silhouette::before {
+  content: "";
+  position: absolute;
+  inset: -30% 0 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 26% at var(--silhouette-x, 50%) var(--silhouette-y, 83%), var(--silhouette-sun, #fff7e8), transparent 100%),
+    var(--silhouette-sky, linear-gradient(180deg, #e7a877 20%, #f4c894 55%, #fbe6c2 85%));
+}
+.look-silhouette .look-subject { filter: brightness(var(--silhouette-depth, .06)); }
+
+@keyframes look-silhouette-sky {
+  from { opacity: 0; transform: translateY(20%); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes look-silhouette-subject {
+  from { filter: brightness(.9); }
+  to   { filter: brightness(var(--silhouette-depth, .06)); }
+}
+.js [data-play].look-silhouette::before,
+.js [data-play] .look-silhouette::before { animation: look-silhouette-sky var(--silhouette-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js [data-play].look-silhouette .look-subject,
+.js [data-play] .look-silhouette .look-subject { animation: look-silhouette-subject var(--silhouette-dur, calc(var(--dur-slow) * 3)) var(--ease-inout) both paused; }
+.js .go.look-silhouette::before,
+.js .go .look-silhouette::before,
+.js .go.look-silhouette .look-subject,
+.js .go .look-silhouette .look-subject { animation-play-state: running; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play].look-silhouette::before,
+  .js [data-play] .look-silhouette::before,
+  .js [data-play].look-silhouette .look-subject,
+  .js [data-play] .look-silhouette .look-subject { animation: none; }
+}
