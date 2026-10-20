@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wipe demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="wp-coast" viewBox="0 0 320 180">
+      <path d="M0 118 L60 112 L120 120 L191 108 L191 180 H0Z" fill="#7a8c6a"/>
+      <path d="M190 108 L230 100 L320 104 V180 H190Z" fill="#7a8c6a"/>
+      <path d="M118 120 L150 114 L170 118" fill="none" stroke="#5f6f52" stroke-width="2"/>
+      <path d="M232 100 l6 -64 h20 l6 64Z" fill="#f4f1ec"/>
+      <path d="M235 76 h26 l1 10 h-28Z M237 52 h22 l1 10 h-24Z" fill="#c4553b"/>
+      <rect x="236" y="26" width="24" height="10" fill="#2f3640"/>
+      <path d="M234 26 l14 -10 l14 10Z" fill="#c4553b"/>
+      <rect x="244" y="86" width="8" height="14" fill="#2f3640"/>
+    </symbol>
+  </defs>
+</svg>
+<main class="stage">
+  <section class="wipe-group reel sheet" aria-labelledby="wp-h">
+    <div class="wipe-loop screen" tabindex="0" role="group" aria-label="The lighthouse at noon, at dusk and at night, each view wiping in over the last">
+      <figure class="shot wipe-linear">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#bfe0f7"/>
+          <circle cx="70" cy="40" r="14" fill="#fff4c2"/>
+          <rect y="112" width="320" height="68" fill="#4d8fc4"/>
+          <path d="M20 140h40 M90 158h50 M30 168h24" stroke="#8cc3ea" stroke-width="2" stroke-linecap="round"/>
+          <use href="#wp-coast"/>
+        </svg>
+        <figcaption class="tag"><b>Linear</b> 12:00</figcaption>
+      </figure>
+      <figure class="shot wipe-clock">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#ecb48d"/>
+          <circle cx="90" cy="104" r="18" fill="#f8d48a"/>
+          <rect y="112" width="320" height="68" fill="#6b7fa6"/>
+          <path d="M70 124h40 M80 136h20" stroke="#f2b46a" stroke-width="2" stroke-linecap="round"/>
+          <use href="#wp-coast"/>
+          <rect width="320" height="180" fill="#8a3d2a" opacity=".14"/>
+        </svg>
+        <figcaption class="tag"><b>Clock</b> 19:10</figcaption>
+      </figure>
+      <figure class="shot wipe-iris">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#1d2440"/>
+          <g fill="#e9e6d6"><circle cx="40" cy="30" r="1.2"/><circle cx="96" cy="18" r="1"/><circle cx="150" cy="40" r="1.3"/><circle cx="190" cy="16" r="1"/><circle cx="300" cy="50" r="1.1"/></g>
+          <rect y="112" width="320" height="68" fill="#24335c"/>
+          <use href="#wp-coast"/>
+          <rect width="320" height="180" fill="#0b1230" opacity=".55"/>
+          <path d="M248 31 L60 4 L60 52Z" fill="#fff1c4" opacity=".5"/>
+          <rect x="236" y="26" width="24" height="10" fill="#ffcf6a"/>
+        </svg>
+        <figcaption class="tag"><b>Iris</b> 23:40</figcaption>
+      </figure>
+    </div>
+    <div class="reel-foot">
+      <div>
+        <h1 id="wp-h">Tanjung Lampu, one day</h1>
+        <p class="reel-sub">Each view wipes in over the last: linear, clock, iris.</p>
+      </div>
+      <label class="wipe-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Jump cut",
+  "slug": "jump-cut",
+  "kind": "pattern",
+  "summary": "Near-identical framings of the same subject cut together with no transition, so time jumps forward. Step-end keyframes, an optional punch-in on every second frame, and a pause toggle.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

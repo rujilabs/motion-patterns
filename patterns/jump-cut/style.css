@@ -1,0 +1,42 @@
+/*
+ * jump-cut: frames of the same subject in nearly the same framing, cut together with no transition.
+ * The small jump between them reads as time passing. Frames stack in one grid cell and each one is
+ * visible for exactly one slot (--jc-slot), then the next one replaces it on the same frame of time:
+ * the keyframes use step-end, so there is never a fade or a blank frame between two shots.
+ * 4 frames by default; .jump-cut-3 for three. Negative delays put every frame mid-cycle on load,
+ * so the first frame shows at once.
+ */
+.jump-cut { --jc-slot: 1.4s; --jc-n: 4; display: grid; overflow: clip; }
+.jump-cut > * {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  animation: jump-cut-4 calc(var(--jc-slot) * var(--jc-n)) step-end infinite;
+  animation-delay: calc(var(--jc-slot) * (var(--jc-i, 0) - var(--jc-n)));
+}
+.jump-cut > :first-child { visibility: visible; }
+.jump-cut > :nth-child(2) { --jc-i: 1; }
+.jump-cut > :nth-child(3) { --jc-i: 2; }
+.jump-cut > :nth-child(4) { --jc-i: 3; }
+.jump-cut-3 { --jc-n: 3; }
+.jump-cut-3 > * { animation-name: jump-cut-3; }
+
+@keyframes jump-cut-4 { 0% { visibility: visible; } 25% { visibility: hidden; } 100% { visibility: hidden; } }
+@keyframes jump-cut-3 { 0% { visibility: visible; } 33.333% { visibility: hidden; } 100% { visibility: hidden; } }
+
+/*
+ * jump-cut-punch: in every second frame the image (its first child) is pushed in a little
+ * (--jc-punch, 112%), the way an editor hides a cut in one long take by punching in on the same
+ * shot. Captions and badges after the image stay the same size. Each frame clips its own overflow.
+ */
+.jump-cut-punch > * { overflow: clip; }
+.jump-cut-punch > :nth-child(even) > :first-child { transform: scale(var(--jc-punch, 1.12)); transform-origin: var(--jc-origin, 50% 40%); }
+
+/* pause: hover or focus on the frames, or a .jump-cut-pause toggle inside a .jump-cut-group */
+.jump-cut:hover > *,
+.jump-cut:focus-within > *,
+.jump-cut-group:has(.jump-cut-pause :checked) .jump-cut > * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .jump-cut > * { animation: none; }
+  .jump-cut-pause { display: none; }
+}

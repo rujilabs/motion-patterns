@@ -1,0 +1,17 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.reel { width: min(100%, 520px, calc((100svh - 150px) * 1.78)); padding: 6px; display: grid; }
+.screen { aspect-ratio: 16 / 9; min-height: 0; border-radius: 4px; }
+.shot { position: relative; margin: 0; overflow: clip; }
+.shot svg { display: block; width: 100%; height: 100%; }
+/* the camera's own timecode, burnt into each shot: the red dot is the key mark */
+.tc { position: absolute; left: 8px; top: 8px; display: flex; align-items: center; gap: 6px; padding: 3px 8px;
+  border-radius: 4px; background: rgb(20 24 31 / .72); color: #fff; font-size: 12px; font-weight: 600; }
+.rec { width: 7px; height: 7px; border-radius: 50%; background: var(--demo-red); }
+.reel-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 8px 6px; }
+.reel-foot h1 { font-size: 15px; font-weight: 650; }
+.reel-sub { color: var(--demo-mute); font-size: 13px; }
+@media (max-height: 400px) {
+  .reel-sub { display: none; }
+  .reel-foot { padding-top: 8px; }
+}

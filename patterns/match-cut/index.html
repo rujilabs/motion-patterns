@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Match cut demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="match-cut-group reel sheet" aria-labelledby="mc-h">
+    <div class="viewer">
+      <div class="match-cut screen" tabindex="0" role="group" aria-label="A cup of tea seen from above cuts to the evening sun over the sea">
+        <figure class="shot">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="180" fill="#c9a27e"/>
+            <path d="M0 36h320 M0 78h320 M0 122h320 M0 164h320" stroke="#b48d69" stroke-width="1.5"/>
+            <rect x="22" y="22" width="78" height="104" rx="3" fill="#2f4a6b" transform="rotate(-8 61 74)"/>
+            <rect x="30" y="30" width="62" height="88" rx="2" fill="none" stroke="#e8c27a" stroke-width="1.2" transform="rotate(-8 61 74)"/>
+            <rect x="238" y="96" width="44" height="76" rx="7" fill="#1e2229" transform="rotate(12 260 134)"/>
+            <rect x="242" y="102" width="36" height="62" rx="4" fill="#3b4250" transform="rotate(12 260 134)"/>
+            <circle cx="160" cy="84" r="38" fill="#f4f1ec"/>
+            <circle cx="160" cy="84" r="38" fill="none" stroke="#e2ddd4" stroke-width="1"/>
+            <path d="M184 72 q22 -4 22 12 q0 16 -22 12" fill="none" stroke="#fbfaf7" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="160" cy="84" r="26" fill="#fbfaf7" stroke="#e2ddd4" stroke-width="1"/>
+            <circle cx="160" cy="84" r="21" fill="#d98a3d"/>
+            <path d="M118 112 l-30 26" stroke="#b9bec6" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <figcaption class="cap">08:10, table by the window</figcaption>
+        </figure>
+        <figure class="shot">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="mc-sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e9b48f"/>
+                <stop offset="1" stop-color="#f7e0bd"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="180" fill="url(#mc-sky)"/>
+            <circle cx="160" cy="84" r="26" fill="#ffd89a"/>
+            <circle cx="160" cy="84" r="21" fill="#f2a24a"/>
+            <path d="M0 112 L40 100 L78 108 L110 96 L136 112Z" fill="#9b7c7a"/>
+            <path d="M210 112 L246 98 L282 106 L320 94 V112Z" fill="#9b7c7a"/>
+            <rect y="112" width="320" height="68" fill="#6f8fae"/>
+            <path d="M140 122h40 M146 132h28 M152 142h16 M150 152h20" stroke="#f2b46a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M30 140h36 M240 128h44 M210 160h30 M60 164h24" stroke="#8aa6c2" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <figcaption class="cap">19:02, Batu Putih beach</figcaption>
+        </figure>
+      </div>
+      <svg class="guide" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <circle cx="160" cy="84" r="62" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <path d="M160 14v12 M160 142v12 M90 84h12 M218 84h12" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="reel-foot">
+      <div>
+        <h1 id="mc-h">Morning cup, evening sun</h1>
+        <p class="reel-sub">The circle stays put; the day changes around it.</p>
+      </div>
+      <label class="match-cut-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

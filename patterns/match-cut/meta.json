@@ -1,0 +1,18 @@
+{
+  "name": "Match cut",
+  "slug": "match-cut",
+  "kind": "pattern",
+  "summary": "A shape in one scene cuts to a matching shape in the next: both scenes zoom on the same point, so a cup of tea becomes the sun. A hard cut both ways, with a pause toggle.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

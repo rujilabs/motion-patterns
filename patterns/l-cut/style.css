@@ -1,0 +1,33 @@
+/*
+ * l-cut: the previous scene's sound keeps going over the next scene's picture. On an editor's
+ * timeline the picture cuts first and the audio clip runs on under the new shot, which draws an L.
+ * Here the "sound" is whatever stands for it on a page: a caption, a speaker name, a waveform.
+ * .l-cut-picture and .l-cut-audio each hold two layers, A then B, stacked in one cell. Both swap
+ * from A to B halfway through --l-dur, on one frame (step-end, no fade). The audio layers run
+ * --l-lag (a share of the loop) behind, so B's picture arrives while A is still talking.
+ * On the way round the loop B's sound stays over A's picture in the same way.
+ * .l-cut-playhead is optional: it crosses its positioned parent once per loop, for a timeline.
+ */
+.l-cut { --l-dur: 8s; --l-lag: .14; }
+.l-cut-picture, .l-cut-audio { display: grid; }
+.l-cut-picture > *, .l-cut-audio > * { grid-area: 1 / 1; }
+.l-cut-picture > :first-child, .l-cut-audio > :first-child { animation: l-cut-a var(--l-dur) step-end var(--l-delay, 0s) infinite; }
+.l-cut-picture > :last-child, .l-cut-audio > :last-child { visibility: hidden; animation: l-cut-b var(--l-dur) step-end var(--l-delay, 0s) infinite; }
+/* a delay of lag minus one loop: the same as starting late, with no blank first pass */
+.l-cut-audio { --l-delay: calc(var(--l-dur) * (var(--l-lag) - 1)); }
+.l-cut-playhead { position: absolute; top: 0; bottom: 0; left: 0; animation: l-cut-play var(--l-dur) linear infinite; }
+
+@keyframes l-cut-a { 0% { visibility: visible; } 50% { visibility: hidden; } 100% { visibility: hidden; } }
+@keyframes l-cut-b { 0% { visibility: hidden; } 50% { visibility: visible; } 100% { visibility: visible; } }
+@keyframes l-cut-play { from { left: 0%; } to { left: 100%; } }
+
+/* pause: hover or focus inside .l-cut, or a .l-cut-pause toggle inside a .l-cut-group */
+.l-cut:hover *,
+.l-cut:focus-within *,
+.l-cut-group:has(.l-cut-pause :checked) .l-cut * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .l-cut-picture > :first-child, .l-cut-audio > :first-child,
+  .l-cut-picture > :last-child, .l-cut-audio > :last-child, .l-cut-playhead { animation: none; }
+  .l-cut-pause { display: none; }
+}

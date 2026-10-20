@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J-cut demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="wave" viewBox="0 0 120 12" preserveAspectRatio="none">
+    <path d="M2 4.8v2.4 M5 0.7v10.6 M8 4.1v3.9 M11 3.9v4.3 M14 4.3v3.4 M17 2.5v7.0 M20 1.9v8.2 M23 2.0v8.1 M26 1.3v9.5 M29 3.7v4.6 M32 3.9v4.3 M35 4.6v2.7 M38 1.9v8.2 M41 4.3v3.3 M44 0.3v11.3 M47 3.3v5.3 M50 2.3v7.3 M53 4.3v3.5 M56 4.0v4.0 M59 2.5v7.0 M62 2.6v6.8 M65 0.6v10.8 M68 3.6v4.8 M71 2.1v7.9 M74 4.8v2.5 M77 3.6v4.7 M80 4.2v3.7 M83 0.8v10.3 M86 2.7v6.6 M89 1.5v9.1 M92 3.0v6.1 M95 4.2v3.5 M98 3.8v4.4 M101 3.5v5.0 M104 0.8v10.4 M107 3.9v4.1 M110 0.8v10.5 M113 4.6v2.8 M116 4.0v4.0" stroke="currentColor" stroke-width="1.4"/>
+  </symbol>
+</svg>
+<main class="stage">
+  <section class="j-cut-group reel sheet" aria-labelledby="jc-h">
+    <div class="j-cut" tabindex="0" role="group" aria-label="The station announcement is heard over the office before the picture cuts to the platform">
+      <div class="viewer">
+        <div class="j-cut-picture">
+          <figure class="shot" aria-label="Picture A, the office">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="180" fill="#e6e1d8"/>
+              <rect x="30" y="22" width="120" height="74" fill="#f0c49a"/>
+              <path d="M30 22h120v74h-120Z M70 22v74 M110 22v74" fill="none" stroke="#f7f4ee" stroke-width="3"/>
+              <path d="M30 80 L60 66 L84 74 L110 60 L150 70 V96 H30Z" fill="#9d8aa0"/>
+              <rect y="150" width="320" height="30" fill="#cfc6b8"/>
+              <path d="M178 132 q0 -34 28 -34 q28 0 28 34Z" fill="#5d8f6c"/>
+              <circle cx="206" cy="82" r="13" fill="#b48a6d"/>
+              <path d="M193 82 a13 13 0 0 1 26 -2 q-2 10 -2 16 h-6 q4 -10 -2 -16 q-8 -2 -16 2Z" fill="#2b2622"/>
+              <rect x="150" y="128" width="150" height="8" fill="#8a6a4f"/>
+              <path d="M160 136h8v20h-8Z M282 136h8v20h-8Z" fill="#6f553f"/>
+              <path d="M182 128 l6 -22 h36 l6 22Z" fill="#b8bec8"/>
+              <rect x="250" y="118" width="14" height="10" fill="#fbfaf7" stroke="#1e2229" stroke-width="1.2"/>
+            </svg>
+          </figure>
+          <figure class="shot" aria-label="Picture B, the platform">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="180" fill="#f2cfae"/>
+              <path d="M0 20h320v10H0Z" fill="#5a6273"/>
+              <path d="M20 30v100 M160 30v100 M300 30v100" stroke="#5a6273" stroke-width="5"/>
+              <rect x="-4" y="58" width="236" height="74" rx="10" fill="#e8ecf2"/>
+              <rect x="-4" y="112" width="236" height="10" fill="#c4553b"/>
+              <g fill="#3a4250"><rect x="14" y="70" width="40" height="28" rx="3"/><rect x="66" y="70" width="40" height="28" rx="3"/><rect x="118" y="70" width="40" height="28" rx="3"/><rect x="176" y="68" width="30" height="40" rx="3"/></g>
+              <rect y="132" width="320" height="48" fill="#b7aea2"/>
+              <path d="M0 136h320" stroke="#f2d16b" stroke-width="3"/>
+              <rect x="246" y="44" width="58" height="22" rx="2" fill="#1e2229"/>
+              <text class="board" x="275" y="59" text-anchor="middle">2  18:40</text>
+              <path d="M262 132 q0 -30 14 -30 q14 0 14 30Z" fill="#4a6fa5"/>
+              <circle cx="276" cy="94" r="9" fill="#c99b7a"/>
+            </svg>
+          </figure>
+        </div>
+        <div class="j-cut-audio">
+          <p class="line"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b>Office</b> keys tapping, a fan humming</span></p>
+          <p class="line"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b>Platform</b> The 18:40 to Riverside is arriving on platform 2.</span></p>
+        </div>
+      </div>
+      <div class="tl" aria-hidden="true">
+        <div class="tl-labels"><span>V1</span><span>A1</span></div>
+        <div class="tl-lanes">
+          <div class="lane v"><span class="clip ca">Office</span><span class="clip cb">Platform</span></div>
+          <div class="lane a">
+            <span class="clip aa"><svg><use href="#wave"/></svg></span>
+            <span class="clip ab"><svg><use href="#wave"/></svg></span>
+            <span class="clip aa aa2"></span>
+          </div>
+          <span class="cutline"></span>
+          <span class="lead">leads</span>
+          <span class="j-cut-playhead"></span>
+        </div>
+      </div>
+    </div>
+    <div class="reel-foot">
+      <div>
+        <h1 id="jc-h">Leaving on time</h1>
+        <p class="reel-sub">You hear the platform before you see it.</p>
+      </div>
+      <label class="j-cut-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

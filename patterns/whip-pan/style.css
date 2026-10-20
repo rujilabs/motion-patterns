@@ -1,0 +1,42 @@
+/*
+ * whip-pan: the camera swings so fast to the next view that the frame smears sideways, then lands.
+ * The views sit side by side on a track; the track holds on each one, then whips one frame width
+ * on --ease-inout. While it is moving fast it gets a horizontal-only blur (an SVG filter,
+ * #whip-blur, that must be on the page), so the smear runs along the move, not in every direction.
+ * Three views plus a copy of the first at the end: the copy makes the loop seamless.
+ */
+.whip-pan { --whip-dur: 9s; overflow: clip; }
+.whip-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  animation: whip-pan var(--whip-dur) infinite;
+}
+.whip-reverse .whip-track { animation-direction: reverse; }
+
+/* a 600ms whip after each 2.4s hold; the blur switches on only for the fast middle of each whip */
+@keyframes whip-pan {
+  0%      { translate: 0; filter: none; }
+  26.67%  { translate: 0; filter: none; animation-timing-function: var(--ease-inout); }
+  27.5%   { filter: url(#whip-blur); }
+  32.5%   { filter: url(#whip-blur); }
+  33.33%  { translate: -100% 0; filter: none; }
+  60%     { translate: -100% 0; filter: none; animation-timing-function: var(--ease-inout); }
+  60.83%  { filter: url(#whip-blur); }
+  65.83%  { filter: url(#whip-blur); }
+  66.67%  { translate: -200% 0; filter: none; }
+  93.33%  { translate: -200% 0; filter: none; animation-timing-function: var(--ease-inout); }
+  94.17%  { filter: url(#whip-blur); }
+  99.17%  { filter: url(#whip-blur); }
+  100%    { translate: -300% 0; filter: none; }
+}
+
+/* pause: hover or focus on the view, or a .whip-pause toggle inside a .whip-group */
+.whip-pan:hover .whip-track,
+.whip-pan:focus-within .whip-track,
+.whip-group:has(.whip-pause :checked) .whip-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .whip-track { animation: none; }
+  .whip-pause { display: none; }
+}

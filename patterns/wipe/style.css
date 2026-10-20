@@ -1,0 +1,76 @@
+/*
+ * wipe: the next view replaces the current one behind a moving edge. Three shapes of edge:
+ *   wipe-linear  a straight edge sweeps from left to right
+ *   wipe-clock   a hand sweeps once round from twelve o'clock, like a clock face
+ *   wipe-iris    a circle opens from the centre
+ * Two ways to use them:
+ *   .wipe-loop   three stacked views take turns; each view enters with the wipe its class names.
+ *                The incoming view sits on top while it wipes; the old one stays whole under it,
+ *                so nothing blank ever shows. A 900ms wipe every 3s.
+ *   .wipe-in     add it with one wipe class to the incoming view from your own script; it plays once.
+ */
+@property --wipe-a { syntax: "<angle>"; inherits: false; initial-value: 360deg; }
+
+.wipe-loop { --wipe-slot: 3s; display: grid; overflow: clip; }
+.wipe-loop > * {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  animation: var(--wipe-name, wipe-linear-3) calc(var(--wipe-slot) * 3) infinite;
+  animation-delay: calc(var(--wipe-slot) * (var(--wipe-i, 0) - 3));
+}
+.wipe-loop > :first-child { visibility: visible; }
+.wipe-loop > :nth-child(2) { --wipe-i: 1; }
+.wipe-loop > :nth-child(3) { --wipe-i: 2; }
+.wipe-loop > .wipe-linear { --wipe-name: wipe-linear-3; }
+.wipe-loop > .wipe-clock { --wipe-name: wipe-clock-3; }
+.wipe-loop > .wipe-iris { --wipe-name: wipe-iris-3; }
+.wipe-clock { mask-image: conic-gradient(#000 var(--wipe-a), #0000 0); }
+
+/* one slot is 33.33% of the loop; the wipe takes the first 10%, then the view holds until the next one is whole */
+@keyframes wipe-linear-3 {
+  0%      { visibility: visible; z-index: 2; clip-path: inset(0 100% 0 0); animation-timing-function: var(--ease-inout); }
+  10%     { clip-path: inset(0 0 0 0); }
+  33.33%  { z-index: 2; }
+  33.34%  { z-index: 1; }
+  43.33%  { visibility: visible; }
+  43.34%  { visibility: hidden; }
+  100%    { visibility: hidden; z-index: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes wipe-clock-3 {
+  0%      { visibility: visible; z-index: 2; --wipe-a: 0deg; animation-timing-function: var(--ease-inout); }
+  10%     { --wipe-a: 360deg; }
+  33.33%  { z-index: 2; }
+  33.34%  { z-index: 1; }
+  43.33%  { visibility: visible; }
+  43.34%  { visibility: hidden; }
+  100%    { visibility: hidden; z-index: 1; --wipe-a: 360deg; }
+}
+@keyframes wipe-iris-3 {
+  0%      { visibility: visible; z-index: 2; clip-path: circle(0 at 50% 50%); animation-timing-function: var(--ease-inout); }
+  10%     { clip-path: circle(72% at 50% 50%); }
+  33.33%  { z-index: 2; }
+  33.34%  { z-index: 1; }
+  43.33%  { visibility: visible; }
+  43.34%  { visibility: hidden; }
+  100%    { visibility: hidden; z-index: 1; clip-path: circle(72% at 50% 50%); }
+}
+
+/* one-shot: the incoming view, stacked on top of the current one by your layout */
+.wipe-in { --wipe-dur: calc(var(--dur-slow) * 1.2); position: relative; z-index: 2; }
+.wipe-in.wipe-linear { animation: wipe-linear-in var(--wipe-dur) var(--ease-inout) both; }
+.wipe-in.wipe-clock { animation: wipe-clock-in var(--wipe-dur) var(--ease-inout) both; }
+.wipe-in.wipe-iris { animation: wipe-iris-in var(--wipe-dur) var(--ease-inout) both; }
+@keyframes wipe-linear-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes wipe-clock-in { from { --wipe-a: 0deg; } to { --wipe-a: 360deg; } }
+@keyframes wipe-iris-in { from { clip-path: circle(0 at 50% 50%); } to { clip-path: circle(72% at 50% 50%); } }
+
+/* pause: hover or focus on the views, or a .wipe-pause toggle inside a .wipe-group */
+.wipe-loop:hover > *,
+.wipe-loop:focus-within > *,
+.wipe-group:has(.wipe-pause :checked) .wipe-loop > * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wipe-loop > *, .wipe-in.wipe-linear, .wipe-in.wipe-clock, .wipe-in.wipe-iris { animation: none; }
+  .wipe-clock { mask-image: none; }
+  .wipe-pause { display: none; }
+}

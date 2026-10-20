@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jump cut demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="jc-back" viewBox="0 0 320 180">
+      <path d="M0 0H320V180H0Z M196 26h88v70h-88Z" fill="#e9e4dc" fill-rule="evenodd"/>
+      <rect x="196" y="26" width="88" height="70" fill="none" stroke="#f8f6f2" stroke-width="4"/>
+      <path d="M240 26v70 M196 61h88" stroke="#f8f6f2" stroke-width="3"/>
+      <rect y="150" width="320" height="30" fill="#d3cabd"/>
+      <circle cx="120" cy="44" r="14" fill="#fbfaf7" stroke="#1e2229" stroke-width="1.5"/>
+      <rect x="34" y="62" width="44" height="54" fill="#cfd8e3"/>
+      <path d="M40 72h32 M40 80h24 M40 88h28" stroke="#9aa7b8" stroke-width="2"/>
+    </symbol>
+    <symbol id="jc-person" viewBox="0 0 320 180">
+      <path d="M124 132 q0 -34 26 -34 q26 0 26 34Z" fill="#4a6fa5"/>
+      <circle cx="150" cy="82" r="13" fill="#c99b7a"/>
+      <path d="M137 80 a13 13 0 0 1 26 0 q-6 -6 -13 -6 q-7 0 -13 6Z" fill="#2b2622"/>
+    </symbol>
+    <symbol id="jc-desk" viewBox="0 0 320 180">
+      <rect x="20" y="126" width="280" height="8" fill="#8a6a4f"/>
+      <path d="M32 134h8v34h-8Z M280 134h8v34h-8Z" fill="#6f553f"/>
+      <path d="M128 126 l6 -24 h32 l6 24Z" fill="#b8bec8"/>
+      <circle cx="150" cy="114" r="3" fill="#9aa2ae"/>
+    </symbol>
+  </defs>
+</svg>
+<main class="stage">
+  <section class="jump-cut-group reel sheet" aria-labelledby="jc-h">
+    <div class="jump-cut jump-cut-punch screen" tabindex="0" role="group" aria-label="Four shots of the same desk, from morning to evening">
+      <figure class="shot">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect x="196" y="26" width="88" height="70" fill="#d6ecfa"/>
+          <circle cx="270" cy="78" r="9" fill="#ffe7a8"/>
+          <use href="#jc-back"/>
+          <path d="M120 44V34 M120 44h-7" stroke="#1e2229" stroke-width="1.5" stroke-linecap="round"/>
+          <use href="#jc-person"/>
+          <use href="#jc-desk"/>
+          <path d="M200 116h14v10h-14Z M214 119 a4 4 0 0 1 0 6" fill="#fbfaf7" stroke="#1e2229" stroke-width="1.2"/>
+          <path d="M204 112 q2 -4 0 -7 M210 112 q2 -4 0 -7" fill="none" stroke="#9aa2ae" stroke-width="1.2" stroke-linecap="round"/>
+          <rect x="226" y="123" width="22" height="3" fill="#fbfaf7"/>
+        </svg>
+        <figcaption class="tc"><span class="rec" aria-hidden="true"></span><span class="num">09:02</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect x="196" y="26" width="88" height="70" fill="#a9d4f2"/>
+          <circle cx="262" cy="38" r="9" fill="#fff4c2"/>
+          <use href="#jc-back"/>
+          <path d="M120 44H110 M120 44L119 37" stroke="#1e2229" stroke-width="1.5" stroke-linecap="round"/>
+          <use href="#jc-person" x="7" y="3"/>
+          <use href="#jc-desk"/>
+          <path d="M226 117h22v9h-22Z" fill="#fbfaf7" stroke="#cfd8e3"/>
+          <path d="M226 121h22 M226 124h22" stroke="#cfd8e3"/>
+        </svg>
+        <figcaption class="tc"><span class="rec" aria-hidden="true"></span><span class="num">11:47</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect x="196" y="26" width="88" height="70" fill="#f4d9a6"/>
+          <circle cx="216" cy="44" r="9" fill="#fff1cf"/>
+          <use href="#jc-back"/>
+          <path d="M120 44L129 49 M120 44L127 45" stroke="#1e2229" stroke-width="1.5" stroke-linecap="round"/>
+          <use href="#jc-person" x="-10"/>
+          <use href="#jc-desk"/>
+          <path d="M200 116h14v10h-14Z M214 119 a4 4 0 0 1 0 6" fill="#fbfaf7" stroke="#1e2229" stroke-width="1.2"/>
+          <path d="M84 116h14v10h-14Z" fill="#e0e5ec" stroke="#1e2229" stroke-width="1.2"/>
+          <path d="M226 111h22v15h-22Z" fill="#fbfaf7" stroke="#cfd8e3"/>
+          <path d="M226 115h22 M226 119h22 M226 123h22" stroke="#cfd8e3"/>
+        </svg>
+        <figcaption class="tc"><span class="rec" aria-hidden="true"></span><span class="num">15:20</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect x="196" y="26" width="88" height="70" fill="#34405e"/>
+          <circle cx="226" cy="40" r="1.2" fill="#e9e6d6"/><circle cx="262" cy="52" r="1" fill="#e9e6d6"/>
+          <use href="#jc-back"/>
+          <path d="M120 44L125 35 M120 44V51" stroke="#1e2229" stroke-width="1.5" stroke-linecap="round"/>
+          <use href="#jc-person" x="6" y="6"/>
+          <use href="#jc-desk"/>
+          <path d="M226 105h22v21h-22Z" fill="#fbfaf7" stroke="#cfd8e3"/>
+          <path d="M226 109h22 M226 113h22 M226 117h22 M226 121h22" stroke="#cfd8e3"/>
+          <path d="M60 126 l10 -30 h6 l-4 30Z" fill="#555c66"/>
+          <path d="M62 96 h22 l-6 -12 h-10Z" fill="#ffcf6a"/>
+          <rect width="320" height="180" fill="#1e2a44" opacity=".22"/>
+        </svg>
+        <figcaption class="tc"><span class="rec" aria-hidden="true"></span><span class="num">18:05</span></figcaption>
+      </figure>
+    </div>
+    <div class="reel-foot">
+      <div>
+        <h1 id="jc-h">Chapter four, one desk</h1>
+        <p class="reel-sub">Four cuts, nine hours, the same shot.</p>
+      </div>
+      <label class="jump-cut-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

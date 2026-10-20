@@ -1,0 +1,32 @@
+/*
+ * j-cut: the next scene's sound starts before its picture. On an editor's timeline the audio clip
+ * reaches back under the end of the previous shot, which draws a J. Here the "sound" is whatever
+ * stands for it on a page: a caption, a speaker name, a waveform.
+ * .j-cut-picture and .j-cut-audio each hold two layers, A then B, stacked in one cell. Both swap
+ * from A to B halfway through --j-dur, on one frame (step-end, no fade). The audio layers run
+ * --j-lead (a share of the loop) ahead, so B's sound arrives first and B's picture follows.
+ * On the way round the loop A's sound leads A's picture back in the same way.
+ * .j-cut-playhead is optional: it crosses its positioned parent once per loop, for a timeline.
+ */
+.j-cut { --j-dur: 8s; --j-lead: .14; }
+.j-cut-picture, .j-cut-audio { display: grid; }
+.j-cut-picture > *, .j-cut-audio > * { grid-area: 1 / 1; }
+.j-cut-picture > :first-child, .j-cut-audio > :first-child { animation: j-cut-a var(--j-dur) step-end var(--j-delay, 0s) infinite; }
+.j-cut-picture > :last-child, .j-cut-audio > :last-child { visibility: hidden; animation: j-cut-b var(--j-dur) step-end var(--j-delay, 0s) infinite; }
+.j-cut-audio { --j-delay: calc(var(--j-dur) * var(--j-lead) * -1); }
+.j-cut-playhead { position: absolute; top: 0; bottom: 0; left: 0; animation: j-cut-play var(--j-dur) linear infinite; }
+
+@keyframes j-cut-a { 0% { visibility: visible; } 50% { visibility: hidden; } 100% { visibility: hidden; } }
+@keyframes j-cut-b { 0% { visibility: hidden; } 50% { visibility: visible; } 100% { visibility: visible; } }
+@keyframes j-cut-play { from { left: 0%; } to { left: 100%; } }
+
+/* pause: hover or focus inside .j-cut, or a .j-cut-pause toggle inside a .j-cut-group */
+.j-cut:hover *,
+.j-cut:focus-within *,
+.j-cut-group:has(.j-cut-pause :checked) .j-cut * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .j-cut-picture > :first-child, .j-cut-audio > :first-child,
+  .j-cut-picture > :last-child, .j-cut-audio > :last-child, .j-cut-playhead { animation: none; }
+  .j-cut-pause { display: none; }
+}

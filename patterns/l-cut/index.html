@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L-cut demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="wave" viewBox="0 0 120 12" preserveAspectRatio="none">
+    <path d="M2 4.8v2.4 M5 0.7v10.6 M8 4.1v3.9 M11 3.9v4.3 M14 4.3v3.4 M17 2.5v7.0 M20 1.9v8.2 M23 2.0v8.1 M26 1.3v9.5 M29 3.7v4.6 M32 3.9v4.3 M35 4.6v2.7 M38 1.9v8.2 M41 4.3v3.3 M44 0.3v11.3 M47 3.3v5.3 M50 2.3v7.3 M53 4.3v3.5 M56 4.0v4.0 M59 2.5v7.0 M62 2.6v6.8 M65 0.6v10.8 M68 3.6v4.8 M71 2.1v7.9 M74 4.8v2.5 M77 3.6v4.7 M80 4.2v3.7 M83 0.8v10.3 M86 2.7v6.6 M89 1.5v9.1 M92 3.0v6.1 M95 4.2v3.5 M98 3.8v4.4 M101 3.5v5.0 M104 0.8v10.4 M107 3.9v4.1 M110 0.8v10.5 M113 4.6v2.8 M116 4.0v4.0" stroke="currentColor" stroke-width="1.4"/>
+  </symbol>
+</svg>
+<main class="stage">
+  <section class="l-cut-group reel sheet" aria-labelledby="lc-h">
+    <div class="l-cut" tabindex="0" role="group" aria-label="The picture cuts to the pier while Mira is still talking on the phone">
+      <div class="viewer">
+        <div class="l-cut-picture">
+          <figure class="shot" aria-label="Picture A, Mira at her window">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="180" fill="#dfe6ee"/>
+              <rect x="150" y="18" width="140" height="110" fill="#bfe0f7"/>
+              <path d="M150 104 L190 92 L230 100 L290 88 V128 H150Z" fill="#7aa0c4"/>
+              <path d="M150 18h140v110h-140Z M220 18v110 M150 72h140" fill="none" stroke="#f7f8fa" stroke-width="4"/>
+              <rect y="150" width="320" height="30" fill="#c9ced8"/>
+              <path d="M58 180 q0 -60 44 -60 q44 0 44 60Z" fill="#c4553b"/>
+              <circle cx="102" cy="92" r="22" fill="#b48a6d"/>
+              <path d="M80 94 q-2 -34 24 -34 q24 0 22 30 q-6 -16 -22 -18 q-14 0 -24 22Z" fill="#2b2622"/>
+              <path d="M122 84 l10 -4 q4 0 4 4 l-2 24 q-1 4 -5 3 l-8 -2Z" fill="#1e2229"/>
+              <path d="M128 112 q6 6 4 18" fill="none" stroke="#b48a6d" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </figure>
+          <figure class="shot" aria-label="Picture B, the end of the pier">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="180" fill="#cfe5f2"/>
+              <rect y="96" width="320" height="84" fill="#4d8fc4"/>
+              <path d="M30 120h40 M210 112h50 M240 150h30" stroke="#8cc3ea" stroke-width="2" stroke-linecap="round"/>
+              <path d="M0 132 L180 112 L180 120 L0 146Z" fill="#9a7b5e"/>
+              <path d="M30 128v40 M90 122v38 M150 115v34" stroke="#6f553f" stroke-width="5"/>
+              <path d="M210 128 h64 l-8 12 h-48Z" fill="#3d6aa8"/>
+              <path d="M240 128 v-26 l18 22Z" fill="#f7f8fa"/>
+              <path d="M150 116 q0 -24 12 -24 q12 0 12 24Z" fill="#5d8f6c"/>
+              <circle cx="162" cy="84" r="8" fill="#c99b7a"/>
+              <path d="M154 84 a8 8 0 0 1 16 -1 q-8 -4 -16 1Z" fill="#2b2622"/>
+            </svg>
+          </figure>
+        </div>
+        <div class="l-cut-audio">
+          <p class="line"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b>Mira</b> Go to the very end of the pier, by the blue boat.</span></p>
+          <p class="line"><span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b>Dan</b> Found it. I'm by the boat now.</span></p>
+        </div>
+      </div>
+      <div class="tl" aria-hidden="true">
+        <div class="tl-labels"><span>V1</span><span>A1</span></div>
+        <div class="tl-lanes">
+          <div class="lane v"><span class="clip ca">Mira</span><span class="clip cb">Pier</span></div>
+          <div class="lane a">
+            <span class="clip ab ab2"></span>
+            <span class="clip aa"><svg><use href="#wave"/></svg></span>
+            <span class="clip ab"><svg><use href="#wave"/></svg></span>
+          </div>
+          <span class="cutline"></span>
+          <span class="lag">stays</span>
+          <span class="l-cut-playhead"></span>
+        </div>
+      </div>
+    </div>
+    <div class="reel-foot">
+      <div>
+        <h1 id="lc-h">Directions, on the phone</h1>
+        <p class="reel-sub">We see the pier while Mira is still talking.</p>
+      </div>
+      <label class="l-cut-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

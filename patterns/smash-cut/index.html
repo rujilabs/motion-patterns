@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smash cut demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="smash-group reel sheet" aria-labelledby="sm-h">
+    <div class="smash-cut screen" tabindex="0" role="group" aria-label="A quiet bedroom at 06:59 cuts to a ringing alarm clock at 07:00">
+      <figure class="shot smash-calm">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#28304a"/>
+          <rect x="40" y="30" width="70" height="64" fill="#3c4a72"/>
+          <circle cx="88" cy="50" r="9" fill="#e9e6d6"/>
+          <circle cx="92" cy="47" r="8" fill="#3c4a72"/>
+          <path d="M40 30h70v64h-70Z M75 30v64 M40 62h70" fill="none" stroke="#1f263b" stroke-width="3"/>
+          <rect y="150" width="320" height="30" fill="#20273d"/>
+          <rect x="128" y="96" width="10" height="58" fill="#3a3046"/>
+          <rect x="128" y="118" width="170" height="30" rx="3" fill="#4a3f5c"/>
+          <rect x="136" y="104" width="44" height="18" rx="8" fill="#d9dbe6"/>
+          <circle cx="166" cy="104" r="10" fill="#b48a6d"/>
+          <path d="M156 102 a10 10 0 0 1 20 -3 q-8 -4 -20 3Z" fill="#2b2622"/>
+          <path d="M170 112 q40 -14 120 -2 v14 h-120Z" fill="#7d8fc0"/>
+          <path d="M184 108 q30 -6 60 -2" fill="none" stroke="#6a7bab" stroke-width="2"/>
+          <rect x="40" y="122" width="56" height="30" fill="#3a3046"/>
+          <rect x="54" y="106" width="30" height="16" rx="3" fill="#1b2030"/>
+          <text class="lcd" x="69" y="118" text-anchor="middle">06:59</text>
+          <g class="zz" fill="#aab4d4"><text x="186" y="88">z</text><text x="196" y="74">z</text><text x="208" y="58">z</text></g>
+        </svg>
+      </figure>
+      <figure class="shot smash-loud">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#ffd23f"/>
+          <g transform="translate(56 0)"><g class="smash-hit">
+            <g stroke="#1e2229" stroke-width="4" stroke-linecap="round">
+              <path d="M96 40 l-16 -12 M88 62 l-22 -2 M224 40 l16 -12 M232 62 l22 -2 M100 128 l-18 12 M220 128 l18 12"/>
+            </g>
+            <path d="M118 52 a20 20 0 0 1 30 -22Z M202 52 a20 20 0 0 0 -30 -22Z" fill="#1e2229"/>
+            <path d="M130 140 l-10 16 M190 140 l10 16" stroke="#1e2229" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="160" cy="92" r="54" fill="#ee3b2b"/>
+            <circle cx="160" cy="92" r="42" fill="#fff"/>
+            <path d="M160 92 V58 M160 92 l-20 34" stroke="#1e2229" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="160" cy="92" r="4" fill="#1e2229"/>
+          </g></g>
+          <text class="big" x="18" y="112">07:00</text>
+        </svg>
+      </figure>
+    </div>
+    <div class="reel-foot">
+      <div>
+        <h1 id="sm-h">Monday, 06:59</h1>
+        <p class="reel-sub">Four seconds of quiet, then a hard cut to the bell.</p>
+      </div>
+      <label class="smash-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

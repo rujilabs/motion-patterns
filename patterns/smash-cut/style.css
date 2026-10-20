@@ -1,0 +1,64 @@
+/*
+ * smash-cut: a calm scene cuts hard to a loud one with no transition. The calm side moves slowly
+ * (a gentle push-in) so the stillness builds; at the cut the loud side lands already at full size
+ * and volume, with a one-frame punch and a ring. Contrast does the work: quiet colour against
+ * loud colour, slow against fast, small type against big type.
+ * .smash-calm and .smash-loud stack in one cell; .smash-hit (inside the loud side) takes the punch.
+ * The cut sits at 64% of --smash-dur (7s): 4.5s of calm, 2.5s of noise.
+ */
+.smash-cut { --smash-dur: 7s; display: grid; overflow: clip; }
+.smash-cut > * { grid-area: 1 / 1; }
+.smash-calm { animation: smash-calm var(--smash-dur) linear infinite; }
+.smash-loud { visibility: hidden; animation: smash-loud var(--smash-dur) infinite; }
+.smash-hit { transform-origin: 50% 50%; animation: smash-hit var(--smash-dur) linear infinite; }
+
+/* visible until the cut; visibility interpolates as a step, so it vanishes on one frame */
+@keyframes smash-calm {
+  0%   { visibility: visible; transform: scale(1); }
+  64%  { visibility: hidden; transform: scale(1.06); }
+  100% { visibility: hidden; transform: scale(1.06); }
+}
+@keyframes smash-loud {
+  0%, 63.99% { visibility: hidden; }
+  64%, 100%  { visibility: visible; }
+}
+/* the punch: one frame at 112%, settling in 70ms, then the ring */
+@keyframes smash-hit {
+  0%, 63.99% { transform: none; }
+  64% { transform: scale(1.12) rotate(0deg); animation-timing-function: var(--ease-out); }
+  65.0% { transform: scale(1) rotate(3deg); }
+  66.4% { transform: scale(1) rotate(-3deg); }
+  67.8% { transform: scale(1) rotate(2.6deg); }
+  69.2% { transform: scale(1) rotate(-2.6deg); }
+  70.6% { transform: scale(1) rotate(2.2deg); }
+  72.0% { transform: scale(1) rotate(-2.2deg); }
+  73.4% { transform: scale(1) rotate(2.6deg); }
+  74.8% { transform: scale(1) rotate(-2.6deg); }
+  76.2% { transform: scale(1) rotate(2.2deg); }
+  77.6% { transform: scale(1) rotate(-2.2deg); }
+  79.0% { transform: scale(1) rotate(2.6deg); }
+  80.4% { transform: scale(1) rotate(-2.6deg); }
+  81.8% { transform: scale(1) rotate(2.2deg); }
+  83.2% { transform: scale(1) rotate(-2.2deg); }
+  84.6% { transform: scale(1) rotate(1.8deg); }
+  86.0% { transform: scale(1) rotate(-1.8deg); }
+  87.4% { transform: scale(1) rotate(2.2deg); }
+  88.8% { transform: scale(1) rotate(-2.2deg); }
+  90.2% { transform: scale(1) rotate(1.8deg); }
+  91.6% { transform: scale(1) rotate(-1.8deg); }
+  93.0% { transform: scale(1) rotate(1.6deg); }
+  94.4% { transform: scale(1) rotate(-1.6deg); }
+  95.8% { transform: scale(1) rotate(1.2deg); }
+  97.2% { transform: scale(1) rotate(-1.2deg); }
+  98.6%, 100% { transform: none; }
+}
+
+/* pause: hover or focus on the scene, or a .smash-pause toggle inside a .smash-group */
+.smash-cut:hover *,
+.smash-cut:focus-within *,
+.smash-group:has(.smash-pause :checked) .smash-cut * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .smash-calm, .smash-loud, .smash-hit { animation: none; }
+  .smash-pause { display: none; }
+}

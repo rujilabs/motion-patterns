@@ -1,0 +1,26 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.reel { width: min(100%, 520px, calc((100svh - 150px) * 1.78)); padding: 6px; display: grid; }
+.viewer { position: relative; display: grid; }
+.screen { aspect-ratio: 16 / 9; min-height: 0; border-radius: 4px; }
+.shot { position: relative; margin: 0; }
+.shot svg { display: block; width: 100%; height: 100%; }
+.match-cut { --mc-x: 50%; --mc-y: 46.67%; }
+.cap { position: absolute; left: 50%; bottom: 8px; translate: -50% 0; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  background: rgb(20 24 31 / .72); color: #fff; font-size: 12px; font-weight: 600; }
+/* a blue pencil guide that marks the matching circle around each cut (the loop cuts at 0% and 50%) */
+.guide { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: var(--demo-blue);
+  animation: mc-guide var(--mc-dur, 8s) linear infinite; opacity: 0; }
+@keyframes mc-guide {
+  0% { opacity: .9; } 7% { opacity: 0; } 42% { opacity: 0; } 45% { opacity: .9; } 57% { opacity: 0; } 92% { opacity: 0; } 95% { opacity: .9; } 100% { opacity: .9; }
+}
+.match-cut-group:has(.match-cut:hover, .match-cut:focus-within, .match-cut-pause :checked) .guide { animation-play-state: paused; }
+.reel-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 8px 6px; }
+.reel-foot h1 { font-size: 15px; font-weight: 650; }
+.reel-sub { color: var(--demo-mute); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) {
+  .guide { display: none; }
+}
+@media (max-height: 400px) {
+  .reel-sub { display: none; }
+  .reel-foot { padding-top: 8px; }
+}

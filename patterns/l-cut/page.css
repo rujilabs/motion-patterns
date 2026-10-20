@@ -1,0 +1,59 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.reel { width: min(100%, 520px, calc((100svh - 180px) * 1.78)); padding: 6px; display: grid; }
+.l-cut { display: grid; gap: 8px; }
+.viewer { position: relative; display: grid; aspect-ratio: 16 / 9; min-height: 0; border-radius: 4px; overflow: clip; }
+.viewer > * { grid-area: 1 / 1; min-height: 0; }
+.shot { margin: 0; }
+.shot svg { display: block; width: 100%; height: 100%; }
+/* the sound, shown as a subtitle with who is speaking and a small level meter */
+.l-cut-audio { align-self: end; justify-self: center; width: calc(100% - 24px); margin-bottom: 8px; }
+.line { justify-self: center; display: flex; align-items: center; gap: 8px; max-width: 100%; padding: 4px 9px; border-radius: 4px;
+  background: rgb(20 24 31 / .78); color: #fff; font-size: 12px; line-height: 1.3; text-wrap: balance; }
+.line b { font-weight: 650; color: #b9cff9; }
+.meter { display: flex; align-items: center; gap: 2px; height: 12px; flex: none; }
+.meter i { width: 2px; height: 100%; border-radius: 1px; background: currentColor; transform-origin: 50% 50%; animation: level .9s var(--ease-inout) infinite alternate; }
+.meter i:nth-child(2) { animation-delay: -.3s; }
+.meter i:nth-child(3) { animation-delay: -.6s; }
+.meter i:nth-child(4) { animation-delay: -.15s; }
+@keyframes level { from { scale: 1 .25; } to { scale: 1 1; } }
+
+/* the editor timeline: a picture lane (V1) over a sound lane (A1) */
+.tl { display: grid; grid-template-columns: 22px 1fr; gap: 6px; font-size: 11px; }
+.tl-labels { display: grid; gap: 4px; color: var(--demo-mute); font-weight: 600; }
+.tl-labels span { height: 22px; display: grid; align-items: center; }
+.tl-lanes { position: relative; display: grid; gap: 4px; }
+.lane { position: relative; height: 22px; border-radius: 3px; background: var(--demo-table); }
+.clip { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; gap: 6px; padding: 0 6px; overflow: hidden; white-space: nowrap;
+  border: 1px solid; border-radius: 3px; font-weight: 600; }
+.clip svg { flex: 1; min-width: 0; height: 12px; }
+.ca, .aa { background: var(--demo-blue-soft); border-color: var(--demo-blue); color: var(--demo-blue); }
+.cb, .ab { background: var(--demo-paper); border-color: var(--demo-mute); color: var(--demo-ink); }
+.l-cut { --lag: calc(var(--l-lag) * 100%); }
+.v .ca { left: 0; width: 50%; }
+.v .cb { left: 50%; width: 50%; }
+.a .ab.ab2 { left: 0; width: var(--lag); padding: 0 3px; }
+.a .aa { left: var(--lag); width: 50%; }
+.a .ab { left: calc(50% + var(--lag)); width: calc(50% - var(--lag)); }
+/* the L: A's sound runs on under B's picture. A dashed line marks the picture cut */
+.cutline { position: absolute; top: -2px; bottom: -2px; left: 50%; border-left: 1px dashed var(--demo-blue); }
+.lag { position: absolute; top: 100%; left: 50%; width: var(--lag); margin-top: 3px; text-align: center;
+  color: var(--demo-blue); font-weight: 600; border-top: 1px solid var(--demo-blue); padding-top: 1px; }
+.l-cut-playhead { width: 2px; margin-left: -1px; background: var(--demo-red); top: -4px; bottom: -4px; z-index: 1; }
+.l-cut-playhead::before { content: ""; position: absolute; top: 0; left: -3px; width: 8px; height: 6px; background: var(--demo-red); clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.tl { padding-bottom: 16px; }
+.reel-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 8px 4px; }
+.reel-foot h1 { font-size: 15px; font-weight: 650; }
+.reel-sub { color: var(--demo-mute); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) {
+  .meter i { animation: none; scale: 1 .6; }
+}
+@media (max-height: 420px) {
+  .reel { width: min(100%, 520px, calc((100svh - 150px) * 1.78)); }
+  .reel-sub { display: none; }
+  .tl { padding-bottom: 14px; }
+  .lane, .tl-labels span { height: 18px; }
+  .line { font-size: 11px; padding: 3px 7px; }
+  .l-cut-audio { margin-bottom: 5px; }
+}
+.board { font: 600 8px "Host Grotesk", system-ui, sans-serif; fill: #f2d16b; letter-spacing: .04em; }

@@ -1,0 +1,16 @@
+{
+  "name": "J-cut",
+  "slug": "j-cut",
+  "kind": "pattern",
+  "summary": "The next scene's sound starts before its picture: a caption and level meter for scene B arrive while A is still on screen, then the picture follows. Timeline playhead and pause toggle.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

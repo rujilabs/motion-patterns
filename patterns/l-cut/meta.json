@@ -1,0 +1,16 @@
+{
+  "name": "L-cut",
+  "slug": "l-cut",
+  "kind": "pattern",
+  "summary": "The previous scene's sound keeps going over the next scene's picture: the picture cuts, and scene A's caption and level meter run on before B's sound takes over. Timeline playhead and pause toggle.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

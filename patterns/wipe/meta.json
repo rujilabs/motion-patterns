@@ -1,0 +1,19 @@
+{
+  "name": "Wipe",
+  "slug": "wipe",
+  "kind": "pattern",
+  "summary": "The next view replaces the current one behind a moving edge: a straight line, a clock hand or an opening iris. A three-view loop with a pause toggle, or one-shot classes for your own script.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}
