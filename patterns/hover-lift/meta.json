@@ -1,0 +1,20 @@
+{
+  "name": "Hover lift",
+  "slug": "hover-lift",
+  "kind": "pattern",
+  "summary": "Cards rise a few pixels on hover while a long soft shadow grows under them, then press down fast on click and spring back on release.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-quick",
+    "--dur-base"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

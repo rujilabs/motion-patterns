@@ -1,0 +1,40 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.plans { width: min(520px, 100%); padding: 22px 22px 18px; display: grid; gap: 14px; }
+.pl-head h1 { font-size: clamp(21px, 5vw, 26px); font-weight: 700; letter-spacing: -.02em; }
+.pl-head p { font-size: 14px; margin-top: 4px; }
+.pl-points { display: grid; gap: 8px; font-size: 14.5px; }
+.pl-points li { position: relative; padding-left: 20px; }
+.pl-points li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 8px; height: 8px; border-radius: 2px; border: 1px solid var(--demo-blue); }
+.pl-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-top: 14px; border-top: 1px dashed var(--demo-line); }
+.pl-foot p { font-size: 13px; }
+.btn-main, .btn-ghost { font: inherit; font-weight: 650; font-size: 14px; border-radius: 8px; padding: 10px 16px; cursor: pointer; }
+.btn-main { border: 0; background: var(--demo-ink); color: var(--demo-paper); }
+.btn-ghost { border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); }
+.btn-ghost:hover { border-color: var(--demo-blue); color: var(--demo-blue); }
+
+/* the panel: no padding on the dialog itself, so a click on its box only lands on the backdrop */
+.exit-panel {
+  width: min(400px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0;
+  border: 1px solid var(--demo-line); border-radius: 12px; background: var(--demo-paper); color: var(--demo-ink);
+  box-shadow: 0 24px 48px -24px rgb(15 20 30 / .45);
+}
+.ex-body { display: grid; gap: 10px; padding: 22px; }
+.ex-art { width: 44px; height: 44px; }
+.ex-sheet { fill: var(--demo-blue-soft); stroke: var(--demo-blue); stroke-width: 1.5; }
+.ex-rule { stroke: var(--demo-blue); stroke-width: 1.5; stroke-linecap: round; opacity: .6; }
+.ex-tick { fill: none; stroke: var(--demo-red); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.exit-panel h2 { font-size: 19px; font-weight: 700; }
+.exit-panel p { font-size: 14px; }
+.ex-field { display: grid; gap: 4px; font-size: 13px; font-weight: 600; margin-top: 4px; }
+.ex-field input {
+  font: inherit; font-weight: 400; font-size: 15px; padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink);
+}
+.ex-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+@media (prefers-color-scheme: dark) { .exit-panel { --exit-scrim: rgb(5 8 12 / .6); } }
+@media (max-height: 460px) {
+  .plans { gap: 10px; padding-block: 14px; }
+  .pl-points li:nth-child(n + 3) { display: none; }
+  .ex-art, .exit-panel p { display: none; }
+  .ex-body { padding: 16px; gap: 8px; }
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hover lift demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <section class="rooms" aria-labelledby="rooms-h">
+    <header class="rooms-head">
+      <h1 id="rooms-h">Book a room</h1>
+      <p class="mute">Level 3, Wisma Cahaya. Today from 2 pm.</p>
+    </header>
+    <ul class="room-grid">
+      <li>
+        <a class="room lift sheet" href="#quiet">
+          <svg class="plan" viewBox="0 0 120 72" aria-hidden="true">
+            <rect x="4" y="4" width="112" height="64" rx="3" class="wall"/>
+            <rect x="44" y="26" width="32" height="20" rx="2" class="desk"/>
+            <circle cx="60" cy="54" r="5" class="seat"/>
+            <path d="M88 4 h16" class="door"/>
+          </svg>
+          <span class="room-name">Quiet room</span>
+          <span class="room-meta"><span>1 person</span><span class="free num">Free 2 to 5 pm</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="room lift sheet" href="#meeting">
+          <svg class="plan" viewBox="0 0 120 72" aria-hidden="true">
+            <rect x="4" y="4" width="112" height="64" rx="3" class="wall"/>
+            <rect x="30" y="24" width="60" height="24" rx="12" class="desk"/>
+            <circle cx="40" cy="16" r="5" class="seat"/><circle cx="60" cy="16" r="5" class="seat"/><circle cx="80" cy="16" r="5" class="seat"/>
+            <circle cx="40" cy="56" r="5" class="seat"/><circle cx="60" cy="56" r="5" class="seat"/><circle cx="80" cy="56" r="5" class="seat"/>
+            <path d="M4 50 v14" class="door"/>
+          </svg>
+          <span class="room-name">Meeting room</span>
+          <span class="room-meta"><span>6 people</span><span class="free num">Free 3 to 4 pm</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="room lift sheet" href="#studio">
+          <svg class="plan" viewBox="0 0 120 72" aria-hidden="true">
+            <rect x="4" y="4" width="112" height="64" rx="3" class="wall"/>
+            <rect x="14" y="14" width="40" height="16" rx="2" class="desk"/>
+            <rect x="66" y="14" width="40" height="16" rx="2" class="desk"/>
+            <path d="M24 46 h72" class="key"/>
+            <circle cx="60" cy="46" r="4" class="key-dot"/>
+          </svg>
+          <span class="room-name">Studio</span>
+          <span class="room-meta"><span>4 people</span><span class="busy num">Booked until 6 pm</span></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

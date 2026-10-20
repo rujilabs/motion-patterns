@@ -1,0 +1,33 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.rooms { width: min(680px, 100%); display: grid; gap: 16px; }
+.rooms-head h1 { font-size: 22px; font-weight: 700; }
+.rooms-head p { font-size: 14px; }
+.room-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.room { display: grid; gap: 8px; padding: 12px; text-decoration: none; color: inherit; border-radius: 10px; }
+.room:focus-visible { outline-offset: 2px; }
+.plan { display: block; width: 100%; height: auto; border-radius: 6px; background: var(--demo-table); }
+.plan .wall { fill: none; stroke: var(--demo-line); stroke-width: 1.5; }
+.plan .desk { fill: var(--demo-paper); stroke: var(--demo-mute); stroke-width: 1; }
+.plan .seat { fill: none; stroke: var(--demo-blue); stroke-width: 1.2; }
+.plan .door { stroke: var(--demo-table); stroke-width: 3; }
+.plan .key { stroke: var(--demo-blue); stroke-width: 1; stroke-dasharray: 3 3; }
+.plan .key-dot { fill: var(--demo-red); }
+.room-name { font-weight: 650; font-size: 15px; }
+.room-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 8px; font-size: 12.5px; color: var(--demo-mute); }
+.free { color: var(--demo-ok); font-weight: 600; }
+.busy { color: var(--demo-mute); }
+@media (prefers-color-scheme: dark) { .lift { --lift-shade: 220 40% 3%; } }
+@media (max-width: 560px) {
+  .room-grid { grid-template-columns: 1fr; gap: 10px; }
+  .room { grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 12px; row-gap: 2px; align-items: center; padding: 10px; }
+  .plan { grid-row: span 2; }
+  .room-name { align-self: end; }
+  .room-meta { align-self: start; flex-direction: column; }
+}
+@media (max-height: 420px) {
+  .rooms { gap: 10px; }
+  .rooms-head p { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .rooms { width: 720px; }
+}

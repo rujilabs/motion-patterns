@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripple demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="ripple.js"></script>
+</head>
+<body>
+<main class="stage">
+  <form class="pay sheet" action="#" aria-labelledby="pay-h">
+    <header class="pay-head">
+      <h1 id="pay-h">Pay for order <span class="num">#2817</span></h1>
+      <p class="mute">2 x Kopi beans, 250 g. Delivery to Seksyen 7.</p>
+    </header>
+    <fieldset class="methods">
+      <legend>Pay with</legend>
+      <label class="method ripple">
+        <input type="radio" name="m" value="bank" checked>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9 L12 4 L21 9 M5 10 V17 M9.5 10 V17 M14.5 10 V17 M19 10 V17 M3 19 H21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Online banking</span>
+      </label>
+      <label class="method ripple">
+        <input type="radio" name="m" value="card">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 10 H21 M6 15 H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Card</span>
+      </label>
+      <label class="method ripple">
+        <input type="radio" name="m" value="wallet">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7 H18 A2 2 0 0 1 20 9 V17 A2 2 0 0 1 18 19 H6 A2 2 0 0 1 4 17Z M4 7 L15 4 V7 M15 13 H20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span>E-wallet</span>
+      </label>
+    </fieldset>
+    <div class="total"><span class="mute">Total</span><strong class="num">RM 42.00</strong></div>
+    <button class="btn-pay ripple" type="button">Pay RM 42.00</button>
+  </form>
+</main>
+</body>
+</html>

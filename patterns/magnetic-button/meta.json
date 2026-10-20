@@ -1,0 +1,21 @@
+{
+  "name": "Magnetic button",
+  "slug": "magnetic-button",
+  "kind": "pattern",
+  "summary": "A button drifts a few pixels toward a mouse that comes near, its label leaning a little further, and springs home when the pointer leaves.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

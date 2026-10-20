@@ -1,0 +1,41 @@
+/*
+ * ripple: a press sends a soft wave out from the exact point that was touched. ripple.js adds one
+ * .ripple-wave per press, sized to reach the farthest corner, and removes it when it ends.
+ * The wave grows fast and fades slower, so the colour is still there when it reaches the edges.
+ * A keyboard press (Enter or Space) starts the wave from the centre.
+ */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+.ripple-wave {
+  position: absolute;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  width: var(--ripple-d, 200%);
+  aspect-ratio: 1;
+  margin: calc(var(--ripple-d, 200%) / -2) 0 0 calc(var(--ripple-d, 200%) / -2);
+  border-radius: 50%;
+  background: var(--ripple-color, currentColor);
+  pointer-events: none;
+  z-index: -1;
+  animation:
+    ripple-grow var(--dur-slow) var(--ease-out) both,
+    ripple-fade var(--dur-slow) linear both;
+}
+@keyframes ripple-grow {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+@keyframes ripple-fade {
+  from { opacity: var(--ripple-strength, .18); }
+  45%  { opacity: var(--ripple-strength, .18); }
+  to   { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* ripple.js does not add waves; this hides any that are already there */
+  .ripple-wave { animation: none; display: none; }
+}

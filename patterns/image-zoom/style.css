@@ -1,0 +1,40 @@
+/*
+ * image-zoom: the picture grows slowly inside a frame that does not change size, so the layout
+ * stays still and only the view moves closer. In is slow (the eye has time to explore), out is
+ * quicker so the card settles as soon as the pointer moves on.
+ * Put .zoom on the frame and .zoom-media on the image, svg or video inside it. The trigger is
+ * hover or keyboard focus on .zoom-host (the card or link around it), or on the frame itself.
+ */
+.zoom {
+  --zoom-scale: 1.08;
+  --zoom-origin: 50% 50%;
+  overflow: hidden;
+  /* keeps the rounded corners clipping the scaled child in Safari */
+  isolation: isolate;
+}
+.zoom-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: var(--zoom-origin);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+@media (hover: hover) {
+  .zoom:hover .zoom-media,
+  .zoom-host:hover .zoom-media {
+    transform: scale(var(--zoom-scale));
+    transition-duration: calc(var(--dur-slow) * 2);
+  }
+}
+.zoom-host:focus-visible .zoom-media {
+  transform: scale(var(--zoom-scale));
+  transition-duration: calc(var(--dur-slow) * 2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-media,
+  .zoom:hover .zoom-media,
+  .zoom-host:hover .zoom-media,
+  .zoom-host:focus-visible .zoom-media { transition: none; transform: none; }
+}

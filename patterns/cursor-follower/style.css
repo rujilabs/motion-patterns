@@ -1,0 +1,46 @@
+/*
+ * cursor-follower: a soft dot that trails the pointer and opens into a ring over links.
+ * follower.js sets --follow-x and --follow-y on every pointer move; the CSS transition on translate
+ * is what makes it lag. Each move restarts the transition from where the dot is now, so it always
+ * eases toward the latest point and never queues up.
+ * The real cursor stays visible. The dot is extra, never a replacement.
+ */
+.follow-dot {
+  --follow-size: 10px;
+  --follow-ring: 40px;
+  --follow-lag: 300ms;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  width: var(--follow-ring);
+  height: var(--follow-ring);
+  margin: calc(var(--follow-ring) / -2) 0 0 calc(var(--follow-ring) / -2);
+  pointer-events: none;
+  opacity: 0;
+  translate: var(--follow-x, -100px) var(--follow-y, -100px);
+  transition: translate var(--follow-lag) var(--ease-out), opacity var(--dur-quick) linear;
+}
+/* the dot and the ring are two layers, so the ring keeps a thin line at any size */
+.follow-dot::before,
+.follow-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transition: scale var(--dur-base) var(--ease-spring), opacity var(--dur-quick) linear;
+}
+.follow-dot::before { background: currentColor; opacity: .55; scale: calc(var(--follow-size) / var(--follow-ring)); }
+.follow-dot::after { border: 1.5px solid currentColor; opacity: 0; scale: .3; }
+
+.follow-dot.is-on { opacity: 1; }
+/* the first frame after the pointer enters: jump there, do not fly in from the corner */
+.follow-dot.is-jump { transition: none; }
+.follow-dot.is-over::before { scale: .1; opacity: 0; }
+.follow-dot.is-over::after { scale: 1; opacity: 1; }
+.follow-dot.is-down::after { scale: .8; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* follower.js does not start; this hides the dot if it was already there */
+  .follow-dot { display: none; }
+}

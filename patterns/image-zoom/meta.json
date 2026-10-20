@@ -1,0 +1,18 @@
+{
+  "name": "Image zoom on hover",
+  "slug": "image-zoom",
+  "kind": "pattern",
+  "summary": "The picture grows slowly inside a frame that keeps its size, so the layout stays still and only the view moves closer. Slow in, quicker out.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

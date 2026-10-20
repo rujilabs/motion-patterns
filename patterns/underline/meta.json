@@ -1,0 +1,19 @@
+{
+  "name": "Underline",
+  "slug": "underline",
+  "kind": "pattern",
+  "summary": "Three hover underlines for links: drawn from the left and back, grown from the centre, and a slide-through where the line leaves right as a fresh one enters left.",
+  "category": "emphasis",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout",
+    "--dur-base"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before and after slider demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="compare.js"></script>
+</head>
+<body>
+<main class="stage">
+  <figure class="proj sheet" data-play>
+    <div class="ba frame">
+      <svg class="ba-before" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Before: a faded shophouse with cracked walls and a closed shutter">
+        <rect width="400" height="300" fill="#d6d8d7"/>
+        <rect x="40" y="34" width="320" height="250" fill="#b8b3a9"/>
+        <rect x="32" y="26" width="336" height="16" fill="#a29d93"/>
+        <rect x="32" y="148" width="336" height="10" fill="#a29d93"/>
+        <g fill="#8e8a83">
+          <rect x="74" y="64" width="56" height="66"/><rect x="172" y="64" width="56" height="66"/><rect x="270" y="64" width="56" height="66"/>
+        </g>
+        <g stroke="#7f7b74" stroke-width="1"><path d="M102 64 V130 M200 64 V130 M298 64 V130"/></g>
+        <rect x="70" y="170" width="260" height="114" fill="#8b8e91"/>
+        <g stroke="#787b7e" stroke-width="1"><path d="M70 182 H330 M70 194 H330 M70 206 H330 M70 218 H330 M70 230 H330 M70 242 H330 M70 254 H330 M70 266 H330"/></g>
+        <path d="M150 34 L158 52 L152 66 L160 84 M318 150 L310 132 L316 118" fill="none" stroke="#857f75" stroke-width="1.2"/>
+        <ellipse cx="66" cy="120" rx="22" ry="34" fill="#a7a197" opacity=".7"/>
+        <ellipse cx="344" cy="230" rx="16" ry="40" fill="#a7a197" opacity=".7"/>
+        <rect y="284" width="400" height="16" fill="#9e998f"/>
+      </svg>
+      <svg class="ba-after" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="After: the same shophouse painted, with open windows, an awning and a lit shop">
+        <rect width="400" height="300" fill="#cfe2ec"/>
+        <rect x="40" y="34" width="320" height="250" fill="#f2dcb6"/>
+        <rect x="32" y="26" width="336" height="16" fill="#e3ab70"/>
+        <rect x="32" y="148" width="336" height="10" fill="#e3ab70"/>
+        <g fill="#fbf6ec"><rect x="40" y="42" width="10" height="242"/><rect x="350" y="42" width="10" height="242"/></g>
+        <g fill="#a9cbdb"><rect x="74" y="64" width="56" height="66"/><rect x="172" y="64" width="56" height="66"/><rect x="270" y="64" width="56" height="66"/></g>
+        <g fill="#3f7f7a">
+          <rect x="60" y="64" width="14" height="66"/><rect x="130" y="64" width="14" height="66"/>
+          <rect x="158" y="64" width="14" height="66"/><rect x="228" y="64" width="14" height="66"/>
+          <rect x="256" y="64" width="14" height="66"/><rect x="326" y="64" width="14" height="66"/>
+        </g>
+        <g stroke="#fbf6ec" stroke-width="2"><path d="M102 64 V130 M74 97 H130 M200 64 V130 M172 97 H228 M298 64 V130 M270 97 H326"/></g>
+        <rect x="70" y="170" width="260" height="114" fill="#f7e8c6"/>
+        <g stroke="#d9c49c" stroke-width="2"><path d="M86 214 H160 M86 238 H160 M240 214 H314 M240 238 H314"/></g>
+        <rect x="176" y="200" width="48" height="84" fill="#3f7f7a"/>
+        <circle cx="216" cy="244" r="2.5" fill="#f2dcb6"/>
+        <path d="M60 162 H340 L332 182 Q324 188 316 182 Q308 188 300 182 Q292 188 284 182 Q276 188 268 182 Q260 188 252 182 Q244 188 236 182 Q228 188 220 182 Q212 188 204 182 Q196 188 188 182 Q180 188 172 182 Q164 188 156 182 Q148 188 140 182 Q132 188 124 182 Q116 188 108 182 Q100 188 92 182 Q84 188 76 182 Q68 188 68 182Z" fill="#c95b45"/>
+        <g fill="#b7814f"><path d="M80 268 H104 L100 284 H84Z"/><path d="M296 268 H320 L316 284 H300Z"/></g>
+        <g fill="#5d8f5a"><circle cx="86" cy="258" r="9"/><circle cx="98" cy="254" r="10"/><circle cx="92" cy="246" r="8"/><circle cx="302" cy="258" r="9"/><circle cx="314" cy="254" r="10"/><circle cx="308" cy="246" r="8"/></g>
+        <rect y="284" width="400" height="16" fill="#cfc6b6"/>
+      </svg>
+      <span class="ba-tag ba-tag-before" aria-hidden="true">Before</span>
+      <span class="ba-tag ba-tag-after" aria-hidden="true">After</span>
+      <span class="ba-divider" aria-hidden="true">
+        <span class="ba-knob"><svg viewBox="0 0 20 20" width="18" height="18"><path d="M7 5 L2 10 L7 15 M13 5 L18 10 L13 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </span>
+      <input class="ba-range" type="range" min="0" max="100" step="1" value="50" aria-label="Compare before and after">
+    </div>
+    <figcaption class="cap">
+      <strong>No. 14, Jalan Pasar Lama</strong>
+      <span class="mute">Facade repair and repaint, 6 weeks</span>
+    </figcaption>
+  </figure>
+</main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "Before and after slider",
+  "slug": "before-after",
+  "kind": "pattern",
+  "summary": "Two pictures in one frame with a divider you drag to compare. A native range input drives it, and the divider nudges once when it comes into view.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-quick"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

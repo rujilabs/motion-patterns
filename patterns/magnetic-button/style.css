@@ -1,0 +1,21 @@
+/*
+ * magnetic-button: when the pointer comes near, the button drifts a few pixels toward it and the
+ * label drifts a little further, so the face seems to lean in. When the pointer leaves, it springs home.
+ * magnet.js writes --magnet-x and --magnet-y (already capped); CSS does the easing.
+ * Near: a short ease-out that keeps up with the hand. Leaving: the spring, so it settles with one wobble.
+ */
+.magnet {
+  translate: var(--magnet-x, 0) var(--magnet-y, 0);
+  transition: translate var(--dur-base) var(--ease-spring);
+}
+.magnet-label {
+  display: inline-block;
+  translate: calc(var(--magnet-x, 0px) * .4) calc(var(--magnet-y, 0px) * .4);
+  transition: translate var(--dur-base) var(--ease-spring);
+}
+.magnet.is-near,
+.magnet.is-near .magnet-label { transition: translate var(--dur-quick) var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .magnet, .magnet-label, .magnet.is-near, .magnet.is-near .magnet-label { translate: none; transition: none; }
+}

@@ -1,0 +1,25 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.journal { width: min(700px, 100%); display: grid; gap: 16px; }
+.j-head h1 { font-size: 22px; font-weight: 700; }
+.j-head p { font-size: 14px; }
+.j-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.story { display: grid; gap: 4px; text-decoration: none; color: inherit; border-radius: 8px; }
+.story:focus-visible { outline-offset: 4px; }
+.frame { display: block; aspect-ratio: 4 / 3; min-height: 0; border-radius: 8px; border: 1px solid var(--demo-line); margin-bottom: 6px; }
+.story-kicker { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--demo-blue); }
+.story-title { font-weight: 650; font-size: 15px; line-height: 1.3; }
+.story:hover .story-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.story-meta { font-size: 12.5px; color: var(--demo-mute); }
+@media (max-width: 560px) {
+  .j-grid { grid-template-columns: 1fr; gap: 12px; }
+  .story { grid-template-columns: 112px 1fr; column-gap: 14px; row-gap: 2px; align-content: center; }
+  .frame { grid-row: 1 / span 3; margin: 0; }
+  .story-kicker { align-self: end; }
+}
+@media (max-height: 420px) {
+  .journal { gap: 10px; }
+  .j-head p { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .journal { width: 760px; }
+}

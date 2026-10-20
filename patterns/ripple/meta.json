@@ -1,0 +1,19 @@
+{
+  "name": "Ripple",
+  "slug": "ripple",
+  "kind": "pattern",
+  "summary": "A press sends a soft wave out from the exact point that was touched, sized to reach the farthest corner. Keyboard presses start it from the centre.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

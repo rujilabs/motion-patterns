@@ -1,0 +1,21 @@
+{
+  "name": "Cursor follower",
+  "slug": "cursor-follower",
+  "kind": "pattern",
+  "summary": "A soft dot trails the mouse with a short lag and opens into a ring over links. The real cursor stays; touch, pen and reduced motion get no dot.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-quick",
+    "--dur-base"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Exit-intent popup",
+  "slug": "exit-intent",
+  "kind": "pattern",
+  "summary": "A native dialog that drops in once per visit when the mouse leaves through the top of the page, and lifts away on close. Touch never triggers it.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

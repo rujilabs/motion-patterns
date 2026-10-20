@@ -1,0 +1,95 @@
+/*
+ * before-after: two pictures stacked in one frame, with a divider you drag to compare them.
+ * The after layer is clipped from the divider rightward, so nothing ever resizes or moves except
+ * the clip line and the handle. A native range input covers the frame: it gives keyboard steps,
+ * screen reader values and click-to-jump for free. compare.js copies its value into --ba-pos.
+ *
+ * The hint: when the frame comes into view (play.js adds .go), the divider nudges right, then
+ * left, then back to the middle, to show it moves. The first touch of the slider stops it.
+ * --ba-pos is a registered property so the hint can animate it.
+ */
+@property --ba-pos {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+.ba {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  touch-action: pan-y;
+  user-select: none;
+}
+.ba-before,
+.ba-after {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ba-after {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 var(--ba-pos));
+}
+/* the divider: a full-width layer moved by the same percentage, so the line sits on the clip edge */
+.ba-divider {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  translate: var(--ba-pos) 0;
+}
+.ba-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 2px;
+  background: var(--ba-line, #fff);
+}
+.ba-knob {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: var(--ba-line, #fff);
+  color: var(--ba-knob-ink, #1e2229);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 1px 4px rgb(0 0 0 / .25);
+}
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 2;
+}
+/* a 2px thumb, so the value under the pointer matches the clip edge (two rules: never mix the prefixes) */
+.ba-range { -webkit-appearance: none; appearance: none; background: none; }
+.ba-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 2px; height: 40px; }
+.ba-range::-moz-range-thumb { width: 2px; height: 40px; border: 0; }
+.ba:has(.ba-range:focus-visible) .ba-knob { outline: 2px solid var(--ba-focus, #3d7bf2); outline-offset: 3px; }
+
+/* the hint nudge */
+@keyframes ba-hint {
+  0%   { --ba-pos: 50%; }
+  35%  { --ba-pos: 64%; }
+  70%  { --ba-pos: 40%; }
+  100% { --ba-pos: 50%; }
+}
+.js .go.ba,
+.js .go .ba { animation: ba-hint calc(var(--dur-slow) * 2) var(--ease-inout) var(--dur-quick) both; }
+.js .go.ba.is-used,
+.js .go .ba.is-used { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .go.ba,
+  .js .go .ba { animation: none; }
+}

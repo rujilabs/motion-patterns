@@ -1,0 +1,32 @@
+/*
+ * exit-intent: a panel that drops in once, when a mouse leaves the page through the top edge
+ * (toward the tabs or the address bar). It drops from above because that is where the pointer went.
+ * The panel is a native <dialog> opened with showModal(), so focus moves into it, Esc closes it and
+ * the page behind is inert. exit.js decides when; this file only animates the open and the close.
+ */
+.exit-panel[open] { animation: exit-in var(--dur-base) var(--ease-out) both; }
+.exit-panel[open]::backdrop {
+  background: var(--exit-scrim, rgb(15 20 30 / .35));
+  animation: exit-fade var(--dur-base) linear both;
+}
+/* closing: exit.js adds .is-closing, waits for exit-out to end, then calls close() */
+.exit-panel.is-closing { animation: exit-out var(--dur-quick) var(--ease-in) both; }
+.exit-panel.is-closing::backdrop { animation: exit-fade var(--dur-quick) linear reverse both; }
+
+@keyframes exit-in {
+  from { opacity: 0; transform: translateY(-24px) scale(.98); }
+  40%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes exit-out {
+  to { opacity: 0; transform: translateY(-12px) scale(.98); }
+}
+@keyframes exit-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exit-panel[open], .exit-panel[open]::backdrop,
+  .exit-panel.is-closing, .exit-panel.is-closing::backdrop { animation: none; }
+}

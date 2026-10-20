@@ -1,0 +1,33 @@
+/*
+ * hover-lift: a card rises a few pixels and its shadow grows longer and softer, as if it left the
+ * table. A press pushes it back down fast, then it springs up again on release.
+ * The shadow is two layers: a tight contact shadow that stays, and a long one that grows with height.
+ * Lifting only happens on devices that can hover; the press works everywhere.
+ */
+.lift {
+  --lift-y: -4px;
+  --lift-shade: 220 30% 12%;
+  transform: translateY(0);
+  box-shadow: 0 1px 2px hsl(var(--lift-shade) / .08), 0 2px 4px -2px hsl(var(--lift-shade) / 0);
+  transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-quick) var(--ease-out);
+}
+@media (hover: hover) {
+  .lift:hover,
+  .lift:focus-visible {
+    transform: translateY(var(--lift-y));
+    box-shadow: 0 1px 2px hsl(var(--lift-shade) / .08), 0 16px 28px -14px hsl(var(--lift-shade) / .32);
+  }
+}
+/* press: down fast, almost onto the table. Going up again (release, or the first hover) uses the spring. */
+.lift:active {
+  transform: translateY(-1px) scale(.985);
+  box-shadow: 0 1px 1px hsl(var(--lift-shade) / .1), 0 4px 8px -6px hsl(var(--lift-shade) / .2);
+  transition-duration: 80ms;
+  transition-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* no movement: the shadow still answers hover and press, at once */
+  .lift, .lift:active { transition: none; }
+  .lift:hover, .lift:focus-visible, .lift:active { transform: none; }
+}

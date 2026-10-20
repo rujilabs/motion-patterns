@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exit-intent popup demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="exit.js"></script>
+</head>
+<body>
+<main class="stage">
+  <article class="plans sheet" aria-labelledby="pl-h">
+    <header class="pl-head">
+      <h1 id="pl-h">Plan the term in one evening</h1>
+      <p class="mute">Lesson planner for primary teachers. RM 9 a month, cancel any time.</p>
+    </header>
+    <ul class="pl-points">
+      <li>Drag lessons onto the week, the clashes show in red</li>
+      <li>Print a clean timetable for the classroom door</li>
+      <li>Share a term plan with your co-teacher</li>
+    </ul>
+    <div class="pl-foot">
+      <p class="mute">Move the mouse out through the top of the page, or</p>
+      <button class="btn-ghost" type="button" data-exit-open>Show the exit panel</button>
+    </div>
+  </article>
+
+  <dialog class="exit-panel" aria-labelledby="ex-h" data-exit-delay="1000">
+    <form class="ex-body" method="dialog">
+      <svg class="ex-art" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="10" y="8" width="44" height="50" rx="3" class="ex-sheet"/>
+        <path d="M18 20 H46 M18 28 H46 M18 36 H38" class="ex-rule"/>
+        <path d="M18 46 L24 51 L36 41" class="ex-tick"/>
+      </svg>
+      <h2 id="ex-h">Before you go: take the term sheet</h2>
+      <p class="mute">A free two-page planning sheet, the same one the app prints. We send it once and add you to nothing.</p>
+      <label class="ex-field">
+        <span>School email</span>
+        <input type="email" name="email" autocomplete="email" placeholder="name@school.edu.my">
+      </label>
+      <div class="ex-actions">
+        <button class="btn-main" value="send" data-exit-close>Email me the sheet</button>
+        <button class="btn-ghost" value="no" data-exit-close formnovalidate>No thanks</button>
+      </div>
+    </form>
+  </dialog>
+</main>
+</body>
+</html>

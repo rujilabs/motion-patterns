@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor follower demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="follower.js"></script>
+</head>
+<body>
+<main class="stage" data-follow>
+  <section class="index sheet" aria-labelledby="ix-h">
+    <header class="ix-head">
+      <h1 id="ix-h">Selected work</h1>
+      <p class="mute">Studio Lantai, 2021 to 2026</p>
+    </header>
+    <ol class="ix-list">
+      <li><a href="#tide"><span class="ix-name">Tide tables for a ferry line</span><span class="ix-kind">Wayfinding</span><span class="ix-year num">2026</span></a></li>
+      <li><a href="#kiln"><span class="ix-name">Kiln, a pottery school</span><span class="ix-kind">Identity</span><span class="ix-year num">2025</span></a></li>
+      <li><a href="#rain"><span class="ix-name">Rain gauge field app</span><span class="ix-kind">Product</span><span class="ix-year num">2024</span></a></li>
+      <li><a href="#paper"><span class="ix-name">Paper mill annual report</span><span class="ix-kind">Editorial</span><span class="ix-year num">2023</span></a></li>
+      <li><a href="#night"><span class="ix-name">Night market map</span><span class="ix-kind">Wayfinding</span><span class="ix-year num">2021</span></a></li>
+    </ol>
+    <p class="ix-foot mute">Move a mouse over the list. On touch screens the dot stays off.</p>
+  </section>
+  <span class="follow-dot" aria-hidden="true"></span>
+</main>
+</body>
+</html>

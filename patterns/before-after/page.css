@@ -1,0 +1,16 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.proj { width: min(520px, 100%, calc((100svh - 120px) * 4 / 3)); padding: 10px; display: grid; gap: 10px; }
+.frame { aspect-ratio: 4 / 3; min-height: 0; border-radius: 5px; }
+.ba-tag {
+  position: absolute; top: 10px; z-index: 1; pointer-events: none;
+  padding: 3px 8px; border-radius: 4px; font-size: 11.5px; font-weight: 650; letter-spacing: .03em;
+  background: rgb(30 34 41 / .72); color: #fff;
+}
+.ba-tag-before { left: 10px; }
+.ba-tag-after { right: 10px; }
+.ba { --ba-focus: var(--demo-blue); }
+.cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; padding: 0 4px 2px; font-size: 13.5px; }
+@media (max-height: 360px) {
+  .proj { width: min(520px, 100%, calc((100svh - 40px) * 4 / 3)); }
+  .cap { display: none; }
+}
