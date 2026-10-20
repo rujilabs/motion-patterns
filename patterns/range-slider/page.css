@@ -1,0 +1,19 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.stays { width: min(440px, 100%); padding: 18px 20px; display: grid; gap: 16px; }
+.stays-head { display: grid; gap: 2px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.stays-head h1 { font-size: 21px; font-weight: 700; }
+.stays-head p { font-size: 14px; }
+.field { display: grid; gap: 2px; }
+.field > label { font-size: 14px; font-weight: 600; }
+.range { --range-fill: var(--demo-blue); --range-rest: var(--demo-line); --range-knob: var(--demo-paper); --range-on-fill: var(--demo-paper); }
+.ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--demo-mute); }
+.stays-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--demo-line); }
+.stays-foot strong { font-weight: 650; }
+.show { font: inherit; font-size: 14px; font-weight: 600; color: var(--demo-paper); background: var(--demo-ink); border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
+@media (max-width: 400px) { .stays { padding: 16px; } }
+@media (max-height: 440px) {
+  .stays { gap: 8px; padding-block: 12px; }
+  .stays-head { padding-bottom: 8px; }
+  .stays-head p, .ends { display: none; }
+  .stays-foot { padding-top: 8px; }
+}

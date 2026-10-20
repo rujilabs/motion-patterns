@@ -1,0 +1,40 @@
+/*
+ * carousel: a row of slides on native scroll snap. Swipe, trackpad, keyboard and the buttons all
+ * move the same scroller, so nothing fights the browser. The slide in the centre grows to full
+ * size while its neighbours sit back a little, and the dots follow: the current dot stretches
+ * into a short bar. carousel.js marks the centred slide and dot with .is-active.
+ */
+.carousel { --slide-w: 72%; --slide-gap: 12px; position: relative; }
+.carousel-track {
+  position: relative;
+  display: flex; gap: var(--slide-gap);
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* room on both sides so the first and last slide can sit in the centre */
+  padding-inline: calc((100% - var(--slide-w)) / 2);
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-slide {
+  flex: 0 0 var(--slide-w);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  transform: scale(.88);
+  opacity: .55;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
+}
+.carousel-slide.is-active { transform: none; opacity: 1; }
+
+.carousel-dots { display: flex; justify-content: center; align-items: center; gap: 6px; }
+.carousel-dot {
+  width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--carousel-dot, #c9d1dc);
+  transition: width var(--dur-base) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
+}
+.carousel-dot.is-active { width: 22px; background: var(--carousel-dot-on, #1e2229); }
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
+  .carousel-slide, .carousel-slide.is-active, .carousel-dot, .carousel-dot.is-active { transition: none; }
+}

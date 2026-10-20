@@ -1,0 +1,41 @@
+/*
+ * filter-chips: checkboxes drawn as chips. Turning one on opens a slot at its start, so the chip
+ * grows wider smoothly, and a check mark grows in and draws itself into the slot. Turning it off
+ * reverses it. CSS only. The check is an SVG path with pathLength="1".
+ */
+.chip {
+  position: relative; display: inline-flex; align-items: center;
+  padding: 6px 13px; border-radius: 999px; cursor: pointer; user-select: none;
+  border: 1px solid var(--chip-line, #d9dfe8);
+  background: var(--chip-bg, #fff);
+  color: var(--chip-ink, #1e2229);
+  transition: background-color var(--dur-quick) var(--ease-out), border-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out), scale var(--dur-quick) var(--ease-out);
+}
+.chip > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.chip-check {
+  flex: none; width: 0; height: 14px; margin-right: 0;
+  overflow: visible; scale: .3; opacity: 0;
+  fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+  transition: width var(--dur-base) var(--ease-out), margin-right var(--dur-base) var(--ease-out), scale var(--dur-quick) var(--ease-out), opacity var(--dur-quick) var(--ease-out);
+}
+.chip-check path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset var(--dur-quick) var(--ease-out); }
+.chip:has(input:checked) {
+  background: var(--chip-on-bg, #dce7fd);
+  border-color: var(--chip-on-line, #3d7bf2);
+  color: var(--chip-on-ink, #2456c4);
+}
+.chip:has(input:checked) .chip-check {
+  width: 14px; margin-right: 6px; scale: 1; opacity: 1;
+  transition-timing-function: var(--ease-out), var(--ease-out), var(--ease-spring), var(--ease-out);
+  transition-delay: 0s, 0s, calc(var(--stagger) * .6), calc(var(--stagger) * .6);
+}
+.chip:has(input:checked) .chip-check path { stroke-dashoffset: 0; transition-delay: calc(var(--stagger) * 1.2); }
+.chip:active { scale: .96; }
+.chip:has(input:focus-visible) { outline: 2px solid var(--chip-on-line, #3d7bf2); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chip, .chip-check, .chip-check path,
+  .chip:has(input:checked) .chip-check,
+  .chip:has(input:checked) .chip-check path { transition: none; }
+  .chip:active { scale: none; }
+}

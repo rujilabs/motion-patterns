@@ -1,0 +1,42 @@
+/*
+ * stepper: minus and plus buttons around a number that rolls in the direction of the change.
+ * Going up, the old digit leaves upward and the new one rises in from below; going down, the
+ * reverse. Only the digits that change roll, so 19 to 20 rolls both digits and 20 to 21 only one.
+ * stepper.js builds the digit slots and sets data-dir="up|down" on the .roll element.
+ */
+.roll {
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  overflow: hidden;
+  /* the digits fade at the top and bottom edge of the window instead of being cut */
+  mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+  vertical-align: bottom;
+}
+.roll { position: relative; }
+.roll-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.roll-slot { display: inline-grid; }
+.roll-slot > * { grid-area: 1 / 1; }
+.roll-in { animation: roll-in-up var(--roll-dur, calc(var(--dur-base) * .6)) var(--ease-out) both; }
+.roll-out { animation: roll-out-up var(--roll-dur, calc(var(--dur-base) * .6)) var(--ease-out) both; }
+.roll[data-dir="down"] .roll-in { animation-name: roll-in-down; }
+.roll[data-dir="down"] .roll-out { animation-name: roll-out-down; }
+@keyframes roll-in-up { from { transform: translateY(100%); } }
+@keyframes roll-out-up { to { transform: translateY(-100%); } }
+@keyframes roll-in-down { from { transform: translateY(-100%); } }
+@keyframes roll-out-down { to { transform: translateY(100%); } }
+
+/* the buttons give a small press back */
+.stepper { display: inline-flex; align-items: center; gap: 4px; }
+.stepper-btn { transition: scale var(--dur-quick) var(--ease-out), opacity var(--dur-quick) var(--ease-out); }
+.stepper-btn:active:not(:disabled) { scale: .9; }
+.stepper-btn:disabled { opacity: .35; cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+  .roll-in, .roll-out,
+  .roll[data-dir="down"] .roll-in,
+  .roll[data-dir="down"] .roll-out { animation: none; }
+  .roll-out { display: none; }
+  .stepper-btn { transition: none; }
+  .stepper-btn:active:not(:disabled) { scale: none; }
+}

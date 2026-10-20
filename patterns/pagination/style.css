@@ -1,0 +1,25 @@
+/*
+ * pagination: page numbers with one marker that slides to the current page. pager.js sets
+ * --pager-x and --pager-w on the list from the current button, and the marker travels there.
+ * On a long jump it stretches: the edge that leads arrives first, the trailing edge a beat later.
+ */
+.pager-list { position: relative; isolation: isolate; display: flex; align-items: center; gap: 2px; }
+.pager-mark {
+  --pager-dur: calc(var(--dur-base) * .6);
+  --pager-lag: calc(var(--stagger) * 1);
+  position: absolute; z-index: -1; top: 0; bottom: 0;
+  left: var(--pager-l, 0); right: var(--pager-r, 100%);
+  border-radius: var(--pager-radius, 8px);
+  background: var(--pager-mark, #1e2229);
+  transition: left var(--pager-dur) var(--ease-out), right var(--pager-dur) var(--ease-out);
+}
+.pager-list[data-dir="right"] .pager-mark { transition-delay: var(--pager-lag), 0s; }
+.pager-list[data-dir="left"] .pager-mark { transition-delay: 0s, var(--pager-lag); }
+.pager-list[data-dir="none"] .pager-mark { transition: none; }
+.pager-page { transition: color var(--dur-quick) var(--ease-out); }
+/* the new number turns light only once the marker is mostly under it */
+.pager-page[aria-current="page"] { color: var(--pager-on, #fff); transition-delay: calc(var(--dur-base) * .4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pager-mark, .pager-page { transition: none; }
+}

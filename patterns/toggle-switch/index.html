@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toggle switch demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <section class="prefs sheet" aria-labelledby="prefs-h">
+    <header class="prefs-head">
+      <h1 id="prefs-h">Notifications</h1>
+      <p class="mute">Choose what Kedai Ruang tells you about.</p>
+    </header>
+    <ul class="prefs-list">
+      <li><label class="toggle pref"><input type="checkbox" role="switch" checked><span class="pref-text"><strong>New orders</strong><span>A message as soon as someone pays</span></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></label></li>
+      <li><label class="toggle pref"><input type="checkbox" role="switch"><span class="pref-text"><strong>Low stock</strong><span>When an item drops below 5</span></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></label></li>
+      <li><label class="toggle pref"><input type="checkbox" role="switch" checked><span class="pref-text"><strong>Weekly summary</strong><span>Every Monday at 8 am</span></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></label></li>
+      <li><label class="toggle pref"><input type="checkbox" role="switch"><span class="pref-text"><strong>Reviews</strong><span>New ratings and replies</span></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></label></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

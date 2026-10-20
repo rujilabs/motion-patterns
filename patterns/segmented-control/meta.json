@@ -1,0 +1,19 @@
+{
+  "name": "Segmented control",
+  "slug": "segmented-control",
+  "kind": "pattern",
+  "summary": "Radio buttons in a row with one pill that slides to the chosen option. CSS only: :has() reads which option is checked and how many there are.",
+  "category": "state",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

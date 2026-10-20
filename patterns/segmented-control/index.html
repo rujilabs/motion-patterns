@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segmented control demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <section class="sales sheet" aria-labelledby="sales-h">
+    <header class="sales-head">
+      <h1 id="sales-h">Takings</h1>
+      <div class="seg" role="radiogroup" aria-label="Period">
+        <label><input type="radio" name="period" value="day">Day</label>
+        <label><input type="radio" name="period" value="week" checked>Week</label>
+        <label><input type="radio" name="period" value="month">Month</label>
+        <label><input type="radio" name="period" value="year">Year</label>
+        <span class="seg-pill" aria-hidden="true"></span>
+      </div>
+    </header>
+    <div class="figure" aria-live="polite">
+      <p class="total num" data-for="day">RM 642<span>Today, 31 orders</span></p>
+      <p class="total num" data-for="week">RM 4,416<span>This week, 208 orders</span></p>
+      <p class="total num" data-for="month">RM 17,930<span>October, 851 orders</span></p>
+      <p class="total num" data-for="year">RM 192,400<span>2026 so far, 9,102 orders</span></p>
+    </div>
+    <ol class="bars" aria-hidden="true">
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>

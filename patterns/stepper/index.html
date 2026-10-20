@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stepper demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="stepper.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="tickets sheet" aria-labelledby="tk-h">
+    <header class="tk-head">
+      <h1 id="tk-h">Night tour, Taman Paya</h1>
+      <p class="mute">Saturday 8 November, 7:30 pm</p>
+    </header>
+    <ul class="lines">
+      <li class="line"><span class="line-text"><strong id="adult-h">Adults</strong><span>RM 45 each</span></span>
+        <div class="stepper" data-stepper data-kind="adult" data-min="1" data-max="12" role="group" aria-labelledby="adult-h"><button type="button" class="stepper-btn" data-step="-1" aria-label="Fewer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8 H12.5"/></svg></button><output class="roll num" aria-live="polite">2</output><button type="button" class="stepper-btn" data-step="1" aria-label="More"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8 H12.5 M8 3.5 V12.5"/></svg></button></div></li>
+      <li class="line"><span class="line-text"><strong id="child-h">Children</strong><span>Ages 4 to 12, RM 25 each</span></span>
+        <div class="stepper" data-stepper data-kind="child" data-min="0" data-max="12" role="group" aria-labelledby="child-h"><button type="button" class="stepper-btn" data-step="-1" aria-label="Fewer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8 H12.5"/></svg></button><output class="roll num" aria-live="polite">1</output><button type="button" class="stepper-btn" data-step="1" aria-label="More"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8 H12.5 M8 3.5 V12.5"/></svg></button></div></li>
+    </ul>
+    <footer class="tk-foot">
+      <p><span class="mute">Total</span> <strong class="num">RM <output id="total" class="roll">115</output></strong></p>
+      <button type="button" class="book">Book</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

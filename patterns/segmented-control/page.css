@@ -1,0 +1,73 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.sales { width: min(460px, 100%); padding: 18px 20px 20px; display: grid; gap: 16px; }
+.sales-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.sales-head h1 { font-size: 21px; font-weight: 700; }
+.seg { --seg-bg: var(--demo-table); --seg-pill: var(--demo-paper); --seg-line: var(--demo-line); --seg-ink: var(--demo-ink); --seg-mute: var(--demo-mute); --seg-focus: var(--demo-blue); font-size: 14px; font-weight: 600; }
+.seg > label { padding: 5px 12px; }
+
+/* the figure for the checked period; the others are hidden */
+.figure { display: grid; }
+.total { grid-area: 1 / 1; display: grid; font-size: 32px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; visibility: hidden; }
+.total span { font-size: 13px; font-weight: 400; letter-spacing: 0; color: var(--demo-mute); }
+.sales:has([value="day"]:checked) [data-for="day"],
+.sales:has([value="week"]:checked) [data-for="week"],
+.sales:has([value="month"]:checked) [data-for="month"],
+.sales:has([value="year"]:checked) [data-for="year"] { visibility: visible; animation: figure-in var(--dur-base) var(--ease-out) both; }
+@keyframes figure-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* a small bar chart whose bars change height per period */
+.bars { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; align-items: end; height: 120px; padding-top: 8px; border-bottom: 1px solid var(--demo-line); }
+.bars li { height: 100%; background: var(--demo-blue-soft); border-radius: 3px 3px 0 0; transform-origin: 50% 100%; transform: scaleY(var(--h, .5)); transition: transform var(--dur-base) var(--ease-out); }
+.bars li:last-child { background: var(--demo-blue); }
+.bars li:nth-child(2) { transition-delay: calc(var(--stagger) * .25); }
+.bars li:nth-child(3) { transition-delay: calc(var(--stagger) * .5); }
+.bars li:nth-child(4) { transition-delay: calc(var(--stagger) * .75); }
+.bars li:nth-child(5) { transition-delay: calc(var(--stagger) * 1); }
+.bars li:nth-child(6) { transition-delay: calc(var(--stagger) * 1.25); }
+.bars li:nth-child(7) { transition-delay: calc(var(--stagger) * 1.5); }
+.bars li:nth-child(8) { transition-delay: calc(var(--stagger) * 1.75); }
+.sales:has([value="day"]:checked) .bars li:nth-child(1) { --h: .3; }
+.sales:has([value="day"]:checked) .bars li:nth-child(2) { --h: .55; }
+.sales:has([value="day"]:checked) .bars li:nth-child(3) { --h: .8; }
+.sales:has([value="day"]:checked) .bars li:nth-child(4) { --h: .45; }
+.sales:has([value="day"]:checked) .bars li:nth-child(5) { --h: .35; }
+.sales:has([value="day"]:checked) .bars li:nth-child(6) { --h: .7; }
+.sales:has([value="day"]:checked) .bars li:nth-child(7) { --h: .9; }
+.sales:has([value="day"]:checked) .bars li:nth-child(8) { --h: .6; }
+.sales:has([value="week"]:checked) .bars li:nth-child(1) { --h: .62; }
+.sales:has([value="week"]:checked) .bars li:nth-child(2) { --h: .5; }
+.sales:has([value="week"]:checked) .bars li:nth-child(3) { --h: .58; }
+.sales:has([value="week"]:checked) .bars li:nth-child(4) { --h: .66; }
+.sales:has([value="week"]:checked) .bars li:nth-child(5) { --h: .72; }
+.sales:has([value="week"]:checked) .bars li:nth-child(6) { --h: .64; }
+.sales:has([value="week"]:checked) .bars li:nth-child(7) { --h: .8; }
+.sales:has([value="week"]:checked) .bars li:nth-child(8) { --h: .86; }
+.sales:has([value="month"]:checked) .bars li:nth-child(1) { --h: .4; }
+.sales:has([value="month"]:checked) .bars li:nth-child(2) { --h: .48; }
+.sales:has([value="month"]:checked) .bars li:nth-child(3) { --h: .44; }
+.sales:has([value="month"]:checked) .bars li:nth-child(4) { --h: .6; }
+.sales:has([value="month"]:checked) .bars li:nth-child(5) { --h: .56; }
+.sales:has([value="month"]:checked) .bars li:nth-child(6) { --h: .7; }
+.sales:has([value="month"]:checked) .bars li:nth-child(7) { --h: .66; }
+.sales:has([value="month"]:checked) .bars li:nth-child(8) { --h: .78; }
+.sales:has([value="year"]:checked) .bars li:nth-child(1) { --h: .2; }
+.sales:has([value="year"]:checked) .bars li:nth-child(2) { --h: .28; }
+.sales:has([value="year"]:checked) .bars li:nth-child(3) { --h: .38; }
+.sales:has([value="year"]:checked) .bars li:nth-child(4) { --h: .46; }
+.sales:has([value="year"]:checked) .bars li:nth-child(5) { --h: .58; }
+.sales:has([value="year"]:checked) .bars li:nth-child(6) { --h: .7; }
+.sales:has([value="year"]:checked) .bars li:nth-child(7) { --h: .84; }
+.sales:has([value="year"]:checked) .bars li:nth-child(8) { --h: .96; }
+
+@media (max-width: 400px) {
+  .sales { padding: 16px; }
+  .seg > label { padding: 5px 9px; }
+}
+@media (max-height: 420px) {
+  .sales { gap: 10px; padding-block: 12px; }
+  .bars { height: 70px; }
+  .total { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bars li, .total { transition: none; animation: none !important; }
+}

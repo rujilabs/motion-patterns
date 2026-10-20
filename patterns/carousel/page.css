@@ -1,0 +1,20 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.rooms { width: min(520px, 100%); padding: 18px 0 16px; display: grid; gap: 14px; overflow: hidden; }
+.rooms-head { padding: 0 20px 12px; border-bottom: 1px solid var(--demo-line); }
+.rooms-head h1 { font-size: 21px; font-weight: 700; }
+.rooms-head p { font-size: 14px; }
+.carousel { display: grid; gap: 12px; --carousel-dot: var(--demo-line); --carousel-dot-on: var(--demo-ink); }
+.carousel-track:focus-visible { outline-offset: -2px; }
+.room { display: grid; gap: 2px; transform-origin: 50% 40%; }
+.room-art { display: block; width: 100%; height: auto; aspect-ratio: 240 / 140; border-radius: 6px; border: 1px solid var(--demo-line); margin-bottom: 8px; }
+.room h2 { font-size: 16px; font-weight: 650; }
+.room p { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--demo-mute); }
+.room b { color: var(--demo-ink); font-weight: 650; white-space: nowrap; }
+.carousel-nav { display: flex; justify-content: center; align-items: center; gap: 14px; }
+.nav-btn { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.nav-btn:hover:not(:disabled) { border-color: var(--demo-mute); }
+.nav-btn:disabled { opacity: .35; cursor: default; }
+.nav-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 420px) { .carousel { --slide-w: 80%; --slide-gap: 8px; } .room p { display: grid; } }
+@media (max-height: 520px) { .carousel { --slide-w: 56%; } .rooms { padding-top: 12px; gap: 10px; } .rooms-head p { display: none; } }
+@media (max-height: 400px) { .carousel { --slide-w: 44%; } .room p { display: none; } }

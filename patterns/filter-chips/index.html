@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filter chips demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <form class="recipes sheet" aria-labelledby="rec-h">
+    <header class="rec-head">
+      <h1 id="rec-h">Find a recipe</h1>
+      <p class="mute">Dapur Petang, 148 recipes</p>
+    </header>
+    <fieldset class="filters">
+      <legend>Filters</legend>
+      <div class="chip-row">
+        <label class="chip"><input type="checkbox" name="tag" value="veg" checked><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>Vegetarian</label>
+        <label class="chip"><input type="checkbox" name="tag" value="quick"><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>Under 30 min</label>
+        <label class="chip"><input type="checkbox" name="tag" value="spicy"><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>Spicy</label>
+        <label class="chip"><input type="checkbox" name="tag" value="pot" checked><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>One pot</label>
+        <label class="chip"><input type="checkbox" name="tag" value="nuts"><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>No nuts</label>
+        <label class="chip"><input type="checkbox" name="tag" value="gluten"><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>Gluten free</label>
+        <label class="chip"><input type="checkbox" name="tag" value="kids"><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>Kid friendly</label>
+        <label class="chip"><input type="checkbox" name="tag" value="rice"><svg class="chip-check" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.6 10.4 L11.5 3.8" pathLength="1"/></svg>With rice</label>
+      </div>
+    </fieldset>
+    <footer class="rec-foot">
+      <p class="count" aria-live="polite">filters on</p>
+      <button type="reset" class="clear">Clear all</button>
+    </footer>
+  </form>
+</main>
+</body>
+</html>

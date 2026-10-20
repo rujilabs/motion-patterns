@@ -1,0 +1,44 @@
+/*
+ * segmented-control: radio buttons in a row, with one pill that slides to the chosen option.
+ * CSS only. :has() reads which option is checked and how many there are (2 to 6), and the
+ * pill moves by whole widths of one option. Options share the width equally.
+ */
+.seg {
+  --seg-pad: 3px;
+  --seg-n: 2;
+  --seg-i: 0;
+  position: relative; isolation: isolate;
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  padding: var(--seg-pad); border-radius: 999px;
+  background: var(--seg-bg, #eef2f7);
+}
+.seg > label { position: relative; display: grid; place-items: center; padding: 6px 12px; cursor: pointer; border-radius: 999px; color: var(--seg-mute, #636b78); transition: color var(--dur-quick) var(--ease-out); white-space: nowrap; }
+.seg > label > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.seg > label:has(input:checked) { color: var(--seg-ink, #1e2229); }
+.seg > label:has(input:focus-visible) { outline: 2px solid var(--seg-focus, #3d7bf2); outline-offset: 0; }
+.seg-pill {
+  position: absolute; z-index: -1;
+  top: var(--seg-pad); bottom: var(--seg-pad); left: var(--seg-pad);
+  width: calc((100% - var(--seg-pad) * 2) / var(--seg-n));
+  border-radius: 999px;
+  background: var(--seg-pill, #fff);
+  box-shadow: 0 0 0 1px var(--seg-line, #d9dfe8), 0 1px 2px rgb(0 0 0 / .06);
+  transform: translateX(calc(100% * var(--seg-i)));
+  transition: transform calc(var(--dur-base) * .7) var(--ease-out);
+}
+
+/* how many options */
+.seg:has(> label:nth-of-type(3)) { --seg-n: 3; }
+.seg:has(> label:nth-of-type(4)) { --seg-n: 4; }
+.seg:has(> label:nth-of-type(5)) { --seg-n: 5; }
+.seg:has(> label:nth-of-type(6)) { --seg-n: 6; }
+/* which one is checked */
+.seg:has(> label:nth-of-type(2) input:checked) { --seg-i: 1; }
+.seg:has(> label:nth-of-type(3) input:checked) { --seg-i: 2; }
+.seg:has(> label:nth-of-type(4) input:checked) { --seg-i: 3; }
+.seg:has(> label:nth-of-type(5) input:checked) { --seg-i: 4; }
+.seg:has(> label:nth-of-type(6) input:checked) { --seg-i: 5; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seg-pill, .seg > label { transition: none; }
+}

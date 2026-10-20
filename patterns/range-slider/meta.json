@@ -1,0 +1,21 @@
+{
+  "name": "Range slider",
+  "slug": "range-slider",
+  "kind": "pattern",
+  "summary": "A native range input with a filled track and a value bubble that rides above the thumb. Hold the thumb and the bubble pops up on a spring; let go and it settles.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Pagination",
+  "slug": "pagination",
+  "kind": "pattern",
+  "summary": "Page numbers with one marker that slides to the current page. On a long jump it stretches, leading edge first and the trailing edge a beat later.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base",
+    "--dur-quick",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

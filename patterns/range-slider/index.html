@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Range slider demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="range.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="stays sheet" aria-labelledby="stays-h">
+    <header class="stays-head">
+      <h1 id="stays-h">Stays in Langkawi</h1>
+      <p class="mute">12 to 15 November, 2 guests</p>
+    </header>
+    <div class="field">
+      <label for="price">Most per night</label>
+      <div class="range">
+        <input id="price" type="range" min="60" max="400" step="10" value="220" data-prefix="RM ">
+        <output class="range-bubble" for="price">RM 220</output>
+      </div>
+      <p class="ends num" aria-hidden="true"><span>RM 60</span><span>RM 400</span></p>
+    </div>
+    <div class="field">
+      <label for="dist">Furthest from the beach</label>
+      <div class="range">
+        <input id="dist" type="range" min="0.5" max="10" step="0.5" value="3" data-suffix=" km">
+        <output class="range-bubble" for="dist">3 km</output>
+      </div>
+      <p class="ends num" aria-hidden="true"><span>0.5 km</span><span>10 km</span></p>
+    </div>
+    <footer class="stays-foot">
+      <p><strong id="matches" class="num">44 stays</strong> <span class="mute">match</span></p>
+      <button type="button" class="show">Show stays</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

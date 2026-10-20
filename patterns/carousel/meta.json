@@ -1,0 +1,21 @@
+{
+  "name": "Carousel",
+  "slug": "carousel",
+  "kind": "pattern",
+  "summary": "Slides on native scroll snap, moved by swipe, keys or buttons. The centred slide grows to full size while its neighbours sit back, and the current dot stretches into a bar.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,23 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.recipes { width: min(460px, 100%); padding: 18px 20px; display: grid; gap: 14px; }
+.rec-head { display: grid; gap: 2px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.rec-head h1 { font-size: 21px; font-weight: 700; }
+.rec-head p { font-size: 14px; }
+.filters { border: 0; padding: 0; margin: 0; min-width: 0; }
+.filters legend { padding: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--demo-mute); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 14px; font-weight: 550;
+  --chip-bg: var(--demo-paper); --chip-line: var(--demo-line); --chip-ink: var(--demo-ink);
+  --chip-on-bg: var(--demo-blue-soft); --chip-on-line: var(--demo-blue); --chip-on-ink: var(--demo-blue); }
+.chip:hover { border-color: var(--demo-mute); }
+.chip:has(input:checked):hover { border-color: var(--demo-blue); }
+/* a CSS counter counts the checked chips: no script */
+.recipes { counter-reset: on; }
+.chip input:checked { counter-increment: on; }
+.rec-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--demo-line); }
+.count { font-size: 14px; color: var(--demo-mute); }
+.count::before { content: counter(on) " "; color: var(--demo-ink); font-weight: 650; font-variant-numeric: tabular-nums; }
+.clear { font: inherit; font-size: 14px; font-weight: 600; color: var(--demo-ink); background: none; border: 1px solid var(--demo-line); border-radius: 999px; padding: 5px 13px; cursor: pointer; }
+.clear:hover { border-color: var(--demo-mute); }
+@media (max-width: 400px) { .recipes { padding: 16px; } .chip { font-size: 13px; padding: 5px 11px; } }
+@media (max-height: 400px) { .recipes { gap: 8px; padding-block: 12px; } .rec-head { padding-bottom: 8px; } }

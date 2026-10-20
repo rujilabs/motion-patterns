@@ -1,0 +1,16 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.prefs { width: min(420px, 100%); padding: 20px 20px 8px; }
+.prefs-head { display: grid; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--demo-line); }
+.prefs-head h1 { font-size: 21px; font-weight: 700; }
+.prefs-head p { font-size: 14px; }
+.prefs-list li + li { border-top: 1px solid var(--demo-line); }
+.pref { display: flex; width: 100%; justify-content: space-between; gap: 16px; padding: 13px 0; }
+.pref-text { display: grid; min-width: 0; }
+.pref-text strong { font-weight: 600; }
+.pref-text span { color: var(--demo-mute); font-size: 13px; }
+.toggle { --toggle-on: var(--demo-blue); --toggle-off: var(--demo-line); --toggle-knob: #fff; }
+@media (max-height: 400px) {
+  .prefs { padding-top: 14px; }
+  .pref { padding: 8px 0; }
+  .pref-text span { display: none; }
+}

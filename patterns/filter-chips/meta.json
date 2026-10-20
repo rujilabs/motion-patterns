@@ -1,0 +1,22 @@
+{
+  "name": "Filter chips",
+  "slug": "filter-chips",
+  "kind": "pattern",
+  "summary": "Checkboxes drawn as chips. Turning one on widens it smoothly to open a slot, and a check mark grows in and draws itself there. CSS only.",
+  "category": "state",
+  "tech": [
+    "css",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-base",
+    "--dur-quick",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Stepper",
+  "slug": "stepper",
+  "kind": "pattern",
+  "summary": "Minus and plus buttons around a number that rolls in the direction of the change. Only the digits that change roll, and the same roll works for a total.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagination demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="pager.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="invoices sheet" aria-labelledby="inv-h">
+    <header class="inv-head">
+      <h1 id="inv-h">Invoices</h1>
+      <p class="mute num" id="range" aria-live="polite">5 to 8 of 26</p>
+    </header>
+    <ul class="inv-list" id="invoices"></ul>
+    <nav class="pager" data-pager aria-label="Invoice pages">
+      <button type="button" class="pager-prev pager-step" aria-label="Previous page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 L5 8 L10 13"/></svg></button>
+      <ol class="pager-list"><li><button type="button" class="pager-page num" aria-label="Page 1">1</button></li><li><button type="button" class="pager-page num" aria-current="page" aria-label="Page 2">2</button></li><li><button type="button" class="pager-page num" aria-label="Page 3">3</button></li><li><button type="button" class="pager-page num" aria-label="Page 4">4</button></li><li><button type="button" class="pager-page num" aria-label="Page 5">5</button></li><li><button type="button" class="pager-page num" aria-label="Page 6">6</button></li><li><button type="button" class="pager-page num" aria-label="Page 7">7</button></li><li class="pager-mark" aria-hidden="true"></li></ol>
+      <button type="button" class="pager-next pager-step" aria-label="Next page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3 L11 8 L6 13"/></svg></button>
+    </nav>
+  </section>
+</main>
+</body>
+</html>
