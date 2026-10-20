@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page curl demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="curl.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="wall" aria-labelledby="pc-h">
+    <div class="curl-stack wall-cal" id="pc-pages" data-curl aria-live="polite">
+      <article class="month is-current" aria-label="January 2027">
+        <svg class="month-art" viewBox="0 0 160 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="160" height="200" fill="#dbe9f3"/><circle cx="112" cy="46" r="18" fill="#fff4c2"/><path d="M0 128 L50 92 L92 120 L130 96 L160 112 V200 H0Z" fill="#8fb6a0"/><path d="M0 150 C50 136 110 150 160 140 V200 H0Z" fill="#6a9a7c"/><path d="M28 176 h30 M96 168 h40" stroke="#f4f1ec" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="month-body">
+          <h2>January <span class="mute">2027</span></h2>
+          <div class="grid num" aria-hidden="true"><b>M</b><b>T</b><b>W</b><b>T</b><b>F</b><b>S</b><b>S</b><span></span><span></span><span></span><span></span><span class="mark" title="Holiday">1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></div>
+          <p class="note">1 Jan: Holiday</p>
+        </div>
+      </article>
+      <article class="month" aria-label="February 2027">
+        <svg class="month-art" viewBox="0 0 160 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="160" height="200" fill="#f6e3d6"/><path d="M80 40 c-26 -24 -60 6 0 52 c60 -46 26 -76 0 -52Z" fill="#d86a55"/><rect y="136" width="160" height="64" fill="#e9c7b2"/><path d="M40 136 v-26 h80 v26" fill="#f8f1ea" stroke="#b08a74"/><path d="M60 110 l20 -16 l20 16" fill="none" stroke="#b08a74"/></svg>
+        <div class="month-body">
+          <h2>February <span class="mute">2027</span></h2>
+          <div class="grid num" aria-hidden="true"><b>M</b><b>T</b><b>W</b><b>T</b><b>F</b><b>S</b><b>S</b><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span class="mark" title="Anniversary">14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span></div>
+          <p class="note">14 Feb: Anniversary</p>
+        </div>
+      </article>
+      <article class="month" aria-label="March 2027">
+        <svg class="month-art" viewBox="0 0 160 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="160" height="200" fill="#e4eedf"/><path d="M0 200 V150 C40 140 120 140 160 150 V200Z" fill="#7da57f"/><g stroke="#5c7a52" stroke-width="2"><path d="M40 150 V100"/><path d="M80 146 V84"/><path d="M120 150 V108"/></g><g fill="#e9b949"><circle cx="40" cy="96" r="9"/><circle cx="80" cy="80" r="11"/><circle cx="120" cy="104" r="8"/></g><path d="M20 40 q10 -8 20 0 q10 -8 20 0" fill="none" stroke="#5f6f52" stroke-width="2"/></svg>
+        <div class="month-body">
+          <h2>March <span class="mute">2027</span></h2>
+          <div class="grid num" aria-hidden="true"><b>M</b><b>T</b><b>W</b><b>T</b><b>F</b><b>S</b><b>S</b><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span class="mark" title="Book fair">21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span><span></span><span></span><span></span></div>
+          <p class="note">21 Mar: Book fair</p>
+        </div>
+      </article>
+      <div class="curl-flap" aria-hidden="true"><span></span></div>
+    </div>
+    <div class="wall-bar">
+      <h1 id="pc-h">Wall calendar</h1>
+      <div class="wall-btns">
+        <button type="button" data-curl-go="prev" aria-controls="pc-pages">Back</button>
+        <button type="button" data-curl-go="next" aria-controls="pc-pages">Next month</button>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

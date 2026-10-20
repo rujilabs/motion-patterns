@@ -1,0 +1,19 @@
+{
+  "name": "Page curl",
+  "slug": "page-curl",
+  "kind": "pattern",
+  "summary": "The top page peels from its bottom right corner and turns over to reveal the next page: a moving 45 degree fold, the mirrored back of the paper, a crease shade and a shadow.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

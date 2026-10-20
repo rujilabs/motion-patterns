@@ -1,0 +1,34 @@
+/*
+ * push: the next view pushes the current one off the frame in the same direction, edge to edge,
+ * like turning to the next card in a strip. Both views move together, so the frame is never empty
+ * and the direction says which way the reader went (forward, back, up, down).
+ * Views stack in one grid cell. The one on show has .is-current. push.js gives the outgoing view
+ * .push-out and the incoming one .push-in, plus a direction class on the stack while it plays.
+ *
+ * push-left   the next view enters from the right (forward, the default)
+ * push-right  the next view enters from the left (back)
+ * push-up     the next view enters from below
+ * push-down   the next view enters from above
+ */
+.push-stack { --push-x: 1; --push-y: 0; display: grid; overflow: clip; }
+.push-stack > * { grid-area: 1 / 1; }
+.push-stack > :not(.is-current):not(.push-in):not(.push-out) { visibility: hidden; }
+.push-stack.push-right { --push-x: -1; --push-y: 0; }
+.push-stack.push-up { --push-x: 0; --push-y: 1; }
+.push-stack.push-down { --push-x: 0; --push-y: -1; }
+
+.push-in { animation: push-in var(--push-dur, var(--dur-slow)) var(--ease-inout) both; }
+.push-out { animation: push-out var(--push-dur, var(--dur-slow)) var(--ease-inout) both; }
+@keyframes push-in {
+  from { transform: translate(calc(var(--push-x) * 100%), calc(var(--push-y) * 100%)); }
+  to   { transform: none; }
+}
+@keyframes push-out {
+  from { transform: none; }
+  to   { transform: translate(calc(var(--push-x) * -100%), calc(var(--push-y) * -100%)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* no travel: the next view replaces the current one in place */
+  .push-stack .push-in, .push-stack .push-out { animation: none; }
+}

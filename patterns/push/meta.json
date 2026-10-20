@@ -1,0 +1,19 @@
+{
+  "name": "Push transition",
+  "slug": "push",
+  "kind": "pattern",
+  "summary": "The next view pushes the current one off the frame in the same direction, edge to edge. Left, right, up and down, so the direction tells the reader which way they went.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

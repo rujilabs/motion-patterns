@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shatter demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="shatter.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="room sheet" aria-labelledby="sh-h">
+    <div class="shatter-stack room-wall" id="sh-views" data-shatter aria-live="polite">
+      <figure class="work is-current">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#f1ece2"/>
+          <circle cx="120" cy="90" r="52" fill="#e0573f"/>
+          <circle cx="196" cy="90" r="52" fill="#2f5d8c" fill-opacity=".86"/>
+          <rect x="40" y="150" width="240" height="4" fill="#1e2229"/>
+        </svg>
+        <figcaption><b>Dua Bulan</b> Nora Hamid, 2026</figcaption>
+      </figure>
+      <figure class="work">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#20304a"/>
+          <g fill="none" stroke-width="10"><path d="M40 180 V100 a40 40 0 0 1 80 0 V180" stroke="#e9b949"/><path d="M140 180 V70 a40 40 0 0 1 80 0 V180" stroke="#f1ece2"/><path d="M240 180 V110 a30 30 0 0 1 60 0 V180" stroke="#5aa0cf"/></g>
+        </svg>
+        <figcaption><b>Pintu Tiga</b> Ravi Menon, 2025</figcaption>
+      </figure>
+      <figure class="work">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="320" height="180" fill="#e6efe4"/>
+          <path d="M0 180 L80 60 L160 180Z" fill="#5c8a52"/>
+          <path d="M100 180 L190 40 L280 180Z" fill="#3f6a47"/>
+          <path d="M210 180 L270 96 L330 180Z" fill="#7da57f"/>
+          <circle cx="250" cy="44" r="14" fill="#e0573f"/>
+        </svg>
+        <figcaption><b>Banjaran</b> Lim Wei Ling, 2026</figcaption>
+      </figure>
+    </div>
+    <div class="room-bar">
+      <div>
+        <h1 id="sh-h">Room 2, works on glass</h1>
+        <p class="mute">Click a work, or use the button.</p>
+      </div>
+      <button type="button" data-shatter-go aria-controls="sh-views">Next work</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

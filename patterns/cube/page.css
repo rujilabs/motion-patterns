@@ -1,0 +1,22 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.trip { width: min(420px, 100%); padding: 6px; display: grid; }
+/* the cube needs room to turn: a band of table colour around it */
+.trip-screen { aspect-ratio: 16 / 9; min-height: 0; border-radius: 4px; background: var(--demo-table); }
+.day { position: relative; margin: 0; overflow: clip; border-radius: 4px; }
+.day svg { display: block; width: 100%; height: 100%; }
+.day figcaption { position: absolute; left: 8px; top: 8px; padding: 3px 8px; border-radius: 4px;
+  background: rgb(20 24 31 / .72); color: #fff; font-size: 12px; }
+.day figcaption b { font-weight: 600; color: #b9cff9; margin-right: 4px; }
+.trip-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; padding: 12px 8px 6px; }
+.trip-bar h1 { font-size: 15px; font-weight: 650; margin-right: auto; }
+.trip-btns { display: flex; gap: 6px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.trip-btns button { padding: 5px 12px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-size: 13px; font-weight: 550; }
+.trip-btns button:hover { border-color: var(--demo-blue); color: var(--demo-blue); }
+@media (max-height: 420px) {
+  .trip-screen { aspect-ratio: 16 / 8; }
+  .trip-bar { padding-top: 8px; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .trip { width: 500px; }
+}

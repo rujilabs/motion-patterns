@@ -1,0 +1,34 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.app { width: min(400px, 100%); padding: 6px; display: grid; }
+.app-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 10px 8px; font-size: 13px; }
+.app-head h1 { font-size: 15px; font-weight: 650; }
+.app-screen { aspect-ratio: 16 / 9; min-height: 0; border: 1px solid var(--demo-line); border-radius: 4px; }
+.view { display: grid; align-content: start; gap: 10px; padding: 14px 16px; background: var(--demo-paper); }
+.view-k { font-size: 12px; font-weight: 600; color: var(--demo-blue); }
+.rows li { display: grid; grid-template-columns: 8px auto 1fr auto; gap: 10px; align-items: center; padding: 7px 0; font-size: 14px; }
+.rows li + li { border-top: 1px solid var(--demo-line); }
+.rows .mute { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--demo-line); }
+.dot-new { background: var(--demo-red); }
+.detail { display: grid; gap: 8px; font-size: 14px; }
+.detail div { display: grid; grid-template-columns: 76px 1fr; gap: 10px; }
+.detail dt { color: var(--demo-mute); }
+.route { width: 100%; height: auto; color: var(--demo-ink); }
+.app-bar { display: flex; align-items: center; gap: 6px; padding: 10px 6px 4px; }
+.app-bar .switch { margin-left: auto; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.app-bar button { padding: 5px 12px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-size: 13px; font-weight: 550; }
+.app-bar button:hover { border-color: var(--demo-blue); color: var(--demo-blue); }
+@media (max-height: 400px) {
+  .app-head { padding-block: 6px; }
+  .app-screen { aspect-ratio: 16 / 7.5; }
+  .view { padding: 10px 14px; gap: 6px; }
+  .rows li { padding: 4px 0; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .app { width: 460px; }
+}
+.r-path { stroke: var(--demo-blue); }
+.r-start { fill: var(--demo-ink); }
+.r-end { fill: var(--demo-red); }
+.r-car { fill: var(--demo-paper); stroke: var(--demo-blue); }

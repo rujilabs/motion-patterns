@@ -1,0 +1,19 @@
+{
+  "name": "Cube transition",
+  "slug": "cube",
+  "kind": "pattern",
+  "summary": "Four views sit on the side faces of a 3D cube that turns a quarter to bring the next one round, with a slight dip back mid-turn. Side or top axis.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

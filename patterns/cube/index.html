@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cube transition demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="cube.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="trip sheet" aria-labelledby="cb-h">
+    <div class="cube trip-screen" id="cb-cube" data-cube aria-live="polite">
+      <div class="cube-box">
+        <figure class="cube-face day">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="180" fill="#bfe0f7"/>
+            <circle cx="250" cy="42" r="16" fill="#fff1b8"/>
+            <rect y="96" width="320" height="50" fill="#5aa0cf"/>
+            <path d="M30 112h46 M150 124h60 M240 108h36" stroke="#9ccbec" stroke-width="2" stroke-linecap="round"/>
+            <path d="M0 146 C80 132 200 134 320 142 V180 H0Z" fill="#ecd9ae"/>
+            <path d="M64 150 V104" stroke="#6b5a45" stroke-width="3"/><path d="M64 104 c-20 0 -30 8 -34 14 M64 104 c18 -2 30 6 34 12 M64 104 c-6 -10 -18 -14 -26 -12" fill="none" stroke="#5c7a52" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <figcaption><b>Day 1</b> Pantai Pasir Putih</figcaption>
+        </figure>
+        <figure class="cube-face day">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="180" fill="#dcebe3"/>
+            <path d="M0 120 L80 54 L150 110 L214 40 L320 116 V180 H0Z" fill="#7da57f"/>
+            <path d="M0 150 L110 110 L220 140 L320 120 V180 H0Z" fill="#5b8460"/>
+            <path d="M60 176 C110 150 130 150 160 132 S200 100 214 60" fill="none" stroke="#f4f1ec" stroke-width="2" stroke-dasharray="5 5"/>
+            <path d="M210 40 v-14 l12 5 l-12 5" fill="#c4553b"/>
+          </svg>
+          <figcaption><b>Day 2</b> Bukit Tenang trail</figcaption>
+        </figure>
+        <figure class="cube-face day">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="180" fill="#f2e6d6"/>
+            <rect y="140" width="320" height="40" fill="#c9b79e"/>
+            <g fill="#f8f4ee" stroke="#a8927a"><rect x="20" y="80" width="80" height="60"/><rect x="120" y="70" width="80" height="70"/><rect x="220" y="84" width="80" height="56"/></g>
+            <path d="M14 80 l46 -22 l46 22Z M114 70 l46 -24 l46 24Z M214 84 l46 -20 l46 20Z" fill="#c4553b"/>
+            <path d="M32 120 h56 M132 112 h56 M232 120 h56" stroke="#e9b949" stroke-width="10"/>
+          </svg>
+          <figcaption><b>Day 3</b> Pekan market</figcaption>
+        </figure>
+        <figure class="cube-face day">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="180" fill="#1d2440"/>
+            <g fill="#e9e6d6"><circle cx="40" cy="30" r="1.2"/><circle cx="120" cy="20" r="1"/><circle cx="200" cy="44" r="1.3"/><circle cx="290" cy="26" r="1"/></g>
+            <path d="M262 30 a18 18 0 1 0 16 26 a14 14 0 1 1 -16 -26Z" fill="#f3efd8"/>
+            <rect y="112" width="320" height="68" fill="#24335c"/>
+            <path d="M90 112 h120 l-14 18 h-92Z" fill="#e9e6d6"/><rect x="118" y="96" width="56" height="16" fill="#e9e6d6"/>
+            <g fill="#ffcf6a"><rect x="126" y="101" width="8" height="5"/><rect x="142" y="101" width="8" height="5"/><rect x="158" y="101" width="8" height="5"/></g>
+            <path d="M60 150 h40 M200 160 h50" stroke="#3a4d7f" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <figcaption><b>Day 4</b> Night ferry home</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="trip-bar">
+      <h1 id="cb-h">Pulau Tenang, four days</h1>
+      <div class="trip-btns">
+        <button type="button" data-cube-go="prev" aria-controls="cb-cube">Back</button>
+        <button type="button" data-cube-go="next" aria-controls="cb-cube">Next</button>
+      </div>
+      <label class="switch"><input type="checkbox" data-cube-y aria-controls="cb-cube"> Turn over the top</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

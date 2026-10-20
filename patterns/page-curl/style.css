@@ -1,0 +1,76 @@
+/*
+ * page-curl: the top page peels away from its bottom right corner and turns over, showing the
+ * next page under it. The fold is a straight line at 45 degrees that travels from the corner to
+ * the top left. Everything past the fold is cut from the page (clip-path) and drawn again as the
+ * back of the paper, mirrored across the fold (.curl-flap), with a shade along the crease and a
+ * soft shadow on the page below.
+ *
+ * .curl-stack  the frame, a size container: give it a width and a height (or aspect-ratio).
+ *              Views stack in one cell; the one on show has .is-current.
+ * curl.js puts .is-top on the page that turns, .is-under on the one it shows, and .is-turning
+ * on the stack. .curl-back on the stack plays it backwards: a page lays itself back down.
+ *
+ * --curl-s is where the fold crosses the diagonal, as x + y in pixels from the top left corner:
+ * the width plus the height at the start, 0 when the page is gone.
+ */
+@property --curl-s { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+.curl-stack { --curl-dur: calc(var(--dur-slow) * 1.2); container-type: size; position: relative; display: grid; overflow: clip; }
+.curl-stack > :not(.curl-flap) { grid-area: 1 / 1; }
+.curl-stack > :not(.curl-flap):not(.is-current):not(.is-top):not(.is-under) { visibility: hidden; }
+.curl-stack .is-top { z-index: 1; }
+
+/* the page that turns keeps only what is before the fold */
+.curl-stack.is-turning .is-top,
+.curl-stack.is-turning .curl-flap > * {
+  animation: curl-turn var(--curl-dur) var(--ease-inout) both;
+}
+.curl-stack.is-turning.curl-back .is-top,
+.curl-stack.is-turning.curl-back .curl-flap > * { animation-direction: reverse; }
+@keyframes curl-turn {
+  from { --curl-s: calc(100cqw + 100cqh); }
+  to   { --curl-s: 0px; }
+}
+.curl-stack.is-turning .is-top {
+  clip-path: polygon(
+    0 0,
+    min(var(--curl-s), 100cqw) 0,
+    min(var(--curl-s), 100cqw) clamp(0px, var(--curl-s) - 100cqw, 100cqh),
+    clamp(0px, var(--curl-s) - 100cqh, 100cqw) min(var(--curl-s), 100cqh),
+    0 min(var(--curl-s), 100cqh)
+  );
+}
+
+/* the back of the paper: the cut part, mirrored across the line x + y = s */
+.curl-flap {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  filter: drop-shadow(-3px -3px 6px rgb(0 0 0 / .22));
+}
+.curl-stack:not(.is-turning) .curl-flap { visibility: hidden; }
+.curl-flap > * {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  transform-origin: 0 0;
+  transform: translate(var(--curl-s), var(--curl-s)) matrix(0, -1, -1, 0, 0, 0);
+  clip-path: polygon(
+    min(var(--curl-s), 100cqw) clamp(0px, var(--curl-s) - 100cqw, 100cqh),
+    100cqw clamp(0px, var(--curl-s) - 100cqw, 100cqh),
+    100cqw 100cqh,
+    clamp(0px, var(--curl-s) - 100cqh, 100cqw) 100cqh,
+    clamp(0px, var(--curl-s) - 100cqh, 100cqw) min(var(--curl-s), 100cqh)
+  );
+  /* a dark crease at the fold, a light band where the paper bends, then flat paper */
+  background:
+    linear-gradient(135deg,
+      #0000 calc(var(--curl-s) * .7071),
+      rgb(0 0 0 / .16) calc(var(--curl-s) * .7071),
+      rgb(255 255 255 / .5) calc(var(--curl-s) * .7071 + 24px),
+      #0000 calc(var(--curl-s) * .7071 + 90px)),
+    var(--curl-back, #ece7dd);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* no turn: curl.js swaps the pages at once; nothing is cut or drawn */
+  .curl-stack.is-turning .is-top,
+  .curl-stack.is-turning .curl-flap > * { animation: none; clip-path: none; }
+  .curl-flap { display: none; }
+}

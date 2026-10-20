@@ -1,0 +1,21 @@
+{
+  "name": "Blinds transition",
+  "slug": "blinds",
+  "kind": "pattern",
+  "summary": "The next view appears through slats like window blinds: bands that widen until they meet, or solid slats that turn shut on their long axis and open again on the new view.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-base",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Exploded view",
+  "slug": "exploded-view",
+  "kind": "pattern",
+  "summary": "An object drawn as flat isometric layers lifts apart along its vertical axis, labels slide out beside each layer, then it closes up again. A loop with a pause, or held open by a class.",
+  "category": "scene",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out",
+    "--dur-slow",
+    "--dur-quick",
+    "--stagger"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

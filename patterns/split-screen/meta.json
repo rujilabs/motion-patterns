@@ -1,0 +1,19 @@
+{
+  "name": "Split screen",
+  "slug": "split-screen",
+  "kind": "pattern",
+  "summary": "One scene fills the frame, then it splits into two or three panels: the first narrows while the others slide in from the edge, each centred in its own panel. Side by side or stacked.",
+  "category": "transition",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow",
+    "--stagger"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

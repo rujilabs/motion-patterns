@@ -1,0 +1,48 @@
+/*
+ * split-screen: one scene fills the frame, then the frame splits into two or three panels. The
+ * first scene narrows into its panel while the others slide in from the right edge, each one
+ * centred in its own panel, with a thin seam between them. Back to one, and they slide out again.
+ *
+ * Every panel is the full frame, cut to its window with clip-path and shifted so its middle sits
+ * in the middle of that window. Two registered numbers per panel drive it: --split-l and
+ * --split-r, the window's left and right edges as fractions of the frame (0 to 1).
+ *
+ * .split           the frame, up to three panels as children
+ * .split-2/-3      on .split: two or three panels side by side (none: one panel)
+ * .split-rows      on .split: panels stack top to bottom instead
+ * .split-to-1/2/3  radio inputs anywhere in a .split-group switch it with no script
+ */
+@property --split-l { syntax: "<number>"; inherits: false; initial-value: 0; }
+@property --split-r { syntax: "<number>"; inherits: false; initial-value: 1; }
+
+.split { --split-seam: 2px; display: grid; overflow: clip; }
+.split > * {
+  --split-t: calc((var(--split-l) + var(--split-r)) / 2 - .5);
+  grid-area: 1 / 1;
+  translate: calc(var(--split-t) * 100%) 0;
+  clip-path: inset(0 calc((1 - var(--split-r) + var(--split-t)) * 100%) 0 calc((var(--split-l) - var(--split-t)) * 100% + var(--split-l) * var(--split-seam)));
+  transition: --split-l var(--dur-slow) var(--ease-inout), --split-r var(--dur-slow) var(--ease-inout);
+}
+.split-rows > * {
+  translate: 0 calc(var(--split-t) * 100%);
+  clip-path: inset(calc((var(--split-l) - var(--split-t)) * 100% + var(--split-l) * var(--split-seam)) 0 calc((1 - var(--split-r) + var(--split-t)) * 100%) 0);
+}
+.split > :nth-child(1) { --split-l: 0; --split-r: 1; }
+.split > :nth-child(2), .split > :nth-child(3) { --split-l: 1; --split-r: 1; }
+.split > :nth-child(3) { transition-delay: var(--stagger); }
+
+:is(.split.split-2, .split-group:has(.split-to-2:checked) .split) > :nth-child(1) { --split-r: .5; }
+:is(.split.split-2, .split-group:has(.split-to-2:checked) .split) > :nth-child(2) { --split-l: .5; }
+
+:is(.split.split-3, .split-group:has(.split-to-3:checked) .split) > :nth-child(1) { --split-r: .3333; }
+:is(.split.split-3, .split-group:has(.split-to-3:checked) .split) > :nth-child(2) { --split-l: .3333; --split-r: .6667; }
+:is(.split.split-3, .split-group:has(.split-to-3:checked) .split) > :nth-child(3) { --split-l: .6667; }
+
+/* a radio for one panel wins over a split class */
+.split-group:has(.split-to-1:checked) .split > :nth-child(1) { --split-r: 1; }
+.split-group:has(.split-to-1:checked) .split > :nth-child(n + 2) { --split-l: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the panels change at once */
+  .split > *, .split > :nth-child(3) { transition: none; }
+}

@@ -1,0 +1,39 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.wall { width: min(440px, 100%); display: grid; gap: 12px; }
+/* the pages hang on the table; the binding strip sits on top of the stack */
+.wall-cal { aspect-ratio: 16 / 10; min-height: 0; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-table); }
+.month { display: grid; grid-template-columns: 38% 1fr; background: var(--demo-paper); }
+.month-art { display: block; width: 100%; height: 100%; }
+.month-body { display: grid; align-content: start; gap: 8px; padding: 14px 16px; min-width: 0; }
+.month-body h2 { font-size: 18px; font-weight: 700; }
+.month-body h2 .mute { font-weight: 450; }
+.grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px 0; font-size: 11px; text-align: center; }
+.grid b { font-weight: 600; color: var(--demo-mute); font-size: 10px; }
+.grid span { padding: 1px 0; }
+.grid .mark { color: var(--demo-paper); background: var(--demo-red); border-radius: 50%; font-weight: 600; justify-self: center; width: 1.9em; }
+.note { font-size: 12px; color: var(--demo-mute); }
+.wall-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.wall-bar h1 { font-size: 15px; font-weight: 650; margin-right: auto; }
+.wall-btns { display: flex; gap: 6px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.wall-btns button { padding: 5px 12px; border: 1px solid var(--demo-line); border-radius: 6px; background: var(--demo-paper); font-size: 13px; font-weight: 550; }
+.wall-btns button:hover { border-color: var(--demo-blue); color: var(--demo-blue); }
+@media (prefers-color-scheme: dark) {
+  .curl-stack { --curl-back: #2a323d; }
+}
+@media (max-width: 420px) {
+  .month { grid-template-columns: 30% 1fr; }
+  .month-body { padding: 10px 12px; gap: 6px; }
+  .month-body h2 { font-size: 16px; }
+  .grid { font-size: 10px; gap: 0; }
+  .note { display: none; }
+}
+@media (max-height: 420px) {
+  .wall-cal { aspect-ratio: 16 / 8.6; }
+  .month-body { padding: 8px 12px; gap: 4px; }
+  .grid { gap: 0; font-size: 10px; }
+  .note { display: none; }
+}
+@media (min-width: 900px) and (min-height: 560px) {
+  .wall { width: 500px; }
+}

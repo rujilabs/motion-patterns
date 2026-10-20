@@ -1,0 +1,101 @@
+/*
+ * exploded-view: an object drawn as flat layers in an isometric view. The layers separate along
+ * the vertical axis to show what is inside, labels slide out beside each one, then the object
+ * closes up again. Orthographic (no perspective), so every label lines up with its layer.
+ *
+ * .xv          the scene. Holds one .xv-object (the layers, .xv-part) and one .xv-labels list.
+ *              Up to 6 parts and labels, bottom layer first; nth-child gives each its index.
+ * .xv-open     on .xv: held apart. Toggle it from your own control; the move is a transition.
+ * .xv-loop     on .xv: opens, holds, closes and holds again on a 6s loop. Hover, focus or a
+ *              .xv-pause checkbox inside an .xv-group stops it.
+ *
+ * --xv-gap     distance between layers when open (default 34px). The labels rise by the same
+ *              distance times sin(60deg), which is how far a layer rises on screen.
+ */
+.xv { --xv-gap: 34px; --xv-shut: 3px; display: grid; place-items: center; }
+.xv-object, .xv-labels { grid-area: 1 / 1; }
+.xv-object {
+  position: relative;
+  width: var(--xv-w, 170px);
+  height: var(--xv-h, 100px);
+  transform-style: preserve-3d;
+  transform: rotateX(60deg) rotateZ(-38deg);
+}
+.xv-part {
+  position: absolute; inset: 0;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--xv-i, 0) * var(--xv-shut)));
+  transition: transform var(--dur-slow) var(--ease-inout);
+  transition-delay: calc((5 - var(--xv-i, 0)) * var(--stagger));
+}
+/* a darker copy under each plate reads as its thickness */
+.xv-part::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: rgb(0 0 0 / .35);
+  transform: translateZ(-3px);
+}
+.xv-labels { position: relative; width: 0; height: 0; pointer-events: none; }
+.xv-labels > * {
+  position: absolute; left: 0; top: 0;
+  translate: var(--xv-label-x, 110px) -50%;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity var(--dur-quick) var(--ease-out), transform var(--dur-slow) var(--ease-inout);
+  transition-delay: 0s, calc((5 - var(--xv-i, 0)) * var(--stagger));
+}
+.xv-object > :nth-child(1), .xv-labels > :nth-child(1) { --xv-i: 0; }
+.xv-object > :nth-child(2), .xv-labels > :nth-child(2) { --xv-i: 1; }
+.xv-object > :nth-child(3), .xv-labels > :nth-child(3) { --xv-i: 2; }
+.xv-object > :nth-child(4), .xv-labels > :nth-child(4) { --xv-i: 3; }
+.xv-object > :nth-child(5), .xv-labels > :nth-child(5) { --xv-i: 4; }
+.xv-object > :nth-child(6), .xv-labels > :nth-child(6) { --xv-i: 5; }
+
+/* held open: transitions, the top layer leaves first and comes back last */
+.xv-open .xv-part {
+  transform: translateZ(calc(var(--xv-i) * var(--xv-gap)));
+  transition-delay: calc(var(--xv-i) * var(--stagger));
+}
+.xv-open .xv-labels > * {
+  opacity: 1;
+  transform: translateY(calc(var(--xv-i) * var(--xv-gap) * -.866));
+  transition-delay: calc(var(--dur-slow) * .6), calc(var(--xv-i) * var(--stagger));
+}
+
+/* the loop: shut, open, hold, shut, hold */
+.xv-loop .xv-part,
+.xv-loop .xv-labels > * {
+  transition: none;
+  animation: xv-part var(--xv-cycle, 6s) var(--ease-inout) infinite both;
+  animation-delay: calc(var(--xv-i) * var(--stagger));
+}
+.xv-loop .xv-labels > * { animation-name: xv-label; }
+@keyframes xv-part {
+  0%, 12%   { transform: translateZ(calc(var(--xv-i) * var(--xv-shut))); }
+  30%, 70%  { transform: translateZ(calc(var(--xv-i) * var(--xv-gap))); }
+  88%, 100% { transform: translateZ(calc(var(--xv-i) * var(--xv-shut))); }
+}
+@keyframes xv-label {
+  0%, 12%   { transform: translateY(0); opacity: 0; }
+  27%       { opacity: 0; }
+  30%, 70%  { transform: translateY(calc(var(--xv-i) * var(--xv-gap) * -.866)); opacity: 1; }
+  73%       { opacity: 0; }
+  88%, 100% { transform: translateY(0); opacity: 0; }
+}
+.xv-loop:hover .xv-part, .xv-loop:hover .xv-labels > *,
+.xv-loop:focus-within .xv-part, .xv-loop:focus-within .xv-labels > *,
+.xv-group:has(.xv-pause :checked) .xv-loop .xv-part,
+.xv-group:has(.xv-pause :checked) .xv-loop .xv-labels > * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the final state is the open one: every layer apart and labelled, nothing moving */
+  .xv .xv-part, .xv.xv-loop .xv-part, .xv.xv-open .xv-part {
+    animation: none; transition: none;
+    transform: translateZ(calc(var(--xv-i) * var(--xv-gap)));
+  }
+  .xv .xv-labels > *, .xv.xv-loop .xv-labels > *, .xv.xv-open .xv-labels > * {
+    animation: none; transition: none; opacity: 1;
+    transform: translateY(calc(var(--xv-i) * var(--xv-gap) * -.866));
+  }
+  .xv-pause { display: none; }
+}

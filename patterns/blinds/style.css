@@ -1,0 +1,65 @@
+/*
+ * blinds: the next view appears through slats, like window blinds. Views stack in one grid cell;
+ * the one on show has .is-current. blinds.js plays one of two kinds:
+ *
+ * blinds-open  the next view sits on top and shows through slats that widen until they meet.
+ *              A repeating mask whose band width is a registered number (--blinds-p, 0 to 1).
+ * blinds-turn  a .blinds-cover of solid slats turns shut over the current view (each slat
+ *              rotates on its long axis), the view changes behind it, then the slats turn open
+ *              the other way. blinds.js fills the cover with --blinds-n slats.
+ * blinds-v     on the stack: upright slats for both kinds.
+ */
+@property --blinds-p { syntax: "<number>"; inherits: false; initial-value: 1; }
+
+.blinds-stack { --blinds-n: 8; position: relative; display: grid; overflow: clip; }
+.blinds-stack > :not(.blinds-cover) { grid-area: 1 / 1; }
+.blinds-stack > :not(.blinds-cover):not(.is-current):not(.blinds-in) { visibility: hidden; }
+
+/* open: the incoming view through widening bands */
+.blinds-in { z-index: 1; }
+.blinds-in.blinds-open {
+  --blinds-size: calc(100% / var(--blinds-n));
+  mask-image: repeating-linear-gradient(to bottom, #000 0 calc(var(--blinds-size) * var(--blinds-p)), #0000 0 var(--blinds-size));
+  animation: blinds-open var(--dur-slow) var(--ease-inout) both;
+}
+.blinds-v .blinds-in.blinds-open {
+  mask-image: repeating-linear-gradient(to right, #000 0 calc(var(--blinds-size) * var(--blinds-p)), #0000 0 var(--blinds-size));
+}
+@keyframes blinds-open { from { --blinds-p: 0; } to { --blinds-p: 1; } }
+
+/* turn: solid slats on a cover, each rotating on its own long axis */
+.blinds-cover {
+  position: absolute; inset: 0; z-index: 2; display: grid; pointer-events: none;
+  grid-template-rows: repeat(var(--blinds-n), 1fr);
+  perspective: 600px;
+}
+.blinds-cover > * {
+  background: linear-gradient(var(--blinds-color, #e7e2d8), var(--blinds-shade, #cfc8ba));
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / .12);
+  transform: rotateX(90deg);
+  margin-bottom: -1px;
+}
+.blinds-cover:not(.is-closing):not(.is-opening) { visibility: hidden; }
+.blinds-cover.is-closing > * { animation: blinds-shut var(--dur-base) var(--ease-inout) both; }
+.blinds-cover.is-opening > * { animation: blinds-unshut var(--dur-base) var(--ease-inout) both; }
+.blinds-cover.is-closing > *,
+.blinds-cover.is-opening > * { animation-delay: calc(var(--blinds-i, 0) * var(--stagger) * .5); }
+@keyframes blinds-shut { from { transform: rotateX(90deg); } to { transform: rotateX(0deg); } }
+@keyframes blinds-unshut { from { transform: rotateX(0deg); } to { transform: rotateX(-90deg); } }
+.blinds-v .blinds-cover { grid-template-rows: none; grid-template-columns: repeat(var(--blinds-n), 1fr); }
+.blinds-v .blinds-cover > * {
+  background: linear-gradient(to right, var(--blinds-color, #e7e2d8), var(--blinds-shade, #cfc8ba));
+  box-shadow: inset -1px 0 0 rgb(0 0 0 / .12);
+  transform: rotateY(90deg);
+  margin: 0 -1px 0 0;
+}
+.blinds-v .blinds-cover.is-closing > * { animation-name: blinds-shut-v; }
+.blinds-v .blinds-cover.is-opening > * { animation-name: blinds-unshut-v; }
+@keyframes blinds-shut-v { from { transform: rotateY(90deg); } to { transform: rotateY(0deg); } }
+@keyframes blinds-unshut-v { from { transform: rotateY(0deg); } to { transform: rotateY(-90deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .blinds-stack .blinds-in.blinds-open,
+  .blinds-cover.is-closing > *, .blinds-cover.is-opening > * { animation: none; }
+  .blinds-stack .blinds-in.blinds-open { mask-image: none; }
+}

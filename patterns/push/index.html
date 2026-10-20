@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Push transition demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="push.js"></script>
+</head>
+<body>
+<main class="stage">
+  <section class="app sheet" aria-labelledby="ps-h">
+    <header class="app-head">
+      <h1 id="ps-h">Kedai Rasa, orders</h1>
+      <span class="mute">Today, 14:20</span>
+    </header>
+    <div class="push-stack app-screen" id="ps-views" data-push aria-live="polite">
+      <article class="view is-current" aria-label="Order list">
+        <p class="view-k">Open orders</p>
+        <ul class="rows">
+          <li><span class="dot dot-new"></span><b>#2041</b><span class="mute">Nasi lemak x2</span><span class="num">RM 18.00</span></li>
+          <li><span class="dot"></span><b>#2040</b><span class="mute">Teh tarik x3</span><span class="num">RM 7.50</span></li>
+          <li><span class="dot"></span><b>#2038</b><span class="mute">Roti canai x4</span><span class="num">RM 8.00</span></li>
+        </ul>
+      </article>
+      <article class="view" aria-label="Order 2041">
+        <p class="view-k">Order #2041</p>
+        <dl class="detail">
+          <div><dt>Customer</dt><dd>Aina, Taman Melur</dd></div>
+          <div><dt>Items</dt><dd>Nasi lemak x2, sambal on the side</dd></div>
+          <div><dt>Total</dt><dd class="num">RM 18.00, paid</dd></div>
+        </dl>
+      </article>
+      <article class="view" aria-label="Delivery route">
+        <p class="view-k">On the way, 6 min</p>
+        <svg class="route" viewBox="0 0 300 110" aria-hidden="true">
+          <path d="M0 30 H300 M0 80 H300 M70 0 V110 M190 0 V110" stroke="currentColor" stroke-opacity=".14" stroke-width="10"/>
+          <path d="M30 80 H190 V30 H262" class="r-path" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6"/>
+          <circle class="r-start" cx="30" cy="80" r="6"/>
+          <circle class="r-end" cx="262" cy="30" r="7"/>
+          <circle class="r-car" cx="190" cy="56" r="5" stroke-width="3"/>
+        </svg>
+      </article>
+    </div>
+    <div class="app-bar">
+      <button type="button" data-push-go="prev" aria-controls="ps-views">Back</button>
+      <button type="button" data-push-go="next" aria-controls="ps-views">Next</button>
+      <label class="switch"><input type="checkbox" data-push-axis aria-controls="ps-views"> Vertical</label>
+    </div>
+  </section>
+</main>
+</body>
+</html>

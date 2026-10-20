@@ -1,0 +1,18 @@
+/*
+ * shatter: the view breaks into shards around an impact point, the shards jolt apart and fall
+ * away under gravity, nearest first, and the next view is already there underneath.
+ * Views stack in a .shatter-stack; the one on show has .is-current. shatter.js swaps the views
+ * at once and covers the change with a .shatter-shards layer: copies of the old view, each cut to
+ * one shard (clip-path) and moved with the Web Animations API, so the fall shows on the timeline.
+ */
+.shatter-stack { position: relative; display: grid; overflow: clip; }
+.shatter-stack > :not(.shatter-shards) { grid-area: 1 / 1; }
+.shatter-stack > :not(.shatter-shards):not(.is-current) { visibility: hidden; }
+.shatter-shards { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.shatter-shard { position: absolute; inset: 0; display: grid; will-change: transform, opacity; }
+.shatter-shard > * { visibility: visible; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no shards: shatter.js swaps the views at once, and any layer stays hidden */
+  .shatter-shards { display: none; }
+}

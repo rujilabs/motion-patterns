@@ -1,0 +1,36 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.spec { width: min(440px, 100%); padding: 16px; display: grid; gap: 8px; overflow: clip; }
+.spec-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.spec-head h1 { font-size: 16px; font-weight: 650; }
+.spec-head p { font-size: 13px; }
+/* the scene: object left of centre, labels to its right */
+.scene { height: 270px; padding-right: 150px; padding-top: 110px; border-radius: 6px; }
+.p-shell { background: #3b4552; }
+.p-battery { inset: 16px 46px 16px 22px; background: #aab3bf; border-radius: 6px; }
+.p-battery::after { content: ""; position: absolute; right: -6px; top: 50%; width: 6px; height: 18px; translate: 0 -50%; border-radius: 0 2px 2px 0; background: #aab3bf; }
+.p-board { inset: 8px 10px; border-radius: 7px; background:
+  linear-gradient(#1e2229, #1e2229) 22px 18px / 34px 26px no-repeat,
+  linear-gradient(#1e2229, #1e2229) 70px 18px / 18px 18px no-repeat,
+  linear-gradient(#c9a64a, #c9a64a) 70px 46px / 40px 10px no-repeat,
+  linear-gradient(#1e2229, #1e2229) 112px 30px / 22px 34px no-repeat,
+  #3f7f5f; }
+.p-display { background: linear-gradient(135deg, #24406b, #12203a 60%); }
+.p-glass { background: linear-gradient(135deg, rgb(255 255 255 / .45), rgb(220 235 255 / .12) 55%); border: 1px solid rgb(255 255 255 / .8); }
+.p-glass::before { background: rgb(160 190 230 / .25); }
+.xv-labels li { display: flex; gap: 6px; white-space: nowrap; font-size: 12px; font-weight: 600; line-height: 1.25; padding-left: 10px; border-left: 1px solid var(--demo-blue); }
+.xv-labels li span { font-weight: 450; color: var(--demo-mute); }
+/* a blue pencil leader from the label back towards its layer */
+.xv-labels li::before { content: ""; position: absolute; right: 100%; top: 50%; width: 34px; border-top: 1px solid var(--demo-blue); }
+.xv-labels li::after { content: ""; position: absolute; right: calc(100% + 32px); top: 50%; width: 5px; height: 5px; translate: 0 -50%; border-radius: 50%; background: var(--demo-red); }
+@media (max-width: 420px) {
+  .spec { padding: 14px 12px; }
+  .scene { --xv-w: 130px; --xv-h: 78px; --xv-label-x: 88px; padding-right: 120px; }
+  .xv-labels li::before { width: 24px; }
+  .xv-labels li::after { right: calc(100% + 22px); }
+}
+@media (max-height: 420px) {
+  .spec { padding: 12px; gap: 4px; }
+  .spec-head p { display: none; }
+  .scene { --xv-gap: 24px; --xv-w: 130px; --xv-h: 78px; --xv-label-x: 88px; height: 200px; padding-top: 80px; }
+  .xv-labels li { font-size: 11px; }
+}

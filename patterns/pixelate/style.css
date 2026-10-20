@@ -1,0 +1,39 @@
+/*
+ * pixelate: the view breaks into bigger and bigger blocks of colour, the next view takes over at
+ * the coarsest step, then it resolves block size by block size until it is sharp.
+ * The blocks come from SVG filters in your page (one per block size, see README): each samples one
+ * point per cell and spreads it over the cell. Filter urls do not interpolate, so each keyframe
+ * is one hard step, which is exactly how pixels should change.
+ *
+ * .pixelate-out  on the current view: sharp to 33px blocks
+ * .pixelate-in   on the next view: 33px blocks to sharp
+ * pixelate.js swaps the classes and the views. Views stack in a .pixelate-stack; the one on
+ * show has .is-current.
+ */
+.pixelate-stack { --pixelate-dur: var(--dur-base); display: grid; overflow: clip; }
+.pixelate-stack > * { grid-area: 1 / 1; }
+.pixelate-stack > :not(.is-current) { visibility: hidden; }
+
+.pixelate-out { animation: pixelate-out var(--pixelate-dur) linear both; }
+.pixelate-in { animation: pixelate-in var(--pixelate-dur) linear both; }
+@keyframes pixelate-out {
+  0%   { filter: none; }
+  20%  { filter: url(#px-5); }
+  40%  { filter: url(#px-9); }
+  60%  { filter: url(#px-15); }
+  80%  { filter: url(#px-23); }
+  100% { filter: url(#px-33); }
+}
+@keyframes pixelate-in {
+  0%   { filter: url(#px-33); }
+  20%  { filter: url(#px-23); }
+  40%  { filter: url(#px-15); }
+  60%  { filter: url(#px-9); }
+  80%  { filter: url(#px-5); }
+  100% { filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* no blocks: the next view simply replaces the current one */
+  .pixelate-stack .pixelate-out, .pixelate-stack .pixelate-in { animation: none; filter: none; }
+}

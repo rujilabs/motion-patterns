@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exploded view demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <section class="xv-group spec sheet" aria-labelledby="xv-h">
+    <div class="spec-head">
+      <div>
+        <h1 id="xv-h">Handset T2, inside</h1>
+        <p class="mute">Five layers, from the back.</p>
+      </div>
+      <label class="xv-pause switch"><input type="checkbox"> Pause</label>
+    </div>
+    <div class="xv xv-loop scene" tabindex="0" role="img" aria-label="The handset's layers lift apart: back shell, battery, logic board, display and cover glass, then close up again">
+      <div class="xv-object" aria-hidden="true">
+        <div class="xv-part p-shell"></div>
+        <div class="xv-part p-battery"></div>
+        <div class="xv-part p-board"></div>
+        <div class="xv-part p-display"></div>
+        <div class="xv-part p-glass"></div>
+      </div>
+      <ol class="xv-labels" aria-hidden="true">
+        <li>Back shell <span>aluminium</span></li>
+        <li>Battery <span class="num">4,000 mAh</span></li>
+        <li>Logic board <span>8 chips</span></li>
+        <li>Display <span class="num">6.1 in</span></li>
+        <li>Cover glass <span class="num">0.6 mm</span></li>
+      </ol>
+    </div>
+  </section>
+</main>
+</body>
+</html>

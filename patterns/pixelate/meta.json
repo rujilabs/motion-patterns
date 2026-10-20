@@ -1,0 +1,19 @@
+{
+  "name": "Pixelate",
+  "slug": "pixelate",
+  "kind": "pattern",
+  "summary": "The view breaks into bigger and bigger blocks of colour, the next view takes over at the coarsest step and resolves block by block until it is sharp. SVG filters stepped by CSS.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

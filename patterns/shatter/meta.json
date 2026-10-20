@@ -1,0 +1,20 @@
+{
+  "name": "Shatter",
+  "slug": "shatter",
+  "kind": "pattern",
+  "summary": "The view cracks into shards around the click point; they jolt apart and fall away under gravity, nearest first, revealing the next view. Web Animations on clipped copies.",
+  "category": "transition",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-in",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-20"
+}

@@ -1,0 +1,45 @@
+/*
+ * cube: four views sit on the four side faces of a cube, and the cube turns a quarter to bring
+ * the next face round. The box is pushed back by half its width so the front face sits flat on
+ * the frame; while it turns, the frame dips back a little so the near edge does not grow past it.
+ *
+ * .cube       the frame. It is a size container, so give it a width and a height (or aspect-ratio).
+ * .cube-box   holds the four .cube-face views. cube.js sets --cube-turn (a whole number) on .cube;
+ *             each step of 1 is a quarter turn, and it keeps counting, so the cube always turns
+ *             the way you went.
+ * .cube-y     on .cube: turns over the top edge instead of the side.
+ */
+.cube {
+  --cube-turn: 0;
+  container-type: size;
+  display: grid;
+  perspective: var(--cube-depth, 1100px);
+}
+.cube-box {
+  display: grid;
+  transform-style: preserve-3d;
+  transform: translateZ(-50cqi) rotateY(calc(var(--cube-turn) * -90deg));
+  transition: transform var(--dur-slow) var(--ease-inout);
+}
+.cube-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(calc(var(--cube-i, 0) * 90deg)) translateZ(50cqi);
+}
+.cube-face:nth-child(2) { --cube-i: 1; }
+.cube-face:nth-child(3) { --cube-i: 2; }
+.cube-face:nth-child(4) { --cube-i: 3; }
+
+.cube-y .cube-box { transform: translateZ(-50cqb) rotateX(calc(var(--cube-turn) * 90deg)); }
+.cube-y .cube-face { transform: rotateX(calc(var(--cube-i, 0) * -90deg)) translateZ(50cqb); }
+
+/* the dip: cube.js adds .is-turning for the length of one turn */
+.cube.is-turning { animation: cube-dip var(--dur-slow) var(--ease-inout); }
+@keyframes cube-dip { 50% { transform: scale(.86); } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no turn: the next face is simply there */
+  .cube-box { transition: none; }
+  .cube.is-turning { animation: none; }
+}
