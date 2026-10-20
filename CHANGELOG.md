@@ -5,6 +5,45 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.3.0] - 2026-10-20
+
+### Added
+
+- **site:** Live timelines under every demo, entry pages, curve plots
+- **patterns:** New demo for every pattern, pulse dot thump
+- **templates:** Rework paper diorama, squeeze headline and stamp collage
+- **split-flap-board:** Add ferry departures board template
+- **patterns:** Add chart and state patterns
+- **site:** Transition, camera and look categories
+- **patterns:** Add entrance, polish and transition patterns
+- **patterns:** Add camera move and shot style patterns
+- **patterns:** Add choosing and switching control patterns
+- **patterns:** Add film cut and wipe transition patterns
+- **patterns:** Add overlay patterns: modal, drawer, sheet, menus, toast
+- **patterns:** Add hover and click interaction patterns
+- **patterns:** Add loading, page transition and ambient patterns
+- **patterns:** Add photo lighting looks
+- **patterns:** Add navigation, status and scroll patterns
+- **patterns:** Add tone and finishing looks
+- **patterns:** Add lens and camera looks
+- **patterns:** Add animation principle patterns
+- **patterns:** Add text and shape patterns
+- **patterns:** Add 3D, paper and break-apart transitions
+- **site:** One motion-<category>.css per category, filters in category order
+
+### Fixed
+
+- **site:** Scale tall pattern demos to fit their stage
+- **cube:** Keep the faces off the caption in a short frame; fix(line-boil): side by side in a short frame
+
+### Performance
+
+- **split-flap-board:** Build the moving flaps only while a cell turns
+- **paper-diorama-hero:** Promote layers only while the pointer moves them
+- **site:** Smooth scrolling on the gallery
+- **site:** Unload gallery demos far off screen
+
+
 ## [0.2.0] - 2026-10-13
 
 ### Added

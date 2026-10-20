@@ -1,6 +1,6 @@
 {
   "name": "motion-patterns",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "A credited collection of web motion: small CSS patterns and full scenes, each with a live demo and a reduced-motion state.",
   "license": "MIT",
