@@ -1,0 +1,21 @@
+/*
+ * scroll-weight: a scroll-driven part that trails the scroll instead of riding it. Give a door, a shutter
+ * or a card its move as an ordinary keyframe animation; scroll-weight.js holds it paused and scrubs it to
+ * its scene's scroll progress through a critically damped spring. The part starts a beat late and lands
+ * softly, while everything without .weight keeps moving 1:1 with the scroll. That gap reads as mass.
+ *
+ * .weight                the part. Its own animation is the move from 0% (scene top) to 100% (scene end).
+ *                        Shape the timing inside the keyframes (hold, then move), keep the curve linear.
+ * data-weight="12"       spring stiffness in rad/s. Higher follows closer: 18 light card, 12 door, 8 steel
+ *                        shutter. 0 turns the lag off (locked to the scroll, for comparison).
+ * [data-weight-scene]    the tall section whose scroll drives its .weight parts (usually holds a sticky
+ *                        stage). Without one, the whole page is the scene.
+ */
+.weight { animation-duration: 1s; animation-timing-function: linear; animation-fill-mode: both; }
+.js .weight { animation-play-state: paused; }
+/* Without the script the move plays once and stays at its end, so nothing is left half-way. */
+
+@media (prefers-reduced-motion: reduce) {
+  /* parked at the end of the move: a negative delay past the duration with fill both */
+  .weight, .js .weight { animation-play-state: paused; animation-delay: -1s; }
+}

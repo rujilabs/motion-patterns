@@ -18,6 +18,10 @@ Some people get dizzy or sick from motion, and set `prefers-reduced-motion`. The
 
 Motion that starts on its own and runs longer than 5 seconds needs a way to stop it ([WCAG 2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)). Hover is not enough: it does nothing on a phone or for a keyboard user. Marquees and crossfades ship a CSS-only pause toggle built on `:has()`, and also pause on focus.
 
+## Heavy things trail the scroll
+
+When every layer of a scroll scene moves in perfect lockstep with the wheel, it feels cheap, like a slide being dragged, and more frames or a smoother scroll do not fix it. Let the heavy parts (a door, a shutter, a hanging sign) ease in a beat behind the scroll position while the camera and the text stay 1:1. The gap between them reads as weight. Keep gauges such as a progress bar locked: a lagging gauge looks broken. See [`scroll-weight`](../../patterns/scroll-weight/).
+
 ## Motion adds to what is there
 
 Where an entry moves an element, it uses the individual `translate`, `rotate` and `scale` properties when it can, so it sits on top of the element's own `transform` (a stamp's tilt, a card's rotation) instead of replacing it.

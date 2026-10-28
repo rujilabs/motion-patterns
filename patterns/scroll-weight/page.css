@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.intro, .outro { display: grid; gap: 10px; max-width: 560px; margin: 0 auto; padding: 28px 16px; }
+.intro { min-height: 60svh; align-content: start; }
+.outro { min-height: 70svh; align-content: start; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.intro h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.done { color: var(--demo-mute); text-align: center; }
+
+/* the scene: 260svh tall, the two shops stay pinned while it scrolls past */
+.street { height: 260svh; }
+.street-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: 16px; }
+.shops { width: min(560px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.shop { display: grid; gap: 8px; }
+.shop-label { font-size: 13px; font-weight: 650; }
+.shop-label span { display: block; color: var(--demo-mute); font-weight: 400; font-size: 12px; }
+.front { position: relative; aspect-ratio: 4 / 3; border-radius: 6px; overflow: clip; border: 1px solid var(--demo-line);
+  background: linear-gradient(var(--demo-warn), var(--demo-warn)) 50% 100% / 70% 62% no-repeat, var(--demo-paper); }
+.front::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14%; background: var(--demo-ink); z-index: 2; }
+.front-name { position: absolute; top: 3%; left: 0; right: 0; text-align: center; z-index: 3; color: var(--demo-paper);
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+/* the shutter: steel slats, comes down over the door between 15% and 75% of the scene */
+.shutter { position: absolute; left: 0; right: 0; top: 14%; bottom: 0; z-index: 1;
+  background: repeating-linear-gradient(var(--demo-mute) 0 2px, var(--demo-line) 2px 9px);
+  border-bottom: 4px solid var(--demo-ink); animation-name: shutter-down; }
+@keyframes shutter-down {
+  0%, 15% { translate: 0 -100%; }
+  75%, 100% { translate: 0 0; }
+}
+@media (max-height: 420px) { .front { aspect-ratio: 16 / 9; } }
