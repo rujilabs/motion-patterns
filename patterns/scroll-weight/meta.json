@@ -1,0 +1,16 @@
+{
+  "name": "Scroll weight",
+  "slug": "scroll-weight",
+  "kind": "pattern",
+  "summary": "A scroll-driven part trails the scroll on a damped spring instead of moving in lockstep with the wheel: it starts a beat late and lands softly, so it reads as paper or steel with mass.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

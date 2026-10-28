@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll weight demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="scroll-weight.js"></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll inside this frame, then flick the wheel. Both shutters follow the same scroll.</p>
+    <h1>Closing time on Jalan Bendahara</h1>
+    <p class="mute">The left shutter is locked to the scroll. The right one has weight.</p>
+  </header>
+
+  <section class="street" data-weight-scene aria-label="Two shops closing">
+    <div class="street-stage">
+      <div class="shops">
+        <div class="shop">
+          <p class="shop-label">Locked to the scroll <span>data-weight="0"</span></p>
+          <div class="front" aria-hidden="true"><span class="front-name">Kedai Bunga</span><span class="shutter weight" data-weight="0"></span></div>
+        </div>
+        <div class="shop">
+          <p class="shop-label">With weight <span>data-weight="8"</span></p>
+          <div class="front" aria-hidden="true"><span class="front-name">Kedai Kopi</span><span class="shutter weight" data-weight="8"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="outro">
+    <p class="done">Both shops are shut. Scroll back up to open them again.</p>
+  </footer>
+</main>
+</body>
+</html>
