@@ -45,7 +45,7 @@
 .sale-head { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
 .sale-head h1 { font-size: 20px; font-weight: 700; }
 .sale-head .mute { font-size: 13px; }
-.hint { max-width: 190px; padding: 4px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.hint { max-width: 200px; margin: 0; color: var(--demo-mute); font-size: 12px; line-height: 1.45; text-align: right; }
 .lines { width: 100%; border-collapse: collapse; font-size: 14px; }
 .lines caption { text-align: left; font-size: 12px; padding-bottom: 6px; }
 .lines th { font-size: 12px; font-weight: 600; color: var(--demo-mute); text-align: left; padding: 6px 0; border-bottom: 1px solid var(--demo-line); }
