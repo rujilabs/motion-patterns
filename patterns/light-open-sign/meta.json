@@ -1,0 +1,16 @@
+{
+  "name": "Light open sign",
+  "slug": "light-open-sign",
+  "kind": "pattern",
+  "summary": "A neon OPEN sign on a simulated clock. In opening hours it strikes like real neon: fast flickers, a dead gap, one weak letter late, then steady. Out of hours it is clear glass.",
+  "category": "light",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light open sign demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="light-open-sign.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shop" aria-labelledby="shop-h">
+    <figure class="window">
+      <svg class="neon-sign sign" id="sign" viewBox="0 0 320 150" data-hours="11:30-15:00 17:30-23:45" data-time="19:40" role="img" aria-labelledby="sign-t">
+        <title id="sign-t">Neon sign that reads OPEN</title>
+        <rect class="board" x="-14" y="-14" width="348" height="178" rx="10"/>
+        <g class="stand"><circle cx="60" cy="10" r="3"/><circle cx="260" cy="10" r="3"/><circle cx="60" cy="140" r="3"/><circle cx="260" cy="140" r="3"/></g>
+        <g class="neon-circuit is-blue" data-flicker="quick">
+          <path d="M150 140 H34 A24 24 0 0 1 10 116 V34 A24 24 0 0 1 34 10 H286 A24 24 0 0 1 310 34 V116 A24 24 0 0 1 286 140 H170"/>
+        </g>
+        <g transform="translate(6 0)">
+          <g class="neon-circuit" data-flicker="stutter">
+            <path d="M66 42.3 A25 33 0 1 0 74 42.3"/>
+            <path d="M114 108 V42 H136 A17 17 0 0 1 136 76 H114"/>
+            <path d="M200 42 H166 V108 H200 M166 75 H194"/>
+          </g>
+          <g class="neon-circuit" data-flicker="weak">
+            <path d="M224 108 V42 L262 108 V42"/>
+          </g>
+        </g>
+        <g class="electrode"><rect x="146" y="136.5" width="7" height="7" rx="2"/><rect x="167" y="136.5" width="7" height="7" rx="2"/></g>
+      </svg>
+      <figcaption class="mute">Hung in the front window, facing Jalan Tanjung Keramat</figcaption>
+    </figure>
+
+    <div class="info">
+      <header>
+        <p class="kicker">Kuala Selangor · Ikan bakar</p>
+        <h1 id="shop-h">Warung Mak Teh</h1>
+      </header>
+      <p class="now" id="status" role="status"><span class="dot" aria-hidden="true"></span><span id="status-t">Open now. Last orders 11:15 pm.</span></p>
+      <ul class="hours num">
+        <li id="h-lunch"><span>Lunch</span><span>11:30 am to 3:00 pm</span></li>
+        <li id="h-dinner"><span>Dinner</span><span>5:30 pm to 11:45 pm</span></li>
+        <li><span>Monday</span><span>Closed</span></li>
+      </ul>
+      <div class="clock">
+        <label for="t">Friday 31 October <output class="num" id="t-out" for="t">7:40 pm</output></label>
+        <input type="range" id="t" min="600" max="1500" step="5" value="1180" aria-valuetext="7:40 pm">
+        <p class="ticks num" aria-hidden="true"><span>10 am</span><span>3 pm</span><span>8 pm</span><span>1 am</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

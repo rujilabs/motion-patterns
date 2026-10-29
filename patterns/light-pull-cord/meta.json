@@ -1,0 +1,17 @@
+{
+  "name": "Light pull cord",
+  "slug": "light-pull-cord",
+  "kind": "pattern",
+  "summary": "A theme switch you pull: a ball chain on a sprung switch. Drag the handle down, it clicks at 9 px, and on release the chain is yanked up, falls slack and bounces taut.",
+  "category": "light",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

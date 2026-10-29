@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light pointer spotlight demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="light-pointer-spotlight.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="suite" aria-labelledby="suite-h">
+    <header class="suite-head">
+      <p class="brand">Teduh, software for GP clinics</p>
+      <h1 id="suite-h">What the front desk stops doing by hand</h1>
+      <p class="mute"><span class="hint-mouse">Move the pointer over the grid, or Tab through it.</span><span class="hint-touch">Touch the grid and drag a finger across it.</span></p>
+    </header>
+    <div class="spotlight grid" id="grid">
+      <a class="spotlight-item feature" href="#queue" id="queue">
+        <span class="no num">01</span>
+        <h2>Queue by SMS</h2>
+        <p>A number on arrival, and a text when 3 patients are ahead. Walk-ins wait in the car, not the hall.</p>
+      </a>
+      <a class="spotlight-item feature" href="#panel" id="panel">
+        <span class="no num">02</span>
+        <h2>Panel claims</h2>
+        <p>Claims to 14 panel insurers go out in one batch at 11 pm, with the MC and the receipt attached.</p>
+      </a>
+      <a class="spotlight-item feature" href="#stock" id="stock">
+        <span class="no num">03</span>
+        <h2>Dispensary stock</h2>
+        <p>Reorder alert when paracetamol 500 mg drops under 2 boxes. Expiry dates flagged 60 days out.</p>
+      </a>
+      <a class="spotlight-item feature" href="#mc" id="mc">
+        <span class="no num">04</span>
+        <h2>Signed MC</h2>
+        <p>The medical certificate reaches the patient's phone before they reach the car park.</p>
+      </a>
+      <a class="spotlight-item feature" href="#close" id="close">
+        <span class="no num">05</span>
+        <h2>Daily close</h2>
+        <p>Cash, card and QR totals matched at 9:30 pm, down to the last RM 0.05.</p>
+      </a>
+      <a class="spotlight-item feature" href="#branches" id="branches">
+        <span class="no num">06</span>
+        <h2>Two branches, one file</h2>
+        <p>A patient seen in Kajang on Monday walks into Bangi on Thursday with the same record.</p>
+      </a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

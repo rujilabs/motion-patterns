@@ -1,0 +1,132 @@
+/* Demo page layout for this entry. Not part of the pattern. A recipe blog read late at night: the lamp is the theme. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  --pc-table: #e7e1d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --pc-table: #141110; }
+}
+body { background: var(--pc-table); }
+
+/* the card's own two themes, switched by the cord */
+.recipe {
+  --r-paper: #f5ecdc;
+  --r-lit: #fffdf6;
+  --r-ink: #2b1f17;
+  --r-mute: #7a6757;
+  --r-line: #e6dac8;
+  --r-chilli: #b23a1e;
+  --r-shade: #2f4a3a;
+  --r-shade-in: #f6e7c4;
+  --r-bulb: #ffeeb8;
+  --r-lit-a: 1;
+  position: relative;
+  isolation: isolate;
+  width: min(620px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 132px;
+  grid-template-areas: "head ." "body .";
+  gap: 14px 20px;
+  padding: 26px 26px 28px;
+  border-radius: 10px;
+  border: 1px solid var(--r-line);
+  background: var(--r-paper);
+  color: var(--r-ink);
+  overflow: hidden;
+  transition: background-color .07s linear, color .07s linear, border-color .07s linear;
+}
+.recipe[data-theme="dark"] {
+  --r-paper: #1c1714;
+  --r-lit: #1c1714;
+  --r-ink: #eadfce;
+  --r-mute: #a3917e;
+  --r-line: #352c25;
+  --r-chilli: #f08a64;
+  --r-shade: #33473b;
+  --r-shade-in: #241f1a;
+  --r-bulb: #3e3832;
+  --r-lit-a: 0;
+  /* a filament cools slower than it lights */
+  transition-duration: .26s;
+}
+.recipe *, .recipe *::before, .recipe *::after { transition: inherit; transition-property: background-color, color, border-color, opacity; }
+
+/* the pool of lamplight on the paper: a lit copy of the surface, masked with a point-light falloff */
+.pool {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--r-lit);
+  opacity: var(--r-lit-a);
+  -webkit-mask: radial-gradient(circle 420px at calc(100% - 92px) 70px, #000 0%, rgb(0 0 0 / .91) 8.3%, rgb(0 0 0 / .71) 16.7%, rgb(0 0 0 / .5) 25%, rgb(0 0 0 / .33) 33.3%, rgb(0 0 0 / .14) 50%, rgb(0 0 0 / .06) 66.7%, transparent 100%);
+  mask: radial-gradient(circle 420px at calc(100% - 92px) 70px, #000 0%, rgb(0 0 0 / .91) 8.3%, rgb(0 0 0 / .71) 16.7%, rgb(0 0 0 / .5) 25%, rgb(0 0 0 / .33) 33.3%, rgb(0 0 0 / .14) 50%, rgb(0 0 0 / .06) 66.7%, transparent 100%);
+}
+
+/* the pendant: a rod from the top edge, an enamel shade, a bulb under its rim */
+.lamp { position: absolute; top: 0; right: 50px; width: 84px; height: 80px; }
+.rod { position: absolute; left: 41px; top: 0; width: 2px; height: 30px; background: var(--r-shade); }
+.shade {
+  position: absolute; left: 0; top: 28px; width: 84px; height: 38px;
+  border-radius: 42px 42px 3px 3px / 36px 36px 3px 3px;
+  background: linear-gradient(100deg, rgb(255 255 255 / .16), rgb(255 255 255 / 0) 40%, rgb(0 0 0 / .22)), var(--r-shade);
+  box-shadow: inset 0 -4px 0 -1px var(--r-shade-in);
+}
+.bulb {
+  position: absolute; left: 30px; top: 58px; width: 24px; height: 18px;
+  border-radius: 6px 6px 12px 12px;
+  background-color: var(--r-bulb);
+  border: 1px solid rgb(120 80 20 / .18);
+}
+/* the hot core of the lamp, only while it burns */
+.bulb::after {
+  content: ""; position: absolute; inset: 2px 5px 5px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #fffef8, rgb(255 254 248 / 0));
+  opacity: var(--r-lit-a);
+}
+
+/* the cord hangs from the switch beside the bulb */
+.cord {
+  --pull-chain: #a78549;
+  --pull-ring: var(--r-chilli);
+  position: absolute;
+  top: 66px;
+  right: 42px;
+  z-index: 2;
+}
+.recipe[data-theme="dark"] .cord { --pull-chain: #8c7550; --pull-wood: #8f6a43; --pull-wood-dark: #5a3d22; }
+.cord-hint {
+  position: absolute; right: 18px; top: 268px; width: 116px;
+  font-size: 12px; line-height: 1.35; text-align: center; color: var(--r-mute);
+}
+
+.r-head { grid-area: head; display: grid; gap: 6px; }
+.blog { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--r-chilli); }
+.r-head h1 { font: 400 40px/1.02 "Instrument Serif", Georgia, serif; letter-spacing: -.01em; }
+.r-meta { font-size: 13px; color: var(--r-mute); }
+.r-body { grid-area: body; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 22px; border-top: 1px solid var(--r-line); padding-top: 16px; }
+.r-body h2 { font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--r-mute); margin-bottom: 8px; }
+.ing li { font-size: 14px; padding: 5px 0; border-bottom: 1px solid var(--r-line); }
+.ing b { font-weight: 700; }
+.step { font-size: 15px; line-height: 1.55; }
+
+@media (max-width: 640px) {
+  .recipe { grid-template-columns: minmax(0, 1fr) 96px; grid-template-areas: "head ." "body body"; padding: 20px 16px 22px; gap: 12px; }
+  .lamp { right: 18px; transform: scale(.85); transform-origin: 50% 0; }
+  .cord { right: 10px; top: 60px; }
+  .cord-hint { display: none; }
+  .r-head { min-height: 200px; align-content: start; }
+  .r-head h1 { font-size: 34px; }
+  .r-body { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .recipe { padding-block: 18px; }
+  .r-head h1 { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recipe, .recipe[data-theme="dark"] { transition: none; }
+}

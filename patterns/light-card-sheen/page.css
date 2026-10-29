@@ -1,0 +1,82 @@
+/* Demo page layout for this entry. Not part of the pattern. A roastery member card: forest green laminate, copper foil. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+:root {
+  --cd-table: #ebe5da;
+  --cd-ink: #2a2620;
+  --cd-mute: #6f675b;
+  --cd-line: #d8cfbf;
+  --cd-copper: #9a5a26;
+  --cd-shadow: rgb(60 40 20 / .34);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cd-table: #13120f;
+    --cd-ink: #ece5d9;
+    --cd-mute: #a59c8e;
+    --cd-line: #2c2924;
+    --cd-copper: #d99a62;
+    --cd-shadow: rgb(0 0 0 / .7);
+  }
+}
+body { background: var(--cd-table); color: var(--cd-ink); }
+.mute { color: var(--cd-mute); }
+
+.wallet {
+  width: min(760px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 428px) minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+}
+.hold { position: relative; padding: 10px 0 26px; }
+/* contact shadow: it stays on the table and slides the other way from the tilt */
+.hold::after {
+  content: "";
+  position: absolute;
+  left: 9%; right: 9%; bottom: 10px; height: 26px;
+  border-radius: 50%;
+  background: var(--cd-shadow);
+  filter: blur(12px);
+  z-index: -1;
+  translate: calc(var(--ry, 0deg) / 1deg * -1.2px) calc(var(--rx, 0deg) / 1deg * -.6px);
+  scale: calc(1 - var(--rx, 0deg) / 1deg * .012) 1;
+}
+.card {
+  width: 100%;
+  aspect-ratio: 428 / 270;
+  border-radius: 16px;
+  background: #1d3a2f;
+  cursor: default;
+}
+.card:focus-visible { outline: 2px solid var(--cd-copper); outline-offset: 5px; }
+.contour path { fill: none; stroke: #244639; stroke-width: 1.4; }
+.foil-line { fill: none; stroke-width: 1.2; }
+.bean-groove { fill: none; stroke: #1d3a2f; stroke-width: 2.6; stroke-linecap: round; }
+.t-brand { font: 800 25px "Anybody", sans-serif; font-stretch: 120%; letter-spacing: .04em; }
+.t-sub { fill: #c9d6cc; font: 600 9.5px "Host Grotesk", sans-serif; letter-spacing: .16em; }
+.t-no { fill: #e8efe9; font: 500 23px "Host Grotesk", sans-serif; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+.t-name { fill: #e8efe9; font: 650 14px "Host Grotesk", sans-serif; letter-spacing: .1em; }
+.t-since { fill: #9db4a6; font: 600 8.5px "Host Grotesk", sans-serif; letter-spacing: .14em; }
+.t-gold { font: 800 34px "Anybody", sans-serif; font-stretch: 130%; letter-spacing: .02em; }
+
+.w-side { display: grid; gap: 10px; }
+.kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-copper); }
+.w-side h1 { font-size: 24px; font-weight: 700; }
+.pts { font-size: 14px; color: var(--cd-mute); }
+.pts b { color: var(--cd-ink); font-weight: 700; }
+.perks { border-top: 1px solid var(--cd-line); }
+.perks li { font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--cd-line); }
+.hint { font-size: 12.5px; }
+.hint-touch { display: none; }
+@media (hover: none) { .hint-mouse { display: none; } .hint-touch { display: inline; } }
+
+@media (max-width: 700px) {
+  .wallet { grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 428px; }
+  .w-side h1 { font-size: 21px; }
+}

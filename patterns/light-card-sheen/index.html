@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light card sheen demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="light-card-sheen.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="wallet" aria-labelledby="w-h">
+    <div class="sheen-stage hold">
+      <div class="sheen-card card" data-rest="7 -3" tabindex="0" role="group" aria-roledescription="membership card"
+        aria-label="Langkah Roasters Gold member card. Amira Tan, number 0418 2207 5531, member since March 2023." aria-describedby="tilt-hint">
+        <svg class="sheen-foil" viewBox="0 0 428 270" aria-hidden="true">
+          <defs>
+            <linearGradient class="sheen-foil-light" id="foil" gradientUnits="userSpaceOnUse" x1="0" y1="-120" x2="20" y2="-60">
+              <stop offset="0" stop-color="#9c5e2c"/>
+              <stop offset=".34" stop-color="#b9783f"/>
+              <stop offset=".47" stop-color="#f3d2a4"/>
+              <stop offset=".5" stop-color="#fff4e2"/>
+              <stop offset=".53" stop-color="#f3d2a4"/>
+              <stop offset=".66" stop-color="#b9783f"/>
+              <stop offset="1" stop-color="#9c5e2c"/>
+            </linearGradient>
+          </defs>
+          <!-- printed tone on tone: contour lines of the estate the beans come from -->
+          <g class="contour">
+            <path d="M262 270 C250 220 268 170 316 150 C362 131 404 150 428 120"/>
+            <path d="M292 270 C282 232 296 196 332 180 C368 164 404 176 428 158"/>
+            <path d="M322 270 C316 244 326 222 350 210 C376 197 404 204 428 194"/>
+            <path d="M232 270 C214 206 238 140 296 116 C350 94 396 116 428 84"/>
+            <path d="M206 270 C180 196 206 112 276 82 C336 58 388 80 428 48"/>
+            <path d="M184 270 C150 182 176 84 258 48 C324 20 380 42 428 12"/>
+          </g>
+          <rect class="foil-line" stroke="url(#foil)" x="12" y="12" width="404" height="246" rx="10"/>
+          <g class="foil-fill" fill="url(#foil)">
+            <path d="M40 24 C52 24 60 36 60 48 C60 60 52 72 40 72 C28 72 20 60 20 48 C20 36 28 24 40 24 Z"/>
+            <text class="t-brand" x="72" y="52">LANGKAH</text>
+            <text class="t-gold" x="404" y="236" text-anchor="end">GOLD</text>
+          </g>
+          <path class="bean-groove" d="M41 27 C33 38 48 56 39 69"/>
+          <text class="t-sub" x="73" y="68">ROASTERS · BANGSAR</text>
+          <text class="t-no" x="30" y="150">0418 2207 5531</text>
+          <text class="t-name" x="30" y="214">AMIRA TAN</text>
+          <text class="t-since" x="30" y="234">MEMBER SINCE 03/23</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="w-side">
+      <p class="kicker">Your card</p>
+      <h1 id="w-h">Gold since March 2026</h1>
+      <p class="pts num"><b>1,284</b> beans · 216 more to Platinum</p>
+      <ul class="perks">
+        <li>Free refill on any filter coffee</li>
+        <li>12% off whole beans, 250 g and up</li>
+        <li>First pick of the Thursday micro-lots</li>
+      </ul>
+      <p class="hint mute" id="tilt-hint"><span class="hint-mouse">Move the pointer over the card to tilt it under the shop's strip light. Arrow keys tip it too.</span><span class="hint-touch">Hold the card and drag to tilt it under the shop's strip light.</span></p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

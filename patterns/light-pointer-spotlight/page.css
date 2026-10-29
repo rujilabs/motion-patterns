@@ -1,0 +1,78 @@
+/* Demo page layout for this entry. Not part of the pattern. A clinic software grid: putty stone, copper lamp light. */
+:root {
+  --sp-table: #e4dfd5;
+  --sp-paper: #d5cdbf;
+  --sp-card: #e0d9cc;
+  --sp-ink: #2a251f;
+  --sp-mute: #6d6458;
+  --sp-line: #cbc2b3;
+  --sp-lit: #fffaf0;
+  --sp-copper: #a8642c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sp-table: #111413;
+    --sp-paper: #171b1a;
+    --sp-card: #1e2322;
+    --sp-ink: #ece6dc;
+    --sp-mute: #9a9387;
+    --sp-line: #2b312f;
+    --sp-lit: #574f3f;
+    --sp-copper: #e0a466;
+  }
+}
+body { background: var(--sp-table); color: var(--sp-ink); }
+.mute { color: var(--sp-mute); }
+:focus-visible { outline-color: var(--sp-copper); }
+
+.suite {
+  width: min(760px, 100%);
+  background: var(--sp-paper);
+  border: 1px solid var(--sp-line);
+  border-radius: 10px;
+  padding: 22px;
+  display: grid;
+  gap: 16px;
+}
+.suite-head { display: grid; gap: 4px; }
+.brand { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sp-copper); }
+.suite-head h1 { font-size: 24px; font-weight: 700; }
+.suite-head .mute { font-size: 13px; }
+.hint-touch { display: none; }
+@media (hover: none) { .hint-mouse { display: none; } .hint-touch { display: inline; } }
+
+.grid {
+  --spot-lit: var(--sp-lit);
+  --spot-edge: var(--sp-copper);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  border-radius: 10px;
+}
+.feature {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 14px 16px 16px;
+  background: var(--sp-card);
+  border: 1px solid var(--sp-line);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  min-height: 150px;
+}
+.feature::after { inset: -1px; }
+.feature .no { font-size: 12px; font-weight: 650; color: var(--sp-mute); }
+.feature h2 { font-size: 16px; font-weight: 700; }
+.feature p { font-size: 13.5px; line-height: 1.42; color: var(--sp-mute); }
+.feature:focus-visible { outline-offset: 2px; }
+
+@media (max-width: 640px) {
+  .suite { padding: 16px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .feature { min-height: 0; }
+  .suite-head h1 { font-size: 21px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .feature { min-height: 128px; padding-block: 12px; }
+}

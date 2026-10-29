@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light pull cord demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="light-pull-cord.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <article class="recipe" id="recipe" aria-labelledby="r-h">
+    <div class="pool" aria-hidden="true"></div>
+    <div class="lamp" aria-hidden="true"><span class="rod"></span><span class="shade"></span><span class="bulb"></span></div>
+    <div class="pull-cord cord" data-target="#recipe" data-length="104">
+      <button type="button" class="pull-handle" role="switch" aria-checked="true" aria-label="Kitchen light, light theme" aria-describedby="cord-hint"></button>
+    </div>
+    <p class="cord-hint" id="cord-hint">Pull the cord to switch light or dark</p>
+
+    <header class="r-head">
+      <p class="blog">Dapur Kak Yah · Recipes from Kuala Kangsar</p>
+      <h1 id="r-h">Rendang tok, the Perak way</h1>
+      <p class="r-meta num">Serves 8 · Prep 40 min · Cook 3 h 20 min</p>
+    </header>
+    <div class="r-body">
+      <section aria-labelledby="ing-h">
+        <h2 id="ing-h">You need</h2>
+        <ul class="ing num">
+          <li><b>1.2 kg</b> beef shin, in 4 cm cubes</li>
+          <li><b>400 ml</b> thick coconut milk</li>
+          <li><b>120 g</b> kerisik, pounded fine</li>
+          <li><b>15</b> dried chillies, soaked</li>
+          <li><b>2</b> stalks lemongrass, bruised</li>
+        </ul>
+      </section>
+      <section aria-labelledby="step-h">
+        <h2 id="step-h">Step 4 of 6</h2>
+        <p class="step">Keep the flame at its lowest and stir every 10 minutes. It is ready when the oil splits and the paste turns the colour of strong coffee, about 2 h 50 min in.</p>
+      </section>
+    </div>
+  </article>
+</main>
+</body>
+</html>
