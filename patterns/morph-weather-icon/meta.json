@@ -1,0 +1,20 @@
+{
+  "name": "Weather icon morph",
+  "slug": "morph-weather-icon",
+  "kind": "pattern",
+  "summary": "One weather icon that morphs as you step through the hours: the sun swells into a cloud, its rays slip behind it and fall again as rain, and a shadow slides in to cut the moon.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

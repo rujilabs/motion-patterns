@@ -1,0 +1,95 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --wf-table: #e6ebef;
+  --wf-paper: #ffffff;
+  --wf-ink: #18212b;
+  --wf-mute: #5f6b78;
+  --wf-line: #dbe2e8;
+  --wf-pick: #edf2f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wf-table: #10151b;
+    --wf-paper: #19212a;
+    --wf-ink: #e8eef4;
+    --wf-mute: #95a3b1;
+    --wf-line: #2b3743;
+    --wf-pick: #243140;
+  }
+}
+body { background: var(--wf-table); color: var(--wf-ink); }
+.fc { --demo-line: var(--wf-line); width: min(700px, 100%); padding: 20px 22px 16px; display: grid; gap: 14px; background: var(--wf-paper); border-color: var(--wf-line); }
+.fc-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.fc-head h1 { font-size: 22px; font-weight: 700; }
+.fc-head .mute { font-size: 13px; color: var(--wf-mute); margin-top: 2px; }
+.src { white-space: nowrap; }
+
+/* the sky behind the big icon takes the colour of the hour */
+.now {
+  --sky: #3f8fd2;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px;
+  padding: 18px 26px 18px 18px; border-radius: 12px; color: #fff;
+  background: var(--sky); transition: background-color 520ms var(--ease-inout);
+}
+.now[data-condition="partly"] { --sky: #5f9dd0; }
+.now[data-condition="cloud"] { --sky: #7f93a5; }
+.now[data-condition="rain"] { --sky: #52687a; }
+.now[data-condition="moon"] { --sky: #1d2a42; }
+.wx-icon.big { width: 150px; height: 150px; }
+.now-time { font-size: 13px; font-weight: 600; opacity: .85; }
+.now-temp { font-size: 58px; font-weight: 650; line-height: 1; letter-spacing: -.02em; }
+.now-cond { font-size: 16px; font-weight: 600; margin-top: 4px; }
+.now-facts { display: grid; gap: 8px; min-width: 120px; }
+.now-facts dt { font-size: 11.5px; opacity: .8; }
+.now-facts dd { font-size: 15px; font-weight: 650; }
+
+/* the hour strip is one slider */
+.strip { position: relative; border-radius: 10px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.strip:active { cursor: grabbing; }
+.strip:focus-visible { outline: 2px solid var(--wf-ink); outline-offset: 3px; }
+.hours { position: relative; display: grid; grid-template-columns: repeat(8, 1fr); }
+.hours li { display: grid; justify-items: center; gap: 4px; padding: 10px 2px 9px; text-align: center; }
+.hours .h { font-size: 12.5px; color: var(--wf-mute); font-weight: 600; }
+.hours .wx-icon { width: 34px; height: 34px; --wx-cloud: #c4cfd9; --wx-rain-cloud: #8c9cab; --wx-drop: #4a86c5; --wx-moon: #c9b77e; --wx-sun: #eba82a; }
+.hours .t { font-size: 15px; font-weight: 650; }
+.hours .c { font-size: 11px; color: var(--wf-mute); line-height: 1.2; min-height: 2.4em; }
+.hours li.on .h { color: var(--wf-ink); }
+.strip-mark {
+  position: absolute; top: 0; bottom: 0; left: 0; width: calc(100% / 8);
+  border-radius: 10px; background: var(--wf-pick); box-shadow: inset 0 0 0 1.5px var(--wf-ink);
+  translate: calc(var(--i, 0) * 100%) 0;
+  transition: translate 340ms var(--ease-spring);
+}
+.hint { font-size: 12.5px; color: var(--wf-mute); text-align: center; }
+
+@media (prefers-color-scheme: dark) {
+  .hours .wx-icon { --wx-cloud: #8796a5; --wx-rain-cloud: #687888; --wx-drop: #7fb2e8; --wx-moon: #e9dcae; --wx-sun: #f5bb48; }
+  .now { --sky: #2f72ad; }
+  .now[data-condition="partly"] { --sky: #3c74a3; }
+  .now[data-condition="cloud"] { --sky: #56687a; }
+  .now[data-condition="rain"] { --sky: #3b4d5e; }
+  .now[data-condition="moon"] { --sky: #141e31; }
+}
+@media (max-width: 600px) {
+  .fc { padding: 16px 12px 14px; gap: 12px; }
+  .fc-head h1 { font-size: 19px; }
+  .src { display: none; }
+  .now { grid-template-columns: auto 1fr; gap: 10px 14px; padding: 14px 16px 16px 10px; }
+  .now-facts { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); padding-left: 8px; }
+  .wx-icon.big { width: 112px; height: 112px; }
+  .now-temp { font-size: 46px; }
+  .hours li { padding: 8px 0; gap: 3px; }
+  .hours .h { font-size: 10.5px; }
+  .hours .wx-icon { width: 26px; height: 26px; }
+  .hours .t { font-size: 13px; }
+  .hours .c { display: none; }
+}
+@media (max-height: 560px) and (min-width: 601px) {
+  .fc { padding-block: 14px 12px; gap: 10px; }
+  .now { padding-block: 10px; }
+  .wx-icon.big { width: 120px; height: 120px; }
+  .hours .c { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .now, .strip-mark { transition: none; }
+}

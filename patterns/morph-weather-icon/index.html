@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather icon morph demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="weather-icon.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="fc sheet" aria-labelledby="fc-h">
+    <header class="fc-head">
+      <div>
+        <h1 id="fc-h">Kuala Terengganu</h1>
+        <p class="mute">Saturday 1 November, hour by hour</p>
+      </div>
+      <p class="mute src">Updated 6:40 am</p>
+    </header>
+
+    <div class="now" id="now" data-condition="sun">
+      <svg class="wx-icon big" id="icon" viewBox="0 0 96 96" data-condition="sun" role="img" aria-label="Sunny"></svg>
+      <div class="now-text">
+        <p class="now-time num" id="n-time">7 am</p>
+        <p class="now-temp num" id="n-temp">26°</p>
+        <p class="now-cond" id="n-cond">Sunny</p>
+      </div>
+      <dl class="now-facts">
+        <div><dt>Rain</dt><dd class="num" id="n-rain">0%</dd></div>
+        <div><dt>Wind</dt><dd class="num" id="n-wind">6 km/h W</dd></div>
+        <div><dt>Feels like</dt><dd class="num" id="n-feel">28°</dd></div>
+      </dl>
+    </div>
+
+    <div class="strip" id="strip" role="slider" tabindex="0" aria-label="Hour" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" aria-valuetext="7 am, sunny, 26 degrees">
+      <span class="strip-mark" id="mark" aria-hidden="true"></span>
+      <ol class="hours" aria-hidden="true">
+        <li><span class="h">7 am</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="sun"></svg><span class="t num">26°</span><span class="c">Sunny</span></li>
+        <li><span class="h">9 am</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="sun"></svg><span class="t num">29°</span><span class="c">Sunny</span></li>
+        <li><span class="h">11 am</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="partly"></svg><span class="t num">31°</span><span class="c">Partly cloudy</span></li>
+        <li><span class="h">1 pm</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="cloud"></svg><span class="t num">31°</span><span class="c">Cloudy</span></li>
+        <li><span class="h">3 pm</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="rain"></svg><span class="t num">27°</span><span class="c">Heavy showers</span></li>
+        <li><span class="h">5 pm</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="rain"></svg><span class="t num">26°</span><span class="c">Light rain</span></li>
+        <li><span class="h">7 pm</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="cloud"></svg><span class="t num">25°</span><span class="c">Cloudy</span></li>
+        <li><span class="h">9 pm</span><svg class="wx-icon" viewBox="0 0 96 96" data-condition="moon"></svg><span class="t num">25°</span><span class="c">Clear</span></li>
+      </ol>
+    </div>
+    <p class="mute hint">Drag along the hours, or use the arrow keys.</p>
+  </section>
+</main>
+</body>
+</html>

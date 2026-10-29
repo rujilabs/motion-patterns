@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mic record morph demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="morph-mic-record.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="visit sheet" aria-labelledby="pt-h">
+    <header class="visit-head">
+      <p class="crumb">Poliklinik Seri Manjung <span aria-hidden="true">/</span> Room 2, Dr. Lim Wei Shan</p>
+      <h1 id="pt-h">Rashid bin Omar</h1>
+      <p class="mute">54, male <span aria-hidden="true">·</span> MRN 0418-2207 <span aria-hidden="true">·</span> Thu 29 Oct, 10:42 am</p>
+    </header>
+
+    <dl class="vitals">
+      <div><dt>BP</dt><dd class="num">138/86</dd></div>
+      <div><dt>Pulse</dt><dd class="num">78</dd></div>
+      <div><dt>Temp</dt><dd class="num">36.9 °C</dd></div>
+      <div><dt>SpO2</dt><dd class="num">97%</dd></div>
+    </dl>
+
+    <div class="notes">
+      <div class="notes-head">
+        <h2>Clinical notes</h2>
+        <p class="mute num" id="saved">Draft</p>
+      </div>
+      <div class="notes-body" id="notes" aria-live="off">
+        <p class="placeholder" id="placeholder">Dictate the history, examination and plan. Tap the mic and speak.</p>
+      </div>
+    </div>
+
+    <div class="dictate">
+      <button class="mic-record" type="button" id="mic" aria-pressed="false" aria-label="Start dictation" data-label-off="Start dictation" data-label-on="Stop dictation">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path class="mic-holder" d="M 5 10 C 5 10.67 5 11.33 5 12 C 5 15.87 8.13 19 12 19 C 15.87 19 19 15.87 19 12 C 19 11.33 19 10.67 19 10"/>
+          <path class="mic-stem" d="M 12 19 L 12 22"/>
+          <path class="mic-capsule" d="M 12 2 L 12 2 C 13.66 2 15 3.34 15 5 L 15 11 C 15 12.66 13.66 14 12 14 L 12 14 C 10.34 14 9 12.66 9 11 L 9 5 C 9 3.34 10.34 2 12 2 Z"/>
+        </svg>
+      </button>
+      <div class="dictate-text">
+        <p class="state" id="state">Ready to dictate</p>
+        <p class="mute hint" id="hint">It stops by itself after 4 s of silence.</p>
+      </div>
+      <p class="clock num" id="clock" aria-hidden="true">0:00</p>
+      <p class="sr" role="status" id="say"></p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

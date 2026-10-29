@@ -1,0 +1,46 @@
+/*
+ * morph-card-detail: a card in a grid grows into its detail view, and shrinks back into its place.
+ *
+ * The grid and the detail share one cell, so the page does not jump. Three parts carry over:
+ * the card's frame becomes the detail panel, its swatch or photo (.cd-chip) becomes the big one,
+ * and its name (.cd-name) becomes the heading. Everything else crossfades.
+ * card-detail.js uses a View Transition where the browser has one: it names the three parts on
+ * the card, swaps, and names them on the detail. Elsewhere it runs the same morph by hand (FLIP):
+ * the panel opens from the card's rectangle with clip-path, and the chip flies from the card's
+ * chip with a transform. Both use the same length and curve.
+ */
+.cd { --cd-dur: 480ms; --cd-radius: 10px; display: grid; }
+.cd > .cd-grid, .cd > .cd-detail { grid-area: 1 / 1; min-width: 0; }
+.cd-detail { visibility: hidden; }
+.cd.is-open > .cd-detail { visibility: visible; }
+.cd.is-open > .cd-grid { visibility: hidden; }
+.cd-card { cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.cd-chip { display: block; }
+/* the name is as wide as its text in both places, so it scales as one piece of type */
+.cd-name { display: inline-block; width: fit-content; }
+
+/* View Transitions: the three named parts move on the shared curve; the rest crossfades quickly */
+::view-transition-group(cd-frame),
+::view-transition-group(cd-chip),
+::view-transition-group(cd-name) {
+  animation-duration: var(--cd-dur, 480ms);
+  animation-timing-function: var(--ease-inout);
+}
+/* each part clips its picture to its own moving box, and the frame keeps its round corners */
+::view-transition-group(cd-frame),
+::view-transition-group(cd-chip) { overflow: clip; }
+::view-transition-group(cd-frame) { border-radius: var(--cd-radius, 10px); }
+/* the frame keeps its proportions: the new panel is revealed from its top left, not stretched */
+::view-transition-old(cd-frame),
+::view-transition-new(cd-frame) { height: 100%; object-fit: cover; object-position: left top; }
+::view-transition-old(cd-frame) { animation-duration: 160ms; }
+/* the chip is a flat colour or a photo: fill the moving box without stretching it */
+::view-transition-old(cd-chip),
+::view-transition-new(cd-chip) { height: 100%; object-fit: cover; object-position: left bottom; }
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 260ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script swaps without a transition; this covers any transition started elsewhere */
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

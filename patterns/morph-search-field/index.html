@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search field morph demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="search-morph.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="site sheet" aria-label="Lorong Kulit Books">
+    <header class="masthead">
+      <a class="logo" href="#shelf-h">Lorong Kulit<small>Books, George Town</small></a>
+      <div class="bar">
+        <nav class="nav" aria-label="Sections">
+          <a href="#shelf-h" aria-current="page">New</a>
+          <a href="#shelf-h">Fiction</a>
+          <a href="#shelf-h">Malaysiana</a>
+          <a href="#shelf-h">Children</a>
+          <a href="#shelf-h">Cookbooks</a>
+        </nav>
+        <form class="search-morph" role="search" id="search" action="#">
+          <svg class="sm-shape" aria-hidden="true">
+            <path class="sm-ring"/>
+            <path class="sm-handle"/>
+            <path class="sm-cross"/>
+          </svg>
+          <input class="sm-input" id="q" type="search" name="q" autocomplete="off" placeholder="Title, author or ISBN" aria-label="Search books" aria-controls="drop">
+          <button class="sm-toggle" type="button" aria-expanded="false" aria-controls="q" aria-label="Open search" aria-keyshortcuts="/"></button>
+        </form>
+        <div class="drop" id="drop" hidden>
+          <p class="drop-head" id="drop-head" role="status"></p>
+          <ul class="hits" id="hits"></ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="shelf">
+      <div class="shelf-head">
+        <h1 id="shelf-h">New this week</h1>
+        <p class="mute">Press <kbd>/</kbd> to search the shop</p>
+      </div>
+      <ul class="covers">
+        <li><span class="cover c1"><b>Rain on Armenian Street</b><i>Tan Mei Ling</i></span><span class="buy"><span>Rain on Armenian Street</span><span class="num">RM 59.90</span></span></li>
+        <li><span class="cover c2"><b>Kopi, Kaya, Kampung</b><i>Rosnah Idris</i></span><span class="buy"><span>Kopi, Kaya, Kampung</span><span class="num">RM 79.00</span></span></li>
+        <li><span class="cover c3"><b>The Ferry at Weld Quay</b><i>Arjun Pillai</i></span><span class="buy"><span>The Ferry at Weld Quay</span><span class="num">RM 49.90</span></span></li>
+        <li><span class="cover c4"><b>Little Trishaw</b><i>Aimee Ong</i></span><span class="buy"><span>Little Trishaw</span><span class="num">RM 28.90</span></span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+</body>
+</html>
