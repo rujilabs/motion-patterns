@@ -5,6 +5,14 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.4.1] - 2026-10-29
+
+### Fixed
+
+- **site:** Entry pages no longer scroll sideways on phones (#3)
+- **site:** Long titles fit a phone; site CSS and JS links carry a content hash so deploys reach cached browsers (#4)
+
+
 ## [0.4.0] - 2026-10-29
 
 ### Added
@@ -27,7 +35,6 @@ messages by `npm run changelog`; do not edit it by hand.
 ### Fixed
 
 - **gear-settings-icon:** Plain hint text instead of a dashed note
-
 
 ## [0.3.0] - 2026-10-20
 
