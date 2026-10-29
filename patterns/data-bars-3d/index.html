@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D bars demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="data-bars-3d.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <article class="report sheet" aria-labelledby="report-h">
+    <header class="report-head">
+      <p class="kicker">Annual Report 2025 <span aria-hidden="true">/</span> Performance review</p>
+      <h1 id="report-h">Passenger revenue by quarter</h1>
+      <p class="sub">Selat Mutiara Ferries Berhad, Kuala Kedah, Kuala Perlis and Langkawi routes</p>
+    </header>
+
+    <div class="report-body">
+      <figure class="bars3d" data-play data-max="60" aria-labelledby="report-h">
+        <div class="b3-world">
+          <div class="b3-wall" aria-hidden="true">
+            <span class="b3-grid g60"><b>60</b></span>
+            <span class="b3-grid g40"><b>40</b></span>
+            <span class="b3-grid g20"><b>20</b></span>
+          </div>
+          <ol class="b3-bars" id="bars">
+            <li class="b3" data-value="38.6"><span class="b3-prism" aria-hidden="true"><i class="b3-face b3-front"></i><i class="b3-face b3-side"></i><i class="b3-face b3-top"></i></span><i class="b3-cast" aria-hidden="true"></i><span class="b3-label">Q1</span><span class="b3-val num"><small>RM </small>38.6<small>m</small></span></li>
+            <li class="b3" data-value="41.3"><span class="b3-prism" aria-hidden="true"><i class="b3-face b3-front"></i><i class="b3-face b3-side"></i><i class="b3-face b3-top"></i></span><i class="b3-cast" aria-hidden="true"></i><span class="b3-label">Q2</span><span class="b3-val num"><small>RM </small>41.3<small>m</small></span></li>
+            <li class="b3" data-value="36.8"><span class="b3-prism" aria-hidden="true"><i class="b3-face b3-front"></i><i class="b3-face b3-side"></i><i class="b3-face b3-top"></i></span><i class="b3-cast" aria-hidden="true"></i><span class="b3-label">Q3</span><span class="b3-val num"><small>RM </small>36.8<small>m</small></span></li>
+            <li class="b3 key" data-value="52.9"><span class="b3-prism" aria-hidden="true"><i class="b3-face b3-front"></i><i class="b3-face b3-side"></i><i class="b3-face b3-top"></i></span><i class="b3-cast" aria-hidden="true"></i><span class="b3-label">Q4</span><span class="b3-val num"><small>RM </small>52.9<small>m</small></span></li>
+          </ol>
+        </div>
+      </figure>
+
+      <aside class="facts">
+        <div class="year" role="group" aria-label="Financial year">
+          <button type="button" data-year="2024" aria-pressed="false">FY2024</button>
+          <button type="button" data-year="2025" aria-pressed="true">FY2025</button>
+        </div>
+        <p class="total"><span class="num" id="total">RM 169.6m</span> <span class="mute">for the year</span></p>
+        <p class="note" id="note" aria-live="polite">Up 11.1% on FY2024. Q4 carried the year: the December school holidays and the Langkawi year-end crowd.</p>
+        <p class="unit mute">RM million, unaudited quarterly figures</p>
+      </aside>
+    </div>
+  </article>
+</main>
+</body>
+</html>

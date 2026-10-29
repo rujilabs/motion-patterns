@@ -1,0 +1,18 @@
+{
+  "name": "Live candles",
+  "slug": "data-candles",
+  "kind": "pattern",
+  "summary": "A live candlestick chart. The forming candle stretches its body and wick with every tick, closed candles slide left as a new one opens, and the scale eases only when it must.",
+  "category": "data",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

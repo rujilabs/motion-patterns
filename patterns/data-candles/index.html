@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live candles demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="data-candles.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="gold sheet" aria-labelledby="gold-h">
+    <header class="gold-head">
+      <div class="gold-title">
+        <p class="brand">Simpan Emas</p>
+        <h1 id="gold-h">Gold 999.9, RM per gram</h1>
+      </div>
+      <div class="quote">
+        <p class="price num" id="price">538.76</p>
+        <p class="chg num up" id="chg">+1.42 (+0.26%) since the 9:30 am open</p>
+      </div>
+    </header>
+
+    <p class="ohlc num">
+      <span>O <b id="o">538.32</b></span>
+      <span>H <b id="h">538.84</b></span>
+      <span>L <b id="l">538.28</b></span>
+      <span>C <b id="c">538.76</b></span>
+      <span class="per mute" id="at">10:29 candle, closed</span>
+    </p>
+
+    <div class="candles" id="chart" data-visible="30" data-decimals="2" role="figure" aria-label="Gold price in RM per gram, one minute candles">
+      <p class="fallback">Gold opened the session at RM 537.34 a gram at 9:30 am and stood at RM 538.76 at 10:30 am, up 0.26 percent. The low since the open was RM 536.08.</p>
+    </div>
+
+    <footer class="gold-foot">
+      <label class="t-label" for="time">Simulated time <output class="num" id="clock" for="time">10:30:00 am</output></label>
+      <input type="range" id="time" min="30" max="480" step="5" value="90" aria-valuetext="10:30 am">
+      <label class="switch"><input type="checkbox" role="switch" id="live" checked> Live</label>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

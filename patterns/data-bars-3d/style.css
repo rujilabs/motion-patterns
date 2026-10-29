@@ -1,0 +1,94 @@
+/*
+ * data-bars-3d: bars as real CSS 3D prisms that grow from the floor. Each prism is three lit faces
+ * (front, right side, top) in a preserve-3d box, and grows with one scaleY from its foot, so the top
+ * face rides up flat and the side face stays in shade. A shadow on the floor lengthens with the bar.
+ * data-bars-3d.js sets --v (share of the plot height) on each bar; this file does the rest.
+ * Values and labels are real text that faces the reader, so the chart reads without the 3D.
+ */
+.bars3d {
+  --b3-c: #64748b;          /* bar colour, set per bar for a key bar */
+  --b3-h: 220px;            /* plot height at --v: 1 */
+  --b3-w: 60px;             /* bar width */
+  --b3-d: 42px;             /* bar depth */
+  --b3-gap: 46px;
+  --b3-pitch: -13deg;       /* camera above: negative tilts the floor toward you */
+  --b3-yaw: -24deg;         /* camera to the left: shows the right side faces */
+  --b3-floor: rgb(30 40 60 / .06);
+  --b3-shadow: rgb(20 28 45 / .22);
+  perspective: 1900px;
+  perspective-origin: 50% 20%;
+  display: grid;
+  place-items: center;
+  padding-top: 28px;
+}
+.b3-world {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--b3-pitch)) rotateY(var(--b3-yaw));
+  height: var(--b3-h);
+}
+.b3-bars {
+  position: relative; display: flex; align-items: flex-end; gap: var(--b3-gap);
+  height: var(--b3-h); margin: 0; padding: 0 calc(var(--b3-gap) / 2); list-style: none;
+  transform-style: preserve-3d;
+}
+/* the floor under the bars, one bar deep plus a margin */
+.b3-bars::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%;
+  height: calc(var(--b3-d) * 2); background: var(--b3-floor);
+  transform-origin: 50% 0; transform: translateZ(calc(var(--b3-d) * -1)) rotateX(90deg);
+}
+.b3 { position: relative; width: var(--b3-w); height: var(--b3-h); transform-style: preserve-3d; --v: 0; }
+
+.b3-prism {
+  position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 50% 100%;
+  transform: scaleY(max(var(--v), .001));
+  transition: transform var(--dur-slow) var(--ease-out) calc(var(--i, 0) * var(--b3-stagger, 140ms));
+}
+.b3-face { position: absolute; display: block; backface-visibility: hidden; }
+/* lit from the upper left: the top catches most light, the front some, the side faces away */
+.b3-front { inset: 0; background: var(--b3-c); transform: translateZ(calc(var(--b3-d) / 2)); }
+.b3-side {
+  top: 0; bottom: 0; left: calc(50% - var(--b3-d) / 2); width: var(--b3-d);
+  background: color-mix(in oklab, var(--b3-c) 64%, #000);
+  transform: rotateY(90deg) translateZ(calc(var(--b3-w) / 2));
+}
+.b3-top {
+  left: 0; right: 0; top: calc(var(--b3-d) / -2); height: var(--b3-d);
+  background: color-mix(in oklab, var(--b3-c) 70%, #fff);
+  transform: rotateX(90deg);
+}
+/* the cast shadow lies on the floor behind and to the right, and lengthens with the bar */
+.b3-cast {
+  position: absolute; left: 50%; top: 100%; width: calc(var(--b3-w) * 2.2); height: var(--b3-d);
+  background: linear-gradient(90deg, var(--b3-shadow), transparent);
+  transform-origin: 0 0;
+  transform: translateZ(calc(var(--b3-d) / -2)) translateY(-1px) rotateX(90deg) scaleX(max(var(--v), .001));
+  transition: transform var(--dur-slow) var(--ease-out) calc(var(--i, 0) * var(--b3-stagger, 140ms));
+}
+/* text faces the reader: the inverse of the camera turn */
+.b3-val, .b3-label {
+  position: absolute; left: 50%; white-space: nowrap; font-variant-numeric: tabular-nums;
+  transform-style: preserve-3d;
+}
+.b3-val {
+  bottom: 0; translate: -50% 0;
+  transform: translateZ(calc(var(--b3-d) / 2)) translateY(calc(var(--v) * var(--b3-h) * -1 - 14px)) rotateY(calc(var(--b3-yaw) * -1)) rotateX(calc(var(--b3-pitch) * -1));
+  transition: transform var(--dur-slow) var(--ease-out) calc(var(--i, 0) * var(--b3-stagger, 140ms)), opacity var(--dur-base) var(--ease-out) calc(var(--i, 0) * var(--b3-stagger, 140ms) + 300ms);
+}
+.b3-label {
+  top: 100%; translate: -50% 0;
+  transform: translateZ(calc(var(--b3-d) / 2 + 14px)) rotateY(calc(var(--b3-yaw) * -1)) rotateX(calc(var(--b3-pitch) * -1));
+}
+
+/* start state: flat on the floor, only when the script runs. play.js adds .go in view */
+.js .bars3d:not(.go) .b3-prism { transform: scaleY(.001); }
+.js .bars3d:not(.go) .b3-cast { transform: translateZ(calc(var(--b3-d) / -2)) translateY(-1px) rotateX(90deg) scaleX(.001); }
+.js .bars3d:not(.go) .b3-val { opacity: 0; transform: translateZ(calc(var(--b3-d) / 2)) translateY(-10px) rotateY(calc(var(--b3-yaw) * -1)) rotateX(calc(var(--b3-pitch) * -1)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .b3-prism, .b3-cast, .b3-val { transition: none; }
+  .js .bars3d:not(.go) .b3-prism { transform: scaleY(max(var(--v), .001)); }
+  .js .bars3d:not(.go) .b3-cast { transform: translateZ(calc(var(--b3-d) / -2)) translateY(-1px) rotateX(90deg) scaleX(max(var(--v), .001)); }
+  .js .bars3d:not(.go) .b3-val { opacity: 1; transform: translateZ(calc(var(--b3-d) / 2)) translateY(calc(var(--v) * var(--b3-h) * -1 - 14px)) rotateY(calc(var(--b3-yaw) * -1)) rotateX(calc(var(--b3-pitch) * -1)); }
+}

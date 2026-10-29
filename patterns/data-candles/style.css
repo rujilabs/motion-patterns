@@ -1,0 +1,54 @@
+/*
+ * data-candles: a live candlestick chart. data-candles.js builds the parts and moves them with
+ * element.animate(); this file draws them. Each candle is a 1px body and a 1px wick, stretched with
+ * scaleY to their prices, so every change is a transform. Without the script the text inside the
+ * element shows instead of the chart.
+ */
+.candles {
+  --cd-up: #148a5b;
+  --cd-down: #d4412f;
+  --cd-grid: rgb(30 34 41 / .1);
+  --cd-label: #6b7280;
+  --cd-gutter: 58px;
+  --cd-axis: 22px;
+  --cd-height: 240px;
+  position: relative;
+}
+.cd-plot { position: relative; height: var(--cd-height); overflow: hidden; }
+/* the time row under the candles: its height is kept out of the price scale */
+.cd-plot::after { content: ""; position: absolute; left: 0; right: 0; bottom: var(--cd-axis); border-top: 1px solid var(--cd-grid); }
+.cd-grid, .cd-track { position: absolute; inset: 0 var(--cd-gutter) 0 0; }
+.cd-track { overflow: hidden; }
+.cd-grid { right: 0; }
+.cd-line, .cd-last { position: absolute; left: 0; right: 0; top: 0; height: 0; border-top: 1px solid var(--cd-grid); will-change: transform; }
+.cd-price, .cd-tag {
+  position: absolute; right: 0; top: 0; translate: 0 -50%;
+  font-size: 11px; line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.cd-price { color: var(--cd-label); width: calc(var(--cd-gutter) - 8px); text-align: right; }
+
+.cd-candle { position: absolute; left: 0; top: 0; bottom: 0; width: var(--cd-body, 6px); will-change: transform; }
+.cd-body, .cd-wick { position: absolute; left: 0; top: 0; height: 1px; transform-origin: 0 0; background: var(--cd-c); will-change: transform; }
+.cd-body { width: 100%; }
+.cd-wick { left: 50%; width: 1px; margin-left: -.5px; }
+.cd-candle.is-up { --cd-c: var(--cd-up); }
+.cd-candle.is-down { --cd-c: var(--cd-down); }
+.cd-time {
+  position: absolute; left: 50%; bottom: 2px; translate: -50% 0;
+  font-size: 10.5px; color: var(--cd-label); white-space: nowrap;
+}
+
+/* the last price: a dashed line across the plot and a tag on the scale, in the colour of the candle */
+.cd-last { right: 0; border-top: 1px dashed var(--cd-c, var(--cd-label)); z-index: 1; }
+.cd-last.is-up { --cd-c: var(--cd-up); }
+.cd-last.is-down { --cd-c: var(--cd-down); }
+.cd-tag {
+  background: var(--cd-c, var(--cd-label)); color: #fff; font-weight: 650;
+  padding: 3px 0; border-radius: 3px; width: calc(var(--cd-gutter) - 4px); text-align: center;
+}
+.cd-table { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* data-candles.js sets every part straight to its new place: nothing slides or stretches */
+  .cd-candle, .cd-body, .cd-wick, .cd-line, .cd-last { animation: none; transition: none; }
+}
