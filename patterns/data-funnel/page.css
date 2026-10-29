@@ -1,0 +1,69 @@
+/* Demo page layout for this entry. Not part of the pattern. A solar installer's sales review: off white, forest green. */
+:root {
+  --sb-table: #ecefe9;
+  --sb-paper: #fdfdfa;
+  --sb-ink: #1a211c;
+  --sb-mute: #627066;
+  --sb-line: #dfe4dc;
+  --sb-green: #2d6a4f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sb-table: #111511;
+    --sb-paper: #181e19;
+    --sb-ink: #e6ede7;
+    --sb-mute: #97a69b;
+    --sb-line: #2b342d;
+    --sb-green: #5fb98b;
+  }
+}
+body { background: var(--sb-table); color: var(--sb-ink); }
+.sheet { background: var(--sb-paper); border-color: var(--sb-line); }
+.mute { color: var(--sb-mute); }
+:focus-visible { outline-color: var(--sb-green); }
+
+.sales { width: min(700px, 100%); padding: 22px 24px 18px; display: grid; gap: 16px; }
+.sales-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.org { font-size: 12.5px; color: var(--sb-mute); }
+.org span { margin-inline: 3px; }
+.sales-head h1 { font-size: 22px; font-weight: 700; margin-top: 3px; }
+.qtr { display: none; border: 1px solid var(--sb-line); border-radius: 7px; padding: 3px; gap: 3px; flex: none; }
+.js .qtr { display: flex; }
+.qtr button {
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--sb-mute); background: none; border: 0; border-radius: 5px;
+  padding: 6px 10px; cursor: pointer; transition: background-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out);
+}
+.qtr button[aria-pressed="true"] { background: var(--sb-green); color: var(--sb-paper); }
+
+.funnel { --fn-c: var(--sb-green); --fn-h: 34px; border-top: 1px solid var(--sb-line); padding-top: 4px; }
+.fn-stage { display: grid; grid-template-columns: 170px minmax(0, 1fr) 140px; gap: 16px; align-items: center; padding: 9px 0; }
+.fn-name { font-size: 14px; display: grid; }
+.fn-count { font-size: 22px; font-weight: 700; letter-spacing: -.01em; line-height: 1.15; }
+.fn-drop { font-size: 12.5px; color: var(--sb-mute); }
+.fn-drop .num { color: var(--sb-ink); font-weight: 650; }
+.fn-first { font-size: 12px; }
+.fn-last .fn-count { color: var(--sb-green); }
+
+.sales-foot { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; font-size: 14px; border-top: 1px solid var(--sb-line); padding-top: 12px; }
+.sales-foot strong { font-weight: 700; color: var(--sb-green); }
+.sales-foot .mute { font-size: 13px; }
+
+@media (max-width: 600px) {
+  .sales { padding: 16px 14px 14px; gap: 12px; }
+  .sales-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .sales-head h1 { font-size: 19px; }
+  .fn-stage { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; padding: 8px 0; }
+  .fn-name { grid-template-columns: 1fr auto; align-items: baseline; gap: 10px; }
+  .fn-count { font-size: 18px; }
+  .fn-track { grid-column: 1 / -1; grid-row: 2; }
+  .fn-drop { grid-column: 2; grid-row: 1; text-align: right; }
+  .fn-first { display: none; }
+  .funnel { --fn-h: 26px; }
+}
+@media (max-height: 540px) and (min-width: 601px) {
+  .fn-stage { padding-block: 5px; }
+  .funnel { --fn-h: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qtr button { transition: none; }
+}

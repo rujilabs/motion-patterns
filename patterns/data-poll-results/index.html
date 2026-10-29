@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live poll results demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="data-poll-results.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="qa sheet" aria-labelledby="qa-h">
+    <header class="qa-head">
+      <p class="event">Hari Usahawan Digital, Dewan B, Kota Kinabalu <span aria-hidden="true">/</span> panel Q&amp;A</p>
+      <div class="qa-meta">
+        <p class="live-tag"><span class="dot" aria-hidden="true"></span> <span id="state">Poll open</span></p>
+        <p class="mute num" id="left">Closes 3:43 pm, 1:40 left</p>
+      </div>
+    </header>
+
+    <form class="poll" id="poll" data-unit="votes" aria-labelledby="qa-h">
+      <h1 id="qa-h">Which payment do most of your customers pick at checkout?</h1>
+      <label class="pl-opt" data-votes="26"><input type="radio" name="pay" value="qr"><span class="pl-name">QR pay at the counter or on screen</span><span class="pl-pct">38%</span><span class="pl-votes">26 votes</span><span class="pl-bar" aria-hidden="true"></span></label>
+      <label class="pl-opt" data-votes="17"><input type="radio" name="pay" value="wallet"><span class="pl-name">E-wallet</span><span class="pl-pct">24%</span><span class="pl-votes">17 votes</span><span class="pl-bar" aria-hidden="true"></span></label>
+      <label class="pl-opt" data-votes="13"><input type="radio" name="pay" value="bank"><span class="pl-name">Online banking transfer</span><span class="pl-pct">19%</span><span class="pl-votes">13 votes</span><span class="pl-bar" aria-hidden="true"></span></label>
+      <label class="pl-opt" data-votes="9"><input type="radio" name="pay" value="card"><span class="pl-name">Debit or credit card</span><span class="pl-pct">13%</span><span class="pl-votes">9 votes</span><span class="pl-bar" aria-hidden="true"></span></label>
+      <label class="pl-opt" data-votes="4"><input type="radio" name="pay" value="cod"><span class="pl-name">Cash on delivery</span><span class="pl-pct">6%</span><span class="pl-votes">4 votes</span><span class="pl-bar" aria-hidden="true"></span></label>
+    </form>
+
+    <footer class="qa-foot">
+      <p class="total"><strong class="num" id="total">69</strong> <span class="mute">votes from the hall and online</span></p>
+      <p class="vh" id="said" aria-live="polite"></p>
+      <button type="button" class="again" id="again" hidden>Run the poll again</button>
+      <p class="clock mute">Simulated time <time class="num" id="clock">3:41:20 pm</time></p>
+      <label class="switch"><input type="checkbox" role="switch" id="live" checked> Live votes</label>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

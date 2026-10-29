@@ -1,0 +1,19 @@
+{
+  "name": "Funnel drop-off",
+  "slug": "data-funnel",
+  "kind": "pattern",
+  "summary": "A sales funnel that fills one stage at a time. Each bar arrives at the width of the stage before and narrows to its own, leaving the people who dropped off as a hatched band.",
+  "category": "data",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

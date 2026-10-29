@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live sparkline demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="data-sparkline-live.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="mon sheet" aria-labelledby="mon-h">
+    <header class="mon-head">
+      <div>
+        <p class="site">Rack C2, Cyberjaya <span aria-hidden="true">/</span> clinic booking system</p>
+        <h1 id="mon-h">CPU, last 60 seconds</h1>
+      </div>
+      <p class="summary" id="summary" aria-live="polite">All 4 servers under 85%</p>
+    </header>
+
+    <ul class="hosts">
+      <li class="host">
+        <div class="who"><span class="name">web-01</span><span class="role">Booking pages</span></div>
+        <svg class="spark-live" id="s0" data-points="60" data-max="100" data-limit="85" data-label="CPU on web-01"></svg>
+        <p class="now num"><span id="n0">34</span>%</p>
+      </li>
+      <li class="host">
+        <div class="who"><span class="name">web-02</span><span class="role">Booking pages</span></div>
+        <svg class="spark-live" id="s1" data-points="60" data-max="100" data-limit="85" data-label="CPU on web-02"></svg>
+        <p class="now num"><span id="n1">41</span>%</p>
+      </li>
+      <li class="host">
+        <div class="who"><span class="name">db-01</span><span class="role">MySQL primary</span></div>
+        <svg class="spark-live" id="s2" data-points="60" data-max="100" data-limit="85" data-label="CPU on db-01"></svg>
+        <p class="now num"><span id="n2">26</span>%</p>
+      </li>
+      <li class="host">
+        <div class="who"><span class="name">worker-01</span><span class="role">SMS reminders, invoices</span></div>
+        <svg class="spark-live" id="s3" data-points="60" data-max="100" data-limit="85" data-label="CPU on worker-01"></svg>
+        <p class="now num"><span id="n3">29</span>%</p>
+      </li>
+    </ul>
+
+    <footer class="mon-foot">
+      <p class="clock mute">Simulated time <time class="num" id="clock">2:31:55 pm</time></p>
+      <p class="legend mute"><span class="dash" aria-hidden="true"></span> 85% alert line</p>
+      <label class="switch"><input type="checkbox" role="switch" id="live" checked> Live</label>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

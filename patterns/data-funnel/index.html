@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales funnel demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="data-funnel.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="sales sheet" aria-labelledby="sales-h">
+    <header class="sales-head">
+      <div>
+        <p class="org">Sinar Bumbung Solar <span aria-hidden="true">/</span> home rooftop sales, Klang Valley</p>
+        <h1 id="sales-h">From enquiry to signed contract</h1>
+      </div>
+      <div class="qtr" role="group" aria-label="Quarter">
+        <button type="button" data-q="q2" aria-pressed="false">Q2</button>
+        <button type="button" data-q="q3" aria-pressed="true">Q3 2026</button>
+      </div>
+    </header>
+
+    <figure class="funnel" data-play aria-labelledby="sales-h">
+      <ol class="fn-stages">
+        <li class="fn-stage" data-value="1284">
+          <p class="fn-name">Enquiries <span class="fn-count num">1,284</span></p>
+          <div class="fn-track" aria-hidden="true"><span class="fn-lost"></span><span class="fn-bar"></span></div>
+          <p class="fn-drop fn-first mute">Website, WhatsApp and the Mid Valley roadshow</p>
+        </li>
+        <li class="fn-stage" data-value="612">
+          <p class="fn-name">Site survey booked <span class="fn-count num">612</span></p>
+          <div class="fn-track" aria-hidden="true"><span class="fn-lost"></span><span class="fn-bar"></span></div>
+          <p class="fn-drop"><span class="fn-lost-n num">672</span> dropped, <span class="fn-lost-p num">52.3%</span></p>
+        </li>
+        <li class="fn-stage" data-value="437">
+          <p class="fn-name">Quotation sent <span class="fn-count num">437</span></p>
+          <div class="fn-track" aria-hidden="true"><span class="fn-lost"></span><span class="fn-bar"></span></div>
+          <p class="fn-drop"><span class="fn-lost-n num">175</span> dropped, <span class="fn-lost-p num">28.6%</span></p>
+        </li>
+        <li class="fn-stage fn-last" data-value="163">
+          <p class="fn-name">Contract signed <span class="fn-count num">163</span></p>
+          <div class="fn-track" aria-hidden="true"><span class="fn-lost"></span><span class="fn-bar"></span></div>
+          <p class="fn-drop"><span class="fn-lost-n num">274</span> dropped, <span class="fn-lost-p num">62.7%</span></p>
+        </li>
+      </ol>
+    </figure>
+
+    <footer class="sales-foot">
+      <p id="sum"><strong class="num" id="rate">12.7%</strong> of enquiries signed. The biggest leak is <span id="leak">quotation to contract</span>.</p>
+      <p class="mute" id="value">Average 6.1 kWp system at RM 23,800</p>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

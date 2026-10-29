@@ -1,0 +1,19 @@
+{
+  "name": "Live sparkline",
+  "slug": "data-sparkline-live",
+  "kind": "pattern",
+  "summary": "A small live line that takes a new reading each second and scrolls left at a steady speed, with a dot riding the right edge. It turns to the warning colour over its limit.",
+  "category": "data",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

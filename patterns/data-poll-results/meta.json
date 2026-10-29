@@ -1,0 +1,22 @@
+{
+  "name": "Live poll results",
+  "slug": "data-poll-results",
+  "kind": "pattern",
+  "summary": "Live poll bars you can vote in. Bursts of votes ease every bar to its new share, a small +n rises on the options that gained, and the percentages always add up to 100.",
+  "category": "data",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--dur-base",
+    "--dur-quick",
+    "--ease-out",
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}
