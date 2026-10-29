@@ -1,0 +1,16 @@
+{
+  "name": "Drum time picker",
+  "slug": "drum-time-picker",
+  "kind": "pattern",
+  "summary": "Hour, minute and am or pm wheels on real 3D cylinders. Flick one and it glides with your speed, then lands on a slot. Drag, tap, wheel or arrow keys.",
+  "category": "drum",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

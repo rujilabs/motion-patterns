@@ -1,0 +1,66 @@
+/*
+ * drum-time-picker: a value wheel on a real 3D cylinder. drum-time-picker.js places one face per
+ * visible row with rotateX(angle) translateZ(radius) and sets --lit (the cosine of that angle) on
+ * each face, so rows dim as they turn away. The mask darkens the rim further, like a curved surface
+ * catching less light. Without the script, the list is a short scroll-snap column that still picks.
+ */
+.drum {
+  --drum-row: 40px;
+  position: relative;
+  height: calc(var(--drum-row) * 5);
+  perspective: 1000px;
+  overflow: hidden;
+  touch-action: none; /* the drum owns vertical drags; the page scrolls everywhere else */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-mask-image: linear-gradient(transparent, #000 32%, #000 68%, transparent);
+  mask-image: linear-gradient(transparent, #000 32%, #000 68%, transparent);
+}
+.drum.is-grabbed { cursor: grabbing; }
+.drum:focus-visible { outline-offset: -2px; }
+/* the selection band: the row that counts */
+.drum::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: var(--drum-row);
+  margin-top: calc(var(--drum-row) / -2);
+  background: var(--drum-band, color-mix(in srgb, currentColor 7%, transparent));
+  border-radius: var(--drum-band-radius, 8px);
+}
+.drum-cyl { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
+.drum-face {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: var(--drum-row);
+  margin-top: calc(var(--drum-row) / -2);
+  line-height: var(--drum-row);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  opacity: calc(.08 + .92 * var(--lit, 1) * var(--lit, 1)); /* light falls off with the angle squared */
+}
+
+/* no script: a flat scroll-snap column, still usable */
+.drum-list {
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  padding-block: calc(var(--drum-row) * 2);
+  margin: 0;
+  list-style: none;
+  scrollbar-width: none;
+}
+.drum-list > li { height: var(--drum-row); line-height: var(--drum-row); text-align: center; scroll-snap-align: center; }
+.drum.is-ready .drum-list { display: none; }
+.js .drum:not(.is-ready) { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* drum-time-picker.js lands every release, key and tap on its row at once: no glide, no snap */
+  .drum-face { transition: none; }
+}

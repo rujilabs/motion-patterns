@@ -1,0 +1,19 @@
+{
+  "name": "Drum slot voucher",
+  "slug": "drum-slot-voucher",
+  "kind": "pattern",
+  "summary": "Pull the lever and three 3D reels kick back, spin up, then brake one by one and settle against the stopper on a voucher code.",
+  "category": "drum",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-in"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drum time picker demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="drum-time-picker.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="book sheet" aria-labelledby="book-h">
+    <div class="book-info">
+      <p class="kicker">Fisio Lebuh Chulia, George Town</p>
+      <h1 id="book-h">Pick a start time</h1>
+      <dl class="appt">
+        <div><dt>With</dt><dd>Teoh Mei Ling, physiotherapist</dd></div>
+        <div><dt>Day</dt><dd>Thursday, 6 November</dd></div>
+        <div><dt>Session</dt><dd>Knee and lower back, 45 min</dd></div>
+        <div><dt>Fee</dt><dd class="num">RM 120.00</dd></div>
+      </dl>
+      <p class="hours mute">Open 8:30 am to 6:00 pm. Lunch 1:00 to 2:00 pm.</p>
+    </div>
+
+    <div class="book-pick">
+      <div class="picker" role="group" aria-label="Start time">
+        <div class="drum drum-h" role="spinbutton" tabindex="0" aria-label="Hour" aria-valuemin="1" aria-valuemax="12" data-loop>
+          <ol class="drum-list"><li data-n="1">1</li><li data-n="2">2</li><li data-n="3">3</li><li data-n="4">4</li><li data-n="5">5</li><li data-n="6">6</li><li data-n="7">7</li><li data-n="8">8</li><li data-n="9">9</li><li class="is-on" data-n="10">10</li><li data-n="11">11</li><li data-n="12">12</li></ol>
+        </div>
+        <span class="colon" aria-hidden="true">:</span>
+        <div class="drum drum-m" role="spinbutton" tabindex="0" aria-label="Minutes" aria-valuemin="0" aria-valuemax="45" data-loop>
+          <ol class="drum-list"><li data-n="0">00</li><li data-n="15">15</li><li data-n="30">30</li><li class="is-on" data-n="45">45</li></ol>
+        </div>
+        <div class="drum drum-p" role="spinbutton" tabindex="0" aria-label="Morning or afternoon" aria-valuemin="0" aria-valuemax="1">
+          <ol class="drum-list"><li class="is-on" data-n="0">am</li><li data-n="1">pm</li></ol>
+        </div>
+      </div>
+      <p class="slot" id="slot"><span class="dot" aria-hidden="true"></span><span id="slot-text">10:45 to 11:30 am is free.</span></p>
+      <button class="book-btn" type="button" id="book">Book 10:45 am</button>
+      <p class="sr-only" id="say" role="status"></p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

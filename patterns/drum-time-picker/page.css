@@ -1,0 +1,50 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root { --clinic: #0b6b58; --clinic-soft: #e2f0eb; --clinic-ink: #0f2a24; --clinic-warn: #b4521d; }
+@media (prefers-color-scheme: dark) {
+  :root { --clinic: #4cc3a3; --clinic-soft: #17352f; --clinic-ink: #e4f2ee; --clinic-warn: #f0915a; }
+}
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.book { width: min(680px, 100%); display: grid; grid-template-columns: 1fr 280px; overflow: hidden; }
+.book-info { padding: 26px 26px 22px; display: grid; align-content: start; gap: 14px; }
+.kicker { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--clinic); font-weight: 600; }
+.book-info h1 { font-size: 26px; margin-top: -6px; }
+.appt { display: grid; gap: 0; border-top: 1px solid var(--demo-line); }
+.appt div { display: grid; grid-template-columns: 76px 1fr; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--demo-line); font-size: 14px; }
+.appt dt { color: var(--demo-mute); }
+.appt dd { margin: 0; font-weight: 550; }
+.hours { font-size: 13px; }
+
+.book-pick { background: var(--clinic-soft); padding: 22px 20px 20px; display: grid; align-content: center; gap: 14px; border-left: 1px solid var(--demo-line); }
+.picker { position: relative; display: grid; grid-template-columns: 1fr 12px 1fr 1fr; align-items: center; color: var(--clinic-ink); }
+/* one band across all three wheels, drawn here so the drums leave theirs off */
+.picker::before { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 44px; margin-top: -22px; background: var(--demo-paper); border-radius: 10px; border: 1px solid var(--demo-line); }
+.picker .drum { --drum-row: 44px; --drum-band: transparent; font-size: 26px; font-weight: 600; }
+.drum-h .drum-face { text-align: right; padding-right: 6px; }
+.drum-m .drum-face { text-align: left; padding-left: 6px; }
+.picker .drum.drum-p { font-size: 20px; font-weight: 500; }
+.colon { position: relative; font-size: 26px; font-weight: 600; text-align: center; line-height: 1; margin-top: -4px; }
+.picker .drum:focus-visible { outline: 2px solid var(--clinic); outline-offset: -2px; border-radius: 10px; }
+
+.slot { display: flex; gap: 8px; align-items: baseline; font-size: 13px; min-height: 38px; color: var(--clinic-warn); text-wrap: pretty; }
+.slot .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: currentColor; translate: 0 -1px; }
+.slot.is-free, .slot.is-booked { color: var(--clinic); }
+.book-btn { font: inherit; font-size: 15px; font-weight: 600; color: #fff; background: var(--clinic); border: 0; border-radius: 8px; padding: 11px 14px; cursor: pointer; transition: scale var(--dur-quick) var(--ease-out); }
+.book-btn:active { scale: .97; }
+.book-btn:disabled { cursor: default; opacity: .7; }
+@media (prefers-color-scheme: dark) { .book-btn { color: #08201b; } }
+
+@media (max-width: 600px) {
+  .book { grid-template-columns: 1fr; }
+  .book-info { padding: 18px 16px 14px; gap: 10px; }
+  .book-info h1 { font-size: 22px; }
+  .appt div { padding: 7px 0; }
+  .book-pick { border-left: 0; border-top: 1px solid var(--demo-line); padding: 14px 16px 16px; }
+}
+@media (max-height: 520px) and (min-width: 601px) {
+  .book-info { padding-block: 16px; gap: 10px; }
+  .appt div { padding: 6px 0; }
+  .picker .drum { --drum-row: 38px; height: 170px; }
+  .picker::before { height: 38px; margin-top: -19px; }
+}
+@media (prefers-reduced-motion: reduce) { .book-btn { transition: none; } }

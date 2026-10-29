@@ -1,0 +1,135 @@
+/*
+ * drum-combo-lock: a padlock with number dials. Each .dial is a ten-sided cylinder that
+ * drum-combo-lock.js builds from rotateX + translateZ faces; --lit (the cosine of a face's angle,
+ * with the light a little above) shades each face, so the dial reads round. The shackle lifts and
+ * then swings on its left leg when the code is right. Colours are custom properties.
+ */
+.lock {
+  --lock-body: #c9963f;
+  --lock-edge: #8a5f1f;
+  --lock-steel: #b8bec6;
+  --lock-steel-edge: #7d858f;
+  --lock-slot: #22180c;
+  --dial-metal: #e6c27a;
+  --dial-ink: #2a1c0b;
+  --dial-row: 46px;
+  position: relative;
+  width: 260px;
+  padding-top: 92px;
+  perspective: 900px;
+}
+.lock-shackle {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  width: 168px;
+  margin-left: -84px;
+  height: 100px;
+  border: 20px solid var(--lock-steel);
+  border-left-color: var(--lock-steel-edge); /* the far side of a round bar, in shade */
+  border-bottom: 0;
+  border-radius: 84px 84px 0 0;
+  box-shadow: inset 0 0 0 1px var(--lock-steel-edge), 0 0 0 1px var(--lock-steel-edge);
+  transform-origin: 10px 100%; /* the left leg: it stays in the body and the shackle swings on it */
+  transition: rotate 320ms var(--ease-inout), translate 260ms var(--ease-in) 240ms;
+}
+.lock.is-open .lock-shackle {
+  translate: 0 -48px; /* the short right leg clears the body */
+  rotate: y 52deg;
+  transition: translate var(--dur-base) var(--ease-spring), rotate var(--dur-slow) var(--ease-spring) 260ms;
+}
+.lock-body {
+  position: relative;
+  border-radius: 22px 22px 28px 28px;
+  background: var(--lock-body);
+  box-shadow: inset 0 -10px 0 var(--lock-edge), inset 0 2px 0 color-mix(in srgb, #fff 35%, transparent);
+  padding: 22px 18px 30px;
+}
+/* the long left leg, which never leaves the body */
+.lock-shackle::after {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 100%;
+  width: 20px;
+  height: 60px;
+  background: var(--lock-steel);
+  box-shadow: inset 0 0 0 1px var(--lock-steel-edge);
+}
+/* contact shadow on the table */
+.lock::after {
+  content: "";
+  position: absolute;
+  left: 8%; right: 8%;
+  bottom: -14px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / .32), transparent);
+  z-index: -1;
+}
+.lock-dials {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  border-radius: 12px;
+  background: var(--lock-slot);
+}
+/* the slot's lip throws a shadow on the dials, top and bottom */
+.lock-dials::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 12px 10px -8px rgb(0 0 0 / .7), inset 0 -10px 10px -8px rgb(0 0 0 / .6);
+  pointer-events: none;
+}
+.dial {
+  position: relative;
+  flex: 0 0 48px;
+  height: 116px;
+  perspective: 700px;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  color: var(--dial-ink);
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: var(--dial-row);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.dial.is-grabbed { cursor: grabbing; }
+.dial:focus-visible { outline: 2px solid var(--dial-focus, #fff); outline-offset: -2px; border-radius: 4px; }
+.dial-cyl { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
+.dial-face {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: var(--dial-row);
+  margin-top: calc(var(--dial-row) / -2);
+  background: var(--dial-metal);
+  border-top: 1px solid rgb(0 0 0 / .28);   /* the ridge between two numbers */
+  border-bottom: 1px solid rgb(255 255 255 / .3);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.dial-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: calc((1 - var(--lit, 1)) * .9); /* darker as the face turns away from the light */
+}
+/* no script: the digit sits in the slot as plain text */
+.dial:not(.is-ready) { display: grid; place-items: center; background: var(--dial-metal); }
+.js .dial:not(.is-ready) { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the dials land at once (drum-combo-lock.js) and the shackle is simply up or down */
+  .lock-shackle, .lock.is-open .lock-shackle { transition: none; }
+}

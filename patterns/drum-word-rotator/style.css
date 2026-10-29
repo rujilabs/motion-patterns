@@ -1,0 +1,39 @@
+/*
+ * drum-word-rotator: a word on a row of three-sided prisms, like a roadside tri-vision sign.
+ * drum-word-rotator.js cuts the word into slats; each slat is a triangular prism (faces 120 degrees
+ * apart, pushed out by the triangle's inradius) that turns on rotateX. Each face carries a shade the
+ * script fades with the cosine of its angle. Without the script the first word shows, flat.
+ */
+.prism {
+  --prism-face: #ffd84d;
+  --prism-ink: inherit;
+  position: relative;
+  display: inline-block;
+  vertical-align: var(--prism-drop, -.2em);
+  perspective: 900px;
+  background: var(--prism-face);
+  color: var(--prism-ink);
+  padding-inline: .12em;
+  line-height: var(--prism-line, 1.12);
+}
+.prism.is-ready { background: none; padding: 0; }
+.prism-probe { position: absolute; visibility: hidden; white-space: nowrap; padding-inline: .12em; line-height: var(--prism-line, 1.12); }
+.prism-slat { position: absolute; top: 0; height: 100%; transform-style: preserve-3d; visibility: hidden; }
+.prism.is-turning .prism-slat { visibility: visible; }
+.prism-flat { position: absolute; top: 0; left: 0; height: 100%; white-space: nowrap; padding-inline: .12em; line-height: var(--prism-line, 1.12); background: var(--prism-face); }
+.prism.is-turning .prism-flat { visibility: hidden; }
+.prism-body { position: absolute; inset: 0; transform-style: preserve-3d; }
+.prism-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.prism-text { position: absolute; top: 0; height: 100%; white-space: nowrap; padding-inline: .12em; line-height: var(--prism-line, 1.12); background: var(--prism-face); } /* the paint covers the word only */
+.prism-shade { position: absolute; inset: 0; background: #000; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* drum-word-rotator.js never schedules a turn: the first word stays, square to you */
+  .prism-body, .prism-shade { animation: none; transition: none; }
+}
