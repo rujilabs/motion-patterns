@@ -1,0 +1,65 @@
+/*
+ * light-scan-verify: a scanner lamp over a document. light-scan-verify.js adds the lamp and the boxes
+ * and runs the pass; this file draws them.
+ *   .scan-lamp   a line of light with the falloff of a line source on paper, 1 / (1 + (d/h)^2), blended
+ *                with screen so it brightens what is under it and never covers it
+ *   .scan-shade  you supply it: the photo's uneven light, cleared above the lamp line
+ *   .scan-box    the box round each field the lamp has read
+ * Without the script, or with reduced motion, the document shows as read: no shade, no lamp.
+ */
+.scan-doc {
+  --scan-light: #c9fff0;         /* lamp colour */
+  --scan-box: #e2553a;           /* boxes round read fields */
+  --scan-band: 120px;            /* height of the lit band: 6 lamp heights either side of the line */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.scan-shade { position: absolute; inset: 0; pointer-events: none; z-index: 1; display: none; }
+.js .scan-doc:not(.is-done):not(.is-boxed) .scan-shade { display: block; }
+
+.scan-lamp {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--scan-band);
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  /* line-source falloff: stops at 0, .5, 1, 2, 3 and 4 lamp heights either side of the line */
+  background:
+    linear-gradient(transparent calc(50% - 1px), #fff calc(50% - 1px), #fff calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(
+      transparent 0%,
+      color-mix(in srgb, var(--scan-light) 6%, transparent) 16.7%,
+      color-mix(in srgb, var(--scan-light) 10%, transparent) 25%,
+      color-mix(in srgb, var(--scan-light) 20%, transparent) 33.3%,
+      color-mix(in srgb, var(--scan-light) 50%, transparent) 41.7%,
+      color-mix(in srgb, var(--scan-light) 80%, transparent) 45.8%,
+      var(--scan-light) 50%,
+      color-mix(in srgb, var(--scan-light) 80%, transparent) 54.2%,
+      color-mix(in srgb, var(--scan-light) 50%, transparent) 58.3%,
+      color-mix(in srgb, var(--scan-light) 20%, transparent) 66.7%,
+      color-mix(in srgb, var(--scan-light) 10%, transparent) 75%,
+      color-mix(in srgb, var(--scan-light) 6%, transparent) 83.3%,
+      transparent 100%);
+}
+[data-scan-field] { position: relative; }
+.scan-box {
+  position: absolute;
+  inset: -3px -5px;
+  border: 1.5px solid var(--scan-box);
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 3;
+}
+.scan-doc.is-boxed .scan-box { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* light-scan-verify.js skips the pass: the document shows as read, with its boxes, straight away */
+  .scan-lamp { display: none; }
+  .scan-shade { display: none !important; }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Globe live dots",
+  "slug": "globe-live-dots",
+  "kind": "pattern",
+  "summary": "Live visitors as dots on a globe: each place sized by how many people are there now and sending out rings, busy places more often. Dots ease to new sizes when the counts change.",
+  "category": "globe",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Door reveal demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="doors.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="promo" aria-labelledby="promo-h">
+    <div class="wall">
+      <span class="garland" aria-hidden="true"></span>
+      <div class="frame">
+        <div class="doorway" id="doorway">
+          <div class="doorway-inside" id="code">
+            <div class="voucher">
+              <p class="v-label">Your Deepavali code</p>
+              <p class="v-code">ANANDA12</p>
+              <p class="v-body">RM&nbsp;12 off any box over RM&nbsp;80</p>
+              <p class="v-small">Until Sunday 8 November</p>
+            </div>
+          </div>
+          <button class="doors" type="button" aria-expanded="false" aria-controls="code">
+            <span class="doors-label">Open the doors</span>
+            <span class="door door-l" aria-hidden="true"><span class="door-face door-front"><span class="knob"></span></span><span class="door-face door-edge"></span><span class="door-face door-back"></span></span>
+            <span class="door door-r" aria-hidden="true"><span class="door-face door-front"><span class="knob"></span></span><span class="door-face door-edge"></span><span class="door-face door-back"></span></span>
+          </button>
+        </div>
+      </div>
+      <span class="step" aria-hidden="true"></span>
+    </div>
+
+    <div class="copy">
+      <p class="kicker">Mithai Ananda &middot; Brickfields</p>
+      <h1 id="promo-h">Deepavali boxes are in. Open the doors for your code.</h1>
+      <p class="body">Murukku, Mysore pak, rava ladoo and pista barfi, packed in tins of 24 to 60 pieces. Boxes from RM&nbsp;48.90.</p>
+      <p class="state" id="state" role="status">Doors shut</p>
+      <p class="hint">Drag a door open, or tap it. Keyboard: Tab to the doors, then Enter.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

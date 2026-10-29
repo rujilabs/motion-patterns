@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drum slot voucher demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="drum-slot-voucher.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="promo" aria-labelledby="promo-h">
+    <header class="promo-head">
+      <p class="kicker">Kopi Lai Heng, Jalan Bandar Timah, Ipoh</p>
+      <h1 id="promo-h">Pull for this week&rsquo;s voucher</h1>
+    </header>
+
+    <div class="cabinet slot" id="slot" data-results="MILO 20 A7K; TEH 15 Q3R; LIMAU 12 J5P; KOPI 30 M9D">
+      <div class="window" aria-hidden="true">
+        <div class="reel"><ol class="reel-list"><li class="is-on">KOPI</li><li>TEH</li><li>MILO</li><li>CHAM</li><li>LIMAU</li><li>BARLI</li><li>SIRAP</li><li>HALIA</li><li>NESLO</li><li>KOSONG</li></ol></div>
+        <div class="reel"><ol class="reel-list"><li>08</li><li class="is-on">10</li><li>12</li><li>15</li><li>18</li><li>20</li><li>22</li><li>25</li><li>30</li><li>35</li></ol></div>
+        <div class="reel"><ol class="reel-list"><li>A7K</li><li>Q3R</li><li>M9D</li><li>T2W</li><li>J5P</li><li class="is-on">X4B</li><li>H8N</li><li>C6V</li><li>L3S</li><li>R2G</li></ol></div>
+      </div>
+      <button class="slot-lever" type="button" aria-label="Pull the lever to spin for a voucher"><span class="lever-arm"><span class="lever-knob"></span></span></button>
+    </div>
+
+    <div class="ticket" id="ticket">
+      <p class="t-code num" id="code">Every pull wins</p>
+      <p class="t-body" id="terms" role="status">Drag the yellow knob down and let go, or press it. One code per table, any branch in Ipoh.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

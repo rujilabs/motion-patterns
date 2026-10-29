@@ -1,0 +1,16 @@
+{
+  "name": "Shutter menu",
+  "slug": "panel-shutter-menu",
+  "kind": "pattern",
+  "summary": "A mobile menu folded in a zig-zag strip of slats. It unfolds from the top, each slat letting go when the one above is nearly down, and folds back up from the bottom.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

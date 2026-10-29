@@ -1,0 +1,21 @@
+{
+  "name": "Keycap",
+  "slug": "form-keycap",
+  "kind": "pattern",
+  "summary": "A button built like a keycap on a switch. Pressing sinks the cap so its skirt slides behind the plate edge, and a real key on the keyboard presses it too.",
+  "category": "form",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-in",
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,79 @@
+/* Demo page layout for this entry. Not part of the pattern. A seaside ikan bakar stall: limewash, deep green, the sign on a painted board. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+:root {
+  --os-table: #e3e9e4;
+  --os-paper: #f8f6ef;
+  --os-ink: #1c2a24;
+  --os-mute: #5f6f67;
+  --os-line: #dcdcd0;
+  --os-green: #1f5a43;
+  --os-board: #16201c;
+  --os-window: #2a3a33;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --os-table: #0f1412;
+    --os-paper: #171e1b;
+    --os-ink: #e6ede8;
+    --os-mute: #98a8a0;
+    --os-line: #29332f;
+    --os-green: #5cc79a;
+    --os-board: #0c110f;
+    --os-window: #0a0e0c;
+  }
+}
+body { background: var(--os-table); color: var(--os-ink); }
+.mute { color: var(--os-mute); }
+:focus-visible { outline-color: var(--os-green); }
+
+.shop {
+  width: min(760px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  background: var(--os-paper);
+  border: 1px solid var(--os-line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* the shop window the sign hangs in */
+.window {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  padding: 34px 26px 18px;
+  background: var(--os-window);
+}
+.window figcaption { font-size: 12px; color: #a9b8b0; text-align: center; }
+.sign { width: 100%; height: auto; }
+.board { fill: var(--os-board); stroke: rgb(255 255 255 / .06); }
+.stand circle { fill: #5d6a64; }
+.electrode rect { fill: #0a0d0c; stroke: #3b4541; stroke-width: 1; }
+.neon-circuit.is-blue { --neon: #49c2ff; --neon-core: #eaf8ff; }
+
+.info { display: grid; align-content: center; gap: 14px; padding: 26px 24px; }
+.kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--os-green); }
+.info h1 { font: 800 34px/1 "Anybody", "Host Grotesk", sans-serif; font-stretch: 78%; letter-spacing: -.01em; margin-top: 4px; }
+.now { display: flex; gap: 8px; align-items: baseline; font-size: 14px; font-weight: 600; min-height: 2.9em; }
+.dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--os-mute); translate: 0 -1px; }
+.now.is-open .dot { background: var(--os-green); }
+.hours { border-top: 1px solid var(--os-line); }
+.hours li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--os-line); font-size: 13.5px; color: var(--os-mute); }
+.hours li.is-now { color: var(--os-ink); font-weight: 650; }
+.clock { display: grid; gap: 4px; }
+.clock label { font-size: 13px; color: var(--os-mute); display: flex; justify-content: space-between; gap: 8px; }
+.clock output { color: var(--os-ink); font-weight: 700; font-size: 15px; }
+.clock input { width: 100%; margin: 0; height: 28px; accent-color: var(--os-green); }
+.ticks { display: flex; justify-content: space-between; font-size: 11px; color: var(--os-mute); }
+
+@media (max-width: 640px) {
+  .shop { grid-template-columns: minmax(0, 1fr); }
+  .window { padding: 28px 26px 14px; }
+  .info { padding: 18px 16px 20px; }
+  .info h1 { font-size: 30px; }
+}

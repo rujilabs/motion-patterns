@@ -1,0 +1,55 @@
+/* Demo page layout for this entry. Not part of the pattern. A weekend paper's travel page: newsprint, ink, harbour orange. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  --kw-table: #e4e0d8;
+  --kw-paper: #f8f5ef;
+  --kw-ink: #1d1b1a;
+  --kw-mute: #6f6a63;
+  --kw-line: #dcd6cb;
+  --kw-accent: #c4532d;
+  --kw-frame: #e7e1d7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --kw-table: #121110;
+    --kw-paper: #1c1a18;
+    --kw-ink: #efebe4;
+    --kw-mute: #a49d93;
+    --kw-line: #34302b;
+    --kw-accent: #ee7a50;
+    --kw-frame: #2a2622;
+  }
+}
+body { background: var(--kw-table); color: var(--kw-ink); }
+.sheet { background: var(--kw-paper); border-color: var(--kw-line); }
+.mute { color: var(--kw-mute); }
+:focus-visible { outline-color: var(--kw-accent); }
+
+.story { width: min(680px, 100%); padding: 20px 24px 14px; display: grid; gap: 14px; }
+.story-head { display: grid; gap: 4px; }
+.section { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--kw-accent); display: flex; gap: 10px; }
+.section span { color: var(--kw-ink); }
+.story-head h1 { font: 400 38px/1 "Instrument Serif", Georgia, serif; letter-spacing: -.01em; margin-top: 2px; }
+.standfirst { font-size: 15px; color: var(--kw-mute); max-width: 52ch; }
+.image-assemble { --ia-bg: var(--kw-frame); border-radius: 3px; }
+.story-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 12.5px; }
+.again {
+  font: 600 12.5px/1 "Host Grotesk", sans-serif; color: var(--kw-ink); background: none;
+  border: 1px solid var(--kw-line); border-radius: 6px; padding: 8px 11px; cursor: pointer; white-space: nowrap;
+}
+.again:hover { border-color: var(--kw-mute); }
+
+@media (max-width: 560px) {
+  .story { padding: 16px 16px 12px; gap: 12px; }
+  .story-head h1 { font-size: 31px; }
+  .standfirst { font-size: 14px; }
+  .story-foot { flex-direction: column; align-items: start; gap: 8px; }
+}
+@media (max-height: 600px) and (min-width: 561px) {
+  .story { width: min(640px, 100%); padding-block: 16px 12px; gap: 10px; }
+  .story-head h1 { font-size: 34px; }
+}

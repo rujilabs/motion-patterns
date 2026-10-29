@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drum rolodex demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="drum-rolodex.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="desk" aria-labelledby="desk-h">
+    <header class="desk-head">
+      <div>
+        <h1 id="desk-h">Suppliers</h1>
+        <p class="mute">Hock Seng Hardware, Jalan Kapar, Klang. 22 cards.</p>
+      </div>
+      <p class="how mute">Scroll or drag the cards, or type a letter.</p>
+    </header>
+
+    <div class="rdx" role="listbox" tabindex="0" aria-label="Supplier cards, type a letter to jump" id="rdx">
+      <ol class="rdx-list">
+        <li class="rdx-card" role="option" id="c-ah-keong-paint-supply" aria-selected="false" data-key="Ah Keong Paint Supply">
+          <div class="rdx-front"><span class="tab tab-0" aria-hidden="true">A</span><p class="co">Ah Keong Paint Supply</p><p class="who">Lim Keong Wah</p><p class="tel">03-3341 2287</p><p class="memo">Nippon, Jotun. Tue and Fri.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-bintang-fasteners" aria-selected="false" data-key="Bintang Fasteners">
+          <div class="rdx-front"><span class="tab tab-1" aria-hidden="true">B</span><p class="co">Bintang Fasteners</p><p class="who">Rajesh Kumar</p><p class="tel">012-388 4410</p><p class="memo">Min order RM 300.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-cahaya-lighting" aria-selected="false" data-key="Cahaya Lighting">
+          <div class="rdx-front"><span class="tab tab-2" aria-hidden="true">C</span><p class="co">Cahaya Lighting</p><p class="who">Nurul Huda</p><p class="tel">03-3324 9081</p><p class="memo">Philips LED, 60 days credit.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-chuan-lee-pvc-pipes" aria-selected="false" data-key="Chuan Lee PVC Pipes">
+          <div class="rdx-front"><p class="co">Chuan Lee PVC Pipes</p><p class="who">Tan Chuan Lee</p><p class="tel">016-219 7745</p><p class="memo">Class B and D pipes.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-delta-wire-and-cable" aria-selected="false" data-key="Delta Wire and Cable">
+          <div class="rdx-front"><span class="tab tab-3" aria-hidden="true">D</span><p class="co">Delta Wire and Cable</p><p class="who">Ng Siew Ping</p><p class="tel">03-5191 6620</p><p class="memo">Cash on delivery only.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-everbright-tiles" aria-selected="false" data-key="Everbright Tiles">
+          <div class="rdx-front"><span class="tab tab-4" aria-hidden="true">E</span><p class="co">Everbright Tiles</p><p class="who">Kelvin Ooi</p><p class="tel">012-660 3158</p><p class="memo">Showroom shut on Monday.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-fajar-timber" aria-selected="false" data-key="Fajar Timber">
+          <div class="rdx-front"><span class="tab tab-5" aria-hidden="true">F</span><p class="co">Fajar Timber</p><p class="who">Zulkifli Hamid</p><p class="tel">019-277 0846</p><p class="memo">Calls back after 2 pm.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-guan-hin-locks" aria-selected="false" data-key="Guan Hin Locks">
+          <div class="rdx-front"><span class="tab tab-6" aria-hidden="true">G</span><p class="co">Guan Hin Locks</p><p class="who">Lee Guan Hin</p><p class="tel">03-3371 5502</p><p class="memo">Cuts keys while you wait.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card is-on" role="option" id="c-hup-seng-cement" aria-selected="false" data-key="Hup Seng Cement">
+          <div class="rdx-front"><span class="tab tab-7" aria-hidden="true">H</span><p class="co">Hup Seng Cement</p><p class="who">Wong Mei Yee</p><p class="tel">03-3290 4417</p><p class="memo">Tasek and YTL, 50 kg bags.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-indah-sanitary" aria-selected="false" data-key="Indah Sanitary">
+          <div class="rdx-front"><span class="tab tab-8" aria-hidden="true">I</span><p class="co">Indah Sanitary</p><p class="who">Siti Rohana</p><p class="tel">012-905 1132</p><p class="memo">Ask for the trade price.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-jaya-gas-supply" aria-selected="false" data-key="Jaya Gas Supply">
+          <div class="rdx-front"><span class="tab tab-9" aria-hidden="true">J</span><p class="co">Jaya Gas Supply</p><p class="who">Murugan Pillai</p><p class="tel">017-336 2290</p><p class="memo">LPG 14 kg, swaps Saturday.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-kim-seng-tools" aria-selected="false" data-key="Kim Seng Tools">
+          <div class="rdx-front"><span class="tab tab-10" aria-hidden="true">K</span><p class="co">Kim Seng Tools</p><p class="who">Chong Kim Seng</p><p class="tel">03-3342 7718</p><p class="memo">Bosch, Makita servicing.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-lian-huat-glass" aria-selected="false" data-key="Lian Huat Glass">
+          <div class="rdx-front"><span class="tab tab-11" aria-hidden="true">L</span><p class="co">Lian Huat Glass</p><p class="who">Ho Lian Huat</p><p class="tel">016-311 4059</p><p class="memo">Cuts to size in 2 days.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-mega-roofing" aria-selected="false" data-key="Mega Roofing">
+          <div class="rdx-front"><span class="tab tab-12" aria-hidden="true">M</span><p class="co">Mega Roofing</p><p class="who">Faizal Ahmad</p><p class="tel">019-662 8137</p><p class="memo">Zinc and metal deck.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-nam-fatt-hardware" aria-selected="false" data-key="Nam Fatt Hardware">
+          <div class="rdx-front"><span class="tab tab-13" aria-hidden="true">N</span><p class="co">Nam Fatt Hardware</p><p class="who">Yap Nam Fatt</p><p class="tel">03-3176 2394</p><p class="memo">Nails and BRC wire mesh.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-perdana-electrical" aria-selected="false" data-key="Perdana Electrical">
+          <div class="rdx-front"><span class="tab tab-14" aria-hidden="true">P</span><p class="co">Perdana Electrical</p><p class="who">Arif Hakim</p><p class="tel">012-417 6625</p><p class="memo">Schneider MCBs and DBs.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-ri-tech-pumps" aria-selected="false" data-key="Ri-Tech Pumps">
+          <div class="rdx-front"><span class="tab tab-15" aria-hidden="true">R</span><p class="co">Ri-Tech Pumps</p><p class="who">Vincent Low</p><p class="tel">03-5121 8890</p><p class="memo">Pump repairs in 3 days.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-sinar-paint-factory" aria-selected="false" data-key="Sinar Paint Factory">
+          <div class="rdx-front"><span class="tab tab-16" aria-hidden="true">S</span><p class="co">Sinar Paint Factory</p><p class="who">Aminah Yusof</p><p class="tel">03-3392 1176</p><p class="memo">Emulsion in 18 L pails.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-teck-soon-steel" aria-selected="false" data-key="Teck Soon Steel">
+          <div class="rdx-front"><span class="tab tab-17" aria-hidden="true">T</span><p class="co">Teck Soon Steel</p><p class="who">Goh Teck Soon</p><p class="tel">016-388 2047</p><p class="memo">Rebar Y10 to Y16, cut.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-united-adhesives" aria-selected="false" data-key="United Adhesives">
+          <div class="rdx-front"><span class="tab tab-18" aria-hidden="true">U</span><p class="co">United Adhesives</p><p class="who">Mohd Rizal</p><p class="tel">017-244 3368</p><p class="memo">Silicone, epoxy, grout.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-wah-kee-hoses" aria-selected="false" data-key="Wah Kee Hoses">
+          <div class="rdx-front"><span class="tab tab-19" aria-hidden="true">W</span><p class="co">Wah Kee Hoses</p><p class="who">Leong Wah Kee</p><p class="tel">03-3341 0951</p><p class="memo">Hoses by the metre.</p></div><div class="rdx-back"></div>
+        </li>
+        <li class="rdx-card" role="option" id="c-yew-lee-ladders" aria-selected="false" data-key="Yew Lee Ladders">
+          <div class="rdx-front"><span class="tab tab-20" aria-hidden="true">Y</span><p class="co">Yew Lee Ladders</p><p class="who">Kok Yew Lee</p><p class="tel">012-301 7764</p><p class="memo">Ladders, 3 to 12 steps.</p></div><div class="rdx-back"></div>
+        </li>
+      </ol>
+      <span class="rdx-knob rdx-knob-l" aria-hidden="true"></span>
+      <span class="rdx-knob rdx-knob-r" aria-hidden="true"></span>
+      <span class="rdx-base" aria-hidden="true"></span>
+    </div>
+
+    <nav class="az" aria-label="Jump to a letter"><button type="button" data-letter="A">A</button><button type="button" data-letter="B">B</button><button type="button" data-letter="C">C</button><button type="button" data-letter="D">D</button><button type="button" data-letter="E">E</button><button type="button" data-letter="F">F</button><button type="button" data-letter="G">G</button><button type="button" data-letter="H">H</button><button type="button" data-letter="I">I</button><button type="button" data-letter="J">J</button><button type="button" data-letter="K">K</button><button type="button" data-letter="L">L</button><button type="button" data-letter="M">M</button><button type="button" data-letter="N">N</button><button type="button" data-letter="O" disabled>O</button><button type="button" data-letter="P">P</button><button type="button" data-letter="Q" disabled>Q</button><button type="button" data-letter="R">R</button><button type="button" data-letter="S">S</button><button type="button" data-letter="T">T</button><button type="button" data-letter="U">U</button><button type="button" data-letter="V" disabled>V</button><button type="button" data-letter="W">W</button><button type="button" data-letter="X" disabled>X</button><button type="button" data-letter="Y">Y</button><button type="button" data-letter="Z" disabled>Z</button></nav>
+  </section>
+</main>
+</body>
+</html>

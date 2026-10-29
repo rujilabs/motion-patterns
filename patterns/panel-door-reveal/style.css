@@ -1,0 +1,83 @@
+/*
+ * panel-door-reveal: two doors that swing open toward you, each about its outer hinge edge, to
+ * show what is inside. A door is a real slab: a front face, a back face one thickness behind it,
+ * and the edge between them on the side that swings, so the edge shows as the door turns. doors.js
+ * springs --door-l and --door-r (0deg shut). Light: the front darkens as it turns away from you;
+ * the back catches the light from the room once it swings past square; the inside brightens as
+ * the gap opens. Without the script the doors are drawn open and the inside reads.
+ */
+@property --door-l { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+@property --door-r { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+
+.doorway {
+  --door-wood: #8a4a22;
+  --door-wood-edge: #5e3015;
+  --door-wood-back: #a8673a;
+  --door-handle: #d9a441;
+  --door-ring: #1b6f6a;
+  --door-t: 12px;
+  --door-l: 104deg; --door-r: 104deg;   /* no script: drawn open */
+  position: relative;
+  width: 240px; height: 300px;
+  perspective: 1100px;
+  perspective-origin: 50% 45%;
+}
+.js .doorway { --door-l: 0deg; --door-r: 0deg; }
+.doorway-inside {
+  position: absolute; inset: 0;
+  display: grid; place-items: center; text-align: center;
+}
+/* the room is dark until light gets in */
+.doorway-inside::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: #1a0d05;
+  opacity: calc(.55 - sin(min(var(--door-l), var(--door-r), 90deg)) * .55);
+}
+
+.doors {
+  position: absolute; inset: 0; margin: 0; padding: 0;
+  background: none; border: 0; cursor: pointer; font: inherit; color: inherit;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.doors:focus-visible { outline: 2px solid var(--door-ring); outline-offset: 6px; border-radius: 2px; }
+.doors-label {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+.door {
+  position: absolute; top: 0; bottom: 0; width: 50%;
+  transform-style: preserve-3d;
+}
+.door-l { left: 0; transform-origin: 0 50%; transform: rotateY(calc(var(--door-l) * -1)); }
+.door-r { right: 0; transform-origin: 100% 50%; transform: rotateY(var(--door-r)); }
+
+.door-face {
+  position: absolute; top: 0; bottom: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.door-front, .door-back { left: 0; right: 0; }
+.door-front {
+  background: var(--door-wood);
+  /* stiles and rails: two sunk panels, drawn with shadows inside the slab */
+  box-shadow: inset 0 0 0 1px var(--door-wood-edge);
+}
+.door-back { background: var(--door-wood-back); transform: translateZ(calc(var(--door-t) * -1)) rotateY(180deg); }
+/* the swinging edge: as deep as the door is thick, standing back from the front face */
+.door-edge { width: var(--door-t); background: var(--door-wood-edge); }
+.door-l .door-edge { left: 100%; transform-origin: 0 50%; transform: rotateY(90deg); }
+.door-r .door-edge { right: 100%; transform-origin: 100% 50%; transform: rotateY(-90deg); }
+
+/* light: front darker as it turns away from you; the back lit by the room; the edge by both */
+.door-face::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: #120802; }
+.door-l .door-front::after { opacity: calc((1 - cos(var(--door-l))) * .5); }
+.door-r .door-front::after { opacity: calc((1 - cos(var(--door-r))) * .5); }
+.door-l .door-back::after { opacity: calc((1 + cos(var(--door-l))) * .45); }
+.door-r .door-back::after { opacity: calc((1 + cos(var(--door-r))) * .45); }
+.door-l .door-edge::after { opacity: calc(.15 + cos(var(--door-l)) * .3); }
+.door-r .door-edge::after { opacity: calc(.15 + cos(var(--door-r)) * .3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .doorway-inside::after { transition: none; }
+}

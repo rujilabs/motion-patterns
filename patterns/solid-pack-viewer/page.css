@@ -1,0 +1,111 @@
+/* Demo page layout for this entry. Not part of the pattern. A tea maker's product page: estate green, cream carton, brass. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  --tea-table: #e4e9df;
+  --tea-paper: #fbfaf5;
+  --tea-ink: #1d2a22;
+  --tea-mute: #5d6b61;
+  --tea-line: #d5dccf;
+  --tea-green: #1f4a39;
+  --tea-cream: #f3ead4;
+  --tea-brass: #c49a3e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tea-table: #111612;
+    --tea-paper: #18201b;
+    --tea-ink: #e8eee6;
+    --tea-mute: #9caa9f;
+    --tea-line: #2a352d;
+    --tea-brass: #d9b45e;
+  }
+}
+body { background: var(--tea-table); color: var(--tea-ink); }
+:focus-visible { outline-color: var(--tea-brass); }
+
+.product {
+  width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center;
+  gap: 8px; padding: 18px 26px 18px 10px; background: var(--tea-paper); border-color: var(--tea-line);
+}
+.pack { --pack-h: 286px; --pack-floor: 186px; --pack-ring: var(--tea-brass); --pack-shadow: 30 40 25; }
+@media (prefers-color-scheme: dark) { .pack { --pack-shadow: 0 0 0; } }
+
+/* the printed carton: every face is flat colour, the shading comes from the light */
+.pack-face { color: var(--tea-green); background: var(--tea-cream); font-family: "Host Grotesk", system-ui, sans-serif; }
+.pack-front { background: var(--tea-green); color: var(--tea-cream); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 14px 0; }
+.art-brand { font: 400 30px/1 "Instrument Serif", Georgia, serif; letter-spacing: .01em; }
+.art-est { font-size: 8.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--tea-brass); margin-top: 5px; }
+.art-hills { width: calc(100% + 28px); margin: auto -14px 0; display: block; flex: none; }
+.art-hills .sun { fill: var(--tea-brass); }
+.art-hills .hill-far { fill: #2e6550; }
+.art-hills .hill-near { fill: #3f7d61; }
+.art-hills .rows { fill: none; stroke: #2b5e48; stroke-width: 2; stroke-linecap: round; }
+.art-name { font: 400 40px/.95 "Instrument Serif", Georgia, serif; margin-top: 14px; }
+.art-kind { font-size: 10px; line-height: 1.3; max-width: 17ch; margin-top: 8px; opacity: .85; }
+.art-count { flex: none; font-size: 10px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; background: #3f7d61; padding: 2px 0 12px; width: calc(100% + 28px); }
+.art-count span:first-child { color: var(--tea-brass); }
+.art-dot { opacity: .6; }
+
+.pack-back { padding: 14px 14px 10px; display: grid; align-content: start; gap: 4px; }
+.art-h { font-size: 8px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; margin-top: 4px; }
+.art-small { font-size: 9px; line-height: 1.35; }
+.art-tiny { font-size: 7.5px; line-height: 1.35; opacity: .8; }
+.art-table { width: 100%; border-collapse: collapse; font-size: 8.5px; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
+.art-table th { text-align: left; font-weight: 500; padding: 2px 0; }
+.art-table td { text-align: right; font-variant-numeric: tabular-nums; padding: 2px 0; }
+.art-table tr + tr { border-top: .5px solid rgb(31 74 57 / .35); }
+.barcode { width: 112px; background: #fff; padding: 4px 4px 2px; margin: 6px 0 2px; fill: #111; font: 7px "Host Grotesk", sans-serif; }
+
+.art-side { padding: 14px 8px; display: grid; gap: 5px; align-content: start; height: 100%; }
+.pack-left { background: var(--tea-green); color: var(--tea-cream); }
+.pack-left .art-h { color: var(--tea-brass); }
+.art-steps { display: grid; gap: 8px; font-size: 9px; line-height: 1.3; margin-top: 4px; }
+.art-steps b { display: block; font: 400 18px/1 "Instrument Serif", Georgia, serif; color: var(--tea-brass); }
+.art-cup { width: 34px; margin-top: 8px; fill: none; stroke: var(--tea-cream); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.art-code { font: 650 12px/1.1 "Host Grotesk", sans-serif; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.art-made { margin-top: 10px; font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-top: 1px solid currentColor; padding-top: 6px; }
+
+.pack-top, .pack-bottom { display: grid; place-content: center; justify-items: center; gap: 6px; text-align: center; padding: 6px 14px; }
+.pack-top { background: var(--tea-green); color: var(--tea-cream); }
+.art-open span { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border: 1.5px dashed var(--tea-brass); border-radius: 999px 999px 4px 4px; }
+.art-net { font-size: 10px; font-weight: 700; letter-spacing: .06em; }
+
+/* the product details */
+.details { display: grid; gap: 12px; align-content: center; }
+.crumb { font-size: 12px; color: var(--tea-mute); }
+.details h1 { font: 400 40px/1.02 "Instrument Serif", Georgia, serif; letter-spacing: -.01em; }
+.price { font-size: 22px; font-weight: 650; }
+.price span { font-size: 13px; font-weight: 450; color: var(--tea-mute); margin-left: 6px; }
+.hint { font-size: 13.5px; color: var(--tea-mute); }
+.faces { display: flex; flex-wrap: wrap; gap: 6px; }
+.faces button {
+  font: inherit; font-size: 13px; font-weight: 550; color: var(--tea-ink); background: transparent; cursor: pointer;
+  border: 1px solid var(--tea-line); border-radius: 999px; padding: 6px 12px;
+  transition: background-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out), border-color var(--dur-quick) var(--ease-out);
+}
+.faces button[aria-pressed="true"] { background: var(--tea-green); border-color: var(--tea-green); color: var(--tea-cream); }
+@media (prefers-color-scheme: dark) { .faces button[aria-pressed="true"] { background: var(--tea-brass); border-color: var(--tea-brass); color: #17130a; } }
+.cart {
+  justify-self: start; font: inherit; font-weight: 650; font-size: 14px; color: var(--tea-cream); background: var(--tea-green);
+  border: 0; border-radius: 8px; padding: 12px 22px; cursor: pointer; margin-top: 4px;
+}
+@media (prefers-color-scheme: dark) { .cart { background: var(--tea-brass); color: #17130a; } }
+.ship { font-size: 12.5px; color: var(--tea-mute); }
+
+@media (max-width: 640px) {
+  .product { grid-template-columns: 1fr; padding: 4px 16px 20px; }
+  .pack { --pack-floor: 176px; }
+  .details h1 { font-size: 34px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .pack { --pack-floor: 172px; }
+  .product { padding-block: 8px; }
+  .ship { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faces button { transition: none; }
+}

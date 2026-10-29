@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wave pendulum loader demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="wave-pendulum-loader.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="find sheet" aria-labelledby="find-h">
+    <header class="find-head">
+      <p class="brand">Rumah Tamu</p>
+      <h1 id="find-h">Homestays for 14 to 16 November, 2 adults</h1>
+    </header>
+
+    <fieldset class="places">
+      <legend>Where</legend>
+      <label><input type="radio" name="place" value="cameron" checked> Cameron Highlands</label>
+      <label><input type="radio" name="place" value="kundasang"> Kundasang</label>
+      <label><input type="radio" name="place" value="pangkor"> Pulau Pangkor</label>
+    </fieldset>
+
+    <div class="results-area">
+      <ol class="results" id="results" aria-label="Homestays">
+        <li><span class="r-name">Rumah Teh Bertam</span><span class="r-where">Tanah Rata</span><span class="r-rate"><b>4.8</b> 213 reviews</span><span class="r-price num">RM 186 <small>a night</small></span></li>
+        <li><span class="r-name">Kabus Lodge</span><span class="r-where">Brinchang</span><span class="r-rate"><b>4.6</b> 98 reviews</span><span class="r-price num">RM 142 <small>a night</small></span></li>
+        <li><span class="r-name">Dusun Strawberi Homestay</span><span class="r-where">Kea Farm</span><span class="r-rate"><b>4.9</b> 61 reviews</span><span class="r-price num">RM 228 <small>a night</small></span></li>
+      </ol>
+      <div class="loader" id="loader" aria-hidden="true">
+        <canvas class="pendulum-wave" id="wave" data-count="12" data-cycle="24" data-first="20"></canvas>
+      </div>
+    </div>
+
+    <p class="status" id="status" role="status">46 homestays in Cameron Highlands.</p>
+  </section>
+</main>
+</body>
+</html>

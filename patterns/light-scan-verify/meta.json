@@ -1,0 +1,19 @@
+{
+  "name": "Light scan verify",
+  "slug": "light-scan-verify",
+  "kind": "pattern",
+  "summary": "A scanner lamp crosses an uploaded ID at carriage speed. Behind it the photo's uneven light is gone, each field gets a box as the line reaches it, and its check ticks a beat later.",
+  "category": "light",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-spring"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

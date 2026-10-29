@@ -1,0 +1,76 @@
+/*
+ * light-pointer-spotlight: a lamp held over a grid. The light falls off like a real point light
+ * (Lambert: brightness = h^3 / (h^2 + d^2)^1.5 for a lamp at height h), so it is drawn as a
+ * radial-gradient MASK on a lit copy of each surface, never as a glow painted on top.
+ * light-pointer-spotlight.js sets the numbers; without it nothing is lit and the cards read as normal.
+ *   --spot-x, --spot-y   where the light is, in each element's own px (set per element)
+ *   --spot-r             how far the light reaches (3 lamp heights), px
+ *   --spot-a             brightness under the lamp, 0 to 1
+ */
+.spotlight {
+  --spot-lit: #fff8ec;            /* the surface colour in full light */
+  --spot-edge: #c98a4b;           /* an edge in full light */
+  --spot-x: -999px;
+  --spot-y: -999px;
+  --spot-r: 240px;
+  --spot-a: 0;
+  position: relative;
+  isolation: isolate;
+}
+/* the falloff curve, shared by every lit layer: Lambert stops at 0, .25h, .5h ... 3h */
+.spotlight,
+.spotlight-item {
+  --spot-falloff:
+    rgb(0 0 0 / var(--spot-a)) 0%,
+    rgb(0 0 0 / calc(var(--spot-a) * .91)) 8.3%,
+    rgb(0 0 0 / calc(var(--spot-a) * .707)) 16.7%,
+    rgb(0 0 0 / calc(var(--spot-a) * .496)) 25%,
+    rgb(0 0 0 / calc(var(--spot-a) * .333)) 33.3%,
+    rgb(0 0 0 / calc(var(--spot-a) * .144)) 50%,
+    rgb(0 0 0 / calc(var(--spot-a) * .059)) 66.7%,
+    rgb(0 0 0 / calc(var(--spot-a) * .02)) 83.3%,
+    transparent 100%;
+}
+/* the light lands on the table between the items too */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--spot-lit);
+  opacity: .55;
+  pointer-events: none;
+  -webkit-mask: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), var(--spot-falloff));
+  mask: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), var(--spot-falloff));
+}
+.spotlight-item {
+  position: relative;
+  isolation: isolate;
+}
+/* the lit copy of the surface */
+.spotlight-item::before,
+.spotlight-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.spotlight-item::before {
+  z-index: -1;
+  background: var(--spot-lit);
+  -webkit-mask: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), var(--spot-falloff));
+  mask: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), var(--spot-falloff));
+}
+/* a raised edge catches light from further away than the flat face, so its reach is 1.6 times longer */
+.spotlight-item::after {
+  border: 1px solid var(--spot-edge);
+  -webkit-mask: radial-gradient(circle calc(var(--spot-r) * 1.6) at var(--spot-x) var(--spot-y), var(--spot-falloff));
+  mask: radial-gradient(circle calc(var(--spot-r) * 1.6) at var(--spot-x) var(--spot-y), var(--spot-falloff));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* light-pointer-spotlight.js moves the light straight to the pointer, with no glide, rise or fade */
+  .spotlight, .spotlight-item { transition: none; }
+}

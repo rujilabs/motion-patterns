@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curve signature demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="signature.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="consent sheet" aria-labelledby="c-h">
+    <header class="c-head">
+      <p class="clinic">Klinik Pergigian Dr. Farah Lim · Seremban 2</p>
+      <h1 id="c-h">Consent for treatment</h1>
+    </header>
+    <dl class="c-facts">
+      <div><dt>Patient</dt><dd>Nur Aina binti Hamdan</dd></div>
+      <div><dt>Procedure</dt><dd>Removal of lower left wisdom tooth (38)</dd></div>
+      <div><dt>Fee</dt><dd class="num">RM 480.00</dd></div>
+    </dl>
+    <p class="c-text">I have been told about the swelling, numbness and dry socket risks, and I agree to the procedure under local anaesthetic.</p>
+
+    <div class="pad-wrap">
+      <div class="curve-signature pad" id="pad" role="img" aria-label="Signature pad, empty" aria-describedby="pad-hint"></div>
+      <span class="pad-x" aria-hidden="true">×</span>
+      <p class="pad-label" id="pad-hint">Patient signature. Sign with your finger, a pen or the mouse.</p>
+      <div class="typed" id="typed-row" hidden>
+        <label for="typed">Type your full name</label>
+        <input id="typed" type="text" autocomplete="name">
+      </div>
+    </div>
+
+    <footer class="c-foot">
+      <p class="signed num" id="signed" role="status"></p>
+      <div class="c-actions">
+        <button type="button" class="btn-plain" id="type-instead">Type instead</button>
+        <button type="button" class="btn-line" id="clear" disabled>Clear</button>
+        <button type="button" class="btn" id="submit" disabled>Sign and submit</button>
+      </div>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

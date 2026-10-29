@@ -1,0 +1,90 @@
+/*
+ * form-keycap: a button built like a real keycap on a switch. The cap is a sculpted top face on a
+ * wider skirt, and it sits in a well whose bottom edge is the keyboard plate. Pressing moves the
+ * whole cap down by --key-travel, so the skirt sinks behind the plate edge: the key gets shorter
+ * the way a real one does, instead of shrinking or changing shadow. It bottoms out fast and comes
+ * back on a spring. keycap.js adds the press for a real key on the keyboard (aria-keyshortcuts)
+ * and holds the press long enough to be seen. Without the script, :active still presses it.
+ */
+.keycap {
+  --key-w: 56px;          /* cap width */
+  --key-h: 50px;          /* cap height above the plate, at rest, skirt included */
+  --key-skirt: 11px;      /* how much skirt shows below the top face */
+  --key-travel: 5px;      /* how far the cap goes down */
+  --key-cap: #f1ebdf;     /* top face */
+  --key-side: #d8cdb9;    /* skirt */
+  --key-legend: #2c2822;
+  --key-gap: #1b1a18;     /* the dark gap around the cap where it meets the plate */
+  appearance: none; font: inherit; color: var(--key-legend);
+  background: none; border: 0; padding: 0; margin: 0;
+  display: inline-block; vertical-align: middle;
+  border-radius: 9px; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.keycap-well {
+  position: relative; display: block;
+  width: var(--key-w); height: var(--key-h);
+  overflow: hidden;                 /* the bottom edge is the plate: what sinks below it is hidden */
+  border-radius: 9px 9px 4px 4px;
+}
+/* the gap at the foot of the cap: darker where the cap meets the plate */
+.keycap-well::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 5px;
+  background: linear-gradient(transparent, var(--key-gap));
+  opacity: .55; pointer-events: none;
+}
+.keycap-body {
+  position: absolute; inset: 0 0 calc(var(--key-travel) * -1);  /* longer than the well: the hidden part is the stem side */
+  border-radius: 9px;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / .1), transparent 9%, transparent 91%, rgb(0 0 0 / .14)),
+    linear-gradient(color-mix(in srgb, var(--key-side), #fff 12%), var(--key-side) 45%, color-mix(in srgb, var(--key-side), #000 22%));
+  translate: 0 0;
+  /* release: the spring in the switch pushes it back up with a small settle */
+  transition: translate calc(var(--dur-quick) * .9) var(--ease-spring);
+}
+/* the sculpted top face: narrower than the skirt, with a shallow cylindrical dish */
+.keycap-top {
+  position: absolute;
+  inset: 2px 5px calc(var(--key-skirt) + var(--key-travel)) 5px;
+  border-radius: 6px;
+  display: grid; place-items: center; padding: 3px 5px;
+  background:
+    linear-gradient(rgb(0 0 0 / .05), transparent 38%, transparent 66%, rgb(255 255 255 / .2)),
+    var(--key-cap);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), inset 0 -1px 0 rgb(0 0 0 / .05), 0 1px 0 rgb(255 255 255 / .18);
+  font-weight: 600; line-height: 1.1; text-align: center;
+}
+/* the face falls a little further from the light when it is down */
+.keycap-top::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: #000; opacity: 0; pointer-events: none;
+  transition: opacity calc(var(--dur-quick) * .9) var(--ease-out);
+}
+/* press: bottoms out quickly, no bounce at the bottom */
+.keycap:active .keycap-body,
+.keycap.is-down .keycap-body {
+  translate: 0 var(--key-travel);
+  transition: translate 45ms var(--ease-in);
+}
+.keycap:active .keycap-top::after,
+.keycap.is-down .keycap-top::after { opacity: .05; transition-duration: 45ms; }
+
+.keycap:focus-visible { outline: 2px solid var(--key-ring, #3d7bf2); outline-offset: 3px; }
+.keycap:disabled { cursor: not-allowed; opacity: .55; }
+
+/* the small inline hint: a static cap for "press B" in running text */
+.kbd-cap {
+  display: inline-block; min-width: 1.6em; padding: .05em .4em .2em;
+  border-radius: .3em; font-size: .82em; font-weight: 600; line-height: 1.3; text-align: center;
+  color: var(--key-legend, #2c2822); background: var(--key-cap, #f1ebdf);
+  box-shadow: inset 0 -.18em 0 var(--key-side, #d8cdb9), 0 0 0 1px rgb(0 0 0 / .14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the cap still goes down and up, so the press reads, but it jumps instead of travelling */
+  .keycap-body, .keycap-top::after,
+  .keycap:active .keycap-body, .keycap.is-down .keycap-body,
+  .keycap:active .keycap-top::after, .keycap.is-down .keycap-top::after { transition: none; }
+}

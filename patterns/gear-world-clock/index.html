@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gear world clock demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="gear-world-clock.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="planner sheet" aria-labelledby="plan-h">
+    <header class="plan-head">
+      <div>
+        <p class="eyebrow">Meeting planner</p>
+        <h1 id="plan-h">Quarterly freight review, Thursday 12 November</h1>
+        <p class="mute">Tanjung Lima Shipping: Kuala Lumpur desk with the Dubai and London agents, 45 minutes</p>
+      </div>
+    </header>
+
+    <div class="gear-world-clock" tabindex="0" aria-label="Meeting time in Kuala Lumpur" data-start="840" data-step="15">
+      <svg data-module="7.5" aria-hidden="true">
+        <g class="gw-gear gw-city" data-teeth="24" data-offset="-480" data-city="London"></g>
+        <g class="gw-gear" data-teeth="12" data-mesh="0" data-dir="32"></g>
+        <g class="gw-gear gw-city" data-teeth="24" data-mesh="1" data-dir="-32" data-offset="-240" data-city="Dubai"></g>
+        <g class="gw-gear" data-teeth="12" data-mesh="2" data-dir="32"></g>
+        <g class="gw-gear gw-city" data-teeth="24" data-mesh="3" data-dir="-32" data-offset="0" data-city="Kuala Lumpur"></g>
+      </svg>
+    </div>
+
+    <ul class="cities" id="cities">
+      <li><strong>London</strong> <span class="t num">6:00 am</span> <span class="s">Thu, before work</span></li>
+      <li><strong>Dubai</strong> <span class="t num">10:00 am</span> <span class="s">Thu, in office</span></li>
+      <li><strong>Kuala Lumpur</strong> <span class="t num">2:00 pm</span> <span class="s">Thu, in office</span></li>
+    </ul>
+
+    <footer class="plan-foot">
+      <p class="verdict" role="status" id="verdict">2 of 3 offices are open. London opens in 3 hours.</p>
+      <div class="nudge">
+        <button type="button" class="btn" id="earlier" aria-label="15 minutes earlier">Earlier</button>
+        <button type="button" class="btn" id="later" aria-label="15 minutes later">Later</button>
+      </div>
+    </footer>
+    <p class="hint">Turn any wheel, or focus the clocks and use the arrow keys. The idlers keep all three clocks turning the same way.</p>
+  </section>
+</main>
+</body>
+</html>

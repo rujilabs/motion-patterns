@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tile filter flip demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="tile-filter-flip.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="work sheet" aria-labelledby="work-h">
+    <header class="work-head">
+      <div>
+        <p class="studio">Atelier Sungai, architects, Kuching</p>
+        <h1 id="work-h">Selected work, 2021 to 2025</h1>
+      </div>
+      <div class="chips" role="group" aria-label="Show projects">
+        <button type="button" class="chip" aria-pressed="true" data-kind="all">All <span class="num">12</span></button>
+        <button type="button" class="chip" aria-pressed="false" data-kind="home">Homes <span class="num">5</span></button>
+        <button type="button" class="chip" aria-pressed="false" data-kind="shop">Shophouses <span class="num">3</span></button>
+        <button type="button" class="chip" aria-pressed="false" data-kind="cafe">Cafes <span class="num">2</span></button>
+        <button type="button" class="chip" aria-pressed="false" data-kind="civic">Civic <span class="num">2</span></button>
+      </div>
+    </header>
+
+    <ul class="tile-flip" id="grid" aria-label="Projects">
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-shop" href="#" data-key="carpenter" data-kind="shop"><span class="pj-kind">Shophouse</span><strong>41 Carpenter Street</strong><span class="pj-meta">Kuching, 2025 <span class="num">410 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-home" href="#" data-key="lintang" data-kind="home"><span class="pj-kind">Home</span><strong>Rumah Batu Lintang</strong><span class="pj-meta">Kuching, 2025 <span class="num">312 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-civic" href="#" data-key="bau" data-kind="civic"><span class="pj-kind">Civic</span><strong>Bau Village Library</strong><span class="pj-meta">Bau, 2025 <span class="num">540 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-home" href="#" data-key="santubong" data-kind="home"><span class="pj-kind">Home</span><strong>Rumah Santubong</strong><span class="pj-meta">Santubong, 2024 <span class="num">268 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-cafe" href="#" data-key="satok" data-kind="cafe"><span class="pj-kind">Cafe</span><strong>Kopi Satok</strong><span class="pj-meta">Satok, 2024 <span class="num">96 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-shop" href="#" data-key="india" data-kind="shop"><span class="pj-kind">Shophouse</span><strong>7 India Street</strong><span class="pj-meta">Kuching, 2023 <span class="num">288 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-home" href="#" data-key="tabuan" data-kind="home"><span class="pj-kind">Home</span><strong>Rumah Tabuan Jaya</strong><span class="pj-meta">Kuching, 2023 <span class="num">194 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-civic" href="#" data-key="huising" data-kind="civic"><span class="pj-kind">Civic</span><strong>Surau Taman Hui Sing</strong><span class="pj-meta">Kuching, 2023 <span class="num">210 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-home" href="#" data-key="siol" data-kind="home"><span class="pj-kind">Home</span><strong>Rumah Kampung Siol</strong><span class="pj-meta">Petra Jaya, 2022 <span class="num">236 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-cafe" href="#" data-key="padungan" data-kind="cafe"><span class="pj-kind">Cafe</span><strong>Kedai Teh Padungan</strong><span class="pj-meta">Padungan, 2022 <span class="num">74 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-shop" href="#" data-key="bazaar" data-kind="shop"><span class="pj-kind">Shophouse</span><strong>18 Main Bazaar</strong><span class="pj-meta">Kuching, 2021 <span class="num">352 m²</span></span></a></div></div></li>
+      <li class="tf-tile"><div class="tf-card"><div class="tf-face"><a class="pj pj-home" href="#" data-key="samarahan" data-kind="home"><span class="pj-kind">Home</span><strong>Rumah Kota Samarahan</strong><span class="pj-meta">Samarahan, 2021 <span class="num">178 m²</span></span></a></div></div></li>
+    </ul>
+    <p class="work-foot mute" id="status" role="status">Showing all 12 projects, newest first.</p>
+  </section>
+</main>
+</body>
+</html>

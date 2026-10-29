@@ -1,0 +1,18 @@
+{
+  "name": "Card to detail morph",
+  "slug": "morph-card-detail",
+  "kind": "pattern",
+  "summary": "A product card grows into its detail view: the frame opens into the panel, the swatch into the big swatch, the name into the heading. Back or Escape shrinks it into its place.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

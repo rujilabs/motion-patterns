@@ -1,0 +1,74 @@
+/*
+ * morph-mic-record: a dictation button whose mic becomes a stop square while it records.
+ *
+ * The icon is three SVG paths, and every pair of shapes has the same commands in the same order,
+ * so the browser tweens one into the other point by point and nothing crumples on the way:
+ *   capsule  the mic head (a 6 x 12 pill) becomes the stop square (8 x 8, small corners).
+ *            Both are one rounded rectangle path: M, then four L and four C, matched corner to corner.
+ *   holder   the U that cradles the mic closes into a ring round the stop square. Both are four
+ *            cubic segments: the two tips of the U swing up and meet at the top.
+ *   stem     fades out; it has nowhere to go in a ring.
+ * The shapes live in custom properties, so this file is the only place they are written down.
+ * The state is aria-pressed on the button: true means recording.
+ * Browsers without the CSS d property (Safari) get the same tween from morph-mic-record.js.
+ */
+.mic-record {
+  --mic-size: 56px;
+  --mic-bg: #fff;          /* idle face */
+  --mic-ink: #1d2623;      /* idle icon */
+  --mic-line: #c9d3d0;     /* idle edge */
+  --mic-live: #d23a2c;     /* recording face */
+  --mic-live-ink: #fff;    /* recording icon */
+  --mic-capsule-off: path("M 12 2 L 12 2 C 13.66 2 15 3.34 15 5 L 15 11 C 15 12.66 13.66 14 12 14 L 12 14 C 10.34 14 9 12.66 9 11 L 9 5 C 9 3.34 10.34 2 12 2 Z");
+  --mic-capsule-on: path("M 9.6 8 L 14.4 8 C 15.28 8 16 8.72 16 9.6 L 16 14.4 C 16 15.28 15.28 16 14.4 16 L 9.6 16 C 8.72 16 8 15.28 8 14.4 L 8 9.6 C 8 8.72 8.72 8 9.6 8 Z");
+  --mic-holder-off: path("M 5 10 C 5 10.67 5 11.33 5 12 C 5 15.87 8.13 19 12 19 C 15.87 19 19 15.87 19 12 C 19 11.33 19 10.67 19 10");
+  --mic-holder-on: path("M 12 2.5 C 6.75 2.5 2.5 6.75 2.5 12 C 2.5 17.25 6.75 21.5 12 21.5 C 17.25 21.5 21.5 17.25 21.5 12 C 21.5 6.75 17.25 2.5 12 2.5");
+  --mic-morph: 420ms;
+
+  appearance: none; font: inherit; margin: 0; padding: 0;
+  width: var(--mic-size); height: var(--mic-size); flex: none;
+  display: inline-grid; place-items: center;
+  border-radius: 50%; border: 1.5px solid var(--mic-line);
+  background: var(--mic-bg); color: var(--mic-ink);
+  cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--mic-morph) var(--ease-inout),
+    border-color var(--mic-morph) var(--ease-inout),
+    color var(--mic-morph) var(--ease-inout),
+    scale var(--dur-quick) var(--ease-out);
+}
+.mic-record:active { scale: .94; }
+.mic-record:focus-visible { outline: 2px solid var(--mic-live); outline-offset: 3px; }
+.mic-record svg { width: 46%; height: 46%; overflow: visible; }
+
+.mic-capsule {
+  fill: currentColor;
+  d: var(--mic-capsule-off);
+  transition: d var(--mic-morph) var(--ease-inout);
+}
+.mic-holder, .mic-stem {
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round;
+}
+/* the U follows the capsule a beat later going in, and leads it coming back */
+.mic-holder {
+  d: var(--mic-holder-off);
+  transition: d var(--mic-morph) var(--ease-inout);
+}
+.mic-stem { transition: opacity var(--dur-quick) var(--ease-out) calc(var(--mic-morph) * .35); }
+
+.mic-record[aria-pressed="true"] {
+  background: var(--mic-live); border-color: var(--mic-live); color: var(--mic-live-ink);
+}
+.mic-record[aria-pressed="true"] .mic-capsule { d: var(--mic-capsule-on); }
+.mic-record[aria-pressed="true"] .mic-holder {
+  d: var(--mic-holder-on);
+  transition-delay: calc(var(--mic-morph) * .15);
+}
+.mic-record[aria-pressed="true"] .mic-stem { opacity: 0; transition-delay: 0s; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the icon and colour swap at once */
+  .mic-record, .mic-capsule, .mic-holder, .mic-stem,
+  .mic-record[aria-pressed="true"] .mic-holder,
+  .mic-record[aria-pressed="true"] .mic-stem { transition: none; }
+}

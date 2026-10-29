@@ -1,0 +1,16 @@
+{
+  "name": "Wave pendulum loader",
+  "slug": "wave-pendulum-loader",
+  "kind": "pattern",
+  "summary": "A search loader: a row of pendulums with real periods, released together, drifts into a travelling wave. When the results land the swings die away and the loader fades.",
+  "category": "wave",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

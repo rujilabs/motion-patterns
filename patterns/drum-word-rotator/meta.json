@@ -1,0 +1,19 @@
+{
+  "name": "Drum word rotator",
+  "slug": "drum-word-rotator",
+  "kind": "pattern",
+  "summary": "A headline word on a row of three-sided prisms, like a roadside tri-vision sign. The slats turn one after another and the next word comes round, shaded as it turns.",
+  "category": "drum",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--dur-slow"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

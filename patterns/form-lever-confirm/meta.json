@@ -1,0 +1,17 @@
+{
+  "name": "Lever confirm",
+  "slug": "form-lever-confirm",
+  "kind": "pattern",
+  "summary": "Pull a lever all the way down to confirm a big action. The arm has mass, latches at the bottom, and springs back against its stop if you let go early. Keys and taps work too.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

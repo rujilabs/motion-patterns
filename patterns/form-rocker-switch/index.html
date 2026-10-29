@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rocker switch demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="rocker.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="prefs sheet" aria-labelledby="prefs-h">
+    <header class="prefs-head">
+      <p class="clinic">Klinik Gigi Taman Rasah, Seremban</p>
+      <h1 id="prefs-h">Messages from the clinic</h1>
+      <p class="mute">Nurul Huda Kamarudin, file DS-20417. Sent by WhatsApp to 012-664 3108.</p>
+    </header>
+    <ul class="rows">
+      <li class="row">
+        <label class="rocker">
+          <span class="row-text"><span class="row-title" id="remind-t">Appointment reminder</span><span class="row-detail" id="remind-d">24 hours before. Next: Tue 4 Nov, 10:15 am, scaling and polishing.</span></span>
+          <input type="checkbox" role="switch" id="remind" checked aria-labelledby="remind-t" aria-describedby="remind-d">
+          <span class="rocker-bezel" aria-hidden="true"><span class="rocker-paddle"><span class="rocker-face rocker-off">O</span><span class="rocker-face rocker-on"><span class="rocker-lamp"></span>I</span></span></span>
+        </label>
+      </li>
+      <li class="row">
+        <label class="rocker">
+          <span class="row-text"><span class="row-title" id="lab-t">Crown is back from the lab</span><span class="row-detail" id="lab-d">We message you to book the fitting, usually 9 working days.</span></span>
+          <input type="checkbox" role="switch" id="lab" checked aria-labelledby="lab-t" aria-describedby="lab-d">
+          <span class="rocker-bezel" aria-hidden="true"><span class="rocker-paddle"><span class="rocker-face rocker-off">O</span><span class="rocker-face rocker-on"><span class="rocker-lamp"></span>I</span></span></span>
+        </label>
+      </li>
+      <li class="row">
+        <label class="rocker">
+          <span class="row-text"><span class="row-title" id="recall-t">Six-month check-up</span><span class="row-detail" id="recall-d">A nudge when you are due. Next due 12 May 2027.</span></span>
+          <input type="checkbox" role="switch" id="recall" aria-labelledby="recall-t" aria-describedby="recall-d">
+          <span class="rocker-bezel" aria-hidden="true"><span class="rocker-paddle"><span class="rocker-face rocker-off">O</span><span class="rocker-face rocker-on"><span class="rocker-lamp"></span>I</span></span></span>
+        </label>
+      </li>
+      <li class="row">
+        <label class="rocker">
+          <span class="row-text"><span class="row-title" id="promo-t">Open days and offers</span><span class="row-detail" id="promo-d">About twice a year, for example the school holiday check-up.</span></span>
+          <input type="checkbox" role="switch" id="promo" aria-labelledby="promo-t" aria-describedby="promo-d">
+          <span class="rocker-bezel" aria-hidden="true"><span class="rocker-paddle"><span class="rocker-face rocker-off">O</span><span class="rocker-face rocker-on"><span class="rocker-lamp"></span>I</span></span></span>
+        </label>
+      </li>
+    </ul>
+    <footer class="prefs-foot">
+      <p><strong class="num" id="count">2 of 4</strong> on</p>
+      <p class="mute" role="status" id="saved">Changes save as you flip them.</p>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

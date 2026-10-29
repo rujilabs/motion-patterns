@@ -1,0 +1,16 @@
+{
+  "name": "Curve arc picker",
+  "slug": "curve-arc-picker",
+  "kind": "pattern",
+  "summary": "A size picker whose options ride the top of a wheel. Swipe and throw it, tap an option or use the keys; a spring catches the nearest one, which rises off the arc with a deeper shadow.",
+  "category": "curve",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

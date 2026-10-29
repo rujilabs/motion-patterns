@@ -5,6 +5,30 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.4.0] - 2026-10-29
+
+### Added
+
+- **patterns:** Add scroll-weight, heavy parts trail the scroll on a damped spring (#1)
+- **form,gear:** Add 5 tactile form controls and 5 gear trains
+- **globe:** Add country picker, flight arcs, day and night, live dots and text band globes
+- **drum:** Add slot voucher, word rotator, combo lock and time picker drums
+- **drum:** Add rolodex; time picker opens on its value without JS
+- **curve:** Add delivery route, workflow connector, signature pad, arc picker and easing editor
+- **tile:** Add filter flip, seat map, habit grid, image assemble and PIN keypad
+- **morph:** Add mic record, search field, pay button, card detail and weather icon morphs
+- **solid:** Add pack viewer, dice roll, crate stack, coin flip and parcel open
+- **data:** Add live sparkline, sales funnel and live poll results
+- **panel:** Add FAQ hinge, map fold, shutter menu, door reveal and trifold pricing
+- **data:** Add live candlesticks and 3D quarterly bars
+- **light:** Add pointer spotlight, pull cord, open sign, card sheen and scan verify
+- **wave:** Add voice note, liquid fill, pendulum loader, pin ripple and flag picker
+
+### Fixed
+
+- **gear-settings-icon:** Plain hint text instead of a dashed note
+
+
 ## [0.3.0] - 2026-10-20
 
 ### Added

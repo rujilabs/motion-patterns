@@ -1,0 +1,47 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --cl-table: #e4e9e3;
+  --cl-paper: #fbfcfa;
+  --cl-ink: #1d2a24;
+  --cl-mute: #5f6d66;
+  --cl-line: #d6ddd6;
+  --cl-green: #1f6b4f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cl-table: #121614;
+    --cl-paper: #1a201d;
+    --cl-ink: #e6ece8;
+    --cl-mute: #97a59e;
+    --cl-line: #2b3430;
+    --cl-green: #6cc39d;
+  }
+}
+body { background: var(--cl-table); color: var(--cl-ink); }
+.prefs { width: min(600px, 100%); padding: 22px 24px 16px; display: grid; gap: 4px; background: var(--cl-paper); border-color: var(--cl-line); }
+.prefs-head { display: grid; gap: 3px; padding-bottom: 14px; }
+.clinic { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--cl-green); }
+.prefs-head h1 { font-size: 22px; font-weight: 700; }
+.prefs-head .mute { color: var(--cl-mute); font-size: 13px; }
+.rows { border-top: 1px solid var(--cl-line); }
+.row { border-bottom: 1px solid var(--cl-line); }
+.row .rocker { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; width: 100%; --rocker-ring: var(--cl-green); }
+.row-text { display: grid; gap: 2px; }
+.row-title { font-size: 15.5px; font-weight: 650; }
+.row-detail { font-size: 13px; color: var(--cl-mute); }
+.prefs-foot { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; font-size: 13px; }
+.prefs-foot strong { font-size: 15px; }
+.prefs-foot .mute { color: var(--cl-mute); }
+/* the rockers are mounted in a plate on the wall: no dark-mode change, they are objects */
+
+@media (max-width: 480px) {
+  .prefs { padding: 18px 16px 14px; }
+  .prefs-head h1 { font-size: 19px; }
+  .row .rocker { gap: 14px; }
+  .prefs-foot { flex-direction: column; gap: 2px; }
+}
+@media (max-height: 520px) and (min-width: 481px) {
+  .prefs { padding-block: 14px 10px; }
+  .prefs-head { padding-bottom: 8px; }
+  .row .rocker { padding: 8px 0; }
+}

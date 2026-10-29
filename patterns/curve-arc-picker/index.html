@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curve arc picker demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="arc-picker.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="cake-card sheet" aria-labelledby="cake-h">
+    <header class="cake-head">
+      <p class="eyebrow">Rumah Kek Mak Teh · Kuantan</p>
+      <h1 id="cake-h">Chocolate moist cake</h1>
+      <p class="mute sub">Pick a size. The cakes are drawn to scale.</p>
+    </header>
+
+    <ul class="curve-arc-picker sizes" id="sizes" role="listbox" tabindex="0" aria-label="Cake size" aria-orientation="horizontal" aria-describedby="size-hint">
+      <li class="ap-item" role="option" data-value="6" aria-selected="false"><span class="cake c6" aria-hidden="true"></span><span class="lab">6 inch</span></li>
+      <li class="ap-item" role="option" data-value="7" aria-selected="false"><span class="cake c7" aria-hidden="true"></span><span class="lab">7 inch</span></li>
+      <li class="ap-item" role="option" data-value="8" aria-selected="true"><span class="cake c8" aria-hidden="true"></span><span class="lab">8 inch</span></li>
+      <li class="ap-item" role="option" data-value="9" aria-selected="false"><span class="cake c9" aria-hidden="true"></span><span class="lab">9 inch</span></li>
+      <li class="ap-item" role="option" data-value="10" aria-selected="false"><span class="cake c10" aria-hidden="true"></span><span class="lab">10 inch</span></li>
+    </ul>
+
+    <div class="pick">
+      <div>
+        <p class="pick-size"><span id="p-size">8 inch</span> <span class="mute" id="p-serves">serves 14 to 16</span></p>
+        <p class="hint" id="size-hint">Swipe the sizes, tap one, or use the arrow keys.</p>
+      </div>
+      <p class="price num" id="p-price" role="status">RM 112.00</p>
+    </div>
+    <footer class="cake-foot">
+      <p class="mute note">Order 2 days ahead. Collect at Jalan Beserah from 10 am.</p>
+      <button type="button" class="btn">Add to order</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

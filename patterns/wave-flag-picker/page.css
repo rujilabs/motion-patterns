@@ -1,0 +1,65 @@
+/* Demo page layout for this entry. Not part of the pattern. An airline's region page: ink navy on cool white. */
+:root {
+  --la-table: #e9ebf0;
+  --la-paper: #ffffff;
+  --la-ink: #18213a;
+  --la-mute: #5f6679;
+  --la-line: #dde1ea;
+  --la-navy: #1d2b4f;
+  --la-pick: #f2f4f9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --la-table: #0f121a;
+    --la-paper: #171b26;
+    --la-ink: #e9edf6;
+    --la-mute: #9aa2b6;
+    --la-line: #2b3142;
+    --la-navy: #a9bbea;
+    --la-pick: #1f2535;
+  }
+  .flag-picker { --fp-pole: #6c7385; }
+}
+body { background: var(--la-table); color: var(--la-ink); }
+.sheet { background: var(--la-paper); border-color: var(--la-line); }
+:focus-visible { outline-color: var(--la-navy); }
+
+.region { width: min(760px, 100%); padding: 24px 26px 20px; display: grid; gap: 20px; }
+.brand { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--la-navy); }
+.region-head h1 { font-size: 23px; margin-top: 3px; }
+.sub { font-size: 13.5px; color: var(--la-mute); margin-top: 4px; }
+
+.flag-picker { --fp-ring: var(--la-navy); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.flag-picker [role="option"] {
+  display: grid; justify-items: start; gap: 22px; padding: 18px 12px 12px 14px;
+  border: 1px solid var(--la-line); transition: border-color .2s, background-color .2s;
+}
+.flag-picker [role="option"]:hover { border-color: var(--la-mute); }
+.flag-picker [aria-selected="true"] { border-color: var(--la-navy); background: var(--la-pick); box-shadow: inset 0 0 0 1px var(--la-navy); }
+.fp-text { display: grid; gap: 1px; }
+.fp-name { font-size: 14px; font-weight: 650; line-height: 1.25; }
+.fp-where { font-size: 12px; color: var(--la-mute); }
+
+.preview { display: flex; justify-content: space-between; align-items: end; gap: 16px; padding-top: 16px; border-top: 1px solid var(--la-line); }
+.route { font-size: 12.5px; color: var(--la-mute); }
+.price { font-size: 20px; font-weight: 700; margin-top: 2px; }
+.go { display: flex; align-items: center; gap: 16px; }
+.btn {
+  font: 600 14px/1 "Host Grotesk", sans-serif; padding: 12px 18px; border-radius: 6px; cursor: pointer; min-width: 9em;
+  color: var(--la-paper); background: var(--la-navy); border: 0;
+}
+
+@media (max-width: 700px) {
+  .region { padding: 18px 16px 16px; gap: 16px; }
+  .flag-picker { grid-template-columns: 1fr; gap: 6px; --fp-h: 26px; }
+  .flag-picker [role="option"] { grid-template-columns: 64px 1fr; align-items: center; gap: 12px; padding: 12px 12px 12px 14px; }
+  .preview { flex-direction: column; align-items: stretch; }
+  .go { justify-content: space-between; }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .region { gap: 14px; padding-block: 18px 14px; }
+  .flag-picker [role="option"] { gap: 16px; padding-top: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flag-picker [role="option"] { transition: none; }
+}

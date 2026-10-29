@@ -1,0 +1,100 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --wd-table: #e6e1d6;
+  --wd-paper: #fffdf8;
+  --wd-ink: #22261f;
+  --wd-mute: #6a6a5c;
+  --wd-line: #e2dccd;
+  --wd-green: #2f5d46;
+  --wd-red: #b8322a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wd-table: #171a16;
+    --wd-paper: #20241f;
+    --wd-ink: #ece8dc;
+    --wd-mute: #a5a593;
+    --wd-line: #343a32;
+    --wd-green: #8fc4a6;
+    --wd-red: #f07a6c;
+  }
+}
+body { background: var(--wd-table); color: var(--wd-ink); }
+.card {
+  width: min(760px, 100%);
+  display: grid; grid-template-columns: 236px 1fr; gap: 26px; align-items: center;
+  padding: 24px; background: var(--wd-paper); border-color: var(--wd-line);
+}
+.card-text { display: grid; gap: 10px; align-content: start; }
+.kicker { font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--wd-green); }
+.card-text h1 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1; letter-spacing: 0; margin-top: -4px; }
+.when { font-size: 14px; font-weight: 600; }
+.where { font-size: 13px; color: var(--wd-mute); text-wrap: pretty; }
+.steps { counter-reset: step; display: grid; gap: 6px; border-top: 1px solid var(--wd-line); padding-top: 10px; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 20px 1fr; gap: 6px; font-size: 13px; line-height: 1.4; text-wrap: pretty; transition: color .3s; }
+.steps li::before {
+  content: counter(step); width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 11px; font-weight: 700; color: var(--wd-paper); background: var(--wd-mute); transition: background-color .3s;
+}
+.js .steps li:not(.is-on) { color: var(--wd-mute); }
+.steps li.is-on::before { background: var(--wd-red); }
+.hint { font-size: 12.5px; color: var(--wd-mute); text-wrap: pretty; }
+
+/* the map itself: printed paper, so it keeps its colours in dark mode, only a little dimmer */
+.mapfold { --mapfold-ring: var(--wd-red); }
+.map-art { font-family: "Host Grotesk", system-ui, sans-serif; }
+.m-paper { fill: #f3eddc; }
+.m-park { fill: #cfe0b4; }
+.m-water { fill: #a9cfe0; }
+.m-block rect { fill: #e7dec4; }
+.m-river { fill: none; stroke: #a9cfe0; stroke-width: 9; stroke-linecap: round; }
+.m-minor { fill: none; stroke: #fffaf0; stroke-width: 3; }
+.m-hw-case { fill: none; stroke: #b98a2f; stroke-width: 11; }
+.m-hw { fill: none; stroke: #f2c14e; stroke-width: 8; }
+.m-ramp { fill: none; stroke: #f2c14e; stroke-width: 3.5; }
+.m-main-case { fill: none; stroke: #c9bfa3; stroke-width: 8; }
+.m-main { fill: none; stroke: #fff; stroke-width: 6; }
+.m-street { fill: none; stroke: #fff; stroke-width: 5; }
+.m-round { fill: #fff; stroke: #c9bfa3; stroke-width: 1.5; }
+.m-bridge { fill: none; stroke: #6d6550; stroke-width: 1.4; }
+.m-hall { fill: #7a2e2a; }
+.m-lot { fill: #9bb1c9; }
+.m-surau { fill: #7aa38c; }
+.m-route { fill: none; stroke: #c8372d; stroke-width: 3; stroke-dasharray: 7 4; stroke-linecap: round; }
+.m-start { fill: #fff; stroke: #c8372d; stroke-width: 2.5; }
+.m-pin { fill: #c8372d; }
+.m-pin-dot { fill: #fff; }
+.m-label text { font-size: 10px; fill: #4b4535; }
+.m-label .m-hw-label { font-weight: 700; fill: #7a5a14; font-size: 9px; letter-spacing: .04em; }
+.m-label .m-exit { font-weight: 750; fill: #1f1b14; font-size: 11px; }
+.m-label .m-road-label { font-weight: 650; }
+.m-label .m-river-label { font-style: italic; fill: #3f7f9a; }
+.m-label .m-park-label { fill: #4f6f2f; font-style: italic; }
+.m-label .m-street-label { font-size: 9px; }
+.m-label .m-place { font-weight: 750; fill: #fff; font-size: 8.5px; }
+.m-label .m-place-sm { font-size: 8.5px; }
+.m-label .m-area { letter-spacing: .18em; font-size: 8px; fill: #8a8068; }
+.m-label .m-town { font-size: 9px; fill: #6d6550; }
+.m-north path { fill: #1f1b14; }
+.m-north text { font-size: 9px; font-weight: 700; fill: #1f1b14; }
+.m-scale path { stroke: #1f1b14; fill: none; stroke-width: 1.2; }
+.m-scale text { font-size: 8.5px; fill: #1f1b14; }
+@media (prefers-color-scheme: dark) {
+  .mapfold { filter: brightness(.9); }
+}
+
+@media (max-width: 680px) {
+  .card { grid-template-columns: 1fr; gap: 16px; padding: 18px 16px; }
+  .card-text h1 { font-size: 32px; }
+  .card-text { gap: 8px; }
+}
+@media (max-height: 560px) and (min-width: 681px) {
+  .card { padding-block: 16px; }
+  .card-text { gap: 7px; }
+}

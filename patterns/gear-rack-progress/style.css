@@ -1,0 +1,16 @@
+/*
+ * gear-rack-progress: a reading-progress bar where a pinion drives a rack. gear-rack-progress.js
+ * builds the svg and moves it with the scroll each frame; this file colours the parts. The rack
+ * travels one tooth pitch for each tooth the pinion turns, so the two never slip.
+ */
+.gear-rack-progress { display: block; width: 100%; min-width: 0; }
+.gear-rack-progress .grp-svg { display: block; overflow: hidden; }
+.gear-rack-progress .grp-rack { fill: var(--grp-rack, #2b2622); }
+.gear-rack-progress .grp-pinion { fill: var(--grp-pinion, #b8471f); transform-box: view-box; transform-origin: 0 0; }
+.gear-rack-progress .grp-axle { fill: var(--grp-axle, #f4efe8); }
+.gear-rack-progress .grp-track { fill: none; stroke: var(--grp-track, #d8d1c7); stroke-width: 1.5; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script drops the spring here: the rack follows the scroll exactly, with no lag */
+  .gear-rack-progress .grp-pinion { transition: none; }
+}

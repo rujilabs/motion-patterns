@@ -1,0 +1,64 @@
+/*
+ * tile-keypad-pin: keypad tiles that press in 3D. Each key stands on its own edge (a lower face
+ * drawn under it) inside a perspective. A press tips the key toward the point that was touched
+ * (--tilt-x, --tilt-y from tile-keypad-pin.js), sinks it onto its edge and darkens it, and a
+ * release springs it back. The dots fill as digits go in, go red and shake on a wrong code, and go
+ * green and hop on a right one.
+ */
+.pin-pad {
+  --pin-key: #ffffff;      /* key face */
+  --pin-edge: #c9d1cc;     /* the key's lower face */
+  --pin-ink: #10241c;
+  --pin-dot: #10241c;
+  --pin-ok: #1f7a4d;
+  --pin-wrong: #c4362b;
+  --pin-ring: #1f7a4d;
+  --pin-depth: 4px;        /* how tall the key stands */
+  display: grid;
+  gap: 22px;
+  justify-items: center;
+}
+.pin-dots { display: flex; gap: 14px; height: 16px; align-items: center; }
+.pin-dot {
+  width: 13px; height: 13px; border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--pin-dot);
+  transition: background-color var(--dur-quick) var(--ease-out), box-shadow var(--dur-quick) var(--ease-out);
+}
+.pin-dot.is-on { background: var(--pin-dot); }
+.pin-dots.is-wrong .pin-dot { box-shadow: inset 0 0 0 2px var(--pin-wrong); }
+.pin-dots.is-wrong .pin-dot.is-on { background: var(--pin-wrong); }
+.pin-dots.is-ok .pin-dot { background: var(--pin-ok); box-shadow: inset 0 0 0 2px var(--pin-ok); }
+
+.pin-keys { display: grid; grid-template-columns: repeat(3, var(--pin-w, 72px)); gap: 12px 14px; touch-action: manipulation; }
+.pin-key {
+  --tilt-x: 0deg; --tilt-y: 0deg;
+  position: relative;
+  height: var(--pin-h, 54px);
+  margin: 0 0 var(--pin-depth); padding: 0;
+  border: 0; border-radius: 12px;
+  background: var(--pin-key); color: var(--pin-ink);
+  font-family: inherit; font-size: 24px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+  /* the lower face: a solid edge under the key, and a soft contact shadow under that */
+  box-shadow: 0 var(--pin-depth) 0 var(--pin-edge), 0 calc(var(--pin-depth) + 3px) 6px -2px rgb(0 0 0 / .14);
+  transform: perspective(240px) translateY(0) rotateX(0deg) rotateY(0deg);
+  transition: transform 420ms var(--ease-spring), box-shadow 420ms var(--ease-spring), filter var(--dur-quick) var(--ease-out);
+}
+.pin-key svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
+/* down: tipped toward the touch, sunk onto its edge, and a little darker */
+.pin-key.is-down {
+  transform: perspective(240px) translateY(calc(var(--pin-depth) - 1px)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  box-shadow: 0 1px 0 var(--pin-edge), 0 2px 3px -2px rgb(0 0 0 / .2);
+  filter: brightness(.94);
+  transition-duration: 70ms, 70ms, 70ms;
+  transition-timing-function: var(--ease-out);
+}
+.pin-key:focus-visible { outline: 2px solid var(--pin-ring); outline-offset: 3px; }
+.pin-key:disabled { opacity: .45; cursor: not-allowed; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-dot, .pin-key, .pin-key.is-down { transition: none; }
+  .pin-key.is-down { transform: perspective(240px) translateY(calc(var(--pin-depth) - 1px)); }
+}

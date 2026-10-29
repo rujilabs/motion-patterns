@@ -1,0 +1,89 @@
+/*
+ * panel-map-fold: a printed map that opens one crease at a time. panel-map-fold.js builds a chain
+ * of nested panels, each hinged on the right edge of the one before, and gives each a window onto
+ * its slice of the same content. Per panel it sets --crease (this hinge, 0deg flat, 180deg shut),
+ * --turn (the panel's total turn, for the light) and --dz (paper thickness, so folded layers stack).
+ * Light comes from the upper left: a panel goes darker as its face turns right and away from you,
+ * and its back goes darker as it turns away in turn. Every crease keeps a worn line when flat.
+ */
+.mapfold {
+  --mapfold-paper-back: #e7dfca;
+  --mapfold-crease: rgb(60 45 20 / .16);
+  --mapfold-ring: #c8372d;
+  position: relative;
+  width: 100%;
+  perspective: 1500px;
+  perspective-origin: 30% 40%;
+}
+.mapfold > svg, .mapfold > img { display: block; width: 100%; height: auto; }
+.mapfold.is-live {
+  height: var(--mapfold-h);
+  touch-action: pan-y;               /* sideways drags are ours; the page still scrolls */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mapfold.is-held { cursor: grabbing; }
+.mapfold:focus-visible { outline: 2px solid var(--mapfold-ring); outline-offset: 6px; border-radius: 2px; }
+
+.mapfold-sheet {
+  position: absolute; left: 0; top: 0;
+  width: var(--mapfold-w); height: var(--mapfold-h);
+  transform-style: preserve-3d;
+}
+.mapfold-panel {
+  --turn: 0deg; --crease: 0deg; --dz: 0px;
+  position: absolute; left: 0; top: 0;
+  width: var(--mapfold-w); height: var(--mapfold-h);
+  transform-style: preserve-3d;
+  transform-origin: 0 50%;
+}
+/* each later panel hangs on the right edge of its parent, one paper thickness behind while folded */
+.mapfold-panel .mapfold-panel {
+  left: 100%;
+  transform: translateZ(var(--dz)) rotateY(var(--crease));
+}
+.mapfold-face, .mapfold-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.mapfold-face { overflow: hidden; }
+.mapfold-win {
+  width: calc(var(--mapfold-w) * var(--mapfold-n));
+  margin-left: calc(var(--mapfold-w) * var(--i) * -1);
+}
+.mapfold-win > svg, .mapfold-win > img { display: block; width: 100%; height: auto; }
+.mapfold-back { transform: rotateY(180deg); background: var(--mapfold-paper-back); }
+
+/* light: the face darkens as it turns right, away from a light on the upper left */
+.mapfold-face::after, .mapfold-back::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; background: #1b140a;
+}
+.mapfold-face::after { opacity: calc(max(0, sin(var(--turn))) * .42 + (1 - cos(var(--turn))) * .1); }
+.mapfold-back::after { opacity: calc((1 + cos(var(--turn))) * .16 + max(0, sin(var(--turn)) * -1) * .3); }
+
+/* the crease: a worn line that stays when flat, and a shadow in the fold while it turns */
+.mapfold-panel .mapfold-panel > .mapfold-face::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 14px; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--mapfold-crease) 0 1px, rgb(255 255 255 / .4) 1px 2px, transparent 2px),
+    linear-gradient(90deg, rgb(27 20 10 / .4), transparent);
+  background-size: 100% 100%, calc(1px + sin(var(--crease) / 2) * 13px) 100%;
+  background-repeat: no-repeat;
+}
+
+/* contact shadow on the table, as long as the map reaches */
+.mapfold-shadow {
+  position: absolute; left: 4px; top: 10px; height: calc(var(--mapfold-h) - 6px);
+  width: calc(var(--mapfold-reach, 100%) - 4px);
+  background: rgb(20 14 4 / .2);
+  border-radius: 4px;
+  filter: blur(9px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mapfold-panel, .mapfold-shadow { transition: none; }
+}

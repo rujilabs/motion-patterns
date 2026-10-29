@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wave flag picker demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="wave-flag-picker.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="region sheet" aria-labelledby="region-h">
+    <header class="region-head">
+      <p class="brand">Layang Air</p>
+      <h1 id="region-h">Choose your country site</h1>
+      <p class="sub">Language, currency and ways to pay follow the site you pick.</p>
+    </header>
+
+    <ul class="flag-picker" id="picker" role="listbox" aria-label="Country site" aria-describedby="region-h">
+      <li role="option" aria-selected="true" data-site="my">
+        <span class="fp-flag"><svg viewBox="0 0 28 14" aria-hidden="true">
+          <rect width="28" height="14" fill="#fff"/>
+          <path fill="#cc0001" d="M0 0h28v1H0zM0 2h28v1H0zM0 4h28v1H0zM0 6h28v1H0zM0 8h28v1H0zM0 10h28v1H0zM0 12h28v1H0z"/>
+          <rect width="14" height="8" fill="#010066"/>
+          <circle cx="5.6" cy="4" r="3.25" fill="#fc0"/><circle cx="6.45" cy="4" r="2.75" fill="#010066"/>
+          <polygon fill="#fc0" points="10.750,1.400 10.999,2.908 11.878,1.657 11.448,3.124 12.783,2.379 11.759,3.514 13.285,3.421 11.870,4.000 13.285,4.579 11.759,4.486 12.783,5.621 11.448,4.876 11.878,6.343 10.999,5.092 10.750,6.600 10.501,5.092 9.622,6.343 10.052,4.876 8.717,5.621 9.741,4.486 8.215,4.579 9.630,4.000 8.215,3.421 9.741,3.514 8.717,2.379 10.052,3.124 9.622,1.657 10.501,2.908"/>
+        <rect class="fp-edge" width="100%" height="100%"/></svg></span>
+        <span class="fp-text"><span class="fp-name" lang="ms">Bahasa Melayu</span><span class="fp-where">Malaysia, ringgit</span></span>
+      </li>
+      <li role="option" aria-selected="false" data-site="id">
+        <span class="fp-flag"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height="1" fill="#ce1126"/><rect class="fp-edge" width="100%" height="100%"/></svg></span>
+        <span class="fp-text"><span class="fp-name" lang="id">Bahasa Indonesia</span><span class="fp-where">Indonesia, rupiah</span></span>
+      </li>
+      <li role="option" aria-selected="false" data-site="jp">
+        <span class="fp-flag"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><circle cx="1.5" cy="1" r=".6" fill="#bc002d"/><rect class="fp-edge" width="100%" height="100%"/></svg></span>
+        <span class="fp-text"><span class="fp-name"><span lang="ja">日本語</span> Japanese</span><span class="fp-where">Japan, yen</span></span>
+      </li>
+      <li role="option" aria-selected="false" data-site="th">
+        <span class="fp-flag"><svg viewBox="0 0 9 6" aria-hidden="true"><rect width="9" height="6" fill="#a51931"/><rect y="1" width="9" height="4" fill="#f4f5f8"/><rect y="2" width="9" height="2" fill="#2d2a4a"/><rect class="fp-edge" width="100%" height="100%"/></svg></span>
+        <span class="fp-text"><span class="fp-name"><span lang="th">ภาษาไทย</span> Thai</span><span class="fp-where">Thailand, baht</span></span>
+      </li>
+      <li role="option" aria-selected="false" data-site="vn">
+        <span class="fp-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#da251d"/><polygon fill="#ff0" points="15.000,4.000 16.347,8.146 20.706,8.146 17.180,10.708 18.527,14.854 15.000,12.292 11.473,14.854 12.820,10.708 9.294,8.146 13.653,8.146"/><rect class="fp-edge" width="100%" height="100%"/></svg></span>
+        <span class="fp-text"><span class="fp-name" lang="vi">Tiếng Việt</span><span class="fp-where">Vietnam, dong</span></span>
+      </li>
+    </ul>
+
+    <div class="preview">
+      <div class="fare">
+        <p class="route" id="route">Kuala Lumpur to Osaka Kansai, 12 Dec, return</p>
+        <p class="price num" id="price" lang="ms">Pergi balik dari RM 1,286</p>
+      </div>
+      <div class="go">
+        <label class="switch"><input type="checkbox" role="switch" id="wind" checked> Wind</label>
+        <button type="button" class="btn" id="cta" lang="ms">Teruskan</button>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

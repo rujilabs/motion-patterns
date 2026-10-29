@@ -1,0 +1,74 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --bk-table: #efe7da;
+  --bk-paper: #fffcf6;
+  --bk-ink: #2a221b;
+  --bk-mute: #786b5e;
+  --bk-line: #e5dacb;
+  --bk-green: #1f5b45;
+  --bk-track: #cfe0d8;
+  --bk-red: #b4432b;
+  --bk-soft: #f6efe3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bk-table: #17140f;
+    --bk-paper: #221d17;
+    --bk-ink: #f1e9dc;
+    --bk-mute: #ab9e8d;
+    --bk-line: #3a3127;
+    --bk-green: #2e8462;
+    --bk-track: #2e4a3e;
+    --bk-red: #e06a4f;
+    --bk-soft: #2b251d;
+  }
+}
+body { background: var(--bk-table); color: var(--bk-ink); }
+.checkout {
+  width: min(720px, 100%); display: grid; grid-template-columns: 1.1fr 1fr;
+  background: var(--bk-paper); border-color: var(--bk-line); overflow: hidden;
+}
+.order { padding: 24px 24px 22px; display: grid; gap: 14px; align-content: start; }
+.shop { font-size: 13px; font-weight: 650; }
+.shop .mute { color: var(--bk-mute); font-weight: 400; margin-left: 4px; }
+.order h1 { font: 400 34px/1 "Instrument Serif", Georgia, serif; letter-spacing: 0; }
+.lines { display: grid; border-top: 1px solid var(--bk-line); }
+.lines li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bk-line); font-size: 14px; }
+.lines small { display: block; font-size: 12.5px; color: var(--bk-mute); }
+.total { display: flex; justify-content: space-between; font-size: 17px; font-weight: 700; padding-top: 2px; }
+
+.pay { padding: 24px; display: grid; gap: 16px; align-content: start; background: var(--bk-soft); border-left: 1px solid var(--bk-line); }
+.pay h2 { font-size: 15px; font-weight: 650; }
+.card { display: flex; gap: 12px; align-items: center; font-size: 14px; font-weight: 600; }
+.card small { display: block; font-size: 12.5px; font-weight: 400; color: var(--bk-mute); }
+.card-mark { flex: none; width: 44px; height: 30px; fill: var(--bk-paper); stroke: var(--bk-ink); stroke-width: 1.5; }
+.card-mark path { stroke-width: 3; stroke: var(--bk-mute); }
+.card-mark path + path { stroke-width: 2; }
+.bank { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13.5px; }
+.bank legend { padding: 0; margin-bottom: 6px; font-size: 12px; color: var(--bk-mute); }
+.bank label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.bank input { accent-color: var(--bk-green); margin: 0; }
+
+.pay-row { display: flex; justify-content: center; }
+.pay-morph { width: 100%; font-size: 16px; --pay-bg: var(--bk-green); --pay-paper: var(--bk-paper); --pay-track: var(--bk-track); --pay-fail: var(--bk-red); }
+.note { font-size: 13px; color: var(--bk-mute); min-height: 3em; text-align: center; text-wrap: balance; }
+.note.ok { color: var(--bk-ink); }
+.note.no { color: var(--bk-red); }
+.again { justify-self: center; font: inherit; font-size: 13.5px; font-weight: 600; color: var(--bk-green); background: none; border: 0; padding: 4px 6px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+@media (max-width: 640px) {
+  .checkout { grid-template-columns: 1fr; }
+  .order { padding: 18px 16px 16px; gap: 10px; }
+  .order h1 { font-size: 28px; }
+  .pay { padding: 18px 16px; border-left: 0; border-top: 1px solid var(--bk-line); gap: 14px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .order, .pay { padding-block: 16px; gap: 10px; }
+  .lines li { padding: 7px 0; }
+}

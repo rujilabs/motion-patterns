@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light scan verify demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="light-scan-verify.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="kyc sheet" aria-labelledby="k-h">
+    <div class="k-doc">
+      <div class="scan-doc idcard" id="doc" data-scan-list="#checks" data-duration="1700" role="img" aria-label="Photo of the front of an identity card, specimen, for Tan Mei Ling">
+        <svg class="guilloche" viewBox="0 0 340 214" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 40 C40 20 80 60 120 40 S200 20 240 40 S320 60 340 40"/>
+          <path d="M0 62 C40 42 80 82 120 62 S200 42 240 62 S320 82 340 62"/>
+          <path d="M0 84 C40 64 80 104 120 84 S200 64 240 84 S320 104 340 84"/>
+          <path d="M0 106 C40 86 80 126 120 106 S200 86 240 106 S320 126 340 106"/>
+          <path d="M0 128 C40 108 80 148 120 128 S200 108 240 128 S320 148 340 128"/>
+          <path d="M0 150 C40 130 80 170 120 150 S200 130 240 150 S320 170 340 150"/>
+          <path d="M0 172 C40 152 80 192 120 172 S200 152 240 172 S320 192 340 172"/>
+          <path d="M0 194 C40 174 80 214 120 194 S200 174 240 194 S320 214 340 194"/>
+        </svg>
+        <div class="id-head">
+          <svg class="emblem" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M12 4.5 L14 10 L19.5 12 L14 14 L12 19.5 L10 14 L4.5 12 L10 10 Z"/></svg>
+          <span class="id-title">Identity card</span>
+          <span class="id-chip" aria-hidden="true"></span>
+        </div>
+        <div class="id-body">
+          <span class="id-photo" data-scan-field="face">
+            <svg viewBox="0 0 80 100" aria-hidden="true"><rect width="80" height="100" class="ph-bg"/><path class="ph-hair" d="M18 50 C14 22 30 12 41 12 C56 12 68 24 63 52 C60 40 56 34 40 33 C26 33 22 40 18 50 Z"/><ellipse class="ph-face" cx="40" cy="45" rx="17" ry="20"/><path class="ph-body" d="M8 100 C10 78 24 70 40 70 C56 70 70 78 72 100 Z"/><path class="ph-neck" d="M33 60 H47 V73 C44 76 36 76 33 73 Z"/></svg>
+          </span>
+          <div class="id-fields">
+            <p class="id-no num"><span data-scan-field="id">900514-10-5562</span></p>
+            <p class="id-name"><span data-scan-field="name">TAN MEI LING</span></p>
+            <p class="id-addr"><span data-scan-field="address">18 JALAN SS 2/24<br>47300 PETALING JAYA<br>SELANGOR</span></p>
+          </div>
+        </div>
+        <span class="specimen" aria-hidden="true">Specimen</span>
+        <div class="scan-shade" aria-hidden="true"></div>
+      </div>
+      <p class="k-file mute num">IMG_4417.jpg · 2.4 MB · taken 10:12 am</p>
+    </div>
+
+    <div class="k-side">
+      <p class="kicker">Bank Teratai · Open an account · Step 2 of 4</p>
+      <h1 id="k-h">Checking your ID card</h1>
+      <p class="k-status" id="status" role="status">Reading the front of your card.</p>
+      <ul class="checks" id="checks">
+        <li data-scan-for="*">Card edges found, glare 3%</li>
+        <li data-scan-for="id">IC number valid, born 14 May 1990</li>
+        <li data-scan-for="name">Name read: Tan Mei Ling</li>
+        <li data-scan-for="face">Face found in the photo</li>
+        <li data-scan-for="address">Address read: Petaling Jaya, Selangor</li>
+      </ul>
+      <div class="k-actions">
+        <button type="button" class="btn-line" id="again">Scan again</button>
+        <button type="button" class="btn" id="next">Continue</button>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

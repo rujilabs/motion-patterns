@@ -1,0 +1,34 @@
+/*
+ * tile-filter-flip: a grid of two-faced tiles that turn over to new results. tile-filter-flip.js
+ * writes the new content on the face turned away and turns each card half a turn, about the axis at
+ * right angles to the line from the pressed control, so the change ripples out from it. Each tile
+ * has its own perspective, so every tile turns the same way wherever it sits in the grid.
+ */
+.tile-flip {
+  --tf-min: 150px;    /* narrowest tile */
+  --tf-gap: 10px;
+  --tf-turn: 680ms;   /* one half turn, settle included */
+  --tf-spread: 60ms;  /* wait per 100px of distance from the origin */
+  --tf-lift: 24px;    /* how far a tile comes toward you at the edge-on point */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--tf-min), 100%), 1fr));
+  gap: var(--tf-gap);
+  margin: 0; padding: 0; list-style: none;
+}
+.tf-tile { position: relative; perspective: 900px; }
+/* a tile in mid turn passes in front of its neighbours */
+.tf-tile.tf-busy { z-index: 1; }
+.tf-card { position: relative; display: grid; height: 100%; transform-style: preserve-3d; }
+/* both faces share one cell, so the card is as tall as its taller face */
+.tf-face {
+  grid-area: 1 / 1;
+  min-width: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.tf-face + .tf-face { transform: rotateY(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* tile-filter-flip.js swaps the faces at once; nothing turns */
+  .tf-card, .tf-face { transition: none; animation: none; }
+}

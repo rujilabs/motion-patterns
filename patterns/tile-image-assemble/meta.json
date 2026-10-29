@@ -1,0 +1,19 @@
+{
+  "name": "Tile image assemble",
+  "slug": "tile-image-assemble",
+  "kind": "pattern",
+  "summary": "An article hero that puts itself together from tiles once the picture has loaded: each tile carries its own slice and flies in, tilted and over-lit, in a sweep from the top left.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js",
+    "svg"
+  ],
+  "tokens": [
+    "--ease-spring"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

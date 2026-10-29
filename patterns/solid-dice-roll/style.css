@@ -1,0 +1,89 @@
+/*
+ * solid-dice-roll: a real die thrown onto a tray. It falls, hits on a corner, bounces once, lands flat
+ * and rolls edge over edge, slowing until it rocks on its edge and settles with the rolled number on
+ * top. Each face is shaded from one fixed light above and to the left as it turns, and its contact
+ * shadow on the felt shrinks, darkens and sharpens as the die comes down. dice-roll.js works the
+ * whole throw out first, so the number on top is always the number that was rolled.
+ * Without the script the die rests on the tray showing a one.
+ */
+.dice-tray {
+  --die: 56px;                 /* edge length */
+  --die-ivory: #f6f0e3;        /* the die */
+  --die-pip: #1d1a17;          /* pips */
+  --die-red: #c3312a;          /* the one and the four, red as on Chinese dice */
+  --die-round: 9px;            /* corner rounding */
+  --dice-shadow: 20 8 4;       /* contact shadow colour, as r g b */
+  position: relative;
+  perspective: 900px;
+  perspective-origin: 50% 20%;
+}
+.dice-world, .dice-floor, .die { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+/* the camera: looking down at the tray from in front and above */
+.dice-world { transform: rotateX(-52deg); }
+/* the floor plane, laid flat: its x runs across the tray and its y runs toward you */
+.dice-floor { transform: rotateX(90deg); }
+.dice-shadow {
+  position: absolute; left: calc(var(--die) / -2); top: calc(var(--die) / -2);
+  width: var(--die); height: var(--die); border-radius: 30%;
+  background: rgb(var(--dice-shadow) / .55);
+  transform: translateZ(.5px) rotate(25deg);
+  filter: blur(3px);
+}
+.die { transform: translate3d(0, calc(var(--die) / -2), 0) rotateY(-25deg) rotateX(90deg); }
+
+.die-face {
+  position: absolute; left: calc(var(--die) / -2); top: calc(var(--die) / -2);
+  width: var(--die); height: var(--die);
+  border-radius: var(--die-round);
+  background-color: var(--die-ivory);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .06), inset 0 0 calc(var(--die) * .12) rgb(0 0 0 / .1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.die-front  { transform: translateZ(calc(var(--die) / 2)); }
+.die-back   { transform: rotateY(180deg) translateZ(calc(var(--die) / 2)); }
+.die-right  { transform: rotateY(90deg) translateZ(calc(var(--die) / 2)); }
+.die-left   { transform: rotateY(-90deg) translateZ(calc(var(--die) / 2)); }
+.die-top    { transform: rotateX(90deg) translateZ(calc(var(--die) / 2)); }
+.die-bottom { transform: rotateX(-90deg) translateZ(calc(var(--die) / 2)); }
+/* resting shade for the no-script view */
+.die-bottom { filter: brightness(.74); }
+.die-right { filter: brightness(.55); }
+
+/* pips: drawn with gradients, so a face is one element. Use .pips-1 to .pips-6 on a face or a flat tile. */
+.pips-1, .pips-2, .pips-3, .pips-4, .pips-5, .pips-6 {
+  --p: calc(var(--die) * .095);
+  --q: calc(var(--p) + .6px);
+  background-repeat: no-repeat;
+}
+.pips-1 { background-image: radial-gradient(circle at 50% 50%, var(--die-red) calc(var(--p) * 1.45), transparent calc(var(--q) * 1.45)); }
+.pips-2 { background-image:
+  radial-gradient(circle at 27% 27%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 73% 73%, var(--die-pip) var(--p), transparent var(--q)); }
+.pips-3 { background-image:
+  radial-gradient(circle at 25% 25%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 50% 50%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 75% 75%, var(--die-pip) var(--p), transparent var(--q)); }
+.pips-4 { background-image:
+  radial-gradient(circle at 28% 28%, var(--die-red) var(--p), transparent var(--q)),
+  radial-gradient(circle at 72% 28%, var(--die-red) var(--p), transparent var(--q)),
+  radial-gradient(circle at 28% 72%, var(--die-red) var(--p), transparent var(--q)),
+  radial-gradient(circle at 72% 72%, var(--die-red) var(--p), transparent var(--q)); }
+.pips-5 { background-image:
+  radial-gradient(circle at 25% 25%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 75% 25%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 50% 50%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 25% 75%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 75% 75%, var(--die-pip) var(--p), transparent var(--q)); }
+.pips-6 { background-image:
+  radial-gradient(circle at 28% 22%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 72% 22%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 28% 50%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 72% 50%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 28% 78%, var(--die-pip) var(--p), transparent var(--q)),
+  radial-gradient(circle at 72% 78%, var(--die-pip) var(--p), transparent var(--q)); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* dice-roll.js skips the throw and sets the die down with the rolled number on top */
+  .die, .dice-shadow { transition: none; }
+}

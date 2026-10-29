@@ -1,0 +1,68 @@
+/* Demo page layout for this entry. Not part of the pattern. A mini market's loyalty app: deep teal, linen counter, brass. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+:root {
+  --lm-table: #dbe3e0;
+  --lm-paper: #fbfaf6;
+  --lm-ink: #10292c;
+  --lm-mute: #5b6e70;
+  --lm-line: #dfe3df;
+  --lm-teal: #0e4a4f;
+  --lm-linen: #efe8da;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lm-table: #0d1516;
+    --lm-paper: #142022;
+    --lm-ink: #e5eeec;
+    --lm-mute: #94a8a8;
+    --lm-line: #24353a;
+    --lm-teal: #0b3a3e;
+    --lm-linen: #1d2a2b;
+  }
+}
+body { background: var(--lm-table); color: var(--lm-ink); }
+:focus-visible { outline-color: var(--lm-teal); }
+
+.app { width: min(380px, 100%); background: var(--lm-paper); border-radius: 22px; overflow: hidden; border: 1px solid var(--lm-line); display: grid; }
+.app-head { background: var(--lm-teal); color: #f2efe4; padding: 18px 22px 16px; display: grid; gap: 3px; }
+.store { font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .75; }
+.app-head h1 { font: 800 26px/1.1 "Anybody", "Host Grotesk", sans-serif; font-stretch: 80%; }
+.receipt { font-size: 13px; opacity: .85; }
+
+.coin-tray { height: 226px; overflow: hidden; background: var(--lm-linen); --coin-shadow: 50 35 10; }
+@media (prefers-color-scheme: dark) { .coin-tray { --coin-shadow: 0 0 0; } }
+.coin-ring { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--coin-ink); font: 700 7.4px "Host Grotesk", sans-serif; letter-spacing: .06em; }
+.coin-amount { display: grid; justify-items: center; line-height: 1; }
+.coin-amount b { font: 850 40px/1 "Anybody", "Host Grotesk", sans-serif; font-stretch: 70%; letter-spacing: -.02em; }
+.coin-amount small { font-size: 9.5px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; margin-top: 2px; }
+.coin-tails { align-content: center; gap: 4px; }
+.coin-mark { width: 46px; height: 46px; fill: var(--coin-ink); }
+.coin-sm { font-size: 9px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; }
+
+.balance { padding: 16px 22px 4px; display: grid; gap: 8px; }
+.balance p:first-child { font-size: 14px; }
+.balance strong { font-size: 28px; font-weight: 750; letter-spacing: -.02em; margin: 0 2px; }
+.goal { height: 6px; border-radius: 3px; background: var(--lm-line); overflow: hidden; }
+.goal-bar { display: block; height: 100%; background: var(--lm-teal); transform-origin: 0 50%; transform: scaleX(.857); transition: transform var(--dur-slow) var(--ease-out); }
+@media (prefers-color-scheme: dark) { .goal-bar { background: #d6a537; } }
+.small { font-size: 12.5px; }
+.scan {
+  margin: 14px 22px 20px; font: inherit; font-size: 15px; font-weight: 700; color: #f2efe4; background: var(--lm-teal);
+  border: 0; border-radius: 12px; padding: 13px; cursor: pointer;
+}
+@media (prefers-color-scheme: dark) { .scan { background: #d6a537; color: #1a1406; } }
+.scan:disabled { opacity: .55; cursor: default; }
+
+@media (max-height: 560px) {
+  .coin-tray { height: 170px; --coin: 104px; }
+  .app-head { padding-block: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .goal-bar { transition: none; }
+}

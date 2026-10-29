@@ -1,0 +1,31 @@
+/*
+ * morph-weather-icon: colours for the morphing weather icon. The shapes are drawn and sprung by
+ * weather-icon.js; this file only says what colour each part is in each condition, and fades
+ * the colour across in step with the shape.
+ */
+.wx-icon {
+  --wx-sun: #f7c046;          /* sun disc, rays and the small sun behind a cloud */
+  --wx-cloud: #ffffff;
+  --wx-rain-cloud: #c9d3dc;   /* a heavier, greyer cloud for rain */
+  --wx-drop: #e4eef7;         /* rain streaks */
+  --wx-moon: #f3e8c6;
+  --wx-fade: 420ms;
+  display: block; overflow: visible;
+}
+.wx-body { fill: var(--wx-sun); transition: fill var(--wx-fade) var(--ease-inout); }
+.wx-peek { fill: var(--wx-sun); }
+.wx-rays { stroke: var(--wx-sun); stroke-linecap: round; transition: stroke var(--wx-fade) var(--ease-inout), opacity 260ms var(--ease-out); }
+
+.wx-icon[data-condition="partly"] .wx-body,
+.wx-icon[data-condition="cloud"] .wx-body { fill: var(--wx-cloud); }
+.wx-icon[data-condition="rain"] .wx-body { fill: var(--wx-rain-cloud); }
+.wx-icon[data-condition="rain"] .wx-rays { stroke: var(--wx-drop); transition: stroke 0s, opacity 260ms var(--ease-out); } /* streaks fall in their own colour */
+.wx-icon[data-condition="moon"] .wx-body { fill: var(--wx-moon); }
+/* rays tucked away behind the cloud or the moon are also faded, so their round caps never show */
+.wx-icon[data-condition="cloud"] .wx-rays,
+.wx-icon[data-condition="moon"] .wx-rays { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* weather-icon.js jumps to the new shape; the colour changes with it */
+  .wx-body, .wx-rays { transition: none; }
+}

@@ -1,0 +1,47 @@
+/*
+ * curve-arc-picker: options on the top of a wheel. arc-picker.js turns the wheel; each option sits at
+ * its angle on a circle whose centre is --ap-radius below the picker's centre line, and the one at the
+ * top rises by --ap-rise and grows. Options stay nearly upright, tilting a little with the arc.
+ * Each option gets --ap-near (1 at the top, 0 a step away) and --ap-far (0 to 1 with distance) to style with.
+ */
+.curve-arc-picker {
+  --ap-radius: 420px;      /* radius of the wheel */
+  --ap-step: 15;           /* degrees between two options */
+  --ap-rise: 18px;         /* how far the chosen option lifts off the arc */
+  --ap-line: 50%;          /* height of the centre line, where the top of the arc runs */
+  --ap-track: rgb(0 0 0 / .14);
+  position: relative;
+  height: 220px;
+  margin: 0; padding: 0; list-style: none;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;     /* sideways drags turn the wheel; the page still scrolls up and down */
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.curve-arc-picker.is-turning { cursor: grabbing; }
+/* the arc itself: a thin circle through the option centres */
+.curve-arc-picker::before {
+  content: ""; position: absolute; left: 50%; top: var(--ap-line); translate: -50% 0;
+  width: calc(var(--ap-radius) * 2); aspect-ratio: 1; border-radius: 50%;
+  border: 1.5px dashed var(--ap-track); pointer-events: none;
+}
+.ap-item {
+  position: absolute; left: 50%; top: var(--ap-line);
+  translate: 0 -50%;
+  cursor: pointer;
+  opacity: calc(1 - var(--ap-far, 0) * .3);
+  will-change: transform;
+}
+.curve-arc-picker:focus-visible .ap-item[aria-selected="true"] { outline: 2px solid currentColor; outline-offset: 6px; border-radius: 10px; }
+
+/* without the script the options sit in a plain row */
+.curve-arc-picker:not(.is-ready) { display: flex; flex-wrap: wrap; gap: 16px; height: auto; overflow: visible; }
+.curve-arc-picker:not(.is-ready)::before { display: none; }
+.curve-arc-picker:not(.is-ready) .ap-item { position: static; translate: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* arc-picker.js jumps to the chosen option with no throw and no spring; a drag still turns the wheel */
+  .ap-item { transition: none; }
+}

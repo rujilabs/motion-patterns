@@ -1,0 +1,64 @@
+/*
+ * panel-shutter-menu: a mobile menu that drops as a folded strip of slats. shutter.js places each
+ * slat on the bottom edge of the one above (--y, --z) and turns it about its own top edge (--slat-a), so
+ * the strip unfolds in a zig-zag from the top. Light comes from above: a slat tipped up toward you
+ * catches it, a slat tipped down and away goes dark, and the joint between two slats darkens with
+ * how sharply they are folded (--kink). Without the script the menu is a plain open list.
+ */
+@property --slat-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+.shutter {
+  --shutter-slat: #f2b705;
+  --shutter-ink: #1d1d1b;
+  --shutter-joint: rgb(0 0 0 / .28);
+  --shutter-ring: #1d1d1b;
+  perspective: 900px;
+  perspective-origin: 50% 0;
+}
+.shutter-list { list-style: none; margin: 0; padding: 0; }
+.shutter-slat {
+  background: var(--shutter-slat);
+  color: var(--shutter-ink);
+  box-shadow: inset 0 -1px 0 var(--shutter-joint);
+}
+.shutter-slat > a {
+  display: block; position: relative; z-index: 1;
+  color: inherit; text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.shutter-slat > a:focus-visible { outline: 2px solid var(--shutter-ring); outline-offset: -5px; border-radius: 4px; }
+
+/* with the script: slats are placed in 3D, stacked on one another's bottom edges */
+.shutter.is-shutter .shutter-list { position: relative; transform-style: preserve-3d; }
+.shutter.is-shutter .shutter-slat {
+  --slat-a: 0deg; --y: 0px; --z: 0px; --kink: 0deg;
+  position: absolute; left: 0; right: 0; top: 0;
+  transform-origin: 50% 0;
+  transform: translate3d(0, var(--y), var(--z)) rotateX(var(--slat-a));
+  backface-visibility: hidden;
+}
+.shutter.is-shutter .shutter-slat::before,
+.shutter.is-shutter .shutter-slat::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+}
+/* tipped up toward you: it faces the light above */
+.shutter.is-shutter .shutter-slat::before { background: #fff; opacity: calc(max(0, sin(var(--slat-a))) * .5); }
+/* tipped down and away: in its own shadow. The joint with the slat above darkens as it folds */
+.shutter.is-shutter .shutter-slat::after { background: #000; opacity: calc(max(0, sin(var(--slat-a)) * -1) * .45); }
+.shutter.is-shutter .shutter-slat {
+  box-shadow:
+    inset 0 -1px 0 var(--shutter-joint),
+    inset 0 16px 14px -12px rgb(0 0 0 / calc(sin(var(--kink) / 2) * .7));
+}
+/* the strip hangs over the page: a soft shadow along its lower edge */
+.shutter.is-shutter .shutter-list::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 16px; pointer-events: none;
+  background: linear-gradient(rgb(0 0 0 / .2), rgb(0 0 0 / 0));
+}
+.js .shutter.is-shutter[hidden] { display: none; }
+.shutter-toggle { display: none; }
+.js .shutter-toggle { display: inline-flex; }
+
+@media (prefers-reduced-motion: reduce) {
+  .shutter.is-shutter .shutter-slat::before, .shutter.is-shutter .shutter-slat::after { opacity: 0; }
+}

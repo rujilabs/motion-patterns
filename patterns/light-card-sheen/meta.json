@@ -1,0 +1,17 @@
+{
+  "name": "Light card sheen",
+  "slug": "light-card-sheen",
+  "kind": "pattern",
+  "summary": "A member card that tilts under the pointer and mirrors a strip light: the highlight's place and angle come from a real reflection, foil catches it sharper, and the face darkens as it turns away.",
+  "category": "light",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

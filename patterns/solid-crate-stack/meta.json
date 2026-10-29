@@ -1,0 +1,16 @@
+{
+  "name": "Crate stack",
+  "slug": "solid-crate-stack",
+  "kind": "pattern",
+  "summary": "Crates drop onto a pallet and stack in CSS 3D as a delivery is booked in. Each falls under gravity, lands on its low corner, bounces once and squares up.",
+  "category": "solid",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

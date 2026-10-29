@@ -1,0 +1,22 @@
+/*
+ * gear-sale-countdown: a countdown ticked by a clock escapement. gear-sale-countdown.js draws the
+ * escape wheel, the anchor and the pendulum, and runs each beat with element.animate(); this file
+ * colours them. The anchor and pendulum swing as one piece about the pivot; the wheel holds, drops
+ * half a tooth when a pallet lets go, and recoils onto the other pallet.
+ */
+.gear-sale-countdown .gsc-works { display: block; width: 100%; height: auto; overflow: visible; }
+.gear-sale-countdown .gsc-wheel path { fill: var(--gsc-wheel, #5b6470); }
+.gear-sale-countdown .gsc-wheel, .gear-sale-countdown .gsc-wheel path, .gear-sale-countdown .gsc-anchor, .gear-sale-countdown .gsc-swing { transform-box: view-box; transform-origin: 0 0; }
+.gear-sale-countdown .gsc-arm { fill: none; stroke: var(--gsc-anchor, #1d1f24); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.gear-sale-countdown .gsc-pallet { stroke: var(--gsc-anchor, #1d1f24); stroke-width: 5; stroke-linecap: butt; }
+.gear-sale-countdown .gsc-rod { stroke: var(--gsc-rod, #9aa1ab); stroke-width: 3; stroke-linecap: round; }
+.gear-sale-countdown .gsc-bob { fill: var(--gsc-bob, #d2361e); }
+.gear-sale-countdown .gsc-arbor, .gear-sale-countdown .gsc-pivot { fill: var(--gsc-pin, #e9e4da); stroke: var(--gsc-anchor, #1d1f24); stroke-width: 1.5; }
+.gear-sale-countdown .gsc-time { font-variant-numeric: tabular-nums; }
+.gear-sale-countdown.is-ended .gsc-time { color: var(--gsc-ended, #8a8f98); }
+.js .gear-sale-countdown:not(.is-ready) .gsc-works { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script sets each beat straight away: no swing, no drop, no recoil */
+  .gear-sale-countdown .gsc-wheel path, .gear-sale-countdown .gsc-anchor, .gear-sale-countdown .gsc-swing { animation: none; transition: none; }
+}

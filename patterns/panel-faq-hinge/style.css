@@ -1,0 +1,79 @@
+/*
+ * panel-faq-hinge: FAQ answers on a top hinge. Each answer is a flap hung from the bottom edge of
+ * its question. Closed, it is lifted flat toward you; opening, it drops, swings a little past
+ * hanging and settles, like a card flap with some weight. One angle, --hinge (90deg closed, 0deg
+ * hanging), drives the turn, the light, the crease and the chevron; panel-faq-hinge.js springs it
+ * and sets the answer's height to the flap's projected height, h times cos(angle), so the questions
+ * below move with the flap, not ahead of it. Without the script every answer shows, flat.
+ */
+@property --hinge { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+
+.hinge {
+  --hinge-paper: #f3f6f7;
+  --hinge-rule: #0f7c8c;
+  --hinge-ring: #0f7c8c;
+  --hinge: 0deg;
+  position: relative;
+}
+.hinge-h { margin: 0; font: inherit; }
+.hinge-q {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  width: 100%; padding: 13px 2px; margin: 0;
+  font: inherit; font-weight: 650; text-align: left; color: inherit;
+  background: none; border: 0; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.hinge-q:focus-visible { outline: 2px solid var(--hinge-ring); outline-offset: 2px; border-radius: 4px; }
+
+/* the chevron turns with the flap, twice as far, so it reads as part of the same hinge */
+.hinge-mark {
+  flex: none; width: 9px; height: 9px; margin-right: 4px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(calc(225deg - max(0deg, var(--hinge)) * 2));
+}
+
+/* the answer: a box as tall as the flap looks, and the hinge's camera */
+.hinge-a {
+  position: relative;
+  display: flow-root;
+  perspective: 640px;
+  perspective-origin: 50% 0;
+}
+.hinge.is-moving { z-index: 1; }
+.hinge-flap {
+  position: relative;
+  padding: 12px 16px 14px;
+  background: var(--hinge-paper);
+  border-left: 3px solid var(--hinge-rule);
+  border-radius: 0 0 6px 6px;
+  transform-origin: 50% 0;
+  transform: rotateX(var(--hinge));
+  backface-visibility: hidden;
+}
+.hinge-flap > :first-child { margin-top: 0; }
+.hinge-flap > :last-child { margin-bottom: 0; }
+
+/* light from above. Tipped toward you the flap faces the light and catches it, and the inside of
+   the fold, where it meets the question, goes dark. Swung back past hanging it faces the floor. */
+.hinge-flap::before,
+.hinge-flap::after {
+  content: ""; position: absolute; inset: 0 0 0 -3px; border-radius: inherit; pointer-events: none;
+}
+.hinge-flap::before {
+  background: #fff;
+  opacity: calc(max(0, sin(var(--hinge))) * .6);
+}
+.hinge-flap::after {
+  background:
+    linear-gradient(rgb(0 0 0 / .5), rgb(0 0 0 / 0) 26px),
+    rgb(0 0 0 / .14);
+  opacity: calc(max(0, sin(var(--hinge))) * .55 + max(0, sin(var(--hinge)) * -1) * 2.4);
+}
+
+/* the script springs --hinge; these only matter without it or before it runs */
+.js .hinge-a[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hinge-flap { transform: none; }
+  .hinge-flap::before, .hinge-flap::after { opacity: 0; }
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drum combo lock demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="drum-combo-lock.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="gift" aria-labelledby="gift-h">
+    <div class="felt">
+      <div class="lock" data-code="1408" id="lock">
+        <span class="lock-shackle" aria-hidden="true"></span>
+        <div class="lock-body">
+          <div class="lock-dials" role="group" aria-label="Lock code, four digits">
+            <div class="dial" role="spinbutton" tabindex="0" aria-label="First digit" aria-valuemin="0" aria-valuemax="9" data-value="2">2</div>
+            <div class="dial" role="spinbutton" tabindex="0" aria-label="Second digit" aria-valuemin="0" aria-valuemax="9" data-value="9">9</div>
+            <div class="dial" role="spinbutton" tabindex="0" aria-label="Third digit" aria-valuemin="0" aria-valuemax="9" data-value="6">6</div>
+            <div class="dial" role="spinbutton" tabindex="0" aria-label="Fourth digit" aria-valuemin="0" aria-valuemax="9" data-value="5">5</div>
+          </div>
+          <p class="lock-stamp" aria-hidden="true">SN &middot; 41</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <p class="kicker">Selera Nyonya, Jonker Street, Melaka</p>
+      <h1 id="gift-h">Your year-end hamper is locked</h1>
+      <p class="hint">The code is the day we opened our first stall: 14 August, so <span class="num">1 4 0 8</span>. Drag a dial, or tab to it and use the arrow keys.</p>
+      <p class="state" id="state" role="status">Locked</p>
+
+      <div class="voucher" id="voucher">
+        <p class="v-label">Hamper voucher</p>
+        <p class="v-code num">HMP-1408-27Q</p>
+        <p class="v-body">Kuih bangkit, pineapple tarts, a jar of our cincalok and 500 g of Sarawak white pepper. Collect at 41 Jalan Hang Jebat by 30 November, 10 am to 6 pm.</p>
+        <button class="relock" type="button" id="relock">Lock it again</button>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

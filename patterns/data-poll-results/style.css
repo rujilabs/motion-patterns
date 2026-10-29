@@ -1,0 +1,43 @@
+/*
+ * data-poll-results: live poll bars. Each option is a real radio in a label; the bar is the label's
+ * background, scaled to the option's share (--p, set by data-poll-results.js) with a CSS transition,
+ * so a burst of votes eases every bar to its new share at once. A "+n" rises beside an option that
+ * gained. Without the script the options are a plain radio list with their percentages.
+ */
+.poll { --pl-c: #be123c; --pl-rest: #e7e2e4; --pl-ring: currentColor; }
+.pl-opt {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 2px 12px;
+  padding: 10px 14px; border-radius: 8px; isolation: isolate; cursor: pointer; overflow: hidden;
+}
+.pl-bar {
+  position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: color-mix(in oklab, var(--pl-rest) 100%, transparent);
+}
+.pl-bar::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: color-mix(in oklab, var(--pl-c) 13%, transparent);
+  transform-origin: 0 50%; transform: scaleX(var(--p, 0));
+  transition: transform var(--dur-slow) var(--ease-out), background-color var(--dur-base) var(--ease-out);
+}
+.pl-opt.is-lead .pl-bar::after { background: color-mix(in oklab, var(--pl-c) 24%, transparent); }
+.pl-opt input {
+  appearance: none; margin: 0; width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid var(--pl-ring); display: grid; place-items: center; cursor: pointer;
+}
+.pl-opt input::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pl-c); scale: 0; transition: scale var(--dur-quick) var(--ease-spring); }
+.pl-opt input:checked { border-color: var(--pl-c); }
+.pl-opt input:checked::after { scale: 1; }
+.pl-opt input:focus-visible { outline: 2px solid var(--pl-c); outline-offset: 2px; }
+.pl-opt input:disabled { cursor: default; }
+.pl-pct { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.pl-votes { grid-column: 2; font-size: .82em; opacity: .7; font-variant-numeric: tabular-nums; }
+.pl-delta {
+  position: absolute; right: 14px; bottom: 6px; font-size: .78em; font-weight: 700; color: var(--pl-c);
+  opacity: 0; pointer-events: none; font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* bars jump to their new share; no +n chips */
+  .pl-bar::after, .pl-opt input::after { transition: none; }
+  .pl-delta { display: none; }
+}

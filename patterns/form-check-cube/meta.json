@@ -1,0 +1,22 @@
+{
+  "name": "Check cube",
+  "slug": "form-check-cube",
+  "kind": "pattern",
+  "summary": "A checkbox that turns over like a cube: the ticked face rolls forward to the front, faces shade as they turn from the light, and the task text is struck through.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--dur-quick",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

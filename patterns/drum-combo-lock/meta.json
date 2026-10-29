@@ -1,0 +1,23 @@
+{
+  "name": "Drum combo lock",
+  "slug": "drum-combo-lock",
+  "kind": "pattern",
+  "summary": "A padlock with four 3D number dials that click into each digit. Turn them to the code and the shackle lifts and swings open to reveal what is inside.",
+  "category": "drum",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-in",
+    "--ease-spring",
+    "--ease-out",
+    "--dur-base",
+    "--dur-slow"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

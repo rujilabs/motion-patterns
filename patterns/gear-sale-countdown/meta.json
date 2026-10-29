@@ -1,0 +1,19 @@
+{
+  "name": "Gear sale countdown",
+  "slug": "gear-sale-countdown",
+  "kind": "pattern",
+  "summary": "A flash-sale countdown ticked by a clock escapement: each second the pendulum swings, a pallet lets go, the 30-tooth wheel drops half a tooth with a recoil, and the digits change on the drop.",
+  "category": "gear",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-spring"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

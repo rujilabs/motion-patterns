@@ -1,0 +1,16 @@
+{
+  "name": "Parcel open",
+  "slug": "solid-parcel-open",
+  "kind": "pattern",
+  "summary": "A carton is set down on the doorstep, the tape splits and the four top flaps swing open on their creases, outer flaps first, each shaded as it turns.",
+  "category": "solid",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

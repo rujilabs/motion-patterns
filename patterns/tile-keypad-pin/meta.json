@@ -1,0 +1,20 @@
+{
+  "name": "Tile keypad PIN",
+  "slug": "tile-keypad-pin",
+  "kind": "pattern",
+  "summary": "A PIN keypad whose tiles press in 3D, tipping toward the touch and sinking onto their edge. Dots fill, shake no on a wrong code and hop on a right one; digits are never shown.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

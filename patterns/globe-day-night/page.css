@@ -1,0 +1,92 @@
+/* Demo page layout for this entry. Not part of the pattern. A telehealth rota: sage paper, deep teal, sun amber. */
+:root {
+  --dn-table: #e9efec;
+  --dn-paper: #fbfdfc;
+  --dn-ink: #17302b;
+  --dn-mute: #5f746e;
+  --dn-line: #d6e1dc;
+  --dn-sea: #d9e7e1;
+  --dn-land: #2f5a4f;
+  --dn-teal: #0f6e64;
+  --dn-sun: #e99a0f;
+  --dn-night: #13233d;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dn-table: #0e1614;
+    --dn-paper: #15201d;
+    --dn-ink: #e3eeea;
+    --dn-mute: #93a8a1;
+    --dn-line: #26352f;
+    --dn-sea: #2a3d38;
+    --dn-land: #bcd9cd;
+    --dn-teal: #4cc2b0;
+    --dn-sun: #f6b23a;
+    --dn-night: #050a14;
+  }
+}
+body { background: var(--dn-table); color: var(--dn-ink); }
+.sheet { background: var(--dn-paper); border-color: var(--dn-line); }
+.mute { color: var(--dn-mute); }
+:focus-visible { outline-color: var(--dn-teal); }
+
+.desk { width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 22px; padding: 22px; align-items: center; }
+.desk-head { display: grid; gap: 4px; margin-bottom: 12px; }
+.brand { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--dn-teal); }
+.desk-head h1 { font-size: 22px; font-weight: 700; }
+.desk-head .mute { font-size: 13px; }
+
+.desks { border-top: 1px solid var(--dn-line); }
+.desks li { display: grid; grid-template-columns: 14px 1fr auto 58px; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--dn-line); font-size: 14px; }
+/* sun or moon: a filled amber dot by day, a navy crescent at night (from the globe's is-night class) */
+.sky { width: 12px; height: 12px; border-radius: 50%; background: var(--dn-sun); transition: background-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.is-night .sky { background: transparent; box-shadow: inset -4px -2px 0 0 var(--dn-mute); }
+.city { font-weight: 600; }
+.local { font-weight: 600; text-align: right; }
+.state { font-size: 12px; text-align: right; color: var(--dn-mute); }
+.is-open .state { color: var(--dn-teal); font-weight: 650; }
+
+.clock { margin-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; }
+.clock label { grid-column: 1 / -1; font-size: 13px; color: var(--dn-mute); display: flex; justify-content: space-between; }
+.clock output { color: var(--dn-ink); font-weight: 700; font-size: 15px; }
+.clock input { width: 100%; accent-color: var(--dn-teal); margin: 0; height: 28px; }
+.sweep {
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--dn-paper); background: var(--dn-ink); border: 0;
+  border-radius: 6px; padding: 7px 12px; cursor: pointer; min-width: 98px; display: none;
+}
+.js .sweep { display: inline-block; }
+
+.desk-globe { display: grid; gap: 4px; justify-items: center; }
+.desk-globe figcaption { font-size: 12px; }
+.globe-daynight {
+  --globe-ocean: var(--dn-sea);
+  --globe-land: var(--dn-land);
+  --globe-night: var(--dn-night);
+  --globe-sun: var(--dn-sun);
+  --globe-ink: var(--dn-ink);
+  --globe-paper: var(--dn-paper);
+  --globe-shadow: rgba(20, 50, 40, .24);
+  --globe-font: 650 11px "Host Grotesk", system-ui, sans-serif;
+  max-width: 360px;
+}
+@media (prefers-color-scheme: dark) {
+  .globe-daynight { --globe-shadow: rgba(0, 0, 0, .55); --globe-night-depth: .72; --globe-night-land: #6f86a8; --globe-limb: .3; }
+}
+
+@media (max-width: 640px) {
+  .desk { grid-template-columns: 1fr; padding: 16px; gap: 8px; }
+  .desk-side { display: contents; }
+  .desk-head { order: 0; margin-bottom: 0; }
+  .desk-globe { order: 1; }
+  .desks, .clock { order: 2; }
+  .globe-daynight { max-width: 280px; }
+  .desk-head h1 { font-size: 20px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .desks li { padding-block: 4px; }
+  .desk-head { margin-bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky { transition: none; }
+  .sweep { display: none !important; }
+}

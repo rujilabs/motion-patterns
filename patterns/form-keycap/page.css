@@ -1,0 +1,92 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../../fonts/courier-prime.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../../fonts/courier-prime-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --kds-table: #e9e5dd;
+  --kds-paper: #fbf9f5;
+  --kds-ink: #23211d;
+  --kds-mute: #6d675d;
+  --kds-line: #ddd6ca;
+  --kds-slip: #fffdf8;
+  --kds-orange: #e2632a;
+  --kds-plate: #2b2a27;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --kds-table: #161513;
+    --kds-paper: #201f1c;
+    --kds-ink: #eeebe5;
+    --kds-mute: #a39d92;
+    --kds-line: #34322d;
+    --kds-slip: #f4f0e6;
+    --kds-orange: #f07a42;
+    --kds-plate: #0f0e0d;
+  }
+}
+body { background: var(--kds-table); color: var(--kds-ink); }
+.pass { --demo-paper: var(--kds-paper); --demo-line: var(--kds-line); width: min(700px, 100%); padding: 20px 22px; display: grid; gap: 16px; background: var(--kds-paper); border-color: var(--kds-line); }
+.pass-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--kds-line); }
+.pass-head h1 { font-size: 21px; font-weight: 700; }
+.pass-head .mute { color: var(--kds-mute); font-size: 13px; margin-top: 2px; }
+.waiting { font-size: 13px; color: var(--kds-mute); white-space: nowrap; padding-top: 3px; }
+.waiting strong { color: var(--kds-ink); font-size: 20px; font-weight: 700; margin-right: 2px; }
+
+.pass-body { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
+
+/* the ticket: a thermal slip clipped to the rail */
+.rail { position: relative; padding-top: 10px; display: grid; justify-items: center; }
+.rail::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 10px; border-radius: 3px; background: linear-gradient(#c9c2b6, #aea698); }
+.ticket {
+  width: min(280px, 100%); padding: 14px 16px 16px; margin-top: -2px;
+  background: var(--kds-slip); color: #23211d;
+  font: 400 14px/1.4 "Courier Prime", ui-monospace, monospace;
+  border: 1px solid #e3dccd; border-top: 0; border-radius: 0 0 3px 3px;
+}
+.ticket-top { display: flex; justify-content: space-between; font-weight: 700; font-size: 17px; padding-bottom: 6px; border-bottom: 1px dashed #b9b1a3; }
+.ticket-time { display: flex; justify-content: space-between; font-size: 13px; color: #6d675d; padding: 6px 0 8px; }
+#t-age { color: #b4441a; font-weight: 700; }
+.ticket-items { display: grid; gap: 5px; padding-bottom: 10px; border-bottom: 1px dashed #b9b1a3; }
+.ticket-items li { display: grid; grid-template-columns: 22px 1fr; }
+.ticket-items small { grid-column: 2; font-size: 12.5px; color: #6d675d; }
+.ticket-foot { font-size: 12.5px; color: #6d675d; padding-top: 8px; }
+
+.controls { display: grid; gap: 16px; justify-items: start; }
+/* a piece of keyboard plate for the caps to sit in */
+.deck { display: flex; gap: 8px; padding: 12px 12px 10px; background: var(--kds-plate); border-radius: 10px; }
+.keycap { --key-ring: var(--kds-orange); }
+.keycap-top { font-family: "Host Grotesk", system-ui, sans-serif; place-items: start; align-content: space-between; padding: 5px 8px 4px; }
+.keycap .leg { font-size: 17px; font-weight: 650; }
+.keycap .sub { font-size: 10.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; opacity: .72; }
+.key-recall { --key-w: 66px; --key-h: 58px; }
+.key-bump { --key-w: 132px; --key-h: 58px; --key-cap: #ee7a3e; --key-side: #c4561f; --key-legend: #2a1206; }
+
+.hint { font-size: 14px; color: var(--kds-mute); max-width: 30ch; }
+.hint .kbd-cap { color: #2c2822; }
+.today { display: grid; grid-template-columns: auto auto; gap: 22px; padding-top: 12px; border-top: 1px solid var(--kds-line); width: 100%; }
+.today dt { font-size: 12px; color: var(--kds-mute); }
+.today dd { font-size: 19px; font-weight: 700; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .pass { padding: 16px; gap: 14px; }
+  .pass-head h1 { font-size: 18px; }
+  .pass-body { grid-template-columns: 1fr; gap: 18px; }
+  .controls { justify-items: center; }
+  .hint { text-align: center; }
+}
+@media (max-height: 520px) and (min-width: 601px) {
+  .pass { padding-block: 14px; gap: 10px; }
+  .pass-head { padding-bottom: 10px; }
+  .ticket { padding-block: 10px 12px; }
+  .ticket-items { gap: 2px; }
+}

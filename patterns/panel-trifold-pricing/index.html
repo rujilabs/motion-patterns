@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trifold pricing demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="pricing" aria-labelledby="pricing-h">
+    <header class="pricing-head">
+      <p class="place">Lorong Kerja &middot; 41 Lebuh Armenian, George Town</p>
+      <h1 id="pricing-h">Desks by the day or the month</h1>
+    </header>
+
+    <div class="trifold" data-play id="trifold">
+      <article class="tri-panel tri-left" aria-labelledby="p-day">
+        <div class="tri-face tri-front plan">
+          <h2 id="p-day">Day pass</h2>
+          <p class="price"><span class="num">RM&nbsp;28</span> <span class="per">a day</span></p>
+          <ul>
+            <li>Any open desk, 8 am to 7 pm</li>
+            <li>Fibre at 300 Mbps</li>
+            <li>Filter coffee and teh on the house</li>
+          </ul>
+          <p class="buy">Pay at the door</p>
+        </div>
+        <div class="tri-face tri-back cover" aria-hidden="true">
+          <p class="cover-mark">Lorong Kerja</p>
+          <p class="cover-sub">Desks and rooms in a 1920s shophouse</p>
+          <p class="cover-foot">Rates from 1 December 2026</p>
+        </div>
+      </article>
+
+      <article class="tri-panel tri-mid" aria-labelledby="p-flex">
+        <div class="tri-face plan plan-pick">
+          <p class="pick">Most picked</p>
+          <h2 id="p-flex">Flex desk</h2>
+          <p class="price"><span class="num">RM&nbsp;390</span> <span class="per">a month</span></p>
+          <ul>
+            <li>Any open desk, 7 days, 7 am to 11 pm</li>
+            <li>4 hours of meeting room a month</li>
+            <li>Mail and parcels held at the front</li>
+            <li>A 40 cm locker</li>
+          </ul>
+          <p class="buy"><a href="#join">Start on 1 Dec</a></p>
+        </div>
+      </article>
+
+      <article class="tri-panel tri-right" aria-labelledby="p-fixed">
+        <div class="tri-face tri-front plan">
+          <h2 id="p-fixed">Fixed desk</h2>
+          <p class="price"><span class="num">RM&nbsp;560</span> <span class="per">a month</span></p>
+          <ul>
+            <li>Your own desk and pedestal</li>
+            <li>24 hour access card</li>
+            <li>8 hours of meeting room a month</li>
+            <li>Business address for your SSM</li>
+          </ul>
+          <p class="buy">6 of 14 left</p>
+        </div>
+        <div class="tri-face tri-back addons" aria-hidden="true">
+          <p class="addons-h">Add on</p>
+          <p>Meeting room <span class="num">RM&nbsp;25</span> an hour</p>
+          <p>Locker <span class="num">RM&nbsp;30</span> a month</p>
+          <p>Mail only <span class="num">RM&nbsp;60</span> a month</p>
+        </div>
+      </article>
+    </div>
+
+    <button class="again" type="button" id="again">Fold it again</button>
+  </section>
+</main>
+</body>
+</html>

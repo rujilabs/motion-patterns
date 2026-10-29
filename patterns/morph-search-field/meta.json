@@ -1,0 +1,20 @@
+{
+  "name": "Search field morph",
+  "slug": "morph-search-field",
+  "kind": "pattern",
+  "summary": "A site header search: the lens of the magnifier stretches open into the field outline and its handle becomes the close cross. Escape folds it back into the lens.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

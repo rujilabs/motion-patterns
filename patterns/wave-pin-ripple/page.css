@@ -1,0 +1,84 @@
+/* Demo page layout for this entry. Not part of the pattern. A grocery delivery app: cool grey map, chilli red pin. */
+:root {
+  --pp-table: #e6e9ea;
+  --pp-paper: #ffffff;
+  --pp-ink: #1c2124;
+  --pp-mute: #626b70;
+  --pp-line: #dfe3e5;
+  --pp-red: #c9302a;
+  --m-ground: #e4e8e6;
+  --m-block: #f3f4f1;
+  --m-lot: #e6e8e3;
+  --m-lot-edge: #d3d7d0;
+  --m-road: #ffffff;
+  --m-park: #cfe2c6;
+  --m-tree: #a9cd9b;
+  --m-name: #7c8783;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pp-table: #111517;
+    --pp-paper: #181d20;
+    --pp-ink: #e8edef;
+    --pp-mute: #98a3a8;
+    --pp-line: #2b3337;
+    --pp-red: #ff6b5f;
+    --m-ground: #1d2427;
+    --m-block: #232b2e;
+    --m-lot: #2a3336;
+    --m-lot-edge: #344043;
+    --m-road: #3a4549;
+    --m-park: #22362a;
+    --m-tree: #2e4a36;
+    --m-name: #8d9a9e;
+  }
+  .pin-map { --pm-pin: #ff6b5f; --pm-dot: #181d20; --pm-shadow: rgb(0 0 0 / .5); }
+  .btn { color: var(--pp-paper); }
+}
+body { background: var(--pp-table); color: var(--pp-ink); }
+.sheet { background: var(--pp-paper); border-color: var(--pp-line); }
+:focus-visible { outline-color: var(--pp-red); }
+
+.deliver { width: min(760px, 100%); padding: 16px; display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 20px; align-items: center; }
+.pin-map { overflow: hidden; }
+
+.m-ground { fill: var(--m-ground); }
+.m-blocks rect { fill: var(--m-block); }
+.m-lots rect { fill: var(--m-lot); stroke: var(--m-lot-edge); stroke-width: .6; transition: fill .25s; }
+.m-lots rect.is-picked { fill: color-mix(in srgb, var(--pp-red) 22%, var(--m-lot)); stroke: color-mix(in srgb, var(--pp-red) 45%, var(--m-lot-edge)); }
+.m-roads path { fill: none; stroke: var(--m-road); stroke-width: 12; }
+.m-park > rect { fill: var(--m-park); }
+.m-park circle { fill: var(--m-tree); }
+.m-track { fill: none; stroke: var(--m-block); stroke-width: 3; opacity: .8; }
+.m-names text { font-size: 7.5px; font-weight: 600; fill: var(--m-name); letter-spacing: .02em; }
+.m-names .m-park-name { font-size: 8.5px; fill: color-mix(in srgb, var(--m-tree), var(--pp-ink) 55%); }
+
+.side { display: grid; gap: 16px; padding: 4px 4px 4px 0; }
+.brand { font-size: 13px; font-weight: 700; color: var(--pp-red); }
+.side h1 { font-size: 21px; margin-top: 3px; }
+.hint { font-size: 13px; color: var(--pp-mute); margin-top: 4px; }
+.addr-card { padding: 12px 14px; border-radius: 8px; border: 1px solid var(--pp-line); }
+.label { font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--pp-mute); }
+.addr { display: grid; margin-top: 4px; font-size: 13px; color: var(--pp-mute); min-height: 2.9em; }
+.addr strong { font-size: 15px; color: var(--pp-ink); transition: opacity .15s; }
+.addr.is-moving strong { opacity: .55; }
+.order { display: grid; gap: 4px; font-size: 13px; }
+.order div { display: flex; justify-content: space-between; gap: 12px; }
+.order dt { color: var(--pp-mute); }
+.order dd { margin: 0; font-weight: 600; }
+.btn {
+  font: 600 14px/1 "Host Grotesk", sans-serif; padding: 12px 16px; border-radius: 6px; cursor: pointer;
+  color: #fff; background: var(--pp-red); border: 0;
+}
+.btn:disabled { background: var(--pp-line); color: var(--pp-mute); cursor: not-allowed; }
+
+@media (max-width: 640px) {
+  .deliver { grid-template-columns: 1fr; padding: 12px; gap: 14px; }
+  .side { padding: 0 4px 4px; gap: 12px; }
+  .side h1 { font-size: 19px; }
+  .m-names text { font-size: 9px; }
+  .m-names .m-park-name { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .m-lots rect, .addr strong { transition: none; }
+}

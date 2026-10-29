@@ -1,0 +1,75 @@
+/* Demo page layout for this entry. Not part of the pattern. A walking app: cool paper, deep sea teal. */
+:root {
+  --lk-table: #e9eef0;
+  --lk-paper: #fbfcfc;
+  --lk-ink: #14282a;
+  --lk-mute: #627375;
+  --lk-line: #dbe3e5;
+  --lk-0: #e3eaec;
+  --lk-1: #c4e3de;
+  --lk-2: #7ec4b8;
+  --lk-3: #2f9686;
+  --lk-4: #0e5a52;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lk-table: #0f1617;
+    --lk-paper: #172022;
+    --lk-ink: #e6eff0;
+    --lk-mute: #93a5a7;
+    --lk-line: #2a3739;
+    --lk-0: #243134;
+    --lk-1: #1f4a46;
+    --lk-2: #2a7a6e;
+    --lk-3: #46b09e;
+    --lk-4: #8fe0cf;
+  }
+}
+body { background: var(--lk-table); color: var(--lk-ink); }
+.sheet { background: var(--lk-paper); border-color: var(--lk-line); }
+.mute { color: var(--lk-mute); }
+:focus-visible { outline-color: var(--lk-3); }
+
+.year { width: min(760px, 100%); padding: 22px 24px 18px; display: grid; gap: 18px; }
+.year-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.app { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--lk-3); }
+.year-head h1 { font-size: 25px; font-weight: 700; margin: 3px 0 2px; }
+.who { font-size: 13px; }
+.replay {
+  font: 600 13px/1 "Host Grotesk", sans-serif; color: var(--lk-ink); background: none;
+  border: 1px solid var(--lk-line); border-radius: 6px; padding: 9px 12px; cursor: pointer; white-space: nowrap;
+}
+.replay:hover { border-color: var(--lk-mute); }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; border-block: 1px solid var(--lk-line); padding: 12px 0; }
+.stats dt { font-size: 12px; color: var(--lk-mute); }
+.stats dd { margin: 2px 0 0; font-size: 12.5px; }
+.stats strong { font-size: 24px; font-weight: 700; margin-right: 2px; }
+
+.habit-grid { --hg-0: var(--lk-0); --hg-1: var(--lk-1); --hg-2: var(--lk-2); --hg-3: var(--lk-3); --hg-4: var(--lk-4); color: var(--lk-mute); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--lk-mute); }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 10px; height: 10px; border-radius: 2px; }
+.sw0 { background: var(--lk-0); } .sw1 { background: var(--lk-1); } .sw2 { background: var(--lk-2); }
+.sw3 { background: var(--lk-3); } .sw4 { background: var(--lk-4); }
+
+/* a phone turns the year on its side: weeks run down the page, weekdays across */
+@media (max-width: 600px) {
+  .year { padding: 18px 16px 16px; gap: 14px; }
+  .year-head { flex-direction: column; gap: 10px; }
+  .year-head h1 { font-size: 22px; }
+  .stats { grid-template-columns: 1fr; gap: 6px; }
+  .stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .stats dd { margin: 0; text-align: right; }
+  .stats strong { font-size: 18px; }
+  .habit-grid { --hg-cell: 11px; --hg-gap: 3px; grid-template-areas: ". weekdays" "months days"; justify-content: center; }
+  .hg-days { grid-template-rows: none; grid-template-columns: repeat(7, var(--hg-cell)); grid-auto-flow: row; grid-auto-rows: var(--hg-cell); }
+  .hg-weekdays { grid-template-rows: none; grid-template-columns: repeat(7, var(--hg-cell)); column-gap: var(--hg-gap); height: 1.1em; }
+  .hg-weekdays span { justify-self: center; white-space: nowrap; }
+  .hg-months { grid-auto-flow: row; grid-auto-columns: auto; grid-auto-rows: var(--hg-cell); row-gap: var(--hg-gap); column-gap: 0; height: auto; }
+  .hg-months span { grid-column: 1; grid-row-start: var(--w); text-align: right; }
+}
+@media (max-height: 600px) and (min-width: 601px) {
+  .year { gap: 14px; padding-block: 18px 14px; }
+}

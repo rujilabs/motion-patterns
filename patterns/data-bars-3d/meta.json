@@ -1,0 +1,20 @@
+{
+  "name": "3D bars",
+  "slug": "data-bars-3d",
+  "kind": "pattern",
+  "summary": "Bars as real CSS 3D prisms with a lit top, front and shaded side. They grow from the floor one quarter after another as the chart scrolls into view, casting a shadow that lengthens.",
+  "category": "data",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--dur-base",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,31 @@
+/*
+ * tile-image-assemble: a picture that puts itself together from tiles as it loads.
+ * tile-image-assemble.js lays .ia-tiles over the image; each tile shows its own slice of the same
+ * picture and flies in to its place. The image underneath stays hidden (under .js, so it shows
+ * without the script) until the last tile lands; then .ia-done shows it and the tiles fade off it.
+ */
+.image-assemble {
+  --ia-turn: 760ms;    /* one tile's flight, settle included */
+  --ia-sweep: 1300ms;  /* from the first tile to the last, corner to corner */
+  --ia-bg: #e7e1d7;    /* what shows through before the tiles land */
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--ia-bg);
+}
+.image-assemble img { display: block; width: 100%; height: auto; }
+/* before the tiles land, the frame waits empty so the picture does not show and then vanish */
+.js .image-assemble:not(.ia-done) img { opacity: 0; }
+.js .image-assemble.ia-done img { opacity: 1; }
+.ia-tiles {
+  position: absolute; inset: 0;
+  display: grid;
+  perspective: 900px;
+  pointer-events: none;
+}
+.ia-tile { display: block; background-repeat: no-repeat; backface-visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .image-assemble:not(.ia-done) img { opacity: 1; }
+  .ia-tiles { display: none; }
+}

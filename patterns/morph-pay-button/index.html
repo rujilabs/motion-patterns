@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pay button morph demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="morph-pay-button.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="checkout sheet" aria-labelledby="co-h">
+    <div class="order">
+      <p class="shop">Kek Lapis Dayang <span class="mute">Jalan Satok, Kuching</span></p>
+      <h1 id="co-h">Your order</h1>
+      <ul class="lines">
+        <li><span>Kek lapis masam manis, 1 kg</span><span class="num">RM 58.00</span></li>
+        <li><span>Kuih bahulu, box of 20</span><span class="num">RM 14.50</span></li>
+        <li><span>Gift box with ribbon</span><span class="num">RM 5.90</span></li>
+        <li><span>Delivery to Tabuan Jaya<small>Sat 31 Oct, 10 am to 12 noon</small></span><span class="num">RM 8.00</span></li>
+      </ul>
+      <p class="total"><span>Total</span><span class="num">RM 86.40</span></p>
+    </div>
+
+    <div class="pay">
+      <h2>Payment</h2>
+      <p class="card"><svg class="card-mark" viewBox="0 0 44 30" aria-hidden="true"><rect x="1" y="1" width="42" height="28" rx="4"/><path d="M1 9 H43"/><path d="M7 21 H19"/></svg><span>Card ending <span class="num">4417</span><small class="mute">Aishah Kassim, expires 08/28</small></span></p>
+      <fieldset class="bank">
+        <legend>Bank answer, for this demo</legend>
+        <label><input type="radio" name="bank" value="ok" checked> Approved</label>
+        <label><input type="radio" name="bank" value="no"> Declined</label>
+      </fieldset>
+      <div class="pay-row">
+        <button class="pay-morph" type="button" id="pay" data-label-busy="Paying RM 86.40, please wait" data-label-done="Paid RM 86.40" data-label-fail="Payment declined">
+          <span class="pay-label">Pay RM 86.40</span>
+          <svg class="pay-icon" viewBox="0 0 48 48" aria-hidden="true">
+            <circle class="pay-arc" cx="24" cy="24" r="22.75" pathLength="100"/>
+            <path class="pay-tick" d="M15 24.5 L21.5 31 L33.5 18" pathLength="100"/>
+            <path class="pay-bang" d="M24 14 L24 27 M24 33.5 L24 33.6" pathLength="100"/>
+          </svg>
+        </button>
+      </div>
+      <p class="note" role="status" id="note">You will not be charged until the bakery confirms the slot.</p>
+      <button class="again" type="button" id="again" hidden>Place another order</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

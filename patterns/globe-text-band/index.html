@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Globe text band demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="land.js" defer></script>
+<script src="globe-text-band.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-copy">
+      <p class="brand">Kaya Mak Siti, Melaka</p>
+      <h1 id="hero-h">From Jonker Street to 41 countries.</h1>
+      <p class="lede">Pandan kaya and gula Melaka, sealed in glass jars and packed in rice husk. Abroad in 5 to 12 days, from RM 38.90 a jar shipped.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#hero-h">See shipping rates</a>
+        <button type="button" class="pause" id="pause" aria-pressed="false">Pause</button>
+      </div>
+    </div>
+    <figure class="hero-globe">
+      <canvas class="globe-band" id="globe" data-text="WE SHIP WORLDWIDE &#8226; 41 COUNTRIES &#8226; FROM MELAKA &#8226;" data-lon="102.25" data-lat="16" data-tilt="17"
+        role="img" aria-label="A globe turning inside a ring of text that reads: we ship worldwide, 41 countries, from Melaka.">We ship worldwide, 41 countries, from Melaka.</canvas>
+    </figure>
+  </section>
+</main>
+</body>
+</html>

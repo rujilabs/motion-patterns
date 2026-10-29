@@ -1,0 +1,38 @@
+/*
+ * light-open-sign: neon tubes on a board. light-open-sign.js builds each tube from its centre line:
+ *   .neon-glass   the clear glass, always there
+ *   .neon-shine   a thin highlight along the glass
+ *   .neon-on      the lit tube: the light thrown on the board (.neon-cast), the coloured tube, its hot core
+ * Without the script the centre lines show as unlit glass.
+ */
+.neon-sign {
+  --neon: #ff5236;                /* the lit gas, per circuit */
+  --neon-core: #fff1e8;           /* the hottest middle of the tube */
+  --neon-glass: rgb(222 228 232 / .3);
+  --neon-tube: 7px;               /* tube width, in viewBox units */
+  display: block;
+  overflow: visible;
+}
+.neon-circuit path,
+.neon-glass path,
+.neon-shine path,
+.neon-on path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.neon-circuit > path,
+.neon-glass path { stroke: var(--neon-glass); stroke-width: var(--neon-tube); }
+.neon-shine path { stroke: rgb(255 255 255 / .22); stroke-width: 1.4; transform: translate(-1px, -1.4px); }
+.neon-cast path { stroke: var(--neon); stroke-width: calc(var(--neon-tube) * 2.4); opacity: .55; }
+.neon-color path { stroke: var(--neon); stroke-width: var(--neon-tube); }
+.neon-core path { stroke: var(--neon-core); stroke-width: calc(var(--neon-tube) * .38); }
+
+/* off: cut at once, neon has no afterglow */
+.neon-on { opacity: 0; transition: opacity 50ms linear; }
+.neon-sign.is-lit .neon-on { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* light-open-sign.js skips the strike: the sign is simply on in open hours and off outside them */
+  .neon-on { transition: none; }
+}

@@ -1,0 +1,102 @@
+/*
+ * drum-slot-voucher: reels on real 3D cylinders plus a pull lever. drum-slot-voucher.js puts each value
+ * on a closed ring (rotateX + translateZ) and turns the ring. The light is fixed in the room, so how dark a
+ * face is depends only on where it is in the window: the overlay below darkens with 1 - cos(angle),
+ * which is what a lit cylinder does. The lever arm swings toward you on its pivot (rotateX) in perspective.
+ */
+.reel {
+  --reel-row: 56px;
+  position: relative;
+  height: 140px; /* about 0.8 of the drum's diameter: the rim stays out of sight */
+  perspective: 800px;
+  overflow: hidden;
+  background: var(--reel-face, #fbf6ea);
+}
+.reel-cyl { position: absolute; inset: 0; transform-style: preserve-3d; }
+.reel-face {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: var(--reel-row);
+  margin-top: calc(var(--reel-row) / -2);
+  line-height: var(--reel-row);
+  text-align: center;
+  white-space: nowrap;
+  background: var(--reel-face, #fbf6ea);
+  color: var(--reel-ink, #1d1a17);
+  border-top: 1px solid rgb(0 0 0 / .08);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+/* the curve's shading, top and bottom: 1 - cos(angle) for a window 0.8 of the diameter */
+.reel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(rgb(0 0 0 / .58), rgb(0 0 0 / .29) 12.5%, rgb(0 0 0 / .12) 25%, rgb(0 0 0 / .03) 37.5%, transparent 50%, rgb(0 0 0 / .03) 62.5%, rgb(0 0 0 / .12) 75%, rgb(0 0 0 / .29) 87.5%, rgb(0 0 0 / .58));
+}
+/* no script: each reel shows its starting value, flat */
+.reel:not(.is-ready) { display: grid; place-items: center; }
+.reel:not(.is-ready) .reel-list > li:not(.is-on) { display: none; }
+.reel.is-ready .reel-list { display: none; }
+.reel-list { margin: 0; padding: 0; list-style: none; }
+
+.slot-lever {
+  --lever-len: 104px;
+  position: relative;
+  width: 44px;
+  height: calc(var(--lever-len) + 44px);
+  padding: 0;
+  border: 0;
+  background: none;
+  perspective: 420px;
+  perspective-origin: 50% 85%;
+  cursor: grab;
+  touch-action: none; /* the lever owns the drag; the page scrolls everywhere else */
+  display: none;
+}
+.js .slot-lever { display: block; }
+.slot-lever.is-grabbed { cursor: grabbing; }
+.slot-lever[aria-disabled="true"] { cursor: progress; }
+.lever-arm {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 8px;
+  height: var(--lever-len);
+  margin-left: -4px;
+  border-radius: 4px;
+  background: var(--lever-rod, #9aa1a9);
+  transform-origin: 50% 100%; /* the pivot in the cabinet's side */
+  transform-style: preserve-3d;
+}
+.lever-knob {
+  position: absolute;
+  left: 50%;
+  top: -16px;
+  width: 32px;
+  height: 32px;
+  margin-left: -16px;
+  border-radius: 50%;
+  background: var(--lever-knob, #c23a2b);
+  transform: translateZ(16px); /* in front of the rod at every angle */
+  box-shadow: inset -4px -5px 0 rgb(0 0 0 / .18), inset 4px 4px 0 rgb(255 255 255 / .22);
+}
+/* the pivot hub */
+.slot-lever::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  border-radius: 50%;
+  background: var(--lever-hub, #3b3632);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* drum-slot-voucher.js sets each reel straight on its result and the lever does not swing */
+  .reel-cyl, .lever-arm, .lever-knob { transition: none; animation: none; }
+}

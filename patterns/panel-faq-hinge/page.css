@@ -1,0 +1,44 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --fy-table: #dfe7ea;
+  --fy-paper: #ffffff;
+  --fy-ink: #102a43;
+  --fy-mute: #56697a;
+  --fy-line: #d3dde3;
+  --fy-sea: #0f7c8c;
+  --fy-flap: #eef4f5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fy-table: #0d1820;
+    --fy-paper: #13222c;
+    --fy-ink: #e3ecf1;
+    --fy-mute: #93a6b3;
+    --fy-line: #253844;
+    --fy-sea: #5cc3cf;
+    --fy-flap: #1b2f3b;
+  }
+}
+body { background: var(--fy-table); color: var(--fy-ink); }
+.help { width: min(620px, 100%); padding: 22px 26px 18px; background: var(--fy-paper); border-color: var(--fy-line); }
+.help-head { display: grid; gap: 4px; padding-bottom: 14px; }
+.line { font-size: 12px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--fy-sea); }
+.help-head h1 { font-size: 26px; font-weight: 700; }
+.hinge-list { border-top: 1px solid var(--fy-line); }
+.hinge { --hinge-paper: var(--fy-flap); --hinge-rule: var(--fy-sea); --hinge-ring: var(--fy-sea); border-bottom: 1px solid var(--fy-line); }
+.hinge-q { font-size: 15.5px; text-wrap: pretty; }
+.hinge-q[aria-expanded="true"] { color: var(--fy-sea); }
+.hinge-a { padding-bottom: 0; }
+.hinge-flap { font-size: 14px; line-height: 1.5; margin-bottom: 14px; text-wrap: pretty; }
+.help-foot { font-size: 13px; padding-top: 14px; color: var(--fy-mute); text-wrap: pretty; }
+
+@media (max-width: 480px) {
+  .help { padding: 18px 16px 14px; }
+  .help-head h1 { font-size: 22px; }
+  .hinge-q { font-size: 15px; padding-block: 12px; }
+}
+@media (max-height: 560px) and (min-width: 481px) {
+  .help { padding-block: 14px 12px; }
+  .help-head { padding-bottom: 8px; }
+  .hinge-q { padding-block: 9px; }
+}

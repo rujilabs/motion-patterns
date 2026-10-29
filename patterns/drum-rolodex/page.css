@@ -1,0 +1,85 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../../fonts/courier-prime.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../../fonts/courier-prime-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+:root { --desk: #e6dcc6; --desk-line: #d3c6a9; --desk-ink: #2b2620; --desk-mute: #6e6352; --rule: #b9cbe3; --rule-red: #e29b93; --tab: #d9c48a; --olive: #4a5236; }
+@media (prefers-color-scheme: dark) {
+  :root { --desk: #23201b; --desk-line: #39342b; --desk-ink: #f0e8d8; --desk-mute: #a99d88; --rule: #c4d3e8; --rule-red: #e6a59d; --tab: #cdb878; --olive: #6b7550; }
+}
+.desk { width: min(640px, 100%); background: var(--desk); color: var(--desk-ink); border: 1px solid var(--desk-line); border-radius: 10px; padding: 18px 22px 16px; display: grid; justify-items: center; gap: 6px; }
+.desk-head { width: 100%; display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+.desk-head h1 { font-size: 22px; }
+.desk-head .mute { font-size: 13px; color: var(--desk-mute); }
+.how { text-align: right; max-width: 15em; }
+
+.rdx { --rdx-h: 136px; --rdx-back: #f6f0e1; --rdx-metal: var(--olive); --rdx-cut: var(--desk); margin-top: 4px; }
+.rdx:focus-visible { outline: 2px solid var(--desk-ink); outline-offset: 2px; border-radius: 8px; }
+/* an index card: blue rules, a red line under the heading */
+.rdx-front {
+  padding: 14px 18px 0;
+  font-family: "Courier Prime", ui-monospace, monospace;
+  color: #2b2620;
+  background:
+    linear-gradient(var(--rule-red), var(--rule-red)) 0 42px / 100% 1px no-repeat,
+    repeating-linear-gradient(transparent 0 23px, var(--rule) 23px 24px) 0 42px / 100% calc(100% - 52px) no-repeat,
+    var(--rdx-card);
+}
+.co { font-weight: 700; font-size: 17px; line-height: 26px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.who, .tel, .memo { font-size: 14px; line-height: 24px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.who { margin-top: 3px; }
+.tel { font-weight: 700; }
+.memo { color: #5b5246; }
+/* letter tabs on the first card of each letter, staggered like a real set */
+.tab { position: absolute; top: -17px; left: calc(6px + var(--k) * (100% - 32px) / 20); width: 20px; height: 18px; border-radius: 5px 5px 0 0; background: var(--tab); color: #2b2620; font: 700 13px/18px "Courier Prime", monospace; text-align: center; box-shadow: inset 1px 0 0 rgb(0 0 0 / .12); }
+/* the guide set: one tab per letter, stepping left to right through the alphabet, like a real A to Z set */
+.tab-0 { --k: 0; }
+.tab-1 { --k: 1; }
+.tab-2 { --k: 2; }
+.tab-3 { --k: 3; }
+.tab-4 { --k: 4; }
+.tab-5 { --k: 5; }
+.tab-6 { --k: 6; }
+.tab-7 { --k: 7; }
+.tab-8 { --k: 8; }
+.tab-9 { --k: 9; }
+.tab-10 { --k: 10; }
+.tab-11 { --k: 11; }
+.tab-12 { --k: 12; }
+.tab-13 { --k: 13; }
+.tab-14 { --k: 14; }
+.tab-15 { --k: 15; }
+.tab-16 { --k: 16; }
+.tab-17 { --k: 17; }
+.tab-18 { --k: 18; }
+.tab-19 { --k: 19; }
+.tab-20 { --k: 20; }
+
+.az { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; margin-top: 14px; }
+.az button { font: 600 12px/1 "Host Grotesk", system-ui, sans-serif; width: 21px; height: 24px; border: 0; border-radius: 4px; background: none; color: var(--desk-ink); cursor: pointer; padding: 0; }
+.az button:hover:not(:disabled) { background: var(--desk-line); }
+.az button:disabled { color: var(--desk-mute); opacity: .45; cursor: default; }
+.az button.is-on { background: var(--desk-ink); color: var(--desk); }
+
+@media (max-width: 560px) {
+  .desk { padding: 16px 12px 14px; }
+  .desk-head { flex-direction: column; align-items: start; gap: 2px; }
+  .how { text-align: left; max-width: none; }
+  .rdx { --rdx-w: 240px; --rdx-h: 128px; --rdx-knob: 30px; }
+  .co { font-size: 15px; } .who, .tel, .memo { font-size: 12.5px; }
+  .az { max-width: 286px; } /* 13 a row: two even rows */
+}
+@media (max-height: 540px) and (min-width: 561px) {
+  .desk { gap: 0; padding-block: 12px 10px; }
+  .rdx { --rdx-h: 108px; --rdx-w: 260px; }
+  .co { font-size: 15px; line-height: 22px; } .who, .tel, .memo { font-size: 13px; line-height: 20px; }
+  .az { margin-top: 6px; }
+}

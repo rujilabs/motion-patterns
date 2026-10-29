@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drum word rotator demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="drum-word-rotator.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="site" aria-labelledby="hero-h">
+    <header class="nav">
+      <p class="brand">laci<span aria-hidden="true">.</span></p>
+      <nav aria-label="Main"><a href="#pricing">Pricing</a><a href="#hardware">Hardware</a><a href="#help">Help</a></nav>
+    </header>
+
+    <div class="hero">
+      <p class="kicker">Point of sale, made in Petaling Jaya</p>
+      <h1 id="hero-h">The till that is built for <span class="sr-only">cafes, clinics, tuition centres, bakeries and car workshops</span><span class="prism" aria-hidden="true" data-words="cafes|clinics|tuition centres|bakeries|car workshops">cafes</span></h1>
+      <p class="lede" id="lede">Split bills by seat, send drinks to the bar printer and close the day in 4 minutes.</p>
+      <div class="cta">
+        <a class="btn" href="#start">Start free for 30 days</a>
+        <p class="fine">RM 89 a month per counter. DuitNow QR, cards and e-wallets at 1.1%.</p>
+      </div>
+    </div>
+
+    <footer class="site-foot">
+      <p class="mute">Used at 1,284 counters from Alor Setar to Tawau</p>
+      <label class="switch"><input type="checkbox" id="hold"> Pause the sign</label>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

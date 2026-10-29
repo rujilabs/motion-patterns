@@ -1,0 +1,14 @@
+/*
+ * gear-settings-icon: a two-cog settings icon that turns a set number of teeth on hover, on keyboard
+ * focus and when its panel opens or closes. gear-settings-icon.js draws the cogs and runs the turns
+ * with element.animate() on the spring token; this file sizes and colours them. The small cog is
+ * meshed with the big one, so it turns the other way, 10/7 as fast.
+ */
+.gear-settings-icon svg { display: block; width: var(--gs-size, 28px); height: var(--gs-size, 28px); overflow: visible; }
+.gear-settings-icon .gs-cog { fill: currentColor; transform-box: view-box; transform-origin: 0 0; }
+.js .gear-settings-icon:not(.is-ready) svg { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script never starts a turn here; the cogs stay where they are */
+  .gear-settings-icon .gs-cog { animation: none; transition: none; }
+}

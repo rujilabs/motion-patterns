@@ -1,0 +1,32 @@
+/*
+ * globe-country-picker: a dot globe that turns to a country. globe-country-picker.js draws it on
+ * this canvas; this file sizes it and holds its colours, so a dark theme only changes variables.
+ * Without the script the canvas shows its fallback text and the form around it still works.
+ */
+.globe-picker {
+  --globe-ocean: #e8edf2;            /* the sea */
+  --globe-land: #3b4a5c;             /* land dots */
+  --globe-accent: #d9482b;           /* the picked country and its pin */
+  --globe-ink: #1e2229;              /* labels */
+  --globe-paper: #ffffff;            /* the ring round each marker */
+  --globe-shadow: rgba(20, 30, 40, .22); /* the contact shadow under the ball */
+  --globe-limb: .18;                 /* how dark the rim gets, 0 to 1 */
+  --globe-glint: .22;                /* how light the sunlit side gets, 0 to 1 */
+  --globe-font: 600 12px system-ui, sans-serif;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  touch-action: none;  /* the globe takes the drag; the rest of the page still scrolls */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 8px;
+}
+.globe-picker.is-dragging { cursor: grabbing; }
+.globe-picker:focus-visible { outline: 2px solid var(--globe-accent); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* globe-country-picker.js jumps straight to the country and a flick stops dead; nothing turns */
+  .globe-picker { transition: none; }
+}

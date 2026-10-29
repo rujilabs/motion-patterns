@@ -1,0 +1,54 @@
+/*
+ * light-card-sheen: a card that tilts and reflects a strip light. light-card-sheen.js works out the tilt,
+ * where the highlight lands and at what angle; this file draws it.
+ *   ::before  the face turning away from the light goes darker (--shade)
+ *   ::after   the laminate's broad soft highlight band (--sheen-angle, --sheen-pos, --sheen-band)
+ *   .sheen-foil-light   an SVG gradient for foil, moved by the script: a narrower, brighter band
+ * Without the script the card lies flat with no highlight.
+ */
+.sheen-stage {
+  perspective: 900px;           /* the script reads this distance for its eye position */
+}
+.sheen-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --sheen-angle: 160deg;
+  --sheen-pos: -60%;
+  --sheen-band: 20%;
+  --shade: 0;
+  --sheen-gloss: .3;            /* laminate: how strong the band is at its middle */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  touch-action: none;           /* a finger on the card tilts it; the page still scrolls elsewhere */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sheen-card::before,
+.sheen-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.sheen-card::before { z-index: 2; background: rgb(0 0 0 / calc(var(--shade) * .34)); }
+.sheen-card::after {
+  z-index: 3;
+  background: linear-gradient(var(--sheen-angle),
+    transparent calc(var(--sheen-pos) - var(--sheen-band)),
+    rgb(255 255 255 / calc(var(--sheen-gloss) * .12)) calc(var(--sheen-pos) - var(--sheen-band) * .55),
+    rgb(255 255 255 / calc(var(--sheen-gloss) * .55)) calc(var(--sheen-pos) - var(--sheen-band) * .18),
+    rgb(255 255 255 / var(--sheen-gloss)) var(--sheen-pos),
+    rgb(255 255 255 / calc(var(--sheen-gloss) * .55)) calc(var(--sheen-pos) + var(--sheen-band) * .18),
+    rgb(255 255 255 / calc(var(--sheen-gloss) * .12)) calc(var(--sheen-pos) + var(--sheen-band) * .55),
+    transparent calc(var(--sheen-pos) + var(--sheen-band)));
+}
+.sheen-foil { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* light-card-sheen.js jumps to the tilt with no spring; the highlight still follows the angle */
+  .sheen-card { transition: none; }
+}

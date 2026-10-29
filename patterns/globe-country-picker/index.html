@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Globe country picker demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="land.js" defer></script>
+<script src="globe-country-picker.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="ship sheet" aria-labelledby="ship-h">
+    <div class="ship-form">
+      <header class="ship-head">
+        <p class="step mute">Checkout, step 2 of 3</p>
+        <h1 id="ship-h">Where should we send it?</h1>
+        <p class="order mute">Kinta Hill Roasters, Ipoh. Order KH-20418: Ipoh white roast, 500 g x 2</p>
+      </header>
+
+      <p class="field-label" id="to-label">Ship to</p>
+      <ul class="countries" id="countries" role="listbox" tabindex="0" aria-labelledby="to-label" aria-activedescendant="c-jp">
+        <li role="option" id="c-my" aria-selected="false" data-lon="101.98" data-lat="4.21" data-spots="102.2 4 3.1, 101.3 6.2 1, 113.6 2.6 2.6, 116.8 5.3 2.2" data-fee="9.00" data-days="1 to 3 working days"><span>Malaysia</span><span class="fee num">RM 9.00</span></li>
+        <li role="option" id="c-sg" aria-selected="false" data-lon="103.82" data-lat="1.35" data-spots="103.82 1.35 1" data-fee="18.50" data-days="2 to 4 working days"><span>Singapore</span><span class="fee num">RM 18.50</span></li>
+        <li role="option" id="c-jp" aria-selected="true" data-lon="138.25" data-lat="36.2" data-spots="139.6 36.4 3.1, 135.2 34.6 2.4, 142.8 43.3 2.5, 131 32.5 1.8, 140.6 39.6 2" data-fee="46.80" data-days="5 to 7 working days"><span>Japan</span><span class="fee num">RM 46.80</span></li>
+        <li role="option" id="c-au" aria-selected="false" data-lon="133.78" data-lat="-25.27" data-spots="134 -25 16.5, 146.7 -42 1.8" data-fee="52.30" data-days="6 to 9 working days"><span>Australia</span><span class="fee num">RM 52.30</span></li>
+        <li role="option" id="c-gb" aria-selected="false" data-lon="-3.44" data-lat="55.38" data-spots="-1.6 52.6 2.6, -3.6 55.6 1.8, -4.6 57.6 1.7" data-fee="68.90" data-days="7 to 10 working days"><span>United Kingdom</span><span class="fee num">RM 68.90</span></li>
+        <li role="option" id="c-nl" aria-selected="false" data-lon="5.29" data-lat="52.13" data-spots="5.5 52.3 1.4" data-fee="71.40" data-days="7 to 11 working days"><span>Netherlands</span><span class="fee num">RM 71.40</span></li>
+        <li role="option" id="c-ca" aria-selected="false" data-lon="-106.35" data-lat="56.13" data-spots="-100 60 10.5, -76 55 9, -120 59 9.5, -90 70 9, -125 54 5, -64 47 3" data-fee="84.20" data-days="8 to 12 working days"><span>Canada</span><span class="fee num">RM 84.20</span></li>
+      </ul>
+
+      <dl class="sum">
+        <div><dt class="mute">Coffee</dt><dd class="num">RM 76.00</dd></div>
+        <div><dt class="mute">Shipping, <span id="days">5 to 7 working days</span></dt><dd class="num" id="fee">RM 46.80</dd></div>
+        <div class="sum-total"><dt>Total</dt><dd class="num" id="total">RM 122.80</dd></div>
+      </dl>
+    </div>
+
+    <figure class="ship-globe">
+      <canvas class="globe-picker" id="globe" tabindex="0"
+        data-lon="138.25" data-lat="36.2" data-label="Japan" data-spots="139.6 36.4 3.1, 135.2 34.6 2.4, 142.8 43.3 2.5, 131 32.5 1.8, 140.6 39.6 2"
+        data-from-lon="101.08" data-from-lat="4.6" data-from-label="Ipoh"
+        aria-label="Globe turned to Japan. Drag or use the arrow keys to turn it, Home to come back.">Shipping to Japan from Ipoh.</canvas>
+      <figcaption class="mute">Drag to turn the globe</figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pack viewer demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="pack-viewer.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="product sheet" aria-labelledby="product-h">
+    <div class="pack" id="pack" tabindex="0" role="slider" aria-roledescription="3D box"
+      aria-label="Tea box, drag or use the arrow keys to turn it" aria-valuemin="0" aria-valuemax="359" aria-valuenow="32"
+      aria-valuetext="Front: Teh Larut, Pandan and Serai, 25 tea bags"
+      data-front="Front: Teh Larut, Pandan and Serai, 25 tea bags"
+      data-back="Back: ingredients, nutrition and barcode"
+      data-left="Left side: how to brew"
+      data-right="Right side: storage and best before date"
+      data-top="Top: open here"
+      data-bottom="Bottom: recycling and net weight">
+      <div class="pack-lift">
+        <div class="pack-box">
+          <div class="pack-face pack-front">
+            <p class="art-brand">Teh Larut</p>
+            <p class="art-est">Taiping, Perak · since 1961</p>
+            <p class="art-name">Pandan<br>&amp; Serai</p>
+            <p class="art-kind">Black tea with pandan leaf and lemongrass</p>
+            <svg class="art-hills" viewBox="0 0 190 64" aria-hidden="true">
+              <circle class="sun" cx="142" cy="20" r="11"/>
+              <path class="hill-far" d="M0 34 C30 16 52 14 80 26 S130 8 190 22 V64 H0Z"/>
+              <path class="hill-near" d="M0 48 C40 32 70 36 104 44 S160 32 190 38 V64 H0Z"/>
+              <path class="rows" d="M8 54 C50 45 90 48 130 56 M4 60 C52 51 100 54 150 62"/>
+            </svg>
+            <p class="art-count"><span>25</span> tea bags <span class="art-dot">·</span> 50 g</p>
+          </div>
+          <div class="pack-face pack-back">
+            <p class="art-h">Ingredients</p>
+            <p class="art-small">Black tea (<i>Camellia sinensis</i>) 94%, dried pandan leaf 4%, lemongrass 2%.</p>
+            <p class="art-h">Nutrition, per 100 ml brewed</p>
+            <table class="art-table">
+              <tr><th scope="row">Energy</th><td>1 kcal / 4 kJ</td></tr>
+              <tr><th scope="row">Fat</th><td>0 g</td></tr>
+              <tr><th scope="row">Carbohydrate</th><td>0.2 g</td></tr>
+              <tr><th scope="row">of which sugars</th><td>0 g</td></tr>
+              <tr><th scope="row">Protein</th><td>0.1 g</td></tr>
+            </table>
+            <svg class="barcode" viewBox="0 0 117 60" role="img" aria-label="Barcode 9556271304183"><rect x="11" y="0" width="1" height="52"/><rect x="13" y="0" width="1" height="52"/><rect x="15" y="0" width="2" height="47"/><rect x="20" y="0" width="1" height="47"/><rect x="22" y="0" width="3" height="47"/><rect x="27" y="0" width="1" height="47"/><rect x="32" y="0" width="1" height="47"/><rect x="34" y="0" width="1" height="47"/><rect x="37" y="0" width="1" height="47"/><rect x="40" y="0" width="2" height="47"/><rect x="44" y="0" width="1" height="47"/><rect x="48" y="0" width="1" height="47"/><rect x="51" y="0" width="2" height="47"/><rect x="55" y="0" width="1" height="47"/><rect x="57" y="0" width="1" height="52"/><rect x="59" y="0" width="1" height="52"/><rect x="61" y="0" width="1" height="47"/><rect x="66" y="0" width="1" height="47"/><rect x="68" y="0" width="3" height="47"/><rect x="73" y="0" width="1" height="47"/><rect x="75" y="0" width="1" height="47"/><rect x="77" y="0" width="3" height="47"/><rect x="82" y="0" width="2" height="47"/><rect x="86" y="0" width="2" height="47"/><rect x="89" y="0" width="1" height="47"/><rect x="92" y="0" width="1" height="47"/><rect x="96" y="0" width="1" height="47"/><rect x="101" y="0" width="1" height="47"/><rect x="103" y="0" width="1" height="52"/><rect x="105" y="0" width="1" height="52"/><text x="4" y="58">9</text><text x="35" y="58" text-anchor="middle">556271</text><text x="82" y="58" text-anchor="middle">304183</text></svg>
+            <p class="art-tiny">Packed by Kilang Teh Larut Sdn Bhd, Lot 14, Jalan Kampung Batu, 34000 Taiping, Perak.</p>
+          </div>
+          <div class="pack-face pack-right">
+            <div class="art-side">
+              <p class="art-h">Keep it fresh</p>
+              <p class="art-small">Store in a cool, dry place away from strong smells. Close the lid after use.</p>
+              <p class="art-h">Best before</p>
+              <p class="art-code">14 07 2027</p>
+              <p class="art-small">Batch TL-2408-B</p>
+              <p class="art-made">Made in Malaysia</p>
+            </div>
+          </div>
+          <div class="pack-face pack-left">
+            <div class="art-side">
+              <p class="art-h">How to brew</p>
+              <ol class="art-steps">
+                <li><b>1</b> Boil 250 ml of water to 95 °C.</li>
+                <li><b>2</b> Steep one bag for 3 to 4 minutes.</li>
+                <li><b>3</b> Add milk, or a slice of lime over ice.</li>
+              </ol>
+              <svg class="art-cup" viewBox="0 0 40 34" aria-hidden="true"><path d="M5 10h24v9a11 11 0 0 1-11 11h-2A11 11 0 0 1 5 19z"/><path d="M29 13h3a4 4 0 0 1 0 8h-3"/><path d="M12 6c0-2 3-2 3-4M19 6c0-2 3-2 3-4"/></svg>
+            </div>
+          </div>
+          <div class="pack-face pack-top">
+            <p class="art-open"><span>Press here to open</span></p>
+            <p class="art-tiny">25 × 2 g</p>
+          </div>
+          <div class="pack-face pack-bottom">
+            <p class="art-tiny">Recycle the carton. The bags are plastic free and go in the compost.</p>
+            <p class="art-net">Net wt 50 g</p>
+          </div>
+        </div>
+      </div>
+      <div class="pack-shadow" aria-hidden="true"></div>
+    </div>
+    <div class="details">
+      <p class="crumb">Teh Larut <span aria-hidden="true">/</span> Flavoured teas</p>
+      <h1 id="product-h">Pandan &amp; Serai black tea</h1>
+      <p class="price num">RM 18.90 <span>25 bags, 76 sen a cup</span></p>
+      <p class="hint">Drag the box to read every side, or focus it and use the arrow keys.</p>
+      <div class="faces" role="group" aria-label="Turn the box to">
+        <button type="button" data-face="front" aria-pressed="true">Front</button>
+        <button type="button" data-face="back" aria-pressed="false">Ingredients</button>
+        <button type="button" data-face="left" aria-pressed="false">How to brew</button>
+        <button type="button" data-face="right" aria-pressed="false">Best before</button>
+        <button type="button" data-face="top" aria-pressed="false">Top</button>
+        <button type="button" data-face="bottom" aria-pressed="false">Bottom</button>
+      </div>
+      <button type="button" class="cart">Add to cart</button>
+      <p class="ship mute">Ships from Taiping in 1 to 2 days. 1,284 boxes sold this year.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

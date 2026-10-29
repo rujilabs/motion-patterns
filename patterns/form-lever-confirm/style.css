@@ -1,0 +1,52 @@
+/*
+ * form-lever-confirm: a pull-to-confirm lever. A side view of a handle on an arm that turns about a
+ * bolted pivot, running in a curved groove from Rest to Send. lever.js moves it: the arm trails your
+ * hand on a stiff spring, latches at the bottom, and if you let go early its spring throws it back up
+ * against the rest stop. The ball keeps its highlight on the top left wherever it is, because the
+ * light does not move with the arm. Without the script the lever is a plain button and the page
+ * says what it does.
+ */
+.lever {
+  --lever-plate: #e3e6ec;      /* groove and bracket */
+  --lever-steel: #3b4352;      /* rod, boss */
+  --lever-ball: #c8322b;       /* handle */
+  --lever-fill: #c8322b;       /* how far it has come, along the groove */
+  --lever-word: #6b7382;
+  --lever-size: 240px;
+  appearance: none; font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0;
+  display: block; width: var(--lever-size); max-width: 100%;
+  border-radius: 12px; cursor: grab;
+  touch-action: none;            /* the lever takes the drag; the page still scrolls elsewhere */
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.lever svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lever-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.lever.is-pulling { cursor: grabbing; }
+.lever.is-latched { cursor: default; }
+.lever:focus-visible { outline: 2px solid var(--lever-ring, #3d7bf2); outline-offset: 4px; }
+
+.lever-groove, .lever-groove-in, .lever-fill { fill: none; stroke-linecap: round; }
+.lever-groove { stroke: color-mix(in srgb, var(--lever-plate), #000 9%); stroke-width: 24; }
+.lever-groove-in { stroke: color-mix(in srgb, var(--lever-plate), #000 22%); stroke-width: 12; }
+.lever-fill { stroke: var(--lever-fill); stroke-width: 4; stroke-dasharray: 0 2; }
+.lever-latch { stroke: var(--lever-steel); stroke-width: 3; stroke-linecap: round; }
+.lever-word { fill: var(--lever-word); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.lever-word-end { fill: var(--lever-fill); }
+.lever-bracket { fill: color-mix(in srgb, var(--lever-plate), #000 7%); stroke: color-mix(in srgb, var(--lever-plate), #000 16%); }
+.lever-shadow { fill: #000; opacity: .14; }
+.lever-rod { stroke: var(--lever-steel); stroke-width: 10; stroke-linecap: round; }
+.lever-shine { stroke: #fff; stroke-opacity: .28; stroke-width: 2.5; stroke-linecap: round; }
+.lever-boss { fill: var(--lever-steel); stroke: color-mix(in srgb, var(--lever-steel), #000 30%); stroke-width: 2; }
+.lever-bolt { fill: color-mix(in srgb, var(--lever-steel), #fff 35%); }
+.lever .ball-hi { stop-color: color-mix(in srgb, var(--lever-ball), #fff 38%); }
+.lever .ball-mid { stop-color: var(--lever-ball); }
+.lever .ball-lo { stop-color: color-mix(in srgb, var(--lever-ball), #000 38%); }
+.lever-gloss { fill: #fff; opacity: .5; }
+/* without the script nothing moves; the fill is hidden so the groove does not read as half done */
+.lever:not(.is-ready) .lever-fill { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* lever.js puts the arm where your hand is, with no trailing spring, no throw back and no knock */
+  .lever, .lever * { transition: none; animation: none; }
+}

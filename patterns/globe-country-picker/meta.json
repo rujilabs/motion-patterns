@@ -1,0 +1,19 @@
+{
+  "name": "Globe country picker",
+  "slug": "globe-country-picker",
+  "kind": "pattern",
+  "summary": "A dot globe turns the short way round, on a great circle, to the country picked in a shipping form, then its land lights up and a pin lands. Drag or flick it to turn it by hand.",
+  "category": "globe",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

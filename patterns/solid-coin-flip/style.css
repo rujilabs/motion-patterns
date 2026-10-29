@@ -1,0 +1,61 @@
+/*
+ * solid-coin-flip: points earned arrive as a coin. It is tossed up showing its back, turns over in
+ * the air, lands and wobbles down the way a spun coin does (the tilt shrinks while the wobble speeds
+ * up), and comes to rest with the amount on its face. The coin is a real solid: two faces and a rim of
+ * flat segments, each shaded from one fixed light as it turns. Its shadow is the coin projected onto
+ * the surface along that light, so it stretches thin when the coin stands on edge and grows soft and
+ * pale as the coin rises. coin-flip.js builds the rim and plays the toss.
+ * Without the script the coin lies face up with the amount showing.
+ */
+.coin-tray {
+  --coin: 124px;               /* diameter */
+  --coin-t: 9px;               /* thickness */
+  --coin-metal: #d6a537;       /* faces */
+  --coin-rim: #b8862a;         /* the edge */
+  --coin-ink: #6a4a0c;         /* engraving */
+  --coin-shadow: 30 25 10;     /* shadow colour, as r g b */
+  position: relative;
+  perspective: 800px;
+  perspective-origin: 50% 50%;
+}
+.coin-world, .coin { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+/* the camera: looking down at the surface, tipped back a little */
+.coin-world { transform: rotateX(16deg); }
+.coin { transform: translateZ(calc(var(--coin-t) / 2)); }
+
+.coin-face, .coin-edge, .coin-shadow { position: absolute; }
+.coin-face {
+  width: var(--coin); height: var(--coin);
+  left: calc(var(--coin) / -2); top: calc(var(--coin) / -2);
+  border-radius: 50%;
+  background: var(--coin-metal);
+  color: var(--coin-ink);
+  box-shadow: inset 0 0 0 calc(var(--coin) * .045) var(--coin-rim), inset 0 0 0 calc(var(--coin) * .075) rgb(0 0 0 / .08);
+  display: grid; place-items: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.coin-heads { transform: translateZ(calc(var(--coin-t) / 2)); }
+.coin-tails { transform: rotateX(180deg) translateZ(calc(var(--coin-t) / 2)); }
+.coin-edge {
+  height: var(--coin-t);
+  background: var(--coin-rim);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.coin-shadow {
+  width: var(--coin); height: var(--coin);
+  left: calc(var(--coin) / -2); top: calc(var(--coin) / -2);
+  border-radius: 50%;
+  background: rgb(var(--coin-shadow) / .42);
+  filter: blur(2px);
+  transform: translate(3px, 4px);
+}
+
+/* before the toss, the coin waits back up */
+.js .coin-tray:not(.is-tossed) .coin { transform: translateZ(calc(var(--coin-t) / 2)) rotateX(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no toss: the coin lies face up from the start */
+  .js .coin-tray:not(.is-tossed) .coin { transform: translateZ(calc(var(--coin-t) / 2)); }
+}

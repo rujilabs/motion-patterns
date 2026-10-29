@@ -1,0 +1,21 @@
+{
+  "name": "Pay button morph",
+  "slug": "morph-pay-button",
+  "kind": "pattern",
+  "summary": "A pay button closes into a circle whose edge is the spinner, then fills with a tick when the bank says yes, or shakes and opens back into the button when it says no.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Curve route",
+  "slug": "curve-route",
+  "kind": "pattern",
+  "summary": "An order tracking map: the delivery route draws from the shop to the door, stops pop as the line reaches them, and a van rides the curve to its current stop, turning with every bend.",
+  "category": "curve",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-spring"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

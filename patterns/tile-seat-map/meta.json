@@ -1,0 +1,21 @@
+{
+  "name": "Tile seat map",
+  "slug": "tile-seat-map",
+  "kind": "pattern",
+  "summary": "A cinema seat map as a keyboard grid. A picked seat pops and its tip-up cushion folds down on a spring; a taken seat shakes no and the status line names the nearest free seat.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--dur-quick",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

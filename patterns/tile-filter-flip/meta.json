@@ -1,0 +1,20 @@
+{
+  "name": "Tile filter flip",
+  "slug": "tile-filter-flip",
+  "kind": "pattern",
+  "summary": "A filtered grid whose tiles turn over in 3D to the new results, in a ripple from the chip you pressed. Each tile tips away from it, faces shade as they turn, and unchanged tiles stay still.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

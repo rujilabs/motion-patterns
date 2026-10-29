@@ -1,0 +1,20 @@
+{
+  "name": "Curve easing editor",
+  "slug": "curve-easing-editor",
+  "kind": "pattern",
+  "summary": "A cubic-bezier editor with two real handles, keyboard nudging and a live spacing chart. It writes the CSS value, and a preview dot replays the curve each time you let go.",
+  "category": "curve",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

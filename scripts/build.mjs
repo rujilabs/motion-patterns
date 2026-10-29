@@ -18,7 +18,7 @@ if (problems.length) {
 }
 
 const DIST = join(ROOT, "dist");
-const BUNDLE_BUDGET_GZ = 48 * 1024; // motion.css: the whole collection in one file
+const BUNDLE_BUDGET_GZ = 80 * 1024; // motion.css: the whole collection in one file
 const CATEGORY_BUDGET_GZ = 10 * 1024; // motion-<category>.css must stay small enough to drop into any page
 const pkg = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"));
 
@@ -77,7 +77,7 @@ for (const t of templates) {
 // The entry's own index.html becomes demo.html; its folder index becomes the entry page.
 for (const e of entries) renameSync(join(DIST, e.rel, "index.html"), join(DIST, e.rel, "demo.html"));
 
-const CATEGORY = { entry: "Entrances", emphasis: "Emphasis", type: "Type", loop: "Loops", scroll: "Scroll", data: "Data", state: "State changes", transition: "Transitions", camera: "Camera moves", look: "Photo looks", scene: "Scenes" };
+const CATEGORY = { entry: "Entrances", emphasis: "Emphasis", type: "Type", loop: "Loops", scroll: "Scroll", data: "Data", state: "State changes", transition: "Transitions", camera: "Camera moves", look: "Photo looks", scene: "Scenes", curve: "Curved paths", morph: "Morphs", tile: "Tiles", solid: "Solids", gear: "Gears", panel: "Panels", light: "Light", wave: "Waves", globe: "Globes", drum: "Drums", form: "Form controls" };
 const TRIGGER = { load: "Plays on load", "in-view": "Plays in view", hover: "Plays on hover", click: "Answers a click", scroll: "Follows scroll", loop: "Loops" };
 const REDUCED = { "final-state": "Shows the finished state", static: "Holds still" };
 const TECH = { css: "CSS", svg: "SVG", js: "JavaScript", canvas: "Canvas", webgl: "WebGL", "variable-font": "Variable font" };

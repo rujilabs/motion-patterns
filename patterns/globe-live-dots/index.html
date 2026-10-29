@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Globe live dots demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="land.js" defer></script>
+<script src="globe-live-dots.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="live sheet" aria-labelledby="live-h">
+    <figure class="live-globe">
+      <canvas class="globe-live" id="globe" data-lon="112" data-lat="6"
+        aria-label="Globe with a dot for every city where readers are on the shop now. The biggest is Kuala Lumpur.">Readers on the shop now, by city.</canvas>
+    </figure>
+    <div class="live-side">
+      <header class="live-head">
+        <p class="brand">Halaman Books, Asia Pacific shop</p>
+        <h1 id="live-h"><span class="num" id="total">250</span> readers browsing now</h1>
+      </header>
+      <ol class="top" id="top" aria-label="Busiest cities">
+        <li><span class="where">Kuala Lumpur</span><span class="n num">62</span><span class="bar" aria-hidden="true"></span></li>
+        <li><span class="where">Singapore</span><span class="n num">37</span><span class="bar" aria-hidden="true"></span></li>
+        <li><span class="where">Manila</span><span class="n num">25</span><span class="bar" aria-hidden="true"></span></li>
+        <li><span class="where">Jakarta</span><span class="n num">17</span><span class="bar" aria-hidden="true"></span></li>
+        <li><span class="where">Hong Kong</span><span class="n num">17</span><span class="bar" aria-hidden="true"></span></li>
+      </ol>
+      <p class="far mute">Out of view, in London and Los Angeles: <span class="num" id="far">5</span></p>
+      <div class="clock">
+        <label for="hour">Simulated time, Kuala Lumpur <output class="num" id="hour-out" for="hour">9:00 pm</output></label>
+        <input type="range" id="hour" min="0" max="23" step="1" value="21" aria-valuetext="9:00 pm in Kuala Lumpur">
+        <label class="switch"><input type="checkbox" role="switch" id="live" checked> Rings</label>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

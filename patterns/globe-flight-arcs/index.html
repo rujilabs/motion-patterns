@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Globe flight arcs demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="land.js" defer></script>
+<script src="globe-flight-arcs.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="net sheet" aria-labelledby="net-h">
+    <figure class="net-globe">
+      <canvas class="globe-arcs" id="globe" data-lon="104" data-lat="-6" data-routes="#routes"
+        aria-label="Globe with five routes flying out of Kuala Lumpur: Tokyo, Seoul, Sydney, Dubai and Delhi.">Five routes out of Kuala Lumpur.</canvas>
+    </figure>
+    <div class="net-side">
+      <header class="net-head">
+        <p class="brand">Selat Air</p>
+        <h1 id="net-h">Five new routes out of KLIA</h1>
+        <p class="mute">Daily from 1 December 2026. Times are local at departure.</p>
+      </header>
+      <ol class="routes" id="routes">
+        <li data-flight="SA 806 to NRT" data-from="101.71 2.75 KUL" data-to="140.39 35.77 NRT"><b class="code">SA 806</b><span class="to">Tokyo Narita</span><span class="when num">9:05 am</span><span class="len num mute">5,409 km, 7 h 05 m</span></li>
+        <li data-flight="SA 412 to ICN" data-from="101.71 2.75 KUL" data-to="126.45 37.46 ICN"><b class="code">SA 412</b><span class="to">Seoul Incheon</span><span class="when num">11:40 pm</span><span class="len num mute">4,612 km, 6 h 20 m</span></li>
+        <li data-flight="SA 221 to SYD" data-from="101.71 2.75 KUL" data-to="151.18 -33.95 SYD"><b class="code">SA 221</b><span class="to">Sydney</span><span class="when num">8:15 pm</span><span class="len num mute">6,586 km, 8 h 10 m</span></li>
+        <li data-flight="SA 104 to DXB" data-from="101.71 2.75 KUL" data-to="55.36 25.25 DXB"><b class="code">SA 104</b><span class="to">Dubai</span><span class="when num">2:30 am</span><span class="len num mute">5,549 km, 7 h 25 m</span></li>
+        <li data-flight="SA 330 to DEL" data-from="101.71 2.75 KUL" data-to="77.1 28.56 DEL"><b class="code">SA 330</b><span class="to">Delhi</span><span class="when num">6:50 pm</span><span class="len num mute">3,876 km, 5 h 30 m</span></li>
+      </ol>
+      <button class="again" type="button" id="again">Fly them again</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

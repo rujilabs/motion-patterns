@@ -1,0 +1,21 @@
+{
+  "name": "Mic record morph",
+  "slug": "morph-mic-record",
+  "kind": "pattern",
+  "summary": "A dictation button: the mic head becomes a stop square and its stand closes into a ring while it records, then opens back into a mic when it stops.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

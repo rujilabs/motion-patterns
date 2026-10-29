@@ -1,0 +1,18 @@
+{
+  "name": "Gear processing",
+  "slug": "gear-processing",
+  "kind": "pattern",
+  "summary": "Meshing gears turn while a job runs, each at a speed set by its tooth count, then spin down as the file is ready. A progress counter reads its value off the gears.",
+  "category": "gear",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

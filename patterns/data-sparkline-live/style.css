@@ -1,0 +1,23 @@
+/*
+ * data-sparkline-live: a live sparkline that scrolls left one point at a time. data-sparkline-live.js
+ * draws the path and slides it with element.animate(); this file colours it. Over the limit the line
+ * turns to the warning colour. Without the script the svg stays empty and the number beside it reads.
+ */
+.spark-live {
+  --sl-line: #0f766e;
+  --sl-over: #c2410c;
+  --sl-limit: rgb(194 65 12 / .45);
+  display: block; width: 100%; height: 44px; overflow: hidden;
+}
+.spark-live .sl-line { fill: none; stroke: var(--sl-c, var(--sl-line)); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.spark-live .sl-area { fill: var(--sl-c, var(--sl-line)); opacity: .1; stroke: none; }
+.spark-live .sl-dot { fill: var(--sl-c, var(--sl-line)); }
+.spark-live .sl-limit { stroke: var(--sl-limit); stroke-width: 1; stroke-dasharray: 3 3; }
+.spark-live.is-over { --sl-c: var(--sl-over); }
+.spark-live .sl-line, .spark-live .sl-area, .spark-live .sl-dot { transition: stroke var(--dur-quick) var(--ease-out), fill var(--dur-quick) var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* data-sparkline-live.js redraws the line in place on each point: nothing slides */
+  .spark-live .sl-line, .spark-live .sl-area, .spark-live .sl-dot { transition: none; }
+  .spark-live .sl-shift, .spark-live .sl-dot { animation: none; }
+}

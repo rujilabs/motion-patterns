@@ -5,7 +5,7 @@ import { join, relative, extname } from "node:path";
 import { loadEntries, ROOT, isMain } from "./entries.mjs";
 import { catalogueIsFresh } from "./catalogue.mjs";
 
-const CATEGORIES = ["entry", "emphasis", "loop", "scroll", "data", "state", "scene", "type", "transition", "camera", "look"];
+const CATEGORIES = ["entry", "emphasis", "loop", "scroll", "data", "state", "scene", "type", "transition", "camera", "look", "curve", "morph", "tile", "solid", "gear", "panel", "light", "wave", "globe", "drum", "form"];
 const TECH = ["css", "svg", "js", "canvas", "webgl", "variable-font"];
 const TRIGGERS = ["load", "in-view", "hover", "click", "scroll", "loop"];
 const REDUCED = ["final-state", "static"];

@@ -1,0 +1,38 @@
+/*
+ * data-funnel: a funnel that fills one stage at a time and shows what each stage lost. Every bar is
+ * centred. A stage's bar arrives at the width of the stage before it, everyone who came through, then
+ * narrows to its own width, and the people who left stay behind as a hatched band on both sides.
+ * data-funnel.js sets --w, --from and --i on each stage; play.js adds .go in view.
+ */
+.funnel { --fn-c: #2d6a4f; --fn-step: 520ms; }
+.fn-track { position: relative; height: var(--fn-h, 30px); }
+.fn-bar, .fn-lost {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: calc(var(--w, 1) * 100%); translate: -50% 0; border-radius: 3px;
+}
+.fn-bar { background: var(--fn-c); }
+.fn-lost {
+  width: calc(var(--w, 1) * var(--from, 0) * 100%);
+  background: repeating-linear-gradient(-45deg, color-mix(in oklab, var(--fn-c) 30%, transparent) 0 2px, transparent 2px 6px);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--fn-c) 28%, transparent);
+}
+
+/* start state, only when the script runs: nothing filled yet */
+.js .funnel .fn-bar, .js .funnel .fn-lost, .js .funnel .fn-drop { opacity: 0; }
+.js .funnel.go .fn-bar { animation: fn-fill calc(var(--fn-step) * 1.25) var(--ease-out) calc(var(--i) * var(--fn-step)) both; }
+.js .funnel.go .fn-lost { animation: fn-show var(--fn-step) var(--ease-out) calc(var(--i) * var(--fn-step) + 160ms) both; }
+.js .funnel.go .fn-drop { animation: fn-rise var(--dur-base) var(--ease-out) calc(var(--i) * var(--fn-step) + 380ms) both; }
+
+/* in at the width of the stage before (the first stage from nothing), then narrow to its own */
+@keyframes fn-fill {
+  0% { opacity: 0; transform: scaleX(var(--from)); }
+  18% { opacity: 1; transform: scaleX(var(--from)); }
+  100% { opacity: 1; transform: scaleX(1); }
+}
+@keyframes fn-show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .funnel .fn-bar, .js .funnel .fn-lost, .js .funnel .fn-drop,
+  .js .funnel.go .fn-bar, .js .funnel.go .fn-lost, .js .funnel.go .fn-drop { animation: none; opacity: 1; transform: none; }
+}

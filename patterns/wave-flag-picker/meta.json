@@ -1,0 +1,17 @@
+{
+  "name": "Wave flag picker",
+  "slug": "wave-flag-picker",
+  "kind": "pattern",
+  "summary": "A country and language picker: the chosen flag is cut into strips that wave from the pole to the free end, tilted and lit by the slope of the cloth, while the other flags hang still.",
+  "category": "wave",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-29"
+}

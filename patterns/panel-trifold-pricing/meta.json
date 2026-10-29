@@ -1,0 +1,18 @@
+{
+  "name": "Trifold pricing",
+  "slug": "panel-trifold-pricing",
+  "kind": "pattern",
+  "summary": "Three plans on a folded leaflet. In view, the outer flap opens off the middle plan, then the inner one, each about its crease and settling just past flat.",
+  "category": "panel",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

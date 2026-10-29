@@ -1,0 +1,16 @@
+{
+  "name": "Drum rolodex",
+  "slug": "drum-rolodex",
+  "kind": "pattern",
+  "summary": "A rotary card file in 3D. Cards hang on one axle and flip over it as you scroll, drag or flick, landing on a card. Type a letter to spin to it.",
+  "category": "drum",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tile habit grid demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="tile-habit-grid.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="year sheet" aria-labelledby="year-h">
+    <header class="year-head">
+      <div>
+        <p class="app">Langkah, daily walking</p>
+        <h1 id="year-h">8,000 steps a day, 2026</h1>
+        <p class="mute who">Nurul Izzah, Kota Bharu. Thu 29 Oct, week 44</p>
+      </div>
+      <button type="button" class="replay" id="replay">Replay the year</button>
+    </header>
+
+    <dl class="stats">
+      <div><dt>Goal hit</dt><dd><strong class="num" id="hit">231</strong> <span class="mute num">of 302 days</span></dd></div>
+      <div><dt>Longest streak</dt><dd><strong class="num">45</strong> <span class="mute">days, 20 July to 2 September</span></dd></div>
+      <div><dt>This streak</dt><dd><strong class="num">26</strong> <span class="mute">days, since 4 October</span></dd></div>
+    </dl>
+
+    <div class="habit-grid" id="grid" data-play data-start="2026-01-01" data-days="365"
+      data-levels="22242203144233222423221422310321334032402021011223221114112022222142122204221001011102221112241331133140213144211224424422403230243123244312223034014042022241010101122433340222234221201430322243322241422222423332433332334222332322222443323323222012420243422222332424222222414123242244224242423322243222"
+      role="img" aria-label="2026 so far: goal of 8,000 steps hit on 231 of 302 days. Quiet weeks in mid February, late March and the second week of June. Every day since 4 October.">
+      <p class="hg-fallback mute">Goal hit on 231 of 302 days so far this year.</p>
+    </div>
+
+    <footer class="year-foot">
+      <ul class="legend" aria-label="Steps per day">
+        <li><span class="sw sw0"></span>Under 4,000</li>
+        <li><span class="sw sw1"></span>4,000 to 7,999</li>
+        <li><span class="sw sw2"></span>8,000 to 11,999</li>
+        <li><span class="sw sw3"></span>12,000 to 15,999</li>
+        <li><span class="sw sw4"></span>16,000 and up</li>
+      </ul>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

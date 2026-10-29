@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card to detail morph demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="card-detail.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="shop" aria-labelledby="shop-h">
+    <header class="shop-head">
+      <div>
+        <p class="crumb">Seng Huat Paint &amp; Hardware, Klang</p>
+        <h1 id="shop-h">Interior emulsion, low odour</h1>
+      </div>
+      <p class="mute count">6 colours from <span class="num">RM 52.90</span></p>
+    </header>
+
+    <div class="cd" id="paints">
+      <ul class="cd-grid">
+        <li><button class="cd-card" type="button" data-id="0"><span class="cd-chip p0"></span><span class="txt"><span class="cd-name">Kunyit Muda</span><span class="code num">YL 2081</span></span></button></li>
+        <li><button class="cd-card" type="button" data-id="1"><span class="cd-chip p1"></span><span class="txt"><span class="cd-name">Teh Tarik</span><span class="code num">BR 1146</span></span></button></li>
+        <li><button class="cd-card" type="button" data-id="2"><span class="cd-chip p2"></span><span class="txt"><span class="cd-name">Daun Pandan</span><span class="code num">GN 3307</span></span></button></li>
+        <li><button class="cd-card" type="button" data-id="3"><span class="cd-chip p3"></span><span class="txt"><span class="cd-name">Laut Pangkor</span><span class="code num">BL 4420</span></span></button></li>
+        <li><button class="cd-card" type="button" data-id="4"><span class="cd-chip p4"></span><span class="txt"><span class="cd-name">Bata Merah</span><span class="code num">RD 5512</span></span></button></li>
+        <li><button class="cd-card" type="button" data-id="5"><span class="cd-chip p5"></span><span class="txt"><span class="cd-name">Kapur Sirih</span><span class="code num">WH 0108</span></span></button></li>
+      </ul>
+
+      <section class="cd-detail" aria-labelledby="d-name">
+        <span class="cd-chip" id="d-chip"><span class="chip-label" id="d-label">YL 2081</span></span>
+        <div class="d-body">
+          <button class="back" type="button" data-cd-close>Back to colours</button>
+          <h2 class="cd-name" id="d-name" tabindex="-1">Kunyit Muda</h2>
+          <p class="mute d-meta"><span id="d-code">YL 2081</span> <span aria-hidden="true">·</span> <span id="d-lrv">Light reflectance 58</span></p>
+          <p class="d-text" id="d-text"></p>
+          <fieldset class="opts">
+            <legend>Size</legend>
+            <label><input type="radio" name="size" value="1" checked><span>1 L<b class="num">RM 52.90</b></span></label>
+            <label><input type="radio" name="size" value="5"><span>5 L<b class="num">RM 189.00</b></span></label>
+          </fieldset>
+          <p class="mute d-need">About 12 m² a litre a coat. A 4 by 3.5 m bedroom takes 2 coats, about 7 L.</p>
+          <button class="add" type="button" id="add">Add to trolley</button>
+          <p class="sr" role="status" id="say"></p>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+</body>
+</html>

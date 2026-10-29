@@ -1,0 +1,45 @@
+/*
+ * curve-route: a delivery route drawn as one SVG path, with stops on it and a van that rides it.
+ * route.js draws the route, pops the stops, and moves the van with keyframes sampled from the path,
+ * so the van's heading follows every bend. The travelled part (.cr-done) is a copy of the route
+ * that route.js adds and dashes to the van's distance.
+ */
+.curve-route {
+  --cr-route: #9fb3ae;   /* the whole route, still to drive */
+  --cr-done: #1f5d55;    /* the travelled part */
+  --cr-stop: #ffffff;    /* stop fill */
+  --cr-van: #e0662c;     /* van body */
+  --cr-roof: #fff4ea;    /* van roof */
+  --cr-glass: #24323a;   /* windscreen */
+  position: relative;
+}
+.curve-route svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.cr-route, .cr-done { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.cr-route { stroke: var(--cr-route); stroke-width: 3; }
+.cr-done { stroke: var(--cr-done); stroke-width: 4.5; stroke-dashoffset: 9999; }
+
+.cr-stop {
+  fill: var(--cr-stop); stroke: var(--cr-route); stroke-width: 2.5;
+  transform-box: fill-box; transform-origin: center;
+}
+.cr-stop.is-past { fill: var(--cr-done); stroke: var(--cr-done); }
+.cr-stop.is-now { fill: var(--cr-stop); stroke: var(--cr-done); stroke-width: 3.5; }
+
+/* the van, seen from above, nose pointing right; route.js turns it to the road */
+.cr-van, .cr-shadow { opacity: 0; }
+.curve-route.is-played .cr-van, .curve-route.is-played .cr-shadow { opacity: 1; }
+.cr-van-shell { fill: var(--cr-van); }
+.cr-van-roof { fill: var(--cr-roof); }
+.cr-van-glass { fill: var(--cr-glass); }
+.cr-shadow * { fill: rgb(20 30 30 / .22); stroke: none; }
+
+/* with the script, the route stays hidden until it draws in view; without it, the whole route shows */
+.js .curve-route:not(.is-played) .cr-route,
+.js .curve-route:not(.is-played) .cr-stop { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* route.js parks the van at its stop and skips the drawing; nothing animates */
+  .js .curve-route .cr-route, .js .curve-route .cr-stop { opacity: 1; }
+  .cr-route, .cr-done, .cr-stop, .cr-van, .cr-shadow, .cr-body { animation: none; transition: none; }
+}

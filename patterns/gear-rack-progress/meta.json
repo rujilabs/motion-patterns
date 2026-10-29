@@ -1,0 +1,16 @@
+{
+  "name": "Gear rack progress",
+  "slug": "gear-rack-progress",
+  "kind": "pattern",
+  "summary": "A reading-progress bar where scrolling turns a pinion that drives a toothed rack out across the top. One rack pitch per tooth, so they never slip, and the rack trails on a spring.",
+  "category": "gear",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

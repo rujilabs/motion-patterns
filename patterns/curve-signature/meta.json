@@ -1,0 +1,17 @@
+{
+  "name": "Curve signature",
+  "slug": "curve-signature",
+  "kind": "pattern",
+  "summary": "An e-sign pad whose ink thins with pen speed and pools in slow turns, smoothed like pressure. Clear rewinds the pen: the ink un-draws, newest stroke first, back to an empty line.",
+  "category": "curve",
+  "tech": [
+    "css",
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

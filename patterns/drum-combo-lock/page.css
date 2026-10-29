@@ -1,0 +1,36 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root { --felt: #1e4a3e; --felt-edge: #163a31; --cream: #fbf7ee; --cream-line: #e7dfcd; --spice: #9c4a1c; --gift-ink: #251c12; --gift-mute: #6f6455; }
+@media (prefers-color-scheme: dark) {
+  :root { --felt: #143a31; --felt-edge: #0e2b24; --cream: #201c17; --cream-line: #3a3329; --spice: #e39a63; --gift-ink: #f1e9dc; --gift-mute: #ab9f8e; }
+}
+.gift { width: min(700px, 100%); display: grid; grid-template-columns: 330px 1fr; background: var(--cream); color: var(--gift-ink); border: 1px solid var(--cream-line); border-radius: 10px; overflow: hidden; }
+.felt { background: var(--felt); display: grid; place-items: center; padding: 34px 20px 40px; box-shadow: inset -1px 0 0 var(--felt-edge); }
+.lock { --dial-focus: #fff7e0; }
+.lock-stamp { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 10px; letter-spacing: .3em; color: color-mix(in srgb, var(--lock-edge) 85%, #000); font-weight: 700; }
+
+.note { padding: 28px 28px 24px; display: grid; align-content: start; gap: 12px; }
+.kicker { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--spice); font-weight: 600; }
+.note h1 { font-size: 25px; margin-top: -4px; }
+.hint { font-size: 14px; color: var(--gift-mute); text-wrap: pretty; }
+.hint .num { color: var(--gift-ink); font-weight: 650; letter-spacing: .08em; white-space: nowrap; }
+.state { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.state::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--spice); }
+
+.voucher { border: 1px dashed var(--spice); border-radius: 8px; padding: 12px 14px; display: grid; gap: 4px; }
+.js .voucher:not(.is-shown) { visibility: hidden; }
+.v-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gift-mute); }
+.v-code { font-size: 22px; font-weight: 700; letter-spacing: .04em; color: var(--spice); }
+.v-body { font-size: 13px; text-wrap: pretty; }
+.relock { justify-self: start; margin-top: 6px; font: inherit; font-size: 13px; font-weight: 600; color: var(--gift-ink); background: none; border: 1px solid var(--cream-line); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+.js .relock { display: inline-block; }
+.relock { display: none; }
+
+@media (max-width: 640px) {
+  .gift { grid-template-columns: 1fr; }
+  .felt { padding: 24px 16px 30px; box-shadow: inset 0 -1px 0 var(--felt-edge); }
+  .note { padding: 18px 16px 18px; gap: 10px; }
+  .note h1 { font-size: 21px; }
+}
+@media (max-height: 520px) and (min-width: 641px) {
+  .note { padding-block: 18px; gap: 8px; }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Light pointer spotlight",
+  "slug": "light-pointer-spotlight",
+  "kind": "pattern",
+  "summary": "A lamp follows the pointer over a feature grid. Its pool of light falls off like a real point light, lands on cards, edges and gaps alike, and lifts away dimmer and wider when you leave.",
+  "category": "light",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}
