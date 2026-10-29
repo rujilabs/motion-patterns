@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Globe day and night demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="land.js" defer></script>
+<script src="globe-day-night.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="desk sheet" aria-labelledby="desk-h">
+    <div class="desk-side">
+      <header class="desk-head">
+        <p class="brand">Bayu Telehealth</p>
+        <h1 id="desk-h">Nurse line, who is on</h1>
+        <p class="mute">Monday 22 June 2026. Each desk takes calls 8 am to 10 pm local.</p>
+      </header>
+      <ul class="desks" id="cities">
+        <li data-place="101.69 3.14 KL" data-tz="8"><span class="sky" aria-hidden="true"></span><span class="city">Kuala Lumpur</span><time class="local num">9:30 pm</time><span class="state">Open</span></li>
+        <li data-place="36.82 -1.29 Nairobi" data-tz="3"><span class="sky" aria-hidden="true"></span><span class="city">Nairobi</span><time class="local num">4:30 pm</time><span class="state">Open</span></li>
+        <li data-place="-0.13 51.51 London" data-tz="1"><span class="sky" aria-hidden="true"></span><span class="city">London</span><time class="local num">2:30 pm</time><span class="state">Open</span></li>
+        <li data-place="-46.63 -23.55 São Paulo" data-tz="-3"><span class="sky" aria-hidden="true"></span><span class="city">São Paulo</span><time class="local num">10:30 am</time><span class="state">Open</span></li>
+        <li data-place="151.21 -33.87 Sydney" data-tz="10"><span class="sky" aria-hidden="true"></span><span class="city">Sydney</span><time class="local num">11:30 pm</time><span class="state">Closed</span></li>
+      </ul>
+      <div class="clock">
+        <label for="hour">Time in Kuala Lumpur <output class="num" id="hour-out" for="hour">9:30 pm</output></label>
+        <input type="range" id="hour" min="0" max="95" step="1" value="86" aria-valuetext="9:30 pm in Kuala Lumpur, 13:30 UTC">
+        <button type="button" class="sweep" id="sweep" aria-pressed="false">Play the day</button>
+      </div>
+    </div>
+    <figure class="desk-globe">
+      <canvas class="globe-daynight" id="globe" tabindex="0" data-date="2026-06-22" data-utc="13.5" data-lon="58" data-lat="16" data-places="#cities"
+        aria-label="Globe lit by the sun at 13:30 UTC on 22 June 2026. Drag or use the arrow keys to turn it, Home to come back.">Day and night on 22 June 2026.</canvas>
+      <figcaption class="mute">Drag to turn the globe</figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>

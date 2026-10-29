@@ -1,0 +1,24 @@
+/*
+ * globe-text-band: a line of text runs on a ribbon round a turning dot globe.
+ * globe-text-band.js draws on this canvas; this file sizes it and holds its colours and the band's
+ * font. Without the script the canvas shows its fallback text, the same words as the band.
+ */
+.globe-band {
+  --globe-ocean: #2b2118;               /* the ball */
+  --globe-land: #f3e3c3;                /* land dots */
+  --globe-band: #2b2118;                /* the letters */
+  --globe-ribbon: #fbf1dc;              /* the ribbon they are printed on */
+  --globe-ribbon-inside: #c9b48d;       /* the ribbon's inside, seen on the far side */
+  --globe-shadow: rgba(40, 25, 5, .3);  /* contact shadow under the ball */
+  --globe-limb: .3;                     /* rim darkness, 0 to 1 */
+  --globe-glint: .14;                   /* sunlit side, 0 to 1 */
+  --globe-band-font: 800 16px system-ui, sans-serif; /* the size is set from the globe; weight and family are yours */
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* globe-text-band.js draws the ring wound on and still; nothing turns */
+  .globe-band { transition: none; }
+}

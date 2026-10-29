@@ -1,0 +1,16 @@
+{
+  "name": "Globe text band",
+  "slug": "globe-text-band",
+  "kind": "pattern",
+  "summary": "A line of text printed on a ribbon wraps a turning dot globe. The ribbon winds on, its far half passes behind the ball, and letters narrow as they turn away.",
+  "category": "globe",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

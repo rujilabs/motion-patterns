@@ -1,0 +1,26 @@
+/*
+ * globe-flight-arcs: routes lift off a dot globe as arcs and a plane rides each one.
+ * globe-flight-arcs.js draws on this canvas; this file sizes it and holds its colours.
+ * Without the script the canvas shows its fallback text and the route list still reads.
+ */
+.globe-arcs {
+  --globe-ocean: #e6edf3;              /* the sea */
+  --globe-land: #24395a;               /* land dots, plane shadows */
+  --globe-accent: #d63a2f;             /* the arcs and the airports reached */
+  --globe-ink: #1e2229;                /* the planes, the hub, labels */
+  --globe-paper: #ffffff;              /* outline round planes and airports */
+  --globe-shadow: rgba(20, 30, 50, .22); /* contact shadow under the ball */
+  --globe-limb: .18;                   /* rim darkness, 0 to 1 */
+  --globe-glint: .22;                  /* sunlit side, 0 to 1 */
+  --globe-font: 600 11px system-ui, sans-serif;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+/* each route's row in the list, once its plane has landed */
+[data-to].is-landed { --landed: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* globe-flight-arcs.js draws every arc finished and flies no planes */
+  .globe-arcs { transition: none; }
+}

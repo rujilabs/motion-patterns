@@ -1,0 +1,85 @@
+/* Demo page layout for this entry. Not part of the pattern. An airline's route sheet: white, navy, one red. */
+:root {
+  --fa-table: #edf1f6;
+  --fa-paper: #ffffff;
+  --fa-ink: #14213a;
+  --fa-mute: #66748a;
+  --fa-line: #dbe2ec;
+  --fa-sea: #e4ebf3;
+  --fa-land: #2a4268;
+  --fa-red: #d4342a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fa-table: #0f1622;
+    --fa-paper: #16202f;
+    --fa-ink: #e8eef7;
+    --fa-mute: #93a1b6;
+    --fa-line: #26334a;
+    --fa-sea: #1d2a3d;
+    --fa-land: #9fb5d6;
+    --fa-red: #ff6a57;
+  }
+}
+body { background: var(--fa-table); color: var(--fa-ink); }
+.sheet { background: var(--fa-paper); border-color: var(--fa-line); }
+.mute { color: var(--fa-mute); }
+:focus-visible { outline-color: var(--fa-red); }
+
+.net { width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; padding: 22px; align-items: center; }
+.net-globe { display: grid; justify-items: center; }
+.globe-arcs {
+  --globe-ocean: var(--fa-sea);
+  --globe-land: var(--fa-land);
+  --globe-accent: var(--fa-red);
+  --globe-ink: var(--fa-ink);
+  --globe-paper: var(--fa-paper);
+  --globe-font: 650 11px "Host Grotesk", system-ui, sans-serif;
+  max-width: 380px;
+}
+@media (prefers-color-scheme: dark) {
+  .globe-arcs { --globe-shadow: rgba(0, 0, 0, .55); --globe-limb: .34; --globe-glint: .07; }
+}
+
+.net-head { display: grid; gap: 4px; margin-bottom: 14px; }
+.brand { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--fa-red); }
+.net-head h1 { font-size: 22px; font-weight: 700; }
+.net-head .mute { font-size: 13px; }
+
+.routes { border-top: 1px solid var(--fa-line); }
+.routes li {
+  display: grid; grid-template-columns: 58px 1fr auto; column-gap: 10px; row-gap: 1px;
+  padding: 8px 0 8px 12px; border-bottom: 1px solid var(--fa-line); position: relative; font-size: 14px;
+}
+/* a red tick slides in at the left edge as the plane lands */
+.routes li::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px;
+  background: var(--fa-red); scale: 1 0; transition: scale var(--dur-base) var(--ease-out);
+}
+.routes li.is-landed::before { scale: 1 1; }
+.code { font-weight: 700; font-size: 13px; }
+.to { font-weight: 600; }
+.when { text-align: right; font-weight: 600; }
+.len { grid-column: 2 / -1; font-size: 12px; }
+
+.again {
+  margin-top: 14px; font: inherit; font-size: 14px; font-weight: 600; color: var(--fa-paper); background: var(--fa-ink);
+  border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer; display: none;
+  transition: scale var(--dur-quick) var(--ease-out);
+}
+.again:active { scale: .97; }
+.js .again { display: inline-block; }
+
+@media (max-width: 640px) {
+  .net { grid-template-columns: 1fr; padding: 16px; gap: 6px; }
+  .globe-arcs { max-width: 300px; }
+  .net-head h1 { font-size: 20px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .routes li { padding-block: 5px; }
+  .net-head { margin-bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .routes li::before { transition: none; }
+  .js .again { display: none; } /* every arc is already drawn; there is nothing to replay */
+}

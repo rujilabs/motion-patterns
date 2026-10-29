@@ -1,0 +1,77 @@
+/* Demo page layout for this entry. Not part of the pattern. A kaya maker's hero: gula Melaka gold, palm-sugar brown. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --tb-table: #f1e7d3;
+  --tb-gold: #e7b13c;
+  --tb-brown: #2b1d10;
+  --tb-mute: #5a4223;
+  --tb-cream: #fbf1dc;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tb-table: #120d07;
+    --tb-gold: #3a2a14;
+    --tb-brown: #f7e6c4;
+    --tb-mute: #d4bd93;
+    --tb-cream: #1d150b;
+  }
+}
+body { background: var(--tb-table); color: var(--tb-brown); }
+:focus-visible { outline-color: var(--tb-brown); }
+
+.hero {
+  width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center;
+  gap: 8px; padding: 30px 26px 30px 34px; background: var(--tb-gold); border-radius: 10px;
+}
+.brand { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--tb-mute); }
+.hero h1 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1.02; letter-spacing: -.01em; margin-top: 10px; }
+.lede { margin-top: 14px; font-size: 15px; color: var(--tb-mute); max-width: 32ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; align-items: center; }
+.cta {
+  font-weight: 650; font-size: 14px; text-decoration: none; color: var(--tb-cream); background: var(--tb-brown);
+  border-radius: 999px; padding: 10px 18px;
+}
+.pause {
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--tb-brown); background: transparent;
+  border: 1.5px solid currentColor; border-radius: 999px; padding: 8px 14px; cursor: pointer; display: none;
+}
+.js .pause { display: inline-block; }
+.hero-globe { display: grid; justify-items: center; }
+.globe-band {
+  --globe-ocean: var(--tb-brown);
+  --globe-land: var(--tb-gold);
+  --globe-band: var(--tb-brown);
+  --globe-ribbon: var(--tb-cream);
+  --globe-ribbon-inside: #c99a33;
+  --globe-shadow: rgba(60, 35, 5, .35);
+  --globe-band-font: 800 16px "Anybody", "Host Grotesk", sans-serif;
+  max-width: 360px;
+}
+@media (prefers-color-scheme: dark) {
+  .globe-band { --globe-ocean: #2a1f12; --globe-land: #e7b13c; --globe-band: #2b1d10; --globe-ribbon: #e7b13c; --globe-ribbon-inside: #8a6420; --globe-shadow: rgba(0, 0, 0, .6); --globe-limb: .4; --globe-glint: .1; }
+}
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; padding: 24px 18px; }
+  .hero h1 { font-size: 36px; }
+  .globe-band { max-width: 300px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .hero { padding-block: 20px; }
+  .hero h1 { font-size: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pause { display: none !important; }
+}

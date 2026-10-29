@@ -1,0 +1,24 @@
+/*
+ * globe-live-dots: live visitors as dots on a globe, each sized by its count and sending out rings.
+ * globe-live-dots.js draws on this canvas; this file sizes it and holds its colours.
+ * Without the script the canvas shows its fallback text.
+ */
+.globe-live {
+  --globe-ocean: #e9ecf1;               /* the sea */
+  --globe-land: #8a94a6;                /* land dots: quiet, so the live dots lead */
+  --globe-accent: #2456e6;              /* visitor dots and their rings */
+  --globe-ink: #1e2229;                 /* labels */
+  --globe-paper: #ffffff;               /* the edge round each visitor dot */
+  --globe-shadow: rgba(20, 30, 50, .2); /* contact shadow under the ball */
+  --globe-limb: .16;                    /* rim darkness, 0 to 1 */
+  --globe-glint: .24;                   /* sunlit side, 0 to 1 */
+  --globe-font: 600 11px system-ui, sans-serif;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* globe-live-dots.js shows every dot at its size, sends no rings, and resizes without easing */
+  .globe-live { transition: none; }
+}

@@ -1,0 +1,85 @@
+/* Demo page layout for this entry. Not part of the pattern. A coffee roaster's checkout: cream, roast brown, terracotta. */
+:root {
+  --cp-table: #f3eee6;
+  --cp-paper: #fffdf9;
+  --cp-ink: #2b221c;
+  --cp-mute: #7a6a5d;
+  --cp-line: #e6dccd;
+  --cp-sea: #efe6d8;
+  --cp-land: #5b4334;
+  --cp-accent: #c24e27;
+  --cp-pick: #f8e7dc;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cp-table: #171310;
+    --cp-paper: #211c18;
+    --cp-ink: #f1e8de;
+    --cp-mute: #ab9a8a;
+    --cp-line: #3a312a;
+    --cp-sea: #2c251f;
+    --cp-land: #dcc7b1;
+    --cp-accent: #f07a4f;
+    --cp-pick: #3a271e;
+  }
+}
+body { background: var(--cp-table); color: var(--cp-ink); }
+.sheet { background: var(--cp-paper); border-color: var(--cp-line); }
+.mute { color: var(--cp-mute); }
+:focus-visible { outline-color: var(--cp-accent); }
+
+.ship { width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 24px; padding: 24px; align-items: center; }
+.ship-head { display: grid; gap: 4px; margin-bottom: 16px; }
+.step { font-size: 12px; letter-spacing: .02em; }
+.ship-head h1 { font-size: 23px; font-weight: 700; }
+.order { font-size: 13px; }
+
+.field-label { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.countries { border: 1px solid var(--cp-line); border-radius: 8px; padding: 4px; outline-offset: 2px; }
+.countries li {
+  display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border-radius: 5px;
+  font-size: 14px; cursor: pointer; user-select: none; transition: background-color var(--dur-quick) var(--ease-out);
+}
+.countries li:hover { background: var(--cp-table); }
+.countries li[aria-selected="true"] { background: var(--cp-pick); color: var(--cp-accent); font-weight: 650; }
+.fee { color: var(--cp-mute); font-weight: 400; }
+.countries li[aria-selected="true"] .fee { color: inherit; font-weight: 600; }
+
+.sum { display: grid; gap: 4px; margin-top: 14px; font-size: 13px; }
+.sum div { display: flex; justify-content: space-between; gap: 12px; }
+.sum dd { margin: 0; }
+.sum-total { border-top: 1px solid var(--cp-line); padding-top: 8px; margin-top: 4px; font-size: 16px; font-weight: 700; }
+
+.ship-globe { display: grid; gap: 4px; justify-items: center; }
+.ship-globe figcaption { font-size: 12px; }
+.globe-picker {
+  --globe-ocean: var(--cp-sea);
+  --globe-land: var(--cp-land);
+  --globe-accent: var(--cp-accent);
+  --globe-ink: var(--cp-ink);
+  --globe-paper: var(--cp-paper);
+  --globe-shadow: rgba(70, 45, 25, .26);
+  --globe-font: 650 12px "Host Grotesk", system-ui, sans-serif;
+  max-width: 360px;
+}
+@media (prefers-color-scheme: dark) {
+  .globe-picker { --globe-shadow: rgba(0, 0, 0, .55); --globe-limb: .32; --globe-glint: .08; }
+}
+
+@media (max-width: 640px) {
+  .ship { grid-template-columns: 1fr; padding: 18px 16px; gap: 8px; }
+  .ship-form { display: contents; }
+  .ship-head { order: 0; margin-bottom: 0; }
+  .ship-globe { order: 1; }
+  .field-label, .countries, .sum { order: 2; }
+  .globe-picker { max-width: 280px; }
+  .ship-head h1 { font-size: 20px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .ship { padding-block: 16px; }
+  .ship-head { margin-bottom: 10px; }
+  .countries li { padding-block: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .countries li { transition: none; }
+}
