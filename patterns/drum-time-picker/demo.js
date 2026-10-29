@@ -7,8 +7,11 @@
   var busy = [[540, 585], [690, 735], [780, 840, "lunch"], [870, 915], [975, 1020]];
   var booked = -1, nextFree = -1;
 
-  function at(el) { return el.drum ? el.drum.centre : 0; }
-  function picked() { return (at(H) + 1) % 12 * 60 + at(M) * 15 + (at(P) ? 720 : 0); }
+  // each list starts on its default value (so the no-script column opens there): read values by data-n
+  function nums(el) { return Array.prototype.map.call(el.querySelectorAll(".drum-list > li"), function (li) { return +li.getAttribute("data-n"); }); }
+  var hN = nums(H), mN = nums(M);
+  function at(el, list) { var i = el.drum ? el.drum.centre : 0; return list ? list[i] : i; }
+  function picked() { return at(H, hN) % 12 * 60 + at(M, mN) + (at(P) ? 720 : 0); }
   function clock(t, half) {
     var h = Math.floor(t / 60), m = t % 60, s = (h % 12 || 12) + ":" + (m < 10 ? "0" : "") + m;
     return half === false ? s : s + (h < 12 ? " am" : " pm");
@@ -54,8 +57,8 @@
     var t = picked();
     if (nextFree >= 0 && clash(t)) {
       var h = Math.floor(nextFree / 60);
-      H.drum.set((h % 12 || 12) - 1);
-      M.drum.set(nextFree % 60 / 15);
+      H.drum.set(hN.indexOf(h % 12 || 12));
+      M.drum.set(mN.indexOf(nextFree % 60));
       P.drum.set(h >= 12 ? 1 : 0);
       return;
     }

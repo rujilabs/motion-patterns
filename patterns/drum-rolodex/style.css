@@ -1,0 +1,144 @@
+/*
+ * drum-rolodex: a rotary card file. Each card turns on rotateX about a point under its bottom edge,
+ * the shared axle, and drum-rolodex.js sets the angle of every card from its distance to the open one.
+ * Each card has a printed front and a plain back (backface-visibility), each with its own shade
+ * (--rdx-shade-front, --rdx-shade-back) from the angle to a light above the desk.
+ * Without the script the cards are a flat scrolling list.
+ */
+.rdx {
+  --rdx-w: 300px;          /* card width */
+  --rdx-h: 158px;          /* card height */
+  --rdx-hole: 16px;        /* the axle runs this far under the cards */
+  --rdx-card: #fbf8f0;
+  --rdx-back: #efe8d6;
+  --rdx-metal: #3c3a36;
+  --rdx-knob: 42px;
+  position: relative;
+  width: calc(var(--rdx-w) + var(--rdx-knob) * 2 + 12px);
+  height: calc(var(--rdx-h) * 2.45 + var(--rdx-hole));
+  clip-path: inset(-40px -8px 0 -8px); /* nothing of the fallen stack spills past the foot */
+  perspective: 950px;
+  perspective-origin: 50% -110%; /* you look down at it, as at a desk */
+  touch-action: none;           /* the drum owns vertical drags; the page scrolls everywhere else */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rdx.is-grabbed { cursor: grabbing; }
+.rdx-list {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--rdx-h) * .26);
+  width: var(--rdx-w);
+  height: var(--rdx-h);
+  margin: 0 0 0 calc(var(--rdx-w) / -2);
+  padding: 0;
+  list-style: none;
+  transform-style: preserve-3d;
+}
+.rdx-card {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: 50% calc(100% + var(--rdx-hole));
+}
+.rdx-front, .rdx-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  opacity: var(--rdx-fade, 1); /* on the faces, not the card: opacity would flatten its 3D */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rdx-front { background: var(--rdx-card); }
+.rdx-back { background: var(--rdx-back); transform: rotateY(180deg); box-shadow: inset 0 2px 0 rgb(0 0 0 / .22), inset 0 3px 0 rgb(255 255 255 / .45); } /* the top edge: in the fallen stack, one line per card */
+.rdx-front::after, .rdx-back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #000;
+  pointer-events: none;
+}
+.rdx-front::after { opacity: var(--rdx-shade-front, 0); }
+.rdx-back::after { opacity: var(--rdx-shade-back, 0); }
+/* the two slots each card hangs by, cut into its bottom edge */
+.rdx-front::before, .rdx-back::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 22%;
+  right: 22%;
+  height: 9px;
+  background:
+    radial-gradient(circle at 12px 100%, var(--rdx-cut, #2a2723) 6px, transparent 6.5px) left / 24px 100% no-repeat,
+    radial-gradient(circle at 12px 100%, var(--rdx-cut, #2a2723) 6px, transparent 6.5px) right / 24px 100% no-repeat;
+}
+
+/* the axle ends, which turn with the drum, and the stand: two side arms on a foot, with a front rail */
+.rdx-knob {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--rdx-h) * 1.26 + var(--rdx-hole) - var(--rdx-knob) / 2);
+  width: var(--rdx-knob);
+  height: var(--rdx-knob);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, color-mix(in srgb, var(--rdx-metal), #fff 38%), var(--rdx-metal) 55%, color-mix(in srgb, var(--rdx-metal), #000 45%));
+  box-shadow: 0 2px 3px rgb(0 0 0 / .25);
+  transform: rotate(var(--rdx-turn, 0deg));
+}
+.rdx-knob::after { content: ""; position: absolute; left: 50%; top: 12%; width: 4px; height: 28%; margin-left: -2px; border-radius: 2px; background: rgb(255 255 255 / .55); }
+.rdx-knob-l { left: 2px; }
+.rdx-knob-r { right: 2px; }
+.rdx-base {
+  --rdx-hi: color-mix(in srgb, var(--rdx-metal), #fff 34%);
+  --rdx-lo: color-mix(in srgb, var(--rdx-metal), #000 42%);
+  position: absolute;
+  z-index: 1; /* the rail and foot pass in front of the fallen cards */
+  left: calc(2px + var(--rdx-knob) / 2 - 5px);
+  right: calc(2px + var(--rdx-knob) / 2 - 5px);
+  top: calc(var(--rdx-h) * 1.26 + var(--rdx-hole));
+  bottom: 0;
+  pointer-events: none;
+  border-radius: 0 0 6px 6px;
+  /* a round rail across the front, and the flat foot: each lit from above, dark underneath */
+  background:
+    linear-gradient(var(--rdx-hi), var(--rdx-metal) 45%, var(--rdx-lo)) 0 62% / 100% 6px no-repeat,
+    linear-gradient(var(--rdx-hi), var(--rdx-metal) 30%, var(--rdx-lo)) 0 100% / 100% 12px no-repeat;
+}
+/* the side arms that carry the axle: round bars, lit from the left */
+.rdx-base::before, .rdx-base::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 6px;
+  width: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--rdx-lo), var(--rdx-hi) 35%, var(--rdx-metal) 65%, var(--rdx-lo));
+}
+.rdx-base::before { left: 0; }
+.rdx-base::after { right: 0; }
+/* contact shadow on the desk */
+.rdx::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: -10px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / .28), transparent);
+  z-index: -2;
+}
+
+/* no script: a flat list of cards that scrolls */
+.rdx:not(.is-ready) { height: auto; perspective: none; cursor: auto; touch-action: auto; }
+.rdx:not(.is-ready) .rdx-list { position: static; margin: 0 auto; height: calc(var(--rdx-h) * 2); overflow-y: auto; display: grid; gap: 8px; }
+.rdx:not(.is-ready) .rdx-card { position: relative; height: var(--rdx-h); }
+.rdx:not(.is-ready) .rdx-back, .rdx:not(.is-ready) .rdx-knob, .rdx:not(.is-ready) .rdx-base { display: none; }
+.js .rdx:not(.is-ready) { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* drum-rolodex.js puts the cards straight at their new angles: a flick or a letter jumps, it does not spin */
+  .rdx-card, .rdx-knob { transition: none; }
+}
