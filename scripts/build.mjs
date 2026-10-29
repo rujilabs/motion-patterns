@@ -5,6 +5,7 @@
 import { rmSync, mkdirSync, cpSync, readFileSync, writeFileSync, existsSync, statSync, renameSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { gzipSync } from "node:zlib";
+import { createHash } from "node:crypto";
 import { check } from "./check.mjs";
 import { loadEntries, ROOT } from "./entries.mjs";
 import { SITE_URL, REPO_URL } from "./site.mjs";
@@ -95,6 +96,11 @@ const jsFiles = (e) => readdirSync(e.path).filter((f) => f.endsWith(".js"));
 // The spacing-chart mark: a ball eased into place, each frame closer to the last.
 const MARK = `<svg class="mark-svg" viewBox="0 0 40 16" aria-hidden="true"><circle cx="3" cy="8" r="2" fill="currentColor" opacity=".2"/><circle cx="14" cy="8" r="2.4" fill="currentColor" opacity=".32"/><circle cx="22.5" cy="8" r="2.8" fill="currentColor" opacity=".48"/><circle cx="28.5" cy="8" r="3.2" fill="currentColor" opacity=".66"/><circle cx="34" cy="8" r="4.4" class="mark-key"/></svg>`;
 
+// Site assets get a content hash in the query, so a deploy reaches browsers that cached the old file
+// (the zone keeps CSS and JS in the browser for hours).
+const stamp = {};
+const v = (path) => (stamp[path] ??= `${path}?v=${createHash("sha1").update(readFileSync(join(DIST, path))).digest("hex").slice(0, 8)}`);
+
 function head({ title, description, path, extra = "" }) {
   return `<!doctype html>
 <html lang="en">
@@ -114,10 +120,10 @@ function head({ title, description, path, extra = "" }) {
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/tokens.css">
-<link rel="stylesheet" href="/site.css">${extra}
-<script src="/play.js"></script>
-<script src="/studio.js" defer></script>
+<link rel="stylesheet" href="${v("/tokens.css")}">
+<link rel="stylesheet" href="${v("/site.css")}">${extra}
+<script src="${v("/play.js")}"></script>
+<script src="${v("/studio.js")}" defer></script>
 </head>`;
 }
 
