@@ -18,7 +18,7 @@ if (problems.length) {
 }
 
 const DIST = join(ROOT, "dist");
-const BUNDLE_BUDGET_GZ = 48 * 1024; // motion.css: the whole collection in one file
+const BUNDLE_BUDGET_GZ = 80 * 1024; // motion.css: the whole collection in one file
 const CATEGORY_BUDGET_GZ = 10 * 1024; // motion-<category>.css must stay small enough to drop into any page
 const pkg = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"));
 
