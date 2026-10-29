@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parcel open demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="parcel-open.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="track sheet" aria-labelledby="track-h">
+    <div class="track-info">
+      <p class="shop">Kasut Hana · order HS-30418</p>
+      <h1 id="track-h"><span id="status">Delivered</span></h1>
+      <p class="mute" id="status-note">Handed to you at the door, Fri 1 Nov, 2:17 pm.</p>
+      <ol class="steps">
+        <li class="done"><span class="num">9:12 am</span> Packed in Shah Alam</li>
+        <li class="done"><span class="num">10:40 am</span> Out for delivery, van JHR 4127</li>
+        <li class="done" id="step-last"><span class="num">2:17 pm</span> Delivered to Aina Sofea</li>
+      </ol>
+      <div class="track-act">
+        <button type="button" class="replay" id="replay">Replay delivery</button>
+        <a class="rate" href="#track-h">Rate your rider</a>
+      </div>
+    </div>
+    <div class="parcel" id="parcel" role="img" aria-label="Your parcel on the doorstep, opened, with a thank you card inside">
+      <div class="parcel-world">
+        <div class="doormat"></div>
+        <div class="parcel-shadow"></div>
+        <div class="parcel-box">
+          <div class="parcel-in parcel-in-back"></div>
+          <div class="parcel-in parcel-in-left"></div>
+          <div class="parcel-in parcel-in-right"></div>
+          <div class="parcel-in parcel-in-front"></div>
+          <div class="parcel-fill"><div class="tissue"><p class="card">Thank you, Aina!<small>Size 38, Sage. Wear them well.</small></p></div></div>
+          <div class="parcel-wall parcel-back"></div>
+          <div class="parcel-wall parcel-left"><p class="stamp">kasut hana</p></div>
+          <div class="parcel-wall parcel-right"><p class="up"><span>↑↑</span>This way up</p></div>
+          <div class="parcel-wall parcel-front">
+            <div class="label">
+              <p class="label-to">To <b>Aina Sofea</b><br>12 Jalan Mawar 3, Taman Bukit Indah<br>81200 Johor Bahru</p>
+              <p class="label-code num">MY 2210 4418 3027</p>
+              <p class="label-bars" aria-hidden="true"></p>
+            </div>
+          </div>
+          <div class="parcel-flap flap-left"><div class="parcel-plate"><div class="flap-side flap-in"></div><div class="flap-side flap-out"></div></div></div>
+          <div class="parcel-flap flap-right"><div class="parcel-plate"><div class="flap-side flap-in"></div><div class="flap-side flap-out"></div></div></div>
+          <div class="parcel-flap flap-front"><div class="parcel-plate"><div class="flap-side flap-in"></div><div class="flap-side flap-out"></div></div></div>
+          <div class="parcel-flap flap-back"><div class="parcel-plate"><div class="flap-side flap-in"></div><div class="flap-side flap-out"></div></div></div>
+          <div class="parcel-cut"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

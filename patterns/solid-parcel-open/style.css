@@ -1,0 +1,86 @@
+/*
+ * solid-parcel-open: a carton is set down on the doorstep and opens on "Delivered". The box drops
+ * the last few centimetres and settles while its contact shadow tightens, a knife line splits the
+ * tape along the seam, and the four top flaps swing open about their real crease lines: the two long
+ * outer flaps first, then the short inner ones, each falling past upright and bouncing on its crease.
+ * Each flap has a printed outside and a plain inside, both shaded from one fixed light as the flap
+ * turns. parcel-open.js plays it; this file holds the box. Without the script the box shows open.
+ *
+ * Sizes: --pw across, --pd front to back, --ph tall. Flaps are --pd / 2 deep, as on a real carton.
+ */
+.parcel {
+  --pw: 200px;
+  --pd: 150px;
+  --ph: 116px;
+  --kraft: #c89a64;           /* outside of the board */
+  --kraft-in: #d9b88a;        /* inside of the board, paler and unprinted */
+  --tape: #e7d6b3;            /* packing tape */
+  --parcel-shadow: 40 25 10;  /* contact shadow, as r g b */
+  position: relative;
+  perspective: 1000px;
+  perspective-origin: 50% 0%;
+}
+.parcel-world, .parcel-box, .parcel-flap, .parcel-plate { position: absolute; left: 50%; top: 66%; width: 0; height: 0; transform-style: preserve-3d; }
+/* the camera: above the doorstep, off to the right */
+.parcel-world { transform: rotateX(-36deg) rotateY(-28deg); pointer-events: none; }
+.parcel-box { left: 0; top: 0; }
+
+.parcel-wall, .parcel-in, .parcel-fill, .flap-side, .parcel-cut, .parcel-shadow { position: absolute; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.parcel-wall, .parcel-in { height: var(--ph); top: calc(var(--ph) * -1); background: var(--kraft); }
+.parcel-front, .parcel-back, .parcel-in-front, .parcel-in-back { width: var(--pw); left: calc(var(--pw) / -2); }
+.parcel-left, .parcel-right, .parcel-in-left, .parcel-in-right { width: var(--pd); left: calc(var(--pd) / -2); }
+.parcel-front { transform: translateZ(calc(var(--pd) / 2)); }
+.parcel-back { transform: rotateY(180deg) translateZ(calc(var(--pd) / 2)); }
+.parcel-right { transform: rotateY(90deg) translateZ(calc(var(--pw) / 2)); }
+.parcel-left { transform: rotateY(-90deg) translateZ(calc(var(--pw) / 2)); }
+/* the inside of the walls, facing in */
+.parcel-in { background: var(--kraft-in); }
+.parcel-in-back { transform: translateZ(calc(var(--pd) / -2 + .6px)); }
+.parcel-in-front { transform: translateZ(calc(var(--pd) / 2 - .6px)) rotateY(180deg); }
+.parcel-in-left { transform: translateX(calc(var(--pw) / -2 + .6px)) rotateY(90deg); }
+.parcel-in-right { transform: translateX(calc(var(--pw) / 2 - .6px)) rotateY(-90deg); }
+/* what is packed inside: a layer seen from above, part way down */
+.parcel-fill { width: var(--pw); height: var(--pd); left: calc(var(--pw) / -2); top: calc(var(--pd) / -2); transform: translateY(calc(var(--ph) * -.45)) rotateX(90deg); }
+/* fixed shade for the walls: the light is above, left and in front */
+.parcel-front { filter: brightness(.77); }
+.parcel-right { filter: brightness(.55); }
+.parcel-left { filter: brightness(.86); }
+.parcel-in-back { filter: brightness(.6); }
+.parcel-in-left { filter: brightness(.42); }
+.parcel-in-right { filter: brightness(.68); }
+.parcel-fill { filter: brightness(.82); }
+
+/* a flap: a holder on the crease line, and a plate that lies flat when closed */
+.parcel-flap { left: 0; top: 0; --open: 0deg; }
+.flap-front { --open: 122deg; transform: translate3d(0, calc(var(--ph) * -1 - 1.2px), calc(var(--pd) / 2)) rotateY(0deg) rotateX(calc(var(--open) * -1)); }
+.flap-back { --open: 114deg; transform: translate3d(0, calc(var(--ph) * -1 - 1.2px), calc(var(--pd) / -2)) rotateY(180deg) rotateX(calc(var(--open) * -1)); }
+.flap-left { --open: 106deg; transform: translate3d(calc(var(--pw) / -2), calc(var(--ph) * -1), 0) rotateY(-90deg) rotateX(calc(var(--open) * -1)); }
+.flap-right { --open: 110deg; transform: translate3d(calc(var(--pw) / 2), calc(var(--ph) * -1), 0) rotateY(90deg) rotateX(calc(var(--open) * -1)); }
+.parcel-plate { left: 0; top: 0; transform: rotateX(-90deg); }
+.flap-side { top: 0; height: calc(var(--pd) / 2); transform-origin: 50% 0; }
+.flap-front .flap-side, .flap-back .flap-side { width: var(--pw); left: calc(var(--pw) / -2); }
+.flap-left .flap-side, .flap-right .flap-side { width: var(--pd); left: calc(var(--pd) / -2); }
+.flap-in { background: var(--kraft-in); }
+.flap-out { background: var(--kraft); transform: rotateY(180deg); }
+/* the tape across the seam: each long flap carries half of it */
+.flap-front .flap-out, .flap-back .flap-out { background-image: linear-gradient(to top, var(--tape) 0 13px, transparent 13px); }
+/* resting shade of the open flaps in the no-script view */
+.flap-front .flap-out { filter: brightness(.58); }
+.flap-back .flap-in { filter: brightness(.66); }
+.flap-left .flap-in { filter: brightness(.95); }
+.flap-right .flap-out { filter: brightness(.9); }
+
+/* the knife line that splits the tape */
+.parcel-cut { width: var(--pw); height: 2px; left: calc(var(--pw) / -2); top: -1px; background: rgb(60 35 10 / .7);
+  transform: translateY(calc(var(--ph) * -1 - 1.6px)) rotateX(90deg); transform-origin: 50% 50%; opacity: 0; }
+.parcel-shadow { width: calc(var(--pw) + 24px); height: calc(var(--pd) + 24px); left: calc(var(--pw) / -2 - 12px); top: calc(var(--pd) / -2 - 12px);
+  border-radius: 14px; background: rgb(var(--parcel-shadow) / .38); filter: blur(5px); transform: rotateX(90deg) translateZ(.5px); }
+
+/* before it is delivered: closed and taped (only when it will animate open) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .parcel:not(.is-open) .parcel-flap { --open: 0deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* the box shows open from the start, and parcel-open.js only reports it delivered */
+  .parcel-cut { display: none; }
+}

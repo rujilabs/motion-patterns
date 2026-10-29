@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coin flip demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="coin-flip.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="app" aria-labelledby="app-h">
+    <header class="app-head">
+      <p class="store">Pasar Mini Seri Murni · Rasah, Seremban</p>
+      <h1 id="app-h">Receipt scanned</h1>
+      <p class="receipt num" id="receipt">RM 47.35 · Sat 2 Nov, 6:12 pm · #SM-88213</p>
+    </header>
+    <div class="coin-tray" id="tray" role="img" aria-label="A points coin showing plus 47 points">
+      <div class="coin-world">
+        <div class="coin-shadow"></div>
+        <div class="coin">
+          <div class="coin-face coin-heads">
+            <svg class="coin-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring" d="M50 50m-39 0a39 39 0 1 1 78 0a39 39 0 1 1-78 0"/></defs><text><textPath href="#ring" textLength="242">SERI MURNI · MATA GANJARAN · SERI MURNI · MATA GANJARAN ·</textPath></text></svg>
+            <span class="coin-amount"><b id="amount">+47</b><small>points</small></span>
+          </div>
+          <div class="coin-face coin-tails">
+            <svg class="coin-mark" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 8c5 7 5 13 0 19c-5-6-5-12 0-19zM52 30c-7 5-13 5-19 0c6-5 12-5 19 0zM30 52c-5-7-5-13 0-19c5 6 5 12 0 19zM8 30c7-5 13-5 19 0c-6 5-12 5-19 0z"/><circle cx="30" cy="30" r="4"/></svg>
+            <span class="coin-sm">Seri Murni</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="balance">
+      <p><span class="mute">Balance</span> <strong class="num" id="balance">1,286</strong> <span class="mute">points</span></p>
+      <div class="goal" aria-hidden="true"><span class="goal-bar" id="bar"></span></div>
+      <p class="mute small num" id="goal-note">214 more for RM 15 off your next shop</p>
+    </div>
+    <button type="button" class="scan" id="scan">Scan next receipt</button>
+  </section>
+</main>
+</body>
+</html>

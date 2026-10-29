@@ -1,0 +1,17 @@
+{
+  "name": "Pack viewer",
+  "slug": "solid-pack-viewer",
+  "kind": "pattern",
+  "summary": "A product box in CSS 3D with six printed faces. Drag it to turn it, flick it and it coasts and settles on a face; faces shade from a fixed light and the shadow follows.",
+  "category": "solid",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

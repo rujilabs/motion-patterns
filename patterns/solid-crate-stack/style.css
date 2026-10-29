@@ -1,0 +1,78 @@
+/*
+ * solid-crate-stack: crates drop onto a pallet and stack in CSS 3D as a delivery is booked in.
+ * Each crate is a real box of five faces. It falls under gravity a little askew, strikes on its low
+ * corner, bounces once, and squares up on what is under it. Faces are shaded from one fixed light,
+ * recomputed while the crate tilts, and its contact shadow on the pallet (or on the crate below)
+ * grows darker and sharper as it comes down. crate-stack.js does the falling; the slots are CSS.
+ *
+ * Crates are spans (the slots count .crate spans). Slots fill in order: 3 across, 2 deep, then the next layer up, so the 7th crate starts layer two.
+ * Without the script every crate in stock simply sits in its slot.
+ */
+.crate-bay {
+  --cw: 70px;                  /* crate width, across */
+  --ch: 50px;                  /* crate height */
+  --cd: 58px;                  /* crate depth */
+  --crate-wood: #c99a5b;       /* face colour */
+  --crate-slat: #a8773d;       /* the gaps between slats */
+  --crate-shadow: 25 15 5;     /* contact shadow, as r g b */
+  position: relative;
+  perspective: 1000px;
+  perspective-origin: 50% 0%;
+}
+.crate-world, .crate { position: absolute; left: 50%; top: 62%; width: 0; height: 0; transform-style: preserve-3d; }
+/* the camera: above and off to the right, looking down at the pallet */
+.crate-world { transform: rotateX(-32deg) rotateY(-38deg); }
+
+.crate {
+  --col: 0; --row: 0; --layer: 0;
+  left: 0; top: 0;
+  transform: translate3d(calc((var(--col) - 1) * var(--cw)), calc(var(--layer) * var(--ch) * -1 - var(--ch) / 2), calc((var(--row) - .5) * var(--cd)));
+}
+/* slot of the nth crate: column, then row, then layer */
+.crate:nth-of-type(3n + 2) { --col: 1; }
+.crate:nth-of-type(3n) { --col: 2; }
+.crate:nth-of-type(6n + 4), .crate:nth-of-type(6n + 5), .crate:nth-of-type(6n) { --row: 1; }
+.crate:nth-of-type(n + 7) { --layer: 1; }
+.crate:nth-of-type(n + 13) { --layer: 2; }
+.crate[hidden] { display: none; }
+
+.crate-face {
+  position: absolute;
+  background-color: var(--crate-wood);
+  /* three slats with dark gaps, and a frame round the edge */
+  background-image:
+    linear-gradient(to bottom, transparent 32%, var(--crate-slat) 32% 34%, transparent 34% 66%, var(--crate-slat) 66% 68%, transparent 68%);
+  box-shadow: inset 0 0 0 3px var(--crate-slat), inset 0 0 0 4px rgb(0 0 0 / .12);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.crate-front, .crate-back { width: var(--cw); height: var(--ch); left: calc(var(--cw) / -2); top: calc(var(--ch) / -2); }
+.crate-left, .crate-right { width: var(--cd); height: var(--ch); left: calc(var(--cd) / -2); top: calc(var(--ch) / -2); }
+.crate-top { width: var(--cw); height: var(--cd); left: calc(var(--cw) / -2); top: calc(var(--cd) / -2);
+  background-image: linear-gradient(to right, transparent 32%, var(--crate-slat) 32% 34%, transparent 34% 66%, var(--crate-slat) 66% 68%, transparent 68%); }
+.crate-front { transform: translateZ(calc(var(--cd) / 2)); }
+.crate-back { transform: rotateY(180deg) translateZ(calc(var(--cd) / 2)); }
+.crate-right { transform: rotateY(90deg) translateZ(calc(var(--cw) / 2)); }
+.crate-left { transform: rotateY(-90deg) translateZ(calc(var(--cw) / 2)); }
+.crate-top { transform: rotateX(90deg) translateZ(calc(var(--ch) / 2)); }
+/* resting shade for the no-script view: the light is above and to the left */
+.crate-front { filter: brightness(.73); }
+.crate-right { filter: brightness(.52); }
+.crate-left { filter: brightness(.8); }
+.crate-top { filter: brightness(.95); }
+
+/* contact shadows: crate-stack.js adds one under each falling crate */
+.crate-shadow {
+  position: absolute; left: 0; top: 0; width: var(--cw); height: var(--cd);
+  margin: calc(var(--cd) / -2) 0 0 calc(var(--cw) / -2);
+  border-radius: 6px; background: rgb(var(--crate-shadow) / .5);
+  pointer-events: none; opacity: 0;
+}
+
+/* the crates that drop when the bay scrolls into view wait out of sight under .js */
+.js .crate[data-drop]:not(.is-in) { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* crate-stack.js puts each crate straight into its slot */
+  .js .crate[data-drop]:not(.is-in) { visibility: visible; }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Coin flip",
+  "slug": "solid-coin-flip",
+  "kind": "pattern",
+  "summary": "Points earned arrive as a 3D coin: tossed up showing its back, it turns over, lands and wobbles down like a spun coin to rest with the amount on its face.",
+  "category": "solid",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

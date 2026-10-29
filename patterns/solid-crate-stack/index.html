@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crate stack demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/courier-prime-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="crate-stack.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="bay-card sheet" aria-labelledby="bay-h">
+    <div class="bay-info">
+      <p class="site">Gudang Kembang Jaya · Seri Kembangan</p>
+      <h1 id="bay-h">Bay C4, inbound</h1>
+      <p class="stock" role="status"><strong class="num" id="count">9</strong> <span>of 18 crates</span></p>
+      <ol class="grns" id="grns">
+        <li><span class="num">GRN-20817</span> Syarikat Beras Wangi, Sekinchan<br><span class="mute">9 crates, jasmine rice 5 × 10 kg · booked in 10:42 am</span></li>
+        <li id="grn2" class="is-waiting"><span class="num">GRN-20818</span> Kilang Gula Kuala Kurau<br><span class="mute">6 crates, palm sugar 20 × 1 kg · at the dock door</span></li>
+      </ol>
+      <button type="button" class="book" id="book">Book in GRN-20818</button>
+    </div>
+    <div class="crate-bay" id="bay" role="img" aria-label="Pallet in bay C4 with crates stacked three across, two deep">
+      <div class="crate-world">
+        <div class="bay-floor"><span class="bay-mark">C4</span></div>
+        <div class="pallet"><div class="pallet-top"></div><div class="pallet-front"></div><div class="pallet-right"></div><div class="pallet-left"></div></div>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" data-drop><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>BERAS WANGI<i>5 × 10 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" hidden><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>GULA PERANG<i>20 × 1 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" hidden><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>GULA PERANG<i>20 × 1 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" hidden><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>GULA PERANG<i>20 × 1 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" hidden><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>GULA PERANG<i>20 × 1 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" hidden><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>GULA PERANG<i>20 × 1 KG</i></b></span><span class="crate-face crate-top"></span></span>
+        <span class="crate" hidden><span class="crate-face crate-back"></span><span class="crate-face crate-left"></span><span class="crate-face crate-right"></span><span class="crate-face crate-front"><b>GULA PERANG<i>20 × 1 KG</i></b></span><span class="crate-face crate-top"></span></span>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

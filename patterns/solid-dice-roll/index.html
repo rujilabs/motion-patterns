@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dice roll demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/anybody-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="dice-roll.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="draw sheet" aria-labelledby="draw-h">
+    <div class="draw-copy">
+      <p class="shop">Kopi Hoi Seng, Ipoh · 30 years</p>
+      <h1 id="draw-h">Anniversary lucky draw</h1>
+      <p class="lede">Six finalists from 1,412 receipts. One roll wins a year of kopi: 365 cups.</p>
+      <ol class="finalists" id="finalists">
+        <li data-n="1"><span class="pips pips-1" aria-hidden="true"></span><span class="who">Tan Ah Kow</span><span class="rc num">#0412-118</span></li>
+        <li data-n="2"><span class="pips pips-2" aria-hidden="true"></span><span class="who">Nurul Izzah Rahman</span><span class="rc num">#0503-077</span></li>
+        <li data-n="3"><span class="pips pips-3" aria-hidden="true"></span><span class="who">Lim Mei Ling</span><span class="rc num">#0611-204</span></li>
+        <li data-n="4"><span class="pips pips-4" aria-hidden="true"></span><span class="who">Ganesh Pillai</span><span class="rc num">#0719-031</span></li>
+        <li data-n="5"><span class="pips pips-5" aria-hidden="true"></span><span class="who">Wong Siew Fong</span><span class="rc num">#0822-160</span></li>
+        <li data-n="6"><span class="pips pips-6" aria-hidden="true"></span><span class="who">Hafiz Kamaruddin</span><span class="rc num">#0907-092</span></li>
+      </ol>
+    </div>
+    <div class="draw-table">
+      <div class="dice-tray" id="tray" aria-hidden="true">
+        <div class="dice-world">
+          <div class="dice-floor">
+            <div class="felt"></div>
+            <div class="dice-shadow"></div>
+          </div>
+          <div class="die">
+            <span class="die-face die-front pips-1"></span>
+            <span class="die-face die-back pips-6"></span>
+            <span class="die-face die-top pips-2"></span>
+            <span class="die-face die-bottom pips-5"></span>
+            <span class="die-face die-right pips-3"></span>
+            <span class="die-face die-left pips-4"></span>
+          </div>
+        </div>
+      </div>
+      <div class="draw-act">
+        <button type="button" class="roll" id="roll">Pick a winner</button>
+        <p class="result" id="result" role="status">Roll once, live at the counter, 8 pm.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* Demo page layout for this entry. Not part of the pattern. An old Ipoh kopitiam: marble white, oxblood felt, kopi brown. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+:root {
+  --kp-table: #efe9df;
+  --kp-paper: #fffdf9;
+  --kp-ink: #2a1d16;
+  --kp-mute: #76665a;
+  --kp-line: #e6dccf;
+  --kp-felt: #7c2a24;
+  --kp-felt-edge: #4e1813;
+  --kp-win: #fbe9c6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --kp-table: #15100d;
+    --kp-paper: #1e1814;
+    --kp-ink: #f2e9df;
+    --kp-mute: #ab9a8c;
+    --kp-line: #33281f;
+    --kp-felt: #6a221d;
+    --kp-felt-edge: #2c0d0a;
+    --kp-win: #3a2a17;
+  }
+}
+body { background: var(--kp-table); color: var(--kp-ink); }
+:focus-visible { outline-color: var(--kp-felt); }
+
+.draw { width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 10px; padding: 24px 22px 20px 28px; background: var(--kp-paper); border-color: var(--kp-line); }
+.shop { font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--kp-felt); }
+@media (prefers-color-scheme: dark) { .shop { color: #e0776b; } }
+.draw-copy h1 { font: 800 31px/1.02 "Anybody", "Host Grotesk", sans-serif; font-stretch: 75%; letter-spacing: -.01em; margin-top: 8px; text-transform: uppercase; }
+.lede { margin-top: 10px; font-size: 14px; color: var(--kp-mute); }
+.finalists { margin-top: 16px; display: grid; }
+.finalists li { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 8px 8px; border-top: 1px solid var(--kp-line); border-radius: 4px; font-size: 14px; transition: background-color var(--dur-base) var(--ease-out); }
+.finalists li:last-child { border-bottom: 1px solid var(--kp-line); }
+.finalists .pips { --die: 22px; --die-ivory: #f6f0e3; --die-pip: #1d1a17; --die-red: #c3312a; width: 22px; height: 22px; border-radius: 5px; background-color: var(--die-ivory); box-shadow: inset 0 0 0 1px rgb(0 0 0 / .14); }
+.rc { font-size: 12px; color: var(--kp-mute); }
+.finalists li.is-winner { background: var(--kp-win); border-color: transparent; font-weight: 650; }
+.finalists li.is-winner + li { border-top-color: transparent; }
+
+.draw-table { display: grid; grid-template-rows: auto auto; align-content: center; }
+.dice-tray { height: 330px; --die: 60px; --dice-shadow: 20 2 0; }
+/* the felt tray, laid in the floor plane */
+.felt {
+  position: absolute; left: -158px; top: -128px; width: 316px; height: 256px;
+  border-radius: 18px; background: var(--kp-felt);
+  box-shadow: inset 0 0 0 10px var(--kp-felt-edge), inset 0 0 40px rgb(0 0 0 / .25);
+}
+.draw-act { display: grid; justify-items: center; gap: 8px; margin-top: -6px; }
+.roll {
+  font: inherit; font-size: 15px; font-weight: 700; color: #fff8ee; background: var(--kp-felt); border: 0; border-radius: 999px;
+  padding: 12px 26px; cursor: pointer; transition: transform var(--dur-quick) var(--ease-out);
+}
+.roll:active { transform: translateY(1px) scale(.98); }
+.roll:disabled { opacity: .6; cursor: progress; }
+.result { font-size: 13.5px; color: var(--kp-mute); text-align: center; min-height: 2.9em; max-width: 34ch; }
+
+@media (max-width: 640px) {
+  .draw { grid-template-columns: 1fr; padding: 20px 16px; }
+  .dice-tray { height: 280px; }
+  .felt { left: -136px; width: 272px; height: 220px; top: -110px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .lede { display: none; }
+  .dice-tray { height: 290px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .finalists li, .roll { transition: none; }
+}

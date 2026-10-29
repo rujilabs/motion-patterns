@@ -1,0 +1,16 @@
+{
+  "name": "Dice roll",
+  "slug": "solid-dice-roll",
+  "kind": "pattern",
+  "summary": "A die thrown onto a tray: it bounces once, rolls edge over edge, rocks and settles on the number rolled, with faces shaded by the light and a shadow that follows its height.",
+  "category": "solid",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

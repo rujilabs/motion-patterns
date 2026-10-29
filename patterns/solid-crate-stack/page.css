@@ -1,0 +1,81 @@
+/* Demo page layout for this entry. Not part of the pattern. A warehouse inbound screen: concrete grey, safety yellow, pine. */
+@font-face {
+  font-family: "Courier Prime";
+  src: url("../../fonts/courier-prime-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --wh-table: #e3e3de;
+  --wh-paper: #f7f7f3;
+  --wh-ink: #1b1e20;
+  --wh-mute: #63686b;
+  --wh-line: #d6d6cf;
+  --wh-yellow: #f1bf18;
+  --wh-floor: #cfcfc8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wh-table: #141617;
+    --wh-paper: #1c1f21;
+    --wh-ink: #ecedea;
+    --wh-mute: #9da2a4;
+    --wh-line: #2e3235;
+    --wh-floor: #3a3d3e;
+  }
+}
+body { background: var(--wh-table); color: var(--wh-ink); }
+:focus-visible { outline-color: var(--wh-yellow); }
+
+.bay-card { width: min(760px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding: 24px 20px 24px 28px; background: var(--wh-paper); border-color: var(--wh-line); overflow: hidden; }
+.bay-info { display: grid; gap: 12px; align-content: center; }
+.site { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--wh-mute); }
+.bay-info h1 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+.stock { display: flex; align-items: baseline; gap: 8px; }
+.stock strong { font-size: 54px; font-weight: 750; line-height: 1; letter-spacing: -.03em; }
+.stock span { color: var(--wh-mute); font-size: 14px; }
+.grns { display: grid; font-size: 13.5px; }
+.grns li { padding: 9px 0 9px 12px; border-top: 1px solid var(--wh-line); border-left: 3px solid var(--wh-yellow); }
+.grns li:last-child { border-bottom: 1px solid var(--wh-line); }
+.grns li .num { font-weight: 700; margin-right: 4px; }
+.grns .mute { font-size: 12.5px; }
+.grns li.is-waiting { border-left-color: var(--wh-line); }
+.book {
+  justify-self: start; font: inherit; font-size: 14px; font-weight: 700; color: #1b1e20; background: var(--wh-yellow);
+  border: 0; border-radius: 6px; padding: 11px 18px; cursor: pointer;
+}
+.book:disabled { background: var(--wh-line); color: var(--wh-mute); cursor: default; }
+
+/* the scene */
+.crate-bay { height: 440px; --crate-shadow: 20 18 12; }
+.crate-bay .crate-world { left: 46%; }
+.crate-front { display: grid; place-content: center; text-align: center; }
+.crate-front b { font: 700 9.5px/1.15 "Courier Prime", monospace; color: rgb(60 30 5 / .78); letter-spacing: .04em; }
+.crate-front i { display: block; font-style: normal; font-size: 8px; }
+.crate:nth-of-type(n + 10) { --crate-wood: #b98c55; --crate-slat: #94683a; }
+
+.bay-floor {
+  position: absolute; left: -138px; top: -96px; width: 276px; height: 192px;
+  transform: translateY(12px) rotateX(90deg);
+  background: var(--wh-floor);
+  border: 4px solid var(--wh-yellow);
+  border-radius: 2px;
+}
+.bay-mark { position: absolute; left: 12px; top: 8px; font: 800 28px/1 "Host Grotesk", sans-serif; color: var(--wh-yellow); letter-spacing: -.02em; }
+.pallet { --pw: calc(var(--cw) * 3 + 10px); --pd: calc(var(--cd) * 2 + 10px); position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+.pallet > div { position: absolute; background: #dcc08c; backface-visibility: hidden; }
+.pallet-top { width: var(--pw); height: var(--pd); left: calc(var(--pw) / -2); top: calc(var(--pd) / -2); transform: rotateX(90deg);
+  background-image: repeating-linear-gradient(to right, transparent 0 30px, #b8955a 30px 33px); }
+.pallet-front { width: var(--pw); height: 12px; left: calc(var(--pw) / -2); top: 0; transform: translateZ(calc(var(--pd) / 2)); filter: brightness(.72);
+  background-image: linear-gradient(to right, #5d4a2c 0 18%, transparent 18% 41%, #5d4a2c 41% 59%, transparent 59% 82%, #5d4a2c 82%); }
+.pallet-right { width: var(--pd); height: 12px; left: calc(var(--pd) / -2); top: 0; transform: rotateY(90deg) translateZ(calc(var(--pw) / 2)); filter: brightness(.52); }
+.pallet-left { width: var(--pd); height: 12px; left: calc(var(--pd) / -2); top: 0; transform: rotateY(-90deg) translateZ(calc(var(--pw) / 2)); filter: brightness(.8); }
+
+@media (max-width: 640px) {
+  .bay-card { grid-template-columns: 1fr; padding: 20px 16px; }
+  .crate-bay { height: 360px; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .crate-bay { height: 380px; }
+  .stock strong { font-size: 44px; }
+}
