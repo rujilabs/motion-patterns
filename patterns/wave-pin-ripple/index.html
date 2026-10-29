@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wave pin ripple demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="wave-pin-ripple.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="deliver sheet" aria-labelledby="deliver-h">
+    <div class="pin-map" id="map" data-x="159" data-y="159" tabindex="0" role="application" aria-roledescription="map"
+      aria-label="Delivery map of SS 2, Petaling Jaya. Arrow keys move the pin, Enter drops it." aria-describedby="addr">
+      <svg viewBox="0 0 420 300" aria-hidden="true">
+        <rect class="m-ground" width="420" height="300"/>
+        <g class="m-blocks">
+          <rect x="6" y="2" width="87" height="45" rx="3"/><rect x="107" y="2" width="122" height="45" rx="3"/><rect x="243" y="2" width="102" height="45" rx="3"/><rect x="359" y="2" width="59" height="45" rx="3"/>
+          <rect x="6" y="61" width="87" height="82" rx="3"/><rect x="107" y="61" width="122" height="82" rx="3"/><rect x="243" y="61" width="102" height="82" rx="3"/><rect x="359" y="61" width="59" height="82" rx="3"/>
+          <rect x="6" y="157" width="87" height="82" rx="3"/><rect x="107" y="157" width="122" height="82" rx="3"/><rect x="359" y="157" width="59" height="82" rx="3"/>
+          <rect x="6" y="253" width="87" height="45" rx="3"/><rect x="107" y="253" width="122" height="45" rx="3"/><rect x="243" y="253" width="102" height="45" rx="3"/><rect x="359" y="253" width="59" height="45" rx="3"/>
+        </g>
+        <g class="m-park">
+          <rect x="243" y="157" width="102" height="82" rx="3"/>
+          <path class="m-track" d="M262 170H326A12 12 0 0 1 326 226H262A12 12 0 0 1 262 170Z"/>
+          <circle cx="255" cy="164" r="4"/><circle cx="337" cy="166" r="5"/><circle cx="253" cy="232" r="5"/><circle cx="336" cy="231" r="4"/><circle cx="294" cy="198" r="6"/>
+        </g>
+        <g class="m-lots" id="lots"></g>
+        <g class="m-roads">
+          <path d="M0 54H420M0 150H420M0 246H420"/>
+          <path d="M100 0V300M236 0V300M352 0V300"/>
+        </g>
+        <g class="m-names">
+          <text x="112" y="57.5">Jalan SS 2/21</text>
+          <text x="112" y="153.5">Jalan SS 2/24</text>
+          <text x="112" y="249.5">Jalan SS 2/30</text>
+          <text transform="translate(103.5 296) rotate(-90)">Jalan SS 2/3</text>
+          <text transform="translate(239.5 140) rotate(-90)">Jalan SS 2/6</text>
+          <text transform="translate(355.5 296) rotate(-90)">Jalan SS 2/10</text>
+          <text class="m-park-name" x="294" y="202" text-anchor="middle">Padang SS 2</text>
+        </g>
+        <g class="pm-ripples"></g>
+        <g class="pm-pin">
+          <path class="pm-head" d="M0 0C-1.6-6-9-10.4-9-17.4A9 9 0 0 1 9-17.4C9-10.4 1.6-6 0 0Z"/>
+          <circle class="pm-hole" cx="0" cy="-17.4" r="3.4"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="side">
+      <header>
+        <p class="brand">Pasar Pagi Fresh</p>
+        <h1 id="deliver-h">Where should the rider stop?</h1>
+        <p class="hint">Drop the pin on your gate. Drag it, or tap the map.</p>
+      </header>
+      <div class="addr-card">
+        <p class="label">Deliver to</p>
+        <p class="addr" id="addr" aria-live="polite"><strong>No. 14, Jalan SS 2/24</strong><span>SS 2, 47300 Petaling Jaya, Selangor</span></p>
+      </div>
+      <dl class="order">
+        <div><dt>Slot</dt><dd>Tomorrow, 8 to 10 am</dd></div>
+        <div><dt>Basket</dt><dd class="num">11 items, RM 64.85</dd></div>
+        <div><dt>Delivery</dt><dd class="num">RM 5.90</dd></div>
+      </dl>
+      <button type="button" class="btn" id="confirm">Deliver here</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

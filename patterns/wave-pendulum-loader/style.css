@@ -1,0 +1,20 @@
+/*
+ * wave-pendulum-loader: a pendulum wave on a canvas. wave-pendulum-loader.js draws it and reads
+ * these colours; this file sizes the canvas. The bobs are lit from the top left.
+ */
+.pendulum-wave {
+  --pw-bob: #b3842c;        /* brass */
+  --pw-bob-light: #f4dfa6;  /* where the light hits */
+  --pw-bob-dark: #5f4312;   /* the side away from it */
+  --pw-string: #7d8a83;
+  --pw-rail: #24352d;
+  --pw-shadow: #1c2a23;     /* shadows on the floor, drawn faint */
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* wave-pendulum-loader.js draws the bobs hanging still; start() and land() only send their events */
+  .pendulum-wave { transition: none; }
+}

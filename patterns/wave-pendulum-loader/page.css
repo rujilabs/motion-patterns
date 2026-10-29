@@ -1,0 +1,66 @@
+/* Demo page layout for this entry. Not part of the pattern. A homestay finder: highland green, brass. */
+:root {
+  --rt-table: #e4e8e1;
+  --rt-paper: #fbfaf5;
+  --rt-ink: #1d2a24;
+  --rt-mute: #64716a;
+  --rt-line: #dde2d8;
+  --rt-green: #24513d;
+  --rt-chip: #eef1ea;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rt-table: #0f1412;
+    --rt-paper: #171e1b;
+    --rt-ink: #e7eee9;
+    --rt-mute: #95a39b;
+    --rt-line: #2b3631;
+    --rt-green: #8fcfae;
+    --rt-chip: #1f2925;
+  }
+  .pendulum-wave { --pw-rail: #c7d3cc; --pw-string: #6f7e76; --pw-shadow: #000000; --pw-bob-dark: #4a340e; }
+}
+body { background: var(--rt-table); color: var(--rt-ink); }
+.sheet { background: var(--rt-paper); border-color: var(--rt-line); }
+:focus-visible { outline-color: var(--rt-green); }
+
+.find { width: min(700px, 100%); padding: 22px 24px 18px; display: grid; gap: 16px; }
+.brand { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--rt-green); }
+.find-head h1 { font-size: 21px; margin-top: 3px; }
+
+.places { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.places legend { font-size: 12px; color: var(--rt-mute); padding: 0; margin-bottom: 6px; }
+.places label {
+  position: relative; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; cursor: pointer;
+  background: var(--rt-chip); border: 1px solid var(--rt-line);
+}
+.places input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.places label:has(input:checked) { background: var(--rt-green); border-color: var(--rt-green); color: var(--rt-paper); }
+.places label:has(input:focus-visible) { outline: 2px solid var(--rt-green); outline-offset: 3px; }
+
+.results-area { position: relative; min-height: 196px; }
+.results { display: grid; border-top: 1px solid var(--rt-line); }
+.results li {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name price" "where rate";
+  column-gap: 16px; row-gap: 1px; padding: 11px 2px; border-bottom: 1px solid var(--rt-line);
+}
+.r-name { grid-area: name; font-weight: 650; font-size: 15px; }
+.r-where { grid-area: where; font-size: 13px; color: var(--rt-mute); }
+.r-price { grid-area: price; font-weight: 700; font-size: 15px; text-align: right; }
+.r-price small { font-weight: 400; font-size: 12px; color: var(--rt-mute); }
+.r-rate { grid-area: rate; font-size: 12.5px; color: var(--rt-mute); text-align: right; }
+.r-rate b { color: var(--rt-ink); }
+.results.is-waiting { visibility: hidden; }
+
+.loader { position: absolute; inset: 0; display: none; place-items: center; background: var(--rt-paper); }
+.loader.is-on { display: grid; }
+.loader .pendulum-wave { width: min(100%, 520px); height: 186px; aspect-ratio: auto; }
+
+.status { font-size: 13px; color: var(--rt-mute); }
+
+@media (max-width: 520px) {
+  .find { padding: 18px 16px 16px; }
+  .find-head h1 { font-size: 19px; }
+  .places label { padding: 7px 12px; font-size: 13.5px; }
+  .loader .pendulum-wave { height: 160px; }
+}

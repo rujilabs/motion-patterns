@@ -1,0 +1,20 @@
+{
+  "name": "Wave pin ripple",
+  "slug": "wave-pin-ripple",
+  "kind": "pattern",
+  "summary": "An address picker on a drawn street map: drag or tap the pin into place, it lands with a squash, and a ripple spreads under it, fading as 1 / sqrt(radius) like a real circular wave.",
+  "category": "wave",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out",
+    "--ease-in"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

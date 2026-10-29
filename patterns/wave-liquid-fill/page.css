@@ -1,0 +1,82 @@
+/* Demo page layout for this entry. Not part of the pattern. A village water fundraiser: river blue, warm paper. */
+:root {
+  --wf-table: #e8ebe6;
+  --wf-paper: #fcfbf7;
+  --wf-ink: #15293a;
+  --wf-mute: #5f6e78;
+  --wf-line: #dde1da;
+  --wf-blue: #1f6fa8;
+  --wf-glass: #93a7b3;
+  --wf-glass-back: #eef3f4;
+  --wf-shine: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wf-table: #0f1519;
+    --wf-paper: #161f25;
+    --wf-ink: #e5eef3;
+    --wf-mute: #93a4ae;
+    --wf-line: #2a363e;
+    --wf-blue: #6fb6e8;
+    --wf-glass: #6c8594;
+    --wf-glass-back: #1b2830;
+    --wf-shine: #c9dce6;
+  }
+  .liquid-fill { --lf-water: #2a6f9f; --lf-top: #4d97c8; --lf-edge: #9fd0ee; }
+  .j-lid { fill: #3a4a55; }
+}
+body { background: var(--wf-table); color: var(--wf-ink); }
+.sheet { background: var(--wf-paper); border-color: var(--wf-line); }
+.mute { color: var(--wf-mute); }
+:focus-visible { outline-color: var(--wf-blue); }
+
+.fund {
+  width: min(760px, 100%); padding: 24px 28px; display: grid; gap: 28px; align-items: center;
+  grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+}
+.jar { margin: 0; }
+.j-shadow { fill: var(--wf-ink); opacity: .08; }
+.j-back { fill: var(--wf-glass-back); }
+.j-glass { fill: none; stroke: var(--wf-glass); stroke-width: 3; stroke-linejoin: round; }
+.j-shine { fill: none; stroke: var(--wf-shine); stroke-width: 5; stroke-linecap: round; opacity: .55; }
+.j-shine2 { stroke-width: 3; opacity: .4; }
+.j-lid { fill: var(--wf-ink); }
+.j-ridge { stroke: var(--wf-paper); stroke-width: 1; opacity: .25; }
+.j-marks path { stroke: var(--wf-glass); stroke-width: 1.5; }
+.j-marks .j-goal { stroke-dasharray: 4 4; stroke-width: 1.2; }
+.j-label { font-size: 11px; fill: var(--wf-mute); font-variant-numeric: tabular-nums; }
+
+.fund-side { display: grid; gap: 16px; }
+.eyebrow { font-size: 12px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--wf-blue); }
+.fund-side h1 { font-size: 22px; margin-top: 4px; }
+.raised strong { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+.raised p:first-child { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.pct-line { font-size: 14px; margin-top: 2px; }
+#pct { font-weight: 700; color: var(--wf-blue); }
+
+.recent { border-block: 1px solid var(--wf-line); font-size: 13.5px; }
+.recent li { display: grid; grid-template-columns: 1fr auto 6.5em; gap: 12px; padding: 7px 0; }
+.recent li + li { border-top: 1px solid var(--wf-line); }
+.recent li .num { font-weight: 600; }
+.recent li .mute { text-align: right; font-size: 12.5px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  font: 600 14px/1 "Host Grotesk", sans-serif; padding: 11px 16px; border-radius: 6px; cursor: pointer;
+  color: var(--wf-paper); background: var(--wf-blue); border: 1px solid var(--wf-blue);
+}
+.btn.ghost { color: var(--wf-ink); background: none; border-color: var(--wf-line); }
+.btn.ghost:hover { border-color: var(--wf-mute); }
+.btn:disabled { cursor: default; color: var(--wf-mute); }
+.btn:active:not(:disabled) { translate: 0 1px; }
+.note { font-size: 12.5px; }
+
+@media (max-width: 640px) {
+  .fund { grid-template-columns: 1fr; padding: 18px 16px; gap: 14px; }
+  .jar { width: 200px; justify-self: center; }
+  .fund-side h1 { font-size: 19px; }
+}
+@media (max-height: 600px) and (min-width: 641px) {
+  .fund { padding-block: 18px; }
+  .fund-side { gap: 12px; }
+}

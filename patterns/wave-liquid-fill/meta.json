@@ -1,0 +1,16 @@
+{
+  "name": "Wave liquid fill",
+  "slug": "wave-liquid-fill",
+  "kind": "pattern",
+  "summary": "A fundraiser jar fills with water to the share raised. The surface is three travelling waves plus the jar's own slosh, kicked by every change of level and left to settle flat.",
+  "category": "wave",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

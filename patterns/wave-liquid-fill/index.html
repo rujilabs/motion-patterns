@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wave liquid fill demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="wave-liquid-fill.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="fund sheet" aria-labelledby="fund-h">
+    <figure class="liquid-fill jar" id="jar" data-value="70.35" data-full="76" data-label="pct" role="img"
+      aria-label="Jar filled to 70% of the goal.">
+      <svg viewBox="0 0 250 262" aria-hidden="true">
+        <defs>
+          <clipPath id="jar-inside">
+            <path class="lf-inside" d="M66 42H154V49C154 58 184 59 184 73V224C184 234 178 240 168 240H52C42 240 36 234 36 224V73C36 59 66 58 66 49Z"/>
+          </clipPath>
+        </defs>
+        <ellipse class="j-shadow" cx="110" cy="250" rx="86" ry="6"/>
+        <path class="j-back" d="M66 42H154V49C154 58 184 59 184 73V224C184 234 178 240 168 240H52C42 240 36 234 36 224V73C36 59 66 58 66 49Z"/>
+        <g class="lf-liquid" clip-path="url(#jar-inside)"></g>
+        <g class="j-marks">
+          <path d="M172 117h12M172 158h12M172 199h12"/>
+          <path class="j-goal" d="M36 76H184"/>
+        </g>
+        <path class="j-glass" d="M60 36H160V48C160 54 190 55 190 71V226C190 238 182 246 170 246H50C38 246 30 238 30 226V71C30 55 60 54 60 48Z"/>
+        <path class="j-shine" d="M44 92V214"/>
+        <path class="j-shine j-shine2" d="M52 100V128"/>
+        <rect class="j-lid" x="54" y="16" width="112" height="22" rx="4"/>
+        <path class="j-ridge" d="M58 23H162M58 29H162"/>
+        <text class="j-label" x="196" y="80">Goal</text>
+        <text class="j-label" x="196" y="121">75%</text>
+        <text class="j-label" x="196" y="162">50%</text>
+        <text class="j-label" x="196" y="203">25%</text>
+      </svg>
+    </figure>
+
+    <div class="fund-side">
+      <header>
+        <p class="eyebrow">Tabung Air Bersih, community fundraiser</p>
+        <h1 id="fund-h">Gravity-fed clean water for 46 homes at Kampung Ulu Pelita, Baram</h1>
+      </header>
+
+      <div class="raised">
+        <p><strong class="num" id="raised">RM 18,642</strong> <span class="mute">raised of RM 26,500</span></p>
+        <p class="pct-line"><span class="num" id="pct">70%</span> <span class="mute"><span class="num" id="donors">412</span> donors, 9 days left</span></p>
+      </div>
+
+      <ol class="recent" id="recent" aria-label="Latest donations">
+        <li><span>Aina, Kuching</span><span class="num">RM 50</span><span class="mute">4 min ago</span></li>
+        <li><span>Persatuan Belia Marudi</span><span class="num">RM 600</span><span class="mute">1 hr ago</span></li>
+        <li><span>Anonymous</span><span class="num">RM 25</span><span class="mute">2 hr ago</span></li>
+      </ol>
+
+      <div class="actions">
+        <button type="button" class="btn" id="give">Donate RM 50</button>
+        <button type="button" class="btn ghost" id="match">Lian Hup Hardware match, RM 3,000</button>
+      </div>
+      <p class="note mute" id="status" role="status">Pipe, filters and a 5,000 litre tank. Work starts in January.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

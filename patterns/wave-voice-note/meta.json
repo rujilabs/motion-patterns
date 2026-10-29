@@ -1,0 +1,19 @@
+{
+  "name": "Wave voice note",
+  "slug": "wave-voice-note",
+  "kind": "pattern",
+  "summary": "A chat voice message: the waveform fills with colour as it plays, the bars at the playhead lift with the voice, and you can drag along the wave to scrub. One Web Animation is the clock.",
+  "category": "wave",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

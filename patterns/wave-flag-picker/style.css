@@ -1,0 +1,36 @@
+/*
+ * wave-flag-picker: a listbox of flags on poles. wave-flag-picker.js cuts the chosen flag into strips
+ * (.fp-strips) and waves them; the other flags are their plain SVG, hanging still. Size a flag by its
+ * height and the SVG's own proportions: Malaysia is 1:2, most others 2:3.
+ */
+.flag-picker {
+  --fp-h: 40px;               /* flag height */
+  --fp-pole: #8a8f96;         /* the pole */
+  --fp-ring: #1d2b4f;         /* chosen marker */
+  list-style: none; margin: 0; padding: 0;
+}
+.flag-picker [role="option"] { position: relative; cursor: pointer; border-radius: 8px; }
+.flag-picker [role="option"]:focus-visible { outline: 2px solid var(--fp-ring); outline-offset: 2px; }
+
+/* the flag: the SVG sets its width from the height; the pole stands at its left edge, taller than the cloth */
+.fp-flag { position: relative; display: inline-block; height: var(--fp-h); margin-left: 6px; flex: none; }
+.fp-flag > svg { display: block; height: 100%; width: auto; }
+.fp-flag::before {
+  content: ""; position: absolute; left: -5px; top: -4px; width: 3px; height: calc(100% + 18px);
+  border-radius: 2px; background: var(--fp-pole);
+}
+.fp-flag::after {   /* the finial */
+  content: ""; position: absolute; left: -6.5px; top: -8px; width: 6px; height: 6px; border-radius: 50%; background: var(--fp-pole);
+}
+.fp-flag.is-waving > svg { visibility: hidden; }
+/* a hairline inside each flag, so white cloth (Indonesia, Japan) still has an edge on a white page */
+.fp-edge { fill: none; stroke: rgb(0 0 0 / .14); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.fp-strips { position: absolute; inset: 0; }
+.fp-strip { position: absolute; top: 0; height: 100%; overflow: hidden; transform-origin: 50% 50%; will-change: transform; }
+.fp-strip > svg { position: absolute; top: 0; display: block; }
+.fp-shade { position: absolute; inset: 0; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* wave-flag-picker.js gives the chosen flag one still frame of the wave, so it reads as flying; nothing moves */
+  .fp-strip, .fp-shade { animation: none; transition: none; }
+}

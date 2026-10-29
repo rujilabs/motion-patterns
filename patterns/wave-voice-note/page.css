@@ -1,0 +1,81 @@
+/* Demo page layout for this entry. Not part of the pattern. A tailor's chat: warm paper, one plum accent. */
+:root {
+  --vc-table: #e7e0d6;
+  --vc-wall: #f3ede5;
+  --vc-in: #fffdf9;
+  --vc-out: #f2e1e7;
+  --vc-ink: #2a1f24;
+  --vc-mute: #7a6b71;
+  --vc-line: #e0d5cb;
+  --vc-plum: #8b2f57;
+  --vc-bar-in: #cdbfc4;
+  --vc-bar-out: #d5a9bb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --vc-table: #141012;
+    --vc-wall: #1c1619;
+    --vc-in: #272024;
+    --vc-out: #3b2330;
+    --vc-ink: #f1e8ec;
+    --vc-mute: #a8979e;
+    --vc-line: #33292e;
+    --vc-plum: #e38db2;
+    --vc-bar-in: #54474d;
+    --vc-bar-out: #6e4a5a;
+  }
+  .voice-note { --vn-on-fill: #1c1619; }
+}
+body { background: var(--vc-table); color: var(--vc-ink); }
+:focus-visible { outline-color: var(--vc-plum); }
+
+.chat {
+  width: min(460px, 100%); border-radius: 14px; overflow: hidden;
+  background: var(--vc-wall); border: 1px solid var(--vc-line);
+  display: grid; grid-template-rows: auto 1fr auto;
+}
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--vc-in); border-bottom: 1px solid var(--vc-line); }
+.avatar, .vn-face {
+  flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 13px; font-weight: 700; letter-spacing: .02em; color: #fff; background: #5b6f4e;
+}
+.chat-head h1 { font-size: 16px; font-weight: 650; }
+.presence { font-size: 12.5px; color: var(--vc-mute); }
+
+.thread { display: grid; gap: 8px; padding: 14px 14px 10px; align-content: start; }
+.day { justify-self: center; font-size: 11.5px; color: var(--vc-mute); background: var(--vc-in); padding: 3px 10px; border-radius: 8px; margin-bottom: 2px; }
+.msg {
+  position: relative; max-width: 86%; padding: 8px 10px 18px; border-radius: 10px;
+  font-size: 14px; line-height: 1.4; background: var(--vc-in);
+}
+.msg.in { justify-self: start; border-top-left-radius: 3px; }
+.msg.out { justify-self: end; background: var(--vc-out); border-top-right-radius: 3px; }
+.msg .meta { position: absolute; right: 10px; bottom: 4px; font-size: 10.5px; color: var(--vc-mute); }
+.msg:has(.voice-note) { width: 86%; padding-bottom: 20px; }
+
+.voice-note { --vn-fill: var(--vc-plum); --vn-bar: var(--vc-bar-in); gap: 9px; }
+.msg.out .voice-note { --vn-bar: var(--vc-bar-out); }
+.vn-face { position: relative; width: 40px; height: 40px; }
+/* the mic badge on the sender's face: plum until you have heard the note, then grey */
+.vn-mic {
+  position: absolute; right: -3px; bottom: -2px; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--vc-plum); border: 2px solid var(--vc-in); transition: background-color .4s;
+}
+.vn-mic::before { content: ""; position: absolute; left: 50%; top: 2px; width: 4px; height: 6px; margin-left: -2px; border-radius: 2px; background: var(--vc-in); }
+.voice-note.is-heard .vn-mic { background: var(--vc-mute); }
+.vn-time { color: var(--vc-mute); min-width: 2.4em; }
+
+.now-playing { font-size: 12.5px; color: var(--vc-mute); padding: 10px 16px 12px; border-top: 1px solid var(--vc-line); background: var(--vc-in); min-height: 2.6em; }
+
+@media (max-width: 480px) {
+  .stage { padding: 12px 10px; }
+  .msg { max-width: 92%; }
+  .msg:has(.voice-note) { width: 92%; }
+}
+@media (max-height: 560px) and (min-width: 481px) {
+  .thread { gap: 6px; padding-block: 10px 8px; }
+  .chat-head { padding-block: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vn-mic { transition: none; }
+}

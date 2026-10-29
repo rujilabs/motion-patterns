@@ -1,0 +1,23 @@
+/*
+ * wave-liquid-fill: water in a jar, filled to a percentage. wave-liquid-fill.js draws three paths
+ * into .lf-liquid, which your SVG clips to the inside of the jar: the body of the water, the top of
+ * the surface seen from a little above, and a bright line along the front edge.
+ */
+.liquid-fill {
+  --lf-water: #2c7bb6;   /* the body of the water */
+  --lf-top: #8cc3e6;     /* the surface, seen from above */
+  --lf-edge: #d8ecf8;    /* light caught on the front edge */
+  position: relative;
+}
+.liquid-fill svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lf-body { fill: var(--lf-water); }
+.lf-top { fill: var(--lf-top); }
+.lf-edge { fill: none; stroke: var(--lf-edge); stroke-width: 1.2; stroke-linejoin: round; opacity: .8; }
+
+/* without the script the jar shows empty and the percentage next to it is the number to read */
+.lf-pct { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* wave-liquid-fill.js sets the level straight away, with a flat surface; nothing moves */
+  .lf-body, .lf-top, .lf-edge { transition: none; animation: none; }
+}

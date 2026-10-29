@@ -1,0 +1,67 @@
+/*
+ * wave-voice-note: a voice message player. The waveform is two rows of the same bars; the played
+ * row sits on top and is clipped to the playhead by wave-voice-note.js, so the fill can stop
+ * halfway through a bar. The wave is the slider: press and drag to scrub.
+ */
+.voice-note {
+  --vn-bar: #c4b5bb;      /* bars not played yet */
+  --vn-fill: #8b2f57;     /* played bars, the thumb and the play button */
+  --vn-on-fill: #ffffff;  /* the play icon */
+  --vn-h: 30px;           /* wave height */
+  --vn-bar-w: 3px;        /* one bar */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.vn-play {
+  flex: none; width: 36px; height: 36px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  display: grid; place-items: center; background: var(--vn-fill); color: var(--vn-on-fill);
+}
+.vn-play svg { width: 14px; height: 14px; grid-area: 1 / 1; fill: currentColor; }
+.vn-play .vn-i-pause, .voice-note.is-playing .vn-i-play { display: none; }
+.voice-note.is-playing .vn-i-pause { display: block; }
+.vn-play:active { scale: .94; }
+
+.vn-wave {
+  position: relative; flex: 1; min-width: 0; height: var(--vn-h);
+  cursor: pointer; touch-action: none; border-radius: 4px;
+  /* without the script: a flat line, so the bubble still reads as audio */
+  background: linear-gradient(var(--vn-bar), var(--vn-bar)) center / 100% 2px no-repeat;
+}
+.voice-note.is-ready .vn-wave { background: none; }
+/* one column per bar, so any number of bars fits any width; bars thin out on a narrow bubble */
+.vn-bars {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); align-items: center; justify-items: center;
+  pointer-events: none;
+}
+.vn-bar {
+  width: min(var(--vn-bar-w), 70%); height: max(3px, calc(var(--a) * 100%));
+  border-radius: calc(var(--vn-bar-w) / 2); background: var(--vn-bar);
+}
+.vn-played { clip-path: inset(0 100% 0 0); }
+.vn-played .vn-bar { background: var(--vn-fill); }
+
+/* the playhead: a full-width layer that slides from -100% to 0, so its right edge is the position */
+.vn-head { position: absolute; inset: 0; transform: translateX(-100%); pointer-events: none; }
+.vn-thumb {
+  position: absolute; right: -6px; top: 50%; width: 12px; height: 12px; margin-top: -6px;
+  border-radius: 50%; background: var(--vn-fill); transition: scale var(--dur-quick) var(--ease-out);
+}
+.voice-note.is-scrubbing .vn-thumb { scale: 1.35; }
+
+.vn-time { flex: none; min-width: 2.6em; font-size: 12px; font-variant-numeric: tabular-nums; }
+.vn-rate {
+  flex: none; font: inherit; font-size: 11px; font-weight: 650; line-height: 1; cursor: pointer;
+  padding: 4px 6px; border-radius: 10px; border: 0; color: var(--vn-fill);
+  background: color-mix(in srgb, var(--vn-bar) 45%, transparent);
+  min-width: 3.4em; font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script moves the fill a whole second at a time and the bars never lift */
+  .vn-thumb { transition: none; }
+  .vn-play:active { scale: none; }
+}

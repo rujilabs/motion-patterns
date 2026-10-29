@@ -1,0 +1,32 @@
+/*
+ * wave-pin-ripple: a pin on a drawn SVG map that you drag or tap into place. wave-pin-ripple.js adds
+ * the shadow, lifts the pin while it is held, and draws the ripple rings into .pm-ripples, which sits
+ * under the pin. Ring sizes come from a transform, so the stroke is kept the same on every scale.
+ */
+.pin-map {
+  --pm-pin: #d1342b;       /* pin and ripple */
+  --pm-dot: #ffffff;       /* the hole in the pin */
+  --pm-shadow: rgb(20 28 26 / .28);
+  position: relative;
+  border-radius: 8px;
+  cursor: crosshair;
+  touch-action: none;      /* the map is the control: dragging on it moves the pin, not the page */
+  -webkit-user-select: none;
+  user-select: none;
+}
+.pin-map svg { display: block; width: 100%; height: auto; }
+.pm-pin { cursor: grab; }
+.pin-map.is-held .pm-pin { cursor: grabbing; }
+.pm-pin .pm-head { fill: var(--pm-pin); }
+.pm-pin .pm-hole { fill: var(--pm-dot); }
+.pm-shadow { fill: var(--pm-shadow); transform-box: fill-box; transform-origin: center; }
+.pm-ring { fill: none; stroke: var(--pm-pin); vector-effect: non-scaling-stroke; opacity: 0; }
+
+/* with the script, the pin waits off the map until its first drop; without it, the pin just shows */
+.js .pin-map.is-waiting .pm-pin, .js .pin-map.is-waiting .pm-shadow { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* wave-pin-ripple.js moves the pin straight to its spot, with no lift, flight, squash or ripple */
+  .js .pin-map .pm-pin, .js .pin-map .pm-shadow { opacity: 1; }
+  .pm-ring { display: none; }
+}
