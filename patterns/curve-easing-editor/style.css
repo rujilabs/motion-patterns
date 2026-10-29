@@ -1,0 +1,58 @@
+/*
+ * curve-easing-editor: a cubic-bezier graph with two handles, a dot that runs the curve, and a preview
+ * track with a spacing chart. easing-editor.js builds the parts inside .ee-graph and .ee-track; this
+ * file only draws them. The graph shows time across and progress up, from --ee-y-min to --ee-y-max
+ * (keep them equal to data-y-min and data-y-max), so overshoot has room above and below the unit box.
+ */
+.curve-easing-editor {
+  --ee-ink: #1c2026;        /* curve, handle rings */
+  --ee-accent: #d2452d;     /* handles, the running dots */
+  --ee-grid: rgb(0 0 0 / .08);
+  --ee-box: rgb(0 0 0 / .03);
+  --ee-arm: rgb(0 0 0 / .35);
+}
+.ee-graph {
+  position: relative;
+  aspect-ratio: 1 / 1.6;    /* one unit wide, 1.6 units tall: -0.3 to 1.3 */
+  touch-action: none;       /* the graph takes the finger; the rest of the page scrolls */
+  cursor: crosshair;
+  -webkit-user-select: none; user-select: none;
+}
+.ee-plot { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ee-plot * { vector-effect: non-scaling-stroke; fill: none; }
+.ee-plot .ee-box { fill: var(--ee-box); stroke: var(--ee-grid); }
+.ee-grid { stroke: var(--ee-grid); }
+.ee-linear { stroke: var(--ee-grid); stroke-dasharray: 4 4; }
+.ee-arm { stroke: var(--ee-arm); stroke-width: 1.5; }
+.ee-curve { stroke: var(--ee-ink); stroke-width: 3; stroke-linecap: round; }
+
+.ee-handle {
+  position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px;
+  border-radius: 50%; background: var(--ee-accent); border: 3px solid #fff;
+  box-shadow: 0 0 0 1.5px var(--ee-ink), 0 2px 6px rgb(0 0 0 / .25);
+  cursor: grab; transition: scale var(--dur-quick) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.ee-handle:hover, .ee-handle.is-held { scale: 1.2; }
+.ee-handle.is-held { cursor: grabbing; }
+.ee-handle:focus-visible { outline: 2px solid var(--ee-accent); outline-offset: 4px; }
+
+/* the runner: an outer box on a steady clock across, an inner dot on the easing upward */
+.ee-run { position: absolute; left: 0; width: 0; height: 0; pointer-events: none; opacity: 0; }
+.ee-run-dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--ee-accent); }
+.curve-easing-editor.is-playing .ee-run { opacity: 1; }
+
+/* preview track: a spacing chart (one tick per twelfth of the duration) and the dot */
+.ee-track { position: relative; height: 28px; }
+.ee-track::before { content: ""; position: absolute; left: 9px; right: 9px; top: 50%; height: 2px; translate: 0 -50%; background: var(--ee-grid); }
+.ee-tick {
+  position: absolute; top: 50%; width: 2px; height: 12px; translate: -50% -50%;
+  left: calc(9px + var(--p, 0) * (100% - 18px)); background: var(--ee-arm);
+}
+.ee-dot { position: absolute; left: 0; top: 50%; width: 18px; height: 18px; margin-top: -9px; border-radius: 50%; background: var(--ee-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no replays: the graph and the spacing chart already show the whole curve, still */
+  .ee-handle { transition: none; }
+  .ee-run { display: none; }
+}

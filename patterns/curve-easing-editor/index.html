@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curve easing editor demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="easing-editor.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="tok sheet" aria-labelledby="tok-h">
+    <header class="tok-head">
+      <p class="eyebrow">Teratai Pay design system · Motion tokens</p>
+      <h1 id="tok-h">Bottom sheet opens</h1>
+    </header>
+
+    <div class="curve-easing-editor tok-body" id="ed" data-value="0.22, 1, 0.36, 1" data-duration="420" data-label="Sheet easing">
+      <div class="graph-col">
+        <div class="ee-graph"></div>
+        <p class="axis axis-x" aria-hidden="true">Time</p>
+        <p class="axis axis-y" aria-hidden="true">Progress</p>
+        <p class="axis axis-1" aria-hidden="true">1</p>
+        <p class="axis axis-0" aria-hidden="true">0</p>
+      </div>
+
+      <div class="side">
+        <div class="presets" role="group" aria-label="Start from">
+          <button type="button" class="chip" data-v="0.22, 1, 0.36, 1" aria-pressed="true">Settle</button>
+          <button type="button" class="chip" data-v="0.65, 0, 0.35, 1" aria-pressed="false">In and out</button>
+          <button type="button" class="chip" data-v="0.34, 1.3, 0.64, 1" aria-pressed="false">Overshoot</button>
+          <button type="button" class="chip" data-v="0.55, 0, 1, 0.45" aria-pressed="false">Leave</button>
+        </div>
+
+        <div class="out">
+          <p class="out-label">--ease-sheet-open</p>
+          <code class="out-code num" id="code">cubic-bezier(0.22, 1.00, 0.36, 1.00)</code>
+          <button type="button" class="copy" id="copy">Copy</button>
+        </div>
+
+        <div class="dur" role="radiogroup" aria-label="Duration">
+          <span class="dur-label">Duration</span>
+          <label><input type="radio" name="dur" value="280"> 280 ms</label>
+          <label><input type="radio" name="dur" value="420" checked> 420 ms</label>
+          <label><input type="radio" name="dur" value="600"> 600 ms</label>
+        </div>
+
+        <div class="preview">
+          <div class="ee-track"></div>
+          <p class="preview-note">Ticks: where the sheet is every <span id="frame" class="num">35</span> ms.</p>
+        </div>
+
+        <button type="button" class="btn" id="replay">Replay</button>
+      </div>
+    </div>
+    <p class="hint">Drag a red handle, or focus one and use the arrow keys (Shift for bigger steps). It replays when you let go.</p>
+  </section>
+</main>
+</body>
+</html>

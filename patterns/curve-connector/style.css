@@ -1,0 +1,63 @@
+/*
+ * curve-connector: a board of nodes joined by curved connectors. connector.js places the nodes, moves
+ * them with the pointer or the keys, and redraws each connector as a cubic curve from the right port of
+ * one node to the left port of the next. The control points ride springs, so the curve swings a little
+ * behind a fast drag and settles.
+ */
+.curve-connector {
+  --cc-wire: #2d3a36;      /* connector */
+  --cc-port: #2d3a36;      /* port ring */
+  --cc-fill: #ffffff;      /* port centre, node card */
+  --cc-token: #0f8a5f;     /* the dot a test run sends */
+  --cc-focus: #0f8a5f;
+  position: relative;
+}
+.cc-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.cc-wire { fill: none; stroke: var(--cc-wire); stroke-width: 2.25; stroke-linecap: round; }
+
+.cc-node {
+  position: absolute; left: 0; top: 0;
+  background: var(--cc-fill);
+  cursor: grab;
+  touch-action: none;            /* the node drags; the page still scrolls everywhere else */
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: scale var(--dur-quick) var(--ease-out), box-shadow var(--dur-quick) var(--ease-out);
+  box-shadow: 0 1px 2px rgb(0 0 0 / .08);
+}
+/* the two ports: in on the left edge, out on the right, both at half height where the curve meets them */
+.cc-node::before, .cc-node::after {
+  content: ""; position: absolute; top: 50%; width: 11px; height: 11px; translate: 0 -50%;
+  border-radius: 50%; background: var(--cc-fill); border: 2px solid var(--cc-port); box-sizing: border-box;
+}
+.cc-node::before { left: -6px; }
+.cc-node::after { right: -6px; }
+/* a first step takes nothing in, a last step sends nothing out */
+.cc-node.cc-start::before, .cc-node.cc-end::after { display: none; }
+/* data-flow="down": ports on the top and bottom edges */
+.curve-connector[data-flow="down"] .cc-node::before,
+.curve-connector[data-flow="down"] .cc-node::after { top: auto; left: 50%; right: auto; translate: -50% 0; }
+.curve-connector[data-flow="down"] .cc-node::before { top: -6px; }
+.curve-connector[data-flow="down"] .cc-node::after { bottom: -6px; }
+.cc-node.is-dragging {
+  cursor: grabbing; scale: 1.025;
+  /* lifted off the board: a wider, softer shadow, further down */
+  box-shadow: 0 14px 24px -10px rgb(0 0 0 / .32), 0 2px 4px rgb(0 0 0 / .08);
+}
+.cc-node:focus-visible { outline: 2px solid var(--cc-focus); outline-offset: 3px; }
+
+.cc-token {
+  position: absolute; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--cc-token); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cc-token), transparent 75%);
+  offset-rotate: 0deg; pointer-events: none;
+}
+
+/* without the script: the steps read as a plain row, no connectors */
+.curve-connector:not(.is-ready) { display: flex; flex-wrap: wrap; gap: 16px; }
+.curve-connector:not(.is-ready) .cc-node { position: relative; }
+.curve-connector:not(.is-ready) .cc-wires { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* connector.js snaps the curve to the nodes with no spring, and a test dot jumps to its end */
+  .cc-node { transition: none; }
+}

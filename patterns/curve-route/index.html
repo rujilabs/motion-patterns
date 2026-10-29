@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curve route demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="route.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="track sheet" aria-labelledby="track-h">
+    <header class="track-head">
+      <p class="eyebrow">Order HS-20418 · Hock Seng Hardware, Ipoh</p>
+      <h1 id="track-h">Out for delivery: Deka 56 inch ceiling fan and 2 boxes of 9 W LED bulbs</h1>
+    </header>
+
+    <div class="track-body">
+      <div class="map">
+        <div class="curve-route" id="route" data-at="3" role="img" aria-label="Delivery route map. The van is at stop 4 of 7, Falim.">
+          <svg viewBox="0 0 400 280" aria-hidden="true">
+            <rect class="m-ground" width="400" height="280" rx="6"/>
+            <path class="m-park" d="M250 214 c18 -10 50 -6 58 10 s-6 34 -30 34 s-44 -26 -28 -44Z"/>
+            <path class="m-park" d="M28 40 c16 -14 54 -10 60 6 s-14 30 -36 26 s-36 -18 -24 -32Z"/>
+            <path class="m-river" d="M128 0 C140 60 112 96 136 140 S 214 210 196 280"/>
+            <g class="m-roads">
+              <path d="M0 196 C80 186 140 230 400 214"/>
+              <path d="M0 110 C100 120 200 70 400 96"/>
+              <path d="M60 0 C70 90 40 200 70 280"/>
+              <path d="M262 0 C250 80 290 160 270 280"/>
+              <path d="M340 0 C330 120 380 200 360 280"/>
+              <path d="M0 260 C120 250 260 270 400 252"/>
+            </g>
+            <text class="m-label" x="146" y="66">Sungai Kinta</text>
+            <path class="cr-route" d="M38 232 C47 221.3 70.3 172.3 92 168 C113.7 163.7 149 213.7 168 206 C187 198.3 186.3 127 206 122 C225.7 117 267.3 181 286 176 C304.7 171 304.7 113.7 318 92 C331.3 70.3 358 53.7 366 46"/>
+            <circle class="cr-stop" cx="38" cy="232" r="5.5"/>
+            <circle class="cr-stop" cx="92" cy="168" r="5.5"/>
+            <circle class="cr-stop" cx="168" cy="206" r="5.5"/>
+            <circle class="cr-stop" cx="206" cy="122" r="5.5"/>
+            <circle class="cr-stop" cx="286" cy="176" r="5.5"/>
+            <circle class="cr-stop" cx="318" cy="92" r="5.5"/>
+            <circle class="cr-stop cr-home" cx="366" cy="46" r="7"/>
+            <text class="m-pin" x="30" y="256">Shop</text>
+            <text class="m-pin" x="344" y="26">Your door</text>
+            <g class="cr-van">
+              <g class="cr-body">
+                <rect class="cr-van-shell" x="-14" y="-7" width="28" height="14" rx="3.2"/>
+                <rect class="cr-van-glass" x="6" y="-5.6" width="5" height="11.2" rx="1.6"/>
+                <rect class="cr-van-roof" x="-11.6" y="-5.1" width="15.6" height="10.2" rx="1.4"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <ol class="stops" id="stops">
+        <li class="past"><span class="where">Hock Seng Hardware, Jalan Bendahara</span><span class="when num">Loaded 9:40 am</span></li>
+        <li class="past"><span class="where">Pasir Puteh, 2 parcels</span><span class="when num">Dropped 10:12 am</span></li>
+        <li class="past"><span class="where">Kampung Simee, 1 parcel</span><span class="when num">Dropped 10:37 am</span></li>
+        <li class="now"><span class="where">Falim, 3 parcels</span><span class="when num">Van is here, 10:58 am</span></li>
+        <li><span class="where">Bercham, 1 parcel</span><span class="when num">About 11:24 am</span></li>
+        <li><span class="where">Tasek, 2 parcels</span><span class="when num">About 11:46 am</span></li>
+        <li class="yours"><span class="where">Your door, Taman Ipoh Jaya</span><span class="when num">12:05 to 12:35 pm</span></li>
+      </ol>
+    </div>
+
+    <footer class="track-foot">
+      <p class="status" id="status" role="status">Van PKN 4127 with Muthu is at Falim. 2 stops before yours.</p>
+      <button type="button" class="btn" id="next">Next scan</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

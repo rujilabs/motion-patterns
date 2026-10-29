@@ -1,0 +1,74 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --fl-table: #e7e9e4;
+  --fl-paper: #fbfbf8;
+  --fl-board: #f1f2ed;
+  --fl-dot: #cfd3ca;
+  --fl-ink: #1d2422;
+  --fl-mute: #69716d;
+  --fl-line: #dcdfd7;
+  --fl-green: #0f7d56;
+  --fl-amber: #b9770e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fl-table: #111413;
+    --fl-paper: #181c1b;
+    --fl-board: #1f2422;
+    --fl-dot: #333b38;
+    --fl-ink: #e7ebe9;
+    --fl-mute: #9aa39f;
+    --fl-line: #2c3330;
+    --fl-green: #4cc493;
+    --fl-amber: #e3a646;
+  }
+  .curve-connector { --cc-wire: #b9c3be; --cc-port: #b9c3be; --cc-fill: #262c2a; }
+}
+body { background: var(--fl-table); color: var(--fl-ink); }
+.flow { width: min(740px, 100%); padding: 20px 22px; display: grid; gap: 14px; background: var(--fl-paper); border-color: var(--fl-line); }
+.flow-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.eyebrow { font-size: 12.5px; color: var(--fl-mute); }
+.flow-head h1 { font-size: 21px; margin-top: 3px; }
+.saved { font-size: 12.5px; }
+
+.board {
+  --cc-token: var(--fl-green); --cc-focus: var(--fl-green);
+  height: 316px; border-radius: 8px; border: 1px solid var(--fl-line);
+  background-color: var(--fl-board);
+  background-image: radial-gradient(circle, var(--fl-dot) 1px, transparent 1.4px);
+  background-size: 16px 16px; background-position: 8px 8px;
+}
+.step { width: 176px; padding: 10px 14px 11px; border-radius: 8px; border: 1px solid var(--fl-line); display: grid; gap: 1px; }
+.kind { font-size: 11px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+.kind::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: currentColor; }
+.k-trigger { color: var(--fl-green); }
+.k-check { color: var(--fl-amber); }
+.k-do { color: var(--fl-mute); }
+.title { font-size: 14.5px; font-weight: 650; }
+.detail { font-size: 12.5px; color: var(--fl-mute); }
+/* a step the test order has passed through */
+.step.is-hit { border-color: var(--fl-green); }
+.step.is-hit .kind::after { content: "Passed"; margin-left: auto; color: var(--fl-green); letter-spacing: .04em; }
+
+.flow-foot { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.hint { font-size: 12.5px; color: var(--fl-mute); max-width: 46ch; }
+.result { font-size: 13.5px; font-weight: 600; color: var(--fl-green); min-height: 1.45em; margin-top: -6px; }
+.btn {
+  font: inherit; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 6px; cursor: pointer; flex: none;
+  color: var(--fl-paper); background: var(--fl-ink); border: 0;
+}
+.btn:disabled { opacity: .55; cursor: default; }
+
+@media (max-width: 640px) {
+  .flow { padding: 16px; }
+  .flow-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .board { height: 400px; }
+  .step { width: 136px; padding: 9px 11px; }
+  .title { font-size: 13.5px; }
+  .detail { font-size: 12px; }
+  .flow-foot { flex-direction: column; align-items: stretch; }
+}
+@media (max-height: 560px) and (min-width: 641px) {
+  .flow { padding-block: 14px; gap: 10px; }
+  .board { height: 280px; }
+}

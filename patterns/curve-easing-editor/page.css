@@ -1,0 +1,69 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --tk-table: #e8e6e1;
+  --tk-paper: #ffffff;
+  --tk-ink: #1c2026;
+  --tk-mute: #666d78;
+  --tk-line: #e0dfda;
+  --tk-red: #d2452d;
+  --tk-code: #f4f3ef;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tk-table: #121315;
+    --tk-paper: #1b1d21;
+    --tk-ink: #eceef1;
+    --tk-mute: #9ba1ab;
+    --tk-line: #2e3137;
+    --tk-red: #ff6e55;
+    --tk-code: #24272c;
+  }
+  .curve-easing-editor { --ee-ink: #eceef1; --ee-grid: rgb(255 255 255 / .1); --ee-box: rgb(255 255 255 / .03); --ee-arm: rgb(255 255 255 / .4); }
+  .ee-handle { border-color: var(--tk-paper); }
+}
+body { background: var(--tk-table); color: var(--tk-ink); }
+.tok { width: min(700px, 100%); padding: 20px 24px; display: grid; gap: 12px; background: var(--tk-paper); border-color: var(--tk-line); }
+.eyebrow { font-size: 12.5px; color: var(--tk-mute); }
+.tok-head h1 { font-size: 22px; margin-top: 2px; }
+
+.tok-body { --ee-accent: var(--tk-red); display: grid; grid-template-columns: 196px 1fr; gap: 40px; align-items: center; }
+.graph-col { position: relative; padding-left: 26px; }
+/* the unit box runs from 18.75% to 81.25% of the graph height (progress 1 to 0 of -0.3 to 1.3) */
+.axis { position: absolute; font-size: 11.5px; color: var(--tk-mute); letter-spacing: .02em; line-height: 1; }
+.axis-x { left: 26px; top: calc(81.25% + 8px); }
+.axis-y { left: 4px; top: 50%; translate: 0 -50%; writing-mode: vertical-rl; rotate: 180deg; }
+.axis-1, .axis-0 { left: 12px; translate: 0 -50%; font-variant-numeric: tabular-nums; }
+.axis-1 { top: 18.75%; }
+.axis-0 { top: 81.25%; }
+
+.side { display: grid; gap: 16px; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 13px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--tk-line); background: transparent; color: var(--tk-ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--tk-ink); color: var(--tk-paper); border-color: var(--tk-ink); }
+
+.out { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; padding: 10px 12px; border-radius: 8px; background: var(--tk-code); }
+.out-label { grid-column: 1 / -1; font: 12px/1.3 ui-monospace, "SFMono-Regular", Menlo, monospace; color: var(--tk-mute); }
+.out-code { font: 600 14.5px/1.3 ui-monospace, "SFMono-Regular", Menlo, monospace; min-width: 0; overflow-wrap: anywhere; }
+.copy { font: inherit; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--tk-line); background: var(--tk-paper); color: var(--tk-ink); cursor: pointer; }
+
+.dur { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; font-size: 13.5px; }
+.dur-label { color: var(--tk-mute); margin-right: 2px; }
+.dur label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+.dur input { accent-color: var(--tk-ink); margin: 0; }
+
+.preview { display: grid; gap: 4px; }
+.preview-note { font-size: 12px; color: var(--tk-mute); }
+.btn { justify-self: start; font: inherit; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 6px; border: 0; cursor: pointer; color: var(--tk-paper); background: var(--tk-ink); }
+.hint { font-size: 12.5px; color: var(--tk-mute); padding-top: 10px; border-top: 1px solid var(--tk-line); }
+
+@media (max-width: 620px) {
+  .tok { padding: 16px; }
+  .tok-body { grid-template-columns: 1fr; gap: 18px; }
+  .graph-col { width: 196px; justify-self: center; }
+  .out-code { font-size: 13.5px; }
+}
+@media (max-height: 560px) and (min-width: 621px) {
+  .tok { padding-block: 14px; gap: 8px; }
+  .tok-body { grid-template-columns: 170px 1fr; }
+  .side { gap: 12px; }
+}

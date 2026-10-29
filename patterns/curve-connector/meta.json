@@ -1,0 +1,21 @@
+{
+  "name": "Curve connector",
+  "slug": "curve-connector",
+  "kind": "pattern",
+  "summary": "A workflow board where curved connectors stay attached to both ends of the steps you drag. The control points ride springs, so a fast drag swings the curve and it settles like a cable.",
+  "category": "curve",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout",
+    "--ease-out",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

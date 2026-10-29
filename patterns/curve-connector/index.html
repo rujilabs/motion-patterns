@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curve connector demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="connector.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="flow sheet" aria-labelledby="flow-h">
+    <header class="flow-head">
+      <div>
+        <p class="eyebrow">Rasa Pagi Catering, Shah Alam · Automations</p>
+        <h1 id="flow-h">Office lunch orders</h1>
+      </div>
+      <p class="saved mute" id="saved" role="status">Saved 4:12 pm</p>
+    </header>
+
+    <div class="curve-connector board" id="board">
+      <svg class="cc-wires" aria-hidden="true">
+        <path class="cc-wire" id="w1" data-from="n-order" data-to="n-slot"/>
+        <path class="cc-wire" id="w2" data-from="n-slot" data-to="n-wa"/>
+        <path class="cc-wire" id="w3" data-from="n-slot" data-to="n-run"/>
+      </svg>
+      <div class="cc-node cc-start step" id="n-order" tabindex="0" data-x="18" data-y="34" aria-roledescription="movable step" aria-describedby="flow-hint">
+        <p class="kind k-trigger">When</p>
+        <p class="title">Order form sent</p>
+        <p class="detail">Office lunch, 20 pax or more</p>
+      </div>
+      <div class="cc-node step" id="n-slot" tabindex="0" data-x="246" data-y="128" aria-roledescription="movable step" aria-describedby="flow-hint">
+        <p class="kind k-check">Check</p>
+        <p class="title">Kitchen has room</p>
+        <p class="detail">Under 180 pax that day</p>
+      </div>
+      <div class="cc-node cc-end step" id="n-wa" tabindex="0" data-x="486" data-y="22" aria-roledescription="movable step" aria-describedby="flow-hint">
+        <p class="kind k-do">Then</p>
+        <p class="title">WhatsApp the buyer</p>
+        <p class="detail">Template: pesanan_diterima</p>
+      </div>
+      <div class="cc-node cc-end step" id="n-run" tabindex="0" data-x="486" data-y="214" aria-roledescription="movable step" aria-describedby="flow-hint">
+        <p class="kind k-do">Then</p>
+        <p class="title">Add to delivery run</p>
+        <p class="detail">Van 2, leaves 10:45 am</p>
+      </div>
+    </div>
+
+    <footer class="flow-foot">
+      <p class="hint" id="flow-hint">Drag a step, or focus it and use the arrow keys (Shift moves further). The connectors stay attached.</p>
+      <button type="button" class="btn" id="test">Test with order RP-0912</button>
+    </footer>
+    <p class="result" id="result" role="status"></p>
+  </section>
+</main>
+</body>
+</html>

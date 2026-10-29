@@ -1,0 +1,21 @@
+/*
+ * curve-signature: a signature pad. signature.js puts a canvas inside, inks each stroke with a width
+ * that follows the pen speed, and un-draws the ink on clear. The pad itself only needs a size; the
+ * signing line and any labels are yours.
+ */
+.curve-signature {
+  --sig-ink: #1d3591;          /* ballpoint blue; read by signature.js when it paints */
+  position: relative;
+  min-height: 120px;
+  cursor: crosshair;
+  touch-action: none;          /* the pad takes the finger; the rest of the page still scrolls */
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.curve-signature canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.curve-signature.is-clearing { cursor: progress; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* signature.js removes the ink at once on clear, with no rewind; drawing is the input, so it stays */
+  .curve-signature { transition: none; }
+}

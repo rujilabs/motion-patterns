@@ -1,0 +1,73 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --ck-table: #efe4d8;
+  --ck-paper: #fffaf4;
+  --ck-ink: #2b1c17;
+  --ck-mute: #7a6a62;
+  --ck-line: #eadbcc;
+  --ck-berry: #b8284f;
+  --ck-sponge: #4f2d21;
+  --ck-ganache: #3a1f16;
+  --ck-cream: #f6e4d2;
+  --ck-board: #e9d9b8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ck-table: #15100e;
+    --ck-paper: #1e1714;
+    --ck-ink: #f2e9e3;
+    --ck-mute: #a99a91;
+    --ck-line: #33281f;
+    --ck-berry: #ef6b8e;
+    --ck-sponge: #6a3d2c;
+    --ck-ganache: #4d2a1e;
+    --ck-cream: #f0d9c2;
+    --ck-board: #4a3f2c;
+  }
+  .sizes { --ap-track: rgb(255 255 255 / .14); }
+}
+body { background: var(--ck-table); color: var(--ck-ink); }
+.cake-card { width: min(640px, 100%); padding: 22px 24px; display: grid; gap: 6px; background: var(--ck-paper); border-color: var(--ck-line); }
+.eyebrow { font-size: 12.5px; color: var(--ck-mute); }
+.cake-head h1 { font-size: 24px; margin-top: 2px; }
+.sub { font-size: 13.5px; margin-top: 2px; }
+
+.sizes { --ap-line: 112px; height: 236px; margin-inline: -24px; color: var(--ck-berry); }
+.ap-item { display: grid; justify-items: center; gap: 10px; }
+/* the label turns berry as its cake reaches the top */
+.lab { font-size: 13px; font-weight: 650; white-space: nowrap; color: color-mix(in srgb, var(--ck-berry) calc(var(--ap-near, 0) * 100%), var(--ck-mute)); }
+/* a cake seen from above: sponge, a ganache top, a ring of piped cream; the shadow grows as it lifts */
+.cake {
+  --d: 92px;
+  width: var(--d); aspect-ratio: 1; border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 30%, rgb(255 255 255 / .16), transparent 46%),
+    radial-gradient(circle, var(--ck-ganache) 0 60%, var(--ck-sponge) 61%);
+  outline: 4px dotted var(--ck-cream); outline-offset: calc(var(--d) * -.14);
+  box-shadow:
+    0 0 0 calc(var(--d) * .07) var(--ck-board),
+    0 calc(4px + var(--ap-near, 0) * 12px) calc(8px + var(--ap-near, 0) * 16px) calc(var(--ap-near, 0) * -2px) rgb(60 30 20 / calc(.18 + var(--ap-near, 0) * .14));
+}
+/* to scale: 11 px of screen per inch of cake */
+.c6 { --d: 66px; } .c7 { --d: 77px; } .c8 { --d: 88px; } .c9 { --d: 99px; } .c10 { --d: 110px; }
+
+.pick { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-top: 12px; border-top: 1px solid var(--ck-line); }
+.pick-size { font-size: 20px; font-weight: 650; }
+.pick-size .mute { font-size: 15px; font-weight: 400; }
+.hint { font-size: 12.5px; color: var(--ck-mute); margin-top: 2px; }
+.price { font-size: 30px; font-weight: 650; letter-spacing: -.02em; color: var(--ck-berry); }
+.cake-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 8px; }
+.note { font-size: 13px; }
+.btn { font: inherit; font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 6px; border: 0; cursor: pointer; color: #fff; background: var(--ck-berry); flex: none; }
+@media (prefers-color-scheme: dark) { .btn { color: #1e1714; } }
+
+@media (max-width: 560px) {
+  .cake-card { padding: 18px 16px; }
+  .sizes { --ap-radius: 300px; --ap-step: 22; margin-inline: -16px; }
+  .pick, .cake-foot { flex-direction: column; align-items: stretch; }
+  .price { font-size: 26px; }
+}
+@media (max-height: 540px) and (min-width: 561px) {
+  .cake-card { padding-block: 14px; }
+  .sizes { height: 212px; --ap-line: 100px; }
+}
