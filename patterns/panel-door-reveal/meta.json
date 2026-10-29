@@ -1,0 +1,16 @@
+{
+  "name": "Door reveal",
+  "slug": "panel-door-reveal",
+  "kind": "pattern",
+  "summary": "Two heavy doors swing toward you on their outer hinges to show a voucher code, the second a beat behind the first. Drag a door open by hand, or tap.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

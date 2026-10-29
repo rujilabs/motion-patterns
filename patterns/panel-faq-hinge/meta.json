@@ -1,0 +1,16 @@
+{
+  "name": "FAQ on a top hinge",
+  "slug": "panel-faq-hinge",
+  "kind": "pattern",
+  "summary": "FAQ answers hang from their question on a top hinge. Opening, the flap drops, swings a little past hanging and settles, and the page below moves with its projected height.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

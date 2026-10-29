@@ -1,0 +1,96 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+:root {
+  --dv-table: #efe6d6;
+  --dv-paper: #fffaf0;
+  --dv-ink: #2a1a10;
+  --dv-mute: #6f5c4b;
+  --dv-line: #eadcc4;
+  --dv-wall: #2f8f87;
+  --dv-wall-dark: #267a73;
+  --dv-marigold: #f09a1a;
+  --dv-accent: #b4500f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dv-table: #15110d;
+    --dv-paper: #1e1813;
+    --dv-ink: #f3e8d8;
+    --dv-mute: #b3a28f;
+    --dv-line: #3a2f25;
+    --dv-wall: #1f6a64;
+    --dv-wall-dark: #19574f;
+    --dv-accent: #f2a55a;
+  }
+}
+body { background: var(--dv-table); color: var(--dv-ink); }
+.promo {
+  width: min(740px, 100%); display: grid; grid-template-columns: 350px 1fr;
+  background: var(--dv-paper); border: 1px solid var(--dv-line); border-radius: 10px; overflow: hidden;
+}
+.wall {
+  position: relative; display: grid; place-items: center; padding: 40px 20px 0;
+  background: var(--dv-wall);
+  background-image: linear-gradient(transparent calc(100% - 26px), var(--dv-wall-dark) calc(100% - 26px));
+}
+/* marigold garland over the door */
+.garland {
+  position: absolute; top: 18px; left: 50%; width: 276px; margin-left: -138px; height: 14px; z-index: 2;
+  background: radial-gradient(circle at 7px 7px, #ffc23d 0 5px, var(--dv-marigold) 5.5px 6.5px, transparent 7px) 0 0 / 14px 14px repeat-x;
+  border-radius: 7px;
+}
+.frame {
+  position: relative; padding: 10px 10px 0;
+  background: #efe3cf; border-radius: 3px 3px 0 0;
+  box-shadow: inset 0 0 0 1px #d4c2a3;
+}
+.step { display: block; width: 290px; height: 12px; background: #d9c8aa; border-radius: 2px 2px 0 0; margin-bottom: 14px; box-shadow: 0 1px 0 #b9a582; }
+
+/* the inside: the shop, lit warm */
+.doorway-inside { background: linear-gradient(#ffe7b8, #f7cf86); }
+.voucher { display: grid; gap: 4px; padding: 0 16px; color: #3a1c08; }
+.v-label { font-size: 11px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: #8a4310; }
+.v-code { font-family: "Anybody", "Host Grotesk", sans-serif; font-weight: 800; font-stretch: 112%; font-size: 30px; letter-spacing: .03em; line-height: 1.05; border-block: 1px dashed #b4500f; padding: 8px 0; margin: 4px 0; }
+.v-body { font-size: 14px; font-weight: 650; }
+.v-small { font-size: 12px; color: #7a4a20; }
+
+/* carved teak doors: two sunk panels split by a rail, and a brass ring pull at the meeting stiles */
+.door-front::before {
+  content: ""; position: absolute; inset: 18px 15px;
+  border: 2px solid rgb(30 12 2 / .35); border-radius: 2px;
+  box-shadow: inset 0 0 0 5px rgb(255 220 180 / .07), 0 0 0 1px rgb(255 220 180 / .1);
+  background: linear-gradient(transparent 38%, var(--door-wood) 38%, var(--door-wood) 44%, transparent 44%),
+              linear-gradient(transparent 38%, rgb(30 12 2 / .35) 38%, rgb(30 12 2 / .35) 44%, transparent 44%);
+}
+.knob {
+  position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%;
+  border: 3px solid var(--door-handle); box-shadow: 0 1px 0 rgb(0 0 0 / .4);
+}
+.door-l .knob { right: 7px; }
+.door-r .knob { left: 7px; }
+
+.copy { padding: 30px 28px; display: grid; align-content: center; gap: 12px; }
+.kicker { font-size: 12px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: var(--dv-accent); }
+.copy h1 { font-family: "Anybody", "Host Grotesk", sans-serif; font-weight: 800; font-stretch: 96%; font-size: 27px; line-height: 1.08; letter-spacing: -.01em; }
+.body { font-size: 14px; color: var(--dv-mute); text-wrap: pretty; }
+.state { font-size: 13.5px; font-weight: 650; display: flex; align-items: center; gap: 8px; }
+.state::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--dv-wall); }
+.hint { font-size: 12.5px; color: var(--dv-mute); }
+
+@media (max-width: 680px) {
+  .promo { grid-template-columns: 1fr; }
+  .wall { padding-top: 36px; }
+  .copy { padding: 18px 16px 20px; gap: 9px; }
+  .copy h1 { font-size: 23px; }
+}
+@media (max-height: 560px) and (min-width: 681px) {
+  .doorway { width: 220px; height: 270px; }
+  .garland { width: 256px; margin-left: -128px; }
+  .step { width: 270px; }
+}

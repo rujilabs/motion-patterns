@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Folding map demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="panel-map-fold.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="card sheet" aria-labelledby="card-h">
+    <div class="card-text">
+      <p class="kicker">Walimatulurus</p>
+      <h1 id="card-h">Hakim &amp; Sofea</h1>
+      <p class="when">Saturday 15 November 2026<br>12:00 pm to 4:00 pm</p>
+      <p class="where">Dewan Orkid, Lot 14, Jalan Kenanga 7, Taman Seri Bayu</p>
+      <ol class="steps" id="steps">
+        <li data-step="1">Leave Lebuhraya Pesisir at Exit 23.</li>
+        <li data-step="2">Follow Persiaran Bayu for 1.9 km, over Sungai Damar.</li>
+        <li data-step="3">At the roundabout take Jalan Kenanga 7. The hall is 400 m on the right.</li>
+      </ol>
+      <p class="hint" id="hint">Pull the map open by its edge, or tab to it and use the arrow keys.</p>
+    </div>
+    <div class="mapfold" data-panels="4" data-value="0" aria-label="Map from Exit 23 to Dewan Orkid" aria-describedby="steps">
+      <svg class="map-art" viewBox="0 0 360 288" aria-hidden="true" focusable="false">
+        <rect class="m-paper" width="360" height="288"/>
+        <!-- park and lake -->
+        <path class="m-park" d="M96 196 C 120 182 168 186 190 204 C 206 218 204 252 186 268 C 160 286 112 284 96 266 C 82 250 82 208 96 196 Z"/>
+        <path class="m-water" d="M124 222 C 138 212 166 214 172 230 C 177 246 160 256 140 254 C 122 252 112 232 124 222 Z"/>
+        <!-- housing blocks -->
+        <g class="m-block">
+          <rect x="200" y="20" width="44" height="34" rx="2"/><rect x="250" y="20" width="40" height="34" rx="2"/>
+          <rect x="200" y="62" width="44" height="40" rx="2"/><rect x="250" y="62" width="40" height="40" rx="2"/>
+          <rect x="316" y="20" width="44" height="34" rx="2"/><rect x="316" y="104" width="44" height="40" rx="2"/>
+          <rect x="58" y="16" width="34" height="40" rx="2"/><rect x="100" y="16" width="38" height="40" rx="2"/>
+          <rect x="232" y="176" width="54" height="34" rx="2"/><rect x="232" y="218" width="54" height="34" rx="2"/>
+          <rect x="300" y="176" width="60" height="34" rx="2"/><rect x="300" y="218" width="60" height="34" rx="2"/>
+        </g>
+        <!-- river: Sungai Damar -->
+        <path class="m-river" d="M-4 112 C 30 110 52 128 70 140 C 96 158 120 160 150 150 C 182 140 200 120 224 126 C 250 132 262 160 270 188 C 278 220 300 250 364 262"/>
+        <!-- minor streets -->
+        <g class="m-minor">
+          <path d="M196 16 V 108 M247 16 V 108 M294 16 V 108 M196 58 H 360 M196 108 H 300 M312 16 V 150"/>
+          <path d="M54 12 V 60 H 142 V 12 M96 12 V 60"/>
+          <path d="M228 172 H 360 M228 214 H 360 M228 256 H 360 M228 172 V 256 M292 172 V 256"/>
+        </g>
+        <!-- highway: Lebuhraya Pesisir, with the Exit 23 ramps -->
+        <path class="m-hw-case" d="M36 -4 C 34 60 40 120 38 180 C 36 230 30 260 28 292"/>
+        <path class="m-hw" d="M36 -4 C 34 60 40 120 38 180 C 36 230 30 260 28 292"/>
+        <path class="m-ramp" d="M38 168 C 44 182 54 186 64 184 M37 192 C 42 182 54 178 64 184"/>
+        <!-- main road: Persiaran Bayu, over the river and round to the roundabout -->
+        <path class="m-main-case" d="M64 184 C 92 182 112 170 132 164 C 166 154 200 162 232 158 C 262 154 284 150 304 148"/>
+        <path class="m-main" d="M64 184 C 92 182 112 170 132 164 C 166 154 200 162 232 158 C 262 154 284 150 304 148"/>
+        <!-- Jalan Kenanga 7, north from the roundabout -->
+        <path class="m-main-case" d="M304 148 C 304 120 302 100 304 82"/>
+        <path class="m-street" d="M304 148 C 304 120 302 100 304 82"/>
+        <circle class="m-round" cx="304" cy="148" r="7"/>
+        <path class="m-bridge" d="M253 148.5 H 271 M253 160.5 H 271"/>
+        <!-- the hall and its car park -->
+        <rect class="m-hall" x="310" y="62" width="40" height="30" rx="2"/>
+        <rect class="m-lot" x="310" y="95" width="40" height="8" rx="1"/>
+        <!-- surau, overflow parking -->
+        <rect class="m-surau" x="156" y="112" width="20" height="14" rx="2"/>
+        <!-- the route -->
+        <path class="m-route" d="M36 140 C 37 156 38 164 38 168 C 44 182 54 186 64 184 C 92 182 112 170 132 164 C 166 154 200 162 232 158 C 262 154 284 150 297 149 C 304 140 303 110 304 92"/>
+        <circle class="m-start" cx="36" cy="140" r="4"/>
+        <!-- pin -->
+        <path class="m-pin" d="M330 64 c -7 0 -11 -5 -11 -10 c 0 -8 11 -18 11 -18 s 11 10 11 18 c 0 5 -4 10 -11 10 z"/>
+        <circle class="m-pin-dot" cx="330" cy="52" r="3.6"/>
+        <!-- labels -->
+        <g class="m-label">
+          <text class="m-hw-label" transform="translate(22 92) rotate(-88)">Lebuhraya Pesisir</text>
+          <text class="m-exit" x="46" y="208">Exit 23</text>
+          <text class="m-town" x="44" y="14">to Klang</text>
+          <text class="m-town" x="34" y="284">to Shah Alam</text>
+          <text class="m-road-label" transform="translate(150 154) rotate(-8)">Persiaran Bayu</text>
+          <text class="m-river-label" transform="translate(228 120) rotate(12)">Sg. Damar</text>
+          <text class="m-park-label" x="150" y="210" text-anchor="middle">Taman Tasik Bayu</text>
+          <text class="m-street-label" transform="translate(298 136) rotate(-90)">Jln Kenanga 7</text>
+          <text class="m-place" x="330" y="75" text-anchor="middle">Dewan</text>
+          <text class="m-place" x="330" y="86" text-anchor="middle">Orkid</text>
+          <text class="m-place-sm" x="330" y="113" text-anchor="middle">P 120 bays</text>
+          <text class="m-place-sm" x="144" y="106">Surau, overflow P</text>
+          <text class="m-area" x="232" y="270">TAMAN SERI BAYU</text>
+        </g>
+        <!-- north and scale -->
+        <g class="m-north" transform="translate(342 196)">
+          <path d="M0 -12 L 5 4 L 0 1 L -5 4 Z"/>
+          <text y="-15" text-anchor="middle">N</text>
+        </g>
+        <g class="m-scale" transform="translate(272 280)">
+          <path d="M0 0 H 48 M0 -3 V 0 M24 -2 V 0 M48 -3 V 0"/>
+          <text x="52" y="2">500 m</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+</main>
+</body>
+</html>

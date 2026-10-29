@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shutter menu demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="shutter.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <div class="screen">
+    <header class="bar">
+      <p class="brand"><span class="brand-name">Hock Seng</span> <span class="brand-sub">Hardware &middot; Kuching</span></p>
+      <button class="shutter-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="burger" aria-hidden="true"></span><span class="toggle-text">Menu</span><span class="toggle-text-open">Close</span></button>
+    </header>
+    <div class="under">
+      <nav class="shutter" id="nav" aria-label="Shop">
+        <ul class="shutter-list">
+          <li class="shutter-slat"><a href="#paint"><span class="s-name">Paint and colour mixing</span><span class="s-count">1,184 items</span></a></li>
+          <li class="shutter-slat"><a href="#plumbing"><span class="s-name">Pipes and plumbing</span><span class="s-count">642 items</span></a></li>
+          <li class="shutter-slat"><a href="#tools"><span class="s-name">Hand and power tools</span><span class="s-count">915 items</span></a></li>
+          <li class="shutter-slat"><a href="#roofing"><span class="s-name">Roofing and zinc sheets</span><span class="s-count">87 items</span></a></li>
+          <li class="shutter-slat"><a href="#delivery"><span class="s-name">Lorry delivery</span><span class="s-count">Order by 3 pm</span></a></li>
+          <li class="shutter-slat"><a href="#visit"><span class="s-name">Visit the shop</span><span class="s-count">7:30 am to 5:45 pm</span></a></li>
+        </ul>
+      </nav>
+      <section class="page" aria-labelledby="deal-h">
+        <p class="tag">This week</p>
+        <h1 id="deal-h">Zinc roofing sheet, 0.47&nbsp;mm, 10&nbsp;ft</h1>
+        <p class="price"><span class="num">RM&nbsp;38.60</span> <span class="was num">RM&nbsp;44.20</span></p>
+        <p class="note">Cut to length at the counter. 216 sheets left at Jalan Padungan.</p>
+        <dl class="facts">
+          <div><dt>Same-day lorry</dt><dd>Within 25 km, RM&nbsp;35</dd></div>
+          <div><dt>Collect</dt><dd>Mon to Sat, from 7:30 am</dd></div>
+        </dl>
+        <h2 class="more-h">Also moving fast</h2>
+        <ul class="more">
+          <li><span>Cement, 50 kg bag</span><span class="num">RM&nbsp;21.50</span></li>
+          <li><span>PVC pipe, 1/2 in, 3 m</span><span class="num">RM&nbsp;7.90</span></li>
+          <li><span>Wall paint, white, 18 L</span><span class="num">RM&nbsp;168.00</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Folding map",
+  "slug": "panel-map-fold",
+  "kind": "pattern",
+  "summary": "A drawn street map folded into four panels that open one crease at a time, about their real creases, with the streets running on unbroken across every fold. Pull it open, tap or use the keys.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}
