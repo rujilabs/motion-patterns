@@ -1,0 +1,63 @@
+/*
+ * tile-habit-grid: a year of day tiles that fills in week by week. tile-habit-grid.js builds the
+ * tiles and gives each one --w (its week) and --d (its weekday). The empty grid is there from the
+ * start; when the grid comes into view (.go from play.js) every done day's colour springs out from
+ * the middle of its tile, one week after the next, top to bottom inside each week, so the year
+ * reads as written in order. Days still to come are outlines.
+ */
+.habit-grid {
+  --hg-cell: 10px;
+  --hg-gap: 3px;
+  --hg-week: 42ms;     /* wait between one week and the next */
+  --hg-step: 14ms;     /* wait between days inside a week */
+  --hg-0: #e4e9ec;     /* empty tile */
+  --hg-1: #bfe0db;
+  --hg-2: #79c2b6;
+  --hg-3: #2f9888;
+  --hg-4: #0f5f56;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: ". months" "weekdays days";
+  gap: 4px 6px;
+  justify-content: start;
+  font-size: 10.5px;
+  line-height: 1;
+}
+.hg-months { grid-area: months; display: grid; grid-auto-flow: column; grid-auto-columns: var(--hg-cell); column-gap: var(--hg-gap); height: 1.1em; }
+.hg-months span { grid-row: 1; grid-column-start: var(--w); white-space: nowrap; }
+.hg-weekdays { grid-area: weekdays; display: grid; grid-template-rows: repeat(7, var(--hg-cell)); row-gap: var(--hg-gap); align-items: center; }
+.hg-days {
+  grid-area: days;
+  display: grid;
+  grid-template-rows: repeat(7, var(--hg-cell));
+  grid-auto-flow: column;
+  grid-auto-columns: var(--hg-cell);
+  gap: var(--hg-gap);
+}
+.hg-day { position: relative; border-radius: 2px; background: var(--hg-0); }
+.hg-day.hg-out { visibility: hidden; }
+.hg-day.hg-future { background: none; box-shadow: inset 0 0 0 1px var(--hg-0); }
+.hg-day[data-l]:not([data-l="0"])::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: var(--hg-lvl);
+}
+.hg-day[data-l="1"] { --hg-lvl: var(--hg-1); }
+.hg-day[data-l="2"] { --hg-lvl: var(--hg-2); }
+.hg-day[data-l="3"] { --hg-lvl: var(--hg-3); }
+.hg-day[data-l="4"] { --hg-lvl: var(--hg-4); }
+
+/* start state: the colour is folded away to a point; only with the script */
+.js .habit-grid[data-play]:not(.go) .hg-day::after { transform: scale(0); }
+.js .habit-grid.go .hg-day::after {
+  animation: hg-fill var(--dur-base) var(--ease-spring) both;
+  animation-delay: calc(var(--w) * var(--hg-week) + var(--d) * var(--hg-step));
+}
+@keyframes hg-fill {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .habit-grid[data-play]:not(.go) .hg-day::after,
+  .js .habit-grid.go .hg-day::after { animation: none; transform: none; }
+}

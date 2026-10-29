@@ -1,0 +1,19 @@
+{
+  "name": "Tile habit grid",
+  "slug": "tile-habit-grid",
+  "kind": "pattern",
+  "summary": "A year of day tiles that fills in week by week when it comes into view. Each done day springs out from the middle of its tile; days still to come stay as outlines. Turns on its side on a phone.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring",
+    "--dur-base"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

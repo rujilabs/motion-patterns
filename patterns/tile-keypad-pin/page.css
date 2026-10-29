@@ -1,0 +1,68 @@
+/* Demo page layout for this entry. Not part of the pattern. A bank app's confirm step: pale sage, deep bank green. */
+:root {
+  --bs-table: #e6ebe7;
+  --bs-paper: #f7f9f7;
+  --bs-ink: #10241c;
+  --bs-mute: #5f7068;
+  --bs-line: #d9e1dc;
+  --bs-green: #1f6f4a;
+  --bs-well: #eaefeb;
+  --bs-key: #ffffff;
+  --bs-edge: #c5cfc9;
+  --bs-wrong: #c4362b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-table: #0e1411;
+    --bs-paper: #151d19;
+    --bs-ink: #e5eee9;
+    --bs-mute: #93a49b;
+    --bs-line: #27322c;
+    --bs-green: #5fcf98;
+    --bs-well: #1b2520;
+    --bs-key: #2a3630;
+    --bs-edge: #0b100d;
+    --bs-wrong: #ff7466;
+  }
+}
+body { background: var(--bs-table); color: var(--bs-ink); }
+.sheet { background: var(--bs-paper); border-color: var(--bs-line); }
+.mute { color: var(--bs-mute); }
+:focus-visible { outline-color: var(--bs-green); }
+
+.bank { width: min(720px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) auto; overflow: hidden; }
+.transfer { padding: 26px 26px 22px; display: grid; align-content: start; gap: 4px; }
+.brand { font-size: 13px; font-weight: 700; letter-spacing: .02em; color: var(--bs-green); margin-bottom: 18px; }
+.step { font-size: 13px; }
+.amount { font-size: 36px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 14px; }
+.detail { display: grid; gap: 8px; font-size: 14px; border-top: 1px solid var(--bs-line); padding-top: 14px; }
+.detail div { display: flex; justify-content: space-between; gap: 12px; }
+.detail dt { color: var(--bs-mute); }
+.detail dd { margin: 0; font-weight: 550; text-align: right; }
+.hint { font-size: 12.5px; margin-top: 18px; }
+
+.pin-pad {
+  --pin-key: var(--bs-key); --pin-edge: var(--bs-edge); --pin-ink: var(--bs-ink); --pin-dot: var(--bs-ink);
+  --pin-ok: var(--bs-green); --pin-wrong: var(--bs-wrong); --pin-ring: var(--bs-green);
+  background: var(--bs-well); border-left: 1px solid var(--bs-line); padding: 24px 28px 18px; gap: 18px; align-content: center;
+}
+.pin-title { font-size: 16px; font-weight: 650; }
+.pin-status { font-size: 13px; color: var(--bs-mute); min-height: 2.6em; text-align: center; max-width: 25ch; }
+.pin-blank { display: block; }
+.again {
+  font: 600 13px/1 "Host Grotesk", sans-serif; color: var(--bs-paper); background: var(--bs-ink);
+  border: 0; border-radius: 6px; padding: 10px 14px; cursor: pointer; margin-top: -8px;
+}
+
+@media (max-width: 620px) {
+  .bank { grid-template-columns: 1fr; }
+  .transfer { padding: 18px 16px 16px; }
+  .brand { margin-bottom: 8px; }
+  .amount { font-size: 30px; margin-bottom: 8px; }
+  .hint { margin-top: 10px; }
+  .pin-pad { border-left: 0; border-top: 1px solid var(--bs-line); padding: 20px 16px 16px; --pin-w: 76px; }
+}
+@media (max-height: 600px) and (min-width: 621px) {
+  .pin-pad { padding-block: 18px 12px; gap: 14px; --pin-h: 48px; }
+  .pin-keys { row-gap: 10px; }
+}

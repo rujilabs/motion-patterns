@@ -1,0 +1,89 @@
+/* Demo page layout for this entry. Not part of the pattern. An old cinema hall in Ipoh: velvet plum, marigold, cream. */
+@font-face {
+  font-family: "Anybody";
+  src: url("../../fonts/anybody-vf.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+:root {
+  --pk-table: #ebe4dc;
+  --pk-paper: #fbf7f2;
+  --pk-ink: #2a1830;
+  --pk-mute: #77697c;
+  --pk-line: #e2d8d0;
+  --pk-free: #d6cdda;
+  --pk-pick: #e0961b;
+  --pk-taken: #5d4b66;
+  --pk-screen: #9a8aa1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pk-table: #120c14;
+    --pk-paper: #1c1420;
+    --pk-ink: #f3e9ef;
+    --pk-mute: #a796ad;
+    --pk-line: #33283a;
+    --pk-free: #6f5e7a;
+    --pk-pick: #f2ab33;
+    --pk-taken: #3a2c43;
+    --pk-screen: #8d7c96;
+  }
+}
+body { background: var(--pk-table); color: var(--pk-ink); }
+.sheet { background: var(--pk-paper); border-color: var(--pk-line); }
+.mute { color: var(--pk-mute); }
+:focus-visible { outline-color: var(--pk-pick); }
+
+.booking { width: min(640px, 100%); padding: 20px 24px 18px; display: grid; gap: 14px; }
+.book-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; }
+.venue { font-size: 12px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: var(--pk-mute); }
+.book-head h1 { font: 800 27px/1.05 "Anybody", "Host Grotesk", sans-serif; font-stretch: 118%; letter-spacing: -.01em; margin: 2px 0 3px; }
+.show { font-size: 13px; }
+.left { text-align: right; font-size: 13px; white-space: nowrap; }
+.left strong { display: block; font: 800 26px/1 "Anybody", sans-serif; font-stretch: 110%; }
+
+.hall { display: grid; justify-items: center; gap: 2px; }
+.screen { width: min(440px, 100%); height: 18px; fill: none; stroke: var(--pk-screen); stroke-width: 3; stroke-linecap: round; }
+.screen-label { font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--pk-mute); margin-bottom: 10px; }
+
+.seat-map { --seat-free: var(--pk-free); --seat-pick: var(--pk-pick); --seat-taken: var(--pk-taken); --seat-ring: var(--pk-ink); --seat-gap: 5px; }
+.seat-row-prem { margin-top: 8px; }
+.seat-row-prem .seat { --seat-w: 32px; }
+.seat-label { width: 14px; font-size: 11px; font-weight: 650; color: var(--pk-mute); text-align: center; }
+
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; margin-top: 12px; font-size: 12px; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.key { width: 12px; height: 12px; border-radius: 3px; }
+.key-free { background: var(--pk-free); }
+.key-pick { background: var(--pk-pick); }
+.key-taken { background: var(--pk-taken); }
+
+.book-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 12px; border-top: 1px solid var(--pk-line); }
+.picked { font-weight: 650; font-size: 14.5px; }
+.fare { font-size: 12.5px; }
+.pay {
+  font: 650 14px/1 "Host Grotesk", sans-serif; color: var(--pk-paper); background: var(--pk-ink);
+  border: 0; border-radius: 6px; padding: 12px 18px; cursor: pointer; white-space: nowrap;
+}
+.pay:disabled { opacity: .35; cursor: default; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .booking { padding: 16px 14px 14px; }
+  .book-head { flex-direction: column; align-items: start; gap: 6px; }
+  .left { text-align: left; }
+  .left strong { display: inline; font-size: 18px; }
+  .book-head h1 { font-size: 23px; }
+  .seat-map { --seat-w: 19px; --seat-h: 19px; --seat-gap: 3px; --seat-aisle: 6px; }
+  .seat-row-prem .seat { --seat-w: 20px; }
+  .seat-label { width: 10px; font-size: 10px; }
+  .book-foot { flex-direction: column; align-items: stretch; gap: 10px; }
+}
+@media (max-height: 600px) and (min-width: 601px) {
+  .booking { padding-block: 14px 12px; gap: 10px; }
+  .seat-map { --seat-h: 24px; --seat-gap: 4px; }
+  .screen-label { margin-bottom: 6px; }
+  .legend { margin-top: 8px; }
+  .book-foot { padding-top: 10px; }
+}

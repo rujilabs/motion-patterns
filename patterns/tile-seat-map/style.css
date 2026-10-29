@@ -1,0 +1,55 @@
+/*
+ * tile-seat-map: cinema seats as tiles. Each seat has a back and a tip-up cushion on a hinge. An
+ * empty seat's cushion is folded up toward you, so it reads short and a little darker; a picked
+ * seat's cushion folds down on a spring while the whole seat pops; a taken seat's cushion is down,
+ * in the taken colour. tile-seat-map.js adds the pop, the shake on a taken seat and the keys.
+ */
+.seat-map {
+  --seat-w: 30px;
+  --seat-h: 28px;
+  --seat-gap: 6px;
+  --seat-aisle: 16px;      /* extra room before a .seat-aisle cell */
+  --seat-free: #c9c0cf;    /* empty seat */
+  --seat-pick: #e39b1f;    /* picked seat */
+  --seat-taken: #5d4b66;   /* someone is sitting here */
+  --seat-ring: #2a1830;    /* focus ring */
+  display: grid;
+  gap: var(--seat-gap);
+}
+.seat-map [role="row"] { display: flex; align-items: center; gap: var(--seat-gap); }
+.seat-map [role="gridcell"] { display: block; }
+.seat-map .seat-aisle { margin-left: var(--seat-aisle); }
+
+.seat {
+  --seat-color: var(--seat-free);
+  position: relative; display: block; flex: none;
+  width: var(--seat-w); height: var(--seat-h);
+  margin: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit;
+  cursor: pointer;
+  perspective: 70px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.seat-back, .seat-cushion { position: absolute; background: var(--seat-color); transition: background-color var(--dur-quick) var(--ease-out); }
+.seat-back { left: 0; right: 0; top: 0; height: 40%; border-radius: 6px 6px 2px 2px; }
+/* the cushion hangs from its back edge; folded up, its front edge swings toward you */
+.seat-cushion {
+  left: 9%; right: 9%; top: 46%; bottom: 0; border-radius: 2px 2px 6px 6px;
+  transform-origin: 50% 0;
+  transform: rotateX(68deg);
+  filter: brightness(.86);
+  transition: transform var(--dur-base) var(--ease-spring), filter var(--dur-base) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
+}
+/* a pointer over an empty seat: the cushion starts to come down */
+@media (hover: hover) {
+  .seat[aria-pressed="false"]:hover .seat-cushion { transform: rotateX(46deg); filter: brightness(.93); }
+}
+.seat[aria-pressed="true"] { --seat-color: var(--seat-pick); }
+.seat[aria-pressed="true"] .seat-cushion,
+.seat[aria-disabled="true"] .seat-cushion { transform: rotateX(0deg); filter: none; }
+.seat[aria-disabled="true"] { --seat-color: var(--seat-taken); cursor: not-allowed; }
+.seat:focus-visible { outline: 2px solid var(--seat-ring); outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seat-back, .seat-cushion { transition: none; }
+}

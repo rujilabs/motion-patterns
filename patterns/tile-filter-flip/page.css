@@ -1,0 +1,107 @@
+/* Demo page layout for this entry. Not part of the pattern. An architecture studio's portfolio: limestone, charcoal, river green. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  --as-table: #e8e6e1;
+  --as-paper: #faf9f6;
+  --as-ink: #22241f;
+  --as-mute: #6c6e66;
+  --as-line: #dcd9d1;
+  --as-accent: #2f5d4e;
+  --as-home: #c4cfb8;   --as-home-ink: #55684a;
+  --as-shop: #e3bba5;   --as-shop-ink: #96543a;
+  --as-cafe: #e9d39b;   --as-cafe-ink: #8a6a1e;
+  --as-civic: #bcc6d0;  --as-civic-ink: #4b5d70;
+  --as-tile: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --as-table: #151614;
+    --as-paper: #1e201d;
+    --as-ink: #ecebe6;
+    --as-mute: #a19f97;
+    --as-line: #353731;
+    --as-accent: #8cc4ad;
+    --as-home: #3d4a36;   --as-home-ink: #b5c9a6;
+    --as-shop: #5a3a2c;   --as-shop-ink: #eab49a;
+    --as-cafe: #574a24;   --as-cafe-ink: #ead08a;
+    --as-civic: #34404c;  --as-civic-ink: #b2c4d6;
+    --as-tile: #262925;
+  }
+}
+body { background: var(--as-table); color: var(--as-ink); }
+.sheet { background: var(--as-paper); border-color: var(--as-line); }
+.mute { color: var(--as-mute); }
+:focus-visible { outline-color: var(--as-accent); }
+
+.work { width: min(760px, 100%); padding: 20px 22px 14px; display: grid; gap: 14px; }
+.work-head { display: grid; gap: 10px; }
+.studio { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--as-accent); }
+.work-head h1 { font: 400 32px/1.05 "Instrument Serif", Georgia, serif; letter-spacing: -.01em; margin-top: 2px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 550 13.5px/1 "Host Grotesk", system-ui, sans-serif; color: var(--as-ink);
+  background: transparent; border: 1px solid var(--as-line); border-radius: 999px;
+  padding: 8px 12px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center;
+  transition: background-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out), border-color var(--dur-quick) var(--ease-out);
+}
+.chip .num { color: var(--as-mute); font-weight: 450; }
+.chip:hover { border-color: var(--as-mute); }
+.chip[aria-pressed="true"] { background: var(--as-ink); border-color: var(--as-ink); color: var(--as-paper); }
+.chip[aria-pressed="true"] .num { color: inherit; opacity: .7; }
+
+.tile-flip { --tf-min: 160px; --tf-gap: 10px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* a project card on a face */
+.tf-face { border-radius: 6px; background: var(--as-tile); border: 1px solid var(--as-line); overflow: hidden; }
+.pj { display: grid; grid-template-rows: 40px auto auto 1fr; height: 100%; text-decoration: none; color: inherit; padding: 0 12px 10px; gap: 2px; }
+.pj:focus-visible { outline-offset: -3px; border-radius: 6px; }
+.pj::before { content: ""; margin: 0 -12px 8px; background: var(--plate) no-repeat; }
+.pj-kind { font-size: 11px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--kind-ink); }
+.pj strong { font-size: 14.5px; font-weight: 650; line-height: 1.2; }
+.pj-meta { font-size: 12.5px; white-space: nowrap; color: var(--as-mute); display: flex; justify-content: space-between; gap: 8px; align-self: end; padding-top: 4px; }
+/* each kind gets a flat elevation drawn in its own ink: gable, shophouse arcade, awning, dome */
+.pj-home { --kind-ink: var(--as-home-ink);
+  --plate: linear-gradient(to top, var(--as-home-ink) 0 3px, transparent 3px),
+    conic-gradient(from 135deg at 50% 18%, var(--as-home-ink) 0 90deg, transparent 90deg) 50% 0 / 64px 100%,
+    var(--as-home); }
+.pj-shop { --kind-ink: var(--as-shop-ink);
+  --plate: radial-gradient(circle at 50% 100%, var(--as-shop) 0 9px, transparent 9.5px) 0 100% / 26px 22px repeat-x,
+    linear-gradient(var(--as-shop-ink), var(--as-shop-ink)) 0 100% / 100% 24px no-repeat,
+    var(--as-shop); }
+.pj-cafe { --kind-ink: var(--as-cafe-ink);
+  --plate: repeating-linear-gradient(90deg, var(--as-cafe-ink) 0 12px, transparent 12px 24px) 0 10px / 100% 14px no-repeat,
+    var(--as-cafe); }
+.pj-civic { --kind-ink: var(--as-civic-ink);
+  --plate: radial-gradient(circle at 50% 100%, var(--as-civic-ink) 0 20px, transparent 20.5px) 50% 100% / 60px 26px no-repeat,
+    linear-gradient(to top, var(--as-civic-ink) 0 4px, transparent 4px),
+    var(--as-civic); }
+/* an empty tile: drafting hatch, nothing to read */
+.tf-face.tf-empty { background: repeating-linear-gradient(-45deg, var(--as-line) 0 1px, transparent 1px 9px), var(--as-paper); border-style: dashed; }
+
+.work-foot { font-size: 13px; }
+
+@media (max-width: 640px) {
+  .work { padding: 18px 16px 14px; gap: 14px; }
+  .work-head h1 { font-size: 27px; }
+  .tile-flip { grid-template-columns: repeat(2, minmax(0, 1fr)); --tf-gap: 8px; }
+  .chip { padding: 7px 10px; font-size: 13px; }
+  .pj { padding: 0 10px 9px; grid-template-rows: 34px auto auto 1fr; }
+  .pj::before { margin: 0 -10px 6px; }
+  .pj strong { font-size: 13.5px; }
+  .pj-meta { flex-direction: column; gap: 0; }
+}
+@media (max-height: 600px) and (min-width: 641px) {
+  .work { padding-block: 16px 12px; gap: 12px; }
+  .work-head { grid-template-columns: 1fr; gap: 10px; }
+  .work-head h1 { font-size: 28px; }
+  .pj { grid-template-rows: 32px auto auto 1fr; }
+  .pj::before { margin-bottom: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chip { transition: none; }
+}
