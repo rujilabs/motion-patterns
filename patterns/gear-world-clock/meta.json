@@ -1,0 +1,19 @@
+{
+  "name": "Gear world clock",
+  "slug": "gear-world-clock",
+  "kind": "pattern",
+  "summary": "One gear train drives a clock per city. Turn any wheel or use the arrow keys to set a meeting time; idlers keep every clock turning the same way at the same speed, and night dials go dark.",
+  "category": "gear",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotary knob demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="knob.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="aircon sheet" aria-labelledby="ac-h">
+    <div class="ac-info">
+      <header>
+        <p class="unit">Unit 18-07, Residensi Bayu Puchong</p>
+        <h1 id="ac-h">Master bedroom air conditioner</h1>
+      </header>
+      <p class="set"><span class="num" id="set">24.0</span><span class="deg">°C</span></p>
+      <dl class="facts">
+        <div><dt>Room now</dt><dd class="num">27.4 °C</dd></div>
+        <div><dt>Mode</dt><dd>Cool, fan auto</dd></div>
+        <div><dt>Running cost</dt><dd class="num" id="cost">About RM 0.34 an hour</dd></div>
+      </dl>
+      <p class="status" id="status" role="status">Cooling. About 21 min to reach 24.0 °C.</p>
+    </div>
+    <div class="ac-dial">
+      <div class="knob" id="knob" role="slider" tabindex="0" aria-label="Set temperature" aria-describedby="hint"
+           data-min="16" data-max="30" data-step="0.5" data-major="2" data-value="24" data-unit=" degrees Celsius">
+        <span class="knob-fallback">Set to 24.0 °C</span>
+      </div>
+      <p class="hint" id="hint">Turn the knob, or use the arrow keys. Half a degree per click.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

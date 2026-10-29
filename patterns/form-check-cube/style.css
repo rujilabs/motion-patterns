@@ -1,0 +1,76 @@
+/*
+ * form-check-cube: a checkbox that turns over like a cube. The empty box is the front face and the
+ * ticked face waits on top; checking tips the cube forward a quarter turn about its own centre, so
+ * the ticked face rolls to the front while the empty one turns down and away. Each face darkens as it
+ * turns from the light and brightens as it turns to it. The perspective sits on the cube's own box, so
+ * every cube in a list turns the same way. cube.js adds a small lift while it turns; the tick draws
+ * once the face has landed. The task text gets a struck line that runs left to right.
+ */
+.cube-check { display: inline-flex; align-items: flex-start; gap: 12px; cursor: pointer; position: relative; -webkit-tap-highlight-color: transparent; }
+/* the real checkbox stays in the page for keyboard and screen readers */
+.cube-check > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+
+.cube-box {
+  --cube: 22px;                /* edge length */
+  --cube-paper: #fff;          /* the empty face */
+  --cube-edge: #2f2118;        /* its border */
+  --cube-done: #b1342b;        /* the ticked face */
+  --cube-tick: #fff;
+  --cube-turn: 520ms;
+  position: relative; flex: none; display: block;
+  width: var(--cube); height: var(--cube);
+  margin-top: .1em;
+  touch-action: manipulation;
+}
+.cube-lift { position: absolute; inset: 0; perspective: calc(var(--cube) * 5); }
+/* contact shadow: tightens while the cube is lifted (cube.js) */
+.cube-box::before {
+  content: ""; position: absolute; left: 8%; right: 8%; bottom: -3px; height: 5px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / .22), transparent);
+}
+.cube {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transition: transform var(--cube-turn) var(--ease-spring);
+}
+.cube-face {
+  position: absolute; inset: 0; border-radius: 4px;
+  backface-visibility: hidden;
+  display: grid; place-items: center;
+}
+.cube-front { background: var(--cube-paper); box-shadow: inset 0 0 0 2px var(--cube-edge); transform: translateZ(calc(var(--cube) / 2)); }
+.cube-top { background: var(--cube-done); transform: rotateX(90deg) translateZ(calc(var(--cube) / 2)); }
+/* shading by angle: a face turned away from the light (above and in front) goes dark */
+.cube-face::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: #000; transition: opacity var(--cube-turn) var(--ease-spring); }
+.cube-front::after { opacity: 0; }
+.cube-top::after { opacity: .1; }
+.cube-tick { width: 72%; height: 72%; fill: none; stroke: var(--cube-tick); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 160ms var(--ease-out); }
+
+.cube-check > input:checked ~ .cube-box .cube { transform: rotateX(-90deg); }
+.cube-check > input:checked ~ .cube-box .cube-front::after { opacity: .5; }
+.cube-check > input:checked ~ .cube-box .cube-top::after { opacity: 0; }
+.cube-check > input:checked ~ .cube-box .cube-tick { stroke-dashoffset: 0; transition-delay: calc(var(--cube-turn) * .45); transition-duration: 220ms; }
+/* press and hold: it starts to tip */
+.cube-check:active > input:not(:checked) ~ .cube-box .cube { transform: rotateX(-14deg); transition-duration: var(--dur-quick); }
+.cube-check:active > input:checked ~ .cube-box .cube { transform: rotateX(-76deg); transition-duration: var(--dur-quick); }
+
+/* the task text: a line strikes through from the left, line by line when it wraps, and the words step back */
+.cube-text { transition: color var(--dur-quick) var(--ease-out) calc(var(--cube-turn, 520ms) * .4); }
+.cube-words {
+  background: linear-gradient(currentColor, currentColor) 0 58% / 0 1.5px no-repeat;
+  transition: background-size var(--dur-base) var(--ease-out);
+}
+.cube-check > input:checked ~ .cube-text { color: var(--cube-text-done, #8b8079); }
+.cube-check > input:checked ~ .cube-text .cube-words { background-size: 100% 1.5px; transition-delay: calc(var(--cube-turn, 520ms) * .4); }
+
+.cube-check > input:focus-visible ~ .cube-box { outline: 2px solid var(--cube-ring, #3d7bf2); outline-offset: 4px; border-radius: 5px; }
+.cube-check > input:disabled ~ * { opacity: .5; cursor: not-allowed; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cube, .cube-face::after, .cube-tick, .cube-text, .cube-words,
+  .cube-check > input:checked ~ .cube-box .cube-tick,
+  .cube-check > input:checked ~ .cube-text .cube-words { transition: none; }
+  .cube-check:active > input:not(:checked) ~ .cube-box .cube { transform: rotateX(0deg); }
+  .cube-check:active > input:checked ~ .cube-box .cube { transform: rotateX(-90deg); }
+}

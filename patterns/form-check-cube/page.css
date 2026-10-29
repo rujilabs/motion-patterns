@@ -1,0 +1,56 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../../fonts/instrument-serif.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  --bk-table: #efe7da;
+  --bk-paper: #fdf9f2;
+  --bk-ink: #2f2118;
+  --bk-mute: #7a6a5c;
+  --bk-line: #e6dccb;
+  --bk-red: #b1342b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bk-table: #17120e;
+    --bk-paper: #211a15;
+    --bk-ink: #f1e8dc;
+    --bk-mute: #a99886;
+    --bk-line: #3a2f26;
+    --bk-red: #d9584c;
+  }
+}
+body { background: var(--bk-table); color: var(--bk-ink); }
+.prep { width: min(560px, 100%); padding: 22px 26px 16px; display: grid; gap: 14px; background: var(--bk-paper); border-color: var(--bk-line); }
+.prep-head { display: grid; gap: 4px; }
+.shop { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--bk-red); }
+.prep-head h1 { font: 400 34px/1.05 "Instrument Serif", Georgia, serif; letter-spacing: -.01em; }
+.prep-head .mute { color: var(--bk-mute); font-size: 13.5px; }
+.progress { height: 3px; background: var(--bk-line); border-radius: 2px; overflow: hidden; }
+.progress-bar { display: block; height: 100%; background: var(--bk-red); transform: scaleX(.2857); transform-origin: 0 50%; transition: transform var(--dur-base) var(--ease-out); }
+.tasks { display: grid; }
+.tasks li { border-bottom: 1px solid var(--bk-line); }
+.tasks li:first-child { border-top: 1px solid var(--bk-line); }
+.tasks .cube-check { display: flex; width: 100%; padding: 10px 2px; font-size: 15px;
+  --cube-text-done: var(--bk-mute); --cube-ring: var(--bk-red); }
+.tasks .cube-box { --cube-paper: var(--bk-paper); --cube-edge: var(--bk-ink); --cube-done: var(--bk-red); --cube-tick: #fff7ee; }
+.prep-foot { display: flex; justify-content: space-between; gap: 16px; font-size: 13.5px; padding-top: 2px; }
+.prep-foot strong { font-size: 15px; }
+.prep-foot .mute { color: var(--bk-mute); }
+
+@media (max-width: 480px) {
+  .prep { padding: 18px 16px 14px; gap: 12px; }
+  .prep-head h1 { font-size: 28px; }
+  .tasks .cube-check { font-size: 14.5px; }
+  .prep-foot { flex-direction: column; gap: 2px; }
+}
+@media (max-height: 560px) and (min-width: 481px) {
+  .prep { padding-block: 14px 10px; gap: 10px; }
+  .prep-head .mute { display: none; }
+  .tasks .cube-check { padding-block: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar { transition: none; }
+}

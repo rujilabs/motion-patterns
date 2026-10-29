@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gear sale countdown demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="gear-sale-countdown.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="deal sheet" aria-labelledby="deal-h">
+    <div class="gear-sale-countdown" data-left="909" data-manual>
+      <div class="works-window">
+        <svg class="gsc-works" aria-hidden="true"></svg>
+      </div>
+      <div class="deal-body">
+        <p class="flag">11.11 flash sale <span>ends 9:00 pm</span></p>
+        <p class="ends-label" id="ends-l">Ends in</p>
+        <p class="gsc-time num" data-gsc-time aria-labelledby="ends-l">00:15:09</p>
+
+        <h1 id="deal-h">Rice cooker 1.8 L, ceramic inner pot</h1>
+        <p class="shop mute">Kedai Elektrik Sinar Jaya, Klang</p>
+        <p class="price"><strong class="num">RM 129.00</strong> <s class="num mute">RM 189.90</s> <span class="off">32% off</span></p>
+        <div class="stock"><span class="stock-bar"><span></span></span><span class="num"><strong>41</strong> of 120 left</span></div>
+        <button type="button" class="buy">Buy now</button>
+      </div>
+    </div>
+    <footer class="deal-foot">
+      <label class="switch"><input type="checkbox" id="run" checked> Clock running</label>
+      <button type="button" class="skip" id="skip">Skip to 8:59:50 pm</button>
+      <p class="now mute">Now <time class="num" id="now">8:44:51 pm</time></p>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

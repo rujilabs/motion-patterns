@@ -1,0 +1,75 @@
+/*
+ * form-rotary-knob: a knob on an arc scale, with detents. knob.js builds the scale (an SVG arc of
+ * ticks, one per detent) and the cap, and turns the cap with the pointer or the keys. The grip and
+ * the index mark turn with the cap; the highlight does not, because the light in the room stays put
+ * while the knob turns under it. A soft contact shadow sits under the cap.
+ */
+.knob {
+  --knob-size: 220px;       /* the whole dial, scale included */
+  --knob-cap: 52%;          /* cap diameter as a share of it */
+  --knob-body: #2d3034;     /* cap colour */
+  --knob-mark: #f3f1ec;     /* index line */
+  --knob-ink: #2a2d31;      /* scale numbers and major ticks */
+  --knob-rest: #c9ccd0;     /* minor ticks and track */
+  --knob-on: #2b74d0;       /* the filled part of the scale */
+  position: relative; display: inline-block; flex: none;
+  width: var(--knob-size); height: var(--knob-size);
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;        /* the knob turns; the rest of the page still scrolls */
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.knob.is-turning { cursor: grabbing; }
+.knob:focus-visible { outline: none; }
+.knob:focus-visible .knob-cap { outline: 2px solid var(--knob-on); outline-offset: 5px; }
+
+.knob-scale { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.knob-track, .knob-fill { fill: none; stroke-width: 3; }
+.knob-track { stroke: var(--knob-rest); }
+.knob-fill { stroke: var(--knob-on); stroke-dasharray: 0 2; }
+.knob-tick { stroke: var(--knob-rest); stroke-width: 1.5; stroke-linecap: round; }
+.knob-tick.is-major { stroke: var(--knob-ink); stroke-width: 2; }
+.knob-tick.is-on { stroke: var(--knob-on); }
+.knob-num { fill: var(--knob-ink); font-size: 10.5px; font-weight: 600; text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums; }
+
+.knob-cap, .knob-light {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--knob-cap); aspect-ratio: 1; translate: -50% -50%;
+  border-radius: 50%;
+}
+.knob-cap {
+  rotate: -135deg;
+  background:
+    radial-gradient(circle, transparent 66%, rgb(0 0 0 / .25) 67%, transparent 69%),
+    repeating-conic-gradient(from 0deg, rgb(255 255 255 / .08) 0 3deg, rgb(0 0 0 / .14) 3deg 6deg),
+    var(--knob-body);
+}
+/* the machined top inside the knurled ring */
+.knob-grip {
+  position: absolute; inset: 17%; border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle, rgb(255 255 255 / .025) 0 1px, transparent 1px 3px),
+    color-mix(in srgb, var(--knob-body), #fff 6%);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .35);
+}
+/* the index line, from the rim toward the centre */
+.knob-mark {
+  position: absolute; left: 50%; top: 5%; width: 4px; height: 26%;
+  translate: -50% 0; border-radius: 2px;
+  background: var(--knob-mark);
+}
+/* fixed light from the top left, over the turning cap */
+.knob-light {
+  pointer-events: none;
+  /* the contact shadow lives here, not on the cap, so it stays below the knob while the cap turns */
+  box-shadow: 0 10px 18px -6px rgb(0 0 0 / .45), 0 2px 3px rgb(0 0 0 / .3);
+  background:
+    radial-gradient(120% 120% at 30% 18%, rgb(255 255 255 / .2), rgb(255 255 255 / .04) 38%, transparent 55%),
+    radial-gradient(100% 100% at 70% 90%, rgb(0 0 0 / .28), transparent 55%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* knob.js puts the cap straight into each notch: no pull between notches, no spring */
+  .knob-cap { transition: none; animation: none; }
+}

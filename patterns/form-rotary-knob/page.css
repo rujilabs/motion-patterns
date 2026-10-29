@@ -1,0 +1,52 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --ac-table: #e6e8ea;
+  --ac-paper: #f7f6f2;
+  --ac-ink: #22262b;
+  --ac-mute: #646b74;
+  --ac-line: #d9dade;
+  --ac-blue: #2b74d0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ac-table: #121417;
+    --ac-paper: #1b1e22;
+    --ac-ink: #e8eaed;
+    --ac-mute: #9aa1aa;
+    --ac-line: #30353b;
+    --ac-blue: #6aa6f2;
+  }
+  .knob { --knob-body: #3b3f45; }
+}
+body { background: var(--ac-table); color: var(--ac-ink); }
+.aircon { width: min(680px, 100%); padding: 26px 28px; display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; background: var(--ac-paper); border-color: var(--ac-line); }
+.ac-info { display: grid; gap: 14px; }
+.unit { font-size: 12.5px; color: var(--ac-mute); }
+.ac-info h1 { font-size: 21px; font-weight: 700; margin-top: 2px; }
+.set { display: flex; align-items: flex-start; font-weight: 300; line-height: .9; letter-spacing: -.035em; }
+.set .num { font-size: 92px; }
+.set .deg { font-size: 30px; font-weight: 400; margin: 8px 0 0 4px; letter-spacing: 0; color: var(--ac-mute); }
+.facts { display: grid; gap: 4px; padding-top: 12px; border-top: 1px solid var(--ac-line); font-size: 14px; }
+.facts div { display: flex; justify-content: space-between; gap: 16px; }
+.facts dt { color: var(--ac-mute); }
+.facts dd { font-weight: 600; }
+.status { font-size: 14px; color: var(--ac-blue); font-weight: 600; min-height: 2.9em; }
+
+.ac-dial { display: grid; justify-items: center; gap: 10px; }
+.knob { --knob-size: 236px; --knob-on: var(--ac-blue); --knob-ink: var(--ac-ink); --knob-rest: color-mix(in srgb, var(--ac-mute), transparent 55%); }
+.knob-fallback { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 600; }
+.hint { font-size: 12.5px; color: var(--ac-mute); max-width: 24ch; text-align: center; }
+
+@media (max-width: 620px) {
+  .aircon { grid-template-columns: 1fr; padding: 18px 16px; gap: 16px; }
+  .ac-info { display: contents; }
+  .ac-info header { order: -2; }
+  .ac-dial { order: -1; }
+  .set .num { font-size: 64px; }
+  .knob { --knob-size: 220px; }
+}
+@media (max-height: 520px) and (min-width: 621px) {
+  .aircon { padding-block: 16px; }
+  .set .num { font-size: 72px; }
+  .knob { --knob-size: 210px; }
+}

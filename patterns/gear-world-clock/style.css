@@ -1,0 +1,28 @@
+/*
+ * gear-world-clock: city clocks driven by one gear train. gear-world-clock.js draws the wheels and
+ * dials and turns them; this file colours them. The whole train is one slider: drag any wheel, or
+ * use the keys. City wheels share a tooth count and sit two idlers apart, so they turn together.
+ */
+.gear-world-clock { display: block; touch-action: auto; border-radius: 10px; }
+.gear-world-clock svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: none; cursor: grab; }
+.gear-world-clock.is-dragging svg { cursor: grabbing; }
+.gear-world-clock:focus-visible { outline: 2px solid var(--gw-focus, #1f3b63); outline-offset: 4px; }
+.gear-world-clock .gw-wheel { fill: var(--gw-idler, #7a8391); transform-box: view-box; transform-origin: 0 0; }
+.gear-world-clock .gw-city .gw-wheel { fill: var(--gw-brass, #b8913f); }
+.gear-world-clock .gw-axle { fill: var(--gw-axle, #2a2f38); }
+.gear-world-clock .gw-dial { fill: var(--gw-day, #fffdf8); stroke: var(--gw-rim, #8c6d2c); stroke-width: 1.5; transition: fill var(--dur-base) var(--ease-out); }
+.gear-world-clock .gw-dial.gw-night { fill: var(--gw-night, #1f2d47); }
+.gear-world-clock .gw-tick { stroke: var(--gw-tick, #9aa0a8); stroke-width: 1.2; stroke-linecap: round; }
+.gear-world-clock .gw-tick-major { stroke: var(--gw-ink, #1d222b); stroke-width: 2; }
+.gear-world-clock .gw-hour, .gear-world-clock .gw-minute { stroke: var(--gw-ink, #1d222b); stroke-linecap: round; transform-box: view-box; transform-origin: 0 0; }
+.gear-world-clock .gw-hour { stroke-width: 4.5; }
+.gear-world-clock .gw-minute { stroke-width: 2.5; }
+.gear-world-clock .gw-pin { fill: var(--gw-pin, #c2410c); }
+/* at night the hands and ticks turn light so they read on the dark face */
+.gear-world-clock .gw-gear:has(.gw-night) .gw-hour, .gear-world-clock .gw-gear:has(.gw-night) .gw-minute, .gear-world-clock .gw-gear:has(.gw-night) .gw-tick-major { stroke: var(--gw-day, #fffdf8); }
+.js .gear-world-clock:not(.is-ready) { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script jumps the train straight to the new time */
+  .gear-world-clock .gw-dial { transition: none; }
+}

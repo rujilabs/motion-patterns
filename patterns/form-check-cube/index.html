@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check cube demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="cube.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="prep sheet" aria-labelledby="prep-h">
+    <header class="prep-head">
+      <p class="shop">Dapur Kak Yah, Kuching</p>
+      <h1 id="prep-h">Kek lapis for Puan Rosnah</h1>
+      <p class="mute">Order KY-0412, pick up Saturday 1 Nov at 4:30 pm. 9-inch square, 18 layers.</p>
+    </header>
+    <div class="progress" aria-hidden="true"><span class="progress-bar" id="bar"></span></div>
+    <ol class="tasks" aria-label="Prep list">
+        <li><label class="cube-check"><input type="checkbox" checked><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Soften 1.2 kg butter to 20 °C</span></span></label></li>
+        <li><label class="cube-check"><input type="checkbox" checked><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Beat 30 egg yolks with 450 g castor sugar</span></span></label></li>
+        <li><label class="cube-check"><input type="checkbox"><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Fold in 250 g Horlicks and 200 g condensed milk</span></span></label></li>
+        <li><label class="cube-check"><input type="checkbox"><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Line the tin with baking paper, twice</span></span></label></li>
+        <li><label class="cube-check"><input type="checkbox"><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Grill 18 layers, about 3 min each, press each one flat</span></span></label></li>
+        <li><label class="cube-check"><input type="checkbox"><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Cool overnight, then trim 5 mm off every edge</span></span></label></li>
+        <li><label class="cube-check"><input type="checkbox"><span class="cube-box" aria-hidden="true"><span class="cube-lift"><span class="cube"><span class="cube-face cube-front"></span><span class="cube-face cube-top"><svg class="cube-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg></span></span></span></span><span class="cube-text"><span class="cube-words">Box it, ribbon, card: Selamat hari jadi, Nenek</span></span></label></li>
+    </ol>
+    <footer class="prep-foot">
+      <p role="status"><strong class="num" id="done">2 of 7</strong> <span id="tail">done</span></p>
+      <p class="mute num">RM 168.00, deposit RM 50.00 paid</p>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

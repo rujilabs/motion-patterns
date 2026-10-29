@@ -1,0 +1,18 @@
+/*
+ * gear-processing: a gear train that turns while a job runs. gear-processing.js draws the teeth and
+ * runs the turn with element.animate(); this file only colours the parts. Every gear turns by the
+ * same number of teeth, so speeds follow the tooth counts. Without the script the svg stays empty
+ * and the job text around it still reads.
+ */
+.gear-processing { display: block; width: 100%; height: auto; overflow: visible; }
+.gear-processing .gp-body { fill: var(--gp-steel, #8a96a6); }
+.gear-processing .gp-drive .gp-body { fill: var(--gp-drive, #d98a1c); }
+.gear-processing .gp-axle { fill: var(--gp-axle, #2a3340); }
+.gear-processing .gp-shadow { fill: var(--gp-shadow, rgb(20 30 45 / .14)); }
+.gear-processing .gp-spin, .gear-processing .gp-shadows g g { transform-box: view-box; transform-origin: 0 0; }
+.js .gear-processing:not(.is-ready) { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* gear-processing.js never starts a turn here: the job jumps straight to done */
+  .gear-processing .gp-spin { animation: none; transition: none; }
+}

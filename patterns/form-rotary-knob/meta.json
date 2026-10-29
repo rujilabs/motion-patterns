@@ -1,0 +1,19 @@
+{
+  "name": "Rotary knob",
+  "slug": "form-rotary-knob",
+  "kind": "pattern",
+  "summary": "A knob with detents on an arc scale, as an ARIA slider. Drag around it or use the keys; it clicks from notch to notch and springs into place, under a light that stays put.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

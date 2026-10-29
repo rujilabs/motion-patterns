@@ -1,0 +1,18 @@
+{
+  "name": "Gear settings icon",
+  "slug": "gear-settings-icon",
+  "kind": "pattern",
+  "summary": "A two-cog settings icon turns one tooth on hover or focus and two when its panel opens, back two when it closes. The meshed small cog turns the other way, faster, and every turn lands on a spring.",
+  "category": "gear",
+  "tech": [
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-10-29"
+}

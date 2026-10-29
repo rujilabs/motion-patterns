@@ -1,0 +1,19 @@
+{
+  "name": "Rocker switch",
+  "slug": "form-rocker-switch",
+  "kind": "pattern",
+  "summary": "A checkbox drawn as a rocker switch that tips about its pivot. The raised half catches the light, the lamp lights mid-throw, and the paddle snaps over centre into its stop.",
+  "category": "form",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-in",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-10-29"
+}

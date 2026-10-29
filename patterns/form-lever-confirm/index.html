@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lever confirm demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="lever.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="transfer sheet" aria-labelledby="tr-h">
+    <div class="tr-info">
+      <header class="tr-head">
+        <p class="bank">Bank Cendana</p>
+        <h1 id="tr-h">Review transfer</h1>
+      </header>
+      <p class="amount"><span class="cur">RM</span> <span class="num">12,480.00</span></p>
+      <dl class="tr-facts">
+        <div><dt>To</dt><dd>Lim Bina Kabinet Sdn Bhd<span>Current account ending 3381</span></dd></div>
+        <div><dt>Reference</dt><dd>Kitchen cabinets, payment 2 of 3</dd></div>
+        <div><dt>From</dt><dd>Savings ending 0417<span class="num">Balance after: RM 3,117.62</span></dd></div>
+      </dl>
+    </div>
+    <div class="tr-pull">
+      <button class="lever" type="button" id="lever" aria-describedby="lever-help lever-status"
+              data-pivot="56 115" data-length="140" data-rest="-38" data-end="38" data-status="lever-status">
+        <span class="lever-name">Send RM 12,480.00 to Lim Bina Kabinet</span>
+        <svg viewBox="0 0 240 230" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="lever-ball-paint" cx=".42" cy=".38" r=".7" fx=".34" fy=".28">
+              <stop offset="0" class="ball-hi"/><stop offset=".55" class="ball-mid"/><stop offset="1" class="ball-lo"/>
+            </radialGradient>
+          </defs>
+          <path class="lever-groove" d="M166.32 28.81 A140 140 0 0 1 166.32 201.19"/>
+          <path class="lever-groove-in" d="M166.32 28.81 A140 140 0 0 1 166.32 201.19"/>
+          <path class="lever-fill" d="M166.32 28.81 A140 140 0 0 1 166.32 201.19" pathLength="1"/>
+          <line class="lever-latch" x1="160.5" y1="211.5" x2="172.5" y2="190.5"/>
+          <text class="lever-word" x="196" y="30">Rest</text>
+          <text class="lever-word lever-word-end" x="196" y="206">Send</text>
+          <rect class="lever-bracket" x="24" y="80" width="64" height="70" rx="12"/>
+          <ellipse class="lever-shadow" cx="168" cy="44" rx="15" ry="5"/>
+          <line class="lever-rod" x1="56" y1="115" x2="166.32" y2="28.81"/>
+          <line class="lever-shine" x1="56" y1="113" x2="166.32" y2="26.81"/>
+          <circle class="lever-boss" cx="56" cy="115" r="19"/>
+          <circle class="lever-bolt" cx="56" cy="115" r="5"/>
+          <circle class="lever-ball" cx="166.32" cy="28.81" r="17" fill="url(#lever-ball-paint)"/>
+          <circle class="lever-gloss" cx="160.88" cy="22.69" r="5"/>
+        </svg>
+      </button>
+      <p class="lever-help" id="lever-help">Over RM 10,000, so pull the handle all the way down to send. Or hold Space or Enter.</p>
+      <p class="lever-status" id="lever-status" role="status">Let go early and nothing is sent.</p>
+      <button class="again" type="button" id="again" hidden>Make another transfer</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

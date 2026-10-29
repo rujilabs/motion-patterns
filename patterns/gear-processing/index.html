@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gear processing demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="gear-processing.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="export sheet" aria-labelledby="export-h">
+    <header class="export-head">
+      <p class="crumb">Payroll <span aria-hidden="true">/</span> October 2026</p>
+      <h1 id="export-h">Export the KWSP contribution file</h1>
+      <p class="mute">Syarikat Bas Ekspres Seri Lintas Sdn Bhd, 148 staff on the October run</p>
+    </header>
+
+    <div class="export-body">
+      <figure class="box">
+        <svg class="gear-processing" data-module="4" role="img" aria-label="Three meshing gears: 30, 12 and 20 teeth">
+          <g class="gp-gear gp-drive" data-teeth="30"></g>
+          <g class="gp-gear" data-teeth="12" data-mesh="0" data-dir="-32"></g>
+          <g class="gp-gear" data-teeth="20" data-mesh="1" data-dir="38"></g>
+        </svg>
+        <figcaption class="mute">30, 12 and 20 teeth. While the 30 turns once, the 12 turns two and a half times.</figcaption>
+      </figure>
+
+      <div class="job">
+        <ol class="steps" id="steps">
+          <li class="done">Read 148 staff records</li>
+          <li class="done">Work out EPF, SOCSO and EIS</li>
+          <li class="done">Write the file for i-Akaun</li>
+        </ol>
+        <div class="meter" aria-hidden="true"><span id="bar"></span></div>
+        <p class="status" role="status" id="status"><strong>Ready.</strong> <span class="num">148</span> rows, <span class="num">41.2 KB</span></p>
+        <p class="file"><span class="file-name">kwsp-oct-2026-a.csv</span> <span class="num mute" id="size">41.2 KB</span></p>
+        <div class="actions">
+          <button type="button" class="btn" id="again">Export again</button>
+          <span class="total mute">Employer share <strong class="num">RM 58,417.30</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

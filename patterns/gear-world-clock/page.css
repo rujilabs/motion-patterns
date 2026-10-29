@@ -1,0 +1,64 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --gw-brass: #b8913f;
+  --gw-rim: #8c6d2c;
+  --gw-idler: #7d8694;
+  --gw-axle: #2a2f38;
+  --gw-day: #fffdf8;
+  --gw-night: #1f2d47;
+  --gw-ink: #1d222b;
+  --gw-pin: #c2410c;
+  --gw-focus: #1f3b63;
+  --pl-open: #1d7a4e;
+  --pl-shut: #8a5a12;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gw-brass: #c9a24f;
+    --gw-rim: #e2c27a;
+    --gw-idler: #5e6775;
+    --gw-axle: #10141a;
+    --gw-day: #f3eee2;
+    --gw-night: #0f1830;
+    --gw-ink: #1d222b;
+    --gw-pin: #f07a3c;
+    --gw-focus: #9cc0ff;
+    --pl-open: #57c78f;
+    --pl-shut: #e3ab55;
+  }
+}
+.planner { width: min(720px, 100%); padding: 20px 24px 16px; display: grid; gap: 14px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gw-focus); }
+.plan-head h1 { font-size: 21px; font-weight: 700; margin-top: 3px; }
+.plan-head .mute { font-size: 13px; margin-top: 2px; }
+.gear-world-clock { padding: 4px 2px; }
+
+.cities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; }
+.cities li { display: grid; gap: 1px; }
+.cities strong { font-size: 13px; font-weight: 650; color: var(--demo-mute); }
+.cities .t { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+.cities .s { font-size: 12px; color: var(--pl-shut); }
+.cities .s.open { color: var(--pl-open); }
+
+.plan-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid var(--demo-line); padding-top: 12px; }
+.verdict { font-size: 14px; font-weight: 600; }
+.nudge { display: flex; gap: 6px; flex: none; }
+.btn { font: inherit; font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.btn:hover { border-color: var(--demo-mute); }
+.nudge { visibility: hidden; }
+.js .nudge { visibility: visible; }
+.hint { font-size: 12px; color: var(--demo-mute); }
+
+@media (max-width: 560px) {
+  .planner { padding: 16px 14px 14px; gap: 12px; }
+  .plan-head h1 { font-size: 18px; }
+  .cities .t { font-size: 17px; }
+  .cities .s { font-size: 11px; }
+  .plan-foot { flex-direction: column; align-items: stretch; }
+  .nudge .btn { flex: 1; }
+}
+@media (max-height: 560px) and (min-width: 561px) {
+  .planner { padding-block: 14px 12px; gap: 10px; }
+  .gear-world-clock svg { max-height: 200px; }
+  .hint { display: none; }
+}
