@@ -22,6 +22,14 @@ Motion that starts on its own and runs longer than 5 seconds needs a way to stop
 
 When every layer of a scroll scene moves in perfect lockstep with the wheel, it feels cheap, like a slide being dragged, and more frames or a smoother scroll do not fix it. Let the heavy parts (a door, a shutter, a hanging sign) ease in a beat behind the scroll position while the camera and the text stay 1:1. The gap between them reads as weight. Keep gauges such as a progress bar locked: a lagging gauge looks broken. See [`scroll-weight`](../../patterns/scroll-weight/).
 
+## Physics you can check
+
+An object that moves the way the real one does is what makes a demo convincing, so the numbers are real: meshed gears turn at speeds set by their tooth counts and opposite ways, a drum snaps to a row after a flick, a panel swings about its hinge edge and shades with its angle, light fades with distance, a pendulum's period follows its length. A wrong ratio or a panel that moves without a hinge is a bug, not a style. See [`gear-processing`](../../patterns/gear-processing/) and [`drum-time-picker`](../../patterns/drum-time-picker/).
+
+## One real job per entry
+
+Every object-family entry shows the motion doing one job on a believable screen, with specific names and numbers (RM 86.40, 7:45 pm, 23 seats left), and no job appears twice in the collection. A demo nobody would ship teaches nothing about where the motion belongs; the `Use when:` line at the top of each README says where it does.
+
 ## Motion adds to what is there
 
 Where an entry moves an element, it uses the individual `translate`, `rotate` and `scale` properties when it can, so it sits on top of the element's own `transform` (a stamp's tilt, a card's rotation) instead of replacing it.
