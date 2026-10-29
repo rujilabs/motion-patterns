@@ -35,5 +35,8 @@ gh release create v0.2.0 --title "v0.2.0" --notes-file /tmp/notes.md --verify-ta
 > [!CAUTION]
 > `git cliff -o CHANGELOG.md` rewrites the whole file. If someone hand-wrote an `[Unreleased]` section, promote it by hand instead.
 
+> [!WARNING]
+> Merge a release branch with **rebase**, not squash. git-cliff reads the commits on `main`; a squash merge folds every `feat:` into one line, and the next `git cliff -o` rewrites that version's section as a single bullet (v0.4.0 had to be restored by hand from the branch).
+
 > [!NOTE]
 > A tag does not deploy. The site deploys on every push to `main`; the version number shown in the gallery comes from `package.json`.
