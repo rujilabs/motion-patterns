@@ -1,0 +1,18 @@
+{
+  "name": "UI world",
+  "slug": "ui-world",
+  "kind": "pattern",
+  "summary": "Interface panels hang at different depths in one space while the camera drifts between them, so real parallax shows how the parts sit together.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-08"
+}

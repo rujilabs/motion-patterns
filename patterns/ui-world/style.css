@@ -1,0 +1,11 @@
+/* UI world. Place each .uw-panel with translate3d in your own CSS. The camera is one slow alternating move. */
+.uw-scene { perspective: 760px; }
+.uw-camera { transform-style: preserve-3d; animation: uw-drift 14s var(--ease-inout) infinite alternate; }
+.uw-panel { position: absolute; }
+@keyframes uw-drift {
+  from { transform: translate3d(70px, 12px, -40px) rotateY(11deg) rotateX(2deg); }
+  to { transform: translate3d(-70px, -12px, 40px) rotateY(-11deg) rotateX(-2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .uw-camera { animation: none !important; transition: none !important; }
+}
