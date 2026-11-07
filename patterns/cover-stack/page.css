@@ -1,0 +1,8 @@
+.ctl { position: absolute; right: 12px; bottom: 12px; z-index: 5; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--demo-paper); border: 1px solid var(--demo-line); }
+.cs-0 { --i: 0; --tw: -5deg; --dx: 0px; --dy: 0px; background: #b5482f; } .cs-1 { --i: 1; --tw: 7deg; --dx: 12px; --dy: -6px; background: #2e6d7e; } .cs-2 { --i: 2; --tw: -9deg; --dx: -10px; --dy: 8px; background: #d6a02c; } .cs-3 { --i: 3; --tw: 5deg; --dx: 14px; --dy: 6px; background: #4b7a4f; } .cs-4 { --i: 4; --tw: -3deg; --dx: -8px; --dy: -8px; background: #7a4f8e; } .cs-5 { --i: 5; --tw: 2deg; --dx: 4px; --dy: 2px; background: #20345c; } .cs-frame { background: #e9edf5; }
+.cs-h { position: absolute; left: 16px; top: 12px; right: 16px; margin: 0; font-size: 16px; color: #1e2229; }
+.cs-scene { position: absolute; inset: 40px 0 0; display: grid; place-items: center; }
+.cs-table { position: relative; width: clamp(130px, 30vw, 190px); aspect-ratio: 3 / 4; }
+.cs-cover { inset: 0; display: grid; align-content: space-between; padding: 14px; border-radius: 3px; color: #fff; box-shadow: 1px 2px 0 #fff, 2px 4px 0 #cfd6e2, 0 12px 20px rgba(20,30,70,.28); }
+.cs-cover small { font-size: 11px; font-weight: 600; opacity: .9; } .cs-cover strong { font-size: 34px; line-height: 1; font-weight: 800; }
