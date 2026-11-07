@@ -1,0 +1,9 @@
+/* Glass caption. The solid fallback comes first, frosted glass only where the browser supports it. */
+.glass-caption { background: rgba(20, 30, 70, .82); color: #fff; border: 1.5px solid rgba(255, 255, 255, .42); border-radius: 18px; animation: gc-in var(--dur-slow) var(--ease-out) .3s backwards; }
+@supports (backdrop-filter: blur(1px)) {
+  .glass-caption { background: rgba(255, 255, 255, .14); backdrop-filter: blur(22px) saturate(1.5); }
+}
+@keyframes gc-in { from { opacity: 0; transform: translateY(20px); } }
+@media (prefers-reduced-motion: reduce) {
+  .glass-caption, .gc-bg i { animation: none !important; transition: none !important; }
+}
