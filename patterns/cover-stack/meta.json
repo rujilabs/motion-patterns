@@ -1,0 +1,18 @@
+{
+  "name": "Cover stack",
+  "slug": "cover-stack",
+  "kind": "pattern",
+  "summary": "Covers fall one at a time and land flat in a growing, slightly messy stack, each settling at the real height of the pile with no bounce.",
+  "category": "entry",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-in"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-08"
+}

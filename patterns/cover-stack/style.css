@@ -1,0 +1,8 @@
+/* Cover stack. Set --i per cover (its place in the pile), and --tw, --dx, --dy for a slightly messy landing. */
+.cs-scene { perspective: 1000px; }
+.cs-table { transform-style: preserve-3d; transform: rotateX(52deg) rotateZ(-12deg); }
+.cs-cover { position: absolute; transform: translate3d(var(--dx, 0), var(--dy, 0), calc(var(--i) * 9px)) rotateZ(var(--tw, 0deg)); animation: cs-fall .62s var(--ease-in) calc(.3s + var(--i) * 300ms) backwards; }
+@keyframes cs-fall { from { opacity: 0; transform: translate3d(var(--dx, 0), var(--dy, 0), 520px) rotateZ(calc(var(--tw, 0deg) * -3)); } 20% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .cs-cover { animation: none !important; transition: none !important; }
+}
