@@ -1,0 +1,19 @@
+{
+  "name": "Match checklist",
+  "slug": "match-checklist",
+  "kind": "pattern",
+  "summary": "Three rows tick in order: the circle fills, the check mark draws and the row brightens, then the agreed result appears.",
+  "category": "state",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-08"
+}

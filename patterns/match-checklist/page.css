@@ -1,0 +1,10 @@
+.ctl { position: absolute; right: 12px; bottom: 12px; z-index: 5; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--demo-paper); border: 1px solid var(--demo-line); }
+.mc-frame { display: grid; place-items: center; background: #dfe8f7; }
+.mc-card { width: min(84%, 400px); padding: 22px; border-radius: 16px; background: #fff; color: #1e2229; box-shadow: 0 18px 40px rgba(20,40,90,.18); }
+.mc-card h1 { margin: 0 0 12px; font-size: 18px; } .mc-list { list-style: none; padding: 0; margin: 0; }
+.mc-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; font-size: 17px; font-weight: 600; }
+.mc-dot { width: 28px; height: 28px; flex: none; background: #16a36a; color: #fff; border: 2px solid #16a36a; } .mc-dot svg { width: 19px; height: 19px; }
+.mc-r0 { --i: 0; } .mc-r1 { --i: 1; } .mc-r2 { --i: 2; }
+.mc-result { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid #e3e8f0; } .mc-result strong { font-size: 22px; }
+@media (max-width: 520px) { .mc-frame { padding-bottom: 42px; } .mc-card { padding: 12px 14px; width: 86%; } .mc-card h1 { font-size: 15px; margin-bottom: 4px; } .mc-row { padding: 3px 0; font-size: 14px; } .mc-dot { width: 22px; height: 22px; } .mc-result { margin-top: 5px; padding-top: 5px; font-size: 13px; } .mc-result strong { font-size: 17px; } }
