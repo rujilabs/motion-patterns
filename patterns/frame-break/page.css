@@ -1,0 +1,10 @@
+.ctl { position: absolute; right: 12px; bottom: 12px; z-index: 5; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--demo-paper); border: 1px solid var(--demo-line); }
+.fb-scene { position: absolute; inset: 0; display: grid; place-items: center; }
+.fb-screen { width: 76%; padding: 16px; border-radius: 12px; background: #f7f9fc; color: #1e2229; border: 1px solid #d9dfe8; box-shadow: 0 16px 34px rgba(10,20,60,.14); }
+.fb-h { margin: 0 0 8px; font-size: 16px; } .fb-list { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+.fb-list li { padding: 7px 0; border-top: 1px solid #e6ebf2; } .fb-list .num { font-weight: 600; margin-right: 8px; }
+.fb-slot { margin: 8px 0; color: #9db0cf; min-height: 74px; }
+.fb-card { display: grid; gap: 2px; padding: 11px 13px; background: #2456d6; color: #fff; border-radius: 10px; font-size: 13px; }
+.fb-card strong { font-size: 18px; } .fb-card small { opacity: .85; }
+@media (max-width: 520px) { .fb-screen { width: 84%; padding: 10px; } .fb-list li:nth-child(2) { display: none; } .fb-list li { padding: 4px 0; } .fb-slot { min-height: 66px; margin: 4px 0; } .fb-card { padding: 7px 10px; } .fb-card strong { font-size: 16px; } }

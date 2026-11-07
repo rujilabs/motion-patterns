@@ -1,0 +1,9 @@
+/* Frame break. The parent keeps preserve-3d so the card really moves toward the viewer. .is-out is the finished state. */
+.fb-scene { perspective: 1000px; }
+.fb-screen { transform-style: preserve-3d; transform: rotateY(-13deg) rotateX(5deg); }
+.fb-slot { transform-style: preserve-3d; border: 1.5px dashed currentColor; border-radius: 10px; }
+.fb-card { transform: translateZ(0); transition: transform var(--dur-slow) var(--ease-inout), box-shadow var(--dur-slow) var(--ease-out); }
+.fb-card.is-out { transform: translateZ(95px) scale(1.04); box-shadow: 0 26px 46px rgba(10, 20, 60, .3); }
+@media (prefers-reduced-motion: reduce) {
+  .fb-card { animation: none !important; transition: none !important; }
+}
