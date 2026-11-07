@@ -1,0 +1,13 @@
+/* Carousel focus. Six panels, three seconds each. Each panel runs the same zoom, delayed by its own turn (--i). */
+@property --z { syntax: "<length>"; inherits: false; initial-value: 0px; }
+.cf-scene { perspective: 900px; }
+.cf-ring { transform-style: preserve-3d; animation: cf-turn 18s var(--ease-inout) infinite; }
+.cf-panel { position: absolute; transform: rotateY(calc(var(--i) * 60deg)) translateZ(calc(var(--r, 250px) + var(--z))); animation: cf-zoom 18s var(--ease-inout) calc(var(--i) * 3s) infinite; }
+@keyframes cf-turn {
+  0%, 12% { transform: rotateY(0deg); } 16.67%, 28.67% { transform: rotateY(-60deg); } 33.33%, 45.33% { transform: rotateY(-120deg); }
+  50%, 62% { transform: rotateY(-180deg); } 66.67%, 78.67% { transform: rotateY(-240deg); } 83.33%, 95.33% { transform: rotateY(-300deg); } 100% { transform: rotateY(-360deg); }
+}
+@keyframes cf-zoom { 0%, 12%, 100% { --z: 0px; } 2%, 10% { --z: 90px; } }
+@media (prefers-reduced-motion: reduce) {
+  .cf-ring, .cf-panel { animation: none !important; transition: none !important; }
+}
