@@ -1,0 +1,18 @@
+{
+  "name": "Pull-back reveal",
+  "slug": "pull-back-reveal",
+  "kind": "pattern",
+  "summary": "The view starts filled by one item, then pulls back on a decelerating curve to show it is one of many, with neighbours arriving by distance.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-08"
+}

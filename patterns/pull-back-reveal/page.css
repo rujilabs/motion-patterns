@@ -1,0 +1,8 @@
+.ctl { position: absolute; right: 12px; bottom: 12px; z-index: 5; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--demo-paper); border: 1px solid var(--demo-line); }
+.pb-c0 { background: #d4503e; } .pb-c1 { background: #2c6e8f; } .pb-c2 { background: #e7b53c; } .pb-c3 { background: #3f8f6b; } .pb-c4 { background: #8a5aa8; } .pb-c5 { background: #c7733a; } .pb-c6 { background: #315aa6; } .pb-c7 { background: #b93f6b; } .pb-c8 { background: #5f7d3a; } .pb-c9 { background: #d9913a; } .pb-frame { background: #15234d; }
+.pb-world { position: absolute; inset: 0; display: grid; place-items: center; padding: 12px 12px 46px; perspective: 900px; }
+.pb-shelf { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px 8px; width: 92%; padding-bottom: 8px; border-bottom: 0; }
+.pb-item { aspect-ratio: 1; border-radius: 3px; box-shadow: 0 6px 12px rgba(0,0,0,.4); display: grid; align-content: end; padding: 6px; color: #fff; font-style: normal; font-size: 10px; line-height: 1.15; overflow: hidden; }
+.pb-item b { font-size: 8px; font-weight: 600; opacity: .9; }
+.pb-h { position: absolute; left: 16px; bottom: 14px; right: 100px; margin: 0; font-size: 15px; color: #fff; font-weight: 600; }

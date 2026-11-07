@@ -1,0 +1,9 @@
+/* Pull-back reveal. The JS sets --ox, --oy on the world and --d on each item (distance from the pick, 0 to 1). */
+.pb-world { transform-origin: var(--ox, 50%) var(--oy, 50%); animation: pb-back 1.9s var(--ease-out) .35s backwards; }
+.pb-item { animation: pb-arrive .6s var(--ease-out) calc(.5s + var(--d, 0) * .6s) backwards; }
+.pb-item.is-pick { animation: none; }
+@keyframes pb-back { from { transform: scale(var(--from, 4.6)); } }
+@keyframes pb-arrive { from { opacity: 0; transform: translateY(-14px) rotateY(50deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .pb-world, .pb-item { animation: none !important; transition: none !important; }
+}
