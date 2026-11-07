@@ -5,6 +5,21 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.5.0] - 2026-11-07
+
+### Added
+
+- **cells-to-bars:** Cells rise from a table into solid 3D bars
+- **frame-break:** A panel lifts out of a flat screen in 3D
+- **ui-world:** Panels at depth with a drifting camera
+- **glass-caption:** Readable caption on frosted glass
+- **match-checklist:** Rows tick in order, then the result
+- **headline-floor:** Titles scroll across a tilted floor
+- **pull-back-reveal:** From one item back to the whole shelf
+- **carousel-focus:** 3D ring zooms each panel to read
+- **cover-stack:** Covers land in a growing stack
+
+
 ## [0.4.1] - 2026-10-29
 
 ### Fixed
@@ -18,23 +33,8 @@ messages by `npm run changelog`; do not edit it by hand.
 ### Added
 
 - **patterns:** Add scroll-weight, heavy parts trail the scroll on a damped spring (#1)
-- **form,gear:** Add 5 tactile form controls and 5 gear trains
-- **globe:** Add country picker, flight arcs, day and night, live dots and text band globes
-- **drum:** Add slot voucher, word rotator, combo lock and time picker drums
-- **drum:** Add rolodex; time picker opens on its value without JS
-- **curve:** Add delivery route, workflow connector, signature pad, arc picker and easing editor
-- **tile:** Add filter flip, seat map, habit grid, image assemble and PIN keypad
-- **morph:** Add mic record, search field, pay button, card detail and weather icon morphs
-- **solid:** Add pack viewer, dice roll, crate stack, coin flip and parcel open
-- **data:** Add live sparkline, sales funnel and live poll results
-- **panel:** Add FAQ hinge, map fold, shutter menu, door reveal and trifold pricing
-- **data:** Add live candlesticks and 3D quarterly bars
-- **light:** Add pointer spotlight, pull cord, open sign, card sheen and scan verify
-- **wave:** Add voice note, liquid fill, pendulum loader, pin ripple and flag picker
+- V0.4.0, 12 object categories and 60 new patterns (#2)
 
-### Fixed
-
-- **gear-settings-icon:** Plain hint text instead of a dashed note
 
 ## [0.3.0] - 2026-10-20
 
