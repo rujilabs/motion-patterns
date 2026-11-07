@@ -1,0 +1,9 @@
+.ctl { position: absolute; right: 12px; bottom: 12px; z-index: 5; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--demo-paper); border: 1px solid var(--demo-line); }
+.frame { background: #10213f; }
+.uw-scene { position: absolute; inset: 0; } .uw-camera { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.uw-panel { width: 200px; margin: -46px 0 0 -100px; padding: 13px 15px; display: grid; gap: 4px; border-radius: 11px; background: #f7f9fc; color: #1e2229; box-shadow: 0 18px 34px rgba(0,0,0,.35); font-size: 14px; }
+.uw-panel small { color: #2456d6; font-weight: 700; } .uw-panel strong { font-weight: 600; }
+.uw-p0 { transform: translate3d(0, -8px, 90px); } .uw-p1 { transform: translate3d(-200px, -100px, -60px); opacity: .92; } .uw-p2 { transform: translate3d(200px, -96px, -110px); opacity: .88; }
+.uw-p3 { transform: translate3d(-190px, 110px, -160px); opacity: .84; } .uw-p4 { transform: translate3d(195px, 105px, -30px); }
+@media (max-width: 520px) { .uw-panel { width: 150px; margin-left: -75px; font-size: 12px; } .uw-p1, .uw-p3 { translate: 52px 0; } .uw-p2, .uw-p4 { translate: -52px 0; } }
