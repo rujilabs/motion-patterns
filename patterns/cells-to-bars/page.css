@@ -1,0 +1,10 @@
+.ctl { position: absolute; right: 12px; bottom: 12px; z-index: 5; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--demo-paper); border: 1px solid var(--demo-line); }
+.cb-title { position: absolute; left: 18px; top: 14px; right: 18px; margin: 0; font-size: clamp(14px, 3.4vw, 17px); font-weight: 600; }
+.cb-scene { position: absolute; inset: 44px 0 0; display: grid; place-items: center; }
+.cb-grid { display: grid; grid-template-columns: repeat(5, clamp(44px, 12vw, 74px)); gap: 7px; }
+.cb-bar { height: clamp(44px, 12vw, 74px); }
+.cb-top { background: #fff; color: #1e2229; font-weight: 700; font-size: 20px; border: 1px solid #c9d2e0; }
+.cb-front { background: #7ea3ee; } .cb-side { background: #4f7fe3; }
+.is-top .cb-top { background: #ffe08a; } .is-top .cb-front { background: #e9b93a; } .is-top .cb-side { background: #cc9a1f; }
+.cb-day { position: absolute; left: 0; right: 0; top: 100%; margin-top: 4px; text-align: center; font-size: 12px; color: var(--demo-mute); }

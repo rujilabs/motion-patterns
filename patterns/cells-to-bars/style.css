@@ -1,0 +1,14 @@
+/* Cells to bars. Set --h per .cb-bar (the JS does it from data-value). The bar height is driven by one animated number, --p. */
+@property --p { syntax: "<number>"; inherits: true; initial-value: 1; }
+.cb-scene { perspective: 1100px; }
+.cb-grid { transform-style: preserve-3d; transform: rotateX(56deg) rotateZ(-26deg); animation: cb-tilt 1.2s var(--ease-inout) .9s backwards; }
+.cb-bar { position: relative; transform-style: preserve-3d; --p: 1; animation: cb-rise .9s var(--ease-out) calc(1.5s + var(--i, 0) * 90ms) backwards; }
+.cb-top { position: absolute; inset: 0; display: grid; place-items: center; transform: translateZ(calc(var(--h) * var(--p))); animation: cb-fill .3s var(--ease-out) calc(.2s + var(--i, 0) * 110ms) backwards; }
+.cb-front { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--h) * var(--p)); transform-origin: bottom; transform: rotateX(-90deg); }
+.cb-side { position: absolute; top: 0; bottom: 0; right: 0; width: calc(var(--h) * var(--p)); transform-origin: right; transform: rotateY(90deg); }
+@keyframes cb-tilt { from { transform: rotateX(0) rotateZ(0); } }
+@keyframes cb-rise { from { --p: 0; } }
+@keyframes cb-fill { from { color: transparent; } }
+@media (prefers-reduced-motion: reduce) {
+  .cb-grid, .cb-bar, .cb-top { animation: none !important; transition: none !important; }
+}

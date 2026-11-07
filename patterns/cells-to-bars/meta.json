@@ -1,0 +1,19 @@
+{
+  "name": "Cells to bars",
+  "slug": "cells-to-bars",
+  "kind": "pattern",
+  "summary": "Numbers fill a row of table cells seen from above, then the camera tilts and each cell rises as a solid 3D bar as tall as its value.",
+  "category": "data",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-08"
+}
