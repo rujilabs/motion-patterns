@@ -1,0 +1,19 @@
+{
+  "name": "Glass caption",
+  "slug": "glass-caption",
+  "kind": "pattern",
+  "summary": "A caption on frosted glass slides in over a moving scene and stays readable, with a solid fallback where backdrop-filter is missing.",
+  "category": "look",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-08"
+}
