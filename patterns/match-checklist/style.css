@@ -1,0 +1,12 @@
+/* Match checklist. Set --i per row in your CSS. Each row takes 450 ms; the result waits for the last one. */
+.mc-row { animation: mc-row .3s var(--ease-out) calc(.5s + var(--i, 0) * 450ms) backwards; }
+.mc-dot { display: inline-grid; place-items: center; border-radius: 50%; animation: mc-dot .3s var(--ease-out) calc(.5s + var(--i, 0) * 450ms) backwards; }
+.mc-dot path { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 16; animation: mc-draw .3s var(--ease-out) calc(.65s + var(--i, 0) * 450ms) backwards; }
+.mc-result { animation: mc-result .4s var(--ease-out) 2.1s backwards; }
+@keyframes mc-row { from { opacity: .45; } }
+@keyframes mc-dot { from { background: transparent; transform: scale(.82); } }
+@keyframes mc-draw { from { stroke-dashoffset: 16; } }
+@keyframes mc-result { from { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) {
+  .mc-row, .mc-dot, .mc-dot path, .mc-result { animation: none !important; transition: none !important; }
+}
