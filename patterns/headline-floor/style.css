@@ -1,0 +1,10 @@
+/* Headline floor. Each row holds its text twice and moves by half its width, so the loop has no seam. */
+.hf-scene { perspective: 620px; }
+.hf-floor { transform: rotateX(60deg); transform-origin: 50% 60%; }
+.hf-row { display: flex; width: max-content; white-space: pre; animation: hf-left 46s linear infinite; }
+.hf-row:nth-child(even) { animation-name: hf-right; }
+@keyframes hf-left { to { transform: translateX(-50%); } }
+@keyframes hf-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .hf-row { animation: none !important; transition: none !important; }
+}

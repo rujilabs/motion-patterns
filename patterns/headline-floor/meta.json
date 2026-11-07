@@ -1,0 +1,16 @@
+{
+  "name": "Headline floor",
+  "slug": "headline-floor",
+  "kind": "pattern",
+  "summary": "Large repeated titles lie flat on a tilted floor, rows scrolling in opposite directions, with one object resting above them casting a shadow.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-08"
+}
