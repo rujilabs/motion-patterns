@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. An architecture studio hero: concrete grey, terracotta. */
+.sgdd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid var(--demo-line);
+  display: grid; align-items: center; background-color: #f3f4f1; color: #1f2420;
+}
+.sgdd-copy {
+  position: relative; z-index: 1; margin: 0 40px; padding: 22px 24px; max-width: 400px; display: grid; gap: 12px; justify-items: start;
+  pointer-events: none; background: #f3f4f1; border: 1px solid #a7ada3;
+}
+.sgdd-copy a { pointer-events: auto; }
+.sgdd-name { font-size: 12.5px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: #a8442f; }
+.sgdd-copy h1 { max-width: 14ch; font-size: 44px; font-weight: 700; letter-spacing: -.03em; line-height: 1.02; }
+.sgdd-sub { font-size: 15px; color: #4d544b; max-width: 32ch; }
+.sgdd-cta { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 4px; }
+.sgdd-btn { font-size: 14px; font-weight: 650; padding: 10px 16px; border-radius: 2px; background: #1f2420; color: #fff; text-decoration: none; }
+.sgdd-link { font-size: 14px; font-weight: 650; color: #1f2420; text-underline-offset: 3px; }
+.sgdd-pause {
+  position: absolute; z-index: 1; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid #a7ada3; background: #f3f4f1; color: #1f2420; cursor: pointer;
+}
+.sgdd-pause[aria-pressed="true"] { background: #1f2420; color: #f3f4f1; border-color: #1f2420; }
+.sgdd :focus-visible { outline: 2px solid #c8553d; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .sgdd { --sgd-cell: 40px; aspect-ratio: auto; min-height: 300px; align-items: start; padding-top: 22px; }
+  .sgdd-copy { margin: 0 14px 60px; padding: 16px; gap: 8px; }
+  .sgdd-copy h1 { font-size: 27px; }
+  .sgdd-sub { font-size: 13px; }
+  .sgdd-name { font-size: 10.5px; }
+  .sgdd-btn, .sgdd-link { font-size: 12.5px; }
+  .sgdd-btn { padding: 8px 12px; }
+  .sgdd-pause { right: 12px; bottom: 12px; }
+}
