@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bell toggle demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="bell-toggle.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="times sheet" aria-labelledby="times-h">
+    <header class="times-head">
+      <p class="place">Kuala Lumpur, zone WLY01</p>
+      <h1 id="times-h">Prayer time alerts</h1>
+      <p class="mute">Monday 9 November 2026. The azan plays on this phone at each time you ring.</p>
+    </header>
+    <ul class="prayers">
+      <li><label class="bell"><span class="p-name" id="subuh-n">Subuh<small>Alert 10 min before</small></span><span class="p-time num">5:49 am</span><input type="checkbox" role="switch" id="subuh" checked><span class="bell-btn" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="bell-wave" d="M7.5 12.5Q4.5 18 7.5 23.5"/><path class="bell-wave" d="M32.5 12.5Q35.5 18 32.5 23.5"/><g class="bell-swing"><g class="bell-clap"><circle cx="20" cy="30.6" r="2.6"/></g><path class="bell-body" d="M20 8.5c-5.4 0-8.6 4-8.6 9.2v5.6L8.6 27.6h22.8l-2.8-4.3v-5.6c0-5.2-3.2-9.2-8.6-9.2z"/><path d="M20 8.5V6"/></g><path class="bell-slash" d="M9 9 31 31"/></svg></span></label></li>
+      <li><label class="bell"><span class="p-name" id="zohor-n">Zohor<small>At the time</small></span><span class="p-time num">1:00 pm</span><input type="checkbox" role="switch" id="zohor" checked><span class="bell-btn" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="bell-wave" d="M7.5 12.5Q4.5 18 7.5 23.5"/><path class="bell-wave" d="M32.5 12.5Q35.5 18 32.5 23.5"/><g class="bell-swing"><g class="bell-clap"><circle cx="20" cy="30.6" r="2.6"/></g><path class="bell-body" d="M20 8.5c-5.4 0-8.6 4-8.6 9.2v5.6L8.6 27.6h22.8l-2.8-4.3v-5.6c0-5.2-3.2-9.2-8.6-9.2z"/><path d="M20 8.5V6"/></g><path class="bell-slash" d="M9 9 31 31"/></svg></span></label></li>
+      <li><label class="bell"><span class="p-name" id="asar-n">Asar <span class="p-next">Next</span><small>At the time</small></span><span class="p-time num">4:15 pm</span><input type="checkbox" role="switch" id="asar"><span class="bell-btn" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="bell-wave" d="M7.5 12.5Q4.5 18 7.5 23.5"/><path class="bell-wave" d="M32.5 12.5Q35.5 18 32.5 23.5"/><g class="bell-swing"><g class="bell-clap"><circle cx="20" cy="30.6" r="2.6"/></g><path class="bell-body" d="M20 8.5c-5.4 0-8.6 4-8.6 9.2v5.6L8.6 27.6h22.8l-2.8-4.3v-5.6c0-5.2-3.2-9.2-8.6-9.2z"/><path d="M20 8.5V6"/></g><path class="bell-slash" d="M9 9 31 31"/></svg></span></label></li>
+      <li><label class="bell"><span class="p-name" id="maghrib-n">Maghrib<small>Alert 5 min before</small></span><span class="p-time num">7:01 pm</span><input type="checkbox" role="switch" id="maghrib" checked><span class="bell-btn" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="bell-wave" d="M7.5 12.5Q4.5 18 7.5 23.5"/><path class="bell-wave" d="M32.5 12.5Q35.5 18 32.5 23.5"/><g class="bell-swing"><g class="bell-clap"><circle cx="20" cy="30.6" r="2.6"/></g><path class="bell-body" d="M20 8.5c-5.4 0-8.6 4-8.6 9.2v5.6L8.6 27.6h22.8l-2.8-4.3v-5.6c0-5.2-3.2-9.2-8.6-9.2z"/><path d="M20 8.5V6"/></g><path class="bell-slash" d="M9 9 31 31"/></svg></span></label></li>
+      <li><label class="bell"><span class="p-name" id="isyak-n">Isyak<small>At the time</small></span><span class="p-time num">8:12 pm</span><input type="checkbox" role="switch" id="isyak"><span class="bell-btn" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="bell-wave" d="M7.5 12.5Q4.5 18 7.5 23.5"/><path class="bell-wave" d="M32.5 12.5Q35.5 18 32.5 23.5"/><g class="bell-swing"><g class="bell-clap"><circle cx="20" cy="30.6" r="2.6"/></g><path class="bell-body" d="M20 8.5c-5.4 0-8.6 4-8.6 9.2v5.6L8.6 27.6h22.8l-2.8-4.3v-5.6c0-5.2-3.2-9.2-8.6-9.2z"/><path d="M20 8.5V6"/></g><path class="bell-slash" d="M9 9 31 31"/></svg></span></label></li>
+    </ul>
+    <p class="times-foot mute" role="status" id="status">3 of 5 alerts on.</p>
+  </section>
+</main>
+</body>
+</html>
