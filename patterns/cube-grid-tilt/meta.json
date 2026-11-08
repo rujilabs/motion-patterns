@@ -1,0 +1,19 @@
+{
+  "name": "Cube grid tilt",
+  "slug": "cube-grid-tilt",
+  "kind": "pattern",
+  "summary": "A grid of CSS 3D cubes that turn to face the pointer like a lamp held in front of them. Choosing one with a click or Enter rolls it over to show the price on its top face.",
+  "category": "solid",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-spring"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

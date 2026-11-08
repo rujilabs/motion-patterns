@@ -1,0 +1,48 @@
+/* Demo page layout for this entry. Not part of the pattern. A hardware shop's tile sample wall. */
+.picker { width: min(560px, 100%); padding: 22px 24px 18px; display: grid; gap: 18px; }
+.brand { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--demo-red); }
+.head h1 { font-size: 23px; margin: 3px 0 4px; }
+.head .mute { font-size: 14px; }
+.cg-grid { --cg-size: 92px; display: grid; grid-template-columns: repeat(4, var(--cg-size)); gap: 20px 24px; justify-content: center; padding: 16px 0 10px; }
+.status { font-size: 13.5px; min-height: 2.9em; padding-top: 10px; border-top: 1px solid var(--demo-line); }
+
+.cg-cube { border-radius: 4px; }
+.cg-cube:focus-visible { outline-offset: 6px; }
+.cg-f { background-color: var(--sw, #ccc); }
+.cg-front, .cg-right, .cg-left { background: var(--sw-img, none), var(--sw, #ccc); }
+.cg-right::after, .cg-left::after, .cg-bottom::after { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .32); }
+.cg-left::after { background: rgb(0 0 0 / .2); }
+.cg-bottom { background: #77746d; }
+.cg-front { box-shadow: inset 0 0 0 1px rgb(0 0 0 / .14); }
+.cg-name {
+  position: absolute; left: 4px; right: 4px; bottom: 4px; padding: 2px 4px; border-radius: 3px;
+  font-size: 10.5px; font-weight: 650; line-height: 1.2; color: #1e2229; background: rgb(255 255 255 / .88);
+}
+.cg-top { background: #fffdf7; color: #1e2229; display: grid; align-content: center; gap: 1px; padding: 6px; text-align: center; box-shadow: inset 0 0 0 1px #d9d2c2; }
+.cg-top b { font-size: 17px; font-weight: 780; letter-spacing: -.02em; color: #b8321f; }
+.cg-top span { font-size: 9.5px; line-height: 1.25; color: #555c66; }
+
+/* the samples, drawn in CSS */
+.t1 { --sw: #cbc8c1; --sw-img: radial-gradient(circle at 30% 40%, #5f5b55 0 2px, transparent 2.5px) 0 0 / 17px 19px, radial-gradient(circle at 70% 60%, #e9e6df 0 3px, transparent 3.5px) 0 0 / 23px 21px, radial-gradient(circle at 50% 50%, #8c867c 0 1.5px, transparent 2px) 5px 7px / 11px 13px; }
+.t2 { --sw: #f6f4ee; --sw-img: linear-gradient(#cdc7bb 0 0) 0 0 / 100% 2px, linear-gradient(90deg, #cdc7bb 0 2px, transparent 2px) 0 0 / 46px 23px, linear-gradient(90deg, #cdc7bb 0 2px, transparent 2px) 23px 23px / 46px 46px; }
+.t3 { --sw: #f2ede1; --sw-img: radial-gradient(circle, #e2ad3b 0 5px, transparent 5.5px) 23px 23px / 46px 46px, radial-gradient(circle, #1f4e9b 0 14px, transparent 14.5px) 0 0 / 46px 46px, conic-gradient(from 45deg, #1f4e9b 25%, transparent 0 50%, #1f4e9b 0 75%, transparent 0) 23px 23px / 46px 46px; }
+.t4 { --sw: #a46a3c; --sw-img: linear-gradient(90deg, rgb(0 0 0 / .25) 0 1px, transparent 1px) 0 0 / 31px 100%, repeating-linear-gradient(90deg, rgb(255 255 255 / .07) 0 2px, transparent 2px 5px, rgb(0 0 0 / .08) 5px 6px, transparent 6px 9px); }
+.t5 { --sw: #9a9790; --sw-img: radial-gradient(ellipse 9px 7px at 30% 30%, #c7c3ba 95%, transparent) 0 0 / 22px 20px, radial-gradient(ellipse 8px 6px at 70% 75%, #6f6c66 95%, transparent) 0 0 / 22px 20px, radial-gradient(ellipse 6px 5px at 50% 50%, #b3ada2 95%, transparent) 11px 10px / 22px 20px; }
+.t6 { --sw: #2f7a5a; --sw-img: radial-gradient(circle, #4fa37c 0 11px, transparent 11.5px) 0 0 / 26px 23px, radial-gradient(circle, #4fa37c 0 11px, transparent 11.5px) 13px 11.5px / 26px 23px; }
+.t7 { --sw: #f3f1ec; --sw-img: linear-gradient(118deg, transparent 38%, #b9b4ab 39%, transparent 41%), linear-gradient(140deg, transparent 62%, #cfcac1 63%, transparent 64.5%), linear-gradient(100deg, transparent 18%, #ddd8cf 19%, transparent 20%); }
+.t8 { --sw: #8f908c; --sw-img: radial-gradient(circle at 30% 30%, rgb(255 255 255 / .12) 0 1px, transparent 1.5px) 0 0 / 7px 9px, radial-gradient(circle at 60% 70%, rgb(0 0 0 / .1) 0 1px, transparent 1.5px) 0 0 / 11px 8px; }
+.t9 { --sw: #bf633a; --sw-img: linear-gradient(#e3d6c2 0 0) 0 0 / 100% 2px, linear-gradient(90deg, #e3d6c2 0 2px, transparent 2px) 0 0 / 46px 46px; }
+.t10 { --sw: #c39258; --sw-img: linear-gradient(135deg, #a8763f 25%, transparent 25%) -11px 0 / 22px 22px, linear-gradient(225deg, #a8763f 25%, transparent 25%) -11px 0 / 22px 22px, linear-gradient(315deg, #d6a96f 25%, transparent 25%) 0 0 / 22px 22px, linear-gradient(45deg, #d6a96f 25%, transparent 25%) 0 0 / 22px 22px; }
+.t11 { --sw: #2f80b8; --sw-img: linear-gradient(90deg, #eef4f7 0 1px, transparent 1px) 0 0 / 12px 12px, linear-gradient(#eef4f7 0 1px, transparent 1px) 0 0 / 12px 12px, conic-gradient(#2f80b8 25%, #5aa8d8 0 50%, #1f5f8f 0 75%, #7cc3e6 0) 0 0 / 24px 24px; }
+.t12 { --sw: #232426; --sw-img: radial-gradient(circle at 20% 30%, #8b8d90 0 1px, transparent 1.5px) 0 0 / 9px 11px, radial-gradient(circle at 70% 60%, #55585c 0 1.5px, transparent 2px) 0 0 / 13px 10px; }
+
+/* without the script, hover or focus turns a sample over */
+html:not(.js) .cg-cube:is(:hover, :focus) { --cg-flip: -90deg; }
+
+@media (max-width: 520px) {
+  .picker { padding: 18px 16px 16px; }
+  .cg-grid { --cg-size: 86px; grid-template-columns: repeat(3, var(--cg-size)); gap: 18px 18px; }
+}
+@media (max-width: 340px) {
+  .cg-grid { --cg-size: 76px; }
+}

@@ -1,0 +1,33 @@
+/*
+ * cube-grid-tilt: a grid of CSS 3D cubes, each turning to face the pointer as if it were a lamp held in
+ * front of the grid. cube-grid-tilt.js sets --cg-rx and --cg-ry per cube. A cube is a button: choosing
+ * it (aria-pressed="true") rolls it a quarter turn toward you to show the face that was on top.
+ * The roll is a transition on the registered --cg-flip angle, so it composes with the tilt.
+ * Faces: .cg-front, .cg-top (shown when chosen), .cg-right, .cg-left, .cg-bottom.
+ */
+@property --cg-flip { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+
+.cg-cube {
+  --cg-half: calc(var(--cg-size, 84px) / 2);
+  appearance: none; display: block; width: var(--cg-size, 84px); height: var(--cg-size, 84px);
+  margin: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer;
+  transition: --cg-flip var(--dur-base) var(--ease-spring);
+}
+.cg-cube[aria-pressed="true"] { --cg-flip: -90deg; }
+.cg-body {
+  position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d;
+  transform: perspective(var(--cg-depth, 520px)) translateZ(calc(-1 * var(--cg-half)))
+    rotateX(var(--cg-rx, 0deg)) rotateY(var(--cg-ry, 0deg)) rotateX(var(--cg-flip));
+}
+.cg-f { position: absolute; inset: 0; backface-visibility: hidden; overflow: hidden; }
+.cg-front { transform: translateZ(var(--cg-half)); }
+.cg-top { transform: rotateX(90deg) translateZ(var(--cg-half)); }
+.cg-bottom { transform: rotateX(-90deg) translateZ(var(--cg-half)); }
+.cg-right { transform: rotateY(90deg) translateZ(var(--cg-half)); }
+.cg-left { transform: rotateY(-90deg) translateZ(var(--cg-half)); }
+.cg-grid, [data-cg-area] { touch-action: pan-y; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no tilt; a chosen cube swaps faces at once */
+  .cg-cube { transition: none; }
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cube grid tilt demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="cube-grid-tilt.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="picker sheet" data-cg-area aria-labelledby="pick-h">
+    <header class="head">
+      <p class="brand">Kedai Hardware Seng Huat, Klang</p>
+      <h1 id="pick-h">Pick a floor tile</h1>
+      <p class="mute">Sample blocks from aisle 6. Choose one to turn it over for the price.</p>
+    </header>
+    <ul class="cg-grid" data-cg-lamp="320" data-cg-max="22" aria-label="Tile samples">
+      <li><button class="cg-cube t1" type="button" aria-pressed="false" data-stock="36" data-size="60 x 60 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Terrazzo Kelabu</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 7.85</b><span>a piece</span><span class="num">RM 21.81 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t2" type="button" aria-pressed="false" data-stock="410" data-size="7.5 x 15 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Subway Putih</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 0.62</b><span>a piece</span><span class="num">RM 55.11 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t3" type="button" aria-pressed="false" data-stock="58" data-size="20 x 20 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Peranakan Biru</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 4.30</b><span>a piece</span><span class="num">RM 107.50 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t4" type="button" aria-pressed="false" data-stock="23" data-size="15 x 90 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Kayu Jati look</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 9.40</b><span>a piece</span><span class="num">RM 69.63 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t5" type="button" aria-pressed="false" data-stock="77" data-size="30 x 30 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Batu Sungai</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 3.20</b><span>a piece</span><span class="num">RM 35.56 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t6" type="button" aria-pressed="false" data-stock="64" data-size="20 x 23 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Hexagon Hijau</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 2.85</b><span>a piece</span><span class="num">RM 82.95 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t7" type="button" aria-pressed="false" data-stock="9" data-size="60 x 120 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Marmar Putih</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 38.90</b><span>a piece</span><span class="num">RM 54.03 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t8" type="button" aria-pressed="false" data-stock="41" data-size="60 x 60 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Simen Matte</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 6.70</b><span>a piece</span><span class="num">RM 18.61 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t9" type="button" aria-pressed="false" data-stock="126" data-size="30 x 30 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Terracotta Klang</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 2.95</b><span>a piece</span><span class="num">RM 32.78 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t10" type="button" aria-pressed="false" data-stock="18" data-size="12 x 60 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Chevron Oak</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 5.45</b><span>a piece</span><span class="num">RM 75.69 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t11" type="button" aria-pressed="false" data-stock="33" data-size="30 x 30 cm sheet"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Mozek Biru Laut</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 11.20</b><span>a piece</span><span class="num">RM 124.44 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+      <li><button class="cg-cube t12" type="button" aria-pressed="false" data-stock="27" data-size="60 x 60 cm"><span class="cg-body">
+        <span class="cg-f cg-front"><span class="cg-name">Granit Hitam</span></span>
+        <span class="cg-f cg-top"><b class="num">RM 12.65</b><span>a piece</span><span class="num">RM 35.14 per m²</span></span>
+        <span class="cg-f cg-right" aria-hidden="true"></span><span class="cg-f cg-left" aria-hidden="true"></span><span class="cg-f cg-bottom" aria-hidden="true"></span>
+      </span></button></li>
+    </ul>
+    <p class="status" id="status" role="status">No tile chosen yet.</p>
+  </section>
+</main>
+</body>
+</html>
