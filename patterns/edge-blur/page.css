@@ -1,0 +1,22 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.wrap { width: min(460px, 100%); display: grid; gap: 10px; }
+.hint { justify-self: start; color: var(--demo-mute); font-size: 12.5px; }
+.panel { overflow: clip; border-radius: 14px; }
+.list { --edge-blur-h: 44px; --edge-blur-tint: var(--demo-paper); height: min(470px, calc(100svh - 110px)); min-height: 260px; overflow-y: auto; overscroll-behavior: contain; }
+.list:focus-visible { outline-offset: -2px; }
+
+.bar { position: sticky; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: var(--demo-paper); }
+.bar-top { top: 0; }
+.bar-bottom { bottom: 0; font-size: 14px; }
+.bar-bottom strong { font-size: 18px; }
+.bar h1 { font-size: 17px; }
+.bar .mute { font-size: 12px; }
+.live { flex: none; padding: 4px 9px; border-radius: 99px; background: var(--demo-red); color: #fff; font-size: 12px; font-weight: 650; }
+
+.orders { padding: 6px 18px; }
+.order { display: grid; grid-template-columns: auto 1fr auto; column-gap: 12px; row-gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--demo-line); }
+.order:last-child { border-bottom: 0; }
+.o-id { grid-row: 1 / 3; align-self: start; padding: 3px 6px; border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; font-weight: 650; }
+.o-what { font-size: 14px; font-weight: 550; }
+.o-meta { grid-column: 2; color: var(--demo-mute); font-size: 12px; }
+.o-sum { grid-row: 1 / 3; grid-column: 3; align-self: center; font-weight: 650; font-size: 14px; }

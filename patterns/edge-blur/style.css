@@ -1,0 +1,33 @@
+/*
+ * edge-blur: a progressive blur where scrolling content meets a sticky bar. Four stacked layers, each with
+ * a stronger backdrop blur and a shorter mask, so rows soften gradually as they slide under the bar
+ * instead of being cut at a hard line. Put .edge-blur inside the sticky header (it hangs below it), or
+ * add .edge-blur-bottom inside a sticky footer (it sits above it, flipped).
+ * The layers fade in over the first --edge-blur-h of scroll (and out over the last, for the bottom), so
+ * nothing looks blurred while the list rests at its start. Needs scroll timelines; elsewhere it is always on.
+ * Trap: no opacity, filter, mask or backdrop-filter on .edge-blur itself or the bar. Each of those makes
+ * a new backdrop root and the layers would blur nothing.
+ */
+.edge-blur { position: absolute; left: 0; right: 0; top: 100%; height: var(--edge-blur-h, 48px); pointer-events: none; }
+.edge-blur-bottom { top: auto; bottom: 100%; scale: 1 -1; }
+.edge-blur > * {
+  position: absolute; inset: 0;
+  -webkit-backdrop-filter: blur(var(--eb-r)); backdrop-filter: blur(var(--eb-r));
+  mask-image: linear-gradient(#000 var(--eb-a), transparent var(--eb-b));
+}
+.edge-blur > :nth-child(1) { --eb-r: 1px; --eb-a: 25%; --eb-b: 100%; }
+.edge-blur > :nth-child(2) { --eb-r: 2px; --eb-a: 15%; --eb-b: 75%; }
+.edge-blur > :nth-child(3) { --eb-r: 4px; --eb-a: 5%; --eb-b: 50%; }
+.edge-blur > :nth-child(4) { --eb-r: 8px; --eb-a: 0%; --eb-b: 28%; background: linear-gradient(var(--edge-blur-tint, transparent), transparent); }
+
+@keyframes edge-blur-in { from { opacity: 0; } }
+@supports (animation-timeline: scroll()) {
+  .edge-blur > * { animation: edge-blur-in linear both; }
+  .edge-blur > * { animation-timeline: scroll(nearest); animation-range: 0 var(--edge-blur-h, 48px); }
+  .edge-blur-bottom > * { animation-direction: reverse; animation-range: calc(100% - var(--edge-blur-h, 48px)) 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the blur is a look, not a move: keep it, at full strength from the start */
+  .edge-blur > * { animation: none; }
+}
