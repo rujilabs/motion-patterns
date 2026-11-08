@@ -1,0 +1,12 @@
+/*
+ * ribbon-cursor: soft ribbons tied to the pointer that trail, swing, twist and settle.
+ * ribbon-cursor.js draws them on .rb-canvas; colours come from --rb-colors (one per ribbon, in turn)
+ * and the widest point from --rb-width. Put your content above the canvas with position: relative; z-index: 1.
+ */
+.rb { --rb-colors: #25358a #9a5426 #b3312b #d6a12a; --rb-width: 20px; position: relative; overflow: hidden; touch-action: pan-y; }
+.rb-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* ribbon-cursor.js draws the ribbons hanging still from the hook and ignores the pointer */
+  .rb-canvas { transition: none; }
+}

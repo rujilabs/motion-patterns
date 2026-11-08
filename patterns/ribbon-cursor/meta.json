@@ -1,0 +1,16 @@
+{
+  "name": "Ribbon cursor",
+  "slug": "ribbon-cursor",
+  "kind": "pattern",
+  "summary": "Soft ribbons tied to the pointer trail behind it, swing, twist to show their darker back and settle hanging down. Touch drag works; Tab to a link and they hang from it.",
+  "category": "emphasis",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
