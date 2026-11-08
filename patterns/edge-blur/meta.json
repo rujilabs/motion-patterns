@@ -1,0 +1,15 @@
+{
+  "name": "Edge blur",
+  "slug": "edge-blur",
+  "kind": "pattern",
+  "summary": "A progressive blur where a scrolling list meets a sticky header or footer: four masked backdrop blur layers, so rows soften as they slide under the bar instead of cutting off.",
+  "category": "look",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge blur demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<main class="stage">
+  <div class="wrap">
+    <p class="hint">Scroll the order list. Rows soften as they slide under the header and the total bar.</p>
+    <section class="panel sheet" aria-labelledby="eb-h">
+      <div class="list" tabindex="0" role="region" aria-labelledby="eb-h">
+        <header class="bar bar-top">
+          <div>
+            <h1 id="eb-h">Dapur Kak Ros, lunch</h1>
+            <p class="mute">Seksyen 7, Shah Alam · Tuesday 11 Nov</p>
+          </div>
+          <span class="live num">14 orders</span>
+          <div class="edge-blur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </header>
+        <ol class="orders">
+      <li class="order"><span class="o-id num">#2041</span><span class="o-what">Nasi lemak ayam berempah x2, teh o ais limau x2</span><span class="o-meta"><span class="num">12:05 pm</span> · Grab</span><span class="o-sum num">RM 26.40</span></li>
+      <li class="order"><span class="o-id num">#2042</span><span class="o-what">Mee rebus x1, kopi peng x1</span><span class="o-meta"><span class="num">12:07 pm</span> · Walk in</span><span class="o-sum num">RM 11.30</span></li>
+      <li class="order"><span class="o-id num">#2043</span><span class="o-what">Nasi campur, ikan keli sambal, sayur kangkung</span><span class="o-meta"><span class="num">12:09 pm</span> · Foodpanda</span><span class="o-sum num">RM 13.80</span></li>
+      <li class="order"><span class="o-id num">#2044</span><span class="o-what">Laksa Johor x3</span><span class="o-meta"><span class="num">12:11 pm</span> · Grab</span><span class="o-sum num">RM 31.50</span></li>
+      <li class="order"><span class="o-id num">#2045</span><span class="o-what">Nasi goreng kampung, telur mata x1, sirap bandung</span><span class="o-meta"><span class="num">12:14 pm</span> · Walk in</span><span class="o-sum num">RM 14.20</span></li>
+      <li class="order"><span class="o-id num">#2046</span><span class="o-what">Bihun sup tulang x2</span><span class="o-meta"><span class="num">12:16 pm</span> · ShopeeFood</span><span class="o-sum num">RM 22.00</span></li>
+      <li class="order"><span class="o-id num">#2047</span><span class="o-what">Roti jala with kari ayam, 2 sets</span><span class="o-meta"><span class="num">12:19 pm</span> · Walk in</span><span class="o-sum num">RM 18.60</span></li>
+      <li class="order"><span class="o-id num">#2048</span><span class="o-what">Nasi lemak sotong x1, air mata kucing x1</span><span class="o-meta"><span class="num">12:22 pm</span> · Grab</span><span class="o-sum num">RM 15.90</span></li>
+      <li class="order"><span class="o-id num">#2049</span><span class="o-what">Mee goreng mamak x4, teh tarik x4</span><span class="o-meta"><span class="num">12:25 pm</span> · Office tab</span><span class="o-sum num">RM 48.40</span></li>
+      <li class="order"><span class="o-id num">#2050</span><span class="o-what">Ayam penyet, nasi tambah</span><span class="o-meta"><span class="num">12:27 pm</span> · Foodpanda</span><span class="o-sum num">RM 16.70</span></li>
+      <li class="order"><span class="o-id num">#2051</span><span class="o-what">Kuih lapis, 10 pieces, for pickup</span><span class="o-meta"><span class="num">12:31 pm</span> · Walk in</span><span class="o-sum num">RM 12.00</span></li>
+      <li class="order"><span class="o-id num">#2052</span><span class="o-what">Nasi kerabu x2, solok lada x1</span><span class="o-meta"><span class="num">12:34 pm</span> · Grab</span><span class="o-sum num">RM 29.80</span></li>
+      <li class="order"><span class="o-id num">#2053</span><span class="o-what">Sup ekor, nasi putih</span><span class="o-meta"><span class="num">12:36 pm</span> · Walk in</span><span class="o-sum num">RM 19.50</span></li>
+      <li class="order"><span class="o-id num">#2054</span><span class="o-what">Cendol pulut x3</span><span class="o-meta"><span class="num">12:40 pm</span> · ShopeeFood</span><span class="o-sum num">RM 13.50</span></li>
+        </ol>
+        <footer class="bar bar-bottom">
+          <span class="mute">Since 12:00 pm</span>
+          <strong class="num">RM 293.60</strong>
+          <div class="edge-blur edge-blur-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </footer>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
