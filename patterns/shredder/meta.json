@@ -1,0 +1,16 @@
+{
+  "name": "Shredder",
+  "slug": "shredder",
+  "kind": "pattern",
+  "summary": "Delete with a paper trail: the document feeds down through a shredder head and comes out as strips cut from the real page, which drop into a basket. Undo plays it back up and joins them.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

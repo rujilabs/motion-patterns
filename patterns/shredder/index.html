@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shredder demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="shredder.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="sh" aria-labelledby="sh-h">
+    <header class="sh-head">
+      <p class="sh-kicker">Bengkel Jati Ahmad, Muar</p>
+      <h1 id="sh-h">Drafts <span class="sh-count num" id="sh-count">1</span></h1>
+    </header>
+
+    <div class="shredder" id="sh-machine" data-strips="16">
+      <div class="shredder-feed">
+        <article class="shred-doc inv" id="sh-doc" aria-labelledby="inv-no">
+          <div class="inv-top">
+            <p class="inv-no num" id="inv-no">INV-2026-0318</p>
+            <p class="inv-stamp">Draft</p>
+          </div>
+          <p class="inv-to">To Kafe Serambi Pagi, Bangsar <span class="mute">· created Fri 6 Nov</span></p>
+          <table class="inv-lines">
+            <tr><td>Teak bench, 1.8 m <span class="mute">x 2</span></td><td class="num">1,237.00</td></tr>
+            <tr><td>Delivery to Kuala Lumpur</td><td class="num">185.40</td></tr>
+            <tr class="inv-total"><td>Total</td><td class="num">RM 1,422.40</td></tr>
+          </table>
+        </article>
+        <p class="sh-empty" id="sh-empty" hidden>No drafts. Sent invoices are under Sent.</p>
+      </div>
+      <div class="shredder-head" aria-hidden="true"></div>
+      <div class="shredder-out" aria-hidden="true"><div class="shredder-bin"></div></div>
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" id="sh-ask">Delete draft</button>
+      <div class="sh-confirm" id="sh-confirm" hidden>
+        <p>Shred INV-2026-0318? It can no longer be sent.</p>
+        <div class="sh-row">
+          <button class="sh-btn sh-danger" type="button" id="sh-yes">Shred it</button>
+          <button class="sh-btn" type="button" id="sh-no">Keep it</button>
+        </div>
+      </div>
+      <div class="sh-toast" id="sh-toast" hidden>
+        <p id="sh-msg">Draft shredded.</p>
+        <button class="sh-btn" type="button" id="sh-undo">Undo</button>
+        <span class="sh-bar" id="sh-bar" aria-hidden="true"></span>
+      </div>
+    </div>
+    <p class="vh" role="status" id="sh-say"></p>
+  </section>
+</main>
+</body>
+</html>
