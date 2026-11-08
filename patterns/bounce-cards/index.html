@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bounce cards demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="bounce-cards.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame bcd-frame" aria-labelledby="bcd-h">
+  <header class="bcd-top">
+    <p class="bcd-studio">Lensa Kirana <span>Studio, Jalan Tengkera, Melaka</span></p>
+    <h1 id="bcd-h">Aishah and Farid</h1>
+    <p class="bcd-meta num">Sat 31 Oct 2026 · 214 frames · 5 cover picks</p>
+  </header>
+
+  <ul class="bc" data-play aria-label="Cover picks">
+    <li><button class="bc-print" type="button" data-caption="Akad nikah at Masjid Kampung Hulu, 10:20 am."><img src="art/akad.svg" alt="The couple seated side by side at the akad nikah" width="120" height="150"><span class="num">10:20 am</span></button></li>
+    <li><button class="bc-print" type="button" data-caption="Merenjis, the family blessing with scented water, 11:05 am."><img src="art/merenjis.svg" alt="Hennaed hands under a bunga manggar sprig" width="120" height="150"><span class="num">11:05 am</span></button></li>
+    <li><button class="bc-print" type="button" data-caption="Kompang group leading the groom's arrival, 12:40 pm."><img src="art/kompang.svg" alt="Four kompang players in a row" width="120" height="150"><span class="num">12:40 pm</span></button></li>
+    <li><button class="bc-print" type="button" data-caption="Bersanding on the pelamin at Dewan Seri Bayan, 1:15 pm."><img src="art/bersanding.svg" alt="Bride and groom on a gold pelamin" width="120" height="150"><span class="num">1:15 pm</span></button></li>
+    <li><button class="bc-print" type="button" data-caption="Sunset at Pantai Klebang, 6:52 pm."><img src="art/klebang.svg" alt="The couple in silhouette on the beach at sunset" width="120" height="150"><span class="num">6:52 pm</span></button></li>
+  </ul>
+
+  <footer class="bcd-foot">
+    <p class="bcd-cap" aria-live="polite" data-bc-caption>Hover or tap the fan to spread the prints.</p>
+    <button class="bcd-replay" type="button" data-bc-replay hidden>Play again</button>
+  </footer>
+</section>
+</main>
+</body>
+</html>
