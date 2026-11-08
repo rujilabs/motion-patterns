@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hold to confirm demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="hold.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="wallet sheet" aria-labelledby="w-h">
+    <header class="w-head">
+      <p class="brand">Dompet Selasih</p>
+      <h1 id="w-h">Saved card</h1>
+    </header>
+    <div class="w-body">
+      <div class="card" id="card" aria-hidden="true">
+        <span class="card-chip"></span>
+        <span class="card-no num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4417</span>
+        <span class="card-row"><span>AINA SOFEA RAHMAN</span><span class="num">08/28</span></span>
+        <span class="card-gone">Removed</span>
+      </div>
+      <div class="w-side">
+        <dl class="facts">
+          <div><dt>Card</dt><dd>Visa ending 4417</dd></div>
+          <div><dt>Added</dt><dd class="num">14 Mar 2025</dd></div>
+          <div><dt>Last used</dt><dd><span class="num">RM 42.90</span> on 3 Nov</dd></div>
+          <div><dt>Auto top-up</dt><dd>RM 50.00 when below RM 10.00</dd></div>
+        </dl>
+        <button class="hold" type="button" id="hold" data-hold="1500" data-status="hold-status" data-done="Card removed" aria-describedby="hold-help">
+          <span class="hold-fill" aria-hidden="true"></span>
+          <svg class="hold-ring" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <circle class="hold-track" cx="10" cy="10" r="8" transform="rotate(-90 10 10)"/>
+            <circle class="hold-arc" cx="10" cy="10" r="8" pathLength="1" transform="rotate(-90 10 10)"/>
+            <path class="hold-check" d="M6 10.4l2.7 2.7L14.2 7.4" pathLength="1"/>
+          </svg>
+          <span class="hold-label">Hold to remove card</span>
+        </button>
+        <p class="help" id="hold-help">Press and hold for 1.5 seconds, or hold Space or Enter. Auto top-up stops with it.</p>
+        <p class="status" id="hold-status" role="status">Let go early and the card stays.</p>
+        <button class="again" type="button" id="again" hidden>Add it back</button>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
