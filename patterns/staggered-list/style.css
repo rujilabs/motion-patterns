@@ -1,0 +1,17 @@
+/*
+ * staggered-list: a live queue. Rows arrive one after another, one highlight slides to the row picked with
+ * Up and Down (or a tap), and a new row slides in at the top while the rows below make room for it.
+ * staggered-list.js adds the listbox roles and runs every move with the Web Animations API.
+ * Rows need a transparent background: the highlight (.sl-mark) sits behind them.
+ */
+.sl { position: relative; isolation: isolate; }
+.sl-mark { position: absolute; z-index: -1; left: 0; top: 0; transform-origin: 0 50%; pointer-events: none; }
+.sl.is-waiting .sl-row, .sl.is-waiting .sl-mark { opacity: 0; }
+.sl-row { cursor: pointer; }
+/* a fresh row keeps a warm tint for a moment so the eye finds it */
+.sl-row.is-new { animation: sl-fresh calc(var(--dur-slow) * 3) var(--ease-out) both; }
+@keyframes sl-fresh { from { background-color: var(--sl-fresh, rgba(255, 196, 0, .32)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-row.is-new { animation: none; }
+}

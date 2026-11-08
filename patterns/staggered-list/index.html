@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staggered list demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="staggered-list.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame sq-frame" aria-labelledby="sq-h">
+  <header class="sq-top">
+    <div>
+      <p class="sq-shop">Kopitiam Bunga Raya, Taiping</p>
+      <h1 id="sq-h">Order queue</h1>
+    </div>
+    <p class="sq-clock num" data-sq-clock>Mon 7:42 am</p>
+  </header>
+  <ul class="sl sq-list" aria-labelledby="sq-h" data-sl-max="7">
+    <li class="sl-row"><span class="sq-time num">7:42</span><span class="sq-no num">#218 <b>T3</b></span><span class="sq-items">Kopi O peng x2, roti bakar kaya</span><span class="sq-amt num">RM 8.60</span></li>
+    <li class="sl-row"><span class="sq-time num">7:40</span><span class="sq-no num">#217 <b>Tapau</b></span><span class="sq-items">Teh tarik, nasi lemak x3</span><span class="sq-amt num">RM 11.40</span></li>
+    <li class="sl-row"><span class="sq-time num">7:38</span><span class="sq-no num">#216 <b>T7</b></span><span class="sq-items">Kopi C kosong, half-boiled eggs</span><span class="sq-amt num">RM 6.20</span></li>
+    <li class="sl-row"><span class="sq-time num">7:35</span><span class="sq-no num">#215 <b>T1</b></span><span class="sq-items">Milo ais x2, mee hoon goreng</span><span class="sq-amt num">RM 13.80</span></li>
+    <li class="sl-row"><span class="sq-time num">7:33</span><span class="sq-no num">#214 <b>T5</b></span><span class="sq-items">Yau char kwai x4, kopi</span><span class="sq-amt num">RM 7.40</span></li>
+    <li class="sl-row"><span class="sq-time num">7:31</span><span class="sq-no num">#213 <b>T2</b></span><span class="sq-items">Cham peng, kaya toast set</span><span class="sq-amt num">RM 7.90</span></li>
+  </ul>
+  <footer class="sq-foot">
+    <p class="sq-sum"><span class="num" data-sq-open>6</span> open, <span class="num" data-sq-total>RM 55.30</span> to collect</p>
+    <div class="sq-ctl">
+      <button class="sq-btn" type="button" aria-pressed="false" data-sq-pause>Pause new orders</button>
+      <button class="sq-btn" type="button" data-sq-replay>Replay</button>
+    </div>
+  </footer>
+</section>
+</main>
+</body>
+</html>
