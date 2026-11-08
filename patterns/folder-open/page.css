@@ -1,0 +1,31 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.desk { display: grid; grid-template-rows: auto 1fr auto; justify-items: center; padding: 18px 20px 14px; background: #5d6b5e; background-image: radial-gradient(ellipse at 50% 20%, #6f7e70, #4f5c50 75%); color: #f1ede3; }
+.dk-h { justify-self: start; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #dfe6dc; }
+.dk-hint { font-size: 12px; color: #c9d2c6; }
+.desk .folder { align-self: end; width: min(60%, 360px); margin-bottom: 12px; color: #4a3613; filter: drop-shadow(0 14px 18px rgb(20 30 20 / .35)); }
+.folder-paper { display: grid; align-content: start; gap: 1px; padding: 8%; background: #fdfcf8; border-radius: 3px; box-shadow: 0 1px 3px rgb(0 0 0 / .18); color: #26302a; font-size: 12px; line-height: 1.25; }
+.folder-paper::before { content: ""; height: 3px; width: 34%; margin-bottom: 6px; border-radius: 2px; background: #b0453a; }
+.folder-paper:nth-child(2)::before { background: #2f6b8f; }
+.folder-paper:nth-child(3)::before { background: #4c7a3c; }
+.dp-t { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.dp-l { color: #6b746d; font-size: 10.5px; }
+.dp-v { font-weight: 650; margin-bottom: 5px; }
+.folder-front { display: grid; align-content: end; gap: 2px; padding: 0 7% 8%; box-shadow: inset 0 1px rgb(255 255 255 / .45); }
+.ff-no { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.ff-name { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
+.ff-sub { font-size: 11.5px; opacity: .8; }
+@media (max-width: 520px) {
+  .desk { padding: 12px 12px 10px; }
+  .dk-h { font-size: 11px; }
+  .dk-hint { font-size: 10.5px; }
+  .desk .folder { width: 54%; margin-bottom: 8px; }
+  .folder-paper { font-size: 8px; padding: 8%; }
+  .folder-paper::before { height: 2px; margin-bottom: 3px; }
+  .dp-t { font-size: 8.5px; margin-bottom: 3px; }
+  .dp-l { font-size: 7px; }
+  .dp-v { margin-bottom: 2px; }
+  .ff-no { font-size: 8px; }
+  .ff-name { font-size: 12px; }
+  .ff-sub { font-size: 8px; }
+}

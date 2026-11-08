@@ -1,0 +1,32 @@
+/*
+ * folder-open: a document folder whose front cover drops forward on its bottom hinge while the papers
+ * inside rise out and fan. Closing runs it backwards: papers sink last one first, then the cover
+ * shuts. folder-open.js toggles .is-open and aria-expanded on the cover button. Only the closed state
+ * is scoped under .js, so without the script the folder shows open. Built for 2 to 4 papers.
+ */
+.folder { --folder-c: #e3b866; --folder-front: #ecc77b; --folder-spread: 8deg; --n: 3; position: relative; aspect-ratio: 10 / 7; perspective: 1000px; }
+.folder:has(.folder-paper:nth-child(4)) { --n: 4; }
+.folder:not(:has(.folder-paper:nth-child(3))) { --n: 2; }
+.folder-back { position: absolute; inset: 9% 0 0; border-radius: 0 10px 10px 10px; background: var(--folder-c); }
+.folder-back::before { content: ""; position: absolute; left: 0; bottom: 100%; width: 34%; height: 13%; border-radius: 8px 8px 0 0; background: inherit; }
+.folder-papers { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+.folder-paper {
+  --k: 0; --d: calc(var(--k) - (var(--n) - 1) / 2);
+  position: absolute; left: 25%; bottom: 8%; width: 50%; aspect-ratio: 1 / 1.2; transform-origin: 50% 100%;
+  transform: translate(calc(var(--d) * 64%), -40%) rotate(calc(var(--d) * var(--folder-spread)));
+  transition: transform var(--dur-slow) var(--ease-paper) calc(140ms + var(--k) * 70ms);
+}
+.folder-paper:nth-child(2) { --k: 1; }
+.folder-paper:nth-child(3) { --k: 2; }
+.folder-paper:nth-child(4) { --k: 3; }
+.folder-front {
+  position: absolute; inset: 24% 0 0; margin: 0; border: 0; border-radius: 10px; background: var(--folder-front);
+  font: inherit; color: inherit; text-align: left; cursor: pointer; transform-origin: 50% 100%;
+  transform: rotateX(-58deg); transition: transform var(--dur-base) var(--ease-out);
+}
+.folder-front:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.js .folder:not(.is-open) .folder-paper { transform: translateY(-12%); transition-duration: var(--dur-base); transition-timing-function: var(--ease-inout); transition-delay: calc((var(--n) - 1 - var(--k)) * 50ms); }
+.js .folder:not(.is-open) .folder-front { transform: none; transition-delay: 200ms; }
+@media (prefers-reduced-motion: reduce) {
+  .folder-paper, .folder-front, .js .folder:not(.is-open) .folder-paper, .js .folder:not(.is-open) .folder-front { transition: none; }
+}
