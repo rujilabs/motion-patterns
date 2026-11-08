@@ -1,0 +1,63 @@
+/* Demo page layout for this entry. Not part of the pattern. A conference pass: Sarawak red strap, white card. */
+:root {
+  --lb-table: #eceef0;
+  --lb-paper: #ffffff;
+  --lb-ink: #1d2128;
+  --lb-mute: #626a75;
+  --lb-line: #d9dde3;
+  --lb-red: #b8322f;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --lb-table: #12151a; --lb-paper: #1b1f26; --lb-ink: #e8ecf1; --lb-mute: #9aa2ad; --lb-line: #2c323b; --lb-red: #e0534d; }
+}
+body { background: var(--lb-table); color: var(--lb-ink); }
+:focus-visible { outline-color: var(--lb-ink); }
+
+.lb {
+  width: min(720px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  background: var(--lb-paper);
+  border: 1px solid var(--lb-line);
+  border-radius: 10px;
+  padding: 0 28px 0 0;
+  overflow: clip;
+}
+.lb-hang { --lanyard-length: 214px; --lanyard-h: 450px; --lanyard-color: var(--lb-red); }
+.lb-badge {
+  width: 168px;
+  padding: 24px 16px 14px;
+  border-radius: 10px;
+  background: #fbfbf9;
+  color: #1d2128;
+  border: 1px solid #dcdcd6;
+  box-shadow: 0 14px 22px -14px rgb(20 20 30 / .45);
+  display: grid;
+  gap: 4px;
+  text-align: center;
+}
+.lb-badge:focus-visible { outline: 2px solid var(--lb-ink); outline-offset: 4px; }
+/* the slot the clip goes through */
+.lb-hole { position: absolute; left: 50%; top: 7px; width: 30px; height: 7px; translate: -50% 0; border-radius: 4px; background: #c9cac4; box-shadow: inset 0 1px 1px rgb(0 0 0 / .25); }
+.lb-event { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: #5b616b; }
+.lb-role { margin: 6px -16px 8px; padding: 4px 0; background: #b8322f; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.lb-name { font-size: 21px; font-weight: 750; line-height: 1.1; letter-spacing: -.01em; }
+.lb-org { font-size: 12px; color: #5b616b; }
+.lb-no { margin-top: 10px; font-size: 11px; font-weight: 650; color: #7a808a; letter-spacing: .06em; }
+
+.lb-side { padding: 28px 0; display: grid; gap: 12px; }
+.lb-kicker { font-size: 13px; font-weight: 650; color: var(--lb-red); }
+.lb-side h1 { font-size: 24px; }
+.lb-facts { display: grid; gap: 8px; border-top: 1px solid var(--lb-line); padding-top: 12px; }
+.lb-facts dt { font-size: 12px; color: var(--lb-mute); }
+.lb-facts dd { margin: 1px 0 0; font-size: 14.5px; font-weight: 600; }
+.lb-hint { font-size: 13px; color: var(--lb-mute); }
+
+@media (max-width: 600px) {
+  .lb { grid-template-columns: minmax(0, 1fr); padding: 0 18px; gap: 0; }
+  .lb-hang { --lanyard-h: 440px; margin: 0 -18px; }
+  .lb-side { padding: 4px 0 20px; }
+  .lb-side h1 { font-size: 21px; }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lanyard badge demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="lanyard-badge.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="lb" aria-labelledby="lb-h">
+    <div class="lanyard lb-hang" id="lb-hang">
+      <svg class="lanyard-strap" aria-hidden="true"></svg>
+      <div class="lanyard-badge lb-badge" tabindex="0" role="group" aria-roledescription="badge"
+        aria-label="Kuching Code Week pass, Farah Lim Mei Ling, speaker" aria-describedby="lb-hint">
+        <span class="lb-hole" aria-hidden="true"></span>
+        <p class="lb-event">Kuching Code Week <span class="num">2026</span></p>
+        <p class="lb-role">Speaker</p>
+        <p class="lb-name">Farah Lim<br>Mei Ling</p>
+        <p class="lb-org">Data team, Bank Kenyalang</p>
+        <p class="lb-no num">KCW-0419</p>
+      </div>
+    </div>
+
+    <div class="lb-side">
+      <p class="lb-kicker">Your pass</p>
+      <h1 id="lb-h">See you on Thursday, Farah</h1>
+      <dl class="lb-facts">
+        <div><dt>Your talk</dt><dd>Thu 26 Nov, 2:40 pm, Hall B</dd></div>
+        <div><dt>Collect at</dt><dd>Counter 3, level 2, from 8:15 am</dd></div>
+        <div><dt>Wi-Fi</dt><dd class="num">kcw-guest, code 4471</dd></div>
+      </dl>
+      <p class="lb-hint" id="lb-hint">Drag the badge and let go. With focus, the arrow keys nudge it and Enter gives it a push.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>
