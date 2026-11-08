@@ -1,0 +1,29 @@
+/*
+ * dot-field-push: a field of dots on a canvas that parts around the pointer and springs back.
+ * dot-field-push.js draws it and reads these values. Without the script the canvas shows the
+ * same grid as a still CSS pattern.
+ */
+.dot-field {
+  --df-gap: 22px;        /* space between dots */
+  --df-reach: 120px;     /* how far the push spreads from the pointer */
+  --df-dot: #9aa6b8;     /* dots at rest */
+  --df-near: #c08a1e;    /* dots that have been pushed */
+  position: relative;
+  isolation: isolate;
+  touch-action: pan-y;
+}
+.dot-field > .df-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--df-dot) 1.3px, transparent 1.8px) 0 0 / var(--df-gap) var(--df-gap);
+}
+.dot-field > .df-canvas.is-live { background: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* dot-field-push.js draws the field once, parted around the first button, and does not move it */
+  .dot-field > .df-canvas { transition: none; }
+}
