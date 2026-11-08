@@ -1,0 +1,21 @@
+{
+  "name": "Bounce cards",
+  "slug": "bounce-cards",
+  "kind": "pattern",
+  "summary": "A fan of photo prints bounces up into place one after another as it comes into view, then spreads apart on hover, tap or keyboard focus while the print you are on lifts.",
+  "category": "entry",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-slow",
+    "--ease-spring",
+    "--stagger"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

@@ -1,0 +1,36 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.bcd-frame { display: grid; grid-template-rows: auto 1fr auto; background: #f4efe9; color: #2a2320; }
+.bcd-top { display: grid; gap: 2px; padding: 20px 24px 0; text-align: center; }
+.bcd-studio { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8a5a3c; }
+.bcd-studio span { font-weight: 500; letter-spacing: .02em; text-transform: none; color: #8d8077; margin-left: 4px; }
+.bcd-top h1 { font-size: 30px; font-weight: 600; letter-spacing: -.025em; margin-top: 4px; }
+.bcd-meta { font-size: 13px; color: #8d8077; }
+
+.bc { align-self: center; padding: 18px 0 10px; }
+.bc-print {
+  display: grid; gap: 6px; width: 132px; padding: 8px 8px 7px; border: 0; border-radius: 3px;
+  background: #fffdf9; color: #6b5d55; font: 500 11.5px/1 inherit; font-family: inherit; cursor: pointer;
+  box-shadow: 0 1px 2px rgba(50, 30, 20, .14), 0 10px 22px rgba(50, 30, 20, .14);
+}
+.bc-print img { display: block; width: 100%; height: auto; }
+.bc-print span { text-align: left; }
+.bc-print:focus-visible { outline: 2px solid #8a5a3c; outline-offset: 3px; }
+
+.bcd-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 24px 16px; }
+.bcd-cap { font-size: 13.5px; color: #4d413b; min-height: 2.6em; display: flex; align-items: center; }
+.bcd-replay { flex: none; min-height: 34px; padding: 0 14px; border-radius: 17px; border: 1px solid #d8cbbf; background: #fffdf9; color: #2a2320; font: 600 13px/1 inherit; font-family: inherit; cursor: pointer; }
+.bcd-replay[hidden] { display: none; }
+
+@media (max-width: 520px) {
+  .bcd-top { padding: 12px 14px 0; }
+  .bcd-studio span { display: none; }
+  .bcd-top h1 { font-size: 21px; margin-top: 0; }
+  .bcd-meta { font-size: 11px; }
+  .bc { padding: 6px 0 4px; --bc-spread: 58px; }
+  .bc.bc-fan { --bc-gap: 20px; }
+  .bc-print { width: 82px; padding: 5px 5px 4px; gap: 3px; font-size: 9.5px; }
+  .bcd-foot { padding: 0 14px 10px; }
+  .bcd-cap { font-size: 11.5px; }
+  .bcd-replay { min-height: 30px; font-size: 12px; padding: 0 10px; }
+}
