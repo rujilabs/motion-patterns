@@ -1,0 +1,21 @@
+{
+  "name": "Tear ticket",
+  "slug": "tear-ticket",
+  "kind": "pattern",
+  "summary": "Drag the stub of a ferry ticket down to tear it along the perforation: it turns on its bottom corner, then drops away; let go early and it springs back. Enter tears it too.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-in",
+    "--ease-inout",
+    "--ease-spring",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

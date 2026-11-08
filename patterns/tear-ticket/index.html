@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tear ticket demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="tear-ticket.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame jetty tt-group" aria-labelledby="tk-h">
+  <h1 id="tk-h" class="tk-h">Check in at gate 3</h1>
+  <div class="tt" data-done="Checked in at 10:02 am. Keep the main ticket until you land." data-reset="Stub is back on the ticket.">
+    <div class="tt-main">
+      <p class="tk-co">Feri Bahari Utara</p>
+      <p class="tk-route"><span>Kuala Perlis</span><svg viewBox="0 0 24 12" aria-hidden="true"><path d="M1 6h20M16 1.5 21 6l-5 4.5"/></svg><span>Kuah, Langkawi</span></p>
+      <dl class="tk-grid">
+        <div><dt>Date</dt><dd>Sat 22 Nov</dd></div>
+        <div><dt>Departs</dt><dd class="num">10:15 am</dd></div>
+        <div><dt>Seat</dt><dd class="num">14C</dd></div>
+        <div><dt>Adult</dt><dd class="num">RM 18.00</dd></div>
+      </dl>
+      <p class="tk-ref num">Ref KP-58213</p>
+      <p class="tk-stamp" aria-hidden="true">Checked in<span class="num">10:02 am</span></p>
+    </div>
+    <button class="tt-stub" type="button" aria-label="Tear off the boarding stub to check in">
+      <span class="tk-stub-t">Boarding</span>
+      <span class="tk-stub-v num">10:15</span>
+      <span class="tk-stub-l">Gate 3 &middot; 14C</span>
+      <span class="tk-stub-tear" aria-hidden="true">Tear &darr;</span>
+    </button>
+  </div>
+  <div class="tk-foot">
+    <p class="tt-status tk-status" role="status">Drag the stub down, or Tab to it and press Enter.</p>
+    <button class="tk-reset" type="button" data-tt-reset>Reset</button>
+  </div>
+</section>
+</main>
+</body>
+</html>

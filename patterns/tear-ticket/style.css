@@ -1,0 +1,21 @@
+/*
+ * tear-ticket: tear the stub off a ticket along its perforation. tear-ticket.js turns the stub on its
+ * bottom corner as you drag (the tear runs down from the top), drops it away once torn, and springs it
+ * back if let go early. This file draws the two pieces: a row of holes down the cut and a half-moon
+ * notch at each end, cut from both pieces with masks. The mask also clips anything drawn outside
+ * the stub, so its focus ring sits inside it.
+ */
+.tt { --tt-notch: 10px; --tt-paper: #fff; display: flex; position: relative; }
+.tt-main, .tt-stub { background: var(--tt-paper); --m: radial-gradient(circle var(--tt-notch) at var(--tt-x) 0, #0000 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--tt-notch) at var(--tt-x) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat; -webkit-mask: var(--m); mask: var(--m); }
+.tt-main { --tt-x: 100%; flex: 1; border-radius: 12px 0 0 12px; }
+.tt-stub {
+  --tt-x: 0; flex: none; margin: 0; border: 0; font: inherit; color: inherit; text-align: left; cursor: grab;
+  border-radius: 0 12px 12px 0; transform-origin: 0 100%; touch-action: none; user-select: none; -webkit-user-select: none;
+  background-image: radial-gradient(circle 2px at 1px 50%, var(--tt-hole, rgb(0 0 0 / .3)) 98%, #0000); background-size: 4px 9px; background-repeat: repeat-y;
+}
+.tt-stub:active { cursor: grabbing; }
+.tt-stub:focus-visible { outline: 2px solid var(--tt-ring, #1e2229); outline-offset: -6px; }
+.tt.is-torn .tt-stub { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .tt-stub { transition: none; }
+}
