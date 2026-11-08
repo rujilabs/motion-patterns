@@ -51,3 +51,41 @@ WebGL shader backgrounds (tier C) are out of scope.
 | heart-burst | emphasis | save a recipe: heart pops with a ring of dots |
 | folder-open | panel | a folder opens and fans out three documents |
 | masonry-settle | entry | bakery gallery tiles drop into a masonry grid |
+
+## Tier B part 1 (v0.7.0)
+
+Canvas entries stop drawing when off screen or when the tab is hidden, size to `devicePixelRatio`, draw one
+meaningful still frame without JS motion (reduced motion or no script), and loops over 5 s can be paused.
+
+| Slug | Category | Job |
+|---|---|---|
+| dot-field-push | tile | event hall booking hero: a dot field parts around the pointer |
+| magnet-needles | emphasis | land surveyor hero: a grid of needles turns to point at the pointer |
+| letter-rain-glitch | loop | maintenance page: a wall of characters flickers behind the notice |
+| radar-sweep | loop | ride app "finding a rider near you": a sweep lights nearby dots |
+| contour-drift | look | hiking trail page: slow drifting contour lines behind the route |
+| swarm-cursor | emphasis | honey shop hero: a small swarm follows the pointer |
+| crosshair-guides | emphasis | land plot picker: guide lines and live coordinates follow the pointer |
+| pixel-trail | emphasis | retro game cafe hero: the pointer leaves fading square pixels |
+| ribbon-cursor | emphasis | batik house hero: soft ribbons trail the pointer |
+| grid-cell-glow | tile | co-working floor plan: cells near the pointer light up |
+| shape-grid-drift | loop | architecture studio hero: a grid of squares drifts, the hovered cell fills |
+| thread-waves | wave | textile mill hero: fine threads wave and bend away from the pointer |
+| falling-words | emphasis | a 404 page: the words drop and pile up when clicked |
+| echo-text | type | radio station name with trailing echo copies |
+| fold-text | type | origami workshop title folds in like paper |
+| stroke-fill-text | type | gym class list: outlined names fill on hover |
+| warp-text | type | a line of text that bulges toward the pointer |
+| depth-text | type | layered extruded headline that tilts with the pointer |
+| text-cursor-trail | emphasis | kids storybook page: little icons follow the pointer |
+| fuzzy-text | type | an error code that jitters with noise, calmer on hover |
+| scroll-float-text | scroll | headline letters float up into place as it scrolls in |
+| scroll-expand-media | scroll | resort hero: a framed photo grows to full bleed on scroll |
+| electric-border | light | limited drop card: a crackling border |
+| cube-grid-tilt | solid | hardware store tile picker: a grid of cubes tilts toward the pointer |
+
+## Tier B part 2 (v0.8.0)
+
+Drag deck, bounce cards, orbit images, dome gallery, flying posters, animated list, card nav, bubble menu, pill nav,
+gooey nav, magic bento, shredder, paper crumple, jelly radio, peek rating, bell toggle, spring check, flying button,
+lanyard badge, staggered list. Jobs set when v0.7.0 ships.
