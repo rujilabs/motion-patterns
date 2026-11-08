@@ -1,0 +1,36 @@
+/*
+ * bubble-menu: a round menu button that blooms. A wash spreads out of the button as a growing circle and the
+ * links pop out of the button itself as round bubbles, each on the spring and a beat after the last.
+ * bubble-menu.js writes --bm-x / --bm-y on every bubble (the way back to the button) and --bm-ox / --bm-oy
+ * on the list (the button's centre), so nothing is hard-coded. Without the script the links are a plain list.
+ * The .bm-list needs a size and a positioned box: the bloom fills it.
+ */
+.bm { --bm-dur: var(--dur-base); --bm-wash: rgba(255, 255, 255, .94); }
+.bm-toggle { position: relative; z-index: 2; }
+.bm-list { position: relative; isolation: isolate; }
+.js .bm-list { visibility: hidden; transition: visibility 0s var(--bm-dur); }
+.js .bm.is-open .bm-list { visibility: visible; transition-delay: 0s; }
+.js .bm-list::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--bm-wash);
+  clip-path: circle(0 at var(--bm-ox, 100%) var(--bm-oy, 0));
+  transition: clip-path var(--bm-dur) var(--ease-inout);
+}
+.js .bm.is-open .bm-list::before { clip-path: circle(150% at var(--bm-ox, 100%) var(--bm-oy, 0)); }
+.js .bm-bubble {
+  translate: var(--bm-x, 0) var(--bm-y, 0); scale: .15; opacity: 0;
+  transition: translate var(--dur-quick) var(--ease-in), scale var(--dur-quick) var(--ease-in), opacity var(--dur-quick) var(--ease-in);
+}
+.js .bm.is-open .bm-bubble {
+  translate: none; scale: none; opacity: 1;
+  transition: translate var(--bm-dur) var(--ease-spring), scale var(--bm-dur) var(--ease-spring), opacity var(--dur-quick) var(--ease-out);
+  transition-delay: calc(var(--bm-i, 0) * var(--stagger) * .7);
+}
+/* the mark: a plus that turns a third of the way round into an X */
+.bm-mark { position: relative; display: block; width: 18px; height: 18px; transition: rotate var(--bm-dur) var(--ease-spring); }
+.bm-mark::before, .bm-mark::after { content: ""; position: absolute; inset: 8px 0; border-radius: 1px; background: currentColor; }
+.bm-mark::after { rotate: 90deg; }
+.bm.is-open .bm-mark { rotate: 135deg; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .bm-list, .js .bm-list::before, .js .bm-bubble, .js .bm.is-open .bm-bubble, .bm-mark { transition: none; }
+}

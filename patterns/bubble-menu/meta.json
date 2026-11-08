@@ -1,0 +1,24 @@
+{
+  "name": "Bubble menu",
+  "slug": "bubble-menu",
+  "kind": "pattern",
+  "summary": "A round menu button that blooms: a wash spreads out of it as a growing circle and the links pop out of the button as round bubbles, one after another, on a spring.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-quick",
+    "--stagger",
+    "--ease-spring",
+    "--ease-inout",
+    "--ease-in",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

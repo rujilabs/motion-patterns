@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bubble menu demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="bubble-menu.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame tp-frame" aria-labelledby="tp-h">
+  <header class="tp-top">
+    <p class="tp-logo">Teratai <em>Petal House</em></p>
+  </header>
+  <div class="tp-hero">
+    <p class="tp-kicker">Florist, Jalan Hang Jebat, Melaka</p>
+    <h1 id="tp-h">Fresh peonies, in by <span class="num">9:15 am</span> today.</h1>
+    <p class="tp-sub">Order by <span class="num">2 pm</span> for same-day delivery across Melaka, <span class="num">RM 12</span> flat.</p>
+  </div>
+  <nav class="bm tp-menu" aria-label="Teratai Petal House">
+    <button class="bm-toggle tp-toggle" type="button" aria-expanded="false" aria-controls="tp-list"><span class="bm-mark" aria-hidden="true"></span><span class="tp-vh">Menu</span></button>
+    <ul class="bm-list tp-list" id="tp-list">
+      <li><a class="bm-bubble tp-b1" href="#bouquets">Bouquets<small>from <span class="num">RM 89</span></small></a></li>
+      <li><a class="bm-bubble tp-b2" href="#same-day">Same-day<small>order by <span class="num">2 pm</span></small></a></li>
+      <li><a class="bm-bubble tp-b3" href="#hampers">Hampers<small>from <span class="num">RM 145</span></small></a></li>
+      <li><a class="bm-bubble tp-b4" href="#weddings">Weddings</a></li>
+      <li><a class="bm-bubble tp-b5" href="#track">Track order</a></li>
+      <li><a class="bm-bubble tp-b6" href="#visit">Visit us<small>open <span class="num">8 am</span></small></a></li>
+    </ul>
+  </nav>
+</section>
+</main>
+</body>
+</html>
