@@ -1,0 +1,69 @@
+/* Demo page layout for this entry. Not part of the pattern. A honey shop: cream paper, amber, bark brown. */
+:root {
+  --mk-table: #efe8dc;
+  --mk-paper: #fffcf6;
+  --mk-ink: #2a2017;
+  --mk-mute: #6f6253;
+  --mk-line: #e6dccb;
+  --mk-amber: #c98a10;
+  --mk-bark: #5a3a1c;
+  --mk-glass: #f6efe2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mk-table: #14110d;
+    --mk-paper: #1d1914;
+    --mk-ink: #f2eadf;
+    --mk-mute: #b0a28f;
+    --mk-line: #352d24;
+    --mk-amber: #f0b43a;
+    --mk-bark: #a9794a;
+    --mk-glass: #2a241c;
+  }
+  .honey.swarm { --sw-stripe: #120c06; --sw-wing: #8fa7b6; }
+}
+body { background: var(--mk-table); color: var(--mk-ink); }
+.sheet { background: var(--mk-paper); border-color: var(--mk-line); }
+:focus-visible { outline-color: var(--mk-amber); }
+
+.honey {
+  width: min(740px, 100%); padding: 30px; display: grid; gap: 24px; align-items: center;
+  grid-template-columns: minmax(0, 1fr) 210px; overflow: hidden;
+}
+.brand { font-size: 13px; font-weight: 700; color: var(--mk-bark); }
+.brand span { display: block; font-weight: 500; color: var(--mk-mute); margin-top: 2px; }
+.honey-copy h1 { font-size: 27px; margin-top: 14px; }
+.honey-notes { margin-top: 10px; color: var(--mk-mute); font-size: 14.5px; }
+.prices { display: flex; gap: 22px; margin-top: 16px; }
+.prices li { display: grid; font-size: 13px; }
+.prices b { font-size: 18px; }
+.honey-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border-radius: 999px;
+  font-weight: 650; font-size: 14.5px; text-decoration: none; border: 1px solid var(--mk-line); background: var(--mk-paper);
+}
+.btn-main { background: var(--mk-amber); border-color: var(--mk-amber); color: #2a1a05; }
+.ctl {
+  margin-top: 14px; font: 600 12.5px/1 "Host Grotesk", sans-serif; padding: 7px 11px; min-height: 32px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--mk-line); background: var(--mk-paper); color: var(--mk-mute);
+}
+.ctl[aria-pressed="true"] { background: var(--mk-ink); color: var(--mk-paper); border-color: var(--mk-ink); }
+
+.jar { width: 100%; height: auto; display: block; overflow: visible; }
+.jar-lid { fill: var(--mk-bark); }
+.jar-lid-line { fill: color-mix(in srgb, var(--mk-bark) 60%, #000); }
+.jar-glass { fill: var(--mk-glass); stroke: var(--mk-line); stroke-width: 2; }
+.jar-honey { fill: var(--mk-amber); }
+.jar-label { fill: var(--mk-paper); stroke: var(--mk-bark); stroke-width: 1.5; }
+.jar-label-text { font: 800 15px "Host Grotesk", sans-serif; letter-spacing: .12em; fill: var(--mk-bark); }
+.jar-label-small { font: 500 9.5px "Host Grotesk", sans-serif; fill: var(--mk-mute); }
+.jar-shine { stroke: #fff; stroke-opacity: .5; stroke-width: 5; stroke-linecap: round; fill: none; }
+.still-body { fill: #e8a91c; }
+.still-stripe { fill: #2a1e12; }
+.still-wing { fill: #c9dfec; opacity: .8; }
+
+@media (max-width: 560px) {
+  .honey { grid-template-columns: minmax(0, 1fr) 96px; padding: 18px 14px; gap: 12px; align-items: start; }
+  .honey-copy h1 { font-size: 21px; }
+  .prices { gap: 16px; }
+}

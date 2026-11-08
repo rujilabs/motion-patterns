@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swarm cursor demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="swarm-cursor.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="honey swarm sheet" data-count="11" aria-labelledby="honey-h">
+    <canvas class="sw-canvas" aria-hidden="true"></canvas>
+    <div class="honey-copy">
+      <p class="brand">Madu Kelulut Pak Andak <span>Kuala Pilah, Negeri Sembilan</span></p>
+      <h1 id="honey-h">Stingless bee honey from 38 log hives, taken on 2 November.</h1>
+      <p class="honey-notes">Sour, then sweet, with a finish of jackfruit and tree resin. Raw, never heated.</p>
+      <ul class="prices">
+        <li><b class="num">RM 48.90</b> <span class="mute">250 g jar</span></li>
+        <li><b class="num">RM 92.00</b> <span class="mute">500 g jar</span></li>
+      </ul>
+      <div class="honey-actions">
+        <a class="btn btn-main" href="#add">Add the 250 g jar</a>
+        <a class="btn" href="#taste">Taste notes</a>
+      </div>
+      <button class="ctl" type="button" data-pause aria-pressed="false">Pause the bees</button>
+    </div>
+    <svg class="jar" viewBox="0 0 200 240" data-swarm-home role="img" aria-label="A 250 g jar of kelulut honey">
+      <rect class="jar-lid" x="52" y="30" width="96" height="30" rx="6"/>
+      <rect class="jar-lid-line" x="52" y="42" width="96" height="3"/>
+      <path class="jar-glass" d="M44 66 h112 a14 14 0 0 1 14 14 v124 a22 22 0 0 1 -22 22 h-96 a22 22 0 0 1 -22 -22 v-124 a14 14 0 0 1 14 -14 z"/>
+      <path class="jar-honey" d="M38 108 q31 -8 62 0 t62 0 v96 a20 20 0 0 1 -20 20 h-84 a20 20 0 0 1 -20 -20 z"/>
+      <rect class="jar-label" x="56" y="132" width="88" height="56" rx="4"/>
+      <text class="jar-label-text" x="100" y="156" text-anchor="middle">KELULUT</text>
+      <text class="jar-label-small" x="100" y="174" text-anchor="middle">250 g, Kuala Pilah</text>
+      <path class="jar-shine" d="M54 80 v100" />
+      <g class="swarm-still" aria-hidden="true">
+        <g transform="translate(70 22) rotate(-20)"><ellipse class="still-wing" cx="-1" cy="-6" rx="4" ry="3"/><ellipse class="still-body" rx="6" ry="4"/><rect class="still-stripe" x="-1" y="-4" width="2" height="8"/></g>
+        <g transform="translate(128 18) rotate(15)"><ellipse class="still-wing" cx="-1" cy="-6" rx="4" ry="3"/><ellipse class="still-body" rx="6" ry="4"/><rect class="still-stripe" x="-1" y="-4" width="2" height="8"/></g>
+        <g transform="translate(172 96) rotate(70)"><ellipse class="still-wing" cx="-1" cy="-6" rx="4" ry="3"/><ellipse class="still-body" rx="6" ry="4"/><rect class="still-stripe" x="-1" y="-4" width="2" height="8"/></g>
+      </g>
+    </svg>
+  </section>
+</main>
+</body>
+</html>
