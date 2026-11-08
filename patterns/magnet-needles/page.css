@@ -1,0 +1,56 @@
+/* Demo page layout for this entry. Not part of the pattern. A land surveyor: survey paper, field orange. */
+:root {
+  --ut-table: #e8ebe6;
+  --ut-paper: #fcfcf8;
+  --ut-ink: #1f2622;
+  --ut-mute: #626b66;
+  --ut-line: #dfe3dc;
+  --ut-grid: #eef1ea;
+  --ut-orange: #c4472d;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ut-table: #121513;
+    --ut-paper: #1a1f1c;
+    --ut-ink: #e9eee9;
+    --ut-mute: #9aa59e;
+    --ut-line: #2e3631;
+    --ut-grid: #212823;
+    --ut-orange: #ff7a5c;
+  }
+  .survey.needle-field { --mn-tip: #ff7a5c; --mn-tail: #5d6862; --mn-pin: #e9eee9; }
+}
+body { background: var(--ut-table); color: var(--ut-ink); }
+.sheet { background: var(--ut-paper); border-color: var(--ut-line); }
+:focus-visible { outline-color: var(--ut-orange); }
+
+.survey.needle-field { --mn-tip: #c4472d; --mn-pin: #1f2622; }
+.survey {
+  width: min(760px, 100%); padding: 28px; display: grid; gap: 28px; align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.brand { font-size: 13px; font-weight: 700; color: var(--ut-orange); }
+.brand span { display: block; font-weight: 500; color: var(--ut-mute); margin-top: 2px; }
+.survey-copy h1 { font-size: 28px; margin-top: 14px; }
+.survey-facts { margin-top: 12px; color: var(--ut-mute); font-size: 14.5px; }
+.survey-facts b { color: var(--ut-ink); }
+.survey-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border-radius: 6px;
+  font-weight: 650; font-size: 14.5px; text-decoration: none; border: 1px solid var(--ut-line); background: var(--ut-paper);
+}
+.btn-main { background: var(--ut-ink); border-color: var(--ut-ink); color: var(--ut-paper); }
+
+.survey-panel { margin: 0; display: grid; gap: 8px; }
+.survey-panel .mn-canvas {
+  height: 330px; border-radius: 6px; border: 1px solid var(--ut-line);
+  background-color: var(--ut-grid);
+}
+.survey-panel .mn-canvas.is-live { background-color: var(--ut-grid); }
+.survey-panel figcaption { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--ut-mute); }
+
+@media (max-width: 600px) {
+  .survey { grid-template-columns: minmax(0, 1fr); padding: 18px 16px; gap: 20px; }
+  .survey-copy h1 { font-size: 23px; }
+  .survey-panel .mn-canvas { height: 220px; }
+}

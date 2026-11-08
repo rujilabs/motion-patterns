@@ -1,0 +1,25 @@
+/*
+ * magnet-needles: a grid of compass needles on a canvas that turn to point at the pointer, and swing
+ * back to north when it leaves. magnet-needles.js draws them and reads these values. Without the
+ * script the canvas shows the needles at rest, all pointing north, as a CSS pattern.
+ */
+.needle-field {
+  --mn-gap: 34px;        /* space between needles */
+  --mn-tip: #d2452f;     /* the north half */
+  --mn-tail: #a3abb6;    /* the south half */
+  --mn-pin: #2b3038;     /* the pivot */
+  touch-action: pan-y;
+}
+.mn-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M17 5l2.6 12h-5.2z' fill='%23d2452f'/%3E%3Cpath d='M17 29l2.6-12h-5.2z' fill='%23a3abb6'/%3E%3C/svg%3E") 0 0 / var(--mn-gap) var(--mn-gap);
+}
+.mn-canvas.is-live { background: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* magnet-needles.js draws the needles once, pointing at [data-mn-rest], and does not move them */
+  .mn-canvas { transition: none; }
+}
