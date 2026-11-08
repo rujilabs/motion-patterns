@@ -1,0 +1,17 @@
+/*
+ * thread-waves: fine horizontal threads ripple in a slow wave and part around the pointer.
+ * thread-waves.js draws them on .tw-canvas in these colours. Without the script the CSS background
+ * below draws the same threads, still.
+ */
+.tw {
+  --tw-thread: #2d3f86; --tw-thread-alt: #7d89b8; --tw-accent: #c4372b;
+  position: relative; overflow: hidden; touch-action: pan-y;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 7px, var(--tw-thread-alt) 7px 8px, transparent 8px 14px);
+}
+.tw-live { background-image: none; }
+.tw-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* thread-waves.js draws one still wave, ignores the pointer and hides the Pause button */
+  .tw-pause { display: none; }
+}

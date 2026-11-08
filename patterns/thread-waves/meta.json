@@ -1,0 +1,16 @@
+{
+  "name": "Thread waves",
+  "slug": "thread-waves",
+  "kind": "pattern",
+  "summary": "Fine horizontal threads ripple in a slow travelling wave and part around the pointer, the ones above lifting and the ones below sinking. Pausable; Tab to a link and they part around it.",
+  "category": "wave",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
