@@ -1,0 +1,21 @@
+{
+  "name": "Target brackets",
+  "slug": "target-brackets",
+  "kind": "pattern",
+  "summary": "Four corner brackets glide and resize to frame the product card under the pointer or with keyboard focus, landing with a small spring.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-quick",
+    "--ease-spring",
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

@@ -1,0 +1,31 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.tbd-frame { display: grid; grid-template-rows: auto 1fr; gap: 16px; padding: 24px 28px 32px; background: #f6f1e7; color: #2b2116; }
+.tbd-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.tbd-head h1 { font-size: 24px; letter-spacing: -.02em; }
+.tbd-head p { font-size: 13px; color: #74644f; }
+.tbd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 16px; height: 100%; }
+.tbd-card { display: grid; grid-template-rows: 1fr auto auto; gap: 2px; height: 100%; padding: 6px; border-radius: 4px; color: inherit; text-decoration: none; }
+.tbd-ph { display: block; min-height: 0; margin-bottom: 6px; border-radius: 3px; }
+.tbd-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tbd-price { font-size: 13px; color: #74644f; }
+.tb-frame { color: #b5361f; }
+/* woven swatches standing in for product photos */
+.tbd-ph { background-color: var(--a); background-image: repeating-linear-gradient(45deg, var(--b) 0 5px, transparent 5px 10px), repeating-linear-gradient(-45deg, var(--c) 0 5px, transparent 5px 10px); }
+.tbd-w1 { --a: #c9a46a; --b: rgba(120, 70, 30, .35); --c: rgba(255, 240, 200, .35); }
+.tbd-w2 { --a: #8b5a2b; --b: rgba(40, 20, 5, .35); --c: rgba(230, 180, 120, .3); }
+.tbd-w3 { --a: #7f9a5a; --b: rgba(40, 60, 20, .35); --c: rgba(230, 240, 190, .3); }
+.tbd-w4 { --a: #b07a45; --b: rgba(90, 40, 10, .3); --c: rgba(170, 40, 30, .35); }
+.tbd-w5 { --a: #a99c74; --b: rgba(60, 55, 30, .3); --c: rgba(250, 245, 220, .35); }
+.tbd-w6 { --a: #d4b07a; --b: rgba(110, 70, 30, .4); --c: rgba(110, 70, 30, .2); }
+@media (max-width: 520px) {
+  .tbd-frame { padding: 14px 14px; gap: 10px; }
+  .tbd-head h1 { font-size: 18px; }
+  .tbd-head p { font-size: 11.5px; }
+  .tbd-grid { gap: 10px 8px; }
+  .tbd-card { padding: 4px; gap: 0; }
+  .tbd-ph { margin-bottom: 4px; }
+  .tbd-name { font-size: 11.5px; line-height: 1.2; white-space: normal; }
+  .tbd-price { font-size: 11px; }
+  .tb-frame { --tb-pad: 3px; --tb-arm: 11px; --tb-line: 2px; }
+}
