@@ -5,6 +5,13 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.8.0] - 2026-11-08
+
+### Added
+
+- **site:** Poster grid with search, filters in the URL, new-release row and related entries
+
+
 ## [0.7.0] - 2026-11-08
 
 ### Added
