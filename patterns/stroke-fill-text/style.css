@@ -1,0 +1,24 @@
+/*
+ * stroke-fill-text: an outlined word that fills with ink from left to right when its link or button
+ * (.sf-host) is hovered or focused, and drains when it is left. The fill is a background clipped to the
+ * letters, so the words stay real, selectable text. Where background-clip: text is missing the word
+ * is simply solid. Put .sf on the text, .sf-host on the control around it.
+ */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .sf {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: var(--sf-stroke, 1.5px) currentColor;
+    background: linear-gradient(var(--sf-fill, currentColor) 0 0) no-repeat 0 0 / 0% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    transition: background-size var(--dur-base) var(--ease-out);
+  }
+  /* sf-rise: fills from the bottom up, like a glass */
+  .sf-rise .sf, .sf.sf-rise { background-position: 0 100%; background-size: 100% 0%; }
+  .sf-host:hover .sf, .sf-host:focus-visible .sf, .sf-host[aria-current] .sf { background-size: 100% 100%; }
+}
+@media (forced-colors: active) {
+  .sf { -webkit-text-fill-color: currentColor; -webkit-text-stroke: 0; background: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sf { transition: none; }
+}

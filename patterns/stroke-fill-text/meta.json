@@ -1,0 +1,18 @@
+{
+  "name": "Stroke fill text",
+  "slug": "stroke-fill-text",
+  "kind": "pattern",
+  "summary": "Outlined words in a list fill with ink from left to right when their link is hovered or focused, and drain when it is left. Pure CSS: a background clipped to the letters.",
+  "category": "type",
+  "tech": [
+    "css"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
