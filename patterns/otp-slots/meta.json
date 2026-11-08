@@ -1,0 +1,20 @@
+{
+  "name": "OTP slots",
+  "slug": "otp-slots",
+  "kind": "pattern",
+  "summary": "A 6-digit code in six boxes over one real input. Digits pop in, a blinking caret moves to the next box, paste fills them all, a wrong code shakes and clears, a right one turns green.",
+  "category": "form",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

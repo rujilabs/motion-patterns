@@ -1,0 +1,43 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+:root {
+  --sm-table: #e8edec;
+  --sm-paper: #fbfcfc;
+  --sm-ink: #18232a;
+  --sm-mute: #5f6b72;
+  --sm-line: #d6dee0;
+  --sm-teal: #0f6e6a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sm-table: #111618;
+    --sm-paper: #192023;
+    --sm-ink: #e6eced;
+    --sm-mute: #98a5aa;
+    --sm-line: #2c373b;
+    --sm-teal: #3fb5ad;
+  }
+  .otp { --otp-ink: #e6eced; --otp-bg: #141a1c; --otp-line: #3a474c; --otp-on: #3fb5ad; --otp-ok: #3cc98d; --otp-bad: #ff6a5a; }
+}
+body { background: var(--sm-table); color: var(--sm-ink); }
+.tac { width: min(470px, 100%); padding: 24px 26px; display: grid; gap: 14px; background: var(--sm-paper); border-color: var(--sm-line); }
+.bank { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sm-teal); }
+.tac-head h1 { font-size: 22px; font-weight: 700; margin: 2px 0 6px; }
+.tac-head .mute { font-size: 14px; color: var(--sm-mute); }
+.tac-head strong { color: var(--sm-ink); }
+.otp { --otp-on: var(--sm-teal); --otp-ink: var(--sm-ink); display: grid; gap: 8px; }
+.otp-name { font-size: 13px; font-weight: 650; }
+.help { font-size: 12.5px; color: var(--sm-mute); }
+.status { font-size: 13.5px; font-weight: 600; min-height: 2.8em; }
+.again { justify-self: start; font: inherit; font-size: 13.5px; font-weight: 600; color: var(--sm-paper); background: var(--sm-ink); border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.again[hidden] { display: none; }
+
+@media (max-width: 620px) {
+  .tac { padding: 18px 16px; gap: 12px; }
+}
+@media (max-width: 360px) {
+  .otp-slots { gap: 5px; }
+  .otp-slot { width: 40px; height: 50px; }
+}
+@media (max-height: 520px) {
+  .tac { padding-block: 14px; gap: 9px; }
+}
