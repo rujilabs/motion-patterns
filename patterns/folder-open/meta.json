@@ -1,0 +1,22 @@
+{
+  "name": "Folder open",
+  "slug": "folder-open",
+  "kind": "pattern",
+  "summary": "A client file folder: click it and the front cover drops forward on its bottom hinge while three papers rise out and fan; click again and they sink back and it shuts.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-paper",
+    "--ease-out",
+    "--ease-inout",
+    "--dur-slow",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
