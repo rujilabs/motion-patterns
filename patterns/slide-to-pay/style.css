@@ -1,0 +1,38 @@
+/*
+ * slide-to-pay: drag a knob along a track to pay. slide.js moves it: past the commit point it runs to
+ * the end and turns into a tick; short of it, it springs back and knocks against the start. The label
+ * fades as the knob covers it. Without the script the track is hidden and the .slide-alt button shows.
+ */
+.slide {
+  --slide-h: 60px;
+  --slide-pad: 5px;
+  --slide-track: #e8ecef;
+  --slide-fill: #cfe0f7;
+  --slide-knob: #1f5fbf;
+  --slide-ink: #1e2229;
+  --slide-done: #15803d;
+  position: relative; overflow: hidden; isolation: isolate;
+  height: var(--slide-h); border-radius: 999px; background: var(--slide-track); color: var(--slide-ink);
+  touch-action: pan-y; /* a sideways drag moves the knob, an up or down one still scrolls the page */
+  -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+.slide:not(.is-ready), .slide.is-ready + .slide-alt { display: none; }
+.slide:focus-visible { outline: 2px solid var(--slide-knob); outline-offset: 3px; }
+.slide-fill, .slide-knob { position: absolute; top: var(--slide-pad); left: var(--slide-pad); height: calc(var(--slide-h) - 2 * var(--slide-pad)); border-radius: 999px; }
+.slide-fill { width: calc(100% - 2 * var(--slide-pad)); background: var(--slide-fill); transform: translateX(calc(var(--slide-h) - 2 * var(--slide-pad) - 100%)); }
+.slide-knob { width: calc(var(--slide-h) - 2 * var(--slide-pad)); display: grid; place-items: center; background: var(--slide-knob); color: #fff; cursor: grab; }
+.slide.is-dragging .slide-knob { cursor: grabbing; }
+.slide-knob svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.slide-tick, .slide.is-done .slide-arrow { display: none; }
+.slide.is-done .slide-tick { display: block; }
+.slide-label { position: absolute; inset: 0 0 0 var(--slide-h); display: grid; place-items: center; padding-right: 16px; font-weight: 650; white-space: nowrap; }
+.slide.is-done { background: var(--slide-done); }
+.slide.is-done .slide-fill { opacity: 0; }
+.slide.is-done .slide-knob { background: #fff; color: var(--slide-done); cursor: default; }
+.slide.is-done .slide-label { inset: 0 var(--slide-h) 0 0; padding: 0 0 0 16px; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* slide.js puts the knob under your finger and jumps it home or to the end, with no spring */
+  .slide, .slide * { transition: none; }
+}
