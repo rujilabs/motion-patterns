@@ -1,0 +1,23 @@
+{
+  "name": "Orbit images",
+  "slug": "orbit-images",
+  "kind": "pattern",
+  "summary": "Pictures ride a tilted ring around a centre picture in CSS 3D and pass behind it. Focus or tap one and the ring turns the short way to bring it to the front and name it. Pausable.",
+  "category": "curve",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-quick",
+    "--ease-spring",
+    "--ease-out",
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
