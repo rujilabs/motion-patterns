@@ -1,0 +1,44 @@
+/* Demo page layout for this entry. Not part of the pattern. A bedtime picture book page at night. */
+:root {
+  --pp-night: #1d2547;
+  --pp-night-2: #273263;
+  --pp-ink: #f6efdc;
+  --pp-mute: #b9bfd9;
+  --pp-gold: #ffcf3f;
+}
+.ctr-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.i-star { fill: #ffcf3f; stroke: #8a5d00; stroke-width: 1.3; stroke-linejoin: round; }
+.i-leaf { fill: #6cc983; stroke: #1f5a33; stroke-width: 1.3; stroke-linejoin: round; }
+.i-vein { fill: none; stroke: #1f5a33; stroke-width: 1.2; stroke-linecap: round; }
+.i-moon { fill: #ffeab0; stroke: #8f7a3a; stroke-width: 1.3; stroke-linejoin: round; }
+.i-petal circle { fill: #ff92ad; stroke: #8f3150; stroke-width: 1.2; }
+.i-heart { fill: #ffd23f; stroke: #8a5d00; stroke-width: 1.2; }
+
+.book {
+  width: min(680px, 100%); min-height: 430px; padding: 26px 28px 18px; overflow: hidden;
+  display: flex; flex-direction: column; gap: 14px;
+  background: radial-gradient(120% 90% at 85% 0%, var(--pp-night-2), var(--pp-night) 60%);
+  border-color: #141a35; color: var(--pp-ink); border-radius: 14px;
+}
+.words { flex: 1; position: relative; z-index: 1; display: grid; gap: 12px; align-content: start; max-width: 520px; }
+.series { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--pp-gold); }
+.book h1 { font-size: clamp(27px, 6vw, 38px); font-weight: 750; letter-spacing: -.02em; }
+.words p:not(.series) { font-size: clamp(16px, 3.6vw, 18.5px); line-height: 1.55; text-wrap: pretty; }
+.words .tip { font-size: 13px; color: var(--pp-mute); }
+.foot { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.foot .mute { color: var(--pp-mute); }
+.ctl {
+  font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 14px; min-height: 34px; border-radius: 999px;
+  border: 1px solid #47507d; background: transparent; color: var(--pp-ink); cursor: pointer;
+}
+.ctl[aria-pressed="true"] { background: var(--pp-ink); color: var(--pp-night); }
+.ctl:focus-visible { outline-color: var(--pp-gold); }
+/* the row the icons sit in without the script: a border of stars over the title */
+.book .ctr-set { --ctr-size: 34px; }
+.ctr-live .ctr-set { inset: 0; }
+
+@media (max-width: 520px) {
+  .book { padding: 20px 18px 14px; min-height: 0; }
+}
+html:not(.js) .ctl { display: none; }
+@media (prefers-reduced-motion: reduce) { .ctl { display: none; } }

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text cursor trail demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="text-cursor-trail.js" defer></script>
+</head>
+<body>
+<svg class="ctr-defs" aria-hidden="true" focusable="false">
+  <symbol id="ico-star" viewBox="0 0 24 24"><path class="i-star" d="M12 2.4L14.4 8.7 21.3 9 15.9 13.3 17.8 20 12 16.2 6.2 20 8.1 13.3 2.7 9 9.6 8.7Z"/></symbol>
+  <symbol id="ico-leaf" viewBox="0 0 24 24"><path class="i-leaf" d="M4.5 19.5C4 11 9.5 4.6 19.6 4.3 20 13.8 13.6 19.8 4.5 19.5Z"/><path class="i-vein" d="M5 19L14.5 9.6"/></symbol>
+  <symbol id="ico-moon" viewBox="0 0 24 24"><path class="i-moon" d="M19.6 14.8A8 8 0 1 1 9.3 4.2a6.3 6.3 0 0 0 10.3 10.6Z"/></symbol>
+  <symbol id="ico-bloom" viewBox="0 0 24 24"><g class="i-petal"><circle cx="12" cy="6.4" r="3.6"/><circle cx="17.4" cy="10.4" r="3.6"/><circle cx="15.3" cy="16.7" r="3.6"/><circle cx="8.7" cy="16.7" r="3.6"/><circle cx="6.6" cy="10.4" r="3.6"/></g><circle class="i-heart" cx="12" cy="11.8" r="2.9"/></symbol>
+</svg>
+<main class="stage">
+  <article class="book sheet ctr" id="page" data-trail-gap="36" aria-labelledby="story-h">
+    <ul class="ctr-set" aria-hidden="true">
+      <li><svg><use href="#ico-star"/></svg></li>
+      <li><svg><use href="#ico-leaf"/></svg></li>
+      <li><svg><use href="#ico-star"/></svg></li>
+      <li><svg><use href="#ico-bloom"/></svg></li>
+      <li><svg><use href="#ico-leaf"/></svg></li>
+      <li><svg><use href="#ico-star"/></svg></li>
+      <li><svg><use href="#ico-moon"/></svg></li>
+      <li><svg><use href="#ico-leaf"/></svg></li>
+      <li><svg><use href="#ico-star"/></svg></li>
+    </ul>
+    <div class="words">
+      <p class="series">Pustaka Pelangi, bedtime stories</p>
+      <h1 id="story-h">Kancil Counts the Fireflies</h1>
+      <p>At 7:45 pm the river went quiet, and Kancil crept out to the mangrove to count the fireflies before the crocodiles woke up.</p>
+      <p>One, two, three on the nipah leaf. Four by the old jetty. Five, six, seven in a line behind his tail, as if they wanted to come home with him.</p>
+      <p class="tip">Move your pointer, or drag a finger across the page. The stars and leaves follow.</p>
+    </div>
+    <footer class="foot">
+      <span class="mute num">Page 12 of 32</span>
+      <button class="ctl" type="button" data-pause-for="page" aria-pressed="false">Pause</button>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

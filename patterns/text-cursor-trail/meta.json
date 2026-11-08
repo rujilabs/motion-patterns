@@ -1,0 +1,19 @@
+{
+  "name": "Text cursor trail",
+  "slug": "text-cursor-trail",
+  "kind": "pattern",
+  "summary": "A line of small drawn icons follows the pointer like beads on a string, each turning to face the way it goes. With no pointer the line walks a slow figure of eight; pausable.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-spring"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
