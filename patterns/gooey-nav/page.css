@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.gn-defs { position: absolute; width: 0; height: 0; }
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.ar-frame { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: 18px; padding: 26px 28px; background: linear-gradient(#f2f8fc, #dcebf5); color: #0d2f4a; }
+.ar-school { font-size: 12px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: #1769aa; }
+.ar-top h1 { margin-top: 6px; font-size: 32px; letter-spacing: -.025em; }
+.ar-tabs { justify-self: start; padding: 5px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px #c9dceb; }
+.ar-tab { height: 44px; padding: 0 22px; border: 0; border-radius: 999px; background: transparent; color: #24506f; font: 600 15px/1 "Host Grotesk", sans-serif; cursor: pointer; }
+.ar-tab:focus-visible { outline: 2px solid #0d2f4a; outline-offset: 2px; }
+.ar-panel { display: grid; align-content: start; gap: 12px; }
+.ar-panel[hidden] { display: none; }
+.ar-panel:focus-visible { outline: 2px solid #1769aa; outline-offset: 6px; border-radius: 6px; }
+.ar-panel h2 { font-size: 24px; letter-spacing: -.02em; }
+.ar-when { font-size: 15px; color: #35607f; max-width: 46ch; }
+.ar-facts { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px; margin-top: 8px; padding-top: 14px; border-top: 1px solid #bcd3e4; }
+.ar-facts dt { font-size: 12px; color: #4f7491; }
+.ar-facts dd { margin: 3px 0 0; font-size: 16px; font-weight: 650; }
+@media (max-width: 520px) {
+  .ar-frame { gap: 10px; padding: 14px; }
+  .ar-school { font-size: 10.5px; }
+  .ar-top h1 { margin-top: 2px; font-size: 21px; }
+  .ar-tabs { justify-self: stretch; padding: 3px; }
+  .ar-tab { flex: 1; height: 36px; padding: 0 6px; font-size: 13px; }
+  .ar-panel { gap: 6px; }
+  .ar-panel h2 { font-size: 16px; }
+  .ar-when { font-size: 12px; }
+  .ar-facts { gap: 12px; margin-top: 2px; padding-top: 8px; }
+  .ar-facts dt { font-size: 10.5px; }
+  .ar-facts dd { font-size: 12px; }
+}

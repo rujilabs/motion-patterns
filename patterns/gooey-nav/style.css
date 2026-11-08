@@ -1,0 +1,21 @@
+/*
+ * gooey-nav: tabs whose marker is a drop of liquid. Going to another tab, the blob stretches its leading edge
+ * there first, two drops pinch off the old tab and run after it, and an SVG goo filter (blur, then a hard alpha
+ * cut) melts them into one shape. gooey-nav.js moves the shapes with the Web Animations API and runs the tablist
+ * keys. The filter is #gn-goo in the page; the tab labels sit above it, so the text stays sharp.
+ */
+.gn-list { --gn-blob: #1769aa; --gn-on: #fff; position: relative; isolation: isolate; display: flex; }
+.gn-goo { position: absolute; inset: 0; z-index: -1; filter: url(#gn-goo); pointer-events: none; }
+.gn-blob, .gn-drop { position: absolute; left: 0; top: 0; height: 100%; border-radius: 999px; background: var(--gn-blob); }
+.gn-tab { position: relative; transition: color var(--dur-quick) var(--ease-out); }
+.gn-tab[aria-selected="true"] { color: var(--gn-on); }
+/* before the script runs (or without it) the chosen tab carries the colour itself */
+.gn-list:not(.is-ready) .gn-goo { display: none; }
+.gn-list:not(.is-ready) .gn-tab[aria-selected="true"] { background: var(--gn-blob); border-radius: 999px; }
+.gn-panel.is-in { animation: gn-in var(--dur-base) var(--ease-out) both; }
+@keyframes gn-in { from { opacity: 0; translate: 0 10px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .gn-tab { transition: none; }
+  .gn-panel.is-in { animation: none; }
+}

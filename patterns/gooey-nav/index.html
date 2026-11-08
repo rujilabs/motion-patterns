@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gooey nav demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="gooey-nav.js" defer></script>
+</head>
+<body>
+<svg class="gn-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="gn-goo" x="-20%" y="-50%" width="140%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6"/>
+      <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10"/>
+    </filter>
+  </defs>
+</svg>
+<main class="stage">
+<section class="frame ar-frame" aria-labelledby="ar-h">
+  <header class="ar-top">
+    <p class="ar-school">Akademi Renang Arus, Johor Bahru</p>
+    <h1 id="ar-h">Pick a class</h1>
+  </header>
+  <div class="gn-list ar-tabs" aria-label="Classes by age">
+    <span class="gn-goo" aria-hidden="true"><i class="gn-blob"></i><i class="gn-drop"></i><i class="gn-drop"></i></span>
+    <button class="gn-tab ar-tab" type="button" id="ar-t1" aria-controls="ar-p1" aria-selected="false">Toddlers</button>
+    <button class="gn-tab ar-tab" type="button" id="ar-t2" aria-controls="ar-p2" aria-selected="true">Kids</button>
+    <button class="gn-tab ar-tab" type="button" id="ar-t3" aria-controls="ar-p3" aria-selected="false">Teens</button>
+    <button class="gn-tab ar-tab" type="button" id="ar-t4" aria-controls="ar-p4" aria-selected="false">Adults</button>
+  </div>
+  <div class="ar-panels">
+    <section class="gn-panel ar-panel" id="ar-p1" role="tabpanel" aria-labelledby="ar-t1" tabindex="0" hidden>
+      <h2>Toddlers, age 3 to 5</h2>
+      <p class="ar-when">Saturdays <span class="num">8:30 am</span>, <span class="num">30</span> min, a parent in the water. Next class Sat 14 Nov.</p>
+      <dl class="ar-facts"><div><dt>Group</dt><dd class="num">4 pairs</dd></div><div><dt>Pool</dt><dd class="num">0.6 m, 31°C</dd></div><div><dt>Fee</dt><dd class="num">RM 160 / 4 classes</dd></div></dl>
+    </section>
+    <section class="gn-panel ar-panel" id="ar-p2" role="tabpanel" aria-labelledby="ar-t2" tabindex="0">
+      <h2>Kids, age 6 to 12</h2>
+      <p class="ar-when">Saturdays <span class="num">10:00 am</span> or Sundays <span class="num">9:15 am</span>, <span class="num">45</span> min. Next class Sat 14 Nov.</p>
+      <dl class="ar-facts"><div><dt>Group</dt><dd class="num">5 per coach</dd></div><div><dt>Pool</dt><dd class="num">0.9 m to 1.2 m</dd></div><div><dt>Fee</dt><dd class="num">RM 180 / 4 classes</dd></div></dl>
+    </section>
+    <section class="gn-panel ar-panel" id="ar-p3" role="tabpanel" aria-labelledby="ar-t3" tabindex="0" hidden>
+      <h2>Teens, age 13 to 17</h2>
+      <p class="ar-when">Wednesdays <span class="num">6:45 pm</span>, <span class="num">60</span> min: strokes and lifesaving basics. Next class Wed 11 Nov.</p>
+      <dl class="ar-facts"><div><dt>Group</dt><dd class="num">6 per coach</dd></div><div><dt>Pool</dt><dd class="num">25 m lanes</dd></div><div><dt>Fee</dt><dd class="num">RM 200 / 4 classes</dd></div></dl>
+    </section>
+    <section class="gn-panel ar-panel" id="ar-p4" role="tabpanel" aria-labelledby="ar-t4" tabindex="0" hidden>
+      <h2>Adults, never too late</h2>
+      <p class="ar-when">Tuesdays and Thursdays <span class="num">8:15 pm</span>, <span class="num">45</span> min. Afraid of water is fine. Next class Tue 10 Nov.</p>
+      <dl class="ar-facts"><div><dt>Group</dt><dd class="num">4 per coach</dd></div><div><dt>Pool</dt><dd class="num">0.9 m, then deeper</dd></div><div><dt>Fee</dt><dd class="num">RM 220 / 4 classes</dd></div></dl>
+    </section>
+  </div>
+</section>
+</main>
+</body>
+</html>

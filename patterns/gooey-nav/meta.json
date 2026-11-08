@@ -1,0 +1,21 @@
+{
+  "name": "Gooey nav",
+  "slug": "gooey-nav",
+  "kind": "pattern",
+  "summary": "Tabs whose marker is a drop of liquid: it stretches to the new tab, two drops pinch off the old one and run after it, and an SVG goo filter melts them back into one blob.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-quick",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
