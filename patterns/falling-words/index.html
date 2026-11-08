@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Falling words demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="falling-words.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame fw-frame fw" data-fall-pit aria-labelledby="fw-h">
+  <header class="fw-top">
+    <p class="fw-shop">Pustaka Lorong Kulit<span>Secondhand books, George Town</span></p>
+    <div class="fw-tools">
+      <button type="button" class="fw-btn" data-fall-drop hidden>Knock them over</button>
+      <button type="button" class="fw-btn fw-btn-quiet" data-fall-reset hidden>Put them back</button>
+    </div>
+  </header>
+  <div class="fw-body">
+    <p class="fw-links"><a href="#shop">Back to the shop</a><a href="#search">Search 2,184 books</a></p>
+    <p class="fw-code num" data-fall>404</p>
+    <h1 id="fw-h" data-fall>This shelf is empty.</h1>
+    <p class="fw-note" data-fall>The book you wanted sold on 14 March. New boxes go on the shelves every Saturday at 10:30 am.</p>
+  </div>
+</section>
+</main>
+</body>
+</html>
