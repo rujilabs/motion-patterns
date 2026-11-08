@@ -1,0 +1,16 @@
+{
+  "name": "Scroll card stack",
+  "slug": "scroll-card-stack",
+  "kind": "pattern",
+  "summary": "Cards stick one below the other as the page scrolls: each new card slides up over the last, and the ones underneath shrink and dim a little. A plain list under reduced motion.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

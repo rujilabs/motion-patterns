@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll card stack demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="scroll-card-stack.js"></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll inside this frame. Each plan slides up over the last one, and the ones underneath sink back.</p>
+    <h1>Serambi Kerja, Bangsar South</h1>
+    <p class="mute">Four ways to work from our third floor. Prices include SST, Wi-Fi and the coffee bar.</p>
+  </header>
+
+  <section class="stack" aria-label="Plans">
+    <article class="stack-card plan p-day">
+      <div class="plan-top"><h2>Day pass</h2><span class="tag">Walk in</span></div>
+      <p class="price"><span class="num">RM 35</span> <span class="per">a day</span></p>
+      <ul class="feat">
+        <li>Any open desk, 8:30 am to 7:00 pm</li>
+        <li>Two cups from the coffee bar</li>
+        <li>20 pages of printing</li>
+      </ul>
+      <p class="foot num">Sold 1,148 times since March</p>
+    </article>
+    <article class="stack-card plan p-flex">
+      <div class="plan-top"><h2>Flexi 12</h2><span class="tag">Most taken</span></div>
+      <p class="price"><span class="num">RM 318</span> <span class="per">a month</span></p>
+      <ul class="feat">
+        <li>Any 12 days in the month</li>
+        <li>A locker with your name on it</li>
+        <li>4 hours in the Rambutan meeting room</li>
+      </ul>
+      <p class="foot num">62 members on this plan</p>
+    </article>
+    <article class="stack-card plan p-fixed">
+      <div class="plan-top"><h2>Fixed desk</h2><span class="tag">24 hours</span></div>
+      <p class="price"><span class="num">RM 640</span> <span class="per">a month</span></p>
+      <ul class="feat">
+        <li>Your own desk by the window, 140 cm wide</li>
+        <li>Door card that works at 3 am</li>
+        <li>We sign for your parcels</li>
+      </ul>
+      <p class="foot num">7 of 24 desks left</p>
+    </article>
+    <article class="stack-card plan p-studio">
+      <div class="plan-top"><h2>Studio for 4</h2><span class="tag">Lockable</span></div>
+      <p class="price"><span class="num">RM 2,360</span> <span class="per">a month</span></p>
+      <ul class="feat">
+        <li>A glass room with four desks and a whiteboard wall</li>
+        <li>20 hours of meeting rooms</li>
+        <li>Your name on the lobby board</li>
+      </ul>
+      <p class="foot num">Next one free from 1 December</p>
+    </article>
+  </section>
+
+  <footer class="outro">
+    <p class="done">All four plans, stacked. Book a free tour at the front desk, Monday to Saturday.</p>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+/*
+ * scroll-card-stack: cards that pile up as the page scrolls. Each .stack-card sticks a little lower than
+ * the one before (--stack-peek), so the next card slides up over it and a strip of every earlier card
+ * stays in sight. The cards underneath sink back: scroll-card-stack.js scrubs the paused stack-sink
+ * animation by how far the later cards cover each one. Without the script they still stack, flat.
+ * The cards must be direct children of .stack and have an opaque background.
+ * Up to 6 cards get their index here; add a rule for more.
+ */
+.stack-card {
+  position: sticky;
+  top: calc(var(--stack-top, 16px) + var(--stack-i, 0) * var(--stack-peek, 12px));
+  transform-origin: 50% 0;
+}
+.stack-card + .stack-card { margin-top: var(--stack-gap, 40svh); }
+.stack-card:nth-child(2) { --stack-i: 1; }
+.stack-card:nth-child(3) { --stack-i: 2; }
+.stack-card:nth-child(4) { --stack-i: 3; }
+.stack-card:nth-child(5) { --stack-i: 4; }
+.stack-card:nth-child(6) { --stack-i: 5; }
+
+/* 0% = in front, 100% = three cards deep. Linear on purpose: the scroll is the timing. */
+@keyframes stack-sink { to { scale: calc(1 - 3 * var(--stack-step, .04)); filter: brightness(.86); } }
+.js .stack-card { animation: stack-sink 1s linear both paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a plain list: nothing sticks, nothing sinks */
+  .stack-card, .js .stack-card { position: static; animation: none; }
+  .stack-card + .stack-card { margin-top: 16px; }
+}
