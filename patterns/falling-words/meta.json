@@ -1,0 +1,18 @@
+{
+  "name": "Falling words",
+  "slug": "falling-words",
+  "kind": "pattern",
+  "summary": "A click knocks the words of a page over: they drop with gravity, bounce and pile up on the floor, then fly home on Reset. A small physics run played as Web Animations.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #e3d9c8; }
+.fw-frame { display: grid; grid-template-rows: auto 1fr; background: #fbf6ec; color: #2b2118; }
+.fw-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #e8dfcf; }
+.fw-shop { font-size: 14px; font-weight: 700; line-height: 1.25; }
+.fw-shop span { display: block; font-size: 12px; font-weight: 450; color: #7a6a58; }
+.fw-tools { display: flex; gap: 8px; }
+.fw-btn {
+  font: inherit; font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid #2b2118; background: #2b2118; color: #fbf6ec;
+}
+.fw-btn-quiet { background: transparent; color: #2b2118; }
+.fw-btn[aria-disabled="true"] { opacity: .4; cursor: default; }
+.fw-btn:focus-visible { outline: 2px solid #b4441f; outline-offset: 2px; }
+.fw-body { padding: 26px 30px; display: grid; align-content: start; gap: 8px; }
+.fw-code { font-size: 64px; font-weight: 780; letter-spacing: -.04em; line-height: 1; color: #b4441f; }
+.fw-body h1 { font-size: 38px; letter-spacing: -.03em; }
+.fw-note { max-width: 34ch; font-size: 16px; color: #5c4d3d; }
+.fw-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 10px; font-size: 14px; font-weight: 600; }
+.fw-links a { color: #b4441f; text-underline-offset: 3px; }
+.fw-w { border-radius: 3px; }
+.fw-links { position: relative; z-index: 1; }
+@media (max-width: 520px) {
+  .fw-top { padding: 10px 12px; }
+  .fw-shop span { display: none; }
+  .fw-btn { font-size: 12px; padding: 6px 9px; }
+  .fw-body { padding: 12px 14px; gap: 4px; }
+  .fw-code { font-size: 38px; }
+  .fw-body h1 { font-size: 23px; }
+  .fw-note { font-size: 13px; }
+  .fw-links { font-size: 12.5px; margin-bottom: 4px; }
+}

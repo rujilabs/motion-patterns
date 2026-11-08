@@ -1,0 +1,16 @@
+/*
+ * falling-words: the words of a page drop with gravity, bounce a little and pile up on the floor of
+ * the box (.fw). falling-words.js wraps every word of each [data-fall] block in .fw-w, runs the fall
+ * as a small physics simulation, and plays the result as Web Animations, so nothing reflows and the
+ * text stays where screen readers expect it. The box must clip (overflow: hidden): it is the floor and walls.
+ */
+.fw { position: relative; overflow: hidden; }
+.fw-w { display: inline-block; }
+.fw-ready [data-fall] { cursor: pointer; }
+/* once down, the pile lets clicks through to the links under it */
+.fw.is-down .fw-w { pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script skips the fall and shows the pile at once */
+  .fw-w { transition: none; }
+}
