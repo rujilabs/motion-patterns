@@ -1,0 +1,19 @@
+{
+  "name": "Depth text",
+  "slug": "depth-text",
+  "kind": "pattern",
+  "summary": "A headline extruded in real 3D layers that swings in, tilts toward the pointer and springs back to rest when it leaves. Keyboard focus tilts it to a set pose.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-spring"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

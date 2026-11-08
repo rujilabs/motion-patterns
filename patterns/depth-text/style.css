@@ -1,0 +1,29 @@
+/*
+ * depth-text: a headline extruded in layers that tilts toward the pointer and settles back on a spring.
+ * depth-text.js stacks data-depth aria-hidden copies (.dt-layer, --dt-i) behind the text in real 3D,
+ * each a step further back and darker, and tilts .dt with --dt-rx / --dt-ry. The pointer is read over
+ * the closest [data-depth-area] (or .dt itself). Keyboard focus tilts it to a set pose.
+ * Without the script a short text-shadow gives the same extruded look, flat.
+ */
+.dt {
+  position: relative; display: inline-block; transform-style: preserve-3d;
+  text-shadow: 1px 1px 0 var(--dt-side, #888), 2px 2px 0 var(--dt-side, #888), 3px 3px 0 var(--dt-side, #888), 4px 4px 0 var(--dt-side, #888);
+}
+.dt.dt-on {
+  text-shadow: none;
+  transform: perspective(var(--dt-persp, 900px)) rotateX(var(--dt-rx, 10deg)) rotateY(var(--dt-ry, -16deg));
+}
+.dt-face { position: relative; display: block; transform: translateZ(0); }
+.dt-layer {
+  position: absolute; inset: 0; pointer-events: none; white-space: inherit;
+  transform: translateZ(calc(var(--dt-i) * var(--dt-step, -.04em)));
+  color: color-mix(in srgb, var(--dt-side, #888), #000 calc(var(--dt-i) * 3%));
+}
+/* no opacity here: opacity below 1 flattens the 3D layers */
+@keyframes dt-in { from { rotate: y 70deg; } }
+.dt.dt-on.go { animation: dt-in var(--dur-slow) var(--ease-spring) both; }
+.dt-area { touch-action: pan-y; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dt.dt-on.go { animation: none; }
+}
