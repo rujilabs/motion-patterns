@@ -1,0 +1,68 @@
+/* Demo page layout for this entry. Not part of the pattern. A furniture maker's invoices: warm paper, steel. */
+:root {
+  --sh-table: #e8e5df;
+  --sh-paper: #fbfaf7;
+  --sh-ink: #24221f;
+  --sh-mute: #6c675f;
+  --sh-line: #dcd7ce;
+  --sh-red: #c2412d;
+  --sh-doc: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --sh-table: #121110; --sh-paper: #1c1a18; --sh-ink: #ece8e1; --sh-mute: #a39d93; --sh-line: #302d29; --sh-red: #ff7a62; --sh-doc: #f7f5f0; }
+  .shredder-bin { background: repeating-linear-gradient(90deg, rgb(150 156 166 / .5) 0 2px, transparent 2px 12px), linear-gradient(rgb(80 86 96 / .3), rgb(80 86 96 / .55)); }
+}
+body { background: var(--sh-table); color: var(--sh-ink); }
+.mute { color: var(--sh-mute); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:focus-visible { outline-color: var(--sh-ink); }
+
+.sh { width: min(480px, 100%); display: grid; gap: 12px; }
+.sh-kicker { font-size: 13px; font-weight: 600; color: var(--sh-mute); }
+.sh-head h1 { font-size: 22px; margin-top: 2px; display: flex; align-items: center; gap: 8px; }
+.sh-count { font-size: 13px; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: var(--sh-line); }
+
+.shredder { --shred-out-h: 150px; }
+.inv {
+  width: min(340px, 100%);
+  background: var(--sh-doc);
+  color: #24221f;
+  border: 1px solid #e3ded4;
+  border-radius: 4px;
+  padding: 16px 18px 14px;
+  font-size: 13px;
+  box-shadow: 0 1px 2px rgb(40 30 20 / .08);
+}
+.inv .mute { color: #77716a; }
+.inv-top { display: flex; justify-content: space-between; align-items: center; }
+.inv-no { font-weight: 700; font-size: 15px; }
+.inv-stamp {
+  font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #c2412d;
+  border: 1.5px solid currentColor; border-radius: 4px; padding: 1px 7px; rotate: -4deg;
+}
+.inv-to { margin: 8px 0 10px; }
+.inv-lines { width: 100%; border-collapse: collapse; }
+.inv-lines td { padding: 6px 0; border-top: 1px solid #ece8e0; }
+.inv-lines td + td { text-align: right; padding-left: 12px; white-space: nowrap; }
+.inv-total td { font-weight: 700; border-top: 1.5px solid #24221f; }
+
+.shredder-feed { position: relative; }
+.sh-empty { position: absolute; inset: 0; display: grid; place-items: center; font-size: 14px; color: var(--sh-mute); }
+.sh-empty[hidden] { display: none; }
+.sh-actions { display: grid; justify-items: center; min-height: 88px; align-content: start; }
+.sh-btn {
+  font: inherit; font-size: 14px; font-weight: 650; color: var(--sh-ink); cursor: pointer;
+  background: var(--sh-paper); border: 1px solid var(--sh-line); border-radius: 999px; padding: 8px 18px;
+}
+.sh-danger { background: var(--sh-red); border-color: var(--sh-red); color: #fff; }
+.sh-confirm, .sh-toast { display: grid; justify-items: center; gap: 8px; text-align: center; font-size: 14px; }
+.sh-confirm[hidden], .sh-toast[hidden], .sh-btn[hidden] { display: none; }
+.sh-row { display: flex; gap: 8px; }
+.sh-toast { position: relative; grid-template-columns: auto auto; align-items: center; gap: 12px; background: var(--sh-ink); color: var(--sh-paper); border-radius: 10px; padding: 8px 8px 10px 16px; overflow: hidden; }
+.sh-toast .sh-btn { background: transparent; color: var(--sh-paper); border-color: rgb(255 255 255 / .3); padding: 5px 14px; }
+.sh-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--sh-red); transform-origin: 0 50%; }
+html:not(.js) .sh-actions { display: none; }
+
+@media (max-width: 520px) {
+  .shredder { --shred-out-h: 130px; }
+}
