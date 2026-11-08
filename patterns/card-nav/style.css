@@ -1,0 +1,37 @@
+/*
+ * card-nav: a slim nav bar that opens downward into a row of link cards. The bar itself grows (grid rows
+ * 0fr to 1fr, so no height is measured), the cards rise in one after another once it has started to open, and
+ * the two menu lines fold into an X. card-nav.js sets aria-expanded, moves focus in, closes on Escape.
+ * Without the script the cards simply show under the bar.
+ */
+.cn { --cn-dur: calc(var(--dur-base) * .75); }
+.cn-panel { display: grid; grid-template-rows: 1fr; }
+.cn-cards { min-height: 0; overflow: hidden; }
+.js .cn-panel {
+  grid-template-rows: 0fr; visibility: hidden;
+  transition: grid-template-rows var(--cn-dur) var(--ease-out), visibility 0s var(--cn-dur);
+}
+.js .cn.is-open .cn-panel { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+.js .cn-card {
+  opacity: 0; translate: 0 16px; scale: .96;
+  transition: opacity var(--dur-quick) var(--ease-out), translate var(--dur-quick) var(--ease-out), scale var(--dur-quick) var(--ease-out);
+}
+.js .cn.is-open .cn-card {
+  opacity: 1; translate: none; scale: none;
+  transition-duration: var(--cn-dur);
+  transition-delay: calc(var(--cn-dur) * .3 + var(--cn-i, 0) * var(--stagger));
+}
+/* the menu mark: two lines that turn into an X */
+.cn-lines { position: relative; display: inline-block; width: 16px; height: 10px; }
+.cn-lines::before, .cn-lines::after {
+  content: ""; position: absolute; left: 0; width: 16px; height: 2px; border-radius: 1px; background: currentColor;
+  transition: translate var(--cn-dur) var(--ease-spring), rotate var(--cn-dur) var(--ease-spring);
+}
+.cn-lines::before { top: 0; }
+.cn-lines::after { bottom: 0; }
+.cn.is-open .cn-lines::before { translate: 0 4px; rotate: 45deg; }
+.cn.is-open .cn-lines::after { translate: 0 -4px; rotate: -45deg; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .cn-panel, .js .cn-card, .js .cn.is-open .cn-card, .cn-lines::before, .cn-lines::after { transition: none; }
+}

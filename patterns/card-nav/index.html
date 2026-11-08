@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card nav demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="card-nav.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame lk-frame" aria-labelledby="lk-h">
+  <nav class="cn lk-nav" aria-label="Lantai Lima">
+    <div class="lk-bar">
+      <button class="cn-toggle lk-toggle" type="button" aria-expanded="false" aria-controls="lk-panel"><span class="cn-lines" aria-hidden="true"></span><span>Menu</span></button>
+      <a class="lk-logo" href="#home"><span class="lk-dot" aria-hidden="true"></span>Lantai Lima</a>
+      <a class="lk-cta" href="#tour">Book a tour</a>
+    </div>
+    <div class="cn-panel" id="lk-panel">
+      <div class="cn-cards lk-cards">
+        <section class="cn-card lk-card lk-c1" aria-labelledby="lk-c1">
+          <h2 id="lk-c1">Spaces</h2>
+          <ul>
+            <li><a href="#hot-desk">Hot desk, <span class="num">RM 35</span>/day</a></li>
+            <li><a href="#fixed-desk">Fixed desk, <span class="num">RM 590</span>/month</a></li>
+            <li><a href="#rooms">Meeting room, <span class="num">RM 48</span>/hour</a></li>
+          </ul>
+        </section>
+        <section class="cn-card lk-card lk-c2" aria-labelledby="lk-c2">
+          <h2 id="lk-c2">Community</h2>
+          <ul>
+            <li><a href="#makan">Makan, Thu <span class="num">12:30 pm</span></a></li>
+            <li><a href="#members">Members' wall</a></li>
+            <li><a href="#events">Events this month</a></li>
+          </ul>
+        </section>
+        <section class="cn-card lk-card lk-c3" aria-labelledby="lk-c3">
+          <h2 id="lk-c3">Visit</h2>
+          <ul>
+            <li><a href="#walk">4 min walk from the LRT</a></li>
+            <li><a href="#parking">Parking, <span class="num">RM 1.20</span>/hour</a></li>
+            <li><a href="#hours">Open <span class="num">8 am</span> to <span class="num">10 pm</span></a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </nav>
+  <div class="lk-hero">
+    <p class="lk-kicker">Co-working, Section 13, Petaling Jaya</p>
+    <h1 id="lk-h">A desk by the window from <span class="num">RM 35</span> a day.</h1>
+    <p class="lk-sub"><span class="num">42</span> desks, <span class="num">3</span> call booths, <span class="num">5</span> floors up. <span class="num">7</span> desks free today.</p>
+  </div>
+</section>
+</main>
+</body>
+</html>

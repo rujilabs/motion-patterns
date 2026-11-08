@@ -1,0 +1,22 @@
+{
+  "name": "Card nav",
+  "slug": "card-nav",
+  "kind": "pattern",
+  "summary": "A slim nav bar that grows downward into three link cards, which rise in one after another while the menu lines fold into an X. Escape closes and returns focus.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-quick",
+    "--stagger",
+    "--ease-out",
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
