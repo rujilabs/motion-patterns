@@ -16,7 +16,7 @@ About 65 entries over three releases:
 |---|---|---|---|
 | v0.6.0 | A | 20 | CSS, SVG, small JS |
 | v0.7.0 | B part 1 | about 22 | Canvas 2D and JS |
-| v0.8.0 | B part 2 | about 23 | Canvas 2D and JS |
+| v0.9.0 | B part 2 | 20 | DOM, SVG and canvas |
 
 WebGL shader backgrounds (tier C) are out of scope.
 
@@ -84,7 +84,7 @@ meaningful still frame without JS motion (reduced motion or no script), and loop
 | electric-border | light | limited drop card: a crackling border |
 | cube-grid-tilt | solid | hardware store tile picker: a grid of cubes tilts toward the pointer |
 
-## Tier B part 2 (v0.8.0)
+## Tier B part 2 (v0.9.0)
 
 Drag deck, bounce cards, orbit images, dome gallery, flying posters, animated list, card nav, bubble menu, pill nav,
 gooey nav, magic bento, shredder, paper crumple, jelly radio, peek rating, bell toggle, spring check, flying button,
