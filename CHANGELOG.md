@@ -5,6 +5,41 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.7.0] - 2026-11-08
+
+### Added
+
+- **text-cursor-trail:** Storybook icons follow the pointer in a line
+- **fuzzy-text:** An error code jitters, calmer on hover
+- **scroll-float-text:** Headline letters float into place on scroll
+- **scroll-expand-media:** A framed photo grows to full bleed on scroll
+- **electric-border:** A crackling border on a limited drop card
+- **cube-grid-tilt:** Tile cubes tilt toward the pointer and flip for price
+- **echo-text:** A station name rings out in echo copies
+- **fold-text:** Title letters fold open like origami paper
+- **stroke-fill-text:** Outlined class names fill with ink on hover
+- **warp-text:** Letters swell toward the pointer
+- **depth-text:** A layered 3D headline tilts with the pointer
+- **dot-field-push:** A dot field parts around the pointer
+- **magnet-needles:** A grid of needles turns to point at the pointer
+- **letter-rain-glitch:** A calm character wall behind a maintenance notice
+- **radar-sweep:** A sweep finds nearby riders, then locks on one
+- **contour-drift:** Contour lines drift behind a trail card
+- **swarm-cursor:** A small swarm follows the pointer and rests at the jar
+- **falling-words:** A 404 page whose words drop and pile up
+- **crosshair-guides:** Guide lines and live coordinates over a lot plan
+- **pixel-trail:** The pointer leaves fading square pixels
+- **ribbon-cursor:** Ribbons trail the pointer and hang from a hook
+- **grid-cell-glow:** Hot desk cells light up near the pointer
+- **shape-grid-drift:** A drafting grid drifts, the hovered cell fills
+- **thread-waves:** Threads ripple and part around the pointer
+
+### Fixed
+
+- **edge-blur:** Restore the house-style demo hint
+- Demo weekdays match the 2026 calendar
+
+
 ## [0.6.0] - 2026-11-08
 
 ### Added
