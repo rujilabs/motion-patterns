@@ -1,0 +1,22 @@
+{
+  "name": "Hold to confirm",
+  "slug": "hold-to-confirm",
+  "kind": "pattern",
+  "summary": "Press and hold a button for 1.5 seconds to confirm. A fill and a ring grow while you hold; let go early and they drain back as the button springs out of its press.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-quick",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

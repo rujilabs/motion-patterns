@@ -1,0 +1,33 @@
+/*
+ * hold-to-confirm: press and hold a button for a set time before a destructive action happens.
+ * hold.js grows the fill and the ring while you hold, drains them with a spring if you let go early,
+ * and fires "confirm" at the end. Without the script it is a plain button.
+ */
+.hold {
+  --hold-ink: #b42318;
+  --hold-base: #fdeceb;
+  --hold-fill: #f5c3bd;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; margin: 0;
+  border: 1px solid color-mix(in srgb, var(--hold-ink) 30%, transparent); border-radius: 999px;
+  background: var(--hold-base); color: var(--hold-ink); font: inherit; font-weight: 650; cursor: pointer;
+  touch-action: pan-y; /* a hold that turns into a scroll cancels; the page still scrolls */
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+  transition: scale var(--dur-quick) var(--ease-out);
+}
+.hold-fill { position: absolute; inset: 0; z-index: -1; background: var(--hold-fill); transform: scaleX(0); transform-origin: left; }
+.hold.is-holding { scale: .97; }
+.hold.is-done { cursor: default; }
+.hold:focus-visible { outline: 2px solid var(--hold-ink); outline-offset: 3px; }
+.hold-ring { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.hold-track { opacity: .25; }
+.hold-arc, .hold-check { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+.hold-check { transition: stroke-dashoffset var(--dur-base) var(--ease-out); }
+.hold.is-done .hold-check { stroke-dashoffset: 0; }
+.hold.is-done .hold-track, .hold.is-done .hold-arc { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the fill still shows how long is left; hold.js drops the spring and the pop */
+  .hold, .hold * { transition: none; }
+}
