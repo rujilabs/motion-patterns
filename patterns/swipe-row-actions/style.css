@@ -1,0 +1,33 @@
+/*
+ * swipe-row-actions: swipe a list row left to show Archive and Delete behind it. swipe.js moves the
+ * row: it snaps open or shut when you let go, stretches like rubber past either end, and a long swipe
+ * widens Archive across the row and archives it. The dots button opens the same actions for a mouse,
+ * a keyboard or a screen reader. Without the script the actions sit under each row as plain buttons.
+ */
+.swipe {
+  --swipe-open: 160px;
+  --swipe-face: #fff;
+  --swipe-archive: #2f6fde;
+  --swipe-delete: #d93a2b;
+  position: relative; overflow: hidden;
+}
+.swipe-face { position: relative; z-index: 1; background: var(--swipe-face); touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+.swipe-actions { display: flex; justify-content: flex-end; }
+.swipe.is-ready .swipe-actions { position: absolute; inset: 0 0 0 auto; width: var(--swipe-open); }
+.swipe-actions button {
+  appearance: none; border: 0; margin: 0; padding: 0 8px; min-height: 44px; overflow: hidden; white-space: nowrap;
+  font: inherit; font-weight: 650; color: #fff; cursor: pointer;
+}
+.swipe-archive { flex: 1; background: var(--swipe-archive); }
+.swipe-delete { flex: none; width: calc(var(--swipe-open) / 2); background: var(--swipe-delete); transition: width var(--dur-quick) var(--ease-out), padding var(--dur-quick); }
+.swipe.is-full .swipe-delete { width: 0; padding: 0; }
+.swipe-actions button:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
+.swipe:not(.is-ready) .swipe-more { display: none; }
+.swipe-more { appearance: none; border: 0; margin: 0; padding: 0; width: 40px; height: 40px; border-radius: 50%; background: none; color: inherit; cursor: pointer; display: grid; place-items: center; }
+.swipe-more svg { width: 20px; height: 20px; fill: currentColor; }
+.swipe-more[aria-expanded="true"] { background: color-mix(in srgb, currentColor 10%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* swipe.js keeps the row under your finger, then jumps it open, shut or away with no spring */
+  .swipe, .swipe * { transition: none; }
+}
