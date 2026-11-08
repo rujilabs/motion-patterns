@@ -86,6 +86,27 @@ meaningful still frame without JS motion (reduced motion or no script), and loop
 
 ## Tier B part 2 (v0.9.0)
 
-Drag deck, bounce cards, orbit images, dome gallery, flying posters, animated list, card nav, bubble menu, pill nav,
-gooey nav, magic bento, shredder, paper crumple, jelly radio, peek rating, bell toggle, spring check, flying button,
-lanyard badge, staggered list. Jobs set when v0.7.0 ships.
+`emphasis` (9.1 KB) and `state` (9.6 KB) are near their 10 KB category cap, so none of these go there.
+
+| Slug | Category | Job |
+|---|---|---|
+| drag-deck | panel | rental shortlist: flick listing cards off a stack, keep or skip |
+| bounce-cards | entry | wedding photographer album: a fan of prints bounces in and spreads on hover |
+| orbit-images | curve | laksa recipe: ingredient photos orbit the bowl |
+| dome-gallery | globe | museum wall: photos on the inside of a dome you drag around |
+| flying-posters | camera | film festival line-up: posters fly toward the viewer on scroll |
+| staggered-list | entry | kopitiam order queue: rows stagger in and the selection follows the keys |
+| card-nav | morph | co-working site nav: the bar opens into three link cards |
+| bubble-menu | morph | florist menu: the button blooms into round link bubbles |
+| gooey-nav | morph | swim school tabs: a blob stretches from tab to tab |
+| magic-bento | tile | accounting app features: a bento grid whose borders glow near the pointer |
+| holo-card | light | gym membership card: holographic foil shifts as it tilts |
+| glass-icons | light | smart home tiles: frosted glass icons light up when on |
+| shredder | panel | delete a draft invoice: it feeds through a shredder in strips |
+| paper-crumple | morph | discard a note: it crumples into a ball and drops in the bin |
+| jelly-radio | form | delivery slot picker: the dot wobbles over to the chosen slot |
+| peek-rating | form | rate a meal: a face reacts as the stars fill |
+| bell-toggle | form | prayer time alerts: the bell rings when switched on |
+| flying-button | form | contact form send: the button folds into a paper plane and flies off |
+| lanyard-badge | wave | conference pass: a badge on a lanyard you can drag and let swing |
+| comet-dial | drum | oven timer: a dial with a comet tail that counts down |
