@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide to pay demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="slide.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="bill sheet" aria-labelledby="bill-h">
+    <header class="bill-head">
+      <p class="shop">Restoran Sinar Bistari, SS15 Subang Jaya</p>
+      <h1 id="bill-h">Table 12 bill</h1>
+      <p class="mute when">Sat 8 Nov, 8:47 pm. Five people.</p>
+    </header>
+    <ul class="lines">
+      <li><span>Nasi kandar ayam madu <span class="mute num">x3</span></span><span class="num">44.40</span></li>
+      <li><span>Mee goreng mamak <span class="mute num">x2</span></span><span class="num">18.00</span></li>
+      <li><span>Roti telur bawang <span class="mute num">x4</span></span><span class="num">13.20</span></li>
+      <li><span>Teh tarik kurang manis <span class="mute num">x4</span></span><span class="num">10.80</span></li>
+    </ul>
+    <p class="total"><span>Total</span><span class="num">RM 86.40</span></p>
+    <div class="slide" id="pay" role="slider" tabindex="0" aria-label="Slide to pay RM 86.40" aria-describedby="pay-help"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Not paid"
+         data-commit="0.85" data-status="pay-status" data-done="Paid RM 86.40">
+      <span class="slide-fill" aria-hidden="true"></span>
+      <span class="slide-label" aria-hidden="true">Slide to pay RM 86.40</span>
+      <span class="slide-knob" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path class="slide-arrow" d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/><path class="slide-tick" d="M5.5 12.5l4.2 4.2L18.5 7.8"/></svg>
+      </span>
+    </div>
+    <button class="slide-alt" type="button">Pay RM 86.40</button>
+    <p class="help" id="pay-help">From your Bayar Kita balance of RM 213.75. Slide all the way, or press Enter.</p>
+    <p class="status" id="pay-status" role="status"></p>
+    <button class="again" type="button" id="again" hidden>Reset the demo</button>
+  </section>
+</main>
+</body>
+</html>

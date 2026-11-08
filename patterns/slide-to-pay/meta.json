@@ -1,0 +1,21 @@
+{
+  "name": "Slide to pay",
+  "slug": "slide-to-pay",
+  "kind": "pattern",
+  "summary": "Slide a knob along a track to pay. Past 85 percent it runs to the end and turns into a tick; short of that it springs back. The label fades as you go, and it is a keyboard slider too.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--dur-base"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
