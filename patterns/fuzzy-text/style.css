@@ -1,0 +1,15 @@
+/*
+ * fuzzy-text: a word drawn in thin rows that drift sideways, like a weak signal, and calm down under the
+ * pointer. fuzzy-text.js lays canvas.fz-canvas over .fz-text and hides the text only while it draws, so
+ * the words stay real text for screen readers, search and copy. --fz-ink and --fz-ghost colour the text
+ * and its faint offset copy. Without the script, and under reduced motion, the plain text shows.
+ */
+.fz { position: relative; }
+.fz-canvas { position: absolute; display: none; pointer-events: none; }
+.fz-live .fz-canvas { display: block; }
+.fz-live .fz-text { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fz-canvas { display: none; }
+  .fz-text { opacity: 1; }
+}

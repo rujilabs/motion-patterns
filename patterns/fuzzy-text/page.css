@@ -1,0 +1,28 @@
+/* Demo page layout for this entry. Not part of the pattern. A ferry operator's outage page, late at night. */
+.err {
+  --fz-ink: var(--demo-ink);
+  --fz-ghost: var(--demo-red);
+  width: min(640px, 100%); padding: 26px 28px 18px; display: grid; gap: 12px;
+}
+.brand { font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--demo-blue); }
+.code { font-size: clamp(64px, 17vw, 124px); font-weight: 800; letter-spacing: -.035em; line-height: 1; margin: 4px 0 2px; }
+.code .fz-text { display: inline-block; }
+.what { font-size: 21px; font-weight: 650; letter-spacing: -.01em; }
+.why { color: var(--demo-mute); font-size: 15.5px; max-width: 52ch; text-wrap: pretty; }
+.sail { border-top: 1px solid var(--demo-line); padding-top: 12px; display: grid; gap: 8px; }
+.sail-h { font-size: 13px; font-weight: 650; }
+.sail ul { display: flex; flex-wrap: wrap; gap: 6px; }
+.sail li { font-size: 13.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--demo-blue-soft); color: var(--demo-blue); }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12.5px; padding-top: 4px; }
+.ctl {
+  font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 14px; min-height: 34px; border-radius: 8px; flex: none;
+  border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer;
+}
+.ctl[aria-pressed="true"] { background: var(--demo-ink); color: var(--demo-paper); border-color: var(--demo-ink); }
+
+@media (max-width: 520px) {
+  .err { padding: 20px 18px 16px; }
+  .what { font-size: 19px; }
+}
+html:not(.js) .ctl { display: none; }
+@media (prefers-reduced-motion: reduce) { .ctl { display: none; } }
