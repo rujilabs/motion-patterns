@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dock magnify demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="dock-magnify.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame dm-frame" aria-labelledby="dm-h">
+  <header class="dm-top">
+    <p class="dm-clinic">Klinik Seri Pagi, Bangi</p>
+    <p class="dm-clock num">Thu 7:45 pm</p>
+  </header>
+  <div class="dm-body">
+    <p class="dm-kicker">Staff portal</p>
+    <h1 id="dm-h" data-dm-title>Queue</h1>
+    <dl class="dm-facts">
+      <div><dt>Now serving</dt><dd class="num">A-047, Room 2</dd></div>
+      <div><dt>Waiting</dt><dd class="num">14 patients</dd></div>
+      <div><dt>Average wait</dt><dd class="num">18 min</dd></div>
+    </dl>
+  </div>
+  <nav class="dm-shelf" aria-label="Portal">
+    <div class="dock" data-dock-max="1.6" data-dock-reach="130">
+      <a class="dock-item" href="#queue" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <span class="dock-tip">Queue</span>
+      </a>
+      <a class="dock-item" href="#patients">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.6 3.6-5.6 7-5.6s6.2 2 7 5.6"/></svg>
+        <span class="dock-tip">Patients</span>
+      </a>
+      <a class="dock-item" href="#lab-results">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 3.5h5M10.5 3.5v6L5.6 18a1.6 1.6 0 0 0 1.4 2.4h10a1.6 1.6 0 0 0 1.4-2.4l-4.9-8.5v-6M8 14.5h8"/></svg>
+        <span class="dock-tip">Lab results</span>
+      </a>
+      <a class="dock-item" href="#pharmacy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-35 12 12)"/><path d="M9.4 8.3l5.2 7.4"/></svg>
+        <span class="dock-tip">Pharmacy</span>
+      </a>
+      <a class="dock-item" href="#billing">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 20.5zM9 8.5h6M9 12h6M9 15.5h3.5"/></svg>
+        <span class="dock-tip">Billing</span>
+      </a>
+      <a class="dock-item" href="#messages">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10.5H10l-4.5 3.6V16H4z"/></svg>
+        <span class="dock-tip">Messages</span>
+        <span class="dm-badge"><span class="vh">, </span>3<span class="vh"> new</span></span>
+      </a>
+    </div>
+  </nav>
+</section>
+</main>
+</body>
+</html>
