@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll speed marquee demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="scroll-speed-marquee.js"></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll inside this frame. Flick down and the strips race, scroll up and they run backwards, stop and they settle.</p>
+    <h1>Roti Seri Tanjung, Muar</h1>
+    <p class="mute">A wood-fired bakery on Jalan Maharani since 1974.</p>
+  </header>
+
+  <section class="scene">
+    <div class="scene-stage">
+      <section class="ssm-group board sheet" aria-labelledby="board-h">
+        <div class="board-head">
+          <h2 id="board-h">Today at the counter</h2>
+          <button class="ssm-pause ctl" type="button" aria-pressed="false" hidden>Pause</button>
+        </div>
+        <div class="ssm hours" role="region" tabindex="0" aria-label="Opening hours">
+          <div class="ssm-track">
+            <ul class="ssm-list"><li>Open 6:15 am</li><li>First loaves out at 6:40 am</li><li>Closed Wednesdays</li><li>Sold out most days by 12:30 pm</li></ul>
+            <ul class="ssm-list" aria-hidden="true"><li>Open 6:15 am</li><li>First loaves out at 6:40 am</li><li>Closed Wednesdays</li><li>Sold out most days by 12:30 pm</li></ul>
+          </div>
+        </div>
+        <div class="ssm ssm-reverse menu" role="region" tabindex="0" aria-label="Prices">
+          <div class="ssm-track">
+            <ul class="ssm-list"><li>Roti benggali <span class="num">RM 2.80</span></li><li>Bun kaya <span class="num">RM 1.60</span></li><li>Roti sardin <span class="num">RM 2.20</span></li><li>Kaya jar, 250 g <span class="num">RM 9.50</span></li><li>Kuih bahulu, 20 pieces <span class="num">RM 7.90</span></li></ul>
+            <ul class="ssm-list" aria-hidden="true"><li>Roti benggali <span class="num">RM 2.80</span></li><li>Bun kaya <span class="num">RM 1.60</span></li><li>Roti sardin <span class="num">RM 2.20</span></li><li>Kaya jar, 250 g <span class="num">RM 9.50</span></li><li>Kuih bahulu, 20 pieces <span class="num">RM 7.90</span></li></ul>
+          </div>
+        </div>
+        <p class="board-foot mute">Phone orders before 9:00 pm for the next morning: 06-952 4418</p>
+      </section>
+    </div>
+  </section>
+
+  <footer class="outro">
+    <p class="done">Scroll back up: the strips run the other way.</p>
+  </footer>
+</main>
+</body>
+</html>

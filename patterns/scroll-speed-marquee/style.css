@@ -1,0 +1,29 @@
+/*
+ * scroll-speed-marquee: an endless row that answers the scroll. Scroll down and it runs faster, scroll up
+ * and it runs backwards, stop and it eases back to its own pace. The track holds the content twice
+ * (the copy is aria-hidden), and each copy is at least as wide as the row so the loop never shows a gap.
+ * The CSS loop is the base speed and the no-script fallback; scroll-speed-marquee.js pauses it and drives
+ * its time from the scroll velocity. The .ssm-pause button (aria-pressed) stops every row in its .ssm-group.
+ */
+.ssm {
+  overflow: clip;
+  max-width: 100%;
+  container-type: inline-size;
+  mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+.ssm-track { display: flex; width: max-content; animation: ssm-run var(--ssm-dur, 30s) linear infinite; }
+.ssm-track > * { flex: none; min-inline-size: 100cqi; }
+.ssm-reverse .ssm-track { animation-direction: reverse; }
+@keyframes ssm-run { to { transform: translateX(-50%); } }
+/* without the script: hover or focus pauses a row (the script ignores these once it drives the clock) */
+.ssm:hover .ssm-track, .ssm:focus-within .ssm-track,
+.ssm-group:has(.ssm-pause[aria-pressed="true"]) .ssm-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* no movement: drop the copy and let the first one wrap, so every item is readable */
+  .ssm { mask-image: none; }
+  .ssm-track { animation: none; width: auto; }
+  .ssm-track > :nth-child(n + 2) { display: none; }
+  .ssm-track > * { min-inline-size: 0; flex: 1 1 auto; flex-wrap: wrap; }
+  .ssm-pause { display: none; }
+}
