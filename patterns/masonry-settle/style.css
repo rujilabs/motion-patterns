@@ -1,0 +1,26 @@
+/*
+ * masonry-settle: gallery tiles of mixed heights drop into a masonry layout when it comes into view.
+ * Each tile falls from a little above with a slight tilt, lands a few pixels low and settles flat, one
+ * after another. The layout is CSS columns, so tiles keep their own heights with no gaps.
+ * The hidden start is under .js and the drop starts on .go (play.js adds it in view). masonry-settle.js
+ * numbers the tiles by where they land (top row first, left to right) and alternates the tilt, so the
+ * stagger reads across the grid instead of down each column.
+ */
+.masonry { columns: var(--masonry-n, 3) var(--masonry-w, 150px); column-gap: var(--masonry-gap, 12px); }
+.masonry > * { break-inside: avoid; margin-bottom: var(--masonry-gap, 12px); }
+
+@keyframes masonry-settle {
+  0% { opacity: 0; translate: 0 calc(-1 * var(--settle-drop, 56px)); rotate: var(--settle-tilt, -2.5deg); }
+  40% { opacity: 1; }
+  68% { translate: 0 3px; rotate: calc(var(--settle-tilt, -2.5deg) * -.2); }
+  100% { opacity: 1; translate: none; rotate: none; }
+}
+.js .masonry[data-play] > * { opacity: 0; }
+.js .masonry[data-play].go > * {
+  animation: masonry-settle var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .masonry[data-play] > *, .js .masonry[data-play].go > * { opacity: 1; animation: none; }
+}
