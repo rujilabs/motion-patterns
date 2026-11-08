@@ -195,24 +195,54 @@ function templateBlock(e) {
 </article>`;
 }
 
-function patternBlock(e) {
+// The job an object-category entry states on its README's first line ("Use when: ..."), for search.
+function useWhen(e) {
+  const p = join(e.path, "README.md");
+  if (!existsSync(p)) return "";
+  const hit = readFileSync(p, "utf8").match(/^Use when:\s*(.+)$/m);
+  return hit ? hit[1].trim() : "";
+}
+
+// Entries added in the current release, read from the changelog's newest section.
+const newest = (() => {
+  const log = existsSync(join(ROOT, "CHANGELOG.md")) ? readFileSync(join(ROOT, "CHANGELOG.md"), "utf8") : "";
+  const sec = log.split(/^## \[/m)[1] || "";
+  const version = sec.slice(0, sec.indexOf("]"));
+  const added = (sec.split(/^### /m).find((s) => s.startsWith("Added")) || "");
+  const slugs = [...added.matchAll(/^- \*\*([a-z0-9-]+):\*\*/gm)].map((x) => x[1]);
+  return { version, slugs: new Set(slugs) };
+})();
+
+// A pattern card: the poster shows the finished frame; studio.js loads the live demo over it on hover or
+// keyboard focus. The whole card is one link (the name's ::after covers it); Copy CSS sits above that.
+function card(e, { tag = "article", heading = "h3", foot = true } = {}) {
   const m = e.meta;
-  return `<article class="spec" id="${e.slug}" data-cat="${m.category}">
-  ${stage(e)}
-  ${sheet(e.slug, { trigger: m.trigger, label: m.name })}
-  <div class="spec-info">
-    <h3 class="entry-name"><a href="/${e.rel}/">${esc(m.name)}</a></h3>
-    <p class="entry-sum">${esc(m.summary)}</p>
-    ${m.relation === "original" ? "" : `<p class="credit">${credit(m)}</p>`}
-    <div class="spec-foot">
-      ${chips(m)}
-      <div class="actions">
-        <button type="button" class="btn btn-small" data-copy="${copyPath(e)}" data-name="${esc(m.name)}">Copy CSS</button>
-        <a class="btn btn-small btn-quiet" href="/${e.rel}/">Open</a>
-      </div>
-    </div>
-  </div>
-</article>`;
+  const poster = existsSync(join(e.path, "poster.jpg"));
+  const q = [m.name, m.summary, CATEGORY[m.category] || "", useWhen(e), TRIGGER[m.trigger] || "", m.tech.map((t) => TECH[t]).join(" "), e.slug.replace(/-/g, " ")].join(" ").toLowerCase();
+  const media = poster
+    ? `<img src="/${e.rel}/poster.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">`
+    : `<span class="card-ph" aria-hidden="true">${esc(m.name)}</span>`;
+  return `<${tag} class="card" id="${tag === "article" ? e.slug : `${e.slug}-card`}" data-cat="${m.category}" data-start="${m.trigger}" data-tech="${m.tech.join(" ")}"${newest.slugs.has(e.slug) ? " data-new" : ""} data-q="${esc(q)}">
+  <div class="card-media" data-preview="/${e.rel}/demo.html">${media}</div>
+  <${heading} class="card-name"><a class="card-link" href="/${e.rel}/">${esc(m.name)}</a></${heading}>
+  <p class="card-sum">${esc(m.summary)}</p>${foot ? `
+  <div class="card-foot">
+    <ul class="chips" role="list"><li>${TRIGGER[m.trigger]}</li></ul>
+    <button type="button" class="btn btn-small card-copy" data-copy="${copyPath(e)}" data-name="${esc(m.name)}">Copy CSS</button>
+  </div>` : ""}
+</${tag}>`;
+}
+const patternBlock = (e) => card(e);
+
+// Related entries for an entry page: same category first, then a shared trigger and tech.
+function related(e, skip) {
+  const m = e.meta;
+  return patterns
+    .filter((o) => o !== e && !skip.includes(o))
+    .map((o, i) => ({ o, i, s: (o.meta.category === m.category ? 4 : 0) + (o.meta.trigger === m.trigger ? 1 : 0) + o.meta.tech.filter((t) => m.tech.includes(t) && t !== "css").length }))
+    .sort((a, b) => b.s - a.s || a.i - b.i)
+    .slice(0, 3)
+    .map((x) => x.o);
 }
 
 // Hero: each line is drawn once as the key frame and five more times as onion-skin ghosts, each ghost
@@ -266,8 +296,18 @@ ${bar()}
     </div>
   </div>
   ${sheet("hero", { label: "Hero" })}
-  <p class="hero-note">This is the timeline of the headline above. Drag across it to scrub, or slow it to a quarter. Every entry below has one.</p>
+  <p class="hero-note">This is the timeline of the headline above. Drag across it to scrub, or slow it to a quarter. Every entry page has one.</p>
 </section>
+${newest.slugs.size ? `
+<section class="section fresh" id="new" aria-labelledby="new-h">
+  <header class="fresh-head">
+    <h2 id="new-h">New in v${esc(newest.version)}</h2>
+    <a class="btn btn-small" href="/?show=new#patterns">All ${newest.slugs.size} new patterns</a>
+  </header>
+  <ul class="fresh-row" role="list">
+${patterns.filter((e) => newest.slugs.has(e.slug)).slice(0, 8).map((e) => card(e, { tag: "li", heading: "h3", foot: false })).join("\n")}
+  </ul>
+</section>` : ""}
 
 <section class="section" id="templates" aria-labelledby="templates-h">
   <header class="section-head">
@@ -284,11 +324,24 @@ ${templates.map(templateBlock).join("\n")}
     <h2 id="patterns-h">Patterns</h2>
     <p>One move each, a class and a keyframe on shared tokens. Copy one, take one kind in <code>motion-&lt;category&gt;.css</code>, or take them all in <a href="/motion.css" download>motion.css</a>.</p>
   </header>
-  <nav class="filters" aria-label="Filter patterns">
+  <div class="finder" role="search" aria-label="Find a pattern">
+    <label class="find"><span class="sr-only">Search patterns</span><input type="search" id="find-q" placeholder="Search ${patterns.length} patterns: pay, scroll, tilt, 404" autocomplete="off" spellcheck="false"></label>
+    <label class="pick"><span>Starts</span><select id="find-start"><option value="">Starts: any way</option>
+${Object.entries(TRIGGER).filter(([k]) => patterns.some((e) => e.meta.trigger === k)).map(([k, l]) => `      <option value="${k}">${esc(l)}</option>`).join("\n")}
+    </select></label>
+    <label class="pick"><span>Built with</span><select id="find-tech"><option value="">Built with: anything</option>
+      <option value="css-only">CSS only</option>
+      <option value="no-js">No JavaScript</option>
+${Object.entries(TECH).filter(([k]) => patterns.some((e) => e.meta.tech.includes(k))).map(([k, l]) => `      <option value="${k}">${esc(l)}</option>`).join("\n")}
+    </select></label>
+  </div>
+  <nav class="filters" aria-label="Filter patterns by kind">
     <button type="button" data-filter="all" aria-pressed="true">All <span>${patterns.length}</span></button>
-${cats.map((c) => `    <button type="button" data-filter="${c}" aria-pressed="false">${CATEGORY[c]} <span>${patterns.filter((e) => e.meta.category === c).length}</span></button>`).join("\n")}
+${newest.slugs.size ? `    <button type="button" data-filter="new" aria-pressed="false">New in v${esc(newest.version)} <span>${newest.slugs.size}</span></button>\n` : ""}${cats.map((c) => `    <button type="button" data-filter="${c}" aria-pressed="false">${CATEGORY[c]} <span>${patterns.filter((e) => e.meta.category === c).length}</span></button>`).join("\n")}
   </nav>
-  <div class="specs">
+  <p class="finder-count" id="find-count">${patterns.length} patterns</p>
+  <p class="finder-empty" id="find-empty" hidden>No pattern matches that. <button type="button" class="btn btn-small" data-find-clear>Clear the search</button></p>
+  <div class="specs cards">
 ${patterns.map(patternBlock).join("\n")}
   </div>
 </section>
@@ -402,6 +455,17 @@ ${readme}
     ${e.kind === "template" ? `<p class="code-note">This is the template's own layer. <strong>Copy the full CSS</strong> above for one file with the tokens and every pattern it uses.${js.length ? ` It also ships ${js.map((f) => `<a href="/${e.rel}/${f}"><code>${f}</code></a>`).join(" and ")}.` : ""}</p>` : ""}
     ${codeBlock(css, "css")}
   </section>
+  ${(() => {
+    const more = e.kind === "template"
+      ? m.uses.map((u) => byName[u]).filter(Boolean).slice(0, 3)
+      : related(e, [prev, next]);
+    return more.length ? `<section class="related" aria-labelledby="related-h">
+    <h2 id="related-h">${e.kind === "template" ? "Built from" : "Related"}</h2>
+    <ul class="related-row" role="list">
+${more.map((o) => card(o, { tag: "li", heading: "h3", foot: false })).join("\n")}
+    </ul>
+  </section>` : "";
+  })()}
   <nav class="pager" aria-label="More entries">
     <a href="/${prev.rel}/" rel="prev"><span>Previous</span>${esc(prev.meta.name)}</a>
     <a href="/${next.rel}/" rel="next"><span>Next</span>${esc(next.meta.name)}</a>
