@@ -1,0 +1,37 @@
+/*
+ * otp-slots: a one-time code typed into a row of boxes. One real input holds the code (it gets the
+ * keyboard, paste, autofill and the screen reader); otp.js lays it over the boxes, invisible, and draws
+ * each digit into its box with a pop, a caret in the next empty box, a shake when the code is wrong
+ * and green boxes when it is right. Without the script the plain input shows.
+ */
+.otp {
+  --otp-ink: #1e2229;
+  --otp-bg: #fff;
+  --otp-line: #cfd5de;
+  --otp-on: #3d7bf2;
+  --otp-ok: #16a36a;
+  --otp-bad: #e5372a;
+}
+.otp-box { position: relative; display: inline-block; }
+.otp-input { font: inherit; font-size: 22px; letter-spacing: .3em; width: 8.5em; padding: 10px 12px; }
+.otp-slots { display: none; gap: 8px; }
+.otp.is-ready .otp-slots { display: flex; }
+.otp.is-ready .otp-input { position: absolute; inset: 0; z-index: 1; width: 100%; padding: 0; border: 0; opacity: 0; font-size: 16px; caret-color: transparent; }
+.otp-slot {
+  position: relative; display: grid; place-items: center; width: 46px; height: 56px;
+  border: 1.5px solid var(--otp-line); border-radius: 10px; background: var(--otp-bg); color: var(--otp-ink);
+  font-size: 24px; font-weight: 650; font-variant-numeric: tabular-nums;
+  transition: border-color var(--dur-quick) var(--ease-out), box-shadow var(--dur-quick) var(--ease-out), background-color var(--dur-quick);
+}
+.otp-slot > span { display: inline-block; }
+.otp-slot.is-active { border-color: var(--otp-on); box-shadow: 0 0 0 3px color-mix(in srgb, var(--otp-on) 24%, transparent); }
+/* the caret blinks five times, then stays lit, so nothing flashes on its own for long */
+.otp-slot.is-active::after { content: ""; position: absolute; width: 2px; height: 26px; border-radius: 1px; background: var(--otp-on); animation: otp-blink 1s steps(1) 5; }
+@keyframes otp-blink { 50% { opacity: 0; } }
+.otp.is-bad .otp-slot { border-color: var(--otp-bad); color: var(--otp-bad); }
+.otp.is-ok .otp-slot { border-color: var(--otp-ok); color: var(--otp-ok); background: color-mix(in srgb, var(--otp-ok) 9%, var(--otp-bg)); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* a steady caret, no pop and no shake: the red and green boxes still say what happened */
+  .otp-slot, .otp-slot::after { transition: none; animation: none; }
+}

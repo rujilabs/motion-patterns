@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTP slots demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="otp.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="tac sheet" aria-labelledby="tac-h">
+    <header class="tac-head">
+      <p class="bank">Bank Seri Meranti</p>
+      <h1 id="tac-h">Enter your TAC</h1>
+      <p class="mute">Transfer <strong class="num">RM 1,250.00</strong> to Hafiz Rosli, account ending 6620. We sent a 6-digit code to 012-xxx 4038 at 10:21 am.</p>
+    </header>
+    <div class="otp" id="otp" data-status="tac-status">
+      <label class="otp-name" for="tac">6-digit TAC</label>
+      <div class="otp-box">
+        <input class="otp-input" id="tac" name="tac" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-describedby="tac-help tac-status">
+        <div class="otp-slots" aria-hidden="true">
+          <span class="otp-slot"></span><span class="otp-slot"></span><span class="otp-slot"></span><span class="otp-slot"></span><span class="otp-slot"></span><span class="otp-slot"></span>
+        </div>
+      </div>
+    </div>
+    <p class="help" id="tac-help">Expires at 10:24 am. Demo: any 6 digits ending in 7 is the right code, for example 482917. Paste works too.</p>
+    <p class="status" id="tac-status" role="status"></p>
+    <button class="again" type="button" id="again" hidden>Start again</button>
+  </section>
+</main>
+</body>
+</html>
