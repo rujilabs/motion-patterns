@@ -27,6 +27,8 @@ export function check() {
     for (const f of ["index.html", "style.css", "meta.json", "README.md"]) {
       if (!existsSync(join(e.path, f))) fail(at, `missing ${f}`);
     }
+    // The gallery grid and the related cards show this still; npm run posters -- <slug> makes it.
+    if (!existsSync(join(e.path, "poster.jpg"))) fail(at, "missing poster.jpg; run npm run posters -- " + e.slug);
     if (e.error) { fail(at, `meta.json is not valid JSON (${e.error})`); continue; }
     const m = e.meta;
     if (!m) continue;
