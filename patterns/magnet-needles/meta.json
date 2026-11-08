@@ -1,0 +1,16 @@
+{
+  "name": "Magnet needles",
+  "slug": "magnet-needles",
+  "kind": "pattern",
+  "summary": "A grid of compass needles on a canvas that swing round to point at the pointer, near ones first, and wobble back to north when it leaves.",
+  "category": "emphasis",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
