@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flying button demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="flying-button.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <form class="ask sheet" action="#sent" method="get" aria-labelledby="ask-h">
+    <header class="ask-head">
+      <p class="shop">Bengkel Kayu Seri Menanti, Kuala Pilah</p>
+      <h1 id="ask-h">Ask for a quote</h1>
+      <p class="mute">Made to order in meranti and nyatoh. Pak Rahim replies within one working day.</p>
+    </header>
+    <div class="fields">
+      <label class="field"><span>Name</span><input name="name" autocomplete="name" required value="Nur Aina Hashim"></label>
+      <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required value="013-482 7710"></label>
+      <label class="field wide"><span>What would you like made?</span><textarea name="message" rows="3" required>A 6-seater meranti dining table, 180 x 90 cm, natural oil finish. Delivery to Seremban 2.</textarea></label>
+    </div>
+    <div class="ask-foot">
+      <p class="mute" role="status" id="status">Usual lead time: 5 to 7 weeks.</p>
+      <button class="fly-btn" type="submit">
+        <span class="fly-paper" aria-hidden="true"></span>
+        <span class="fly-label">Send enquiry</span>
+        <span class="fly-done" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg>Sent</span>
+      </button>
+    </div>
+    <p class="sent-note" id="sent">Sent. Pak Rahim will WhatsApp you by 5:30 pm on the next working day.</p>
+  </form>
+</main>
+</body>
+</html>

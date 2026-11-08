@@ -1,0 +1,21 @@
+{
+  "name": "Flying button",
+  "slug": "flying-button",
+  "kind": "pattern",
+  "summary": "A form's Send button folds into a paper plane, dips back as if thrown and flies off, then returns as a Sent state. A real submit button: without the script the form posts as usual.",
+  "category": "form",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-in",
+    "--ease-out",
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
