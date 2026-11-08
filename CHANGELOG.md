@@ -5,11 +5,41 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.9.0] - 2026-11-08
+
+### Added
+
+- **drag-deck:** Flick rental listings off a stack to keep or skip
+- **bounce-cards:** A fan of prints bounces in and spreads on hover
+- **orbit-images:** Ingredients orbit the bowl, the picked one comes forward
+- **dome-gallery:** Works on the inside of a dome you turn and open
+- **flying-posters:** Festival posters fly past the camera on scroll
+- **staggered-list:** An order queue whose rows stagger in and follow the keys
+- **card-nav:** A nav bar opens into three link cards
+- **bubble-menu:** A round button blooms into link bubbles
+- **gooey-nav:** A goo blob stretches from tab to tab
+- **magic-bento:** Bento card borders glow near the pointer
+- **holo-card:** A membership card whose foil shifts as it tilts
+- **glass-icons:** Frosted smart home toggles that light up when on
+- **shredder:** A draft invoice feeds through a shredder, with undo
+- **paper-crumple:** A note crumples into a ball and lands in the bin
+- **lanyard-badge:** A conference badge you drag and let swing
+- **jelly-radio:** A delivery slot dot wobbles over to the chosen slot
+- **peek-rating:** A face peeks over the stars and reacts to the rating
+- **bell-toggle:** Prayer alert switches drawn as bells that ring on
+- **flying-button:** The send button folds into a paper plane and flies off
+- **comet-dial:** An oven timer dial with a comet tail
+
+
 ## [0.8.0] - 2026-11-08
 
 ### Added
 
 - **site:** Poster grid with search, filters in the URL, new-release row and related entries
+
+### Fixed
+
+- **site:** The new row reads the newest release that added patterns
 
 
 ## [0.7.0] - 2026-11-08
