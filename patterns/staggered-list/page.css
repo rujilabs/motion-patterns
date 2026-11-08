@@ -1,0 +1,38 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.sq-frame { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: #fbf7ef; color: #2a2219; }
+.sq-top { display: flex; justify-content: space-between; align-items: end; gap: 12px; padding: 16px 20px 12px; border-bottom: 2px solid #2a2219; }
+.sq-shop { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #9a5b12; }
+.sq-top h1 { font-size: 26px; letter-spacing: -.02em; }
+.sq-clock { font-size: 13px; font-weight: 600; color: #6f6252; }
+.sq-list { margin: 0; padding: 6px 10px; overflow: hidden; }
+.sq-list:focus-visible { outline: 2px solid #b8640f; outline-offset: -3px; border-radius: 8px; }
+.sl-row { display: grid; grid-template-columns: 40px 104px minmax(0, 1fr) auto; align-items: center; gap: 10px; height: 44px; padding: 0 10px; border-radius: 9px; border-bottom: 1px dashed #e4d9c6; font-size: 14px; }
+.sl-row[aria-selected="true"] { border-bottom-color: transparent; }
+.sl-mark { border-radius: 9px; background: #2a2219; }
+.sl-row[aria-selected="true"], .sl-row[aria-selected="true"] .sq-time, .sl-row[aria-selected="true"] b { color: #fff8ea; }
+.sq-time { color: #8a7b67; font-size: 13px; }
+.sq-no { font-weight: 650; }
+.sq-no b { font-weight: 600; color: #b8640f; margin-left: 4px; }
+.sq-items { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sq-amt { font-weight: 650; text-align: right; }
+.sq-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 14px 12px 20px; border-top: 1px solid #e4d9c6; background: #f4ecdd; }
+.sq-sum { font-size: 13px; color: #6f6252; }
+.sq-sum .num { color: #2a2219; font-weight: 650; }
+.sq-ctl { display: flex; gap: 6px; }
+.sq-btn { font: 600 13px/1 "Host Grotesk", sans-serif; min-height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid #d6c8b0; background: #fffdf8; color: #2a2219; cursor: pointer; }
+.sq-btn[aria-pressed="true"] { background: #2a2219; border-color: #2a2219; color: #fff8ea; }
+.sq-btn:focus-visible { outline: 2px solid #b8640f; outline-offset: 2px; }
+@media (max-width: 520px) {
+  .sq-top { padding: 10px 12px 8px; }
+  .sq-shop { font-size: 10.5px; }
+  .sq-top h1 { font-size: 19px; }
+  .sq-clock { font-size: 12px; }
+  .sq-list { padding: 4px 6px; }
+  .sl-row { grid-template-columns: 82px minmax(0, 1fr) auto; height: 30px; gap: 8px; padding: 0 8px; font-size: 12.5px; }
+  .sq-time { display: none; }
+  .sq-foot { padding: 6px 8px 6px 12px; }
+  .sq-sum { font-size: 11.5px; }
+  .sq-btn { font-size: 11.5px; min-height: 30px; padding: 0 8px; }
+  .sq-no b { margin-left: 2px; }
+}

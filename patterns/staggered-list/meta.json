@@ -1,0 +1,21 @@
+{
+  "name": "Staggered list",
+  "slug": "staggered-list",
+  "kind": "pattern",
+  "summary": "A live queue: rows stagger in, one highlight slides to the row picked with Up and Down or a tap, and a new row slides in at the top while the rows below make room.",
+  "category": "entry",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-slow",
+    "--stagger",
+    "--ease-out"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
