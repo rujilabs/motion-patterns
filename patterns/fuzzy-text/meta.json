@@ -1,0 +1,16 @@
+{
+  "name": "Fuzzy text",
+  "slug": "fuzzy-text",
+  "kind": "pattern",
+  "summary": "An error code drawn in thin rows that drift sideways on smooth noise, like a weak signal, and calm down under the pointer or focus. Stays real text; nothing blinks; pausable.",
+  "category": "type",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

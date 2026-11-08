@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuzzy text demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="fuzzy-text.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="err sheet fz" id="err" data-fuzz=".055" data-fuzz-calm=".2" aria-labelledby="err-h">
+    <p class="brand">Feri Langkasuka</p>
+    <h1 id="err-h" class="code"><span class="fz-text">Error 503</span><canvas class="fz-canvas" aria-hidden="true"></canvas></h1>
+    <p class="what">Bookings are down for upkeep</p>
+    <p class="why">We started at 1:30 am and expect to be back by 3:15 am. Tickets you already paid for are safe: show the QR code from your email at the jetty, and the gate opens 45 minutes before sailing.</p>
+    <div class="sail">
+      <p class="sail-h">First sailings today, Kuala Perlis to Langkawi</p>
+      <ul class="num">
+        <li>7:00 am</li><li>8:30 am</li><li>10:15 am</li><li>11:45 am</li>
+      </ul>
+    </div>
+    <footer class="foot">
+      <span class="mute num">Last checked 2:41 am, ref SRV-0417</span>
+      <button class="ctl" type="button" data-pause-for="err" aria-pressed="false">Pause</button>
+    </footer>
+  </section>
+</main>
+</body>
+</html>
