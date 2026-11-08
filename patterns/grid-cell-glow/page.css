@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. A co-working floor plan at night: slate and lamp light. */
+.ggd {
+  width: min(700px, 100%); padding: 22px 24px 18px; display: grid; gap: 14px; border-radius: 12px;
+  background: #171c25; color: #e9edf3;
+}
+.ggd-brand { font-size: 12.5px; font-weight: 650; letter-spacing: .05em; color: #ffc95c; }
+.ggd-head h1 { font-size: 22px; margin-top: 3px; }
+.ggd-sub { font-size: 13.5px; color: #9aa3b0; margin-top: 4px; }
+.ggd-plan { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+.gg-cell { min-height: 54px; border-radius: 5px; font: inherit; font-size: 13px; font-weight: 650; padding: 4px; }
+.gg-desk { cursor: pointer; }
+.gg-desk[aria-disabled="true"] {
+  cursor: not-allowed; --gg-ink: #6c7686; --gg-ink-lit: #5b4a22;
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 3px, transparent 3px 8px);
+}
+.gg-desk[aria-pressed="true"] { --gg-cell: #ffc95c; --gg-ink: #1b1f27; }
+.gg-room { display: grid; place-items: center; font-size: 11.5px; font-weight: 500; --gg-ink: #9aa3b0; border-style: dashed; text-align: center; }
+.gg-span2 { grid-column: span 2; }
+.gg-span4 { grid-column: span 4; }
+.ggd :focus-visible { outline: 2px solid #ffc95c; outline-offset: 2px; }
+.ggd-pick { font-size: 13.5px; color: #c9d1de; min-height: 2.9em; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 520px) {
+  .ggd { padding: 16px 14px 14px; gap: 12px; }
+  .ggd-head h1 { font-size: 18px; }
+  .ggd-sub, .ggd-pick { font-size: 12.5px; }
+  .ggd-plan { gap: 3px; }
+  .gg-cell { min-height: 40px; font-size: 11.5px; padding: 2px; }
+  .gg-room { font-size: 10px; }
+}
