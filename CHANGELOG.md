@@ -5,6 +5,32 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.6.0] - 2026-11-08
+
+### Added
+
+- **dock-magnify:** App bar icons swell by distance to the pointer
+- **target-brackets:** Corner brackets glide to frame the hovered card
+- **image-trail:** Photos drop behind the moving pointer
+- **heart-burst:** Save button pops with a ring of dots
+- **sticker-peel:** Promo sticker peels back to show a code
+- **scroll-card-stack:** Plan cards pile up as the page scrolls
+- **scroll-word-reveal:** A letter inks in word by word on scroll
+- **scroll-speed-marquee:** Marquee speed follows the scroll
+- **edge-blur:** Progressive blur where a list meets a sticky bar
+- **masonry-settle:** Gallery tiles drop into a masonry grid
+- **hold-to-confirm:** Press and hold to remove a saved card
+- **slide-to-pay:** Slide the knob to pay a bill
+- **otp-slots:** Six-slot TAC input with a moving caret
+- **swipe-row-actions:** Swipe an inbox row to archive or delete
+- **blur-in-text:** Hero words sharpen out of a blur one by one
+- **focus-word:** A focus frame steps word to word
+- **border-orbit:** Light runs round a featured card's border
+- **flowing-menu-row:** Menu row floods with a marquee from the entry edge
+- **folder-open:** A client folder opens and fans out three papers
+- **tear-ticket:** Tear the stub off a ferry ticket to check in
+
+
 ## [0.5.0] - 2026-11-07
 
 ### Added
