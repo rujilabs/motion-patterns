@@ -1,0 +1,30 @@
+/*
+ * heart-burst: a save button. Saving pops the heart in on a spring, fills it, and bursts a ring and
+ * eight dots outward. Unsaving is quiet: a small shrink while the fill fades.
+ * heart-burst.js flips aria-pressed and adds .is-burst or .is-unsave for one play, so a button that
+ * loads already pressed shows filled without bursting.
+ */
+.hb-icon { position: relative; display: inline-grid; place-items: center; width: var(--hb-size, 28px); height: var(--hb-size, 28px); }
+.hb-heart { width: 100%; height: 100%; fill: transparent; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; transition: fill var(--dur-quick) var(--ease-out), stroke var(--dur-quick) var(--ease-out); }
+.hb[aria-pressed="true"] .hb-heart { fill: var(--hb-on, #e0344d); stroke: var(--hb-on, #e0344d); }
+.hb-ring { position: absolute; inset: -55%; border-radius: 50%; border: 2px solid var(--hb-on, #e0344d); opacity: 0; pointer-events: none; }
+.hb-dots i { --a: 0deg; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: var(--hb-on, #e0344d); opacity: 0; pointer-events: none; }
+.hb-dots i:nth-child(even) { background: var(--hb-dot, #f2a33a); }
+.hb-dots i:nth-child(2) { --a: 45deg; } .hb-dots i:nth-child(3) { --a: 90deg; } .hb-dots i:nth-child(4) { --a: 135deg; }
+.hb-dots i:nth-child(5) { --a: 180deg; } .hb-dots i:nth-child(6) { --a: 225deg; } .hb-dots i:nth-child(7) { --a: 270deg; } .hb-dots i:nth-child(8) { --a: 315deg; }
+.hb.is-burst .hb-heart { animation: hb-pop var(--dur-base) var(--ease-spring); transition: none; }
+.hb.is-burst .hb-ring { animation: hb-ring .45s var(--ease-out); }
+.hb.is-burst .hb-dots i { animation: hb-dot .6s var(--ease-out) 60ms both; }
+.hb.is-unsave .hb-heart { animation: hb-shrink var(--dur-quick) var(--ease-out); }
+@keyframes hb-pop { from { transform: scale(.3); } }
+@keyframes hb-ring { from { opacity: 1; transform: scale(.35); border-width: 6px; } 45% { opacity: 1; } to { opacity: 0; transform: scale(1); border-width: 0; } }
+@keyframes hb-dot {
+  from { opacity: 1; transform: rotate(var(--a)) translateY(calc(var(--hb-size, 28px) * -.55)) scale(1); }
+  60% { opacity: 1; }
+  to { opacity: 0; transform: rotate(var(--a)) translateY(calc(var(--hb-size, 28px) * -1.3)) scale(.3); }
+}
+@keyframes hb-shrink { 50% { transform: scale(.82); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-heart, .hb.is-burst .hb-heart, .hb.is-unsave .hb-heart, .hb.is-burst .hb-ring, .hb.is-burst .hb-dots i { animation: none; transition: none; }
+}
