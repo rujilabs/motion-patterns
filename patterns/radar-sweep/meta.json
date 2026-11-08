@@ -1,0 +1,16 @@
+{
+  "name": "Radar sweep",
+  "slug": "radar-sweep",
+  "kind": "pattern",
+  "summary": "A waiting screen for a nearby match: an arm sweeps round and lights the riders it passes, then stops on the one found, draws a line to it and rings twice.",
+  "category": "loop",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

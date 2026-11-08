@@ -1,0 +1,60 @@
+/* Demo page layout for this entry. Not part of the pattern. A ride app: mint map, deep green, orange. */
+:root {
+  --tp-table: #e4ebe7;
+  --tp-paper: #ffffff;
+  --tp-ink: #1c2723;
+  --tp-mute: #61716a;
+  --tp-line: #dbe4df;
+  --tp-green: #138a5e;
+  --tp-orange: #e2541f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tp-table: #0e1412;
+    --tp-paper: #18201d;
+    --tp-ink: #e6eeea;
+    --tp-mute: #95a59e;
+    --tp-line: #2a3531;
+    --tp-green: #4fd09a;
+    --tp-orange: #ff7e4d;
+  }
+  .rs-canvas { --rs-disc: #13231c; --rs-ring: #24392f; --rs-label: #7d968a; --rs-sweep: #4fd09a; --rs-found: #ff7e4d; --rs-you: #e6eeea; }
+}
+body { background: var(--tp-table); color: var(--tp-ink); }
+.sheet { background: var(--tp-paper); border-color: var(--tp-line); }
+:focus-visible { outline-color: var(--tp-green); }
+
+.ride {
+  width: min(720px, 100%); padding: 24px; display: grid; gap: 28px; align-items: center;
+  grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+}
+.ride-map { position: relative; }
+.ctl, .again {
+  font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--tp-line); background: var(--tp-paper); color: var(--tp-ink);
+}
+.ctl { position: absolute; right: 0; bottom: 0; }
+.ctl[aria-pressed="true"] { background: var(--tp-ink); color: var(--tp-paper); border-color: var(--tp-ink); }
+.brand { font-size: 13px; font-weight: 700; color: var(--tp-green); }
+.brand span { font-weight: 500; color: var(--tp-mute); margin-left: 6px; }
+.trip { margin: 14px 0 0; display: grid; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--tp-line); }
+.trip div { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 10px; font-size: 14px; }
+.trip dt { color: var(--tp-mute); }
+.trip dd { font-weight: 600; }
+.ride-state { margin-top: 16px; min-height: 92px; }
+.ride-state h1 { font-size: 22px; }
+.seen { margin-top: 6px; font-size: 14px; }
+.rider { display: none; margin-top: 8px; font-size: 14px; }
+.rider-name { font-weight: 700; font-size: 16px; color: var(--tp-orange); }
+.ride-state[data-state="found"] .seen { display: none; }
+.ride-state[data-state="found"] .rider { display: block; animation: rider-in var(--dur-base) var(--ease-out) both; }
+@keyframes rider-in { from { opacity: 0; translate: 0 8px; } }
+.again { margin-top: 14px; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) { .ride-state[data-state="found"] .rider { animation: none; } }
+@media (max-width: 600px) {
+  .ride { grid-template-columns: minmax(0, 1fr); padding: 16px; gap: 18px; }
+  .ride-map { width: min(100%, 280px); justify-self: center; }
+  .ride-state h1 { font-size: 20px; }
+}
