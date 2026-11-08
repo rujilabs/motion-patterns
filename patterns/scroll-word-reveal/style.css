@@ -1,0 +1,30 @@
+/*
+ * scroll-word-reveal: a block of text starts faint and inks in word by word as the reader scrolls down,
+ * and fades back on the way up. scroll-word-reveal.js wraps each word of a [data-word-reveal] block in
+ * .wr-w and numbers it (--wr-i of --wr-n). Each word owns a slice of the block's view timeline, so
+ * the words light in reading order, not a whole line at once. Without the script nothing is wrapped
+ * and the text is plain, full ink.
+ * Where scroll timelines are missing, the block inks in once on a short stagger when it comes into view.
+ * Keep animation-timeline after the shorthand; it resets it.
+ */
+@keyframes wr-ink { from { opacity: var(--wr-faint, .2); } to { opacity: 1; } }
+
+@supports (animation-timeline: view()) {
+  [data-word-reveal] { view-timeline: --wr block; }
+  .wr-w { animation: wr-ink linear both; }
+  .wr-w {
+    animation-timeline: --wr;
+    /* the block inks between cover --wr-from and cover --wr-from + --wr-span; each word fades over 3 words' worth */
+    animation-range:
+      cover calc(var(--wr-from, 18%) + var(--wr-span, 42%) * var(--wr-i) / var(--wr-n))
+      cover calc(var(--wr-from, 18%) + var(--wr-span, 42%) * (var(--wr-i) + 3) / var(--wr-n));
+  }
+}
+@supports not (animation-timeline: view()) {
+  .wr-w { opacity: var(--wr-faint, .2); transition: opacity var(--dur-base) var(--ease-out); }
+  .go .wr-w { opacity: 1; transition-delay: calc(var(--wr-i) * 25ms); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-w, .go .wr-w { animation: none; opacity: 1; transition: none; }
+}

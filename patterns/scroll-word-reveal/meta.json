@@ -1,0 +1,19 @@
+{
+  "name": "Scroll word reveal",
+  "slug": "scroll-word-reveal",
+  "kind": "pattern",
+  "summary": "A paragraph starts faint and inks in one word at a time as the reader scrolls, in reading order. CSS scroll timelines, with a one-time stagger where they are missing.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--ease-out"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

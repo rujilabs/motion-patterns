@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll word reveal demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="scroll-word-reveal.js"></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll inside this frame. The letter inks in word by word as you read down, and fades back if you scroll up.</p>
+    <p class="kicker">Kopitiam Lam Heng, Jalan Pasar, Ipoh</p>
+    <h1>A letter from the back kitchen</h1>
+  </header>
+
+  <article class="letter sheet" aria-label="Letter from the owner">
+    <p class="salute">To everyone who sits at our marble tables,</p>
+    <p class="body" data-word-reveal>My grandfather opened these shutters at 5:40 am on a Tuesday in 1961. A cup of kopi-o cost 15 sen, and he wrote every sale in a school exercise book that still sits behind the till.</p>
+    <p class="body" data-word-reveal>We still roast our own beans with butter and sugar, 38 kg every Tuesday, in the same drum. The kaya is still stirred for four hours by hand. Today the kopi-o is <em>RM 1.90</em>, and I think he would forgive us.</p>
+    <p class="body" data-word-reveal>Thank you for 63 years of mornings. Come early. The egg tarts are gone by 9:15.</p>
+    <p class="sign">Lam Mei Fong<span class="mute">Third generation, still behind the counter</span></p>
+  </article>
+
+  <footer class="outro">
+    <p class="done">Open 6:00 am to 2:30 pm. Closed on Thursdays.</p>
+  </footer>
+</main>
+</body>
+</html>
