@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll float text demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="scroll-float-text.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="hint">Scroll inside this frame. Each headline floats up letter by letter as it comes in, and sinks back if you scroll up.</p>
+    <p class="kicker">Dusun Pak Ngah, Raub, Pahang</p>
+    <h1>This season at the orchard</h1>
+    <p class="lede mute">Open Saturday and Sunday, 3:30 pm until the stall runs out.</p>
+  </header>
+
+  <section class="part">
+    <h2 class="big" data-float-text>Picked off the ground at 4:20 am</h2>
+    <p>We never cut a durian from the tree. Musang King drops when it is ready, mostly between 2 am and 5 am, and Pak Ngah's sons walk the rows with head torches to find them before the wild boar do.</p>
+  </section>
+
+  <section class="part">
+    <h2 class="big" data-float-text>Musang King, RM 68 a kilo</h2>
+    <ul class="prices num">
+      <li><span>Black Thorn</span><b>RM 92 a kilo</b></li>
+      <li><span>Musang King</span><b>RM 68 a kilo</b></li>
+      <li><span>D24 Sultan</span><b>RM 34 a kilo</b></li>
+    </ul>
+    <p>Opened at the stall and eaten at the long table, or packed in a box for the drive home. Last weekend the stall ran out at 6:15 pm.</p>
+  </section>
+
+  <section class="part">
+    <h2 class="big" data-float-text>Thirty-one trees, one family</h2>
+    <p>Ngah Ismail planted the first row on 4.6 acres in 1987. His grandchildren now run the weighing scale, and the oldest tree still gives about 140 fruit a season.</p>
+  </section>
+
+  <footer class="outro">
+    <p class="mute">Jalan Sungai Klau, 14 km from Raub town. Bring cash or DuitNow.</p>
+  </footer>
+</main>
+</body>
+</html>

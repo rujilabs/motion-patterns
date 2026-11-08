@@ -1,0 +1,33 @@
+/*
+ * scroll-float-text: a headline whose letters float up into place, one after another, as it scrolls in.
+ * scroll-float-text.js wraps each letter in .sf-l (kept inside .sf-w words) and numbers it. Each letter
+ * owns a slice of the heading's view timeline, so scrolling back down runs it in reverse.
+ * Where scroll timelines are missing, the letters float in once when the heading comes into view.
+ * Without the script nothing is split and the heading is plain.
+ */
+@keyframes sf-float {
+  from { opacity: 0; transform: translateY(var(--sf-rise, .75em)) rotate(var(--sf-r, 0deg)); }
+}
+.sf-w { display: inline-block; white-space: nowrap; }
+.sf-l { display: inline-block; transform-origin: 50% 80%; }
+.sf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@supports (animation-timeline: view()) {
+  [data-float-text] { view-timeline: --sf block; }
+  .sf-l { animation: sf-float both; animation-timing-function: var(--ease-out); }
+  .sf-l {
+    animation-timeline: --sf;
+    /* the heading lands between cover --sf-from and cover --sf-from + --sf-span; each letter floats over 6 letters' worth */
+    animation-range:
+      cover calc(var(--sf-from, 4%) + var(--sf-span, 26%) * var(--sf-i) / var(--sf-n))
+      cover calc(var(--sf-from, 4%) + var(--sf-span, 26%) * (var(--sf-i) + 6) / var(--sf-n));
+  }
+}
+@supports not (animation-timeline: view()) {
+  .sf-l { opacity: 0; transform: translateY(var(--sf-rise, .75em)) rotate(var(--sf-r, 0deg)); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); }
+  .go .sf-l { opacity: 1; transform: none; transition-delay: calc(var(--sf-i) * 28ms); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-l, .go .sf-l { animation: none; opacity: 1; transform: none; transition: none; }
+}

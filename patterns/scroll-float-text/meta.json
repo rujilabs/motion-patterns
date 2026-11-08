@@ -1,0 +1,19 @@
+{
+  "name": "Scroll float text",
+  "slug": "scroll-float-text",
+  "kind": "pattern",
+  "summary": "A headline's letters float up into place one after another as it scrolls in, each with a small tilt that settles. CSS scroll timelines, with a one-time stagger where they are missing.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-out"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
