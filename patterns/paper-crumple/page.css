@@ -1,0 +1,80 @@
+/* Demo page layout for this entry. Not part of the pattern. A kitchen corkboard: notes in three papers, a wire bin. */
+:root {
+  --pc-table: #ece6dc;
+  --pc-paper: #fffdf8;
+  --pc-ink: #2a251f;
+  --pc-mute: #6f675c;
+  --pc-line: #ddd4c6;
+  --pc-cork: #d6b98f;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --pc-table: #13110e; --pc-paper: #1d1a16; --pc-ink: #eee8de; --pc-mute: #a69d90; --pc-line: #322d27; --pc-cork: #5d4a32; }
+}
+body { background: var(--pc-table); color: var(--pc-ink); }
+:focus-visible { outline-color: var(--pc-ink); }
+
+.pc { width: min(620px, 100%); display: grid; gap: 14px; }
+.pc-kicker { font-size: 13px; font-weight: 600; color: var(--pc-mute); }
+.pc-head h1 { font-size: 22px; margin-top: 2px; }
+
+.pc-board {
+  --crumple-ball: 52px;
+  background: radial-gradient(rgb(0 0 0 / .07) 1px, transparent 1.5px) 0 0 / 7px 7px, var(--pc-cork);
+  border: 8px solid #9c7a50;
+  border-radius: 8px;
+  padding: 20px 18px 12px;
+  display: grid;
+  gap: 18px;
+}
+.pc-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pc-notes li:nth-child(1) .pc-note { rotate: -2deg; }
+.pc-notes li:nth-child(2) .pc-note { rotate: 1.5deg; }
+.pc-notes li:nth-child(3) .pc-note { rotate: -1deg; }
+.pc-note {
+  min-height: 150px;
+  padding: 14px 14px 12px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 6px;
+  color: #2a251f;
+  box-shadow: 0 6px 10px -6px rgb(60 40 10 / .45);
+}
+.pc-notes li:has(.is-gone) { outline: 2px dashed rgb(80 55 20 / .35); outline-offset: -2px; border-radius: 4px; }
+.pc-yellow { background: #fbe77c; }
+.pc-pink { background: #f8c3cf; }
+.pc-mint { background: #bfe8cf; }
+.pc-tag { font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+.pc-text { font-size: 14.5px; font-weight: 550; line-height: 1.35; }
+.pc-x {
+  justify-self: start; font: inherit; font-size: 12.5px; font-weight: 650; color: #2a251f; cursor: pointer;
+  background: rgb(255 255 255 / .45); border: 1px solid rgb(0 0 0 / .15); border-radius: 999px; padding: 4px 11px;
+}
+.pc-x:focus-visible { outline: 2px solid #2a251f; outline-offset: 2px; }
+
+.pc-foot { display: flex; align-items: flex-end; gap: 12px; min-height: 70px; }
+.pc-say { flex: 1; font-size: 13.5px; font-weight: 600; color: #3d2f1b; background: rgb(255 253 248 / .8); border-radius: 6px; padding: 5px 10px; align-self: center; }
+.pc-restore {
+  font: inherit; font-size: 13.5px; font-weight: 650; cursor: pointer; align-self: center;
+  background: var(--pc-paper); color: var(--pc-ink); border: 1px solid var(--pc-line); border-radius: 999px; padding: 7px 16px;
+}
+.pc-restore[hidden] { display: none; }
+html:not(.js) .pc-x { display: none; }
+/* a wire bin: a trapezoid of mesh, with a rim */
+.pc-bin {
+  width: 74px; height: 62px; flex: none;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+  background: repeating-linear-gradient(90deg, #4c535c 0 2px, transparent 2px 8px), repeating-linear-gradient(0deg, #4c535c 0 2px, #6e7680 2px 9px);
+  display: grid; place-items: center;
+}
+.pc-rim { position: absolute; inset: 0 0 auto; height: 6px; background: #2f343a; }
+.pc-count { position: relative; font-size: 13px; font-weight: 800; color: #fff; background: #2f343a; border-radius: 999px; min-width: 22px; padding: 1px 6px; text-align: center; margin-top: 8px; }
+
+@media (max-width: 560px) {
+  .pc-board { padding: 14px 10px 10px; border-width: 6px; }
+  .pc-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .pc-note { min-height: 136px; padding: 12px 11px 10px; }
+  .pc-text { font-size: 13.5px; }
+  .pc-foot { flex-wrap: wrap; }
+  .pc-say { flex-basis: 100%; order: -1; }
+  .pc-bin { margin-left: auto; }
+}

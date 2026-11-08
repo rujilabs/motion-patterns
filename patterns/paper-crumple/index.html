@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper crumple demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="paper-crumple.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="pc" aria-labelledby="pc-h">
+    <header class="pc-head">
+      <p class="pc-kicker">Katering Kak Yah, Klang</p>
+      <h1 id="pc-h">Kitchen board, this week</h1>
+    </header>
+
+    <div class="crumple-board pc-board">
+      <ul class="pc-notes">
+        <li><article class="crumple pc-note pc-yellow" aria-labelledby="n1">
+          <p class="pc-tag">Supplier</p>
+          <p class="pc-text" id="n1">Order 40 kg santan from Pak Din before Thu 12 Nov, 10:30 am.</p>
+          <button class="pc-x" type="button" aria-label="Discard note: order santan">Discard</button>
+          <svg class="crumple-creases" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34L38 52 100 22M18 100L44 54 70 100M38 52L60 0M44 54L100 70M0 78L30 60"/></svg>
+        </article></li>
+        <li><article class="crumple pc-note pc-pink" aria-labelledby="n2">
+          <p class="pc-tag">Event</p>
+          <p class="pc-text" id="n2">Nasi minyak for 180 pax, Sat 14 Nov, Dewan Seri Teratai.</p>
+          <button class="pc-x" type="button" aria-label="Discard note: nasi minyak for 180">Discard</button>
+          <svg class="crumple-creases" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34L38 52 100 22M18 100L44 54 70 100M38 52L60 0M44 54L100 70M0 78L30 60"/></svg>
+        </article></li>
+        <li><article class="crumple pc-note pc-mint" aria-labelledby="n3">
+          <p class="pc-tag">Done</p>
+          <p class="pc-text" id="n3">Gas tank swapped by Rizal, Mon 4:20 pm. Paid RM 32.50.</p>
+          <button class="pc-x" type="button" aria-label="Discard note: gas tank swapped">Discard</button>
+          <svg class="crumple-creases" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34L38 52 100 22M18 100L44 54 70 100M38 52L60 0M44 54L100 70M0 78L30 60"/></svg>
+        </article></li>
+      </ul>
+      <div class="pc-foot">
+        <p class="pc-say" id="pc-say" role="status">3 notes on the board.</p>
+        <button class="pc-restore" type="button" id="pc-restore" hidden>Restore</button>
+        <div class="crumple-bin pc-bin" aria-hidden="true"><span class="pc-rim"></span><span class="pc-count num" id="pc-count">0</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

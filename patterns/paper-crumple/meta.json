@@ -1,0 +1,17 @@
+{
+  "name": "Paper crumple",
+  "slug": "paper-crumple",
+  "kind": "pattern",
+  "summary": "Discard a note: its outline folds in, creases darken, it shrinks into a paper ball and is thrown on a real arc into the bin. Restore throws it back out and smooths it flat.",
+  "category": "morph",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
