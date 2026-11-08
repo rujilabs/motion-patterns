@@ -1,0 +1,20 @@
+{
+  "name": "Echo text",
+  "slug": "echo-text",
+  "kind": "pattern",
+  "summary": "A name with outlined echo copies trailing behind it. On load, hover or focus the copies ring out from under the text, one after another, to settle as a fading trail.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-out",
+    "--stagger"
+  ],
+  "trigger": "load",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

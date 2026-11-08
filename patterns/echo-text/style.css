@@ -1,0 +1,23 @@
+/*
+ * echo-text: a name with outlined echo copies trailing behind it, like a call bouncing back.
+ * echo-text.js adds data-echo copies (.echo-copy, --echo-i 1..n) behind the text, hidden from screen
+ * readers. On load, and again on hover or focus, the copies ring out from under the text to their
+ * place in the trail, one after another. The copies fill the same box, so a wrapped name echoes too.
+ */
+.echo { position: relative; display: inline-block; isolation: isolate; }
+.echo-copy {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  -webkit-text-fill-color: transparent; -webkit-text-stroke: var(--echo-line, 1px) currentColor;
+  translate: calc(var(--echo-i) * var(--echo-dx, .07em)) calc(var(--echo-i) * var(--echo-dy, .05em));
+  opacity: calc(.75 - var(--echo-i) / var(--echo-n, 4) * .6);
+}
+/* no "to": each copy rings out to its own place in the trail */
+@keyframes echo-ping { from { translate: 0 0; opacity: 1; } }
+.echo.go .echo-copy {
+  animation: echo-ping var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc((var(--echo-i) - 1) * var(--stagger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .echo.go .echo-copy { animation: none; }
+}

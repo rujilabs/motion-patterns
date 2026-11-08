@@ -1,0 +1,23 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; }
+.et-frame { display: grid; grid-template-rows: auto 1fr auto; background: #13203a; color: #e9e4d8; }
+.et-top, .et-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 22px; font-size: 13px; color: #a8b0c2; }
+.et-live { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #ff8a5c; }
+.et-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff8a5c; box-shadow: 0 0 0 4px rgba(255, 138, 92, .2); }
+.et-body { display: grid; align-content: center; gap: 6px; padding: 0 30px 20px; }
+.et-freq { font-size: 15px; font-weight: 650; letter-spacing: .14em; color: #8fd3c7; }
+.et-body h1 { font-size: 76px; font-weight: 800; letter-spacing: -.035em; line-height: 1.02; padding-bottom: .2em; }
+.echo { color: #ff8a5c; text-decoration: none; --echo-line: 1.2px; }
+.echo:focus-visible { outline: 2px solid #8fd3c7; outline-offset: 6px; border-radius: 4px; }
+.et-show { font-size: 15px; color: #c9c3b6; }
+.et-show span { display: block; font-size: 13px; color: #8a93a8; }
+.et-foot { border-top: 1px solid #24324f; }
+.et-listen { padding: 8px 16px; border-radius: 999px; background: #e9e4d8; color: #13203a; font-weight: 700; text-decoration: none; }
+.et-listen:focus-visible { outline: 2px solid #8fd3c7; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .et-top, .et-foot { padding: 10px 14px; font-size: 12px; }
+  .et-body { padding: 0 16px 10px; gap: 2px; }
+  .et-body h1 { font-size: 46px; }
+  .et-show { font-size: 13px; }
+  .et-listen { padding: 6px 12px; }
+}
