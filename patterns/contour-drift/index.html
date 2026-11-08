@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contour drift demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="contour-drift.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="trail contour-drift" data-cycle="120" aria-labelledby="trail-h">
+    <canvas class="cd-canvas" aria-hidden="true"></canvas>
+    <article class="route">
+      <p class="brand">Denai Hulu Langat <span>Trail 07</span></p>
+      <h1 id="trail-h">Bukit Sri Lanjut loop</h1>
+      <dl class="stats">
+        <div><dt>Distance</dt><dd class="num">6.8 km</dd></div>
+        <div><dt>Climb</dt><dd class="num">412 m</dd></div>
+        <div><dt>Time</dt><dd class="num">3 h 20 min</dd></div>
+        <div><dt>Grade</dt><dd>Moderate</dd></div>
+      </dl>
+      <svg class="profile" viewBox="0 0 300 60" role="img" aria-label="Height along the trail: a steady climb to 618 m at 3.1 km, a short dip, then down to the start">
+        <path class="profile-fill" d="M0 54 L30 50 L62 41 L95 30 L124 14 L138 10 L156 22 L172 18 L205 32 L240 44 L272 50 L300 54 L300 60 L0 60 Z"/>
+        <path class="profile-line" d="M0 54 L30 50 L62 41 L95 30 L124 14 L138 10 L156 22 L172 18 L205 32 L240 44 L272 50 L300 54"/>
+        <circle class="profile-top" cx="138" cy="10" r="3.5"/>
+      </svg>
+      <p class="note">Start by <span class="num">7:15 am</span>. Parking <span class="num">RM 3</span> at the Kampung Sri Lanjut hall, last entry <span class="num">11:00 am</span>. Summit at <span class="num">618 m</span>, 3.1 km in.</p>
+      <div class="route-actions">
+        <a class="btn" href="#gpx">Download the GPX</a>
+        <button class="ctl" type="button" data-pause aria-pressed="false">Pause map</button>
+      </div>
+    </article>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/*
+ * contour-drift: slow drifting contour lines behind a trail or map card. contour-drift.js traces
+ * them on .cd-canvas and reads these colours. Without the script the canvas shows rings round one
+ * summit as a CSS still.
+ */
+.contour-drift {
+  --cd-line: #d9cfb8;    /* contour lines */
+  --cd-index: #b3a37c;   /* every fifth line, drawn heavier */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.contour-drift > .cd-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-radial-gradient(ellipse 120% 90% at 72% 30%, transparent 0 21px, var(--cd-line) 21.5px 22.5px, transparent 23px 24px);
+}
+.contour-drift > .cd-canvas.is-live { background: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* contour-drift.js draws the lines once and hides the pause button */
+  .contour-drift > .cd-canvas { transition: none; }
+}
