@@ -1,0 +1,26 @@
+/*
+ * target-brackets: four corner brackets glide and resize to frame whichever .tb-target is under the
+ * pointer or has keyboard focus. target-brackets.js writes the target box as --tb-x, --tb-y, --tb-w
+ * and --tb-h on .tb-frame; the spring in the transition gives the small overshoot when it lands.
+ * The brackets are the focus ring, so the cards drop their own outline once the script runs.
+ */
+.tb { position: relative; }
+.tb-frame {
+  --tb-pad: 6px; --tb-arm: 16px; --tb-line: 3px;
+  position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; opacity: 0;
+  width: var(--tb-w, 0); height: var(--tb-h, 0); translate: var(--tb-x, 0) var(--tb-y, 0);
+  transition: translate var(--dur-base) var(--ease-spring), width var(--dur-base) var(--ease-spring),
+    height var(--dur-base) var(--ease-spring), opacity var(--dur-quick) var(--ease-out);
+}
+.tb-frame.is-on { opacity: 1; }
+.tb-frame.is-jump { transition: opacity var(--dur-quick) var(--ease-out); }
+.tb-frame i { position: absolute; width: var(--tb-arm); height: var(--tb-arm); border: var(--tb-line) solid currentColor; }
+.tb-frame i:nth-child(1) { left: calc(var(--tb-pad) * -1); top: calc(var(--tb-pad) * -1); border-width: var(--tb-line) 0 0 var(--tb-line); }
+.tb-frame i:nth-child(2) { right: calc(var(--tb-pad) * -1); top: calc(var(--tb-pad) * -1); border-width: var(--tb-line) var(--tb-line) 0 0; }
+.tb-frame i:nth-child(3) { right: calc(var(--tb-pad) * -1); bottom: calc(var(--tb-pad) * -1); border-width: 0 var(--tb-line) var(--tb-line) 0; }
+.tb-frame i:nth-child(4) { left: calc(var(--tb-pad) * -1); bottom: calc(var(--tb-pad) * -1); border-width: 0 0 var(--tb-line) var(--tb-line); }
+.tb-ready .tb-target:focus-visible { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tb-frame { transition: none; }
+}
