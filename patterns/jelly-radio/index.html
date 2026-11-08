@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jelly radio demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="jelly-radio.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <form class="slots sheet" aria-labelledby="slots-h">
+    <header class="slots-head">
+      <p class="shop">Pasar Segar Ampang</p>
+      <h1 id="slots-h">Pick a delivery slot</h1>
+      <p class="mute">Order PS-48213, 23 items, to 14 Jalan Mamanda 7, Ampang.</p>
+    </header>
+    <fieldset class="jelly-radio slot-list">
+      <legend>Wednesday 11 November</legend>
+      <label class="jr-option slot">
+        <input type="radio" name="slot" value="0900" data-fee="5.90">
+        <span class="jr-ring"></span>
+        <span class="slot-time">9:00 to 11:00 am</span>
+        <span class="slot-left">4 left</span>
+        <span class="slot-fee num">RM 5.90</span>
+      </label>
+      <label class="jr-option slot">
+        <input type="radio" name="slot" value="1130" data-fee="5.90">
+        <span class="jr-ring"></span>
+        <span class="slot-time">11:30 am to 1:30 pm</span>
+        <span class="slot-left">2 left</span>
+        <span class="slot-fee num">RM 5.90</span>
+      </label>
+      <label class="jr-option slot">
+        <input type="radio" name="slot" value="1400" disabled>
+        <span class="jr-ring"></span>
+        <span class="slot-time">2:00 to 4:00 pm</span>
+        <span class="slot-left">Full</span>
+        <span class="slot-fee num">RM 5.90</span>
+      </label>
+      <label class="jr-option slot">
+        <input type="radio" name="slot" value="1630" data-fee="7.50" checked>
+        <span class="jr-ring"></span>
+        <span class="slot-time">4:30 to 6:30 pm</span>
+        <span class="slot-left">7 left</span>
+        <span class="slot-fee num">RM 7.50</span>
+      </label>
+      <label class="jr-option slot">
+        <input type="radio" name="slot" value="1900" data-fee="3.90">
+        <span class="jr-ring"></span>
+        <span class="slot-time">7:00 to 9:00 pm</span>
+        <span class="slot-left">11 left</span>
+        <span class="slot-fee num">RM 3.90</span>
+      </label>
+    </fieldset>
+    <footer class="slots-foot">
+      <p class="mute">Groceries RM 186.45</p>
+      <p role="status" id="total"><span class="num" id="total-n">Total RM 193.95</span>, delivered Wed 11 Nov, <span id="total-t">4:30 to 6:30 pm</span>.</p>
+    </footer>
+  </form>
+</main>
+</body>
+</html>
