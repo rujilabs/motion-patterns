@@ -1,0 +1,17 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; }
+.dt-frame { display: grid; grid-template-rows: auto 1fr; background: radial-gradient(120% 90% at 50% 40%, #1f5a57, #0f2f2e); color: #e8efe9; }
+.dt-top { display: flex; justify-content: space-between; padding: 16px 22px; font-size: 13px; color: #a9c6bf; }
+.dt-body { display: grid; align-content: center; justify-items: center; gap: 10px; padding: 0 24px 30px; text-align: center; }
+.dt-body h1 { font-size: 92px; font-weight: 800; letter-spacing: -.035em; line-height: 1; white-space: nowrap; }
+.dt { color: #f6c35b; text-decoration: none; --dt-side: #c0612f; border-radius: 6px; }
+.dt:focus-visible { outline: 2px solid #e8efe9; outline-offset: 10px; }
+.dt-sub { max-width: 36ch; margin-top: 18px; font-size: 15px; color: #cfe0da; }
+.dt-price { font-size: 13.5px; font-weight: 650; color: #f6c35b; }
+@media (max-width: 520px) {
+  .dt-top { padding: 10px 14px; font-size: 12px; }
+  .dt-body { padding: 0 14px 16px; gap: 6px; }
+  .dt-body h1 { font-size: 52px; }
+  .dt-sub { font-size: 12.5px; margin-top: 8px; }
+  .dt-price { font-size: 12px; }
+}
