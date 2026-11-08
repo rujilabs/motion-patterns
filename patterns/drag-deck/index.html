@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drag deck demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="drag-deck.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame dd-frame" aria-labelledby="dd-h">
+  <header class="dd-top">
+    <div>
+      <p class="dd-kicker">Sewa Dekat, shortlist</p>
+      <h1 id="dd-h">Viewings for Nurul and Hakim</h1>
+    </div>
+    <p class="dd-when num">Sat 14 Nov<span>5 listings under RM 2,400</span></p>
+  </header>
+
+  <div class="deck" role="group" aria-label="Listings. Left arrow skips, right arrow keeps." tabindex="0">
+    <ol class="deck-stack">
+      <li class="deck-card">
+        <img src="art/bayu.svg" alt="" width="160" height="100">
+        <p class="dd-price num">RM 2,350<small>/month</small></p>
+        <h2>Residensi Bayu, Bangsar South</h2>
+        <p class="dd-facts num">2 bed · 860 sq ft · 4 min walk to LRT Kerinchi</p>
+        <span class="deck-stamp deck-stamp-keep" aria-hidden="true">Keep</span>
+        <span class="deck-stamp deck-stamp-skip" aria-hidden="true">Skip</span>
+      </li>
+      <li class="deck-card">
+        <img src="art/teres.svg" alt="" width="160" height="100">
+        <p class="dd-price num">RM 1,880<small>/month</small></p>
+        <h2>Double-storey terrace, Seksyen 7 Shah Alam</h2>
+        <p class="dd-facts num">4 bed · 1,600 sq ft · porch fits 2 cars</p>
+        <span class="deck-stamp deck-stamp-keep" aria-hidden="true">Keep</span>
+        <span class="deck-stamp deck-stamp-skip" aria-hidden="true">Skip</span>
+      </li>
+      <li class="deck-card">
+        <img src="art/studio.svg" alt="" width="160" height="100">
+        <p class="dd-price num">RM 1,120<small>/month</small></p>
+        <h2>Furnished studio, Cyberjaya</h2>
+        <p class="dd-facts num">520 sq ft · aircon and washer · 11th floor</p>
+        <span class="deck-stamp deck-stamp-keep" aria-hidden="true">Keep</span>
+        <span class="deck-stamp deck-stamp-skip" aria-hidden="true">Skip</span>
+      </li>
+      <li class="deck-card">
+        <img src="art/mutiara.svg" alt="" width="160" height="100">
+        <p class="dd-price num">RM 1,650<small>/month</small></p>
+        <h2>Pangsapuri Seri Mutiara, Setia Alam</h2>
+        <p class="dd-facts num">3 bed · 1,050 sq ft · 9 min drive to the mall</p>
+        <span class="deck-stamp deck-stamp-keep" aria-hidden="true">Keep</span>
+        <span class="deck-stamp deck-stamp-skip" aria-hidden="true">Skip</span>
+      </li>
+      <li class="deck-card">
+        <img src="art/kampung.svg" alt="" width="160" height="100">
+        <p class="dd-price num">RM 950<small>/month</small></p>
+        <h2>Timber house on stilts, Kajang</h2>
+        <p class="dd-facts num">3 bed · 7,200 sq ft land · rambutan tree</p>
+        <span class="deck-stamp deck-stamp-keep" aria-hidden="true">Keep</span>
+        <span class="deck-stamp deck-stamp-skip" aria-hidden="true">Skip</span>
+      </li>
+      <li class="deck-end" aria-hidden="true"><p data-deck-end>That is every listing.</p></li>
+    </ol>
+    <div class="deck-actions" hidden>
+      <button class="dd-btn dd-skip" type="button" data-deck-skip><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Skip</button>
+      <button class="dd-btn dd-undo" type="button" data-deck-undo disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7L4.5 11.5 9 16M5 11.5h9a5 5 0 0 1 0 10h-2"/></svg>Undo</button>
+      <button class="dd-btn dd-keep" type="button" data-deck-keep><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Keep</button>
+    </div>
+    <p class="deck-status num" aria-live="polite" data-deck-status></p>
+  </div>
+</section>
+</main>
+</body>
+</html>
