@@ -1,0 +1,58 @@
+/* Demo page layout for this entry. Not part of the pattern. A trail guide: survey paper, forest green. */
+:root {
+  --hl-table: #e7e4da;
+  --hl-map: #f5f2e9;
+  --hl-paper: #fffdf8;
+  --hl-ink: #1f241d;
+  --hl-mute: #676b5f;
+  --hl-line: #e1dccd;
+  --hl-green: #2f6b3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hl-table: #10120e;
+    --hl-map: #171a14;
+    --hl-paper: #1e221b;
+    --hl-ink: #e9ece4;
+    --hl-mute: #9da396;
+    --hl-line: #30362b;
+    --hl-green: #8fd19c;
+  }
+  .trail.contour-drift { --cd-line: #2c3125; --cd-index: #46503a; }
+}
+body { background: var(--hl-table); color: var(--hl-ink); }
+:focus-visible { outline-color: var(--hl-green); }
+
+.trail {
+  width: min(760px, 100%); min-height: 500px; padding: 28px; display: grid; align-items: end; justify-items: start;
+  background: var(--hl-map); border: 1px solid var(--hl-line); border-radius: 8px;
+}
+.route {
+  width: min(360px, 100%); padding: 20px 22px; border-radius: 10px; display: grid; gap: 12px;
+  background: var(--hl-paper); border: 1px solid var(--hl-line);
+}
+.brand { font-size: 13px; font-weight: 700; color: var(--hl-green); }
+.brand span { font-weight: 500; color: var(--hl-mute); margin-left: 6px; }
+.route h1 { font-size: 24px; margin-top: -6px; }
+.stats { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.stats dt { font-size: 11.5px; color: var(--hl-mute); }
+.stats dd { font-weight: 700; font-size: 14px; }
+.profile { width: 100%; height: auto; display: block; }
+.profile-fill { fill: color-mix(in srgb, var(--hl-green) 14%, transparent); }
+.profile-line { fill: none; stroke: var(--hl-green); stroke-width: 2; stroke-linejoin: round; }
+.profile-top { fill: var(--hl-paper); stroke: var(--hl-green); stroke-width: 2; }
+.note { font-size: 13.5px; color: var(--hl-mute); }
+.route-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn, .ctl {
+  display: inline-flex; align-items: center; min-height: 38px; padding: 0 14px; border-radius: 8px; cursor: pointer;
+  font: 650 13.5px/1 "Host Grotesk", sans-serif; text-decoration: none; border: 1px solid var(--hl-line); background: var(--hl-paper); color: var(--hl-ink);
+}
+.btn { background: var(--hl-green); border-color: var(--hl-green); color: var(--hl-paper); }
+.ctl[hidden] { display: none; }
+.ctl[aria-pressed="true"] { background: var(--hl-ink); color: var(--hl-paper); border-color: var(--hl-ink); }
+
+@media (max-width: 520px) {
+  .trail { padding: 140px 12px 12px; min-height: 0; }
+  .route { padding: 16px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

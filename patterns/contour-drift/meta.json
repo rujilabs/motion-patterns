@@ -1,0 +1,16 @@
+{
+  "name": "Contour drift",
+  "slug": "contour-drift",
+  "kind": "pattern",
+  "summary": "Survey-map contour lines behind a trail card, drifting slowly as the hills under them shift, with every fifth line drawn heavier.",
+  "category": "look",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
