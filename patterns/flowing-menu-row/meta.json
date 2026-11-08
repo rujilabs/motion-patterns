@@ -1,0 +1,18 @@
+{
+  "name": "Flowing menu row",
+  "slug": "flowing-menu-row",
+  "kind": "pattern",
+  "summary": "Full-width menu rows that flood with a dark band from the edge the pointer came in by, carrying a running marquee of the row's words and small pictures; it drains out the way you leave.",
+  "category": "state",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

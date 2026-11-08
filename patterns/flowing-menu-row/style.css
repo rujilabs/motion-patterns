@@ -1,0 +1,25 @@
+/*
+ * flowing-menu-row: a full-width menu row that floods with a band when the pointer comes in, from the
+ * edge it came in by, and drains out by the edge it leaves by. The band carries a running marquee of
+ * the row's words and small pictures. The track inside moves the other way as the band slides, so
+ * the words hold still while the band's edge sweeps over them. flowing-menu-row.js sets data-edge
+ * and .is-on; without it the rows are plain links.
+ */
+.fm-row { position: relative; display: flex; align-items: center; overflow: hidden; text-decoration: none; color: inherit; }
+.fm-band {
+  position: absolute; inset: 0; display: flex; align-items: center; overflow: hidden; container-type: inline-size;
+  background: var(--fm-bg, #1e2229); color: var(--fm-ink, #fff); pointer-events: none;
+  translate: 0 -101%; transition: translate .5s var(--ease-out);
+}
+.fm-track { display: flex; width: max-content; translate: 0 101%; transition: inherit; animation: fm-run var(--fm-dur, 16s) linear infinite paused; }
+.fm-row[data-edge="bottom"] .fm-band { translate: 0 101%; }
+.fm-row[data-edge="bottom"] .fm-track { translate: 0 -101%; }
+.fm-row.is-on .fm-band, .fm-row.is-on .fm-track { translate: none; }
+.fm-row.is-on .fm-track { animation-play-state: running; }
+.fm-row:focus-visible .fm-band { outline: 2px solid currentColor; outline-offset: -5px; }
+.fm-seq { display: flex; flex: none; align-items: center; gap: .7em; padding-inline-end: .7em; min-inline-size: 100cqi; white-space: nowrap; }
+@keyframes fm-run { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .fm-band, .fm-track { transition: none; }
+  .fm-track { animation: none; }
+}
