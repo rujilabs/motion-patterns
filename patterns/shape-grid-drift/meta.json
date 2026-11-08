@@ -1,0 +1,16 @@
+{
+  "name": "Shape grid drift",
+  "slug": "shape-grid-drift",
+  "kind": "pattern",
+  "summary": "A drafting grid of squares drifts slowly behind a hero; the cell under the pointer fills and fades as the pointer moves on. Pausable; still grid without the script.",
+  "category": "loop",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

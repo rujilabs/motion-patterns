@@ -1,0 +1,18 @@
+/*
+ * shape-grid-drift: a drafting grid of squares drifts slowly behind a hero; the cell under the
+ * pointer fills and fades when the pointer moves on. shape-grid-drift.js draws on .sgd-canvas with
+ * these colours. Without the script the same grid shows still, from the CSS background below.
+ */
+.sgd {
+  --sgd-cell: 56px; --sgd-line: #cdd1ca; --sgd-major: #a7ada3; --sgd-fill: #c8553d;
+  position: relative; overflow: hidden; touch-action: pan-y;
+  background-image: linear-gradient(var(--sgd-line) 1px, transparent 1px), linear-gradient(90deg, var(--sgd-line) 1px, transparent 1px);
+  background-size: var(--sgd-cell) var(--sgd-cell);
+}
+.sgd-live { background-image: none; }
+.sgd-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* shape-grid-drift.js holds the grid still and hides the Pause button */
+  .sgd-pause { display: none; }
+}
