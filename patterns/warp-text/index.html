@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warp text demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="warp-text.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame wt-frame" aria-labelledby="wt-h">
+  <header class="wt-top">
+    <h1 id="wt-h">Pasar Malam Taman Connaught</h1>
+    <p class="num">Wednesday, 5:30 pm to 11:00 pm</p>
+  </header>
+  <nav class="wt" data-warp aria-label="Stalls tonight">
+    <a href="#satay" data-stall="Stall 3, Satay Kajang Pak Lah: RM 0.90 a stick, 40 sticks left at 9:10 pm">Satay</a>
+    <a href="#apam" data-stall="Stall 14, Apam Balik: RM 1.20 a piece, queue about 9 min">Apam Balik</a>
+    <a href="#ais-kacang" data-stall="Stall 22, Ais Kacang: RM 4.50 a bowl, extra gula melaka 50 sen">Ais Kacang</a>
+    <a href="#rojak" data-stall="Stall 9, Rojak Buah: RM 6.80 a plate, extra peanuts on request">Rojak</a>
+    <a href="#putu" data-stall="Stall 31, Putu Bambu: 5 for RM 3.50, steamed to order">Putu Bambu</a>
+  </nav>
+  <p class="wt-detail" data-stall-out aria-live="polite">Point at a stall, or Tab through them.</p>
+</section>
+</main>
+</body>
+</html>

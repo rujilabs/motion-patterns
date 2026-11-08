@@ -1,0 +1,16 @@
+{
+  "name": "Warp text",
+  "slug": "warp-text",
+  "kind": "pattern",
+  "summary": "A line of text whose letters bulge toward the pointer like a lens passing over it, neighbours sliding aside. Keyboard focus moves the bulge to the focused link.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
