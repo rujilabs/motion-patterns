@@ -1,0 +1,50 @@
+/* Demo page layout for this entry. Not part of the pattern. A land sale site plan: survey paper, red guides. */
+.chd { width: min(720px, 100%); padding: 20px 22px; display: grid; gap: 14px; }
+.chd-brand { font-size: 12.5px; font-weight: 650; letter-spacing: .04em; color: #2f6b45; }
+.chd-head h1 { font-size: 22px; margin-top: 2px; }
+.chd-sub { font-size: 13.5px; color: var(--demo-mute); margin-top: 3px; }
+.chd-body { display: grid; grid-template-columns: minmax(0, 1fr) 188px; gap: 18px; align-items: start; }
+.chd-map { aspect-ratio: 4 / 3; border-radius: 6px; border: 1px solid var(--demo-line); }
+.chd-map:focus-visible { outline: 2px solid var(--demo-blue); outline-offset: 3px; }
+.chd-plan { display: block; width: 100%; height: 100%; font-family: inherit; }
+.chd-ground { fill: #f3f5ef; }
+.chd-road { fill: #d9dcd4; }
+.chd-road-mark { stroke: #fff; stroke-width: .6; stroke-dasharray: 4 3; }
+.chd-road-name { font-size: 4.2px; fill: #6d7368; text-anchor: middle; letter-spacing: .3px; }
+.chd-green { fill: #dcebd7; }
+.chd-green-name { font-size: 4.6px; fill: #4f7a55; text-anchor: middle; }
+.ch-lot { fill: #ffffff; stroke: #8d968a; stroke-width: .5; transition: fill var(--dur-quick) linear; }
+.ch-lot.is-sold { fill: #e7e3dc; }
+.ch-lot.is-hit { fill: #fff1d6; }
+.ch-lot.is-sold.is-hit { fill: #e0d9cc; }
+.ch-lot.is-picked { fill: #ffd9a0; stroke: #b5651d; stroke-width: .9; }
+.chd-num text { font-size: 6.5px; font-weight: 650; fill: #3a4038; text-anchor: middle; }
+.chd-ticks line { stroke: #8d968a; stroke-width: .5; }
+.chd-facts { display: grid; gap: 10px; }
+.chd-facts div { display: grid; gap: 1px; padding-bottom: 8px; border-bottom: 1px solid var(--demo-line); }
+.chd-facts dt { font-size: 11.5px; color: var(--demo-mute); }
+.chd-facts dd { margin: 0; font-size: 16px; font-weight: 650; }
+.chd-keys { font-size: 12px; color: var(--demo-mute); margin-top: 10px; }
+.chd-picked { font-size: 13px; font-weight: 600; margin-top: 8px; min-height: 2.8em; }
+@media (prefers-color-scheme: dark) {
+  .chd-ground { fill: #232a24; }
+  .chd-road { fill: #3a403a; }
+  .ch-lot { fill: #2b322c; stroke: #6f786c; }
+  .ch-lot.is-sold { fill: #3a3631; }
+  .ch-lot.is-hit { fill: #4a4330; }
+  .ch-lot.is-picked { fill: #8a5a1f; stroke: #ffb35c; }
+  .chd-num text { fill: #e2e6de; }
+  .chd-green { fill: #2c3f2d; }
+  .ch { --ch-tag-bg: #f2f4f7; --ch-tag-ink: #1e2229; --ch-line: #ff6a52; }
+}
+@media (max-width: 560px) {
+  .chd { padding: 14px; gap: 10px; }
+  .chd-head h1 { font-size: 19px; }
+  .chd-body { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .chd-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .chd-facts div { border-bottom: 0; padding-bottom: 0; }
+  .chd-facts dd { font-size: 13px; }
+  .chd-keys { margin-top: 6px; }
+  .ch-tag { font-size: 10.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .ch-lot { transition: none; } }

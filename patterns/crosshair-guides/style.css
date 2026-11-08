@@ -1,0 +1,16 @@
+/*
+ * crosshair-guides: two dashed guide lines and a live coordinate tag follow the pointer over a map
+ * or plan. Arrow keys move them too. crosshair-guides.js places .ch-v, .ch-h and .ch-tag and fires
+ * "ch-move" and "ch-pick" on .ch, in the plan's own units (data-ch-width by data-ch-height).
+ */
+.ch { --ch-line: #e0452f; --ch-tag-bg: #1e2229; --ch-tag-ink: #ffffff; position: relative; overflow: hidden; cursor: crosshair; touch-action: pan-y; }
+.ch-v, .ch-h, .ch-tag { position: absolute; left: 0; top: 0; pointer-events: none; }
+.ch-v { height: 100%; transform-origin: top; border-left: 1px dashed var(--ch-line); }
+.ch-h { width: 100%; transform-origin: left; border-top: 1px dashed var(--ch-line); }
+.ch-tag { padding: 4px 7px; border-radius: 4px; font-size: 11.5px; font-weight: 650; line-height: 1.2; white-space: nowrap; background: var(--ch-tag-bg); color: var(--ch-tag-ink); }
+.ch:not(.ch-live) :is(.ch-v, .ch-h, .ch-tag) { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* crosshair-guides.js moves the guides straight to the pointer, with no glide and no draw-in */
+  .ch-v, .ch-h, .ch-tag { transition: none; }
+}
