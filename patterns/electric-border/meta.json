@@ -1,0 +1,17 @@
+{
+  "name": "Electric border",
+  "slug": "electric-border",
+  "kind": "pattern",
+  "summary": "A limited-drop card edged with a crackling line of current, drawn on canvas along its rounded border. Only the shape moves, never the brightness; stronger on hover; pausable.",
+  "category": "light",
+  "tech": [
+    "css",
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

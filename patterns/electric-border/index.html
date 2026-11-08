@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electric border demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="electric-border.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <div class="shelf">
+    <article class="drop eb" id="drop" aria-labelledby="drop-h">
+      <canvas class="eb-canvas" aria-hidden="true"></canvas>
+      <p class="tag">Drop 07, limited</p>
+      <h1 id="drop-h">Kilat shirt</h1>
+      <p class="desc">Hand-blocked batik on cotton voile, lightning motif in indigo and silver. Stamped in Kota Bharu, 88 pieces only.</p>
+      <dl class="facts num">
+        <div><dt>Opens</dt><dd>Fri 14 Nov, 9:00 pm</dd></div>
+        <div><dt>Price</dt><dd>RM 189</dd></div>
+        <div><dt>Pieces</dt><dd>88, 2 per buyer</dd></div>
+      </dl>
+      <a class="cta" href="#drop">Remind me at 8:55 pm</a>
+    </article>
+    <div class="under">
+      <span class="mute">Batik Ronda, Kelantan</span>
+      <button class="ctl" type="button" data-pause-for="drop" aria-pressed="false">Pause</button>
+    </div>
+  </div>
+</main>
+</body>
+</html>
