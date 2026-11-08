@@ -1,0 +1,19 @@
+{
+  "name": "Crosshair guides",
+  "slug": "crosshair-guides",
+  "kind": "pattern",
+  "summary": "Two dashed guide lines and a live coordinate tag follow the pointer over a plan, gliding the last few px. Arrow keys move them 1 unit (Shift 10); Enter or a click picks the spot.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
