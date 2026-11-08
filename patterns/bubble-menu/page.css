@@ -1,0 +1,41 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.tp-frame { background: #f6ece6; color: #3a1f27; }
+.tp-top { position: absolute; left: 24px; top: 22px; }
+.tp-logo { font-size: 18px; font-weight: 750; letter-spacing: -.02em; }
+.tp-logo em { font-style: normal; font-weight: 400; color: #a2475d; }
+.tp-hero { position: absolute; left: 24px; right: 24px; bottom: 28px; display: grid; gap: 10px; }
+.tp-kicker { font-size: 12px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: #a2475d; }
+.tp-hero h1 { font-size: 40px; line-height: 1.04; letter-spacing: -.03em; max-width: 13ch; }
+.tp-sub { font-size: 15px; color: #6e4f57; max-width: 40ch; }
+.tp-menu { position: absolute; inset: 0; pointer-events: none; --bm-wash: rgba(253, 246, 241, .95); }
+.tp-toggle { position: absolute; right: 18px; top: 16px; pointer-events: auto; display: grid; place-items: center; width: 52px; height: 52px; border: 0; border-radius: 50%; background: #a2475d; color: #fff; cursor: pointer; box-shadow: 0 8px 20px rgba(162, 71, 93, .35); }
+.tp-toggle:focus-visible { outline: 2px solid #3a1f27; outline-offset: 3px; }
+.tp-list { position: absolute; inset: 0; display: flex; flex-wrap: wrap; align-content: center; align-items: center; justify-content: center; gap: 10px 14px; padding: 76px 100px 30px; }
+html:not(.js) .tp-list { background: var(--bm-wash); }
+.bm.is-open .tp-list { pointer-events: auto; }
+.tp-list li { display: contents; }
+.bm-bubble { display: grid; place-content: center; text-align: center; aspect-ratio: 1; border-radius: 50%; padding: 8px; text-decoration: none; font-weight: 700; font-size: 16px; line-height: 1.15; letter-spacing: -.01em; }
+.bm-bubble small { display: block; margin-top: 3px; font-size: 12px; font-weight: 500; opacity: .85; }
+.bm-bubble:focus-visible { outline: 2px solid #3a1f27; outline-offset: 3px; }
+.bm-bubble:hover { filter: brightness(1.05); }
+.tp-b1 { width: 138px; background: #e9a3b4; color: #3a1f27; }
+.tp-b2 { width: 120px; background: #a2475d; color: #fff; }
+.tp-b3 { width: 128px; background: #c9d6b3; color: #263319; }
+.tp-b4 { width: 104px; background: #f2c38f; color: #4a2b0e; }
+.tp-b5 { width: 112px; background: #3a1f27; color: #fbe9ee; }
+.tp-b6 { width: 120px; background: #fff; color: #3a1f27; box-shadow: inset 0 0 0 1.5px #e3c7cf; }
+.tp-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 520px) {
+  .tp-top { left: 14px; top: 16px; }
+  .tp-logo { font-size: 15px; }
+  .tp-hero { left: 14px; right: 14px; bottom: 16px; gap: 6px; }
+  .tp-kicker { font-size: 10.5px; }
+  .tp-hero h1 { font-size: 25px; }
+  .tp-sub { font-size: 12.5px; }
+  .tp-toggle { right: 10px; top: 8px; width: 42px; height: 42px; }
+  .tp-list { gap: 6px 8px; padding: 54px 12px 10px; }
+  .bm-bubble { font-size: 12.5px; padding: 4px; }
+  .bm-bubble small { font-size: 10px; margin-top: 1px; }
+  .tp-b1 { width: 92px; } .tp-b2 { width: 82px; } .tp-b3 { width: 88px; } .tp-b4 { width: 72px; } .tp-b5 { width: 76px; } .tp-b6 { width: 80px; }
+}
