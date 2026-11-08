@@ -1,0 +1,20 @@
+{
+  "name": "Masonry settle",
+  "slug": "masonry-settle",
+  "kind": "pattern",
+  "summary": "Gallery tiles of mixed heights drop into a CSS columns masonry when it comes into view, each landing a touch low and settling flat, staggered across the grid by position.",
+  "category": "entry",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-out",
+    "--stagger"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
