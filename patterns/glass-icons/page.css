@@ -1,0 +1,54 @@
+/* Demo page layout for this entry. Not part of the pattern. A home app on a misty dusk wall. */
+:root {
+  --gl-table: #dfe4ea;
+  --gl-paper: #f4f6f8;
+  --gl-ink: #1c2230;
+  --gl-mute: #5f6877;
+  --gl-line: #d3d9e1;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --gl-table: #10141b; --gl-paper: #19202a; --gl-ink: #e8edf4; --gl-mute: #98a2b2; --gl-line: #2a3340; }
+  .glass-plate { background: #4a5260; }
+  .glass-pane { background: linear-gradient(150deg, rgb(255 255 255 / .22), rgb(255 255 255 / .08)); box-shadow: inset 0 1px 0 rgb(255 255 255 / .35), inset 0 0 0 1px rgb(255 255 255 / .14); }
+  .glass-pane svg { stroke: #b4bcc8; }
+}
+body { background: var(--gl-table); color: var(--gl-ink); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.gl {
+  width: min(600px, 100%);
+  background: var(--gl-paper);
+  border: 1px solid var(--gl-line);
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  display: grid;
+  gap: 18px;
+}
+.gl-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.gl-kicker { font-size: 13px; color: var(--gl-mute); }
+.gl-head h1 { font-size: 24px; margin-top: 2px; }
+.gl-clock { font-size: 13px; font-weight: 600; color: var(--gl-mute); white-space: nowrap; }
+
+.gl-grid { align-items: start; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 8px; }
+.gl-grid .glass-icon { cursor: pointer; width: 100%; padding: 10px 4px 8px; border-radius: 12px; gap: 3px; align-content: start; }
+.gl-grid .glass-icon .glass-art { margin-bottom: 8px; }
+.gl-name { font-size: 13.5px; font-weight: 650; text-align: center; line-height: 1.25; }
+.gl-state { font-size: 12px; color: var(--gl-mute); }
+.glass-icon[aria-pressed="true"] .gl-state { color: var(--gl-ink); }
+
+.gl-lamp { --glass-color: #f0a92e; }
+.gl-fan { --glass-color: #20a59a; }
+.gl-cool { --glass-color: #3b7cf0; }
+.gl-heat { --glass-color: #ec5a3a; }
+.gl-porch { --glass-color: #e6c13a; }
+.gl-water { --glass-color: #3fa95a; }
+
+.gl-foot { border-top: 1px solid var(--gl-line); padding-top: 12px; font-size: 14px; color: var(--gl-mute); }
+.gl-foot b { color: var(--gl-ink); }
+
+@media (max-width: 520px) {
+  .gl { padding: 18px 12px 16px; }
+  .gl-head { padding-inline: 4px; }
+  .glass-icon { --glass-size: 56px; }
+  .gl-name { font-size: 12.5px; }
+}

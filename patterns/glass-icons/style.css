@@ -1,0 +1,71 @@
+/* glass-icons: a frosted pane over a coloured plate. aria-pressed="true" lights the plate (set --glass-color). */
+.glass-icon {
+  --glass-color: #f2b53a;
+  --glass-size: 64px;
+  display: inline-grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+.glass-art { position: relative; width: var(--glass-size); height: var(--glass-size); isolation: isolate; }
+.glass-plate, .glass-pane { position: absolute; inset: 0; border-radius: 28%; }
+.glass-plate {
+  background: #b9bec7;
+  transform: translate(-6%, 6%) rotate(-8deg) scale(.86);
+  transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) var(--ease-out);
+}
+/* colour on its own layer: a gradient cannot transition */
+.glass-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(140deg, color-mix(in srgb, var(--glass-color), #fff 35%), var(--glass-color) 55%, color-mix(in srgb, var(--glass-color), #000 22%));
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.glass-pane {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(150deg, rgb(255 255 255 / .62), rgb(255 255 255 / .28));
+  -webkit-backdrop-filter: blur(9px) saturate(1.4);
+  backdrop-filter: blur(9px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .9), inset 0 0 0 1px rgb(255 255 255 / .45), 0 6px 14px -8px rgb(20 30 50 / .35);
+  transform: translate(6%, -4%);
+}
+.glass-pane svg {
+  width: 46%;
+  height: 46%;
+  fill: none;
+  stroke: #6b7280;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
+}
+
+.glass-icon[aria-pressed="true"] .glass-plate {
+  transform: translate(-12%, 12%) rotate(-14deg) scale(.94);
+  box-shadow: 0 0 22px 2px color-mix(in srgb, var(--glass-color), transparent 45%);
+}
+.glass-icon[aria-pressed="true"] .glass-plate::after { opacity: 1; animation: glass-bloom var(--dur-slow) var(--ease-out); }
+.glass-icon[aria-pressed="true"] .glass-pane svg {
+  stroke: #fff;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--glass-color), #fff 30%));
+}
+@keyframes glass-bloom {
+  0% { opacity: 0; }
+  40% { opacity: 1; box-shadow: 0 0 34px 12px color-mix(in srgb, var(--glass-color), transparent 55%); }
+}
+.glass-icon:focus-visible { outline: none; }
+.glass-icon:focus-visible .glass-pane { outline: 2px solid currentColor; outline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-plate, .glass-plate::after, .glass-pane svg { transition: none; }
+  .glass-icon[aria-pressed="true"] .glass-plate::after { animation: none; }
+}

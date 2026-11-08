@@ -1,0 +1,22 @@
+{
+  "name": "Glass icons",
+  "slug": "glass-icons",
+  "kind": "pattern",
+  "summary": "Toggle buttons drawn as frosted glass over a coloured plate. Switched on, the plate takes its colour, swings out, glows through the frost and blooms once; off, it greys and tucks back.",
+  "category": "light",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-slow",
+    "--ease-out",
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
