@@ -1,0 +1,17 @@
+/*
+ * blur-in-text: a line whose words sharpen out of a blur and rise a little, one after another.
+ * blur-in-text.js wraps each word in .bi-w and numbers it (--i); play.js adds .go in view.
+ * The hidden start only applies to the word spans the script made, so without it the line just shows.
+ */
+.blur-in { --bi-step: 110ms; --bi-delay: 0s; --bi-blur: 12px; }
+.bi-w { display: inline-block; }
+.js .blur-in .bi-w { opacity: 0; filter: blur(var(--bi-blur)); }
+.js .blur-in.go .bi-w { animation: bi-in var(--dur-slow) var(--ease-out) calc(var(--bi-delay) + var(--i, 0) * var(--bi-step)) both; }
+@keyframes bi-in {
+  from { opacity: 0; filter: blur(var(--bi-blur)); translate: 0 .35em; }
+  60%  { opacity: 1; }
+  to   { opacity: 1; filter: blur(0); translate: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .blur-in .bi-w, .js .blur-in.go .bi-w { animation: none; opacity: 1; filter: none; }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Blur in text",
+  "slug": "blur-in-text",
+  "kind": "pattern",
+  "summary": "A hero line whose words sharpen out of a blur and rise a little, one after another, when it comes into view.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--dur-slow"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
