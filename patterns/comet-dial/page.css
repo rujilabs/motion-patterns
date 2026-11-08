@@ -1,0 +1,31 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+body { background: #ece7e1; }
+@media (prefers-color-scheme: dark) { body { background: #151412; } }
+.oven { width: min(440px, 100%); padding: 22px 24px 18px; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.oven-head { display: grid; gap: 3px; }
+.shop { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #b4521f; }
+@media (prefers-color-scheme: dark) { .shop { color: #f0935d; } }
+.oven-head h1 { font-size: 22px; font-weight: 700; }
+.oven-head .mute { font-size: 13px; }
+/* the still frame without the script: 18 of 60 minutes */
+.comet-dial { width: min(260px, 70vw); --cd-p: .3; }
+.cd-time { font-size: 44px; font-weight: 650; letter-spacing: -.02em; line-height: 1; }
+.cd-unit { font-size: 13px; color: var(--cd-tick); margin-top: 4px; }
+.oven-controls { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
+html:not(.js) .oven-controls { display: none; }
+.start {
+  font: inherit; font-weight: 650; min-width: 112px; padding: 10px 22px; border-radius: 999px; border: 0; cursor: pointer;
+  background: #c2521b; color: #fff;
+}
+.start[aria-pressed="true"] { background: var(--demo-ink); color: var(--demo-paper); }
+.oven-status { font-size: 13px; min-height: 2.9em; }
+@media (max-width: 480px) {
+  .oven { padding: 18px 16px; }
+  .oven-head h1 { font-size: 19px; }
+}
+@media (max-height: 640px) and (min-width: 481px) {
+  .oven { gap: 8px; padding-block: 14px; }
+  .comet-dial { width: min(200px, 42vh); }
+  .cd-time { font-size: 34px; }
+}
+.comet-dial.is-done .cd-unit { visibility: hidden; }
