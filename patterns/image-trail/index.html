@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image trail demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="image-trail.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame it itd-frame" aria-labelledby="itd-h" data-trail-gap="80" data-trail-pool="8" data-trail-life="1100">
+  <div class="itd-copy">
+    <p class="itd-name">Hana Idris, photographer</p>
+    <h1 id="itd-h">Weddings and quiet streets, shot in Ipoh.</h1>
+    <p class="itd-sub">2027 bookings open: <span class="num">11</span> Saturdays left, from <span class="num">RM 3,850</span>.</p>
+    <p class="itd-hint">Move across the frame</p>
+  </div>
+  <ul class="it-strip">
+    <li><img src="photos/limestone-dawn.svg" alt="Limestone hills at dawn" width="120" height="160"></li>
+    <li><img src="photos/shophouses.svg" alt="Old shophouses on a quiet street" width="120" height="160"></li>
+    <li><img src="photos/wedding-hands.svg" alt="A couple holding a white bouquet" width="120" height="160"></li>
+    <li><img src="photos/kopitiam.svg" alt="White coffee on a marble table" width="120" height="160"></li>
+    <li><img src="photos/rain-street.svg" alt="A red umbrella on a wet street at night" width="120" height="160"></li>
+    <li><img src="photos/night-lanterns.svg" alt="Red lanterns over a night market" width="120" height="160"></li>
+  </ul>
+</section>
+</main>
+</body>
+</html>

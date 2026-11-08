@@ -1,0 +1,18 @@
+{
+  "name": "Image trail",
+  "slug": "image-trail",
+  "kind": "pattern",
+  "summary": "Small photos drop where the pointer has been, pop in, drift on a little and fade, from a fixed pool of images. Touch drag works; without the script a still row shows.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
