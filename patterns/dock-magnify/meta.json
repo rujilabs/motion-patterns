@@ -1,0 +1,20 @@
+{
+  "name": "Dock magnify",
+  "slug": "dock-magnify",
+  "kind": "pattern",
+  "summary": "An app bar whose icons swell by their distance to the pointer: the nearest grows most, neighbours less, and its label shows above. Keyboard focus swells the focused icon.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

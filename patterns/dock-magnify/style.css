@@ -1,0 +1,25 @@
+/*
+ * dock-magnify: an app bar whose icons grow by their distance to the pointer, so the one under the
+ * finger is largest and its neighbours a little less. dock-magnify.js writes --dock-s on each item;
+ * CSS grows the real width, so neighbours make room instead of overlapping. The label shows above
+ * the item that is hot (nearest the pointer) or has keyboard focus.
+ * Keep the dock centred in its parent: the script reads the rest layout from its centre.
+ */
+.dock { --dock-size: 44px; display: flex; align-items: flex-end; gap: 8px; width: max-content; margin-inline: auto; touch-action: pan-y; }
+.dock-item {
+  position: relative; flex: none; display: grid; place-items: center;
+  width: calc(var(--dock-size) * var(--dock-s, 1));
+  height: calc(var(--dock-size) * var(--dock-s, 1));
+  transition: width var(--dur-quick) var(--ease-out), height var(--dur-quick) var(--ease-out);
+}
+.dock-item > svg { width: 50%; height: 50%; }
+.dock-tip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; translate: -50% 4px;
+  white-space: nowrap; pointer-events: none; opacity: 0;
+  transition: opacity var(--dur-quick) var(--ease-out), translate var(--dur-quick) var(--ease-out);
+}
+.dock-item.is-hot .dock-tip, .dock-item:focus-visible .dock-tip { opacity: 1; translate: -50% 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dock-item, .dock-tip { transition: none; }
+}

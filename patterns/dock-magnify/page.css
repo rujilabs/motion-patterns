@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.dm-frame { display: grid; grid-template-rows: auto 1fr auto; background: #f3f6f4; color: #1c2a26; }
+.dm-top { display: flex; justify-content: space-between; padding: 14px 20px; font-size: 13px; color: #5b6b66; border-bottom: 1px solid #dde5e1; }
+.dm-clinic { font-weight: 650; color: #1c2a26; }
+.dm-body { padding: 26px 28px 0; display: grid; align-content: start; gap: 10px; }
+.dm-kicker { font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: #0f7a5f; }
+.dm-body h1 { font-size: 34px; letter-spacing: -.025em; }
+.dm-facts { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px; margin-top: 6px; }
+.dm-facts dt { font-size: 12px; color: #5b6b66; }
+.dm-facts dd { margin: 2px 0 0; font-size: 17px; font-weight: 650; }
+.dm-shelf { padding: 0 12px 18px; }
+.dock { padding: 8px; border-radius: 20px; background: rgba(255, 255, 255, .78); border: 1px solid #d5dfda; box-shadow: 0 10px 30px rgba(20, 60, 50, .12); }
+.dock-item { border-radius: 12px; background: #e3eee9; color: #13493b; text-decoration: none; }
+.dock-item[aria-current="page"] { background: #0f7a5f; color: #fff; }
+.dock-item svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.dock-item:focus-visible { outline: 2px solid #0f7a5f; outline-offset: 3px; }
+.dock-tip { padding: 5px 9px; border-radius: 7px; background: #1c2a26; color: #fff; font-size: 12.5px; font-weight: 600; }
+.dm-badge { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: #d9432f; color: #fff; font-size: 11px; font-weight: 700; line-height: 18px; text-align: center; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 520px) {
+  .dm-top { padding: 10px 14px; font-size: 12px; }
+  .dm-body { padding: 14px 16px 0; gap: 6px; }
+  .dm-body h1 { font-size: 26px; }
+  .dm-facts { gap: 14px; }
+  .dm-facts dd { font-size: 14px; }
+  .dm-shelf { padding: 0 6px 12px; }
+  .dock { --dock-size: 36px; gap: 6px; padding: 6px; border-radius: 16px; }
+  .dock-item { border-radius: 10px; }
+}
