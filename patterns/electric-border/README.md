@@ -16,7 +16,7 @@ A line of current runs round the card's rounded edge, pushed in and out by noise
 <article class="eb" id="drop">
   <canvas class="eb-canvas" aria-hidden="true"></canvas>
   <h2>Kilat shirt</h2>
-  <p>Opens Fri 14 Nov, 9:00 pm. RM 189, 88 pieces.</p>
+  <p>Opens Fri 20 Nov, 9:00 pm. RM 189, 88 pieces.</p>
 </article>
 <button type="button" data-pause-for="drop" aria-pressed="false">Pause</button>
 ```
