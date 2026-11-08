@@ -1,0 +1,16 @@
+/*
+ * warp-text: a line of text whose letters bulge toward the pointer, like a lens passing over it.
+ * warp-text.js splits [data-warp] into letters (.wt-ch), grows each by its distance to the pointer and
+ * slides its neighbours aside so nothing overlaps, all with transforms, so the line never reflows.
+ * Keyboard focus on a link inside moves the bulge to it. A hidden copy (.wt-sr) keeps the words whole
+ * for screen readers.
+ */
+.wt { position: relative; touch-action: pan-y; }
+.wt-word { white-space: nowrap; }
+.wt-ch { display: inline-block; transform-origin: 50% 80%; will-change: transform; }
+.wt-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the script leaves every letter at rest */
+  .wt-ch { will-change: auto; }
+}
