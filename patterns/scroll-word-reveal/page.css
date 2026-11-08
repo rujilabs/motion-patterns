@@ -1,0 +1,15 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.intro, .outro { display: grid; gap: 10px; max-width: 600px; margin: 0 auto; padding: 28px 16px; }
+.intro { min-height: 55svh; align-content: start; }
+.outro { min-height: 60svh; align-content: start; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.kicker { margin-top: 12px; color: var(--demo-red); font-size: 13px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; }
+.intro h1 { font-size: clamp(26px, 6.5vw, 34px); font-weight: 700; letter-spacing: -.02em; }
+.done { color: var(--demo-mute); text-align: center; }
+
+.letter { width: min(600px, calc(100% - 32px)); margin: 0 auto; padding: clamp(20px, 5vw, 36px); display: grid; gap: 22px; }
+.salute { color: var(--demo-mute); font-size: 15px; }
+.body { font-size: clamp(20px, 4.6vw, 27px); line-height: 1.38; font-weight: 520; letter-spacing: -.012em; text-wrap: pretty; }
+.body em { font-style: normal; color: var(--demo-red); }
+.sign { display: grid; gap: 2px; padding-top: 16px; border-top: 1px solid var(--demo-line); font-weight: 650; }
+.sign .mute { font-size: 13px; font-weight: 400; }
