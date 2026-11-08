@@ -1,0 +1,23 @@
+{
+  "name": "Swipe row actions",
+  "slug": "swipe-row-actions",
+  "kind": "pattern",
+  "summary": "Swipe a list row left to show Archive and Delete behind it. It snaps open or shut, stretches like rubber past the ends, and a long swipe archives the row. A dots button does the same.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-spring",
+    "--ease-in",
+    "--ease-inout",
+    "--dur-quick"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swipe row actions demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="swipe.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="inbox sheet" aria-labelledby="in-h">
+    <header class="in-head">
+      <p class="app">Kurier Kancil</p>
+      <h1 id="in-h">Inbox <span class="count num" id="count">4</span></h1>
+    </header>
+    <ul class="rows" id="rows">
+      <li class="swipe is-unread">
+        <div class="swipe-face">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="msg"><p class="msg-top"><strong id="m1">Rider on the way</strong><span class="when num">2:18 pm</span></p><p class="msg-text">Faizal is 6 minutes away with parcel KK 2210 4837 from Kedai Buku Lorong Seni.</p></div>
+          <button class="swipe-more" type="button" aria-expanded="false" aria-controls="a1" aria-label="Actions for Rider on the way"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        </div>
+        <div class="swipe-actions" id="a1"><button class="swipe-archive" type="button">Archive</button><button class="swipe-delete" type="button">Delete</button></div>
+      </li>
+      <li class="swipe is-unread">
+        <div class="swipe-face">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="msg"><p class="msg-top"><strong id="m2">Left at the guard house</strong><span class="when num">11:52 am</span></p><p class="msg-text">Parcel KK 2209 1176 signed for by Encik Ramli, Pangsapuri Seri Ixora, Block C.</p></div>
+          <button class="swipe-more" type="button" aria-expanded="false" aria-controls="a2" aria-label="Actions for Left at the guard house"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        </div>
+        <div class="swipe-actions" id="a2"><button class="swipe-archive" type="button">Archive</button><button class="swipe-delete" type="button">Delete</button></div>
+      </li>
+      <li class="swipe">
+        <div class="swipe-face">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="msg"><p class="msg-top"><strong id="m3">Pick-up booked</strong><span class="when">Yesterday</span></p><p class="msg-text">Wei Ling collects 2 boxes, 3.4 kg, from your shop on Sat 8 Nov between 10 am and 12 pm.</p></div>
+          <button class="swipe-more" type="button" aria-expanded="false" aria-controls="a3" aria-label="Actions for Pick-up booked"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        </div>
+        <div class="swipe-actions" id="a3"><button class="swipe-archive" type="button">Archive</button><button class="swipe-delete" type="button">Delete</button></div>
+      </li>
+      <li class="swipe">
+        <div class="swipe-face">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="msg"><p class="msg-top"><strong id="m4">Payment received</strong><span class="when">Mon</span></p><p class="msg-text">RM 18.60 for same-day delivery to Bangsar South. Receipt KK-77310.</p></div>
+          <button class="swipe-more" type="button" aria-expanded="false" aria-controls="a4" aria-label="Actions for Payment received"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        </div>
+        <div class="swipe-actions" id="a4"><button class="swipe-archive" type="button">Archive</button><button class="swipe-delete" type="button">Delete</button></div>
+      </li>
+    </ul>
+    <p class="help">Swipe a message left for Archive and Delete, all the way to archive it. Or use the dots button, then Escape to close.</p>
+    <p class="status" id="in-status" role="status"></p>
+    <button class="again" type="button" id="again" hidden>Bring them back</button>
+  </section>
+</main>
+</body>
+</html>
