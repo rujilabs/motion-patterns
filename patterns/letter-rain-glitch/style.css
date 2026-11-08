@@ -1,0 +1,25 @@
+/*
+ * letter-rain-glitch: a calm wall of flickering characters behind a notice. letter-rain-glitch.js
+ * draws it on .lr-canvas and reads these values. Put the notice on a solid panel above it.
+ */
+.letter-rain {
+  --lr-size: 14px;       /* character size */
+  --lr-char: #d4cfc2;    /* the wall */
+  --lr-head: #2a6f69;    /* characters a drop has just passed */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.letter-rain > .lr-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* letter-rain-glitch.js draws the wall once and hides the pause button */
+  .letter-rain > .lr-canvas { transition: none; }
+}
