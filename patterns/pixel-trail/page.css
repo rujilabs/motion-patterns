@@ -1,0 +1,38 @@
+/* Demo page layout for this entry. Not part of the pattern. A game cafe hero: night navy, arcade colours. */
+.ptd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; display: grid; align-items: center;
+  background: #15122b; color: #f4f1ff; cursor: crosshair;
+}
+/* faint scanlines, and a still pixel row when the script does not run */
+.ptd::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, .025) 0 1px, transparent 1px 4px);
+}
+.ptd::after {
+  content: ""; position: absolute; left: 32px; bottom: 30px; width: 14px; height: 14px; background: #ff4f7b;
+  box-shadow: 16px 0 #ff4f7b, 32px 0 #ffd23f, 48px -16px #ffd23f, 64px -16px #3ee3c3, 80px -16px #3ee3c3, 96px 0 #6c8cff, 112px 0 #6c8cff;
+}
+.px-live.ptd::after { display: none; }
+.ptd-copy { position: relative; z-index: 1; padding: 0 40px; display: grid; gap: 12px; justify-items: start; }
+.ptd-name { font-size: 12.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: #ffd23f; }
+.ptd-copy h1 { max-width: 14ch; font-size: 44px; font-weight: 750; letter-spacing: -.03em; line-height: 1.02; }
+.ptd-sub { font-size: 15px; color: #c3bde0; max-width: 34ch; }
+.ptd-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.ptd-btn, .ptd-link {
+  font: inherit; font-size: 14px; font-weight: 650; padding: 10px 16px; border-radius: 4px; cursor: pointer;
+  border: 2px solid #ffd23f;
+}
+.ptd-btn { background: #ffd23f; color: #15122b; }
+.ptd-link { background: transparent; color: #ffd23f; }
+.ptd :focus-visible { outline: 2px solid #3ee3c3; outline-offset: 3px; }
+.ptd-hint { display: none; font-size: 12.5px; color: #8e88b0; }
+.px-live .ptd-hint { display: block; margin-top: 26px; }
+@media (prefers-reduced-motion: reduce) { .px-live .ptd-hint { display: none; } }
+@media (max-width: 520px) {
+  .ptd-copy { padding: 0 18px; gap: 8px; }
+  .ptd-copy h1 { font-size: 27px; }
+  .ptd-sub { font-size: 13px; }
+  .ptd-name { font-size: 10.5px; }
+  .ptd-btn, .ptd-link { font-size: 12.5px; padding: 7px 10px; }
+  .ptd::after { left: 18px; bottom: 14px; }
+}

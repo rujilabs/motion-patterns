@@ -1,0 +1,12 @@
+/*
+ * pixel-trail: the pointer leaves square pixels on a grid that fade out in four hard steps.
+ * pixel-trail.js draws them on .px-canvas and reads the colours from --px-colors (a space separated
+ * list, used in turn). Put your content above the canvas with position: relative; z-index: 1.
+ */
+.px-trail { --px-colors: #ff4f7b #ffd23f #3ee3c3 #6c8cff; position: relative; overflow: hidden; touch-action: pan-y; }
+.px-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* pixel-trail.js draws one still trail and ignores the pointer */
+  .px-canvas { transition: none; }
+}

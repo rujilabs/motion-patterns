@@ -1,0 +1,16 @@
+{
+  "name": "Pixel trail",
+  "slug": "pixel-trail",
+  "kind": "pattern",
+  "summary": "The pointer leaves square pixels on a grid that fade out in four hard steps, like an old game palette. Touch drag works; Tab to a button and a run of pixels underlines it.",
+  "category": "emphasis",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
