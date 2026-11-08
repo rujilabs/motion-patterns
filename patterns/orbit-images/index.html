@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit images demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="orbit-images.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame oid-frame" aria-labelledby="oid-h">
+  <header class="oid-top">
+    <p class="oid-kicker">Dapur Mak Lin, Kuching</p>
+    <h1 id="oid-h">Laksa Sarawak for 4</h1>
+    <p class="oid-meta num">55 min · 7 things around the bowl</p>
+  </header>
+
+  <div class="oi" aria-label="Ingredients" role="group" data-oi-start="18">
+    <div class="oi-ring">
+      <div class="oi-hub"><img src="art/bowl.svg" alt="A bowl of laksa Sarawak with prawns, omelette and coriander" width="200" height="150"></div>
+      <button class="oi-item" type="button" data-oi-note="Peel them, and keep the heads and shells for the stock."><img src="art/udang.svg" alt="" width="80" height="80"><span class="oi-name">Prawns, 300 g</span></button>
+      <button class="oi-item" type="button" data-oi-note="Soak in warm water for 8 minutes, then blanch for 30 seconds."><img src="art/bihun.svg" alt="" width="80" height="80"><span class="oi-name">Rice vermicelli, 200 g</span></button>
+      <button class="oi-item" type="button" data-oi-note="Fry very thin, roll up and slice into 3 mm ribbons."><img src="art/telur.svg" alt="" width="80" height="80"><span class="oi-name">Omelette, 2 eggs</span></button>
+      <button class="oi-item" type="button" data-oi-note="Poach the breast in the stock for 14 minutes, then shred by hand."><img src="art/ayam.svg" alt="" width="80" height="80"><span class="oi-name">Chicken breast, 250 g</span></button>
+      <button class="oi-item" type="button" data-oi-note="Pick off the tails. Scald for 10 seconds just before serving."><img src="art/taugeh.svg" alt="" width="80" height="80"><span class="oi-name">Bean sprouts, 120 g</span></button>
+      <button class="oi-item" type="button" data-oi-note="Halve them and squeeze one into each bowl at the table."><img src="art/limau.svg" alt="" width="80" height="80"><span class="oi-name">Calamansi, 6</span></button>
+      <button class="oi-item" type="button" data-oi-note="On the side. Half a teaspoon is plenty for most people."><img src="art/sambal.svg" alt="" width="80" height="80"><span class="oi-name">Sambal belacan, 3 tbsp</span></button>
+    </div>
+  </div>
+
+  <footer class="oid-foot">
+    <p class="oid-note" aria-live="polite" data-oi-caption data-oi-hint="Tab or tap an ingredient to bring it to the front."></p>
+    <button class="oi-pause oid-pause" type="button" aria-pressed="false" hidden>Pause</button>
+  </footer>
+</section>
+</main>
+</body>
+</html>

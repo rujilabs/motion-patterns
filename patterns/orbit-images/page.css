@@ -1,0 +1,47 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.oid-frame { display: grid; grid-template-rows: auto 1fr auto; background: radial-gradient(120% 90% at 50% 62%, #fbf3e4 0%, #f1e2c9 70%); color: #2b1f17; }
+.oid-top { display: grid; gap: 2px; padding: 18px 22px 0; }
+.oid-kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #b4532a; }
+.oid-top h1 { font-size: 26px; letter-spacing: -.02em; }
+.oid-meta { font-size: 13px; color: #7b6857; }
+
+.oi { min-height: 0; }
+.oi:not(.oi-live) { display: grid; justify-items: center; align-content: center; gap: 8px; }
+.oi:not(.oi-live) .oi-ring { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.oi:not(.oi-live) .oi-hub { flex-basis: 100%; display: grid; justify-items: center; }
+.oi:not(.oi-live) .oi-hub img { width: 140px; height: auto; }
+.oi:not(.oi-live) .oi-item img { width: 44px; height: 44px; }
+.oi-hub img { display: block; width: 210px; height: auto; }
+.oi-item { display: grid; justify-items: center; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 50%; color: inherit; font: inherit; }
+.oi-item img { display: block; width: 66px; height: 66px; border-radius: 50%; box-shadow: 0 6px 14px rgba(80, 40, 10, .18); }
+.oi-name { position: absolute; top: calc(100% + 4px); white-space: nowrap; padding: 3px 8px; border-radius: 6px; background: #2b1f17; color: #fff; font-size: 12px; font-weight: 650; opacity: 0; transition: opacity var(--dur-quick) var(--ease-out); }
+.oi:not(.oi-live) .oi-name { position: static; opacity: 1; background: none; color: inherit; font-weight: 500; font-size: 11px; }
+.oi-item.is-front .oi-name { opacity: 1; }
+.oi-item:focus-visible { outline: none; }
+.oi-item:focus-visible img { outline: 3px solid #b4532a; outline-offset: 3px; }
+.oi-live { --oi-r: 170px; --oi-tilt: 66deg; }
+.oi-live .oi-ring { inset: -34px 0 34px; }
+
+.oid-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 22px 16px; }
+.oid-note { font-size: 13.5px; color: #4a3a2e; min-height: 2.6em; display: flex; align-items: center; }
+.oid-pause { flex: none; min-height: 34px; padding: 0 14px; border-radius: 17px; border: 1px solid #dcc8aa; background: #fffaf1; color: #2b1f17; font: 600 13px/1 inherit; font-family: inherit; cursor: pointer; }
+.oid-pause[aria-pressed="true"] { background: #2b1f17; border-color: #2b1f17; color: #fff; }
+.oid-pause[hidden] { display: none; }
+.oid-pause:focus-visible { outline: 2px solid #b4532a; outline-offset: 2px; }
+
+@media (max-width: 520px) {
+  .oid-top { padding: 10px 14px 0; }
+  .oid-top h1 { font-size: 18px; }
+  .oid-kicker { font-size: 10.5px; }
+  .oid-meta { display: none; }
+  .oi-live { --oi-r: 112px; --oi-depth: 640px; --oi-tilt: 68deg; }
+  .oi-live .oi-ring { inset: 6px 0 -6px; }
+  .oi-hub img { width: 108px; }
+  .oi-item.is-front .oi-name { opacity: 0; }
+  .oi-item img { width: 40px; height: 40px; }
+  .oi-name { font-size: 10.5px; padding: 2px 6px; }
+  .oid-foot { padding: 0 14px 8px; }
+  .oid-note { font-size: 11.5px; }
+  .oid-pause { min-height: 30px; padding: 0 12px; font-size: 12px; }
+}

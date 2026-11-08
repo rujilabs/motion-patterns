@@ -1,0 +1,25 @@
+/*
+ * orbit-images: pictures ride a tilted ring around a centre picture, in real CSS 3D, so the ones at
+ * the back pass behind it. One registered property, --oi-a, turns the ring; every item reads it to
+ * stay upright and facing you, and dims a little at the back.
+ * orbit-images.js numbers the items (--oi-k of --oi-n), adds .oi-live and spins the ring with the
+ * Web Animations API; focus or a tap turns the ring the short way until that item is in front.
+ * Without the script the items are a plain row under the centre picture.
+ */
+@property --oi-a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+@property --oi-s { syntax: "<number>"; inherits: false; initial-value: 1; }
+.oi.oi-live { position: relative; perspective: var(--oi-depth, 900px); }
+.oi-live .oi-ring { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(var(--oi-tilt, 64deg)) rotateZ(var(--oi-a)); }
+.oi-live .oi-ring > * { position: absolute; left: 50%; top: 50%; margin: 0; transform-style: preserve-3d; }
+.oi-live .oi-hub { transform-origin: 50% 100%; transform: translate(-50%, -100%) rotateZ(calc(-1 * var(--oi-a))) rotateX(calc(-1 * var(--oi-tilt, 64deg))); }
+.oi-live .oi-item {
+  --oi-at: calc(var(--oi-k) * 360deg / var(--oi-n));
+  transform: translate(-50%, -50%) rotateZ(var(--oi-at)) translateX(var(--oi-r, 170px)) rotateZ(calc(-1 * (var(--oi-at) + var(--oi-a)))) rotateX(calc(-1 * var(--oi-tilt, 64deg))) scale(var(--oi-s, 1));
+  filter: brightness(calc(.92 + .08 * sin(var(--oi-at) + var(--oi-a))));
+  transition: --oi-s var(--dur-base) var(--ease-spring);
+}
+.oi-live .oi-item.is-front { --oi-s: 1.22; }
+
+@media (prefers-reduced-motion: reduce) {
+  .oi-live .oi-item { transition: none; }
+}
