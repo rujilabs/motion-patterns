@@ -9,15 +9,132 @@
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function secs(ms) { return (Math.round(ms / 10) / 100).toFixed(2) + "s"; }
 
-  /* filters */
-  $all("[data-filter]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var f = btn.getAttribute("data-filter");
-      $all("[data-filter]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
-      var shown = 0;
-      $all(".spec").forEach(function (c) { c.hidden = f !== "all" && c.getAttribute("data-cat") !== f; if (!c.hidden) shown++; });
-      announce(shown + " patterns shown");
+  /* finder: search words, kind chip, trigger and tech selects. The state lives in the URL
+     (?q=&show=&start=&tech=), so a search can be shared and survives the back button. */
+  var cards = $all(".cards > .card");
+  var qIn = document.getElementById("find-q");
+  var startIn = document.getElementById("find-start");
+  var techIn = document.getElementById("find-tech");
+  var countOut = document.getElementById("find-count");
+  var emptyOut = document.getElementById("find-empty");
+  var kind = "all";
+  var SCRIPTED = ["js", "canvas", "webgl"];
+  function techOk(c, t) {
+    if (!t) return true;
+    var list = (c.getAttribute("data-tech") || "").split(" ");
+    if (t === "css-only") return list.every(function (x) { return x === "css" || x === "variable-font"; });
+    if (t === "no-js") return list.every(function (x) { return SCRIPTED.indexOf(x) < 0; });
+    return list.indexOf(t) >= 0;
+  }
+  function applyFind(push) {
+    if (!cards.length) return;
+    var words = (qIn.value || "").toLowerCase().split(/\s+/).filter(Boolean);
+    var start = startIn.value, tech = techIn.value, shown = 0;
+    cards.forEach(function (c) {
+      var hay = c.getAttribute("data-q") || "";
+      var ok = (kind === "all" || (kind === "new" ? c.hasAttribute("data-new") : c.getAttribute("data-cat") === kind)) &&
+        (!start || c.getAttribute("data-start") === start) && techOk(c, tech) &&
+        words.every(function (w) { return hay.indexOf(w) >= 0; });
+      c.hidden = !ok;
+      if (ok) shown++;
     });
+    var total = cards.length;
+    countOut.textContent = shown === total ? total + " patterns" : shown + " of " + total + " patterns";
+    emptyOut.hidden = shown > 0;
+    $all("[data-filter]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === kind)); });
+    if (push !== false && window.history && history.replaceState) {
+      var p = new URLSearchParams();
+      if (qIn.value.trim()) p.set("q", qIn.value.trim());
+      if (kind !== "all") p.set("show", kind);
+      if (start) p.set("start", start);
+      if (tech) p.set("tech", tech);
+      var qs = p.toString();
+      history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+    }
+    return shown;
+  }
+  var announceTimer = 0;
+  function findAndSay() {
+    var n = applyFind();
+    clearTimeout(announceTimer);
+    announceTimer = setTimeout(function () { announce(n + (n === 1 ? " pattern" : " patterns") + " shown"); }, 600);
+  }
+  if (cards.length && qIn) {
+    var params = new URLSearchParams(location.search);
+    qIn.value = params.get("q") || "";
+    kind = params.get("show") || "all";
+    if (!document.querySelector('[data-filter="' + kind + '"]')) kind = "all";
+    if (params.get("start")) startIn.value = params.get("start");
+    if (params.get("tech")) techIn.value = params.get("tech");
+    applyFind(false);
+    if (params.has("show") || params.has("q") || params.has("start") || params.has("tech")) {
+      var target = document.getElementById("patterns");
+      if (target && !location.hash) target.scrollIntoView();
+    }
+    qIn.addEventListener("input", findAndSay);
+    startIn.addEventListener("change", findAndSay);
+    techIn.addEventListener("change", findAndSay);
+    $all("[data-filter]").forEach(function (btn) {
+      btn.addEventListener("click", function () { kind = btn.getAttribute("data-filter"); findAndSay(); });
+    });
+    $all("[data-find-clear]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        qIn.value = ""; startIn.value = ""; techIn.value = ""; kind = "all";
+        findAndSay(); qIn.focus();
+      });
+    });
+    // "/" jumps to the search box, the way most collections work
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key !== "/" || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      var t = ev.target;
+      if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+      ev.preventDefault();
+      qIn.focus();
+    });
+  }
+
+  /* card previews: the live demo loads over the poster on hover (fine pointers) or keyboard focus, and goes
+     away on leave. Phones keep the poster; a tap opens the entry page. One preview at a time. */
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var saveData = navigator.connection && navigator.connection.saveData;
+  var current = null, hoverTimer = 0;
+  function stopPreview() {
+    clearTimeout(hoverTimer);
+    if (!current) return;
+    var f = current.querySelector("iframe");
+    if (f) { try { f.contentWindow.location.replace("about:blank"); } catch (err) { /* cross-origin never happens here */ } f.remove(); }
+    current.classList.remove("is-live");
+    current = null;
+  }
+  function startPreview(media) {
+    if (current === media) return;
+    stopPreview();
+    if (reduce.matches || saveData) return;
+    current = media;
+    var f = document.createElement("iframe");
+    f.setAttribute("tabindex", "-1");
+    f.setAttribute("aria-hidden", "true");
+    f.setAttribute("title", "Preview");
+    var scale = media.clientWidth / 800;
+    f.style.transform = "scale(" + scale + ")";
+    f.addEventListener("load", function () { if (current === media) media.classList.add("is-live"); });
+    f.src = media.getAttribute("data-preview");
+    media.appendChild(f);
+  }
+  $all(".card").forEach(function (c) {
+    var media = c.querySelector("[data-preview]");
+    if (!media) return;
+    c.addEventListener("pointerenter", function (ev) {
+      if (ev.pointerType !== "mouse" || !fine.matches) return;
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { startPreview(media); }, 140);
+    });
+    c.addEventListener("pointerleave", function () { if (current === media) stopPreview(); else clearTimeout(hoverTimer); });
+    var link = c.querySelector(".card-link");
+    if (link) {
+      link.addEventListener("focus", function () { if (link.matches(":focus-visible")) startPreview(media); });
+      link.addEventListener("blur", function () { if (current === media) stopPreview(); });
+    }
   });
 
   /* copy */
