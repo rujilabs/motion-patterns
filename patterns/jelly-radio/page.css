@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+body { background: #e9efe9; }
+@media (prefers-color-scheme: dark) { body { background: var(--demo-table); } }
+.slots { width: min(560px, 100%); padding: 22px 24px 18px; display: grid; gap: 14px; }
+.slots-head { display: grid; gap: 3px; }
+.shop { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #2f7d4f; }
+@media (prefers-color-scheme: dark) { .shop { color: #6fc596; } }
+.slots-head h1 { font-size: 22px; font-weight: 700; }
+.slots-head .mute { font-size: 13px; }
+.slot-list { border: 0; margin: 0; padding: 0; min-width: 0; --jr-ink: var(--demo-blue); --jr-line: var(--demo-line); }
+.slot-list legend { padding: 0; margin-bottom: 6px; font-size: 13px; font-weight: 650; color: var(--demo-mute); }
+.slot {
+  display: grid; grid-template-columns: auto 1fr auto auto; gap: 14px; align-items: center;
+  padding: 12px 4px; border-top: 1px solid var(--demo-line);
+}
+.slot:last-of-type { border-bottom: 1px solid var(--demo-line); }
+.slot-time { font-weight: 600; }
+.slot-left { font-size: 13px; color: var(--demo-mute); }
+.slot-fee { font-size: 14px; min-width: 64px; text-align: right; }
+.slots-foot { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; font-size: 13px; }
+.slots-foot #total-n { font-weight: 650; }
+@media (max-width: 480px) {
+  .slots { padding: 18px 16px 14px; }
+  .slots-head h1 { font-size: 19px; }
+  .slot { gap: 10px; grid-template-columns: auto 1fr auto; }
+  .slot-left { grid-column: 2; grid-row: 2; margin-top: -10px; }
+  .slot-fee { grid-column: 3; grid-row: 1; min-width: 0; }
+}
+@media (max-height: 560px) and (min-width: 481px) {
+  .slots { gap: 8px; padding-block: 14px 12px; }
+  .slot { padding-block: 7px; }
+}

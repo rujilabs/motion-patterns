@@ -1,0 +1,35 @@
+/* jelly-radio: one jelly dot travels between radio rings, stretching on the way and wobbling as it lands (jelly-radio.js adds .jr-live). */
+.jelly-radio { position: relative; --jr-size: 22px; --jr-dot: 12px; --jr-ink: #3d7bf2; --jr-line: #c3cbd6; }
+.jr-option { position: relative; display: flex; align-items: center; gap: 12px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+/* the real radio stays in the page: arrow keys, Tab and screen readers work as usual */
+.jr-option > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.jr-ring {
+  flex: none; position: relative; box-sizing: border-box;
+  width: var(--jr-size); height: var(--jr-size); border-radius: 50%;
+  border: 2px solid var(--jr-line);
+  transition: border-color var(--dur-quick) var(--ease-out);
+}
+.jr-ring::after {
+  content: ""; position: absolute; border-radius: 50%;
+  inset: calc((var(--jr-size) - 4px - var(--jr-dot)) / 2);
+  background: var(--jr-ink); scale: 0;
+  transition: scale var(--dur-quick) var(--ease-spring);
+}
+.jr-option > input:checked + .jr-ring { border-color: var(--jr-ink); }
+.jr-option > input:checked + .jr-ring::after { scale: 1; }
+.jr-option > input:focus-visible + .jr-ring { outline: 2px solid var(--jr-ink); outline-offset: 3px; }
+.jr-option:has(> input:disabled) { cursor: not-allowed; }
+.jr-option > input:disabled ~ * { opacity: .45; }
+
+/* jelly-radio.js: one dot travels between the rings instead */
+.jr-live .jr-ring::after { display: none; }
+.jr-dot {
+  position: absolute; left: 0; top: 0; pointer-events: none;
+  width: var(--jr-dot); height: var(--jr-dot); border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, rgb(255 255 255 / .6), rgb(255 255 255 / 0) 42%), var(--jr-ink);
+}
+.jr-dot[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .jr-ring, .jr-ring::after { transition: none; }
+}
