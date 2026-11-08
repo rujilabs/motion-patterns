@@ -1,0 +1,15 @@
+{
+  "name": "Border orbit",
+  "slug": "border-orbit",
+  "kind": "pattern",
+  "summary": "A soft light runs round the featured card's border on a loop: a conic gradient whose angle is animated through @property, with a glow behind and a pause switch.",
+  "category": "light",
+  "tech": [
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
