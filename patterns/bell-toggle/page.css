@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+body { background: #e6eeea; }
+@media (prefers-color-scheme: dark) { body { background: #131a17; } }
+.times { width: min(520px, 100%); padding: 22px 24px 16px; display: grid; gap: 12px; }
+.times-head { display: grid; gap: 3px; }
+.place { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #1f7a52; }
+.times-head h1 { font-size: 22px; font-weight: 700; }
+.times-head .mute { font-size: 13px; }
+.prayers { border-top: 1px solid var(--demo-line); }
+.prayers li { border-bottom: 1px solid var(--demo-line); }
+.prayers .bell { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; width: 100%; padding: 6px 0 6px 2px; }
+.p-name { font-weight: 650; }
+.p-name small { display: block; font-weight: 400; font-size: 13px; color: var(--demo-mute); }
+.p-time { font-size: 17px; font-weight: 600; }
+.p-next { margin-left: 6px; font-size: 11px; font-weight: 650; padding: 2px 7px; border-radius: 99px; background: #1f7a52; color: #fff; vertical-align: 2px; }
+@media (prefers-color-scheme: dark) {
+  .place { color: #6fcf9f; }
+  .prayers .bell { --bell-on: #6fcf9f; --bell-off: #6b7480; --bell-tint: #1d3329; }
+}
+.times-foot { font-size: 13px; }
+@media (max-width: 480px) {
+  .times { padding: 18px 16px 14px; }
+  .times-head h1 { font-size: 19px; }
+  .prayers .bell { gap: 10px; }
+}
+@media (max-height: 600px) and (min-width: 481px) {
+  .times { gap: 6px; padding-block: 14px 10px; }
+  .prayers .bell { padding-block: 1px; }
+}

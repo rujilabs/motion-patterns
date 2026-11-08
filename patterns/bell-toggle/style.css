@@ -1,0 +1,17 @@
+/* bell-toggle: a checkbox switch drawn as a bell; bell-toggle.js swings it and its clapper when it turns on, a slash draws across when off. */
+.bell { position: relative; display: inline-flex; align-items: center; gap: 12px; cursor: pointer; --bell-on: #1f7a52; --bell-off: #9aa3ae; --bell-tint: #e2f2e9; -webkit-tap-highlight-color: transparent; }
+.bell > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.bell-btn { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--bell-off); transition: background-color var(--dur-quick), color var(--dur-quick); }
+.bell-btn svg { width: 30px; height: 30px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bell-swing, .bell-clap { transform-box: view-box; transform-origin: 20px 6px; }
+.bell-clap { fill: currentColor; stroke: none; }
+.bell-body { fill: transparent; transition: fill var(--dur-quick); }
+.bell-wave { opacity: 0; transform-box: fill-box; }
+.bell-slash { stroke-dasharray: 32; transition: stroke-dashoffset var(--dur-base) var(--ease-out); }
+.bell > input:checked + .bell-btn { color: var(--bell-on); background: var(--bell-tint); }
+.bell > input:checked + .bell-btn .bell-body { fill: currentColor; }
+.bell > input:checked + .bell-btn .bell-slash { stroke-dashoffset: 32; }
+.bell > input:focus-visible + .bell-btn { outline: 2px solid var(--bell-on); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .bell-btn, .bell-body, .bell-slash { transition: none; }
+}

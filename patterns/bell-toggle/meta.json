@@ -1,0 +1,21 @@
+{
+  "name": "Bell toggle",
+  "slug": "bell-toggle",
+  "kind": "pattern",
+  "summary": "A switch drawn as a bell. Turn it on and the bell swings on its hanger while the clapper strikes the rim a beat behind; turn it off and a slash draws across it.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--dur-base",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
