@@ -1,0 +1,20 @@
+{
+  "name": "Magic bento",
+  "slug": "magic-bento",
+  "kind": "pattern",
+  "summary": "A bento grid whose card borders light up near the pointer, as if one lamp moved over the whole grid. Keyboard focus moves the light to the focused card.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--dur-quick",
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
