@@ -1,0 +1,23 @@
+/*
+ * electric-border: a card edged with a crackling line of current. electric-border.js draws it on
+ * canvas.eb-canvas, which reaches --eb-pad past the card on every side so the glow has room, and
+ * follows the card's border-radius. Without the script, a plain glowing border stands in.
+ */
+.eb {
+  --eb-color: #7cf3ff;  /* the glow */
+  --eb-core: #f2feff;   /* the bright line in the middle */
+  --eb-pad: 18px;
+  --eb-line: 1.5px;     /* the fallback border; the canvas is set out by it too */
+  position: relative;
+  border: var(--eb-line) solid var(--eb-color);
+  box-shadow: 0 0 14px -2px var(--eb-color);
+}
+.eb-live { border-color: transparent; box-shadow: none; }
+.eb-canvas { position: absolute; inset: calc(-1 * (var(--eb-pad) + var(--eb-line))); pointer-events: none; display: none; }
+.eb-live .eb-canvas { display: block; }
+.eb > :not(.eb-canvas) { position: relative; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* electric-border.js draws one still frame and stops */
+  .eb-canvas { transition: none; }
+}

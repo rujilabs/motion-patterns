@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. A batik label's limited drop, at night. */
+body { background: #0c1222; color: #e8eef8; }
+.shelf { width: min(380px, 100% - 10px); display: grid; gap: 22px; }
+.drop {
+  --eb-color: #6fe8ff;
+  padding: 24px 24px 22px; border-radius: 18px; display: grid; gap: 12px;
+  background: linear-gradient(160deg, #18233f, #101830 70%);
+}
+.tag { justify-self: start; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6fe8ff; }
+.drop h1 { font-size: clamp(32px, 9vw, 42px); font-weight: 780; letter-spacing: -.03em; }
+.desc { color: #a9b6cc; font-size: 15px; text-wrap: pretty; }
+.facts { display: grid; border-top: 1px solid #26324f; }
+.facts div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #26324f; font-size: 14px; }
+.facts dt { color: #8d9ab2; }
+.facts dd { font-weight: 650; }
+.cta {
+  margin-top: 4px; display: block; text-align: center; text-decoration: none; font-weight: 700; font-size: 15px;
+  padding: 12px 16px; border-radius: 10px; background: #6fe8ff; color: #07202a;
+}
+.cta:focus-visible, .ctl:focus-visible { outline-color: #6fe8ff; }
+.under { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.under .mute { color: #8d9ab2; }
+.ctl {
+  font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 14px; min-height: 34px; border-radius: 999px;
+  border: 1px solid #33405f; background: transparent; color: #e8eef8; cursor: pointer;
+}
+.ctl[aria-pressed="true"] { background: #e8eef8; color: #0c1222; }
+html:not(.js) .ctl { display: none; }
+@media (prefers-reduced-motion: reduce) { .ctl { display: none; } }
