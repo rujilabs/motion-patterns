@@ -1,0 +1,52 @@
+/* holo-card: foil (.holo-foil) whose colours slide with the tilt. holo-card.js sets --px, --py; html.js sways --sx, --sy. */
+@property --sx { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --sy { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --sway { syntax: "<number>"; inherits: true; initial-value: 1; }
+
+.holo-stage { perspective: 1000px; }
+.holo {
+  --px: 0;
+  --py: 0;
+  --sx: .3;                     /* the still angle, without the script */
+  --sy: -.2;
+  --tx: calc(var(--px) + var(--sx) * var(--sway));
+  --ty: calc(var(--py) + var(--sy) * var(--sway));
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: rotateY(calc(var(--tx) * 16deg)) rotateX(calc(var(--ty) * -12deg));
+  transition: --sway .8s var(--ease-out);
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.js .holo { animation: holo-sway-x 7.4s var(--ease-inout) infinite alternate, holo-sway-y 5.3s var(--ease-inout) infinite alternate; }
+.holo.is-held { --sway: 0; }
+.holo.is-paused, .holo.is-away { animation-play-state: paused; }
+@keyframes holo-sway-x { from { --sx: -.45; } to { --sx: .45; } }
+@keyframes holo-sway-y { from { --sy: .35; } to { --sy: -.35; } }
+
+/* spectrum, grating, and a silver band that runs the other way */
+.holo-foil {
+  background:
+    repeating-linear-gradient(62deg, rgb(255 255 255 / .18) 0 1px, transparent 1px 4px),
+    linear-gradient(105deg, transparent 30%, rgb(255 255 255 / .55) 48%, transparent 66%),
+    linear-gradient(115deg, #c3b4ea, #9fd3e6, #b3e3c2, #eee0a2, #f0bcc6, #c3b4ea, #9fd3e6, #b3e3c2);
+  background-size: 100% 100%, 300% 300%, 400% 400%;
+  background-position: 0 0,
+    calc(50% - var(--tx) * 60%) calc(50% - var(--ty) * 40%),
+    calc(50% + var(--tx) * 45%) calc(50% + var(--ty) * 35%);
+}
+.holo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at calc(50% + var(--tx) * 55%) calc(40% + var(--ty) * 55%), rgb(255 255 255 / .22), transparent 60%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .holo { animation: none; }
+  .holo { transition: none; }
+}

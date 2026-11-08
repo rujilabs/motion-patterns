@@ -1,0 +1,19 @@
+{
+  "name": "Holo card",
+  "slug": "holo-card",
+  "kind": "pattern",
+  "summary": "A membership card with holographic foil: the pastel spectrum and fine grating slide as the card tilts to the pointer, a finger or the arrow keys, and it sways gently on its own until held.",
+  "category": "light",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

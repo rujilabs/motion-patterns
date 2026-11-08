@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holo card demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="holo-card.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="gc" aria-labelledby="gc-h">
+    <header class="gc-head">
+      <p class="gc-kicker">Besi 7 Gym, Kota Damansara</p>
+      <h1 id="gc-h">Your pass for gate 2</h1>
+    </header>
+
+    <div class="holo-stage gc-hold">
+      <div class="holo gc-card" id="gc-card" tabindex="0" role="group" aria-roledescription="membership card"
+        aria-label="Besi 7 annual member card. Nurul Aina Rahman, member B7-04817, valid to October 2027." aria-describedby="gc-hint">
+        <div class="holo-foil gc-mesh" aria-hidden="true"></div>
+        <div class="holo-foil gc-strip" aria-hidden="true"></div>
+        <div class="holo-foil gc-seal" aria-hidden="true"><span>7</span></div>
+        <p class="gc-brand"><span class="holo-foil">BESI&nbsp;7</span></p>
+        <p class="gc-tier">Annual member</p>
+        <div class="gc-who">
+          <p class="gc-name">Nurul Aina Rahman</p>
+          <p class="gc-no num">B7-04817 <span aria-hidden="true">·</span> valid to 10/27</p>
+        </div>
+      </div>
+    </div>
+
+    <dl class="gc-facts">
+      <div><dt>Visits in November</dt><dd class="num">6 of 12</dd></div>
+      <div><dt>Next class</dt><dd>Wed 11 Nov, 7:15 pm, kettlebell, studio 2</dd></div>
+    </dl>
+    <div class="gc-foot">
+      <p class="gc-hint" id="gc-hint">Move over the card, or Tab to it and use the arrow keys.</p>
+      <button class="gc-pause" type="button" aria-pressed="false" data-holo-pause="gc-card">Pause sway</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>
