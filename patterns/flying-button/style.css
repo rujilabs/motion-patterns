@@ -1,0 +1,16 @@
+/* flying-button: a submit button whose paper folds into a plane and flies off (flying-button.js), then comes back as a Sent state. */
+.fly-btn { --fly-paper: #c2521b; --fly-sent: #1f7a52; position: relative; display: inline-grid; place-items: center; min-width: 168px; height: 48px; padding: 0 24px; border: 0; background: none; font: inherit; font-weight: 650; color: var(--fly-text, #fff); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.fly-btn > * { grid-area: 1 / 1; }
+.fly-paper { position: absolute; inset: 0; border-radius: 10px; background: var(--fly-paper); transition: background-color var(--dur-quick); }
+/* the wing fold, shaded once the plane is folded */
+.fly-paper::after { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / .28); clip-path: polygon(22% 56%, 100% 50%, 26% 92%); opacity: 0; }
+.fly-label, .fly-done { position: relative; display: inline-flex; align-items: center; gap: 8px; }
+.fly-done { opacity: 0; }
+.fly-done svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.fly-btn.is-sent .fly-paper { background: var(--fly-sent); }
+.fly-btn.is-sent .fly-label { opacity: 0; }
+.fly-btn.is-sent .fly-done { opacity: 1; }
+.fly-btn:focus-visible { outline: 2px solid var(--fly-paper); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .fly-paper { transition: none; }
+}
