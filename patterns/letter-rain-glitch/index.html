@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Letter rain glitch demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="letter-rain-glitch.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="down letter-rain" aria-labelledby="down-h">
+    <canvas class="lr-canvas" aria-hidden="true"></canvas>
+    <div class="notice">
+      <p class="brand">Koperasi Seri Mutiara <span>Member portal</span></p>
+      <h1 id="down-h">We are moving your accounts to a new server tonight.</h1>
+      <p class="when num">Sunday 15 November, 1:00 am to 4:30 am</p>
+      <p>Transfers you queued before 12:55 am still go through at 6:00 am. Your savings and dividend of 4.15% are not affected.</p>
+      <ol class="steps" aria-label="Progress">
+        <li class="done"><span>Backup taken, 12:58 am</span></li>
+        <li class="done"><span>Portal closed, 1:00 am</span></li>
+        <li class="now"><span>Copying <span class="num">18,412</span> member records</span></li>
+        <li><span>Checks by the audit team</span></li>
+        <li><span>Portal opens, 4:30 am</span></li>
+      </ol>
+      <p class="help mute">Need help now? Call the counter on <span class="num">03-8921 4470</span> from 8:30 am.</p>
+      <button class="ctl" type="button" data-pause aria-pressed="false">Pause background</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

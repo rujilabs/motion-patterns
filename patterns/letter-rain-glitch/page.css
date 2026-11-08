@@ -1,0 +1,60 @@
+/* Demo page layout for this entry. Not part of the pattern. A co-op maintenance page: linen, teal. */
+:root {
+  --km-table: #e9e6dd;
+  --km-wall: #f3f1ea;
+  --km-paper: #ffffff;
+  --km-ink: #1f2624;
+  --km-mute: #626b68;
+  --km-line: #e0dcd1;
+  --km-teal: #2a6f69;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --km-table: #0e1211;
+    --km-wall: #141917;
+    --km-paper: #1b2220;
+    --km-ink: #e8eeec;
+    --km-mute: #98a4a0;
+    --km-line: #2c3532;
+    --km-teal: #6fcfc3;
+  }
+  .down.letter-rain { --lr-char: #29312e; --lr-head: #6fcfc3; }
+}
+body { background: var(--km-table); color: var(--km-ink); }
+:focus-visible { outline-color: var(--km-teal); }
+
+.down {
+  width: min(760px, 100%); min-height: 520px; display: grid; place-items: center; padding: 40px 24px;
+  background: var(--km-wall); border: 1px solid var(--km-line); border-radius: 8px;
+}
+.notice {
+  width: min(460px, 100%); padding: 24px 26px 20px; border-radius: 10px; display: grid; gap: 10px;
+  background: var(--km-paper); border: 1px solid var(--km-line);
+}
+.brand { font-size: 13px; font-weight: 700; color: var(--km-teal); }
+.brand span { font-weight: 500; color: var(--km-mute); margin-left: 6px; }
+.notice h1 { font-size: 23px; }
+.when { font-weight: 650; }
+.notice > p:not(.brand):not(.when) { font-size: 14.5px; color: var(--km-mute); }
+.steps { display: grid; gap: 4px; font-size: 13.5px; margin: 4px 0; padding-left: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: flex; gap: 8px; color: var(--km-mute); }
+.steps li::before {
+  content: counter(s); flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 11px; font-weight: 700; border: 1px solid var(--km-line);
+}
+.steps .done { color: var(--km-ink); }
+.steps .done::before { background: var(--km-teal); border-color: var(--km-teal); color: var(--km-paper); }
+.steps .now { color: var(--km-ink); font-weight: 650; }
+.steps .now::before { border-color: var(--km-teal); color: var(--km-teal); }
+.help { font-size: 13px; }
+.ctl {
+  justify-self: start; font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px;
+  border: 1px solid var(--km-line); background: var(--km-paper); color: var(--km-ink); cursor: pointer;
+}
+.ctl[aria-pressed="true"] { background: var(--km-ink); color: var(--km-paper); border-color: var(--km-ink); }
+
+@media (max-width: 520px) {
+  .down { padding: 28px 12px; min-height: 0; }
+  .notice { padding: 18px 16px 16px; }
+  .notice h1 { font-size: 20px; }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Letter rain glitch",
+  "slug": "letter-rain-glitch",
+  "kind": "pattern",
+  "summary": "A calm wall of characters behind a maintenance notice: slow drops light the columns, a character changes now and then, and a row slips sideways for a moment.",
+  "category": "loop",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
