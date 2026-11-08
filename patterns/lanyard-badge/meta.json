@@ -1,0 +1,17 @@
+{
+  "name": "Lanyard badge",
+  "slug": "lanyard-badge",
+  "kind": "pattern",
+  "summary": "A conference badge on a lanyard: drag it and let go and it swings as a damped pendulum, twisting a little on its clip, and settles in about four seconds. Arrow keys nudge it.",
+  "category": "wave",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
