@@ -1,0 +1,21 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.itd-frame { display: grid; grid-template-rows: 1fr auto; background: #f1ece4; color: #211c18; cursor: crosshair; }
+.itd-copy { position: relative; z-index: 1; align-self: center; padding: 0 40px; display: grid; gap: 12px; pointer-events: none; }
+.itd-name { font-size: 13px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #8a4b2f; }
+.itd-copy h1 { max-width: 13ch; font-size: 46px; font-weight: 700; letter-spacing: -.035em; line-height: 1.02; }
+.itd-sub { font-size: 15px; color: #5d544b; }
+.itd-hint { display: none; font-size: 12.5px; color: #8b8178; }
+.it-live .itd-hint { display: block; }
+.it-strip { display: flex; gap: 8px; padding: 0 40px 28px; }
+.it-strip li { flex: 1 1 0; min-width: 0; }
+.it-strip img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.it-shot { --it-w: 116px; border-radius: 3px; box-shadow: 0 10px 24px rgba(30, 20, 10, .22); }
+@media (max-width: 520px) {
+  .itd-copy { padding: 0 18px; gap: 8px; }
+  .itd-copy h1 { font-size: 28px; }
+  .itd-sub { font-size: 13px; }
+  .itd-name { font-size: 11px; }
+  .it-strip { gap: 5px; padding: 0 18px 16px; }
+  .it-shot { --it-w: 76px; }
+}

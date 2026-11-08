@@ -1,0 +1,14 @@
+/*
+ * image-trail: small photos drop where the pointer has been and fade out behind it.
+ * image-trail.js builds a fixed pool of .it-shot images inside .it-layer once, then reuses them in
+ * turn, so the page never grows. Each drop is a Web Animations pop in, hold, fade out.
+ * Without the script, or under reduced motion, the .it-strip row of the same photos shows instead.
+ */
+.it { position: relative; overflow: hidden; touch-action: pan-y; }
+.it-layer { position: absolute; inset: 0; isolation: isolate; pointer-events: none; }
+.it-shot { position: absolute; left: 0; top: 0; width: var(--it-w, 112px); height: auto; aspect-ratio: 3 / 4; object-fit: cover; opacity: 0; }
+.it-live .it-strip { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .it-shot { display: none; }
+}
