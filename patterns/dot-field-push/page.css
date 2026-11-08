@@ -1,0 +1,59 @@
+/* Demo page layout for this entry. Not part of the pattern. An event hall: plum ink, gold. */
+:root {
+  --eh-table: #ece8ee;
+  --eh-paper: #fdfbf8;
+  --eh-ink: #2a1d2e;
+  --eh-mute: #6c6070;
+  --eh-line: #e2dbe3;
+  --eh-plum: #5b2a5e;
+  --eh-gold: #b5811a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --eh-table: #141016;
+    --eh-paper: #1d1720;
+    --eh-ink: #f1eaf2;
+    --eh-mute: #a898ab;
+    --eh-line: #33293a;
+    --eh-plum: #d9a8dc;
+    --eh-gold: #e3b553;
+  }
+  .hall.dot-field { --df-dot: #57495c; --df-near: #e3b553; }
+}
+body { background: var(--eh-table); color: var(--eh-ink); }
+.sheet { background: var(--eh-paper); border-color: var(--eh-line); }
+:focus-visible { outline-color: var(--eh-plum); }
+
+.hall.dot-field { --df-dot: #cbbfcd; --df-near: #b5811a; }
+.hall {
+  width: min(720px, 100%); min-height: 440px; padding: 30px; overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px;
+}
+.hall-copy {
+  max-width: 430px; padding: 20px 22px 22px; border-radius: 10px;
+  background: color-mix(in srgb, var(--eh-paper) 90%, transparent); border: 1px solid var(--eh-line);
+}
+.brand { font-size: 13px; font-weight: 700; color: var(--eh-plum); letter-spacing: .02em; }
+.brand span { font-weight: 500; color: var(--eh-mute); margin-left: 6px; }
+.hall-copy h1 { font-size: 27px; margin-top: 8px; }
+.hall-facts { margin-top: 10px; color: var(--eh-mute); font-size: 14.5px; }
+.hall-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border-radius: 999px;
+  font-weight: 650; font-size: 14.5px; text-decoration: none; border: 1px solid var(--eh-line); background: var(--eh-paper);
+}
+.btn-main { background: var(--eh-plum); border-color: var(--eh-plum); color: var(--eh-paper); }
+.hall-dates {
+  display: grid; gap: 6px; font-size: 13px; padding: 12px 14px; border-radius: 10px;
+  background: color-mix(in srgb, var(--eh-paper) 90%, transparent); border: 1px solid var(--eh-line);
+}
+.hall-dates li { display: grid; }
+.hall-dates .num { font-weight: 650; }
+.hall-dates .mute { color: var(--eh-mute); font-size: 12px; }
+
+@media (max-width: 560px) {
+  .hall { grid-template-columns: minmax(0, 1fr); padding: 120px 14px 14px; min-height: 0; gap: 12px; }
+  .hall-copy { padding: 16px; }
+  .hall-copy h1 { font-size: 22px; }
+  .hall-dates { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Dot field push",
+  "slug": "dot-field-push",
+  "kind": "pattern",
+  "summary": "A hero backdrop of dots on a canvas that part around the pointer like a crowd making way, then spring back. A focused button parts them too.",
+  "category": "tile",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
