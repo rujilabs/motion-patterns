@@ -1,0 +1,23 @@
+/*
+ * dome-gallery: tiles on the inside of a dome, with the viewer standing inside it. Each .dg-tile is
+ * turned (rotateY), raised (rotateX) and pushed out to the wall (translateZ by --dg-r) by
+ * dome-gallery.js; the script turns the whole .dg-sphere to look around. --dg-z moves the sphere
+ * toward the camera so the camera stands inside it; keep --dg-z below --dg-r.
+ * Without the script the tiles are a plain grid.
+ */
+.dg.is-live { position: relative; overflow: hidden; perspective: var(--dg-p, 600px); touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.dg.is-live.is-grabbed { cursor: grabbing; }
+.dg.is-live .dg-sphere { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+.dg.is-live .dg-tile {
+  position: absolute; margin: 0;
+  width: var(--dg-w, 150px); height: var(--dg-h, 190px);
+  left: calc(var(--dg-w, 150px) / -2); top: calc(var(--dg-h, 190px) / -2);
+  backface-visibility: hidden;
+}
+.dg.is-live .dg-tile.is-away { visibility: hidden; }
+.dg-tile img { -webkit-user-drag: none; }
+.dg-open[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dg.is-live .dg-sphere, .dg-open { transition: none; }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Dome gallery",
+  "slug": "dome-gallery",
+  "kind": "pattern",
+  "summary": "Pictures hang on the inside of a dome in CSS 3D, with you standing inside. Drag to look around and it coasts to the nearest one; arrow keys turn it, Enter opens the facing picture large.",
+  "category": "globe",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
