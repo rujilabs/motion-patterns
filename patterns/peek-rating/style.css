@@ -1,0 +1,37 @@
+/* peek-rating: radio stars and a face that peeks over a ledge; --pr-mood (-1 to 1) sets its expression on a spring. */
+@property --pr-mood { syntax: "<number>"; inherits: true; initial-value: .1; }
+@property --pr-rise { syntax: "<percentage>"; inherits: true; initial-value: 34%; }
+
+.peek-rating {
+  --pr-star: #f2b01e; --pr-off: #c9cfd8; --pr-skin: #ffd36b; --pr-ink: #2b2118; --pr-blush: #ff8a7a;
+  --pr-mood: .1; --pr-rise: 34%;
+  transition: --pr-mood 520ms var(--ease-spring), --pr-rise 420ms var(--ease-spring);
+}
+.peek-rating:is(:hover, :focus-within), .peek-rating[data-show]:not([data-show="0"]) { --pr-rise: 0%; }
+.peek-rating[data-show="1"] { --pr-mood: -1; }
+.peek-rating[data-show="2"] { --pr-mood: -.45; }
+.peek-rating[data-show="3"] { --pr-mood: .05; }
+.peek-rating[data-show="4"] { --pr-mood: .62; }
+.peek-rating[data-show="5"] { --pr-mood: 1; }
+
+.pr-face { display: block; width: 88px; height: 72px; margin: 0 auto; overflow: hidden; }
+.pr-head { display: block; width: 100%; height: 100%; overflow: visible; transform: translateY(var(--pr-rise)) rotate(calc(var(--pr-mood) * 6deg)); transform-origin: 50% 100%; }
+.pr-head * { transform-box: fill-box; transform-origin: center; }
+.pr-skin { fill: var(--pr-skin); stroke: var(--pr-ink); stroke-width: 2.5; }
+.pr-eye { fill: var(--pr-ink); transform: scaleY(calc(1 - max(0, var(--pr-mood) - .7) * 2.4)); }
+.pr-brow, .pr-mouth { stroke: var(--pr-ink); stroke-width: 2.5; stroke-linecap: round; fill: none; }
+.pr-brow { transform: translateY(calc(var(--pr-mood) * -1.5px)) rotate(calc(var(--pr-mood) * var(--pr-side, -16deg))); }
+.pr-brow + .pr-brow { --pr-side: 16deg; }
+.pr-cheek { fill: var(--pr-blush); opacity: calc((var(--pr-mood) - .35) * 1.6); }
+.pr-open { fill: var(--pr-ink); }
+
+.pr-stars { display: flex; justify-content: center; gap: 4px; }
+.pr-star { position: relative; display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.pr-star > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.pr-star svg { width: 32px; height: 32px; fill: none; stroke: var(--pr-off); stroke-width: 1.8; stroke-linejoin: round; transition: fill var(--dur-quick), stroke var(--dur-quick); }
+.pr-star.is-lit svg, .peek-rating:not(.pr-live) .pr-star:has(input:checked, ~ .pr-star input:checked) svg { fill: var(--pr-star); stroke: color-mix(in srgb, var(--pr-star), #000 22%); }
+.pr-star > input:focus-visible + svg { outline: 2px solid var(--pr-ring, #3d7bf2); outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .peek-rating, .pr-star svg { transition: none; }
+}

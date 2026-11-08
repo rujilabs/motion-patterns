@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+body { background: #f3ece2; }
+@media (prefers-color-scheme: dark) { body { background: #1c1915; } }
+.meal { width: min(420px, 100%); padding: 22px 24px 20px; display: grid; gap: 14px; text-align: center; }
+.meal-head { display: grid; gap: 3px; }
+.shop { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #b4521f; }
+@media (prefers-color-scheme: dark) { .shop { color: #f0935d; } }
+.meal-head h1 { font-size: 22px; font-weight: 700; }
+.meal-head .mute { font-size: 13px; }
+.meal-items { display: grid; gap: 4px; font-size: 14px; text-align: left; padding: 10px 0; border-block: 1px solid var(--demo-line); }
+.meal-items li { display: flex; justify-content: space-between; gap: 12px; }
+.peek-rating { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 0; }
+.rate-legend { padding: 0; margin: 0 auto 4px; font-size: 13px; font-weight: 650; color: var(--demo-mute); }
+/* the ledge the face peeks over */
+.pr-face { border-bottom: 2px solid var(--demo-ink); width: 132px; padding-inline: 22px; }
+@media (prefers-color-scheme: dark) { .peek-rating { --pr-off: #4a5260; --pr-ring: var(--demo-blue); } }
+.pr-stars { margin-top: 6px; }
+.rate-word { font-weight: 650; min-height: 1.45em; }
+.send {
+  justify-self: center; font: inherit; font-weight: 650; padding: 10px 22px; border-radius: 999px;
+  border: 0; background: var(--demo-ink); color: var(--demo-paper); cursor: pointer;
+}
+@media (max-width: 480px) {
+  .meal { padding: 18px 16px; }
+  .meal-head h1 { font-size: 19px; }
+}
+@media (max-height: 600px) and (min-width: 481px) {
+  .meal { gap: 8px; padding-block: 14px; }
+  .meal-items { padding: 6px 0; }
+}

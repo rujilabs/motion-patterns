@@ -1,0 +1,20 @@
+{
+  "name": "Peek rating",
+  "slug": "peek-rating",
+  "kind": "pattern",
+  "summary": "Five star radios with a small drawn face that peeks over a ledge. Hover previews its mood, a pick sets it: brows, eyes, cheeks and mouth move on a spring as the stars fill.",
+  "category": "form",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

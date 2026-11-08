@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peek rating demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="peek-rating.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <form class="meal sheet" aria-labelledby="meal-h">
+    <header class="meal-head">
+      <p class="shop">Warung Mak Teh, Bangsar</p>
+      <h1 id="meal-h">How was lunch, Farhan?</h1>
+      <p class="mute">Order MT-2291, delivered 1:12 pm</p>
+    </header>
+    <ul class="meal-items">
+      <li><span>Nasi lemak ayam berempah</span><span class="num">RM 13.90</span></li>
+      <li><span>Teh o ais limau</span><span class="num">RM 2.90</span></li>
+    </ul>
+    <fieldset class="peek-rating" id="rate">
+      <legend class="rate-legend">Rate the meal</legend>
+      <span class="pr-face" aria-hidden="true">
+        <svg class="pr-head" viewBox="0 0 88 72">
+          <circle class="pr-skin" cx="44" cy="44" r="26"/>
+          <ellipse class="pr-cheek" cx="27" cy="50" rx="5" ry="3.5"/>
+          <ellipse class="pr-cheek" cx="61" cy="50" rx="5" ry="3.5"/>
+          <path class="pr-brow" d="M29 29.5 37.5 30.5"/>
+          <path class="pr-brow" d="M50.5 30.5 59 29.5"/>
+          <ellipse class="pr-eye" cx="35" cy="38" rx="3.2" ry="4.3"/>
+          <ellipse class="pr-eye" cx="53" cy="38" rx="3.2" ry="4.3"/>
+          <path class="pr-open" d="M37 55Q44 56.1 51 55Z" opacity="0"/>
+          <path class="pr-mouth" d="M37 55Q44 56.1 51 55"/>
+        </svg>
+      </span>
+      <div class="pr-stars">
+        <label class="pr-star"><input type="radio" name="stars" value="1" aria-label="1 star, not good"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></svg></label>
+        <label class="pr-star"><input type="radio" name="stars" value="2" aria-label="2 stars, could be better"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></svg></label>
+        <label class="pr-star"><input type="radio" name="stars" value="3" aria-label="3 stars, okay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></svg></label>
+        <label class="pr-star"><input type="radio" name="stars" value="4" aria-label="4 stars, good"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></svg></label>
+        <label class="pr-star"><input type="radio" name="stars" value="5" aria-label="5 stars, sedap, will order again"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></svg></label>
+      </div>
+    </fieldset>
+    <p class="rate-word" id="word" role="status">Tap a star</p>
+    <button class="send" type="submit">Send rating</button>
+  </form>
+</main>
+</body>
+</html>
