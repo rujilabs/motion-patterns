@@ -1,0 +1,18 @@
+{
+  "name": "Scroll expand media",
+  "slug": "scroll-expand-media",
+  "kind": "pattern",
+  "summary": "A framed photo in a pinned hero opens out to full bleed as the page scrolls: its clip widens while the photo settles from a slight zoom, then a caption rises in.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--rise-y"
+  ],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

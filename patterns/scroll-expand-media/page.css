@@ -1,0 +1,24 @@
+/* Demo page layout for this entry. Not part of the pattern. An island resort's home page. */
+.se-pin { background: var(--demo-paper); }
+.se-top { position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; padding: 18px 20px; }
+.brand { font-size: 14px; font-weight: 700; letter-spacing: -.005em; }
+.hint { padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.se-caption {
+  position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 22px 24px 26px; display: grid; gap: 6px;
+  color: #fff8ec; background: linear-gradient(to top, rgb(14 22 38 / .78), rgb(14 22 38 / 0));
+}
+.se-caption h1 { font-size: clamp(26px, 5.4vw, 42px); font-weight: 720; letter-spacing: -.025em; max-width: 18ch; }
+.se-caption p { font-size: 15.5px; max-width: 46ch; color: #f1e6d6; }
+.after { max-width: 640px; margin: 0 auto; padding: 48px 16px 40vh; display: grid; gap: 12px; }
+.after h2 { font-size: 24px; }
+.after p { font-size: 16px; text-wrap: pretty; }
+@media (max-width: 520px) {
+  .se { --se-x: 10%; --se-y: 24%; }
+  .se-top { padding: 14px 16px; }
+  .se-caption { padding: 18px 16px 22px; }
+}
+@keyframes se-top-out { to { opacity: 0; } }
+@supports (animation-timeline: view()) {
+  .se-top { animation: se-top-out linear both; animation-timeline: --se; animation-range: contain 0% contain 22%; }
+}
+@media (prefers-reduced-motion: reduce) { .se-top { animation: none; color: #fff8ec; } }
