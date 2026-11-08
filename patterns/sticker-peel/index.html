@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sticker peel demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="sticker-peel.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="frame spd-frame" aria-labelledby="spd-h">
+  <article class="spd-card">
+    <div class="spd-photo">
+      <img src="bag.svg" alt="A dark bag of Tenom coffee beans" width="320" height="240">
+      <div class="sp spd-sticker">
+        <p class="sp-under spd-under" id="spd-code"><span class="spd-code"><span>Your code</span><strong>KOPITENOM</strong></span></p>
+        <button class="sp-sticker" type="button" aria-expanded="false" aria-controls="spd-code">
+          <span class="sp-face spd-face"><b>12%</b> off<small>peel me</small></span>
+          <span class="sp-flap" aria-hidden="true"><span class="sp-back"></span></span>
+        </button>
+      </div>
+    </div>
+    <div class="spd-body">
+      <p class="spd-from">Bukit Tenom Roasters, Sabah</p>
+      <h1 id="spd-h">Tenom robusta, dark roast, 500 g</h1>
+      <p class="spd-price"><span class="num">RM 38.90</span><span class="spd-deal">RM 34.23 with the code</span></p>
+    </div>
+  </article>
+</section>
+</main>
+</body>
+</html>

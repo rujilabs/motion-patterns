@@ -1,0 +1,26 @@
+/*
+ * sticker-peel: a square sticker folds back from its bottom-right corner to show what is printed
+ * under it. One number, --sp-k (0 to 100, how far the fold has travelled along each edge, in % of
+ * the side), drives both halves: the face is clipped along the fold line, and the flap is the cut
+ * corner mirrored across that line, showing the sticker's paper back.
+ * Peeks on hover and keyboard focus; sticker-peel.js toggles .is-open on click for touch.
+ */
+@property --sp-k { syntax: "<number>"; inherits: true; initial-value: 0; }
+.sp { --sp-k: 0; position: relative; width: var(--sp-size, 128px); aspect-ratio: 1; transition: --sp-k var(--dur-base) var(--ease-out); }
+@media (hover: hover) { .sp:hover { --sp-k: var(--sp-peek, 72); } }
+.sp:has(:focus-visible) { --sp-k: var(--sp-peek, 72); }
+.sp.is-open { --sp-k: var(--sp-open, 96); }
+.sp-under, .sp-sticker, .sp-face, .sp-flap, .sp-back { position: absolute; inset: 0; border-radius: var(--sp-r, 14px); }
+.sp-sticker { margin: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.sp-face { clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--sp-k) * 1%), calc(100% - var(--sp-k) * 1%) 100%, 0 100%); }
+.sp-flap { pointer-events: none; filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, .28)); }
+.sp-back {
+  transform-origin: 0 0;
+  transform: translate(calc((200 - var(--sp-k)) * 1%), calc((200 - var(--sp-k)) * 1%)) matrix(0, -1, -1, 0, 0, 0);
+  clip-path: polygon(calc(100% - var(--sp-k) * 1%) 100%, 100% 100%, 100% calc(100% - var(--sp-k) * 1%));
+  background: linear-gradient(135deg, #d6cfc1 40%, #fbf8f1 78%, #e4ddcf);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp { transition: none; }
+}
