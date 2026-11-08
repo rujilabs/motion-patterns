@@ -1,0 +1,19 @@
+{
+  "name": "Focus word",
+  "slug": "focus-word",
+  "kind": "pattern",
+  "summary": "A corner-bracket focus frame steps across a tagline word by word: the framed word is sharp, the rest go soft. Point at a word or use the arrow keys to move it; it can be paused.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--ease-out",
+    "--ease-inout"
+  ],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
