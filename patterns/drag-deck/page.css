@@ -1,0 +1,57 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.dd-frame { display: grid; grid-template-rows: auto 1fr; background: #f6f1e8; color: #23201b; }
+.dd-top { display: flex; justify-content: space-between; align-items: end; gap: 12px; padding: 16px 22px 10px; }
+.dd-kicker { font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: #b5523b; }
+.dd-top h1 { font-size: 22px; letter-spacing: -.02em; }
+.dd-when { display: grid; text-align: right; font-weight: 650; font-size: 14px; }
+.dd-when span { font-weight: 400; font-size: 12px; color: #6f675b; }
+
+.deck { display: grid; grid-template-rows: 1fr auto auto; justify-items: center; gap: 10px; min-height: 0; padding: 4px 16px 12px; border-radius: 10px; }
+.deck:focus-visible { outline: 2px solid #b5523b; outline-offset: -4px; }
+.deck-stack { width: min(300px, 100%); min-height: 0; align-self: center; }
+.deck:not(.is-live) .deck-stack { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow-x: auto; gap: 12px; scroll-snap-type: x mandatory; }
+.deck:not(.is-live) .deck-card { scroll-snap-align: center; }
+.deck-card { display: grid; gap: 3px; padding: 10px 10px 14px; border-radius: 14px; background: #fffdf8; border: 1px solid #e3d9c8; box-shadow: 0 1px 2px rgba(60, 40, 20, .08), 0 10px 24px rgba(60, 40, 20, .1); }
+.deck-card img { width: 100%; height: auto; aspect-ratio: 16 / 10; border-radius: 8px; display: block; margin-bottom: 6px; }
+.deck-card h2 { font-size: 16px; letter-spacing: -.01em; }
+.dd-price { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.dd-price small { font-size: 12px; font-weight: 500; color: #6f675b; margin-left: 2px; }
+.dd-facts { font-size: 12.5px; color: #6f675b; }
+.deck-stamp { top: 22px; padding: 4px 12px; border: 3px solid currentColor; border-radius: 8px; font-size: 22px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: rgba(255, 253, 248, .86); }
+.deck-stamp-keep { left: 20px; color: #1f8a57; rotate: -12deg; }
+.deck-stamp-skip { right: 20px; color: #c7432f; rotate: 12deg; }
+.deck-end { display: grid; place-items: center; padding: 24px; border: 2px dashed #d9ccb6; border-radius: 14px; color: #6f675b; text-align: center; font-weight: 600; }
+.deck:not(.is-live) .deck-end { display: none; }
+
+.deck-actions { display: flex; gap: 10px; }
+.deck-actions[hidden] { display: none; }
+.dd-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 16px; border-radius: 20px; border: 1px solid #d9ccb6; background: #fffdf8; color: #23201b; font: 650 14px/1 inherit; font-family: inherit; cursor: pointer; }
+.dd-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.dd-skip { color: #c7432f; }
+.dd-keep { background: #1f8a57; border-color: #1f8a57; color: #fff; }
+.dd-undo { color: #6f675b; font-weight: 550; }
+.dd-btn:disabled { opacity: .45; cursor: default; }
+.dd-btn:focus-visible { outline: 2px solid #b5523b; outline-offset: 2px; }
+.deck-status { min-height: 1.3em; font-size: 12.5px; color: #6f675b; text-align: center; }
+
+@media (max-width: 520px) {
+  .dd-top { padding: 10px 14px 2px; }
+  .dd-top h1 { font-size: 15px; }
+  .dd-kicker { font-size: 10.5px; }
+  .dd-when { font-size: 12px; }
+  .dd-when span { display: none; }
+  .deck { padding: 0 10px 4px; gap: 6px; }
+  .deck-stack { width: min(300px, 100%); }
+  .deck-card { grid-template-columns: 84px 1fr; grid-template-rows: auto auto 1fr; column-gap: 10px; row-gap: 1px; padding: 8px; align-content: start; }
+  .deck-card img { grid-row: 1 / 4; width: 84px; height: 84px; aspect-ratio: 1; object-fit: cover; margin: 0; }
+  .deck-card h2 { font-size: 13px; }
+  .dd-price { font-size: 15px; }
+  .dd-facts { font-size: 11px; }
+  .deck-stamp { font-size: 14px; top: 8px; padding: 1px 7px; border-width: 2px; }
+  .deck-stamp-keep { left: 10px; }
+  .deck-stamp-skip { right: 10px; }
+  .deck-end { padding: 12px; font-size: 13px; }
+  .dd-btn { min-height: 34px; padding: 0 12px; font-size: 13px; }
+  .deck-status { font-size: 11px; }
+}

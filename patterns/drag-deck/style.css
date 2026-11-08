@@ -1,0 +1,32 @@
+/*
+ * drag-deck: a stack of cards you flick off the top, right to keep and left to skip.
+ * drag-deck.js adds .is-live, numbers the cards from the top (--deck-i, capped at 3) and leans the
+ * dragged card (--deck-lean, -1 to 1) so the Keep and Skip stamps fade in as it goes.
+ * Throws and the return on Undo are Web Animations; the cards below step up on a CSS spring.
+ * Without the script the cards are a plain list.
+ */
+.deck.is-live .deck-stack { display: grid; }
+.deck.is-live .deck-stack > * { grid-area: 1 / 1; }
+.deck.is-live .deck-card {
+  position: relative;
+  z-index: calc(10 - var(--deck-i, 0));
+  transform-origin: 50% 100%;
+  transform: translateY(calc(var(--deck-i, 0) * var(--deck-step, 12px))) scale(calc(1 - var(--deck-i, 0) * .05));
+  transition: transform var(--dur-base) var(--ease-spring), opacity var(--dur-quick) var(--ease-out);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+.deck.is-live .deck-card.is-deep { opacity: 0; }
+.deck.is-live .deck-card.is-held { transition: none; cursor: grabbing; }
+.deck.is-live .deck-card.is-out { z-index: 20; pointer-events: none; }
+.deck.is-live .deck-card.is-gone { display: none; }
+.deck-card img { -webkit-user-drag: none; }
+.deck-stamp { position: absolute; opacity: 0; pointer-events: none; }
+.deck.is-live .deck-stamp-keep { opacity: clamp(0, var(--deck-lean, 0) * 1.8, 1); }
+.deck.is-live .deck-stamp-skip { opacity: clamp(0, var(--deck-lean, 0) * -1.8, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .deck.is-live .deck-card { transition: none; }
+}

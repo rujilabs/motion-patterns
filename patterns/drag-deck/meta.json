@@ -1,0 +1,21 @@
+{
+  "name": "Drag deck",
+  "slug": "drag-deck",
+  "kind": "pattern",
+  "summary": "A stack of listing cards: drag or flick the top one right to keep or left to skip, and the cards below step up. Arrow keys and Keep, Skip and Undo buttons do the same.",
+  "category": "panel",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-base",
+    "--dur-quick",
+    "--ease-spring",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
