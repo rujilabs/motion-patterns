@@ -1,0 +1,31 @@
+/*
+ * magic-bento: a bento grid whose card borders light up near the pointer, as if one lamp moved over the whole
+ * grid. There is one shared position (--mb-x / --mb-y on .mb); each card shifts it by its own offset
+ * (--mb-cx / --mb-cy), so a card next to the pointer glows on the near edge and a card further off barely at all.
+ * The border is a radial gradient masked down to a thin ring; a fainter one washes the card face.
+ * magic-bento.js writes the numbers. Keyboard focus moves the light to the focused card.
+ */
+.mb { --mb-x: -999px; --mb-y: -999px; --mb-on: 0; --mb-r: 240px; --mb-glow: #6d5dfc; --mb-edge: 1.5px; position: relative; touch-action: pan-y; }
+.mb-card { position: relative; isolation: isolate; }
+.mb-card::before, .mb-card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: var(--mb-on); transition: opacity var(--dur-slow) var(--ease-out);
+  --mb-at: calc(var(--mb-x) - var(--mb-cx, 0px)) calc(var(--mb-y) - var(--mb-cy, 0px));
+}
+/* the ring: the gradient is cut down to the border by two masks, one of them clipped to the content box */
+.mb-card::before {
+  padding: var(--mb-edge);
+  background: radial-gradient(var(--mb-r) circle at var(--mb-at), var(--mb-glow), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.mb-card::after {
+  z-index: -1;
+  background: radial-gradient(calc(var(--mb-r) * .7) circle at var(--mb-at), color-mix(in srgb, var(--mb-glow) 14%, transparent), transparent 70%);
+}
+.mb.is-live .mb-card::before, .mb.is-live .mb-card::after { transition-duration: var(--dur-quick); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-card::before, .mb-card::after { transition: none; }
+}
