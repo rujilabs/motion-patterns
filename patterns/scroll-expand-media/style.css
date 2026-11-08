@@ -1,0 +1,31 @@
+/*
+ * scroll-expand-media: a framed photo in a pinned hero grows to full bleed as the page scrolls.
+ * .se is a tall section; .se-pin sticks to the top of the screen while it passes. Over the first
+ * --se-end of that pass the frame's clip opens from inset --se-y --se-x to the whole screen and the
+ * photo inside settles from a slight zoom; .se-caption fades in after. A clip, not a scale: the photo
+ * is revealed, never stretched, and its edges stay sharp.
+ * Where scroll timelines are missing, scroll-expand-media.js drives the same keyframes from the scroll.
+ * Without either, and under reduced motion, the section is one screen tall with the photo full bleed.
+ */
+@keyframes se-open { from { clip-path: inset(var(--se-y, 20%) var(--se-x, 22%) round var(--se-round, 18px)); } to { clip-path: inset(0 round 0); } }
+@keyframes se-settle { from { transform: scale(var(--se-zoom, 1.16)); } }
+@keyframes se-show { from { opacity: 0; transform: translateY(var(--rise-y)); } }
+
+.se { position: relative; }
+.se-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.se-media { position: absolute; inset: 0; margin: 0; overflow: hidden; }
+.se-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+@supports (animation-timeline: view()) {
+  .se { height: var(--se-length, 260vh); view-timeline: --se block; }
+  .se-media, .se-media img, .se-caption { animation-timing-function: linear; animation-fill-mode: both; animation-timeline: --se; }
+  .se-media { animation-name: se-open; animation-range: contain 0% contain var(--se-end, 60%); }
+  .se-media img { animation-name: se-settle; animation-range: contain 0% contain var(--se-end, 60%); }
+  .se-caption { animation-name: se-show; animation-range: contain calc(var(--se-end, 60%) + 4%) contain calc(var(--se-end, 60%) + 22%); }
+}
+.se-live { height: var(--se-length, 260vh); }
+
+@media (prefers-reduced-motion: reduce) {
+  .se, .se-live { height: auto; }
+  .se-media, .se-media img, .se-caption { animation: none; clip-path: none; transform: none; opacity: 1; }
+}
