@@ -1,0 +1,34 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.intro, .outro { display: grid; gap: 10px; max-width: 640px; margin: 0 auto; padding: 28px 16px; }
+.intro { min-height: 55svh; align-content: start; }
+.outro { min-height: 60svh; align-content: start; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.intro h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.done { color: var(--demo-mute); text-align: center; }
+
+/* the scene: the board stays pinned while 260svh of page scrolls past it */
+.scene { height: 260svh; }
+.scene-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: 16px; }
+.board { width: min(720px, 100%); padding: 16px 0 14px; display: grid; gap: 10px; overflow: clip; }
+.board-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 20px; }
+.board-head h2 { font-size: 16px; }
+.ctl { font: 600 13px/1 "Host Grotesk", sans-serif; padding: 8px 12px; min-height: 34px; border-radius: 8px; border: 1px solid var(--demo-line); background: var(--demo-paper); color: var(--demo-ink); cursor: pointer; }
+.ctl[aria-pressed="true"] { background: var(--demo-ink); color: var(--demo-paper); border-color: var(--demo-ink); }
+.ctl[hidden] { display: none; }
+.board-foot { padding: 0 20px; font-size: 13px; }
+
+.ssm-list { display: flex; align-items: center; justify-content: space-around; white-space: nowrap; }
+.hours { background: var(--demo-ink); color: var(--demo-paper); mask-image: none; }
+.hours .ssm-list { padding: 14px 0; font-size: clamp(26px, 6vw, 40px); font-weight: 750; letter-spacing: -.03em; line-height: 1; }
+.hours li::after { content: ""; display: inline-block; width: .32em; height: .32em; margin: 0 .7em; border-radius: 50%; background: var(--demo-red); vertical-align: .14em; }
+.menu .ssm-list { gap: 8px; padding: 4px 0; font-size: 14px; }
+.menu li { padding: 6px 12px; border: 1px solid var(--demo-line); border-radius: 99px; }
+.menu li:first-child { margin-left: 8px; }
+.menu .num { margin-left: 4px; font-weight: 700; color: var(--demo-red); }
+@media (prefers-reduced-motion: reduce) {
+  .scene { height: auto; }
+  .scene-stage { position: static; height: auto; }
+  .ssm-list { justify-content: center; row-gap: 8px; padding-inline: 16px; }
+  .hours .ssm-list { font-size: 22px; }
+  .hours li::after { content: none; }
+}

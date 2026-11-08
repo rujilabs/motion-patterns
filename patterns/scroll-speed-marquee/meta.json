@@ -1,0 +1,16 @@
+{
+  "name": "Scroll speed marquee",
+  "slug": "scroll-speed-marquee",
+  "kind": "pattern",
+  "summary": "An endless row whose speed and direction follow the scroll: faster on a fling down, backwards on the way up, then easing back to its own pace. Pausable.",
+  "category": "scroll",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
