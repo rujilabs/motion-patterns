@@ -1,0 +1,26 @@
+/*
+ * border-orbit: a soft light runs round a card's border. Two layers sit behind .orbit-face, which must
+ * be opaque: ::before is the border itself (a conic gradient, --orbit-w wide), ::after the same light
+ * blurred into a glow. --orbit is a registered angle, so it animates smoothly. Fallback: browsers
+ * without @property cannot tween it and flip from 0deg to 360deg, which look the same, so the light
+ * rests near the top left corner instead of jumping.
+ */
+@property --orbit { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.orbit {
+  --orbit-c: #3d7bf2; --orbit-base: rgb(0 0 0 / .1); --orbit-w: 2px; --orbit-r: 16px; --orbit-dur: 6s;
+  position: relative; isolation: isolate; border-radius: var(--orbit-r);
+}
+.orbit-face { position: relative; height: 100%; border-radius: inherit; background: var(--orbit-bg, #fff); }
+.orbit::before, .orbit::after {
+  content: ""; position: absolute; inset: calc(var(--orbit-w) * -1); z-index: -1; pointer-events: none;
+  border-radius: calc(var(--orbit-r) + var(--orbit-w));
+  background: conic-gradient(from var(--orbit), var(--orbit-base) 0 60%, var(--orbit-c) 80%, #fff 87%, var(--orbit-c) 92%, var(--orbit-base));
+  animation: orbit var(--orbit-dur) linear infinite;
+}
+.orbit::after { --orbit-base: transparent; z-index: -2; filter: blur(12px); opacity: .6; }
+@keyframes orbit { from { --orbit: 0deg; } to { --orbit: 360deg; } }
+.orbit-group:has(.orbit-pause :checked) .orbit::before,
+.orbit-group:has(.orbit-pause :checked) .orbit::after { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit::before, .orbit::after { animation: none; --orbit: 92deg; }
+}
