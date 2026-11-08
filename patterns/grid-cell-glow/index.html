@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid cell glow demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="grid-cell-glow.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="ggd" aria-labelledby="ggd-h">
+    <header class="ggd-head">
+      <p class="ggd-brand">Ruang Kongsi, level 7, Bangsar South</p>
+      <h1 id="ggd-h">Pick a hot desk for Wednesday 11 November</h1>
+      <p class="ggd-sub"><span class="num">21</span> of <span class="num">32</span> desks free. Window row <span class="num">RM 42.00</span>, the rest <span class="num">RM 36.50</span> a day.</p>
+    </header>
+    <div class="gg ggd-plan" role="group" aria-label="Floor plan, level 7. Arrow keys move between desks, Enter picks one." data-gg-reach="1.8">
+      <button type="button" class="gg-cell gg-desk" data-desk="A1" aria-pressed="false">A1</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A2" aria-disabled="true">A2<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A3" aria-pressed="false">A3</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A4" aria-pressed="false">A4</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A5" aria-disabled="true">A5<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A6" aria-disabled="true">A6<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A7" aria-pressed="false">A7</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="A8" aria-pressed="false">A8</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B1" aria-pressed="false">B1</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B2" aria-pressed="false">B2</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B3" aria-disabled="true">B3<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B4" aria-pressed="false">B4</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B5" aria-pressed="false">B5</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B6" aria-pressed="false">B6</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B7" aria-pressed="false">B7</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="B8" aria-disabled="true">B8<span class="vh">, booked</span></button>
+      <div class="gg-cell gg-room gg-span2">Pantry</div>
+      <div class="gg-cell gg-room">Phone 1</div>
+      <div class="gg-cell gg-room">Phone 2</div>
+      <div class="gg-cell gg-room gg-span4">Meeting room Kenari</div>
+      <button type="button" class="gg-cell gg-desk" data-desk="C1" aria-disabled="true">C1<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C2" aria-pressed="false">C2</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C3" aria-pressed="false">C3</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C4" aria-disabled="true">C4<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C5" aria-disabled="true">C5<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C6" aria-pressed="false">C6</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C7" aria-pressed="false">C7</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="C8" aria-pressed="false">C8</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D1" aria-pressed="false">D1</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D2" aria-disabled="true">D2<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D3" aria-pressed="false">D3</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D4" aria-pressed="false">D4</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D5" aria-pressed="false">D5</button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D6" aria-disabled="true">D6<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D7" aria-disabled="true">D7<span class="vh">, booked</span></button>
+      <button type="button" class="gg-cell gg-desk" data-desk="D8" aria-pressed="false">D8</button>
+    </div>
+    <p class="ggd-pick" id="pick" role="status">No desk picked yet. Window side faces Jalan Kerinchi.</p>
+  </section>
+</main>
+</body>
+</html>

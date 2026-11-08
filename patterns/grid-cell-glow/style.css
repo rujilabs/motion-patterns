@@ -1,0 +1,20 @@
+/*
+ * grid-cell-glow: cells of a grid light up by their distance to the pointer, like lamps over a floor plan.
+ * grid-cell-glow.js sets --gg (0 to 1) on every .gg-cell; this file turns it into the light.
+ * Focus a cell and the light sits on it, so the keyboard gets the same thing. Without the script,
+ * focus and hover still light a single cell.
+ */
+.gg { --gg-cell: #252d3b; --gg-lit: #ffc95c; --gg-line: #3a4456; display: grid; touch-action: pan-y; }
+.gg-cell {
+  --gg: 0;
+  background-color: color-mix(in oklab, var(--gg-lit) calc(var(--gg) * 72%), var(--gg-cell));
+  border: 1px solid color-mix(in oklab, var(--gg-lit) calc(var(--gg) * 100%), var(--gg-line));
+  /* the label turns dark once the light is bright enough to need it */
+  color: color-mix(in oklab, var(--gg-ink-lit, #1b1f27) calc(clamp(0, (var(--gg) - .42) * 6, 1) * 100%), var(--gg-ink, #e9edf3));
+}
+.gg:not(.gg-live) .gg-cell:is(:hover, :focus-visible) { --gg: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* grid-cell-glow.js moves the light without easing and skips the sweep on first view */
+  .gg-cell { transition: none; }
+}

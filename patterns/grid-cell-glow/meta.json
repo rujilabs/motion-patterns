@@ -1,0 +1,16 @@
+{
+  "name": "Grid cell glow",
+  "slug": "grid-cell-glow",
+  "kind": "pattern",
+  "summary": "Cells of a grid light up by their distance to the pointer, like lamps over a floor plan. Focus a cell and the light sits on it; arrow keys move between cells.",
+  "category": "tile",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
