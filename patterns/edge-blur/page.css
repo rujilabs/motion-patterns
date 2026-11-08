@@ -1,6 +1,6 @@
 /* Demo page layout for this entry. Not part of the pattern. */
 .wrap { width: min(460px, 100%); display: grid; gap: 10px; }
-.hint { justify-self: start; color: var(--demo-mute); font-size: 12.5px; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
 .panel { overflow: clip; border-radius: 14px; }
 .list { --edge-blur-h: 44px; --edge-blur-tint: var(--demo-paper); height: min(470px, calc(100svh - 110px)); min-height: 260px; overflow-y: auto; overscroll-behavior: contain; }
 .list:focus-visible { outline-offset: -2px; }
