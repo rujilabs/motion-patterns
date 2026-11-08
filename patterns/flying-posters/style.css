@@ -1,0 +1,43 @@
+/*
+ * flying-posters: as the page scrolls, posters fly out of the distance toward the viewer and past
+ * the camera, one after another, while the section holds still (sticky). flying-posters.js numbers
+ * the posters (--fp-i of --fp-n), scatters them round the centre (--fp-x, --fp-y, in % of a poster)
+ * and adds .fp-on. Where scroll timelines exist each poster owns a slice of the section's view
+ * timeline; elsewhere the script scrubs the same paused animation from the scroll position.
+ * Without the script, and under reduced motion, the posters are a plain grid.
+ */
+@keyframes fp-fly {
+  from { opacity: 0; transform: translate3d(var(--fp-x), var(--fp-y), var(--fp-far, -1800px)); }
+  14% { opacity: 1; }
+  80% { opacity: 1; }
+  to { opacity: 0; transform: translate3d(var(--fp-x), var(--fp-y), var(--fp-near, 520px)); }
+}
+.fp.fp-on { height: calc(100svh + var(--fp-n) * var(--fp-gap, 55svh)); }
+.fp.fp-on .fp-view { position: sticky; top: 0; height: 100svh; overflow: hidden; perspective: var(--fp-depth, 700px); }
+.fp.fp-on .fp-list { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; transform-style: preserve-3d; }
+.fp.fp-on .fp-poster {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--fp-w, 220px); margin: calc(var(--fp-w, 220px) * -.72) 0 0 calc(var(--fp-w, 220px) / -2);
+  animation: fp-fly 1s linear both;
+  will-change: transform, opacity;
+}
+@supports (animation-timeline: view()) {
+  .fp.fp-on { view-timeline: --fp block; }
+  .fp.fp-on .fp-poster {
+    animation-timeline: --fp;
+    /* each poster flies over --fp-span of the hold; starts are spread evenly across the rest */
+    animation-range:
+      contain calc((100% - var(--fp-span, 40%)) * var(--fp-i) / max(1, var(--fp-n) - 1))
+      contain calc((100% - var(--fp-span, 40%)) * var(--fp-i) / max(1, var(--fp-n) - 1) + var(--fp-span, 40%));
+  }
+}
+@supports not (animation-timeline: view()) {
+  .fp.fp-on .fp-poster { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp.fp-on { height: auto; }
+  .fp.fp-on .fp-view { position: static; height: auto; overflow: visible; }
+  .fp.fp-on .fp-list { position: static; }
+  .fp.fp-on .fp-poster { position: static; margin: 0; animation: none; }
+}

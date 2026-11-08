@@ -1,0 +1,16 @@
+{
+  "name": "Flying posters",
+  "slug": "flying-posters",
+  "kind": "pattern",
+  "summary": "Posters fly out of the dark toward the viewer and past the camera, one after another, as the page scrolls through a held section. CSS scroll timelines, with a script fallback.",
+  "category": "camera",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
