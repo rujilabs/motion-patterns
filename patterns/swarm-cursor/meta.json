@@ -1,0 +1,16 @@
+{
+  "name": "Swarm cursor",
+  "slug": "swarm-cursor",
+  "kind": "pattern",
+  "summary": "A small swarm of bees on a canvas that follows the pointer in a loose cloud and, when it leaves, drifts back to circle the honey jar.",
+  "category": "emphasis",
+  "tech": [
+    "canvas",
+    "js"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
