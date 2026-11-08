@@ -1,0 +1,27 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid #e6dfd3; }
+.ft-frame { display: grid; align-content: center; gap: 14px; padding: 28px 34px; background: #f7f3ec; color: #2a2620; }
+.ft-kicker { font-size: 12.5px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: #8a7d6a; }
+.ft-title { font-size: 44px; font-weight: 760; letter-spacing: 0; line-height: 1.4; }
+/* each letter is a square of origami paper */
+.ft-title .fold-word { margin-right: .12em; }
+.ft-title .fold-ch { width: 1.02em; margin-right: .06em; text-align: center; border-radius: 3px; color: #fff; background: #d8452b; }
+.ft-title .fold-ch:nth-child(4n + 2) { background: #2f4f8f; }
+.ft-title .fold-ch:nth-child(4n + 3) { background: #e3a521; color: #2a2620; }
+.ft-title .fold-ch:nth-child(4n + 4) { background: #2a8a7a; }
+.ft-lede { max-width: 46ch; font-size: 15.5px; color: #4f483d; }
+.ft-facts { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 22px; }
+.ft-facts dt { font-size: 12px; color: #8a7d6a; }
+.ft-facts dd { margin: 2px 0 0; font-size: 14px; font-weight: 650; }
+.ft-replay { justify-self: start; font: inherit; font-size: 13px; font-weight: 650; padding: 7px 14px; border-radius: 999px; border: 1px solid #2a2620; background: transparent; color: inherit; cursor: pointer; }
+@media (max-width: 520px) {
+  .ft-frame { padding: 14px 16px; gap: 7px; }
+  .ft-kicker { font-size: 10.5px; }
+  .ft-title { font-size: 25px; }
+  .ft-lede { font-size: 12.5px; }
+  .ft-facts { grid-template-columns: 1fr 1fr; gap: 4px 14px; }
+  .ft-facts div:first-child { grid-column: 1 / -1; }
+  .ft-facts dt { font-size: 11px; }
+  .ft-facts dd { font-size: 12px; margin: 0; }
+  .ft-replay { font-size: 12px; padding: 5px 11px; }
+}

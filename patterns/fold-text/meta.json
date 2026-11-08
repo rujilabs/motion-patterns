@@ -1,0 +1,21 @@
+{
+  "name": "Fold text",
+  "slug": "fold-text",
+  "kind": "pattern",
+  "summary": "A title unfolds letter by letter like a strip of folded paper: each letter panel hinges open on its left edge after the one before it, and a crease shadow lifts off it.",
+  "category": "type",
+  "tech": [
+    "css",
+    "js"
+  ],
+  "tokens": [
+    "--dur-slow",
+    "--ease-paper",
+    "--ease-out",
+    "--stagger"
+  ],
+  "trigger": "in-view",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
