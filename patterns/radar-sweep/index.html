@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar sweep demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="../../play.js"></script>
+<script src="radar-sweep.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+  <section class="ride sheet radar" aria-labelledby="ride-h">
+    <div class="ride-map">
+      <canvas class="rs-canvas" id="radar" data-period="2200" data-rings="300 m,600 m,900 m" aria-hidden="true"></canvas>
+      <button class="ctl" type="button" data-pause aria-pressed="false" hidden>Pause</button>
+    </div>
+    <div class="ride-info">
+      <p class="brand">Tumpang <span>Motorbike ride</span></p>
+      <dl class="trip">
+        <div><dt>Pickup</dt><dd>KL Sentral, Level 1, Door 3</dd></div>
+        <div><dt>Drop off</dt><dd>Bangsar South, 2.9 km</dd></div>
+        <div><dt>Fare</dt><dd class="num">RM 6.40</dd></div>
+      </dl>
+      <div class="ride-state" id="state" data-state="search">
+        <h1 id="ride-h">Finding a rider near you</h1>
+        <p class="seen mute" id="seen-line" aria-hidden="true" hidden><span class="num" id="seen">0</span> riders spotted within 900 m</p>
+        <div class="rider">
+          <p class="rider-name">Faizal is on the way</p>
+          <p class="mute">Blue scooter, <span class="num">WXK 4721</span>. <b class="num">3 min</b> away, 4.9 stars from 1,284 rides.</p>
+        </div>
+        <p class="vh" role="status" id="status">Finding a rider near you.</p>
+      </div>
+      <button class="again" type="button" id="again" hidden>Search again</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>

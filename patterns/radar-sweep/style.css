@@ -1,0 +1,25 @@
+/*
+ * radar-sweep: a radar that sweeps for nearby points and stops on the one found. radar-sweep.js
+ * draws it on canvas.rs-canvas and reads these colours. Without the script the canvas shows the
+ * rings as a CSS still.
+ */
+.rs-canvas {
+  --rs-disc: #eaf3ee;     /* the disc */
+  --rs-ring: #c9dcd1;     /* distance rings and cross hairs */
+  --rs-label: #6b7f74;    /* ring distances */
+  --rs-sweep: #138a5e;    /* the arm, its glow and the points */
+  --rs-found: #e2541f;    /* the point that was found */
+  --rs-you: #1c2723;      /* the centre */
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, var(--rs-you) 0 6px, var(--rs-disc) 7px calc(33.3% - 1px), var(--rs-ring) 0 33.3%,
+    var(--rs-disc) 0 calc(66.6% - 1px), var(--rs-ring) 0 66.6%, var(--rs-disc) 0 calc(100% - 1px), var(--rs-ring) 0 100%, transparent 0);
+}
+.rs-canvas.is-live { background: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* radar-sweep.js does not turn the arm: the points show faintly, then found() draws the end */
+  .rs-canvas { transition: none; }
+}
