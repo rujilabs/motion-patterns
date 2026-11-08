@@ -1,0 +1,36 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.intro, .outro { display: grid; gap: 10px; max-width: 520px; margin: 0 auto; padding: 28px 16px; }
+.intro { min-height: 60svh; align-content: start; }
+.outro { min-height: 70svh; align-content: start; }
+.hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.intro h1 { font-size: clamp(24px, 6vw, 30px); font-weight: 700; letter-spacing: -.02em; }
+.done { color: var(--demo-mute); text-align: center; }
+
+.stack { --stack-top: 20px; --stack-peek: 14px; --stack-gap: 34svh; max-width: 520px; margin: 0 auto; padding: 0 16px 24svh; }
+.plan {
+  --plan-bg: var(--demo-paper); --plan-ink: var(--demo-ink); --plan-mute: var(--demo-mute); --plan-edge: var(--demo-line);
+  display: grid; gap: 12px; align-content: start; padding: 18px 20px 16px;
+  background: var(--plan-bg); color: var(--plan-ink); border: 1px solid var(--plan-edge); border-radius: 12px;
+}
+.p-flex { --plan-bg: var(--demo-blue-soft); --plan-edge: var(--demo-blue); }
+.p-fixed { --plan-bg: #f4e6d2; --plan-edge: #dcc3a2; --plan-ink: #3a2a18; --plan-mute: #7a6247; }
+.p-studio { --plan-bg: var(--demo-ink); --plan-ink: var(--demo-paper); --plan-mute: var(--demo-line); --plan-edge: var(--demo-ink); }
+@media (prefers-color-scheme: dark) {
+  .p-fixed { --plan-bg: #3a2c1c; --plan-edge: #5a4530; --plan-ink: #f4e6d2; --plan-mute: #c9b292; }
+  .p-studio { --plan-bg: #e9edf3; --plan-ink: #1e2229; --plan-mute: #4a525e; }
+}
+.plan-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.plan h2 { font-size: 18px; }
+.tag { font-size: 12px; font-weight: 600; padding: 3px 8px; border: 1px solid currentColor; border-radius: 99px; color: var(--plan-mute); }
+.price { display: flex; align-items: baseline; gap: 8px; }
+.price .num { font-size: clamp(34px, 9vw, 44px); font-weight: 750; letter-spacing: -.03em; line-height: 1; }
+.per { color: var(--plan-mute); font-size: 14px; }
+.feat { display: grid; gap: 6px; font-size: 14px; }
+.feat li { display: grid; grid-template-columns: 14px 1fr; gap: 8px; }
+.feat li::before { content: ""; width: 8px; height: 8px; margin-top: 6px; border-radius: 2px; background: var(--demo-red); }
+.foot { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--plan-edge); color: var(--plan-mute); font-size: 13px; }
+@media (max-height: 420px) {
+  .plan { gap: 6px; padding-block: 12px; }
+  .price .num { font-size: 28px; }
+  .feat li:nth-child(3) { display: none; }
+}
