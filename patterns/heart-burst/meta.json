@@ -1,0 +1,22 @@
+{
+  "name": "Heart burst",
+  "slug": "heart-burst",
+  "kind": "pattern",
+  "summary": "A save button: the heart pops in on a spring, fills, and a ring of dots bursts out. Unsaving is a quiet shrink while the fill fades. aria-pressed carries the state.",
+  "category": "emphasis",
+  "tech": [
+    "css",
+    "svg",
+    "js"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--dur-base",
+    "--ease-out",
+    "--ease-spring"
+  ],
+  "trigger": "click",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}
