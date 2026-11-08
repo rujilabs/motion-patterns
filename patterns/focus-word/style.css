@@ -1,0 +1,25 @@
+/*
+ * focus-word: a tagline where a corner-bracket focus frame steps from word to word. The word in the
+ * frame is sharp, the rest go soft. focus-word.js moves the frame and adds .fw-on; without it the
+ * line is plain and sharp. The frame is eight thin gradients, so it costs no extra elements.
+ */
+.fw { --fw-c: currentColor; --fw-l: 12px; --fw-pad: 6px; --fw-blur: 4px; position: relative; display: inline-block; }
+.fw-w { display: inline-block; }
+.fw-frame { display: none; }
+.fw-on .fw-w { filter: blur(var(--fw-blur)); opacity: .5; transition: filter .45s var(--ease-out), opacity .45s var(--ease-out); }
+.fw-on .fw-w.is-focus { filter: none; opacity: 1; }
+.fw-on .fw-frame {
+  display: block; position: absolute; left: 0; top: 0; margin: calc(var(--fw-pad) * -1); pointer-events: none;
+  background:
+    linear-gradient(var(--fw-c) 0 0) 0 0 / var(--fw-l) 2px, linear-gradient(var(--fw-c) 0 0) 0 0 / 2px var(--fw-l),
+    linear-gradient(var(--fw-c) 0 0) 100% 0 / var(--fw-l) 2px, linear-gradient(var(--fw-c) 0 0) 100% 0 / 2px var(--fw-l),
+    linear-gradient(var(--fw-c) 0 0) 0 100% / var(--fw-l) 2px, linear-gradient(var(--fw-c) 0 0) 0 100% / 2px var(--fw-l),
+    linear-gradient(var(--fw-c) 0 0) 100% 100% / var(--fw-l) 2px, linear-gradient(var(--fw-c) 0 0) 100% 100% / 2px var(--fw-l);
+  background-repeat: no-repeat;
+  transition: translate .5s var(--ease-inout), width .5s var(--ease-inout), height .5s var(--ease-inout);
+}
+.fw:focus-visible { outline: 2px solid var(--fw-c); outline-offset: 6px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .fw-on .fw-w { filter: none; opacity: 1; transition: none; }
+  .fw-on .fw-frame { display: none; }
+}

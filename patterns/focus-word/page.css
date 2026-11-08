@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. */
+.frame { position: relative; width: min(100%, 640px); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; border: 1px solid var(--demo-line); }
+.bidai {
+  display: grid; align-content: center; gap: 18px; padding: 40px 44px 72px;
+  background: #15171b; color: #f2efe9;
+  background-image: linear-gradient(rgb(255 255 255 / .04) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.bd-kicker { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a9a49b; }
+.bd-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff5a3c; box-shadow: 0 0 0 3px rgb(255 90 60 / .25); }
+.bidai h1 { font-size: 56px; font-weight: 700; line-height: 1.1; letter-spacing: -.03em; max-width: 520px; }
+.bidai .fw { --fw-c: #ffcf4a; --fw-l: 14px; --fw-pad: 7px; outline-color: #ffcf4a; }
+.bd-sub { font-size: 16px; color: #c9c4bb; max-width: 400px; }
+.bd-foot { position: absolute; left: 44px; right: 20px; bottom: 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bd-hint { font-size: 12.5px; color: #8d887f; }
+.bidai .switch { color: #c9c4bb; }
+.bidai .switch input { background: #3a3d44; }
+.bidai .switch input:checked { background: #ffcf4a; }
+.bidai .switch input::after { background: #15171b; }
+.bidai .switch input:not(:checked)::after { background: #f2efe9; }
+@media (max-width: 520px) {
+  .bidai { padding: 18px 18px 50px; gap: 10px; background-size: 24px 24px; }
+  .bd-kicker { font-size: 10px; }
+  .bidai h1 { font-size: 32px; }
+  .bidai .fw { --fw-l: 10px; --fw-pad: 5px; }
+  .bd-sub { font-size: 13px; }
+  .bd-foot { left: 18px; right: 14px; bottom: 12px; }
+  .bd-hint { font-size: 11px; }
+}
