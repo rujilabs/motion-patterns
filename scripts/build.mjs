@@ -203,14 +203,16 @@ function useWhen(e) {
   return hit ? hit[1].trim() : "";
 }
 
-// Entries added in the current release, read from the changelog's newest section.
+// Patterns added in the newest release that added any, read from the changelog (a site-only release is skipped).
 const newest = (() => {
   const log = existsSync(join(ROOT, "CHANGELOG.md")) ? readFileSync(join(ROOT, "CHANGELOG.md"), "utf8") : "";
-  const sec = log.split(/^## \[/m)[1] || "";
-  const version = sec.slice(0, sec.indexOf("]"));
-  const added = (sec.split(/^### /m).find((s) => s.startsWith("Added")) || "");
-  const slugs = [...added.matchAll(/^- \*\*([a-z0-9-]+):\*\*/gm)].map((x) => x[1]);
-  return { version, slugs: new Set(slugs) };
+  const isPattern = new Set(patterns.map((e) => e.slug));
+  for (const sec of log.split(/^## \[/m).slice(1)) {
+    const added = sec.split(/^### /m).find((s) => s.startsWith("Added")) || "";
+    const slugs = [...added.matchAll(/^- \*\*([a-z0-9-]+):\*\*/gm)].map((x) => x[1]).filter((s) => isPattern.has(s));
+    if (slugs.length) return { version: sec.slice(0, sec.indexOf("]")), slugs: new Set(slugs) };
+  }
+  return { version: "", slugs: new Set() };
 })();
 
 // A pattern card: the poster shows the finished frame; studio.js loads the live demo over it on hover or
