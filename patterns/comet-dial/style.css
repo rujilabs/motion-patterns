@@ -1,0 +1,16 @@
+/* comet-dial: a timer dial (role slider) whose canvas comet counts down; comet-dial.js draws it, CSS draws a still dial without the script. */
+.comet-dial {
+  --cd-ink: #ff8a3d; --cd-face: #1c1e23; --cd-track: #33363d; --cd-tick: #8b919c; --cd-text: #f4f1ec; --cd-p: 0;
+  position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; color: var(--cd-text);
+  background: radial-gradient(closest-side, var(--cd-face) 88%, transparent 89%), conic-gradient(var(--cd-ink) calc(var(--cd-p) * 1turn), var(--cd-track) 0);
+  touch-action: none; cursor: grab; user-select: none; -webkit-tap-highlight-color: transparent;
+  transition: box-shadow var(--dur-quick) var(--ease-out);
+}
+.js .comet-dial { background: var(--cd-face); }
+.comet-dial.is-dragging { cursor: grabbing; box-shadow: 0 0 0 6px color-mix(in srgb, var(--cd-ink), transparent 82%); }
+.comet-dial canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cd-read { position: relative; display: grid; justify-items: center; pointer-events: none; }
+.comet-dial:focus-visible { outline: 2px solid var(--cd-ink); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .comet-dial { transition: none; }
+}

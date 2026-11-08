@@ -1,0 +1,20 @@
+{
+  "name": "Comet dial",
+  "slug": "comet-dial",
+  "kind": "pattern",
+  "summary": "A kitchen timer dial. The time left is an arc to a comet head whose tail trails the way it moves and sheds sparks as it counts down. Drag round it or use the keys; Start and Pause.",
+  "category": "drum",
+  "tech": [
+    "css",
+    "js",
+    "canvas"
+  ],
+  "tokens": [
+    "--dur-quick",
+    "--ease-out"
+  ],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
