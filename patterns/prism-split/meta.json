@@ -1,0 +1,17 @@
+{
+  "name": "Prism split",
+  "slug": "prism-split",
+  "kind": "pattern",
+  "summary": "A white beam enters a WebGL glass prism and fans out into a spectrum that swings toward the pointer, behind an optician's hero.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
