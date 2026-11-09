@@ -146,3 +146,12 @@ one agent at a time, released per batch.
 | 3 | crystal-ball | jewellery shop hero: a glass sphere refracts the ring display behind it |
 | 3 | glass-lens | pharmacy leaflet: a glass lens slides over the small print and magnifies it |
 | 3 | elastic-mesh | mattress shop: the fabric mesh dents where you press and springs back |
+
+## After tier C: style-flight (v0.13.0)
+
+Not from the component library: an idea from a social post showing one paper plane flight in ten art styles.
+Concept only, built from scratch, generic style names (no people, studios or toy and console brands).
+
+| Slug | Category | Job |
+|---|---|---|
+| style-flight | scene | animation studio "pick your style" menu: the same paper plane flight previewed in ten looks (pixel, chalkboard, glow sketch, low-poly, comic, flat vector, minimal line, glossy 3D, brick toy, clay figure); hover, focus or tap plays a card, the chosen one opens full size |
