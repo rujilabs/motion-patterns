@@ -1,0 +1,17 @@
+{
+  "name": "Smoke ether",
+  "slug": "smoke-ether",
+  "kind": "pattern",
+  "summary": "Soft peach and eucalyptus smoke rises along analytic curl noise behind a day spa menu and parts round the pointer like round a passing hand.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
