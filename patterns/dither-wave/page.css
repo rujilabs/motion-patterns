@@ -1,0 +1,31 @@
+/* Demo page layout for this entry. Not part of the pattern. A record shop: newsprint cream, label red, sleeve black. */
+.dwd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #2a2420;
+  display: grid; align-items: center; background-color: #1a1714; color: #1a1714;
+}
+.dwd-card {
+  margin-left: 26px; padding: 20px 22px; max-width: 330px; display: grid; gap: 10px; justify-items: start;
+  background: #efe4cf; border: 2px solid #1a1714; border-radius: 4px; box-shadow: 6px 6px 0 #1a1714;
+}
+.dwd-name { font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; color: #b3321b; }
+.dwd-name span { display: block; margin-top: 2px; font-weight: 550; letter-spacing: .02em; text-transform: none; color: #5b5048; }
+.dwd-card h1 { font-size: 25px; font-weight: 750; letter-spacing: -.02em; line-height: 1.1; }
+.dwd-when { font-size: 13.5px; color: #3d342d; }
+.dwd-when .num { white-space: nowrap; }
+.dwd-price { list-style: none; margin: 0; padding: 0; width: 100%; font-size: 13.5px; }
+.dwd-price li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-top: 1px solid #cbbd9f; }
+.dwd-price span { color: #3d342d; }
+.dwd-price b { font-weight: 700; }
+.dwd-btn { font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 4px; background: #1a1714; color: #efe4cf; text-decoration: none; margin-top: 2px; }
+.dwd-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 650;
+  padding: 6px 12px; border-radius: 4px; border: 2px solid #1a1714; background: #efe4cf; color: #1a1714; cursor: pointer;
+}
+.dwd-pause[aria-pressed="true"] { background: #1a1714; color: #efe4cf; border-color: #efe4cf; }
+.dwd :focus-visible { outline: 3px solid #d6452b; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .dwd { aspect-ratio: auto; min-height: 640px; align-items: end; }
+  .dwd-card { margin: 0 18px 64px 12px; padding: 16px; gap: 8px; }
+  .dwd-card h1 { font-size: 22px; }
+  .dwd-pause { right: 12px; bottom: 12px; }
+}

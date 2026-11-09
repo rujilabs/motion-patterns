@@ -1,0 +1,25 @@
+/*
+ * dither-wave: a slow moving gradient in three inks, drawn with an ordered 4 x 4 (Bayer) dither,
+ * with a pool of light that follows the pointer. dither-wave.js draws it with WebGL on .dw-canvas in
+ * these colours (6 digit hex). Without WebGL, script or motion, the canvas keeps this still look:
+ * the same inks as a soft diagonal under a fine dot screen.
+ */
+.dither {
+  --dw-ink: #1a1714;     /* darkest ink */
+  --dw-mid: #d6452b;     /* middle ink */
+  --dw-paper: #efe4cf;   /* paper, the lightest */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.dw-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--dw-ink) 55%, transparent) 1px, transparent 1.4px) 0 0 / 4px 4px,
+    radial-gradient(circle at 74% 42%, var(--dw-paper) 0 12%, transparent 30%),
+    linear-gradient(120deg, var(--dw-ink), var(--dw-mid) 55%, var(--dw-paper));
+}
+.dw-canvas.is-live { background: var(--dw-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* dither-wave.js draws one still frame and hides the Pause button */
+  .dw-pause { display: none; }
+}

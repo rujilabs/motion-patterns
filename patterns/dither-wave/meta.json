@@ -1,0 +1,17 @@
+{
+  "name": "Dither wave",
+  "slug": "dither-wave",
+  "kind": "pattern",
+  "summary": "A slow WebGL gradient in three inks, drawn with an ordered 4 by 4 Bayer dither, drifts behind a record shop hero with a grooved pool of light under the pointer.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
