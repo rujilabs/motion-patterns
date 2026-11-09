@@ -1,0 +1,32 @@
+/*
+ * molten-metal: blobs of molten gold rise, sink, merge and split like a lava lamp behind the content.
+ * molten-metal.js draws it with WebGL on .mo-canvas in these colours (6 digit hex). Without WebGL, script
+ * or motion, the canvas keeps this still: three gold drops with a warm glow on the dark base.
+ */
+.molten {
+  --mo-base: #120b08;    /* the dark workshop */
+  --mo-gold: #ffc254;    /* the gold */
+  --mo-heat: #e8501a;    /* the glow of hot metal */
+  --mo-x: .7;            /* where the blobs rise: 0 to 1 from the left */
+  --mo-spread: .26;      /* how far they wander from it, in heights */
+  --mo-y: 0;             /* their middle height, in heights up from the centre */
+  --mo-rise: .36;        /* how far they rise and sink from it, in heights */
+  --mo-size: 1;          /* blob size */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.mo-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle at 70% 30%, var(--mo-gold) 0 5%, color-mix(in srgb, var(--mo-gold) 55%, var(--mo-heat)) 9%, transparent 9.5%),
+    radial-gradient(circle at 76% 62%, var(--mo-gold) 0 6%, color-mix(in srgb, var(--mo-gold) 55%, var(--mo-heat)) 11%, transparent 11.5%),
+    radial-gradient(circle at 63% 80%, var(--mo-gold) 0 3%, color-mix(in srgb, var(--mo-gold) 55%, var(--mo-heat)) 6%, transparent 6.5%),
+    radial-gradient(ellipse 30% 50% at 70% 55%, color-mix(in srgb, var(--mo-heat) 35%, transparent), transparent),
+    var(--mo-base);
+}
+.mo-canvas.is-live { background: var(--mo-base); }
+.mo-pause[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* molten-metal.js draws one still frame and hides the Pause button */
+  .mo-pause { display: none; }
+}

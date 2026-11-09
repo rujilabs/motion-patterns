@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Molten metal demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="molten-metal.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="molten mod" aria-labelledby="mod-h">
+  <canvas class="mo-canvas" aria-hidden="true"></canvas>
+  <div class="mod-card">
+    <p class="mod-name">Tukang Emas Nordin &amp; Anak <span>Jalan Masjid India, since 1987</span></p>
+    <h1 id="mod-h">Your old gold, melted down and made again by hand.</h1>
+    <dl class="mod-rates">
+      <div><dt>916 gold today</dt><dd class="num">RM 512.40 / g</dd></div>
+      <div><dt>Workmanship from</dt><dd class="num">RM 28.00 / g</dd></div>
+      <div><dt>Ring resizing</dt><dd>ready in <span class="num">3</span> days</dd></div>
+    </dl>
+    <p class="mod-hours">Open <span class="num">10:00 am to 7:30 pm</span>, closed Wednesday</p>
+    <a class="mod-btn" href="#mod-h">Bring in your gold</a>
+  </div>
+  <button type="button" class="mo-pause mod-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>
