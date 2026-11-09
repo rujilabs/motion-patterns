@@ -1,0 +1,24 @@
+/*
+ * silk-fold: a sheet of silk folds slowly behind a hero and catches the light, which follows the pointer.
+ * silk-fold.js draws it with WebGL on .sk-canvas in these colours (6 digit hex). Without WebGL,
+ * script or motion, the canvas keeps this still look: soft diagonal folds in the same silk.
+ */
+.silk {
+  --sk-deep: #22050f;   /* the fold shadows */
+  --sk-silk: #8c1430;   /* the silk in light */
+  --sk-sheen: #e9b58a;  /* the sheen on the fold crests */
+  --sk-gold: #d9a441;   /* the gold weave */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.sk-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    linear-gradient(112deg, var(--sk-deep), transparent 18%, color-mix(in srgb, var(--sk-sheen) 45%, transparent) 30%, transparent 40%, var(--sk-deep) 55%, transparent 66%, color-mix(in srgb, var(--sk-sheen) 30%, transparent) 78%, transparent 88%, var(--sk-deep)),
+    var(--sk-silk);
+}
+.sk-canvas.is-live { background: var(--sk-deep); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* silk-fold.js draws one still frame and hides the Pause button */
+  .sk-pause { display: none; }
+}
