@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crystal ball demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="crystal-ball.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<article class="cbd" aria-labelledby="cbd-h">
+  <div class="crystalball cbd-view">
+    <img class="cb-photo" src="display.svg" alt="Five rings on dusty rose velvet stands along a walnut counter, numbered 1 to 5: a diamond solitaire, a ruby, an emerald trilogy, a sapphire and a plain gold band" width="800" height="600">
+    <div class="cb-still" aria-hidden="true"></div>
+    <canvas class="cb-canvas" aria-hidden="true"></canvas>
+    <button type="button" class="cb-pause cbd-pause" aria-pressed="false" hidden>Pause</button>
+  </div>
+  <div class="cbd-body">
+    <div class="cbd-top">
+      <p class="cbd-name">Permata Lim, Jalan Petaling</p>
+      <h1 id="cbd-h">Rings set by hand, ready in 12 days</h1>
+    </div>
+    <ol class="cbd-rings">
+      <li><span class="cbd-no">1</span> Solitaire, 0.30 ct <b class="num">RM 4,280</b></li>
+      <li><span class="cbd-no">2</span> Ruby, 916 gold <b class="num">RM 2,950</b></li>
+      <li><span class="cbd-no">3</span> Emerald trilogy <b class="num">RM 3,640</b></li>
+      <li><span class="cbd-no">4</span> Sapphire oval <b class="num">RM 3,175</b></li>
+      <li><span class="cbd-no">5</span> Band, 4 mm <b class="num">RM 1,180</b></li>
+    </ol>
+  </div>
+</article>
+</main>
+</body>
+</html>
