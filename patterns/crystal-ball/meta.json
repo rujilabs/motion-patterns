@@ -1,0 +1,18 @@
+{
+  "name": "Crystal ball",
+  "slug": "crystal-ball",
+  "kind": "pattern",
+  "summary": "A jeweller's ring display, redrawn in WebGL, with a glass ball that rolls along the counter toward the pointer and shows the rings behind it refracted and upside down.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
