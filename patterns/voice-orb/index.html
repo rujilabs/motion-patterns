@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice orb demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="voice-orb.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="voiceorb vod" aria-labelledby="vod-h">
+  <canvas class="vo-canvas" aria-hidden="true"></canvas>
+  <div class="vod-call">
+    <p class="vod-bank">Bank Muara <span>Care line</span></p>
+    <h1 id="vod-h">Card services</h1>
+    <p class="vod-num num">1-300-88-4172</p>
+    <p class="vod-time">On call <span class="num">02:41</span> &middot; Nurul, desk 14</p>
+    <p class="vod-state">
+      <span class="vod-on">Nurul can hear you. Say "block my card" or "last 5 transactions".</span>
+      <span class="vod-off">You are muted. Nurul cannot hear you.</span>
+    </p>
+    <div class="vod-actions">
+      <button type="button" class="vo-mute vod-mute" aria-pressed="false" hidden>Mute</button>
+      <a class="vod-end" href="#vod-h">End call</a>
+    </div>
+  </div>
+  <button type="button" class="vo-pause vod-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>

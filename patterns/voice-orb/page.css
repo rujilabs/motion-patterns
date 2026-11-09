@@ -1,0 +1,35 @@
+/* Demo page layout for this entry. Not part of the pattern. A bank's care line: deep green, jade and gold. */
+.vod {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #1f3530;
+  display: grid; align-items: center; background-color: #0d1a17; color: #eef5f1;
+}
+.vod-call { margin-left: 30px; max-width: 270px; display: grid; gap: 8px; justify-items: start; }
+.vod-bank { font-size: 12.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #f2c14e; }
+.vod-bank span { margin-left: 6px; font-weight: 550; letter-spacing: .02em; text-transform: none; color: #a9bcb5; }
+.vod-call h1 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.05; }
+.vod-num { font-size: 15px; font-weight: 600; color: #cfe0d9; }
+.vod-time { font-size: 13.5px; color: #a9bcb5; }
+.vod-state { font-size: 13.5px; color: #dfeee8; padding: 10px 12px; border-radius: 8px; background: rgba(79, 224, 181, .1); border: 1px solid rgba(79, 224, 181, .28); }
+.vod-off { display: none; }
+.vod.is-muted .vod-on { display: none; }
+.vod.is-muted .vod-off { display: inline; }
+.vod.is-muted .vod-state { background: rgba(125, 138, 134, .14); border-color: rgba(125, 138, 134, .4); }
+.vod-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.vod-mute, .vod-end {
+  font: inherit; font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; text-decoration: none;
+}
+.vod-mute { border: 1px solid rgba(238, 245, 241, .45); background: transparent; color: #eef5f1; }
+.vod-mute[aria-pressed="true"] { background: #eef5f1; color: #0d1a17; }
+.vod-end { background: #e0533d; color: #fff; border: 1px solid #e0533d; }
+.vod-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(238, 245, 241, .35); background: rgba(13, 26, 23, .75); color: #eef5f1; cursor: pointer;
+}
+.vod-pause[aria-pressed="true"] { background: #eef5f1; color: #0d1a17; }
+.vod :focus-visible { outline: 2px solid #f2c14e; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .vod { aspect-ratio: auto; min-height: 640px; align-items: end; --vo-x: 0.5; --vo-y: 0.24; --vo-size: 0.15; }
+  .vod-call { margin: 0 16px 64px; max-width: none; }
+  .vod-call h1 { font-size: 26px; }
+  .vod-pause { right: 12px; bottom: 12px; }
+}

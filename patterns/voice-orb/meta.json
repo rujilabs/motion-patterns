@@ -1,0 +1,17 @@
+{
+  "name": "Voice orb",
+  "slug": "voice-orb",
+  "kind": "pattern",
+  "summary": "A glowing WebGL orb on a bank hotline call screen swells, wobbles and rings out with a simulated caller voice level, and rests in grey when muted.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
