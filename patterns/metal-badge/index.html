@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metal badge demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="metal-badge.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<article class="mbd" aria-labelledby="mbd-h">
+  <div class="metalbadge mbd-board">
+    <div class="mb-plate">
+      <p class="mb-shop">Seng Hup Hardware</p>
+      <p class="mb-no num">0418 2207</p>
+      <p class="mb-tier">Gold member since 2019</p>
+    </div>
+    <canvas class="mb-canvas" aria-hidden="true"></canvas>
+    <button type="button" class="mb-pause mbd-pause" aria-pressed="false" hidden>Pause</button>
+  </div>
+  <div class="mbd-body">
+    <p class="mbd-kicker">Seng Hup Hardware, Jalan Kapar, Klang</p>
+    <h1 id="mbd-h">Tan Mei Ling, your Gold card</h1>
+    <dl class="mbd-facts">
+      <div><dt>Member no.</dt><dd class="num">0418 2207</dd></div>
+      <div><dt>Points</dt><dd class="num">3,862</dd></div>
+      <div><dt>Worth</dt><dd class="num">RM 38.62 off</dd></div>
+      <div><dt>Paint tinting</dt><dd>free</dd></div>
+    </dl>
+    <p class="mbd-note">Show this badge at the counter. Points expire 31 March 2027. Open Monday to Saturday, <span class="num">8:00 am</span> to <span class="num">6:30 pm</span>.</p>
+    <a class="mbd-btn" href="#mbd-h">Add to wallet</a>
+  </div>
+</article>
+</main>
+</body>
+</html>
