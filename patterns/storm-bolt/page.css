@@ -1,0 +1,38 @@
+/* Demo page layout for this entry. Not part of the pattern. A weather app alert: slate storm sky, amber warning. */
+.sbd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; border: 1px solid #2a343d;
+  display: grid; grid-template-rows: 56% 1fr; background: #f3f1ec; color: #1d232a;
+}
+.sbd-sky { display: grid; align-items: end; color: #f1f4f7; }
+.sbd-head {
+  margin: 0 0 16px 16px; padding: 12px 16px; max-width: 420px; display: grid; gap: 4px; justify-items: start;
+  background: rgba(14, 19, 24, .82); border-radius: 8px; border-left: 4px solid #f2a516;
+}
+.sbd-badge { font-size: 11.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; background: #f2a516; color: #1d1405; }
+.sbd-head h1 { font-size: 23px; font-weight: 700; letter-spacing: -.02em; line-height: 1.12; }
+.sbd-time { font-size: 13px; color: #c9d2db; }
+.sbd-time .num { color: #f1f4f7; font-weight: 650; }
+.sbd-body { padding: 14px 20px 16px; display: grid; gap: 10px; align-content: start; }
+.sbd-app { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #9a5a00; }
+.sbd-app span { margin-left: 6px; font-weight: 550; letter-spacing: .01em; text-transform: none; color: #59616b; }
+.sbd-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
+.sbd-stats div { padding: 8px 10px; border-radius: 6px; background: #fff; border: 1px solid #e0dcd2; }
+.sbd-stats dt { font-size: 12px; color: #59616b; }
+.sbd-stats dd { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
+.sbd-tip { font-size: 13.5px; color: #3a424b; }
+.sbd-pause {
+  position: absolute; right: 14px; top: 14px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(241, 244, 247, .4); background: rgba(14, 19, 24, .7); color: #f1f4f7; cursor: pointer;
+}
+.sbd-pause[aria-pressed="true"] { background: #f1f4f7; color: #1a232b; }
+.sbd :focus-visible { outline: 2px solid #f2a516; outline-offset: 3px; }
+.sbd .num { white-space: nowrap; }
+@media (max-width: 520px) {
+  .sbd { aspect-ratio: auto; grid-template-rows: 340px auto; }
+  .sbd-head { margin: 0 10px 10px; padding: 12px; }
+  .sbd-head h1 { font-size: 21px; }
+  .sbd-body { padding: 14px 14px 18px; }
+  .sbd-stats { grid-template-columns: 1fr 1fr; }
+  .sbd-stats div:last-child { grid-column: 1 / -1; }
+  .sbd-app span { display: block; margin: 2px 0 0; }
+}

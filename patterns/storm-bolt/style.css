@@ -1,0 +1,25 @@
+/*
+ * storm-bolt: forked lightning flickers in a storm cloud, with rain. storm-bolt.js draws it with WebGL
+ * on .sb-canvas in these colours (6 digit hex), within the flash limits (see the script). Without WebGL,
+ * script or motion: this still sky with a fixed bolt (an inline SVG, its colour set in the SVG).
+ */
+.storm {
+  --sb-sky: #1a232b;    /* storm cloud */
+  --sb-glow: #8fa4b8;   /* cloud light */
+  --sb-bolt: #eef2ff;   /* lightning */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.sb-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 120'%3E%3Cpath d='M34 0L28 22L36 30L24 56L31 63L21 92L26 98L19 120M33 27L44 40L42 48M28 60L16 70' fill='none' stroke='%23eef2ff' stroke-opacity='.75' stroke-width='1.3' /%3E%3C/svg%3E") 64% 0 / auto 100% no-repeat,
+    radial-gradient(ellipse 34% 40% at 62% 18%, color-mix(in srgb, var(--sb-glow) 32%, transparent), transparent),
+    repeating-linear-gradient(103deg, transparent 0 9px, color-mix(in srgb, var(--sb-glow) 12%, transparent) 9px 10px),
+    linear-gradient(var(--sb-sky), color-mix(in srgb, var(--sb-sky) 70%, #000));
+}
+.sb-canvas.is-live { background: var(--sb-sky); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* storm-bolt.js draws one still frame (a dim bolt, no flicker) and hides the Pause button */
+  .sb-pause { display: none; }
+}
