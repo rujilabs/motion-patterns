@@ -1,0 +1,17 @@
+{
+  "name": "Ink stir",
+  "slug": "ink-stir",
+  "kind": "pattern",
+  "summary": "A real WebGL fluid simulation: the pointer stirs three watercolour inks that swirl, mix and fade on warm paper behind a painting class.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
