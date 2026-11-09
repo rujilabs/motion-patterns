@@ -1,0 +1,18 @@
+{
+  "name": "Dither veil",
+  "slug": "dither-veil",
+  "kind": "pattern",
+  "summary": "A portrait sits under a veil of random dither grains, a one bit print of itself; as it scrolls into view the veil dissolves from the face outward to the full photo.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "scroll",
+  "reduced_motion": "final-state",
+  "relation": "original",
+  "added": "2026-11-09"
+}

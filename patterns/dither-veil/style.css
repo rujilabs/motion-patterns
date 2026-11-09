@@ -1,0 +1,20 @@
+/*
+ * dither-veil: a photo under a dithered veil (a one bit print of itself in two inks) that dissolves grain
+ * by grain as the photo scrolls into view. dither-veil.js reads the .dv-photo image into WebGL and draws
+ * on .dv-canvas over it. Without WebGL, script or motion, the canvas stays hidden and the plain photo
+ * shows, the finished state. Crop with object-fit: cover, centred.
+ */
+.ditherveil {
+  --dv-ink: #3b1f3a;     /* the veil's dark ink */
+  --dv-paper: #f2e8dc;   /* the veil's paper */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.dv-photo, .dv-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dv-photo { z-index: -2; object-fit: cover; object-position: 50% 50%; }
+.dv-canvas { z-index: -1; pointer-events: none; opacity: 0; image-rendering: pixelated; }
+.dv-canvas.is-live { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* dither-veil.js does not start: the photo shows in full */
+  .dv-canvas { display: none; }
+}

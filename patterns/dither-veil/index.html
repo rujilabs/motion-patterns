@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dither veil demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="dither-veil.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="dvd-intro">
+    <p class="dvd-hint">Scroll inside this frame. The veil dissolves as the portrait comes into view, and comes back if you scroll up.</p>
+    <p class="dvd-kicker">Studio Cahaya Lensa, Taman Tun Dr Ismail</p>
+    <h1>Graduation portraits, lit the way your family will remember the day.</h1>
+  </header>
+
+  <article class="dvd-card" aria-labelledby="dvd-h">
+    <figure class="ditherveil dvd-photo" data-dv-pixel="3" data-dv-focus=".5 .4">
+      <img class="dv-photo" src="portrait.svg" alt="Portrait of a smiling graduate in a dusty pink tudung, a navy gown with a gold hood and a mortarboard with a gold tassel, on a sea green backdrop" width="600" height="750">
+      <canvas class="dv-canvas" aria-hidden="true"></canvas>
+    </figure>
+    <div class="dvd-body">
+      <h2 id="dvd-h">Convocation package</h2>
+      <p class="dvd-price"><span class="num">RM 168</span> <span class="dvd-unit">per graduate</span></p>
+      <ul class="dvd-list">
+        <li><span class="num">35</span> minute session with your gown and scroll</li>
+        <li><span class="num">3</span> retouched prints, <span class="num">8R</span> on pearl paper</li>
+        <li>Family add on <span class="num">RM 45</span>, up to <span class="num">6</span> people</li>
+      </ul>
+      <p class="dvd-slot">Next free slot: Wednesday 18 November, <span class="num">2:40 pm</span></p>
+      <a class="dvd-btn" href="#dvd-h">Book this slot</a>
+    </div>
+  </article>
+
+  <footer class="dvd-outro">
+    <p>Open Tuesday to Sunday, <span class="num">10:00 am</span> to <span class="num">7:30 pm</span>. Prints ready in <span class="num">5</span> working days.</p>
+  </footer>
+</main>
+</body>
+</html>
