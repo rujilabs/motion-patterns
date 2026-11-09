@@ -1,0 +1,19 @@
+{
+  "name": "Style flight",
+  "slug": "style-flight",
+  "kind": "pattern",
+  "summary": "An animation studio's style menu: the same paper plane flight previewed in ten looks, from pixel to clay. Hover, focus or tap plays one card; opening it plays the look full size.",
+  "category": "scene",
+  "tech": [
+    "canvas",
+    "js",
+    "css"
+  ],
+  "tokens": [
+    "--ease-out"
+  ],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

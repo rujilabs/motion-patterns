@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style flight demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="style-flight.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="sheet sfd" aria-labelledby="sfd-h">
+  <header class="sfd-head">
+    <div>
+      <p class="sfd-studio">Studio Layang <span>Animation, Petaling Jaya</span></p>
+      <h1 id="sfd-h">Pick a look for your 15 second spot</h1>
+    </div>
+    <p class="sfd-sub">Same paper plane, same flight, ten looks. Hover, focus or tap a card to preview it, open it to see it large.</p>
+  </header>
+  <ul class="sf-grid">
+    <li class="sf-item" data-look="pixel">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Chunky square pixels on a tiny grid, like an old handheld game." data-days="5">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Pixel</span>
+        <span class="sf-price"><span class="num">RM 1,980</span>, 5 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Pixel</span></button>
+    </li>
+    <li class="sf-item" data-look="chalk">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Rough chalk lines on a green board, with dust that drifts down behind the plane." data-days="6">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Chalkboard</span>
+        <span class="sf-price"><span class="num">RM 2,240</span>, 6 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Chalkboard</span></button>
+    </li>
+    <li class="sf-item" data-look="glow">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Neon lines sketched on the dark, glowing as they move." data-days="6">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Glow sketch</span>
+        <span class="sf-price"><span class="num">RM 2,560</span>, 6 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Glow sketch</span></button>
+    </li>
+    <li class="sf-item" data-look="poly">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Flat-shaded facets that catch a low sun as the plane turns through the loop." data-days="8">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Low-poly</span>
+        <span class="sf-price"><span class="num">RM 3,180</span>, 8 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Low-poly</span></button>
+    </li>
+    <li class="sf-item" data-look="comic">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Bold ink outlines, halftone dots and speed lines, one panel at a time." data-days="7">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Comic</span>
+        <span class="sf-price"><span class="num">RM 2,890</span>, 7 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Comic</span></button>
+    </li>
+    <li class="sf-item" data-look="flat">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Clean shapes and a calm palette, the house style for explainers." data-days="4">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Flat vector</span>
+        <span class="sf-price"><span class="num">RM 1,750</span>, 4 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Flat vector</span></button>
+    </li>
+    <li class="sf-item" data-look="line">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="One thin line that draws the plane and the whole flight behind it." data-days="3">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Minimal line</span>
+        <span class="sf-price"><span class="num">RM 1,450</span>, 3 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Minimal line</span></button>
+    </li>
+    <li class="sf-item" data-look="gloss">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Smooth gradients, a bright highlight and a mirror floor, like a polished render." data-days="10">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Glossy 3D</span>
+        <span class="sf-price"><span class="num">RM 4,320</span>, 10 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Glossy 3D</span></button>
+    </li>
+    <li class="sf-item" data-look="brick">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="A plane built from studded toy bricks, flying over a baseplate sky." data-days="9">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Brick toy</span>
+        <span class="sf-price"><span class="num">RM 3,640</span>, 9 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Brick toy</span></button>
+    </li>
+    <li class="sf-item" data-look="clay">
+      <button type="button" class="sf-card" aria-haspopup="dialog" data-desc="Hand-pressed clay with thumb marks, shot at 12 frames a second." data-days="12">
+        <span class="sf-view" aria-hidden="true"><span class="sf-still"></span><canvas class="sf-canvas"></canvas></span>
+        <span class="sf-name">Clay figure</span>
+        <span class="sf-price"><span class="num">RM 4,980</span>, 12 days</span>
+      </button>
+      <button type="button" class="sf-open" hidden>Open<span class="sf-vh"> Clay figure</span></button>
+    </li>
+  </ul>
+  <footer class="sfd-foot">
+    <p>Prices per 15 second spot, two rounds of changes included. Days are working days from your brief.</p>
+    <p class="sfd-picked" role="status"></p>
+  </footer>
+  <dialog class="sf-dialog" aria-labelledby="sf-d-name" aria-describedby="sf-d-desc">
+    <div class="sf-d-view"><canvas class="sf-d-canvas" aria-hidden="true"></canvas></div>
+    <div class="sf-d-body">
+      <p class="sf-d-count"></p>
+      <h2 id="sf-d-name"></h2>
+      <p id="sf-d-desc"></p>
+      <p class="sf-d-price"></p>
+      <div class="sf-d-actions">
+        <button type="button" class="sf-d-pick">Pick this look</button>
+        <button type="button" class="sf-d-close">Close</button>
+      </div>
+    </div>
+  </dialog>
+</section>
+</main>
+</body>
+</html>
