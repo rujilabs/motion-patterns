@@ -1,0 +1,25 @@
+/*
+ * plasma-field: a slow plasma glow in two house colours, shown as an LED wall behind the content.
+ * plasma-field.js draws it with WebGL on .pf-canvas in these colours (6 digit hex). Without WebGL,
+ * script or motion, the canvas keeps this still look: two soft glows behind a grid of LED dots.
+ */
+.plasma {
+  --pf-base: #0b100c;   /* the dark board */
+  --pf-a: #b6ff3b;      /* house colour one */
+  --pf-b: #ff5a2a;      /* house colour two */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.pf-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle, transparent 1.6px, var(--pf-base) 2.6px) 0 0 / 7px 7px,
+    radial-gradient(ellipse 45% 55% at 72% 30%, color-mix(in srgb, var(--pf-a) 70%, transparent), transparent),
+    radial-gradient(ellipse 40% 50% at 85% 85%, color-mix(in srgb, var(--pf-b) 75%, transparent), transparent),
+    var(--pf-base);
+}
+.pf-canvas.is-live { background: var(--pf-base); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* plasma-field.js draws one still frame and hides the Pause button */
+  .pf-pause { display: none; }
+}
