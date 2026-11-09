@@ -1,0 +1,33 @@
+/* Demo page layout for this entry. Not part of the pattern. An esports cafe: black board, acid lime, hot coral. */
+.pfd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #1f2a1f;
+  display: grid; align-items: center; background-color: #0b100c; color: #eef3ea;
+}
+.pfd-card {
+  margin-left: 26px; padding: 20px 22px; max-width: 340px; display: grid; gap: 10px; justify-items: start;
+  background: rgba(8, 11, 9, .88); border: 1px solid rgba(182, 255, 59, .22); border-radius: 6px;
+}
+.pfd-name { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #b6ff3b; }
+.pfd-name span { margin-left: 6px; font-weight: 550; letter-spacing: .02em; text-transform: none; color: #9aa596; }
+.pfd-card h1 { font-size: 25px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+.pfd-hours { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.pfd-hours caption { text-align: left; font-size: 11.5px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #9aa596; padding-bottom: 4px; }
+.pfd-hours th, .pfd-hours td { padding: 5px 0; border-top: 1px solid #253025; text-align: left; font-weight: 500; }
+.pfd-hours th { color: #c5ccc1; padding-right: 12px; }
+.pfd-hours td { text-align: right; font-weight: 650; }
+.pfd-rate { font-size: 13px; color: #c5ccc1; }
+.pfd-rate .num { color: #eef3ea; font-weight: 700; }
+.pfd-btn { font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 4px; background: #b6ff3b; color: #0b100c; text-decoration: none; }
+.pfd-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(238, 243, 234, .35); background: rgba(11, 16, 12, .75); color: #eef3ea; cursor: pointer;
+}
+.pfd-pause[aria-pressed="true"] { background: #eef3ea; color: #0b100c; }
+.pfd :focus-visible { outline: 2px solid #ff5a2a; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .pfd { aspect-ratio: auto; min-height: 620px; align-items: end; }
+  .pfd-card { margin: 0 12px 60px; padding: 16px; gap: 8px; }
+  .pfd-card h1 { font-size: 22px; }
+  .pfd-name span { display: block; margin: 2px 0 0; }
+  .pfd-pause { right: 12px; bottom: 12px; }
+}

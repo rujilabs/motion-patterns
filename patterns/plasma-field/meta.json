@@ -1,0 +1,17 @@
+{
+  "name": "Plasma field",
+  "slug": "plasma-field",
+  "kind": "pattern",
+  "summary": "A slow WebGL plasma in two house colours, drawn as an LED wall of round dots, glows behind an esports cafe's opening hours.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
