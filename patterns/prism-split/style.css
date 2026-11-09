@@ -1,0 +1,27 @@
+/*
+ * prism-split: a white beam enters a glass prism and fans out into a spectrum that swings toward the pointer.
+ * prism-split.js draws it with WebGL on .ps-canvas. --ps-x and --ps-y place the prism (shares of the width
+ * and height), --ps-size sizes it; a media query may change them, the script reads them on every resize.
+ * Without WebGL, script or motion, the canvas keeps this still look: a white beam meets the prism spot and leaves it as a spectrum fan.
+ */
+.prism {
+  --ps-room: #15110d;   /* the dark room */
+  --ps-glass: #d8ece8;  /* glass tint */
+  --ps-x: .64; --ps-y: .46; --ps-size: .16;
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.ps-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle at calc(var(--ps-x) * 100%) calc(var(--ps-y) * 100%), #fff8ea 0 2px, color-mix(in srgb, var(--ps-glass) 40%, transparent) 4px, transparent 22px),
+    conic-gradient(from 250deg at calc(var(--ps-x) * 100%) calc(var(--ps-y) * 100%), transparent 0deg, #fff3dccc .4deg, transparent .9deg),
+    conic-gradient(from 94deg at calc(var(--ps-x) * 100%) calc(var(--ps-y) * 100%),
+      transparent 0deg, #ff3b2f99 2deg, #ffb02e99 6deg, #e8f04299 10deg, #3ddc8499 14deg, #2aa8ff99 18deg, #7a4dff99 22deg, transparent 24deg),
+    var(--ps-room);
+}
+.ps-canvas.is-live { background: var(--ps-room); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* prism-split.js draws one still frame and hides the Pause button */
+  .ps-pause { display: none; }
+}

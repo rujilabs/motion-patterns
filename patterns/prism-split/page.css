@@ -1,0 +1,31 @@
+/* Demo page layout for this entry. Not part of the pattern. An optician in a dark walnut shop: cream type, brass. */
+.psd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #2c241b;
+  display: grid; align-items: start; background-color: #15110d; color: #f3ede2;
+}
+.psd-card {
+  margin: 24px 0 0 24px; padding: 18px 20px; max-width: 272px; display: grid; gap: 10px; justify-items: start;
+  background: rgba(21, 17, 13, .9); border: 1px solid rgba(217, 165, 91, .25); border-radius: 8px;
+}
+.psd-name { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #e0b46f; }
+.psd-name span { display: block; margin-top: 2px; font-weight: 550; letter-spacing: .02em; text-transform: none; color: #b3a795; }
+.psd-card h1 { font-size: 24px; font-weight: 650; letter-spacing: -.02em; line-height: 1.12; }
+.psd-list { width: 100%; font-size: 13.5px; }
+.psd-list li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-top: 1px solid #33291f; color: #d6ccbc; }
+.psd-list .num { color: #f3ede2; font-weight: 650; }
+.psd-when { font-size: 13px; color: #d6ccbc; }
+.psd-when .num { color: #f3ede2; font-weight: 650; }
+.psd-btn { font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 999px; background: #e0b46f; color: #1b140b; text-decoration: none; }
+.psd-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(243, 237, 226, .35); background: rgba(21, 17, 13, .75); color: #f3ede2; cursor: pointer;
+}
+.psd-pause[aria-pressed="true"] { background: #f3ede2; color: #15110d; }
+.psd .num { white-space: nowrap; }
+.psd :focus-visible { outline: 2px solid #e0b46f; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .psd { aspect-ratio: auto; min-height: 640px; align-items: end; --ps-x: .4; --ps-y: .2; --ps-size: .3; }
+  .psd-card { margin: 0 12px 60px; padding: 16px; max-width: none; }
+  .psd-card h1 { font-size: 22px; }
+  .psd-pause { right: 12px; bottom: 12px; }
+}
