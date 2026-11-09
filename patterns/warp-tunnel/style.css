@@ -1,0 +1,27 @@
+/*
+ * warp-tunnel: light streaks rush past down a night tunnel, faster while a [data-wt-hold] button is held.
+ * warp-tunnel.js draws it with WebGL on .wt-canvas in these colours (6 digit hex). Without WebGL,
+ * script or motion, the canvas keeps this still look: rays out from the vanishing point.
+ */
+.warp {
+  --wt-sky: #0a1230;    /* night sky */
+  --wt-lamp: #ffb347;   /* sodium street lamps */
+  --wt-head: #d2e4ff;   /* headlights */
+  --wt-tail: #ff4a3d;   /* tail lights */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.wt-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, var(--wt-sky) 0 6%, transparent 30%),
+    repeating-conic-gradient(from 3deg at 50% 50%, transparent 0 7deg, color-mix(in srgb, var(--wt-lamp) 38%, transparent) 7deg 7.6deg, transparent 7.6deg 13deg, color-mix(in srgb, var(--wt-head) 26%, transparent) 13deg 13.4deg, transparent 13.4deg 19deg),
+    radial-gradient(circle at 50% 50%, #1c2756, var(--wt-sky) 70%);
+}
+.wt-canvas.is-live { background: var(--wt-sky); }
+/* the hold button: no long-press menu or text selection while a finger holds it */
+[data-wt-hold] { touch-action: manipulation; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* warp-tunnel.js draws one still frame, the hold changes nothing, and the Pause button hides */
+  .wt-pause { display: none; }
+}

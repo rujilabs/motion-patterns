@@ -1,0 +1,17 @@
+{
+  "name": "Warp tunnel",
+  "slug": "warp-tunnel",
+  "kind": "pattern",
+  "summary": "WebGL light streaks rush past down a night tunnel behind a bus booking search, faster and longer while the Search button is held.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
