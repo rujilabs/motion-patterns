@@ -5,6 +5,21 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.10.0] - 2026-11-09
+
+### Added
+
+- **starfield-drift:** A planetarium hero where a spiral of stars turns and leans toward the pointer
+- **warp-tunnel:** Night bus booking with light streaks that rush faster while search is held
+- **silk-fold:** A songket hero where silk folds slowly and catches the light
+- **oil-sheen:** A thin-film rainbow sheen on paint that shifts with the pointer
+- **plasma-field:** An esports cafe plasma glow drawn as an LED dot wall
+- **stage-beams:** Concert spotlight beams sweeping through haze over the crowd
+- **god-rays:** Tea estate light rays falling through drifting mist
+- **dither-wave:** A record store gradient printed through a 4 by 4 Bayer dither
+- **voice-orb:** A hotline call orb that swells with the caller's voice level
+
+
 ## [0.9.0] - 2026-11-08
 
 ### Added
