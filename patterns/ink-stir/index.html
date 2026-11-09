@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ink stir demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="ink-stir.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="inkstir ikd" aria-labelledby="ikd-h">
+  <canvas class="ik-canvas" aria-hidden="true"></canvas>
+  <div class="ikd-card">
+    <p class="ikd-name">Rumah Warna <span>Brickfields, Kuala Lumpur</span></p>
+    <h1 id="ikd-h">Loose florals in watercolour, from your very first wash.</h1>
+    <dl class="ikd-facts">
+      <div><dt>Next class</dt><dd>Saturday 21 November, <span class="num">10:00 am to 12:45 pm</span></dd></div>
+      <div><dt>Seats</dt><dd><span class="num">3</span> left of <span class="num">12</span></dd></div>
+      <div><dt>Fee</dt><dd><span class="num">RM 138.00</span> with cotton paper, 3 brushes and a 12 pan set</dd></div>
+    </dl>
+    <a class="ikd-btn" href="#ikd-h">Book a seat</a>
+  </div>
+  <p class="ikd-hint">Move a finger or the mouse through the water to stir the inks</p>
+  <button type="button" class="ik-pause ikd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>

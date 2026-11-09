@@ -1,0 +1,37 @@
+/* Demo page layout for this entry. Not part of the pattern. A watercolour class: warm paper, ultramarine type. */
+.ikd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #e2d9c6;
+  display: grid; align-items: center; background-color: #f6f1e7; color: #22252c;
+}
+.ikd-card {
+  margin-left: 24px; padding: 20px 22px; max-width: 320px; display: grid; gap: 11px; justify-items: start;
+  background: rgba(255, 253, 248, .94); border: 1px solid #e6dcc8; border-radius: 4px;
+}
+.ikd-name { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #2a4596; }
+.ikd-name span { display: block; margin-top: 2px; font-weight: 550; letter-spacing: .02em; text-transform: none; color: #6b6558; }
+.ikd-card h1 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; line-height: 1.12; }
+.ikd-facts { width: 100%; display: grid; font-size: 13.5px; margin: 0; }
+.ikd-facts div { display: grid; grid-template-columns: 76px 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid #ebe3d3; }
+.ikd-facts dt { font-size: 11.5px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: #6b6558; padding-top: 1px; }
+.ikd-facts dd { margin: 0; font-weight: 550; }
+.ikd-btn { font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 999px; background: #2a4596; color: #fffdf8; text-decoration: none; }
+.ikd-hint {
+  position: absolute; left: 24px; bottom: 16px; font-size: 12.5px; font-weight: 550; color: #4f4a40;
+  background: rgba(246, 241, 231, .86); padding: 3px 8px; border-radius: 4px;
+}
+.ikd-pause {
+  position: absolute; right: 16px; bottom: 14px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid #b9ae98; background: rgba(255, 253, 248, .9); color: #22252c; cursor: pointer;
+}
+.ikd-pause[aria-pressed="true"] { background: #22252c; color: #fffdf8; border-color: #22252c; }
+.ikd :focus-visible { outline: 2px solid #c2305a; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .ikd { aspect-ratio: auto; min-height: 640px; align-items: end; --ik-x: .5; --ik-y: .8; --ik-r: .16; }
+  .ikd-card { margin: 0 12px 64px; padding: 16px; gap: 9px; max-width: none; }
+  .ikd-card h1 { font-size: 21px; }
+  .ikd-hint { left: 12px; right: 110px; bottom: 14px; }
+  .ikd-pause { right: 12px; bottom: 12px; }
+}
+/* the hint only where the inks can really be stirred */
+.ik-canvas:not(.is-live) ~ .ikd-hint { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .ikd-hint { visibility: hidden; } }

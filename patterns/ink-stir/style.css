@@ -1,0 +1,31 @@
+/*
+ * ink-stir: watercolour inks stirred in water on paper, a real fluid simulation under the pointer.
+ * ink-stir.js runs it with WebGL on .ik-canvas with these colours (6 digit hex: each ink as it shows at
+ * full strength on this paper). Without WebGL, script or motion, the canvas keeps this still: three soft
+ * washes that bleed into each other.
+ */
+.inkstir {
+  --ik-paper: #f6f1e7;   /* the paper */
+  --ik-a: #2f4fa8;       /* ink one, ultramarine */
+  --ik-b: #c2305a;       /* ink two, rose */
+  --ik-c: #e7a52a;       /* ink three, gamboge */
+  --ik-x: .68;           /* where the idle brush stirs: 0 to 1 from the left */
+  --ik-y: .5;            /* and 0 to 1 from the bottom */
+  --ik-r: .3;            /* its reach, in heights */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.ik-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(ellipse 22% 28% at 64% 34%, color-mix(in srgb, var(--ik-a) 55%, transparent), transparent),
+    radial-gradient(ellipse 20% 26% at 80% 58%, color-mix(in srgb, var(--ik-b) 50%, transparent), transparent),
+    radial-gradient(ellipse 24% 22% at 70% 76%, color-mix(in srgb, var(--ik-c) 55%, transparent), transparent),
+    var(--ik-paper);
+}
+.ik-canvas.is-live { background: var(--ik-paper); }
+.ik-pause[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* ink-stir.js shows one still frame and hides the Pause button */
+  .ik-pause { display: none; }
+}
