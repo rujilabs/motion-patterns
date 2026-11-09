@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laser line demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="laser-line.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<article class="lld" aria-labelledby="lld-h">
+  <div class="laserline lld-board" data-ll-form="#lld-form">
+    <canvas class="ll-canvas" aria-hidden="true"></canvas>
+    <p class="ll-name">Nurul Aina</p>
+    <button type="button" class="ll-pause lld-pause" aria-pressed="false" hidden>Pause</button>
+  </div>
+  <div class="lld-body">
+    <div class="lld-top">
+      <div>
+        <p class="lld-shop">Ukir Cahaya, Kota Damansara</p>
+        <h1 id="lld-h">Name plaque on solid rubberwood, engraved while you wait.</h1>
+      </div>
+      <p class="lld-price"><span class="num">RM 38.50</span> <span class="lld-unit">30 x 12 cm, ready in 25 min</span></p>
+    </div>
+    <form class="ll-form lld-form" id="lld-form" hidden>
+      <label for="lld-input">Name on the plaque</label>
+      <div class="lld-row">
+        <input class="ll-input" id="lld-input" name="name" type="text" value="Nurul Aina" maxlength="24" autocomplete="off" spellcheck="false">
+        <button type="submit">Engrave</button>
+      </div>
+    </form>
+  </div>
+</article>
+</main>
+</body>
+</html>

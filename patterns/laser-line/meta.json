@@ -1,0 +1,17 @@
+{
+  "name": "Laser line",
+  "slug": "laser-line",
+  "kind": "pattern",
+  "summary": "A laser engraves the customer's name into a wooden plaque row by row, with sparks, smoke and a cooling glow; type a new name and it engraves again.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
