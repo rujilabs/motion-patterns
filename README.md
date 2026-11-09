@@ -62,7 +62,7 @@ Every entry follows the same rules:
 - **Pausable.** Anything that moves on its own for more than 5 seconds has a pause control.
 - **Hands-on means every hand.** A control you drag or turn also works by touch and by keyboard, with the right ARIA role.
 
-Categories come in two kinds. Most say **what the motion does** (`entry`, `scroll`, `state`, `transition`, ...). Eleven say **what object moves**: `curve`, `morph`, `tile`, `solid`, `gear`, `panel`, `light`, `wave`, `globe`, `drum` and `form`. Each object-family entry is built around one real job (a booking time wheel, a shipping country globe, a bank transfer lever), its README starts with a `Use when:` line, and no job appears twice in the collection.
+Categories come in two kinds. Most say **what the motion does** (`entry`, `scroll`, `state`, `transition`, ...). Twelve say **what object moves**: `curve`, `morph`, `tile`, `solid`, `gear`, `panel`, `light`, `wave`, `globe`, `drum`, `form` and `shader` (WebGL surfaces, see ADR 0006). Each object-family entry is built around one real job (a booking time wheel, a shipping country globe, a bank transfer lever), its README starts with a `Use when:` line, and no job appears twice in the collection.
 
 ## Catalogue
 

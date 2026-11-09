@@ -10,15 +10,16 @@ ships as `relation: original`.
 
 ## Scope
 
-About 65 entries over three releases:
+About 92 entries over six releases:
 
 | Release | Tier | Entries | Tech |
 |---|---|---|---|
 | v0.6.0 | A | 20 | CSS, SVG, small JS |
 | v0.7.0 | B part 1 | about 22 | Canvas 2D and JS |
 | v0.9.0 | B part 2 | 20 | DOM, SVG and canvas |
+| v0.10.0 to v0.12.0 | C | 27 | WebGL fragment shaders |
 
-WebGL shader backgrounds (tier C) are out of scope.
+WebGL shader backgrounds came later as tier C (27 entries over v0.10.0 to v0.12.0, category `shader`, ADR 0006).
 
 ## Rules for every entry
 
@@ -110,3 +111,38 @@ meaningful still frame without JS motion (reduced motion or no script), and loop
 | flying-button | form | contact form send: the button folds into a paper plane and flies off |
 | lanyard-badge | wave | conference pass: a badge on a lanyard you can drag and let swing |
 | comet-dial | drum | oven timer: a dial with a comet tail that counts down |
+
+## Tier C (v0.10.0 to v0.12.0)
+
+Raw WebGL 1 fragment shaders, category `shader`, `tech` includes `webgl` (rules in ADR 0006). Built nine at a time,
+one agent at a time, released per batch.
+
+| Batch | Slug | Job |
+|---|---|---|
+| 1 | starfield-drift | planetarium night-show booking hero: a spiral of stars turns and leans toward the pointer |
+| 1 | warp-tunnel | overnight express bus booking: light streaks rush past, faster while "Search trips" is held |
+| 1 | silk-fold | songket boutique hero: a sheet of silk folds slowly and catches the light |
+| 1 | oil-sheen | car detailing ceramic coating page: a thin-film rainbow sheen shifts with the pointer |
+| 1 | plasma-field | esports cafe hero: a slow plasma glow in the house colours behind the opening hours |
+| 1 | stage-beams | concert ticket page: moving spotlight beams sweep through haze |
+| 1 | god-rays | tea estate morning hero: light rays fall through drifting mist from behind the hill |
+| 1 | dither-wave | record store hero: a moving gradient drawn in ordered 4 by 4 dither |
+| 1 | voice-orb | bank hotline call screen: a glowing orb swells with the caller's voice level |
+| 2 | prism-split | optician hero: a beam enters a glass prism and fans out into a spectrum that follows the pointer |
+| 2 | storm-bolt | weather alert card: forked lightning flickers inside a storm warning |
+| 2 | chrome-pour | metal fabrication workshop hero: liquid chrome flows and reflects a studio light |
+| 2 | ripple-grid | koi farm hero: a lit grid ripples out from every tap like a pond |
+| 2 | grid-warp | property listing hero photo: the photo bends like a rubber sheet under the pointer |
+| 2 | paint-swirl | board game cafe hero: thick paint swirls in a slow domain-warped vortex |
+| 2 | halftone-reveal | print shop hero: a photo shows as halftone dots that grow into the full image under the pointer |
+| 2 | dither-veil | portrait studio: a dithered veil dissolves to reveal the photo as it scrolls in |
+| 2 | laser-line | laser engraving shop: a laser beam traces the customer's name onto wood, sparks and smoke |
+| 3 | ink-stir | watercolour class hero: the pointer stirs coloured ink in a real fluid simulation |
+| 3 | smoke-ether | day spa hero: soft coloured smoke flows along curl noise and bends around the pointer |
+| 3 | molten-metal | goldsmith hero: blobs of molten gold merge and split like a lava lamp |
+| 3 | ferrofluid | speaker shop: a ferrofluid puddle spikes up to the beat of the demo track |
+| 3 | ball-pit | kids play centre hero: lit balls tumble and get pushed aside by the pointer |
+| 3 | metal-badge | hardware store loyalty badge: brushed metal with a light that rolls as it tilts |
+| 3 | crystal-ball | jewellery shop hero: a glass sphere refracts the ring display behind it |
+| 3 | glass-lens | pharmacy leaflet: a glass lens slides over the small print and magnifies it |
+| 3 | elastic-mesh | mattress shop: the fabric mesh dents where you press and springs back |
