@@ -1,0 +1,17 @@
+{
+  "name": "Storm bolt",
+  "slug": "storm-bolt",
+  "kind": "pattern",
+  "summary": "Forked WebGL lightning flickers in a drifting storm cloud with rain at the top of a weather alert, never more than two flashes a second.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
