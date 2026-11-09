@@ -1,0 +1,17 @@
+{
+  "name": "God rays",
+  "slug": "god-rays",
+  "kind": "pattern",
+  "summary": "WebGL shafts of morning light fall through drifting valley mist from behind a tree-lined ridge over hills of tea rows.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
