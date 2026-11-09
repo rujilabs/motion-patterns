@@ -1,0 +1,17 @@
+{
+  "name": "Metal badge",
+  "slug": "metal-badge",
+  "kind": "pattern",
+  "summary": "A hardware store loyalty badge in brushed steel, drawn in WebGL: it tilts toward the pointer and a light band rolls across the brushing as it turns.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
