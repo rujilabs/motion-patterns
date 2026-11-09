@@ -8,9 +8,9 @@
 //   npm run posters -- --missing         only entries without a poster.jpg
 //   npm run posters -- rise stamp-collage   these entries
 // Playwright is not a dependency on purpose: the collection itself needs nothing.
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { createServer } from "node:http";
+import { extname, join, normalize, resolve } from "node:path";
 import { loadEntries } from "./entries.mjs";
 
 const args = process.argv.slice(2);
@@ -35,6 +35,17 @@ const SIZE = {
 
 // SwiftShader gives headless Chromium a software WebGL, so shader entries render a real frame.
 const GL_ARGS = ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"];
+// Pages load over a local http server, not file://: WebGL cannot read a same-folder image from a file URL.
+const ROOT = resolve(".");
+const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".json": "application/json", ".woff2": "font/woff2" };
+const server = createServer((req, res) => {
+  let file = join(ROOT, normalize(decodeURIComponent(req.url.split("?")[0])));
+  if (!file.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
+  try { if (statSync(file).isDirectory()) file = join(file, "index.html"); res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream" }); res.end(readFileSync(file)); }
+  catch { res.writeHead(404); res.end(); }
+}).listen(0, "127.0.0.1");
+await new Promise((ok) => server.once("listening", ok));
+const BASE = `http://127.0.0.1:${server.address().port}/`;
 const browser = await chromium.launch({ args: GL_ARGS, ...(process.env.CHROME ? { executablePath: process.env.CHROME } : {}) });
 let failed = 0;
 for (const e of entries) {
@@ -43,7 +54,7 @@ for (const e of entries) {
   const reducedMotion = e.meta?.trigger === "scroll" ? "reduce" : "no-preference";
   const page = await browser.newPage({ viewport: s.viewport, deviceScaleFactor: s.deviceScaleFactor, reducedMotion });
   try {
-    await page.goto(pathToFileURL(join(e.path, "index.html")).href, { waitUntil: "load" });
+    await page.goto(BASE + e.rel.split("\\").join("/") + "/", { waitUntil: "load" });
     await page.evaluate(() => document.fonts.ready);
     // Let the entrance run, then jump every animation that has an end to its end.
     await page.waitForTimeout(e.kind === "template" ? 1500 : 1200);
@@ -58,4 +69,5 @@ for (const e of entries) {
   await page.close();
 }
 await browser.close();
+server.close();
 if (failed) process.exit(1);
