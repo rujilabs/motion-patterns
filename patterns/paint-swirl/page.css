@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. A board game cafe: cream card, meeple red, navy ink. */
+.psd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #c9b993;
+  display: grid; align-items: center; background-color: #f3e6cc; color: #1d2340;
+}
+.psd-card {
+  margin-left: 26px; padding: 20px 22px; max-width: 330px; display: grid; gap: 11px; justify-items: start;
+  background: #fbf5e8; border: 2px solid #1d2340; border-radius: 10px; box-shadow: 5px 5px 0 #1d2340;
+}
+.psd-name { font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; color: #b8341f; }
+.psd-name span { display: block; margin-top: 2px; font-weight: 550; letter-spacing: .01em; text-transform: none; color: #59607a; }
+.psd-card h1 { font-size: 24px; font-weight: 720; letter-spacing: -.02em; line-height: 1.12; }
+.psd-facts { display: grid; gap: 5px; font-size: 13.5px; color: #3b4160; }
+.psd-facts li { padding-left: 14px; position: relative; }
+.psd-facts li::before { content: ""; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 2px; background: #e9b42c; }
+.psd-facts .num { font-weight: 700; color: #1d2340; white-space: nowrap; }
+.psd-btn { font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 8px; background: #b8341f; color: #fff; text-decoration: none; }
+.psd-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 650;
+  padding: 6px 13px; border-radius: 999px; border: 2px solid #1d2340; background: #fbf5e8; color: #1d2340; cursor: pointer;
+}
+.psd-pause[aria-pressed="true"] { background: #1d2340; color: #fbf5e8; }
+.psd :focus-visible { outline: 3px solid #1d2340; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .psd { aspect-ratio: auto; min-height: 640px; align-items: end; --ps-at: .5 .2; }
+  .psd-card { margin: 0 12px 64px; padding: 16px; gap: 9px; }
+  .psd-card h1 { font-size: 21px; }
+  .psd-pause { right: 12px; bottom: 14px; }
+}

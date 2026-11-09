@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paint swirl demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="paint-swirl.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="paintswirl psd" aria-labelledby="psd-h" data-ps-pixel="4">
+  <canvas class="ps-canvas" aria-hidden="true"></canvas>
+  <div class="psd-card">
+    <p class="psd-name">Giliran Kopi <span>Board game cafe, SS15 Subang Jaya</span></p>
+    <h1 id="psd-h">312 games on the shelf and a game guru at every table.</h1>
+    <ul class="psd-facts">
+      <li><span class="num">RM 12.90</span> a head for <span class="num">3</span> hours, coffee refills free</li>
+      <li>Open daily <span class="num">11:30 am</span> to <span class="num">12:30 am</span></li>
+      <li>Catan league, Thursday 12 November, <span class="num">8:15 pm</span></li>
+    </ul>
+    <a class="psd-btn" href="#psd-h">Book a table for tonight</a>
+  </div>
+  <button type="button" class="ps-pause psd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>

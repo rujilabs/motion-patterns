@@ -1,0 +1,17 @@
+{
+  "name": "Paint swirl",
+  "slug": "paint-swirl",
+  "kind": "pattern",
+  "summary": "Thick bands of paint in five house colours wind slowly into a domain-warped vortex, printed in chunky pixels behind a board game cafe's hero card.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

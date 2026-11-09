@@ -1,0 +1,27 @@
+/*
+ * paint-swirl: thick bands of paint in five house colours, stirred into a slow vortex behind the content.
+ * paint-swirl.js draws it with WebGL on .ps-canvas in these colours (6 digit hex), round --ps-at
+ * (shares of the width and height). Without WebGL, script or motion, the canvas keeps this still look:
+ * the same five paints wound round the same centre.
+ */
+.paintswirl {
+  --ps-c0: #f3e6cc;   /* cream */
+  --ps-c1: #d6452f;   /* meeple red */
+  --ps-c2: #e9b42c;   /* mustard */
+  --ps-c3: #1f7a78;   /* teal */
+  --ps-c4: #22305a;   /* navy */
+  --ps-at: .68 .5;
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.ps-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    repeating-conic-gradient(from 20deg at 68% 50%, var(--ps-c0) 0 9%, var(--ps-c1) 0 17%, var(--ps-c2) 0 25%, var(--ps-c3) 0 33%, var(--ps-c4) 0 40%),
+    var(--ps-c0);
+}
+.ps-canvas.is-live { background: var(--ps-c0); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* paint-swirl.js draws one still frame and hides the Pause button */
+  .ps-pause { display: none; }
+}
