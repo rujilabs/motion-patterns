@@ -1,0 +1,17 @@
+{
+  "name": "Glass lens",
+  "slug": "glass-lens",
+  "kind": "pattern",
+  "summary": "A reading lens drawn in WebGL slides over a pharmacy leaflet's small print and magnifies it, with a bulge at the centre and coloured fringes at the rim.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
