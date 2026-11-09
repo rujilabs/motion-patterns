@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. A kids play centre: mint wall, bright plastic balls. */
+.bpd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #cfe0db;
+  display: grid; align-items: start; background-color: #e9f3f0; color: #1d2a33;
+}
+.bpd-card {
+  margin: 22px 0 0 24px; padding: 18px 20px; max-width: 330px; display: grid; gap: 10px; justify-items: start;
+  background: rgba(255, 255, 255, .95); border: 1px solid #d3e3de; border-radius: 16px;
+}
+.bpd-name { font-size: 12.5px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; color: #c2392c; }
+.bpd-name span { display: block; margin-top: 2px; font-weight: 550; letter-spacing: .01em; text-transform: none; color: #5a6a72; }
+.bpd-card h1 { font-size: 23px; font-weight: 750; letter-spacing: -.02em; line-height: 1.12; }
+.bpd-rates { width: 100%; font-size: 13.5px; }
+.bpd-rates li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-top: 1px solid #e3ece9; }
+.bpd-rates .num { font-weight: 750; }
+.bpd-note { font-size: 13px; color: #3e4c55; }
+.bpd-btn { font-size: 14px; font-weight: 750; padding: 10px 18px; border-radius: 999px; background: #2f6fd6; color: #fff; text-decoration: none; }
+.bpd-pause {
+  position: absolute; right: 16px; top: 16px; font: inherit; font-size: 12.5px; font-weight: 650;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid #b7cdc7; background: rgba(255, 255, 255, .9); color: #1d2a33; cursor: pointer;
+}
+.bpd-pause[aria-pressed="true"] { background: #1d2a33; color: #fff; border-color: #1d2a33; }
+.bpd :focus-visible { outline: 2px solid #c2392c; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .bpd { aspect-ratio: auto; min-height: 660px; --bp-size: .68; }
+  .bpd-card { margin: 12px 12px 0; padding: 16px; gap: 8px; max-width: none; }
+  .bpd-card h1 { font-size: 21px; }
+  .bpd-pause { top: auto; bottom: 12px; right: 12px; }
+}
