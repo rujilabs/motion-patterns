@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dither wave demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="dither-wave.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="dither dwd" aria-labelledby="dwd-h" data-dw-pixel="3">
+  <canvas class="dw-canvas" aria-hidden="true"></canvas>
+  <div class="dwd-card">
+    <p class="dwd-name">Piring Putar Records <span>Lebuh Carnarvon, George Town</span></p>
+    <h1 id="dwd-h">Crate dig weekend: 1,284 used LPs, every one graded.</h1>
+    <p class="dwd-when">Saturday 14 and Sunday 15 November, <span class="num">11:00 am to 9:30 pm</span></p>
+    <ul class="dwd-price">
+      <li><span>Used LPs</span> <b class="num">from RM 18.90</b></li>
+      <li><span>New pressings</span> <b class="num">from RM 119.00</b></li>
+      <li><span>Listening booth</span> <b>free, 15 min</b></li>
+    </ul>
+    <a class="dwd-btn" href="#dwd-h">See this week's arrivals</a>
+  </div>
+  <button type="button" class="dw-pause dwd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>
