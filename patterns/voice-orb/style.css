@@ -1,0 +1,29 @@
+/*
+ * voice-orb: a glowing orb swells with the caller's voice level and goes grey when muted.
+ * voice-orb.js draws it with WebGL on .vo-canvas in these colours (6 digit hex). Without WebGL,
+ * script or motion, the canvas keeps this still look: the orb at rest with a soft halo.
+ */
+.voiceorb {
+  --vo-bg: #0d1a17;     /* the call screen */
+  --vo-core: #4fe0b5;   /* orb centre */
+  --vo-rim: #f2c14e;    /* orb edge, rings */
+  --vo-mute: #7d8a86;   /* the orb when muted */
+  --vo-x: 0.7;          /* orb centre across, a fraction of the width */
+  --vo-y: 0.45;         /* orb centre down, a fraction of the height */
+  --vo-size: 0.24;      /* orb radius, a fraction of the height */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.vo-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle at calc(var(--vo-x) * 100%) calc(var(--vo-y) * 100%), color-mix(in srgb, var(--vo-core) 85%, #fff) 0, var(--vo-core) 9%, color-mix(in srgb, var(--vo-rim) 80%, var(--vo-core)) 17%, transparent 18.5%),
+    radial-gradient(circle at calc(var(--vo-x) * 100%) calc(var(--vo-y) * 100%), color-mix(in srgb, var(--vo-rim) 30%, transparent), transparent 30%),
+    var(--vo-bg);
+}
+.voiceorb.is-muted .vo-canvas:not(.is-live) { filter: grayscale(1); }
+.vo-canvas.is-live { background: var(--vo-bg); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* voice-orb.js draws one still frame (Mute redraws it) and hides the Pause button */
+  .vo-pause { display: none; }
+}
