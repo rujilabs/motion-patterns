@@ -1,0 +1,17 @@
+{
+  "name": "Oil sheen",
+  "slug": "oil-sheen",
+  "kind": "pattern",
+  "summary": "A WebGL thin-film rainbow sheen drifts over dark glossy paint behind a ceramic coating page and shifts its colours with the pointer.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
