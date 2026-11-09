@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>God rays demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="god-rays.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="godrays grd" aria-labelledby="grd-h">
+  <canvas class="gr-canvas" aria-hidden="true"></canvas>
+  <div class="grd-card">
+    <p class="grd-name">Ladang Teh Lembah Embun <span>Brinchang, Cameron Highlands</span></p>
+    <h1 id="grd-h">Walk the tea rows while the mist lifts.</h1>
+    <p class="grd-walk">Sunrise walk, daily from <span class="num">6:50 am</span>, about <span class="num">2 hours</span>, with a cup of first-flush at the factory.</p>
+    <ul class="grd-price">
+      <li><span>Adult</span> <b class="num">RM 42.90</b></li>
+      <li><span>Child, 7 to 12</span> <b class="num">RM 21.50</b></li>
+    </ul>
+    <div class="grd-cta">
+      <a class="grd-btn" href="#grd-h">Book a sunrise walk</a>
+      <span class="grd-next">Tuesday 10 November: <span class="num">14</span> places left</span>
+    </div>
+  </div>
+  <button type="button" class="gr-pause grd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>
