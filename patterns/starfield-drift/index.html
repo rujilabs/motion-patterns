@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starfield drift demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="starfield-drift.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="starfield sfd" aria-labelledby="sfd-h" data-sf-centre="0.7 0.4">
+  <canvas class="sf-canvas" aria-hidden="true"></canvas>
+  <div class="sfd-copy">
+    <p class="sfd-name">Teropong Langit Planetarium, Kuantan</p>
+    <h1 id="sfd-h">Langit Khatulistiwa, the night show under a 17 m dome.</h1>
+    <p class="sfd-when">Friday 13 November, <span class="num">8:30 pm</span> and <span class="num">10:05 pm</span>. 38 minutes, 146 seats.</p>
+    <p class="sfd-price"><span class="num">RM 18.50</span> adult <span class="sfd-dot" aria-hidden="true"></span> <span class="num">RM 9.20</span> child under 12</p>
+    <p class="sfd-cta">
+      <a class="sfd-btn" href="#sfd-h">Book seats</a>
+      <a class="sfd-link" href="#sfd-h">All November shows</a>
+    </p>
+  </div>
+  <button type="button" class="sf-pause sfd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>
