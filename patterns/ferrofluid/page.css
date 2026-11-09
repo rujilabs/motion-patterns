@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. A hi-fi shop: graphite shelf, ice blue and amber lights. */
+.fod {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #23272e;
+  display: grid; align-items: center; background-color: #0d0f12; color: #eef2f6;
+}
+.fod-card {
+  margin-left: 26px; padding: 20px 22px; max-width: 300px; display: grid; gap: 11px; justify-items: start;
+  background: rgba(10, 12, 15, .86); border: 1px solid rgba(159, 212, 255, .2); border-radius: 8px;
+}
+.fod-name { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #ffb547; }
+.fod-name span { display: block; margin-top: 2px; font-weight: 500; letter-spacing: .02em; text-transform: none; color: #9aa4b0; }
+.fod-card h1 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; line-height: 1.12; }
+.fod-item { width: 100%; font-size: 13.5px; color: #c7cfd8; padding: 8px 0; border-block: 1px solid rgba(238, 242, 246, .12); }
+.fod-item .num { display: block; margin-top: 2px; font-size: 17px; font-weight: 700; color: #fff; }
+.fod-note { font-size: 13px; color: #c7cfd8; }
+.fod-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.fod-btn, .fod-play { font: inherit; font-size: 14px; font-weight: 700; padding: 9px 16px; border-radius: 6px; text-decoration: none; cursor: pointer; }
+.fod-btn { background: #9fd4ff; color: #0b0d10; border: 1px solid #9fd4ff; }
+.fod-play { background: transparent; color: #eef2f6; border: 1px solid rgba(238, 242, 246, .4); }
+.fod-play[aria-pressed="true"] { background: #ffb547; color: #0b0d10; border-color: #ffb547; }
+.fod-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(238, 242, 246, .35); background: rgba(13, 15, 18, .75); color: #eef2f6; cursor: pointer;
+}
+.fod-pause[aria-pressed="true"] { background: #eef2f6; color: #0d0f12; }
+.fod :focus-visible { outline: 2px solid #ffb547; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .fod { aspect-ratio: auto; min-height: 640px; align-items: end; --fo-x: 0; --fo-y: .26; --fo-zoom: 1; }
+  .fod-card { margin: 0 12px 60px; padding: 16px; gap: 9px; max-width: none; }
+  .fod-card h1 { font-size: 21px; }
+  .fod-pause { right: 12px; bottom: 12px; }
+}

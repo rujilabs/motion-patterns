@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferrofluid demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="ferrofluid.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="ferro fod" aria-labelledby="fod-h" data-fo-bpm="112">
+  <canvas class="fo-canvas" aria-hidden="true"></canvas>
+  <div class="fod-card">
+    <p class="fod-name">Bunyi Padu Hi-Fi <span>Jalan Imbi, Kuala Lumpur</span></p>
+    <h1 id="fod-h">Hear the bass before you buy the speakers.</h1>
+    <p class="fod-item">BP-6 bookshelf pair, 6.5 inch woofer <span class="num">RM 1,849.00</span></p>
+    <p class="fod-note">Demo track &ldquo;Hujan Petang&rdquo;, <span class="num">112</span> BPM. Listening room open <span class="num">11:00 am to 9:30 pm</span>, <span class="num">30</span> minute slots.</p>
+    <div class="fod-actions">
+      <a class="fod-btn" href="#fod-h">Book a listen</a>
+      <button type="button" class="fo-play fod-play" aria-pressed="false" hidden>Play the beat</button>
+    </div>
+  </div>
+  <button type="button" class="fo-pause fod-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>
