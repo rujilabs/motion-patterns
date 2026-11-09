@@ -1,0 +1,17 @@
+{
+  "name": "Silk fold",
+  "slug": "silk-fold",
+  "kind": "pattern",
+  "summary": "A WebGL sheet of maroon silk with a gold weave folds slowly behind a songket boutique hero, and catches a light that follows the pointer.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
