@@ -1,0 +1,32 @@
+/* Demo page layout for this entry. Not part of the pattern. A planetarium night show: ink sky, warm dome light. */
+.sfd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #1d2442;
+  display: grid; align-items: end; background-color: #070b1c; color: #f2efe6;
+}
+.sfd-copy {
+  position: relative; margin: 0 0 28px 28px; padding: 20px 22px; max-width: 360px; display: grid; gap: 10px; justify-items: start;
+  background: rgba(7, 11, 28, .78); border: 1px solid rgba(232, 236, 255, .14); border-radius: 10px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.sfd-name { font-size: 12.5px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #f0b77a; }
+.sfd-copy h1 { font-size: 30px; font-weight: 650; letter-spacing: -.02em; line-height: 1.08; }
+.sfd-when { font-size: 14px; color: #c9cbe0; }
+.sfd-price { font-size: 14px; color: #f2efe6; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.sfd-price .num { font-weight: 650; }
+.sfd-dot { width: 3px; height: 3px; border-radius: 50%; background: #8d91b3; }
+.sfd-cta { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 4px; }
+.sfd-btn { font-size: 14px; font-weight: 650; padding: 10px 18px; border-radius: 999px; background: #f0b77a; color: #1a1206; text-decoration: none; }
+.sfd-link { font-size: 14px; font-weight: 600; color: #e8ecff; text-underline-offset: 3px; }
+.sfd-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(232, 236, 255, .35); background: rgba(7, 11, 28, .7); color: #e8ecff; cursor: pointer;
+}
+.sfd-pause[aria-pressed="true"] { background: #e8ecff; color: #070b1c; }
+.sfd :focus-visible { outline: 2px solid #f0b77a; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .sfd { aspect-ratio: auto; min-height: 520px; }
+  .sfd-copy { margin: 0 12px 60px; padding: 16px; gap: 8px; }
+  .sfd-copy h1 { font-size: 23px; }
+  .sfd-when, .sfd-price { font-size: 13px; }
+  .sfd-pause { right: 12px; bottom: 12px; }
+}

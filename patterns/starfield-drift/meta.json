@@ -1,0 +1,17 @@
+{
+  "name": "Starfield drift",
+  "slug": "starfield-drift",
+  "kind": "pattern",
+  "summary": "A WebGL spiral galaxy turns slowly behind a planetarium booking hero and leans toward the pointer, its near side tipping closer.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
