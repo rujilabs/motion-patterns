@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ball pit demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="ball-pit.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="ballpit bpd" aria-labelledby="bpd-h">
+  <canvas class="bp-canvas" aria-hidden="true"></canvas>
+  <div class="bpd-card">
+    <p class="bpd-name">Lompat Lompat Play Centre <span>Level 3, Setia City Mall, Shah Alam</span></p>
+    <h1 id="bpd-h">Two floors of climbing, sliding and one very deep ball pit.</h1>
+    <ul class="bpd-rates">
+      <li><span>Weekday, 2 hours</span><span class="num">RM 26.90</span></li>
+      <li><span>Weekend, 2 hours</span><span class="num">RM 34.90</span></li>
+    </ul>
+    <p class="bpd-note">Ages 2 to 10. Grip socks <span class="num">RM 6.50</span>. Open <span class="num">10:00 am to 9:00 pm</span>.</p>
+    <a class="bpd-btn" href="#bpd-h">Book a party room</a>
+  </div>
+  <button type="button" class="bp-pause bpd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>

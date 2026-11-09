@@ -1,0 +1,33 @@
+/*
+ * ball-pit: glossy play balls tumble into a pit and roll aside when the pointer pushes through them.
+ * ball-pit.js runs it with WebGL on .bp-canvas in these colours (6 digit hex). Without WebGL, script or
+ * motion, the canvas keeps this still: a row of flat balls along the bottom.
+ */
+.ballpit {
+  --bp-wall: #e9f3f0;    /* the wall behind the pit */
+  --bp-1: #ef4b3c;       /* the five ball colours */
+  --bp-2: #ffc330;
+  --bp-3: #2f6fd6;
+  --bp-4: #3fae5a;
+  --bp-5: #ff8a2b;
+  --bp-size: 1;          /* ball size */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.bp-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(circle at 9% 93%, var(--bp-1) 0 5.5%, transparent 6%),
+    radial-gradient(circle at 26% 94%, var(--bp-2) 0 5%, transparent 5.5%),
+    radial-gradient(circle at 44% 93%, var(--bp-3) 0 5.5%, transparent 6%),
+    radial-gradient(circle at 62% 94%, var(--bp-4) 0 5%, transparent 5.5%),
+    radial-gradient(circle at 80% 93%, var(--bp-5) 0 5.5%, transparent 6%),
+    radial-gradient(circle at 95% 95%, var(--bp-1) 0 4.5%, transparent 5%),
+    var(--bp-wall);
+}
+.bp-canvas.is-live { background: var(--bp-wall); }
+.bp-pause[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* ball-pit.js lets the balls settle unseen, draws one still frame and hides the Pause button */
+  .bp-pause { display: none; }
+}
