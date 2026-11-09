@@ -9,3 +9,4 @@ Why the collection is built the way it is.
   - [0003 The Pages build is the gate](decisions/0003-pages-build-is-the-gate.md)
   - [0004 Object categories next to behaviour categories](decisions/0004-object-categories.md)
   - [0005 The whole-collection budget follows the collection](decisions/0005-bundle-budget-follows-the-collection.md)
+  - [0006 A shader category with raw WebGL](decisions/0006-shader-category-raw-webgl.md)
