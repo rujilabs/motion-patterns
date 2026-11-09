@@ -1,0 +1,27 @@
+/*
+ * chrome-pour: a stream of liquid chrome pours into a rippling pool and reflects a studio light.
+ * chrome-pour.js draws it with WebGL on .cp-canvas in these colours (6 digit hex). --cp-x places the
+ * stream (share of the width), --cp-h the far edge of the pool (share of the height from the top);
+ * a media query may change them. Without WebGL, script or motion: this still stream and pool.
+ */
+.chromepour {
+  --cp-wall: #15171a;   /* workshop wall */
+  --cp-light: #fff4e2;  /* studio light */
+  --cp-warm: #ff7a2e;   /* glow from the welding bay */
+  --cp-x: .72; --cp-h: .56;
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.cp-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent calc(var(--cp-x) * 100% - 16px), #5d636b calc(var(--cp-x) * 100% - 14px), #f4f6f8 calc(var(--cp-x) * 100% - 4px), #8a9097 calc(var(--cp-x) * 100% + 6px), #2c3036 calc(var(--cp-x) * 100% + 14px), transparent calc(var(--cp-x) * 100% + 16px)) 0 0 / 100% calc(var(--cp-h) * 100% + 30px) no-repeat,
+    linear-gradient(transparent calc(var(--cp-h) * 100%), #3a3f46 calc(var(--cp-h) * 100%), #0c0d0f calc(var(--cp-h) * 100% + 40px), #9aa1a9 88%, #1c1f23),
+    radial-gradient(ellipse 40% 30% at 30% 20%, color-mix(in srgb, var(--cp-light) 10%, transparent), transparent),
+    var(--cp-wall);
+}
+.cp-canvas.is-live { background: var(--cp-wall); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* chrome-pour.js draws one still frame and hides the Pause button */
+  .cp-pause { display: none; }
+}

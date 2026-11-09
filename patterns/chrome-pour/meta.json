@@ -1,0 +1,17 @@
+{
+  "name": "Chrome pour",
+  "slug": "chrome-pour",
+  "kind": "pattern",
+  "summary": "A WebGL stream of liquid chrome pours into a rippling pool behind a metal workshop's hero, mirroring a studio light that follows the pointer.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
