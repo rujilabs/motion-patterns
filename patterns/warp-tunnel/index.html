@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warp tunnel demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="warp-tunnel.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="warp wtd" aria-labelledby="wtd-h">
+  <canvas class="wt-canvas" aria-hidden="true"></canvas>
+  <div class="wtd-head">
+    <p class="wtd-name">Sinar Timur Ekspres</p>
+    <h1 id="wtd-h">Sleep in KL, wake up in Kota Bharu.</h1>
+    <p class="wtd-sub">Night coaches with 27 recliner seats, leaving from <span class="num">9:45 pm</span>. Arrive by <span class="num">6:10 am</span>.</p>
+  </div>
+  <form class="wtd-form" id="wtd-form">
+    <label class="wtd-field"><span>From</span>
+      <select name="from"><option>TBS, Kuala Lumpur</option><option>Shah Alam, Seksyen 17</option></select>
+    </label>
+    <label class="wtd-field"><span>To</span>
+      <select name="to"><option>Kota Bharu</option><option>Kuala Terengganu</option></select>
+    </label>
+    <label class="wtd-field"><span>Night of</span>
+      <select name="night"><option value="Fri 13 Nov">Fri 13 Nov</option><option value="Sat 14 Nov">Sat 14 Nov</option><option value="Sun 15 Nov">Sun 15 Nov</option></select>
+    </label>
+    <button type="submit" class="wtd-go" data-wt-hold>Search trips</button>
+    <p class="wtd-result" role="status" id="wtd-result">Hold Search trips to feel the night road.</p>
+  </form>
+  <button type="button" class="wt-pause wtd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>

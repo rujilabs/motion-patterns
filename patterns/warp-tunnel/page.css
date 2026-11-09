@@ -1,0 +1,44 @@
+/* Demo page layout for this entry. Not part of the pattern. An overnight coach: midnight blue, sodium amber. */
+.wtd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #1f2a55;
+  display: grid; grid-template-rows: auto 1fr auto; padding: 26px; background-color: #0a1230; color: #f4f1ea;
+}
+.wtd-head {
+  justify-self: start; max-width: 400px; display: grid; gap: 8px; padding: 14px 16px; margin: -14px 0 0 -16px;
+  border-radius: 12px; background: rgba(8, 13, 36, .74);
+}
+.wtd-name { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #ffb347; }
+.wtd-head h1 { font-size: 34px; font-weight: 700; letter-spacing: -.025em; line-height: 1.04; }
+.wtd-sub { font-size: 14px; color: #c8cfe6; max-width: 34ch; }
+.wtd-form {
+  grid-row: 3; display: grid; grid-template-columns: 1.3fr 1fr 1fr auto; gap: 10px; align-items: end;
+  padding: 14px; border-radius: 12px; background: rgba(8, 13, 36, .86); border: 1px solid rgba(210, 228, 255, .16);
+}
+.wtd-field { display: grid; gap: 4px; min-width: 0; font-size: 11.5px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; color: #9fa9cc; }
+.wtd-field select {
+  width: 100%; min-height: 40px; padding: 0 10px; border-radius: 8px; font: inherit; font-size: 14px; font-weight: 550;
+  letter-spacing: 0; text-transform: none; color: #f4f1ea; background: #121b42; border: 1px solid #2a3668;
+}
+.wtd-go {
+  min-height: 40px; padding: 0 18px; border: 0; border-radius: 8px; font: inherit; font-size: 14.5px; font-weight: 700;
+  background: #ffb347; color: #241503; cursor: pointer; transition: transform var(--dur-quick) var(--ease-out);
+}
+.wtd-go:active { transform: scale(.97); }
+.wtd-result { grid-column: 1 / -1; font-size: 13px; color: #d9def0; min-height: 1.45em; }
+.wtd-pause {
+  position: absolute; right: 18px; top: 18px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(210, 228, 255, .35); background: rgba(10, 18, 48, .7); color: #e6ecff; cursor: pointer;
+}
+.wtd-pause[aria-pressed="true"] { background: #e6ecff; color: #0a1230; }
+.wtd :focus-visible { outline: 2px solid #ffb347; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .wtd-go { transition: none; } }
+@media (max-width: 560px) {
+  .wtd { aspect-ratio: auto; min-height: 600px; padding: 18px 14px 14px; }
+  .wtd-head { margin: -4px 64px 0 -4px; padding: 12px; }
+  .wtd-head h1 { font-size: 27px; }
+  .wtd-sub { font-size: 13px; }
+  .wtd-form { grid-template-columns: 1fr 1fr; padding: 12px; }
+  .wtd-field:first-child { grid-column: 1 / -1; }
+  .wtd-go { grid-column: 1 / -1; min-height: 46px; }
+  .wtd-pause { right: 12px; top: 14px; }
+}
