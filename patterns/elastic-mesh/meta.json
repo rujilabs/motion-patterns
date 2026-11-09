@@ -1,0 +1,17 @@
+{
+  "name": "Elastic mesh",
+  "slug": "elastic-mesh",
+  "kind": "pattern",
+  "summary": "A quilted mattress top drawn in WebGL over a spring grid: it dents where you press and springs back with a soft overshoot when you let go.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
