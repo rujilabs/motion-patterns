@@ -1,0 +1,36 @@
+/* Demo page layout for this entry. Not part of the pattern. A laser engraving shop: kraft paper, charcoal, laser orange. */
+.lld {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; border: 1px solid #cdbfa6;
+  display: grid; grid-template-rows: 60% 1fr; background: #f5efe4; color: #221a14;
+}
+.lld-board { border-bottom: 3px solid #221a14; }
+.lld-pause {
+  position: absolute; right: 12px; top: 12px; font: inherit; font-size: 12.5px; font-weight: 650;
+  padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(34, 26, 20, .4); background: rgba(245, 239, 228, .9); color: #221a14; cursor: pointer;
+}
+.lld-pause[aria-pressed="true"] { background: #221a14; color: #f5efe4; }
+.lld-body { padding: 14px 20px 16px; display: grid; gap: 10px; align-content: start; }
+.lld-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.lld-shop { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #b4410e; }
+.lld-top h1 { font-size: 18px; font-weight: 700; line-height: 1.2; margin-top: 3px; }
+.lld-price { display: grid; justify-items: end; font-size: 21px; font-weight: 780; white-space: nowrap; }
+.lld-unit { font-size: 12px; font-weight: 550; color: #6a5d50; }
+.lld-form { display: grid; gap: 5px; }
+.lld-form label { font-size: 12.5px; font-weight: 650; color: #4a3f35; }
+.lld-row { display: flex; gap: 8px; }
+.lld-row input {
+  flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 8px 11px; border-radius: 6px;
+  border: 1.5px solid #8c7b68; background: #fffaf2; color: #221a14;
+}
+.lld-row button {
+  font: inherit; font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 6px; border: 0;
+  background: #d9500f; color: #fff; cursor: pointer;
+}
+.lld :focus-visible { outline: 2px solid #221a14; outline-offset: 2px; }
+@media (max-width: 520px) {
+  .lld { aspect-ratio: auto; grid-template-rows: 220px auto; }
+  .lld-top { flex-direction: column; gap: 6px; }
+  .lld-price { justify-items: start; }
+  .lld-body { padding: 14px 16px 18px; }
+  .lld .ll-name { font-size: 46px; }
+}

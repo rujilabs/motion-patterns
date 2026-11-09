@@ -1,0 +1,25 @@
+/*
+ * laser-line: a laser engraves the .ll-name text into a wooden board, row by row, with sparks and smoke.
+ * laser-line.js draws it with WebGL on .ll-canvas from the name's own font and place, then makes the HTML
+ * text transparent over its engraving. Without WebGL, script or motion, the name shows as plain engraved
+ * text on this wood gradient.
+ */
+.laserline {
+  --ll-wood: #e3bf8c;    /* light rubberwood */
+  --ll-grain: #bf8f5b;   /* the darker grain */
+  --ll-burn: #33190b;    /* the charred engraving */
+  position: relative; overflow: hidden; isolation: isolate; display: grid; place-items: center;
+  background: repeating-linear-gradient(176deg, transparent 0 9px, color-mix(in srgb, var(--ll-grain) 35%, transparent) 9px 11px, transparent 11px 23px), var(--ll-wood);
+}
+.ll-canvas { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+.ll-name {
+  margin: 0; white-space: nowrap; line-height: 1.1; font-size: 64px; font-weight: 760; letter-spacing: 0;
+  color: var(--ll-burn); text-shadow: 0 1px 0 rgba(255, 255, 255, .35), 0 -1px 0 rgba(0, 0, 0, .25);
+}
+.laserline.is-live .ll-name { color: transparent; text-shadow: none; }
+.ll-form[hidden] { display: none; }   /* the script shows the form; without it there is nothing to engrave with */
+
+@media (prefers-reduced-motion: reduce) {
+  /* laser-line.js draws one still frame of the finished engraving and hides the Pause button */
+  .ll-pause { display: none; }
+}
