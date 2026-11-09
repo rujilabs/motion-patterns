@@ -1,0 +1,23 @@
+/*
+ * oil-sheen: a dark glossy panel with a thin-film rainbow sheen that shifts with the pointer.
+ * oil-sheen.js draws it with WebGL on .os-canvas over these colours (6 digit hex). Without WebGL,
+ * script or motion, the canvas keeps this still look: the paint, a softbox line and a soft rainbow.
+ */
+.sheen {
+  --os-paint: #0d1015;   /* the paint under the coat */
+  --os-light: #e8eefc;   /* the studio light it reflects */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.os-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    linear-gradient(-21deg, transparent 38%, color-mix(in srgb, var(--os-light) 20%, transparent) 41% 43%, transparent 47%),
+    radial-gradient(ellipse 50% 60% at 70% 40%, rgba(255, 90, 160, .22), rgba(90, 220, 200, .16) 45%, rgba(255, 200, 80, .1) 70%, transparent),
+    var(--os-paint);
+}
+.os-canvas.is-live { background: var(--os-paint); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* oil-sheen.js draws one still frame and hides the Pause button */
+  .os-pause { display: none; }
+}
