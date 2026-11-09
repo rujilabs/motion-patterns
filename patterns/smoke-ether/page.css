@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. A day spa: lamp-lit mauve, peach and eucalyptus smoke. */
+.sxd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; border: 1px solid #3a2f33;
+  display: grid; align-items: center; background-color: #211a1d; color: #f6eee9;
+}
+.sxd-card {
+  margin-left: 26px; padding: 20px 22px; max-width: 330px; display: grid; gap: 11px; justify-items: start;
+  background: rgba(28, 22, 25, .82); border: 1px solid rgba(244, 195, 168, .2); border-radius: 18px;
+}
+.sxd-name { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #f4c3a8; }
+.sxd-name span { display: block; margin-top: 2px; font-weight: 500; letter-spacing: .02em; text-transform: none; color: #bfb1aa; }
+.sxd-card h1 { font-size: 23px; font-weight: 650; letter-spacing: -.015em; line-height: 1.15; }
+.sxd-menu { width: 100%; font-size: 13.5px; }
+.sxd-menu li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-top: 1px solid rgba(246, 238, 233, .14); }
+.sxd-menu .num { font-weight: 650; color: #fff; }
+.sxd-hours { font-size: 13px; color: #d4c8c2; }
+.sxd-btn { font-size: 14px; font-weight: 650; padding: 10px 18px; border-radius: 999px; background: #a8cdbf; color: #1b1517; text-decoration: none; }
+.sxd-pause {
+  position: absolute; right: 16px; bottom: 16px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(246, 238, 233, .35); background: rgba(33, 26, 29, .75); color: #f6eee9; cursor: pointer;
+}
+.sxd-pause[aria-pressed="true"] { background: #f6eee9; color: #211a1d; }
+.sxd :focus-visible { outline: 2px solid #f4c3a8; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .sxd { aspect-ratio: auto; min-height: 640px; align-items: end; --sx-idle-x: 0; --sx-reach: .1; }
+  .sxd-card { margin: 0 12px 60px; padding: 16px; gap: 9px; max-width: none; }
+  .sxd-card h1 { font-size: 21px; }
+  .sxd-pause { right: 12px; bottom: 12px; }
+}

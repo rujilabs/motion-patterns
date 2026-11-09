@@ -1,0 +1,27 @@
+/*
+ * smoke-ether: soft coloured smoke rising through a dark room, parting round the pointer like round a hand.
+ * smoke-ether.js draws it with WebGL on .sx-canvas in these colours (6 digit hex). Without WebGL, script
+ * or motion, the canvas keeps this still: two soft plumes over the dark base.
+ */
+.ether {
+  --sx-base: #211a1d;    /* the room */
+  --sx-a: #f4c3a8;       /* smoke colour one */
+  --sx-b: #a8cdbf;       /* smoke colour two */
+  --sx-reach: .12;       /* how wide the smoke parts round the pointer, in heights */
+  --sx-idle-x: .25;      /* where the idle hand drifts: share of the width from the middle */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.sx-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    radial-gradient(ellipse 26% 60% at 68% 85%, color-mix(in srgb, var(--sx-a) 38%, transparent), transparent),
+    radial-gradient(ellipse 22% 50% at 84% 70%, color-mix(in srgb, var(--sx-b) 32%, transparent), transparent),
+    var(--sx-base);
+}
+.sx-canvas.is-live { background: var(--sx-base); }
+.sx-pause[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* smoke-ether.js draws one still frame and hides the Pause button */
+  .sx-pause { display: none; }
+}
