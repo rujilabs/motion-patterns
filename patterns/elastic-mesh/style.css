@@ -1,0 +1,25 @@
+/*
+ * elastic-mesh: a quilted fabric that dents where you press and springs back with a small overshoot.
+ * elastic-mesh.js runs a spring grid and shades it with WebGL on .em-canvas in these colours (6 digit hex).
+ * Without WebGL or script, the canvas keeps this still diamond stitching.
+ */
+.elasticmesh {
+  --em-fabric: #e4e8ec;  /* the knit */
+  --em-thread: #8d9cab;  /* the stitching */
+  --em-quilt: 6;         /* quilted cells across the area's height */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.em-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 46px, color-mix(in srgb, var(--em-thread) 45%, transparent) 46px 48px),
+    repeating-linear-gradient(-45deg, transparent 0 46px, color-mix(in srgb, var(--em-thread) 45%, transparent) 46px 48px),
+    var(--em-fabric);
+}
+.em-canvas.is-live { background: var(--em-fabric); }
+.em-pause[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* elastic-mesh.js draws one still frame with a dent in it and hides the Pause button */
+  .em-pause { display: none; }
+}

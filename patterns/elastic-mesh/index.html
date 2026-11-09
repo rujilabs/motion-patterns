@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elastic mesh demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="elastic-mesh.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="elasticmesh emd" aria-labelledby="emd-h">
+  <canvas class="em-canvas" aria-hidden="true"></canvas>
+  <p class="emd-hint">Press the fabric</p>
+  <div class="emd-card">
+    <p class="emd-name">Tilam Lena, Seri Kembangan</p>
+    <h1 id="emd-h">Lena Hybrid, 25&nbsp;cm, medium firm</h1>
+    <p class="emd-price"><span class="num">RM 1,849</span> queen <s class="num">RM 2,290</s></p>
+    <p class="emd-note">Pocket springs under 4 cm of latex. Sleep on it for <span class="num">100</span> nights, return it free. Delivered in Klang Valley within <span class="num">3</span> days.</p>
+    <a class="emd-btn" href="#emd-h">Try it in store, open till <span class="num">9:30 pm</span></a>
+  </div>
+  <button type="button" class="em-pause emd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>
