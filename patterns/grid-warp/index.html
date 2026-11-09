@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid warp demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="grid-warp.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<article class="gwd" aria-labelledby="gwd-h">
+  <div class="gridwarp gwd-photo" data-gw-radius=".24">
+    <img class="gw-photo" src="facade.svg" alt="Front of a double storey terrace house, number 18, with a tiled gable roof, grilled windows and a black autogate" width="800" height="500">
+    <canvas class="gw-canvas" aria-hidden="true"></canvas>
+    <p class="gwd-tag">New listing</p>
+    <button type="button" class="gw-pause gwd-pause" aria-pressed="false" hidden>Pause</button>
+  </div>
+  <div class="gwd-body">
+    <div class="gwd-top">
+      <h1 id="gwd-h">Double storey terrace, Taman Bukit Indah, Ampang</h1>
+      <p class="gwd-price num">RM 868,000</p>
+    </div>
+    <ul class="gwd-facts">
+      <li><span class="num">4</span> bed</li>
+      <li><span class="num">3</span> bath</li>
+      <li><span class="num">22 x 75</span> ft</li>
+      <li>Freehold</li>
+    </ul>
+    <p class="gwd-when">Viewing Sunday 15 November, <span class="num">10:30 am</span> to <span class="num">1:00 pm</span>. Agent: Farah Liyana, REN 41207.</p>
+  </div>
+</article>
+</main>
+</body>
+</html>

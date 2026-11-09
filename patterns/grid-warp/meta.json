@@ -1,0 +1,18 @@
+{
+  "name": "Grid warp",
+  "slug": "grid-warp",
+  "kind": "pattern",
+  "summary": "A property listing photo, redrawn in WebGL, bends like a rubber sheet under the pointer: it swells into a dent, drags along and springs back.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
