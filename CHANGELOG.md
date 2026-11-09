@@ -5,6 +5,13 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.13.0] - 2026-11-09
+
+### Added
+
+- **style-flight:** Animation studio style menu, one paper plane flight in ten looks
+
+
 ## [0.12.0] - 2026-11-09
 
 ### Added
