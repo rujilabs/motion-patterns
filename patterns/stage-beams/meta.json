@@ -1,0 +1,17 @@
+{
+  "name": "Stage beams",
+  "slug": "stage-beams",
+  "kind": "pattern",
+  "summary": "WebGL spotlight beams sweep through drifting stage haze over a crowd in silhouette, behind a concert ticket card.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

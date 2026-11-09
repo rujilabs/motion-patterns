@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stage beams demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="stage-beams.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="beams sbd" aria-labelledby="sbd-h" data-sb-beams="4">
+  <canvas class="sb-canvas" aria-hidden="true"></canvas>
+  <div class="sbd-ticket">
+    <p class="sbd-venue">Dewan Lantera <span>Jalan Ampang, Kuala Lumpur</span></p>
+    <h1 id="sbd-h">Kugiran Hujan Petang, live: the Lampu Jalan tour</h1>
+    <p class="sbd-when">Saturday 21 November 2026 <span class="num">Doors 7:45 pm &middot; on stage 9:10 pm</span></p>
+    <ul class="sbd-tiers">
+      <li><span>Standing</span> <b class="num">RM 128.50</b></li>
+      <li><span>Seated, balcony</span> <b class="num">RM 238.00</b></li>
+    </ul>
+    <div class="sbd-cta">
+      <a class="sbd-btn" href="#sbd-h">Buy tickets</a>
+      <span class="sbd-left"><span class="num">312</span> standing left</span>
+    </div>
+  </div>
+  <button type="button" class="sb-pause sbd-pause" aria-pressed="false" hidden>Pause</button>
+</section>
+</main>
+</body>
+</html>

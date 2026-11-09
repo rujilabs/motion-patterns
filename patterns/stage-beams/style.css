@@ -1,0 +1,26 @@
+/*
+ * stage-beams: moving spotlight beams sweep through haze above a crowd.
+ * stage-beams.js draws them with WebGL on .sb-canvas in these colours (6 digit hex). Without WebGL,
+ * script or motion, the canvas keeps this still look: four beams fanned down from the truss.
+ */
+.beams {
+  --sb-base: #130b10;   /* the dark hall */
+  --sb-a: #ffb347;      /* beam colour one */
+  --sb-b: #ff4f6d;      /* beam colour two */
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.sb-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    conic-gradient(from 160deg at 10% -4%, transparent 0 3deg, color-mix(in srgb, var(--sb-a) 45%, transparent) 7deg, transparent 11deg),
+    conic-gradient(from 172deg at 37% -4%, transparent 0 3deg, color-mix(in srgb, var(--sb-b) 45%, transparent) 7deg, transparent 11deg),
+    conic-gradient(from 178deg at 63% -4%, transparent 0 3deg, color-mix(in srgb, var(--sb-a) 45%, transparent) 7deg, transparent 11deg),
+    conic-gradient(from 190deg at 90% -4%, transparent 0 3deg, color-mix(in srgb, var(--sb-b) 45%, transparent) 7deg, transparent 11deg),
+    var(--sb-base);
+}
+.sb-canvas.is-live { background: var(--sb-base); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* stage-beams.js draws one still frame and hides the Pause button */
+  .sb-pause { display: none; }
+}
