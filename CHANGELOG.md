@@ -5,6 +5,21 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.11.0] - 2026-11-09
+
+### Added
+
+- **prism-split:** An optician hero where a beam fans into a spectrum that follows the pointer
+- **storm-bolt:** A thunderstorm alert with forked lightning kept under the flash limit
+- **chrome-pour:** A fabrication hero where liquid chrome pours and reflects a studio light
+- **ripple-grid:** A koi farm grid that ripples from every tap like a pond
+- **grid-warp:** A listing photo that bends like a rubber sheet under the pointer
+- **paint-swirl:** A board game cafe hero where chunky paint swirls in a slow vortex
+- **halftone-reveal:** A print shop picture whose halftone dots grow into the full image under the pointer
+- **dither-veil:** A portrait whose grainy one-bit veil dissolves as it scrolls in
+- **laser-line:** A laser that engraves the visitor's name onto wood with sparks and smoke
+
+
 ## [0.10.0] - 2026-11-09
 
 ### Added
