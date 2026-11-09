@@ -1,0 +1,17 @@
+{
+  "name": "Molten metal",
+  "slug": "molten-metal",
+  "kind": "pattern",
+  "summary": "Blobs of molten gold rise, sink, merge and split like a lava lamp behind a goldsmith's prices, glowing hot at the rim and mirroring a workshop light.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
