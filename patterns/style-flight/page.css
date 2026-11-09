@@ -1,0 +1,66 @@
+/* Demo page layout for this entry. Not part of the pattern. An animation studio's style menu. */
+.sfd { width: min(100%, 1180px); padding: 20px 22px 16px; display: grid; gap: 16px; }
+.sfd-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 8px 32px; }
+.sfd-studio { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--demo-red); }
+.sfd-studio span { margin-left: 6px; font-weight: 550; letter-spacing: .02em; text-transform: none; color: var(--demo-mute); }
+.sfd h1 { margin-top: 4px; font-size: 24px; }
+.sfd-sub { max-width: 380px; font-size: 13.5px; color: var(--demo-mute); }
+.sf-grid { --sf-gap: 10px; }
+.sf-card { font-size: 14px; }
+.sf-card:focus-visible { outline: 2px solid var(--demo-blue); outline-offset: 1px; }
+.sf-card:hover, .sf-card.is-playing { border-color: var(--demo-line); background: var(--demo-table); }
+.sf-item.is-picked .sf-name::after {
+  content: "Picked"; margin-left: 6px; padding: 1px 6px; border-radius: 999px; font-size: 11px; font-weight: 650;
+  vertical-align: 2px; background: var(--demo-ink); color: var(--demo-paper);
+}
+.sf-open, .sf-d-actions button {
+  font: inherit; font-size: 12px; font-weight: 650; padding: 3px 10px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, .2); background: rgba(255, 255, 255, .92); color: #1e2229;
+}
+.sfd-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; font-size: 12.5px; color: var(--demo-mute); }
+.sfd-picked { color: var(--demo-ink); font-weight: 600; }
+
+/* the look of each card before script draws it, and without script */
+[data-look="pixel"] { --sf-sky: linear-gradient(#5aa9ff 0 25%, #79bbff 0 50%, #9acbff 0 75%, #5cbf4a 0); --sf-wing: #fff; --sf-keel: #2b3a67; }
+[data-look="chalk"] { --sf-sky: #2e4a3c; --sf-wing: #e9eee6; --sf-keel: #9fb3a5; }
+[data-look="glow"] { --sf-sky: #0b0f1f; --sf-wing: #5ff4ff; --sf-keel: #ff4fd8; }
+[data-look="poly"] { --sf-sky: linear-gradient(#3b4a8f, #f3a26b); --sf-wing: #fff2dc; --sf-keel: #c2566b; }
+[data-look="comic"] { --sf-sky: radial-gradient(#f2b300 22%, transparent 26%) 0 0 / 7px 7px, #ffe45c; --sf-wing: #fff; --sf-keel: #e8402f; }
+[data-look="flat"] { --sf-sky: radial-gradient(circle at 80% 30%, #ff9f6e 16%, transparent 16.5%), #ffe9dc; --sf-wing: #fff; --sf-keel: #2f3e6e; }
+[data-look="line"] { --sf-sky: #f7f5f0; --sf-wing: #1d1d1f; --sf-keel: #6b6b70; }
+[data-look="gloss"] { --sf-sky: linear-gradient(#0c2a6b, #1f6fd1 70%, #0b1d45 0); --sf-wing: #eef3fb; --sf-keel: #e3283f; }
+[data-look="brick"] { --sf-sky: radial-gradient(#6fbaea 30%, transparent 34%) 0 0 / 8px 8px, #4aa3df; --sf-wing: #e3262b; --sf-keel: #ffcd03; }
+[data-look="clay"] { --sf-sky: linear-gradient(#c9e1e6 78%, #9ccc7a 0); --sf-wing: #f5cf6e; --sf-keel: #e2683c; }
+
+/* the dialog */
+.sf-dialog {
+  width: min(calc(100vw - 32px), 720px); max-height: calc(100svh - 32px); padding: 0; overflow: auto;
+  border: 1px solid var(--demo-line); border-radius: 12px; background: var(--demo-paper); color: var(--demo-ink);
+}
+.sf-dialog::backdrop { background: rgba(14, 18, 24, .6); }
+.sf-d-view { background: var(--sf-sky, #cfdcec); }
+.sf-d-body { padding: 16px 20px 18px; display: grid; gap: 6px; }
+.sf-d-count { font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--demo-mute); }
+.sf-d-body h2 { font-size: 22px; }
+#sf-d-desc { color: var(--demo-mute); }
+.sf-d-price .num { font-weight: 700; }
+.sf-d-actions { display: flex; gap: 8px; margin-top: 8px; }
+.sf-d-actions button { font-size: 14px; padding: 8px 16px; }
+.sf-d-actions .sf-d-pick { background: var(--demo-ink); color: var(--demo-paper); border-color: var(--demo-ink); }
+.sf-dialog :focus-visible { outline: 2px solid var(--demo-blue); outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .sfd { padding: 16px 12px 14px; }
+  .sfd h1 { font-size: 21px; }
+  .sf-grid { --sf-cols: 2; --sf-gap: 8px; }
+  .sf-card { font-size: 13.5px; padding: 4px 4px 6px; }
+  .sf-open { top: 9px; right: 9px; font-size: 11.5px; padding: 2px 9px; }
+}
+@media (min-width: 601px) and (max-width: 860px) {
+  .sfd { padding: 16px 16px 12px; gap: 12px; }
+  .sfd h1 { font-size: 20px; }
+  .sfd-sub { font-size: 12.5px; max-width: 320px; }
+  .sf-grid { --sf-gap: 6px; }
+  .sf-card { font-size: 12.5px; padding: 4px 4px 6px; }
+  .sf-view { margin-bottom: 4px; }
+}

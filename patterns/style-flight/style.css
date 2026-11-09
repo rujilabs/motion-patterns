@@ -1,0 +1,35 @@
+/*
+ * style-flight: a "pick your style" menu. Every .sf-card previews the same flight in its own look;
+ * style-flight.js draws it on .sf-canvas from one shared path, and plays a card only while it is
+ * hovered, focused or tapped. Without script, the CSS plane in .sf-still stands in, coloured by
+ * --sf-sky, --sf-wing and --sf-keel on the card's .sf-item.
+ */
+.sf-grid { display: grid; grid-template-columns: repeat(var(--sf-cols, 5), minmax(0, 1fr)); gap: var(--sf-gap, 12px); }
+.sf-item { position: relative; }
+.sf-card {
+  display: grid; gap: 2px; width: 100%; padding: 6px 6px 8px; text-align: left;
+  font: inherit; color: inherit; background: none; border: 1px solid transparent; border-radius: 10px; cursor: pointer;
+  transition: border-color .2s var(--ease-out), background-color .2s var(--ease-out);
+}
+.sf-card:hover, .sf-card.is-playing { border-color: currentColor; }
+.sf-view {
+  position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; margin-bottom: 6px;
+  background: var(--sf-sky, #cfdcec);
+}
+.sf-canvas, .sf-d-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* the no-script plane: near wing (::before) and keel (::after), seen from the side, mid climb */
+.sf-still { position: absolute; left: 48%; top: 34%; width: 26%; aspect-ratio: 2 / 1; rotate: -32deg; }
+.sf-still::before, .sf-still::after { content: ""; position: absolute; inset: 0; }
+.sf-still::before { background: var(--sf-wing, #fff); clip-path: polygon(100% 50%, 0 8%, 18% 52%); }
+.sf-still::after { background: var(--sf-keel, #33415c); clip-path: polygon(98% 51%, 18% 52%, 6% 86%); }
+.sf-name { font-weight: 650; }
+.sf-price { font-size: .86em; opacity: .75; }
+.sf-open { position: absolute; top: 12px; right: 12px; }
+.sf-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sf-d-view { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+@media (hover: hover) and (pointer: fine) { .sf-open { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* style-flight.js draws one still frame per card and in the dialog, and never plays */
+  .sf-card { transition: none; }
+}
