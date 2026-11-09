@@ -1,0 +1,26 @@
+/*
+ * ripple-grid: a lit grid floats on dark pond water; every tap drops a ripple that bends it, like a pond.
+ * ripple-grid.js draws it with WebGL on .rg-canvas in these colours (6 digit hex). A .rg-drop button
+ * drops one from the keyboard. Without WebGL, script or motion: this still grid with one set of rings.
+ */
+.ripplegrid {
+  --rg-water: #0a1c19;   /* pond water */
+  --rg-line: #f0c26a;    /* the lit grid */
+  --rg-koi: #ff6a2b;     /* koi markings */
+  --rg-pond: .72 .5;     /* where the koi swim: shares of the width and height */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.rg-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  background:
+    repeating-radial-gradient(circle at 72% 58%, transparent 0 22px, color-mix(in srgb, var(--rg-line) 22%, transparent) 24px, transparent 27px 34px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--rg-line) 30%, transparent) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(color-mix(in srgb, var(--rg-line) 30%, transparent) 0 1px, transparent 1px 26px),
+    radial-gradient(ellipse at 70% 40%, color-mix(in srgb, var(--rg-water) 70%, #2a5048), var(--rg-water));
+}
+.rg-canvas.is-live { background: var(--rg-water); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* ripple-grid.js draws one still frame with two rings; nothing to pause or drop */
+  .rg-pause, .rg-drop { display: none; }
+}

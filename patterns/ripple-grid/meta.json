@@ -1,0 +1,17 @@
+{
+  "name": "Ripple grid",
+  "slug": "ripple-grid",
+  "kind": "pattern",
+  "summary": "A lit grid floats on dark WebGL pond water over swimming koi, and every tap, click or Feed press drops a ripple that bends it like a pond.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "click",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

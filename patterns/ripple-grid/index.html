@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripple grid demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="ripple-grid.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<section class="ripplegrid rgd" aria-labelledby="rgd-h" data-rg-cell="26">
+  <canvas class="rg-canvas" aria-hidden="true"></canvas>
+  <div class="rgd-card">
+    <p class="rgd-name">Kolam Koi Sungai Tua <span>Batu Caves, Selangor</span></p>
+    <h1 id="rgd-h">Kohaku and showa, bred in our own mud ponds.</h1>
+    <ul class="rgd-list">
+      <li><span>Tosai, 12 to 15 cm</span> <span class="num">RM 85</span></li>
+      <li><span>Nisai, 25 to 30 cm</span> <span class="num">RM 260</span></li>
+      <li><span>Pond water test</span> <span class="num">Free</span></li>
+    </ul>
+    <p class="rgd-when">Farm open day Saturday 14 November, <span class="num">9:00 am</span> to <span class="num">5:30 pm</span>.</p>
+    <a class="rgd-btn" href="#rgd-h">Plan a visit</a>
+  </div>
+  <div class="rgd-tools">
+    <button type="button" class="rg-drop rgd-tool" hidden>Feed the koi</button>
+    <button type="button" class="rg-pause rgd-tool" aria-pressed="false" hidden>Pause</button>
+  </div>
+</section>
+</main>
+</body>
+</html>
