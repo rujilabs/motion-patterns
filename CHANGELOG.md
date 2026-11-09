@@ -5,6 +5,21 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.12.0] - 2026-11-09
+
+### Added
+
+- **ink-stir:** Watercolour class hero where the pointer stirs ink in a fluid simulation
+- **smoke-ether:** Day spa hero with curl-noise smoke that parts round the pointer
+- **molten-metal:** Goldsmith hero with molten gold blobs that merge and split
+- **ferrofluid:** Hi-fi shop ferrofluid puddle that spikes on the beat
+- **ball-pit:** Play centre hero with lit balls pushed aside by the pointer
+- **metal-badge:** Hardware store brushed metal badge whose light rolls as it tilts
+- **crystal-ball:** Jewellery shop glass ball that refracts the ring display
+- **glass-lens:** Pharmacy leaflet lens that magnifies the small print
+- **elastic-mesh:** Mattress shop fabric mesh that dents and springs back
+
+
 ## [0.11.0] - 2026-11-09
 
 ### Added
