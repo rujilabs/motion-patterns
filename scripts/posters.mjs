@@ -33,7 +33,9 @@ const SIZE = {
   pattern: { viewport: { width: 800, height: 600 }, deviceScaleFactor: 0.6, quality: 72 },
 };
 
-const browser = await chromium.launch(process.env.CHROME ? { executablePath: process.env.CHROME } : {});
+// SwiftShader gives headless Chromium a software WebGL, so shader entries render a real frame.
+const GL_ARGS = ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"];
+const browser = await chromium.launch({ args: GL_ARGS, ...(process.env.CHROME ? { executablePath: process.env.CHROME } : {}) });
 let failed = 0;
 for (const e of entries) {
   const s = SIZE[e.kind];
