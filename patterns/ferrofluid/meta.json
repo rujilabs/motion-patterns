@@ -1,0 +1,17 @@
+{
+  "name": "Ferrofluid",
+  "slug": "ferrofluid",
+  "kind": "pattern",
+  "summary": "A glossy black ferrofluid puddle in a hi-fi shop raises a hexagonal crown of spikes on every kick of the demo track, silent until you press Play.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css"
+  ],
+  "tokens": [],
+  "trigger": "loop",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}
