@@ -1,0 +1,30 @@
+/* Demo page layout for this entry. Not part of the pattern. A print shop job card: paper, black ink, process magenta. */
+.hrd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; border: 1px solid #d5d0c2;
+  display: grid; grid-template-rows: 66% 1fr; background: #f8f5ec; color: #1b1b1f;
+}
+.hrd-photo { background: #e9e3d3; }
+.hrd-tag {
+  position: absolute; left: 12px; top: 12px; font-size: 12px; font-weight: 700; letter-spacing: .03em;
+  padding: 4px 9px; background: #1b1b1f; color: #f8f5ec;
+}
+.hrd-pause {
+  position: absolute; right: 12px; top: 12px; font: inherit; font-size: 12.5px; font-weight: 650;
+  padding: 4px 11px; border: 1.5px solid #1b1b1f; background: #f8f5ec; color: #1b1b1f; cursor: pointer;
+}
+.hrd-pause[aria-pressed="true"] { background: #1b1b1f; color: #f8f5ec; }
+.hrd-body { padding: 14px 20px 16px; display: grid; gap: 8px; align-content: start; border-top: 3px solid #e5007d; }
+.hrd-top { display: flex; justify-content: space-between; align-items: start; gap: 18px; }
+.hrd-name { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #b3005f; }
+.hrd-top h1 { font-size: 19px; font-weight: 700; line-height: 1.18; margin-top: 3px; }
+.hrd-price { display: grid; justify-items: end; font-size: 22px; font-weight: 780; white-space: nowrap; }
+.hrd-unit { font-size: 12px; font-weight: 550; color: #5c5a55; }
+.hrd-when { font-size: 13px; color: #4a4843; }
+.hrd-when .num { white-space: nowrap; color: #1b1b1f; font-weight: 650; }
+.hrd :focus-visible { outline: 2px solid #e5007d; outline-offset: 2px; }
+@media (max-width: 520px) {
+  .hrd { aspect-ratio: auto; grid-template-rows: 240px auto; }
+  .hrd-top { flex-direction: column; gap: 6px; }
+  .hrd-price { justify-items: start; }
+  .hrd-body { padding: 14px 16px 18px; }
+}

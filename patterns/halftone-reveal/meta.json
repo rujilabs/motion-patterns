@@ -1,0 +1,18 @@
+{
+  "name": "Halftone reveal",
+  "slug": "halftone-reveal",
+  "kind": "pattern",
+  "summary": "A print shop's poster art, redrawn in WebGL as a four colour halftone: under the pointer the dots grow, merge and give way to the full picture.",
+  "category": "shader",
+  "tech": [
+    "webgl",
+    "js",
+    "css",
+    "svg"
+  ],
+  "tokens": [],
+  "trigger": "hover",
+  "reduced_motion": "static",
+  "relation": "original",
+  "added": "2026-11-09"
+}

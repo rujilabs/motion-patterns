@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halftone reveal demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="halftone-reveal.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<article class="hrd" aria-labelledby="hrd-h">
+  <div class="halftone hrd-photo" data-hr-pitch="7" data-hr-radius=".26">
+    <img class="hr-photo" src="sunset.svg" alt="Poster art: a wooden kampung house on stilts and two coconut palms on a beach at sunset, a small sailing boat on the sea" width="800" height="420">
+    <canvas class="hr-canvas" aria-hidden="true"></canvas>
+    <p class="hrd-tag">Job 0418, A2 poster</p>
+    <button type="button" class="hr-pause hrd-pause" aria-pressed="false" hidden>Pause</button>
+  </div>
+  <div class="hrd-body">
+    <div class="hrd-top">
+      <div>
+        <p class="hrd-name">Cetak Lekas, Jalan Pasar, Pudu</p>
+        <h1 id="hrd-h">Posters that look this sharp, up close and from across the street.</h1>
+      </div>
+      <p class="hrd-price"><span class="num">RM 18.60</span> <span class="hrd-unit">A2, 170 gsm</span></p>
+    </div>
+    <p class="hrd-when">Send your file by <span class="num">11:00 am</span>, collect by <span class="num">4:30 pm</span> the same day. Open Saturday 14 November till <span class="num">6:00 pm</span>.</p>
+  </div>
+</article>
+</main>
+</body>
+</html>

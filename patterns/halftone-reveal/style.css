@@ -1,0 +1,19 @@
+/*
+ * halftone-reveal: a picture shown as a four colour halftone print; under the pointer the dots grow into
+ * the full picture. halftone-reveal.js reads the .hr-photo image into WebGL and draws the print on
+ * .hr-canvas over it. Without WebGL or script, the canvas stays hidden and the plain picture shows.
+ * Crop with object-fit: cover, centred.
+ */
+.halftone {
+  --hr-paper: #f8f5ec;   /* the paper the inks sit on */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.hr-photo, .hr-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hr-photo { z-index: -2; object-fit: cover; object-position: 50% 50%; }
+.hr-canvas { z-index: -1; pointer-events: none; opacity: 0; }
+.hr-canvas.is-live { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* halftone-reveal.js draws one still print with the loupe resting on it; nothing to pause */
+  .hr-pause { display: none; }
+}
