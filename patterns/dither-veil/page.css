@@ -1,0 +1,35 @@
+/* Demo page layout for this entry. Not part of the pattern. A portrait studio: cream paper, plum ink, brass. */
+body { background: #efe6da; color: #2a1729; }
+.dvd-intro, .dvd-outro { display: grid; gap: 10px; max-width: 640px; margin: 0 auto; padding: 28px 16px; }
+.dvd-intro { min-height: 50svh; align-content: start; }
+.dvd-outro { min-height: 70svh; align-content: start; color: #6b5568; text-align: center; }
+.dvd-hint { justify-self: start; padding: 3px 8px; border: 1px dashed var(--demo-blue); border-radius: 4px; background: var(--demo-blue-soft); color: var(--demo-blue); font-size: 12px; }
+.dvd-kicker { margin-top: 12px; color: #8a5a1f; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.dvd-intro h1 { font-size: clamp(25px, 6vw, 33px); font-weight: 700; letter-spacing: -.02em; }
+
+.dvd-card {
+  width: min(640px, calc(100% - 32px)); margin: 0 auto; display: grid; grid-template-columns: 5fr 6fr;
+  background: #fbf6ef; border: 1px solid #dccbb8; border-radius: 4px; overflow: hidden;
+}
+.dvd-photo { margin: 0; aspect-ratio: 4 / 5; background: #4f6c6b; }
+.dvd-body { padding: 22px 22px 20px; display: grid; gap: 10px; align-content: start; justify-items: start; }
+.dvd-body h2 { font-size: 22px; font-weight: 700; }
+.dvd-price { font-size: 26px; font-weight: 780; color: #3b1f3a; }
+.dvd-unit { font-size: 13px; font-weight: 550; color: #6b5568; }
+.dvd-list { display: grid; gap: 6px; font-size: 14px; color: #4a3449; }
+.dvd-list li { padding-left: 14px; position: relative; }
+.dvd-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: #c08a3e; }
+.dvd-list .num, .dvd-outro .num, .dvd-slot .num { font-weight: 700; color: #2a1729; white-space: nowrap; }
+.dvd-slot { font-size: 13.5px; color: #4a3449; padding-top: 8px; border-top: 1px solid #e6d8c6; width: 100%; }
+.dvd-btn { font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 3px; background: #3b1f3a; color: #fbf6ef; text-decoration: none; }
+.dvd-card :focus-visible { outline: 2px solid #c08a3e; outline-offset: 3px; }
+@media (prefers-color-scheme: dark) {
+  body { background: #241622; color: #f2e8dc; }
+  .dvd-outro { color: #c9b5c4; }
+  .dvd-outro .num { color: #f2e8dc; }
+  .dvd-kicker { color: #e0b06a; }
+}
+@media (max-width: 560px) {
+  .dvd-card { grid-template-columns: 1fr; }
+  .dvd-body { padding: 18px 16px 20px; }
+}
