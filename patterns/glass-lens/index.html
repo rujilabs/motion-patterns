@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glass lens demo, motion patterns</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/host-grotesk-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../demo.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+<script src="glass-lens.js" defer></script>
+</head>
+<body>
+<main class="stage">
+<article class="gld" aria-labelledby="gld-h">
+  <header class="gld-head">
+    <p class="gld-shop">Farmasi Seri Kembangan, pharmacist on duty until <span class="num">10:30 pm</span></p>
+    <h1 id="gld-h">Panalor 500 mg paracetamol tablets</h1>
+    <p class="gld-sub">Patient leaflet. Pack of <span class="num">20</span>, RM <span class="num">6.80</span>. Batch PN2611-047, use by 09/2028.</p>
+  </header>
+  <div class="glasslens gld-print">
+    <div class="gl-print">
+      <h2>How to take it</h2>
+      <p>Adults and children aged 12 and over: 1 to 2 tablets every 4 to 6 hours, with water. Do not take more than 8 tablets in 24 hours. Children aged 10 to 11: 1 tablet every 4 to 6 hours, no more than 4 doses in 24 hours. Not for children under 10: ask us about a syrup.</p>
+      <h2>Do not take it</h2>
+      <p>with any other medicine that contains paracetamol, including cold and flu remedies. Ask your pharmacist first if you have liver or kidney problems, drink more than 14 units of alcohol a week, or weigh less than 50 kg.</p>
+      <h2>Side effects</h2>
+      <p>are rare. Stop and see a doctor if you get a rash, peeling skin, mouth ulcers or unusual bruising. Taking too much can harm the liver even if you feel well: get help at once: call 999, or call us on 03-8945 2716.</p>
+      <h2>In each tablet</h2>
+      <p>500 mg paracetamol, with maize starch, povidone, stearic acid and talc. No sugar, gluten or lactose. Halal certified.</p>
+      <h2>Pregnant or breastfeeding</h2>
+      <p>It can be taken at the usual dose, for the shortest time you need it. Tell us before you buy.</p>
+      <h2>Storage</h2>
+      <p>Below 30 &deg;C, in the original pack, out of the sight and reach of children. Do not use after the date on the strip.</p>
+    </div>
+    <canvas class="gl-canvas" aria-hidden="true"></canvas>
+    <div class="gl-move" tabindex="0" role="group" aria-label="Magnifier. Use the arrow keys to move it over the small print." hidden></div>
+    <button type="button" class="gl-pause gld-pause" aria-pressed="false" hidden>Pause</button>
+  </div>
+</article>
+</main>
+</body>
+</html>

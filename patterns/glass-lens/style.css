@@ -1,0 +1,21 @@
+/*
+ * glass-lens: a reading lens slides over the small print and magnifies it. glass-lens.js draws the same
+ * text, word by word where the browser laid it out, into a texture and shows only the lens over the real
+ * HTML. Without WebGL or script, the plain leaflet shows. Keep the paper colour solid.
+ */
+.glasslens {
+  --gl-paper: #ffffff;  /* the paper under the print (6 digit hex): the lens shows it */
+  --gl-size: 56px;      /* lens radius */
+  --gl-mag: 2.3;        /* magnification at the centre */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y; background: var(--gl-paper);
+}
+.gl-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.gl-move { position: absolute; left: 0; top: 0; width: 0; height: 0; border-radius: 50%; }
+.gl-move:focus { outline: none; }
+.gl-move:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.gl-move[hidden], .gl-pause[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the lens does not drift on its own: it rests on the dose and moves only when the reader moves it */
+  .gl-pause { display: none; }
+}
