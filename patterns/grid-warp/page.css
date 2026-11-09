@@ -1,0 +1,29 @@
+/* Demo page layout for this entry. Not part of the pattern. A property listing card: white paper, ink, teal. */
+.gwd {
+  width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; border: 1px solid var(--demo-line);
+  display: grid; grid-template-rows: 70% 1fr; background: #fff; color: #17202a;
+}
+.gwd-photo { background: #dcecf5; }
+.gwd-tag {
+  position: absolute; left: 14px; top: 14px; font-size: 12px; font-weight: 700; letter-spacing: .04em;
+  padding: 4px 10px; border-radius: 999px; background: #0f6b62; color: #fff;
+}
+.gwd-pause {
+  position: absolute; right: 14px; top: 14px; font: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(23, 32, 42, .25); background: rgba(255, 255, 255, .88); color: #17202a; cursor: pointer;
+}
+.gwd-pause[aria-pressed="true"] { background: #17202a; color: #fff; }
+.gwd-body { padding: 14px 20px 16px; display: grid; gap: 8px; align-content: start; }
+.gwd-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.gwd-top h1 { font-size: 19px; font-weight: 650; line-height: 1.2; }
+.gwd-price { font-size: 21px; font-weight: 750; color: #0f6b62; white-space: nowrap; }
+.gwd-facts { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: #3b4652; }
+.gwd-facts .num { font-weight: 700; color: #17202a; }
+.gwd-when { font-size: 13px; color: #56616d; }
+.gwd-when .num { white-space: nowrap; color: #17202a; font-weight: 600; }
+.gwd :focus-visible { outline: 2px solid #0f6b62; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .gwd { aspect-ratio: auto; grid-template-rows: 260px auto; }
+  .gwd-top { flex-direction: column; gap: 4px; }
+  .gwd-body { padding: 14px 16px 18px; }
+}

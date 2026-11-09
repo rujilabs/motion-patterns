@@ -1,0 +1,19 @@
+/*
+ * grid-warp: a listing photo bends like a rubber sheet under the pointer. grid-warp.js reads the
+ * .gw-photo image into WebGL and draws the warped copy on .gw-canvas over it. Without WebGL, script or
+ * motion, the canvas stays hidden and the plain photo shows. Crop with object-fit: cover, centred.
+ */
+.gridwarp {
+  --gw-line: #ffffff;   /* the faint grid that shows in the dent */
+  position: relative; overflow: hidden; isolation: isolate; touch-action: pan-y;
+}
+.gw-photo, .gw-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gw-photo { z-index: -2; object-fit: cover; object-position: 50% 50%; }
+.gw-canvas { z-index: -1; pointer-events: none; opacity: 0; }
+.gw-canvas.is-live { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* grid-warp.js does not start: the plain photo shows and there is nothing to pause */
+  .gw-canvas { display: none; }
+  .gw-pause { display: none; }
+}
