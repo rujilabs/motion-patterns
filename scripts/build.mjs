@@ -481,6 +481,39 @@ ${foot()}
   writeFileSync(join(DIST, e.rel, "index.html"), page);
 }
 
+// catalogue.json: what the CLI reads (ADR 0007). Every entry with the files a page needs to use it, so `add` copies
+// exactly those and never the demo (index.html, page.css, demo.js, poster.jpg). Paths are relative to the site root.
+const DEMO_ONLY = new Set(["README.md", "index.html", "meta.json", "page.css", "demo.js", "demo.css", "poster.jpg", "preview.mp4"]);
+const useSection = (e) => (readFileSync(join(e.path, "README.md"), "utf8").match(/^## Use\n([\s\S]*?)(?=^## )/m) || ["", ""])[1];
+const catalogue = {
+  format: 1,
+  name: "motion-patterns",
+  version: pkg.version,
+  site: SITE_URL,
+  shared: { tokens: "tokens.css", play: "play.js", fonts: "fonts" },
+  entries: entries.map((e) => {
+    const files = readdirSync(e.path).filter((f) => !DEMO_ONLY.has(f) && statSync(join(e.path, f)).isFile()).sort();
+    const css = readFileSync(join(e.path, "style.css"), "utf8");
+    const fonts = [...new Set([...css.matchAll(/\.\.\/\.\.\/fonts\/([a-z0-9.-]+)/g)].map((m) => m[1]))];
+    return {
+      slug: e.slug,
+      kind: e.kind,
+      name: e.meta.name,
+      summary: e.meta.summary,
+      category: e.meta.category,
+      tech: e.meta.tech,
+      trigger: e.meta.trigger,
+      added: e.meta.added,
+      path: e.rel,
+      files,
+      fonts,
+      uses: e.meta.uses || [],
+      play: ["in-view", "scroll"].includes(e.meta.trigger) || /play\.js/.test(useSection(e)),
+    };
+  }),
+};
+writeFileSync(join(DIST, "catalogue.json"), JSON.stringify(catalogue) + "\n");
+
 const urls = ["", ...entries.map((e) => `${e.rel}/`)];
 writeFileSync(join(DIST, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
