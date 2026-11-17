@@ -5,6 +5,14 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). This file is generated from commit
 messages by `npm run changelog`; do not edit it by hand.
 
+## [0.14.0] - 2026-11-17
+
+### Added
+
+- **build:** Catalogue.json lists every entry's runtime files for the CLI
+- **cli:** Npx motion-patterns lists, searches and adds entries into a project
+
+
 ## [0.13.0] - 2026-11-09
 
 ### Added
