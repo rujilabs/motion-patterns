@@ -1,0 +1,36 @@
+{
+  "name": "motion-patterns",
+  "version": "0.14.0",
+  "description": "Copy web motion patterns into your project: browse, search and add entries from motion.rujilabs.com. Zero dependencies.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "motion-patterns": "bin.mjs"
+  },
+  "files": [
+    "bin.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rujilabs/motion-patterns.git",
+    "directory": "cli"
+  },
+  "homepage": "https://motion.rujilabs.com",
+  "bugs": "https://github.com/rujilabs/motion-patterns/issues",
+  "keywords": [
+    "animation",
+    "motion",
+    "css",
+    "cli",
+    "reduced-motion",
+    "ui"
+  ],
+  "scripts": {
+    "test": "node --test test/"
+  }
+}

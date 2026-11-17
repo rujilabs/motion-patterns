@@ -20,6 +20,7 @@
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
     "preview": "node scripts/export.mjs",
     "changelog": "git cliff -o CHANGELOG.md",
-    "posters": "node scripts/posters.mjs"
+    "posters": "node scripts/posters.mjs",
+    "test": "node --test cli/test/"
   }
 }
