@@ -5,7 +5,7 @@ Add a pattern (one move) or a template (a finished scene built from patterns).
 ## Pattern
 
 1. Create `patterns/<slug>/` with `index.html`, `style.css`, `meta.json`. Copy an existing pattern as the starting point; [`rise`](../../patterns/rise/) is the smallest.
-2. Put **only the pattern** in `style.css`. Demo layout goes in an optional `page.css`, so people who copy `style.css` get nothing extra.
+2. Put **only the pattern** in `style.css`. Demo layout goes in an optional `page.css`, so people who copy `style.css` get nothing extra. Demo-only script goes in `demo.js`: `npx motion-patterns add` copies every file in the folder except `README.md`, `index.html`, `meta.json`, `page.css`, `demo.js`, `demo.css`, `poster.jpg` and `preview.mp4` ([CLI](../reference/cli.md)).
 3. Use tokens from [`tokens.css`](../../tokens.css). Need a new curve? Add a token there first.
 4. Add a `@media (prefers-reduced-motion: reduce)` rule that leaves the element in its finished state.
 5. If the start state is hidden, scope it under `.js`, and trigger with `[data-play]` + `.go` (see [`draw`](../../patterns/draw/style.css)). Without `play.js` the content must still show.
@@ -30,7 +30,7 @@ Same as a pattern, under `templates/<slug>/`, with two differences:
 ## Before you open the pull request
 
 - [ ] The entry has a `poster.jpg` (the gallery card, related cards and template reels show it): run `npm run posters -- <slug>` after the last visual change (Playwright: `npm i --no-save playwright && npx playwright install chromium`). The gate fails without one
-- [ ] `npm run check` passes
+- [ ] `npm run check` passes (and `npm test` if you touched `cli/` or `catalogue.json` in `scripts/build.mjs`)
 - [ ] The demo looks right with reduced motion on (DevTools > Rendering > Emulate CSS `prefers-reduced-motion`)
 - [ ] The demo works at 375 px wide, and fits inside its gallery stage: 4:3 for patterns, while templates render at 1280 x 720 and scale down (a short frame: use a `max-height` query in `page.css` if it does not)
 - [ ] The motion shows on the timeline under the stage: it uses CSS animations or the Web Animations API (the timeline reads `document.getAnimations()` in the demo), and an entrance finishes within about 3 seconds

@@ -17,7 +17,7 @@ Thanks for adding to the collection. This page covers the ways to help and the r
 2. Follow [add an entry](docs/how-to/add-an-entry.md). New to this? Do the [tutorial](docs/tutorials/01-your-first-pattern.md) first.
 3. Decide `relation` with [credit a source](docs/how-to/credit-a-source.md).
 4. Write the entry's `README.md` (the gate requires one; copy the shape from [`rise`](patterns/rise/README.md)).
-5. `npm run catalogue && npm run check` must pass.
+5. `npm run catalogue && npm run check` must pass. Changed `cli/` or the `catalogue.json` step of the build? `npm test` too.
 6. Open the pull request and fill in the template.
 
 > [!IMPORTANT]
