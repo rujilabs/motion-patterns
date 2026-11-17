@@ -8,3 +8,4 @@ Exact names and values. Generated or derived from the files they describe.
 | [meta.json](meta-json.md) | Every field the gate reads |
 | [Catalogue](catalogue.md) | Every entry (generated) |
 | [Scripts](scripts.md) | Every `npm run` command |
+| [CLI](cli.md) | `npx motion-patterns`: commands, options, `catalogue.json` |

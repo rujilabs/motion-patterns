@@ -10,3 +10,4 @@ Why the collection is built the way it is.
   - [0004 Object categories next to behaviour categories](decisions/0004-object-categories.md)
   - [0005 The whole-collection budget follows the collection](decisions/0005-bundle-budget-follows-the-collection.md)
   - [0006 A shader category with raw WebGL](decisions/0006-shader-category-raw-webgl.md)
+  - [0007 A CLI that reads the live catalogue](decisions/0007-cli-reads-the-live-catalogue.md)

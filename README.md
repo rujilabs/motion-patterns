@@ -25,7 +25,16 @@ A credited collection of web motion: small CSS patterns and full scenes, each wi
 
 ## Use one in a minute
 
-Take the whole set as one file:
+Copy one entry into your project from the terminal (Node 20 or later, nothing to install):
+
+```bash
+npx motion-patterns search drum          # find one
+npx motion-patterns add rise badge       # copies tokens, the entry's files and any fonts into ./motion/
+```
+
+`add` prints the tags to paste into `<head>` and never overwrites a file you already have. See the [CLI reference](docs/reference/cli.md).
+
+Or take the whole set as one file:
 
 ```html
 <link rel="stylesheet" href="https://motion.rujilabs.com/motion.css">
@@ -427,7 +436,7 @@ cd motion-patterns
 npm run dev        # check + build + serve on http://localhost:4321
 ```
 
-Node 20 or later. There is nothing to install.
+Node 20 or later. There is nothing to install. `npm test` runs the CLI tests.
 
 ## Contributing
 

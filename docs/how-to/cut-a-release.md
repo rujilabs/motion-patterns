@@ -18,8 +18,9 @@ npm i -g git-cliff                          # once
 git cliff --bumped-version                  # suggested next version, e.g. v0.2.0
 git cliff --tag v0.2.0 -o CHANGELOG.md      # regenerate the changelog
 npm version 0.2.0 --no-git-tag-version      # bump package.json
+(cd cli && npm version 0.2.0 --no-git-tag-version)   # the CLI carries the same version
 # update the version badge in README.md
-git add CHANGELOG.md package.json README.md
+git add CHANGELOG.md package.json cli/package.json README.md
 git commit -m "chore(release): v0.2.0"
 git tag -a v0.2.0 -m "v0.2.0"
 git push origin main --follow-tags
@@ -30,6 +31,14 @@ Publish the GitHub Release from the changelog section, not from generated notes:
 ```bash
 awk -v v="## [0.2.0]" 'index($0, v) == 1 { f = 1; next } f && /^## \[/ { exit } f { print }' CHANGELOG.md > /tmp/notes.md
 gh release create v0.2.0 --title "v0.2.0" --notes-file /tmp/notes.md --verify-tag
+```
+
+Once the site is live with the release (the CLI reads its `catalogue.json`), publish the CLI:
+
+```bash
+npm test                                    # CLI tests
+cd cli && npm publish                       # needs npm login; only bin.mjs, README.md and LICENSE ship
+npx motion-patterns@latest --version        # prints the new version
 ```
 
 > [!CAUTION]
