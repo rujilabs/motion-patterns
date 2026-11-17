@@ -46,7 +46,7 @@ Or take the whole set as one file:
 
 Need only one kind of move? Each category has its own file under 10 KB gzipped, for example `motion-state.css`, `motion-transition.css`, `motion-camera.css`, `motion-look.css`, or one of the object families such as `motion-gear.css`, `motion-drum.css` or `motion-globe.css` (the categories are listed in [`meta.json`](docs/reference/meta-json.md)).
 
-Or copy one entry: [`tokens.css`](tokens.css) plus that entry's `style.css`. No build step, no package.
+Or copy one entry by hand: [`tokens.css`](tokens.css) plus that entry's `style.css` (and its script, if it has one). No build step.
 
 > [!TIP]
 > Self-host the files for production. The hosted copy is fine for trying things out, but your page should not depend on someone else's server.
